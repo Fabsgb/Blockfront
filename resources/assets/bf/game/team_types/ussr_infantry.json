@@ -1,0 +1,222 @@
+{
+  "id": 30,
+  "nation": "ussr",
+  "skin": "infantry",
+  "loadouts": {
+    "bf:rifleman": [
+      {
+        "template": "rifleman_i"
+      },
+      {
+        "template": "rifleman_ii"
+      },
+      {
+        "template": "rifleman_iii"
+      }
+    ],
+    "bf:light_infantry": [
+      {
+        "template": "light_infantry_i",
+        "items": [
+          {
+            "id": "bf:grenade_smoke_rgd2"
+          }
+        ]
+      },
+      {
+        "template": "light_infantry_ii",
+        "items": [
+          {
+            "id": "bf:grenade_frag_rgd33"
+          }
+        ]
+      },
+      {
+        "template": "light_infantry_iii",
+        "items": [
+          {
+            "id": "bf:grenade_molotov"
+          }
+        ]
+      }
+    ],
+    "bf:assault": [
+      {
+        "template": "assault_i",
+        "items": [
+          {
+            "id": "bf:grenade_frag_rgd33"
+          },
+          {
+            "id": "bf:grenade_molotov"
+          }
+        ]
+      },
+      {
+        "template": "assault_ii",
+        "items": [
+          {
+            "id": "bf:grenade_frag_rgd33",
+            "count": 2
+          },
+          {
+            "id": "bf:grenade_smoke_rgd2"
+          }
+        ]
+      },
+      {
+        "template": "assault_iii",
+        "items": [
+          {
+            "id": "bf:grenade_frag_rgd33"
+          },
+          {
+            "id": "bf:grenade_molotov",
+            "count": 2
+          },
+          {
+            "id": "bf:grenade_smoke_rgd2",
+            "count": 2
+          }
+        ]
+      }
+    ],
+    "bf:support": [
+      {
+        "template": "support_i",
+        "items": [
+          {
+            "id": "bf:grenade_smoke_rgd2",
+            "count": 2
+          },
+          {
+            "id": "bf:ammo_box"
+          }
+        ]
+      },
+      {
+        "template": "support_ii",
+        "items": [
+          {
+            "id": "bf:grenade_frag_rgd33"
+          },
+          {
+            "id": "bf:grenade_smoke_rgd2"
+          },
+          {
+            "id": "bf:ammo_box"
+          }
+        ]
+      },
+      {
+        "template": "support_iii",
+        "items": [
+          {
+            "id": "bf:grenade_molotov",
+            "count": 2
+          },
+          {
+            "id": "bf:ammo_box"
+          }
+        ]
+      }
+    ],
+    "bf:medic": [
+      {
+        "template": "medic_i"
+      },
+      {
+        "template": "medic_ii"
+      },
+      {
+        "template": "medic_iii"
+      }
+    ],
+    "bf:sniper": [
+      {
+        "template": "sniper_i"
+      },
+      {
+        "template": "sniper_ii"
+      },
+      {
+        "template": "sniper_iii"
+      }
+    ],
+    "bf:gunner": [
+      {
+        "template": "gunner_i",
+        "items": [
+          {
+            "id": "bf:grenade_smoke_rgd2",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "template": "gunner_ii",
+        "items": [
+          {
+            "id": "bf:grenade_frag_rgd33"
+          },
+          {
+            "id": "bf:grenade_smoke_rgd2"
+          }
+        ]
+      },
+      {
+        "template": "gunner_iii",
+        "items": [
+          {
+            "id": "bf:ammo_box"
+          },
+          {
+            "id": "bf:grenade_smoke_rgd2"
+          }
+        ]
+      }
+    ],
+    "bf:anti_tank": [
+      {
+        "template": "anti_tank_i"
+      },
+      {
+        "template": "anti_tank_ii"
+      },
+      {
+        "template": "anti_tank_iii"
+      }
+    ],
+    "bf:commander": [
+      {
+        "template": "commander_i",
+        "items": [
+          {
+            "id": "bf:grenade_smoke_rgd2",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "template": "commander_ii",
+        "items": [
+          {
+            "id": "bf:grenade_molotov"
+          }
+        ]
+      },
+      {
+        "template": "commander_iii",
+        "items": [
+          {
+            "id": "bf:grenade_frag_rgd33",
+            "count": 2
+          },
+          {
+            "id": "bf:grenade_smoke_rgd2"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/shop_wall_sign_8",
+      "y": 90
+    },
+    "facing=east": {
+      "model": "bf:block/shop_wall_sign_8",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "bf:block/shop_wall_sign_8",
+      "y": 270
+    },
+    "facing=west": {
+      "model": "bf:block/shop_wall_sign_8"
+    }
+  }
+}

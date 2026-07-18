@@ -1,0 +1,5 @@
+{
+  "traversable": "bf:solid",
+  "impact": "bf:sand",
+  "soundTypes": ["sand", "soul_sand", "suspicious_sand"]
+}

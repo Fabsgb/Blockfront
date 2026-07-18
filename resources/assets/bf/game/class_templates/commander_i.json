@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "id": "bf:radio"
+    },
+    {
+      "id": "bf:binoculars"
+    }
+  ],
+  "slots": [
+    {
+      "weapon": "commander_primary"
+    },
+    {
+      "weapon": "commander_pistol"
+    },
+    {
+      "weapon": "commander_melee"
+    }
+  ],
+  "exp": 0
+}

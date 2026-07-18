@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/willys_jeep_destroyed"
+    },
+    "facing=east": {
+      "model": "bf:block/willys_jeep_destroyed",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bf:block/willys_jeep_destroyed",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/willys_jeep_destroyed",
+      "y": 270
+    }
+  }
+}

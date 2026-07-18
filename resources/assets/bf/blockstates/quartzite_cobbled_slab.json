@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/quartzite_cobbled_slab"
+    },
+    "type=double": {
+      "model": "bf:block/quartzite_cobbled"
+    },
+    "type=top": {
+      "model": "bf:block/quartzite_cobbled_slab_top"
+    }
+  }
+}

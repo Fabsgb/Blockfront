@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/hematite_cobbled_tiles_slab"
+    },
+    "type=double": {
+      "model": "bf:block/hematite_cobbled_tiles"
+    },
+    "type=top": {
+      "model": "bf:block/hematite_cobbled_tiles_slab_top"
+    }
+  }
+}

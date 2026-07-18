@@ -1,0 +1,8 @@
+{
+  "index": 2,
+  "key": "assault",
+  "displayTitle": "bf.message.gamemode.class.assault.title",
+  "description": "bf.message.gamemode.class.assault.desc",
+  "botFriendly": true,
+  "icon": "bf:textures/gui/game/loadout/assault.png"
+}

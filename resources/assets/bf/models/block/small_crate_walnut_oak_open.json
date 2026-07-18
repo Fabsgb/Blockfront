@@ -1,0 +1,7 @@
+{
+  "parent": "bf:block/crate_open_base_small",
+  "textures": {
+    "0": "bf:block/crate_walnut_oak_small",
+    "particle": "bf:block/crate_walnut_oak_small"
+  }
+}

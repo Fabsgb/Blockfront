@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/lcvp"
+    },
+    "facing=east": {
+      "model": "bf:block/lcvp",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bf:block/lcvp",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/lcvp",
+      "y": 270
+    }
+  }
+}

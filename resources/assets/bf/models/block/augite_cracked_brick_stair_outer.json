@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "bf:block/augite_cracked_brick",
+    "side": "bf:block/augite_cracked_brick",
+    "top": "bf:block/augite_cracked_brick"
+  }
+}

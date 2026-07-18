@@ -1,0 +1,14 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "bf:item/grenade_frag_mk2"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "bf:primed": 1.0
+      },
+      "model": "bf:item/grenade_frag_mk2_primed"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "key": "japan_male",
+  "goSound": "bf:team.jpn.bot.go",
+  "grenadeSound": "bf:team.jpn.bot.grenade",
+  "hurtSound": "bf:team.jpn.bot.hurt",
+  "reloadingSound": "bf:team.jpn.bot.reloading",
+  "spottedSound": "bf:team.jpn.bot.spotted",
+  "tauntSound": "bf:team.jpn.bot.taunt",
+  "introSound": "bf:team.jpn.bot.intro"
+}

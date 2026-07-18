@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/ozark_windswept_slab"
+    },
+    "type=double": {
+      "model": "bf:block/ozark_windswept"
+    },
+    "type=top": {
+      "model": "bf:block/ozark_windswept_slab_top"
+    }
+  }
+}

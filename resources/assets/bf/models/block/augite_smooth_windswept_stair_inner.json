@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "bf:block/augite_smooth_windswept",
+    "side": "bf:block/augite_smooth_windswept",
+    "top": "bf:block/augite_smooth_windswept"
+  }
+}

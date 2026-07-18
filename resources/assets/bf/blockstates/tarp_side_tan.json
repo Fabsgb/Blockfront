@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=north,full=false": {
+      "model": "bf:block/tarp_side_tan"
+    },
+    "facing=north,full=true": {
+      "model": "bf:block/tarp_side_full_tan"
+    },
+    "facing=east,full=false": {
+      "model": "bf:block/tarp_side_tan",
+      "y": 90
+    },
+    "facing=east,full=true": {
+      "model": "bf:block/tarp_side_full_tan",
+      "y": 90
+    },
+    "facing=south,full=false": {
+      "model": "bf:block/tarp_side_tan",
+      "y": 180
+    },
+    "facing=south,full=true": {
+      "model": "bf:block/tarp_side_full_tan",
+      "y": 180
+    },
+    "facing=west,full=false": {
+      "model": "bf:block/tarp_side_tan",
+      "y": 270
+    },
+    "facing=west,full=true": {
+      "model": "bf:block/tarp_side_full_tan",
+      "y": 270
+    }
+  }
+}

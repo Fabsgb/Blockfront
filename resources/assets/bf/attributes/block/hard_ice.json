@@ -1,0 +1,5 @@
+{
+  "traversable": "bf:solid",
+  "impact": "bf:glass",
+  "blocks": ["minecraft:blue_ice", "minecraft:frosted_ice", "minecraft:packed_ice"]
+}

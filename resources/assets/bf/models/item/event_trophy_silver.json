@@ -1,0 +1,7 @@
+{
+  "parent": "bf:item/event_trophy",
+  "textures": {
+    "0": "bf:item/event_trophy_silver",
+    "particle": "bf:item/event_trophy_silver"
+  }
+}

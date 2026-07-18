@@ -1,0 +1,20 @@
+{
+  "id": 23,
+  "nation": "gb",
+  "skin": "regulars",
+  "races": [
+    "caucasian",
+    "black"
+  ],
+  "loadouts": {
+    "bf:rifleman": [
+      {
+        "items": [
+          {
+            "id": "bf:gun_brownbess"
+          }
+        ]
+      }
+    ]
+  }
+}

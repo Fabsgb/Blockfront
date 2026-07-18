@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/book_open_blue",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "bf:block/book_open_blue",
+      "y": 270
+    },
+    "facing=south": {
+      "model": "bf:block/book_open_blue"
+    },
+    "facing=west": {
+      "model": "bf:block/book_open_blue",
+      "y": 90
+    }
+  }
+}

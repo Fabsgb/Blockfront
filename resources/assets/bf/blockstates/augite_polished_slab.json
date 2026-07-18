@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/augite_polished_slab"
+    },
+    "type=double": {
+      "model": "bf:block/augite_polished"
+    },
+    "type=top": {
+      "model": "bf:block/augite_polished_slab_top"
+    }
+  }
+}

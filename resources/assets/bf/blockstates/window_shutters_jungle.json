@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "bf:block/window_shutters_jungle",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "bf:block/window_shutters_jungle"
+    },
+    "facing=south": {
+      "model": "bf:block/window_shutters_jungle",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/window_shutters_jungle",
+      "y": 270
+    }
+  }
+}

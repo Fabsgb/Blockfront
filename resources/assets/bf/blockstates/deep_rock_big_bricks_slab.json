@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/deep_rock_big_bricks_slab"
+    },
+    "type=double": {
+      "model": "bf:block/deep_rock_big_bricks"
+    },
+    "type=top": {
+      "model": "bf:block/deep_rock_big_bricks_slab_top"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/breccia_bricks_slab"
+    },
+    "type=double": {
+      "model": "bf:block/breccia_bricks"
+    },
+    "type=top": {
+      "model": "bf:block/breccia_bricks_slab_top"
+    }
+  }
+}

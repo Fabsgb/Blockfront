@@ -1,0 +1,36 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "bf:block/quartzite_powder"
+      },
+      {
+        "model": "bf:block/quartzite_powder_mirrored"
+      },
+      {
+        "model": "bf:block/quartzite_powder",
+        "y": 90
+      },
+      {
+        "model": "bf:block/quartzite_powder_mirrored",
+        "y": 90
+      },
+      {
+        "model": "bf:block/quartzite_powder",
+        "y": 180
+      },
+      {
+        "model": "bf:block/quartzite_powder_mirrored",
+        "y": 180
+      },
+      {
+        "model": "bf:block/quartzite_powder",
+        "y": 270
+      },
+      {
+        "model": "bf:block/quartzite_powder_mirrored",
+        "y": 270
+      }
+    ]
+  }
+}

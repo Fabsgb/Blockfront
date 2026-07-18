@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/typewriter"
+    },
+    "facing=east": {
+      "model": "bf:block/typewriter",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bf:block/typewriter",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/typewriter",
+      "y": 270
+    }
+  }
+}

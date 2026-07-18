@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/sherman_tank_snorkel_destroyed"
+    },
+    "facing=east": {
+      "model": "bf:block/sherman_tank_snorkel_destroyed",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bf:block/sherman_tank_snorkel_destroyed",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/sherman_tank_snorkel_destroyed",
+      "y": 270
+    }
+  }
+}

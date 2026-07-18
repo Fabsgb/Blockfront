@@ -1,0 +1,16 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.willys_jeep_destroyed.idle": {
+			"loop": true,
+			"bones": {
+				"main": {
+					"scale": {
+						"vector": [1.4, 1.4, 1.4]
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}

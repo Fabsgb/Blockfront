@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/marble_railing"
+    },
+    "facing=east": {
+      "model": "bf:block/marble_railing",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bf:block/marble_railing",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/marble_railing",
+      "y": 270
+    }
+  }
+}

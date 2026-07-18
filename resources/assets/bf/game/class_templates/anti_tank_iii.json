@@ -1,0 +1,20 @@
+{
+  "items": [
+    {
+      "id": "bf:melee_item_wrench"
+    },
+    {
+      "id": "bf:landmine",
+      "count": 2
+    }
+  ],
+  "slots": [
+    {
+      "weapon": "anti_tank_primary"
+    },
+    {
+      "weapon": "pistol_service_iii"
+    }
+  ],
+  "exp": 5000
+}

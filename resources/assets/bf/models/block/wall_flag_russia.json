@@ -1,0 +1,7 @@
+{
+  "parent": "bf:block/wall_flag",
+  "textures": {
+    "0": "bf:block/wall_flag_russia",
+    "particle": "bf:block/wall_flag_russia"
+  }
+}

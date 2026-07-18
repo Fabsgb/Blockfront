@@ -1,0 +1,37 @@
+package com.boehmod.blockfront.mixin;
+
+import com.boehmod.blockfront.C0119bk;
+import com.boehmod.blockfront.C0564jv;
+import java.util.concurrent.ThreadLocalRandom;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.ConnectScreen;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
+
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:com/boehmod/blockfront/mixin/ConnectScreenMixin.class */
+@Mixin({ConnectScreen.class})
+public abstract class ConnectScreenMixin extends Screen {
+
+    @Unique
+    private final ResourceLocation blockFrontAll$backgroundTexture;
+
+    protected ConnectScreenMixin() {
+        super(Component.empty());
+        this.blockFrontAll$backgroundTexture = blockFrontAll$getRandomTexture();
+    }
+
+    @Unique
+    @NotNull
+    private ResourceLocation blockFrontAll$getRandomTexture() {
+        return C0564jv.m2555d("textures/gui/background/loading/background" + ThreadLocalRandom.current().nextInt(0, 4) + ".png");
+    }
+
+    public void renderBackground(GuiGraphics guiGraphics, int i, int i2, float f) {
+        C0119bk.m542a(Minecraft.getInstance(), guiGraphics.pose(), guiGraphics, this.blockFrontAll$backgroundTexture, this.width, this.height, f);
+    }
+}

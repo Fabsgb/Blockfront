@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/arenite_rough_slab"
+    },
+    "type=double": {
+      "model": "bf:block/arenite_rough"
+    },
+    "type=top": {
+      "model": "bf:block/arenite_rough_slab_top"
+    }
+  }
+}

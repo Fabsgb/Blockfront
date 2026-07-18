@@ -1,0 +1,8 @@
+{
+  "parent": "bf:block/wall_sign",
+  "render_type": "cutout",
+  "textures": {
+    "0": "bf:block/wall_sign_6",
+    "particle": "bf:block/wall_sign_6"
+  }
+}

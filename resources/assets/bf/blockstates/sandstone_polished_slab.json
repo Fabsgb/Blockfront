@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/sandstone_polished_slab"
+    },
+    "type=double": {
+      "model": "bf:block/sandstone_polished"
+    },
+    "type=top": {
+      "model": "bf:block/sandstone_polished_slab_top"
+    }
+  }
+}

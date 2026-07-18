@@ -1,0 +1,5 @@
+{
+  "traversable": "bf:soft_stone",
+  "impact": "bf:stone",
+  "blocks": ["minecraft:stone_button"]
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/iron_bars_post_ends",
+  "render_type": "cutout_mipped",
+  "textures": {
+    "particle": "bf:block/metal_bars",
+    "edge": "bf:block/metal_bars"
+  }
+}

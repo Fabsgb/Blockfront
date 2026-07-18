@@ -1,0 +1,22 @@
+{
+  "parent": "bf:block/sandbag_green",
+  "display": {
+    "gui": {
+      "scale": [
+        0.75,
+        0.75,
+        0.75
+      ],
+      "rotation": [
+        45,
+        45,
+        0
+      ],
+      "translation": [
+        0,
+        2.75,
+        0
+      ]
+    }
+  }
+}

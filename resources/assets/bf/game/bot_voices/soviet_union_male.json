@@ -1,0 +1,10 @@
+{
+  "key": "soviet_union_male",
+  "goSound": "bf:team.rus.bot.go",
+  "grenadeSound": "bf:team.rus.bot.grenade",
+  "hurtSound": "bf:team.rus.bot.hurt",
+  "reloadingSound": "bf:team.rus.bot.reloading",
+  "spottedSound": "bf:team.rus.bot.spotted",
+  "tauntSound": "bf:team.rus.bot.taunt",
+  "introSound": "bf:team.rus.bot.intro"
+}

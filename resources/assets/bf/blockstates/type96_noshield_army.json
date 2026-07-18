@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/type96_noshield_army",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "bf:block/type96_noshield_army",
+      "y": 270
+    },
+    "facing=south": {
+      "model": "bf:block/type96_noshield_army"
+    },
+    "facing=west": {
+      "model": "bf:block/type96_noshield_army",
+      "y": 90
+    }
+  }
+}

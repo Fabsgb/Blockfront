@@ -1,0 +1,9 @@
+{
+  "entries": [
+    {
+      "weight": 0.5,
+      "entryType": "group_ref",
+      "group": "bf:industrial_metal"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/reggiane_re2005"
+    },
+    "facing=east": {
+      "model": "bf:block/reggiane_re2005",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bf:block/reggiane_re2005",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/reggiane_re2005",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/barbed_wire_mid_cross",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "bf:block/barbed_wire_mid_cross",
+      "y": 270
+    },
+    "facing=south": {
+      "model": "bf:block/barbed_wire_mid_cross"
+    },
+    "facing=west": {
+      "model": "bf:block/barbed_wire_mid_cross",
+      "y": 90
+    }
+  }
+}

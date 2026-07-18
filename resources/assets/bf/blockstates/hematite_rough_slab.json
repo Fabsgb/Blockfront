@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/hematite_rough_slab"
+    },
+    "type=double": {
+      "model": "bf:block/hematite_rough"
+    },
+    "type=top": {
+      "model": "bf:block/hematite_rough_slab_top"
+    }
+  }
+}

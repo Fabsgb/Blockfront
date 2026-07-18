@@ -1,0 +1,89 @@
+{
+  "sources": [
+    {
+      "type": "directory",
+      "source": "models/entities/kimono",
+      "prefix": "models/entities/kimono/"
+    },
+    {
+      "type": "directory",
+      "source": "skins/game/nations/fin/infantry",
+      "prefix": "skins/game/nations/fin/infantry/"
+    },
+    {
+      "type": "directory",
+      "source": "skins/game/nations/fr/infantry",
+      "prefix": "skins/game/nations/fr/infantry/"
+    },
+    {
+      "type": "directory",
+      "source": "skins/game/nations/gb/infantry",
+      "prefix": "skins/game/nations/gb/infantry/"
+    },
+    {
+      "type": "directory",
+      "source": "skins/game/nations/gb/parachute",
+      "prefix": "skins/game/nations/gb/parachute/"
+    },
+    {
+      "type": "directory",
+      "source": "skins/game/nations/ger/afrikakorps",
+      "prefix": "skins/game/nations/ger/afrikakorps/"
+    },
+    {
+      "type": "directory",
+      "source": "skins/game/nations/ger/panzer",
+      "prefix": "skins/game/nations/ger/panzer/"
+    },
+    {
+      "type": "directory",
+      "source": "skins/game/nations/ger/snow",
+      "prefix": "skins/game/nations/ger/snow/"
+    },
+    {
+      "type": "directory",
+      "source": "skins/game/nations/ger/ss",
+      "prefix": "skins/game/nations/ger/ss/"
+    },
+    {
+      "type": "directory",
+      "source": "skins/game/nations/ger/wehrmacht",
+      "prefix": "skins/game/nations/ger/wehrmacht/"
+    },
+    {
+      "type": "directory",
+      "source": "skins/game/nations/it/infantry",
+      "prefix": "skins/game/nations/it/infantry/"
+    },
+    {
+      "type": "directory",
+      "source": "skins/game/nations/jpn/infantry",
+      "prefix": "skins/game/nations/jpn/infantry/"
+    },
+    {
+      "type": "directory",
+      "source": "skins/game/nations/pol/infantry",
+      "prefix": "skins/game/nations/pol/infantry/"
+    },
+    {
+      "type": "directory",
+      "source": "skins/game/nations/us/infantry",
+      "prefix": "skins/game/nations/us/infantry/"
+    },
+    {
+      "type": "directory",
+      "source": "skins/game/nations/us/airborne",
+      "prefix": "skins/game/nations/us/airborne/"
+    },
+    {
+      "type": "directory",
+      "source": "skins/game/nations/us/marines",
+      "prefix": "skins/game/nations/us/marines/"
+    },
+    {
+      "type": "directory",
+      "source": "skins/game/nations/ussr/infantry",
+      "prefix": "skins/game/nations/ussr/infantry/"
+    }
+  ]
+}

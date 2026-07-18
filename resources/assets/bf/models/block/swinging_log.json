@@ -1,0 +1,8 @@
+{
+  "credit": "Made with Blockbench",
+  "render_type": "cutout",
+  "textures": {
+    "0": "bf:block/entity/swinging_log",
+    "particle": "bf:block/entity/swinging_log"
+  }
+}

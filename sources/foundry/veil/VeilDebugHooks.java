@@ -1,0 +1,10 @@
+package foundry.veil;
+
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/VeilDebugHooks.class */
+public final class VeilDebugHooks {
+    private VeilDebugHooks() {
+    }
+
+    public static void onGLError(int source, int type, int id, int severity, String message, long userParam) {
+    }
+}

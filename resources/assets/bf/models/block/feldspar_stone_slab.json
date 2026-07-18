@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "bf:block/feldspar_stone",
+    "side": "bf:block/feldspar_stone",
+    "top": "bf:block/feldspar_stone"
+  }
+}

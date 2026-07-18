@@ -1,0 +1,32 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.gui_logo.idle": {
+			"animation_length": 10,
+			"bones": {
+				"blockfront": {
+					"rotation": {
+						"0.0": {
+							"vector": [-20, 15, 0.5]
+						},
+						"5.0": {
+							"vector": [-20, -15, -0.5],
+							"easing": "easeInOutSine"
+						},
+						"10.0": {
+							"vector": [-20, 15, 0.5],
+							"easing": "easeInOutSine"
+						}
+					},
+					"position": {
+						"vector": [0, 0, 0]
+					},
+					"scale": {
+						"vector": [1, 1, 1]
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}

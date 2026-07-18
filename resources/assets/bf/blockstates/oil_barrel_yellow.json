@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/oil_barrel_yellow"
+    },
+    "facing=east": {
+      "model": "bf:block/oil_barrel_yellow",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bf:block/oil_barrel_yellow",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/oil_barrel_yellow",
+      "y": 270
+    }
+  }
+}

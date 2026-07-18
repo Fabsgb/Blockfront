@@ -1,0 +1,7 @@
+{
+  "parent": "bf:block/crate_open_base1",
+  "textures": {
+    "0": "bf:block/crate_warped",
+    "particle": "bf:block/crate_warped"
+  }
+}

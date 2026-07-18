@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "bf:block/coquina_polished_smooth_brick"
+  }
+}

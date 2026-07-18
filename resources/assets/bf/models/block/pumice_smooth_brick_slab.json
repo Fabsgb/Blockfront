@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "bf:block/pumice_smooth_brick",
+    "side": "bf:block/pumice_smooth_brick",
+    "top": "bf:block/pumice_smooth_brick"
+  }
+}

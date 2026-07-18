@@ -1,0 +1,38 @@
+{
+  "required": true,
+  "package": "com.boehmod.blockfront.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "AnimationControllerAccessor",
+    "BiomeColorsMixin",
+    "ChatScreenMixin",
+    "ClientHooksMixin",
+    "ClientLevelDataMixin",
+    "ClientLevelMixin",
+    "ConnectScreenMixin",
+    "DisconnectedScreenMixin",
+    "GameRendererMixin",
+    "GeoBoneMixin",
+    "GeoModelAccessor",
+    "GeoRendererMixin",
+    "LevelRendererMixin",
+    "LivingEntityMixin",
+    "RenderUtilMixin",
+    "LightTextureMixin",
+    "LocalPlayerMixin",
+    "MinecraftMixin",
+    "MusicManagerMixin",
+    "ReceivingLevelScreenMixin",
+    "ScreenEffectRendererMixin",
+    "SectionCompilerMixin",
+    "TutorialMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixins": [
+    "BrushableBlockMixin",
+    "CampfireBlockMixin",
+    "PlayerListMixin"
+  ]
+}

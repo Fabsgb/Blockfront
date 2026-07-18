@@ -1,0 +1,7 @@
+{
+  "parent": "bf:block/wall_telephone",
+  "textures": {
+    "1": "bf:block/wall_telephone_black",
+    "particle": "bf:block/wall_telephone_black"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "bf:block/quartzite_cobbled_tiles",
+    "side": "bf:block/quartzite_cobbled_tiles",
+    "top": "bf:block/quartzite_cobbled_tiles"
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "index": 0,
+  "tag": "us",
+  "name": "United States",
+  "botVoices": [
+    "bf:united_states_male"
+  ],
+  "miscItems": [
+    "bf:gun_m2_flamethrower",
+    "bf:gun_lewisgun"
+  ],
+  "usernames": [
+    "John",
+    "Roy",
+    "Billy",
+    "Peter",
+    "Joe",
+    "Bruce",
+    "Willie",
+    "Henry",
+    "Carl",
+    "Jack",
+    "Arthur",
+    "Wayne",
+    "Terry",
+    "Lawrence",
+    "Douglas",
+    "Steven"
+  ],
+  "warCrySound": "bf:team.shared.warcry",
+  "warCrySoundDistant": "bf:team.shared.warcry.distant",
+  "warCryCrowdSound": "bf:team.shared.warcry.crowd",
+  "warCrySoundCommander": "bf:team.shared.whistle",
+  "weapons": {
+    "rifleman_primary": {
+      "id": "bf:gun_springfield"
+    },
+    "pistol_service": {
+      "id": "bf:gun_colt"
+    },
+    "pistol_service_iii": {
+      "id": "bf:gun_colt"
+    },
+    "commander_pistol": {
+      "id": "bf:gun_colt"
+    },
+    "pistol_revolver": {
+      "id": "bf:gun_colt"
+    },
+    "melee_standard": {
+      "id": "bf:melee_item_knife_m1905"
+    },
+    "commander_melee": {
+      "id": "bf:melee_item_knife_m1905"
+    },
+    "grenade_smoke": {
+      "id": "bf:grenade_smoke"
+    },
+    "grenade_frag": {
+      "id": "bf:grenade_frag_mk2"
+    },
+    "medic_primary": {
+      "id": "bf:gun_springfield"
+    },
+    "sniper_primary": {
+      "id": "bf:gun_springfield",
+      "components": {
+        "bf:scope": true
+      }
+    },
+    "anti_tank_primary": {
+      "id": "bf:gun_bazooka"
+    },
+    "grenade_at": {
+      "id": "bf:grenade_at_no82_gammon_bomb"
+    },
+    "light_infantry_primary": {
+      "id": "bf:gun_m1_garand"
+    },
+    "assault_primary": {
+      "id": "bf:gun_m1a1_thompson"
+    },
+    "support_primary": {
+      "id": "bf:gun_bar"
+    },
+    "gunner_primary": {
+      "id": "bf:gun_browning30"
+    },
+    "commander_primary": {
+      "id": "bf:gun_greasegun"
+    }
+  },
+  "weaponOverrides": {
+    "medic_ii": {
+      "medic_primary": {
+        "id": "bf:gun_trenchgun"
+      }
+    },
+    "medic_iii": {
+      "medic_primary": {
+        "id": "bf:gun_m1_garand"
+      }
+    },
+    "sniper_ii": {
+      "sniper_primary": {
+        "id": "bf:gun_m1_garand",
+        "components": {
+          "bf:scope": true
+        }
+      }
+    },
+    "sniper_iii": {
+      "sniper_primary": {
+        "id": "bf:gun_m2_carbine",
+        "components": {
+          "bf:scope": true
+        }
+      }
+    },
+    "anti_tank_i": {
+      "pistol_service": {
+        "id": "bf:gun_m1_carbine"
+      }
+    },
+    "anti_tank_ii": {
+      "anti_tank_primary": {
+        "id": "bf:gun_batr"
+      }
+    },
+    "anti_tank_iii": {
+      "anti_tank_primary": {
+        "id": "bf:gun_m1_carbine"
+      }
+    },
+    "light_infantry_ii": {
+      "light_infantry_primary": {
+        "id": "bf:gun_m1_carbine"
+      }
+    },
+    "assault_ii": {
+      "assault_primary": {
+        "id": "bf:gun_trenchgun"
+      }
+    },
+    "assault_iii": {
+      "assault_primary": {
+        "id": "bf:gun_greasegun"
+      }
+    },
+    "support_iii": {
+      "support_primary": {
+        "id": "bf:gun_m1928a1_thompson",
+        "components": {
+          "bf:mag_type": "drum"
+        }
+      }
+    },
+    "commander_ii": {
+      "commander_primary": {
+        "id": "bf:gun_m1a1_thompson"
+      }
+    },
+    "commander_iii": {
+      "commander_primary": {
+        "id": "bf:gun_m2_carbine"
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/wall_flag_russia_ripped"
+    },
+    "facing=east": {
+      "model": "bf:block/wall_flag_russia_ripped",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bf:block/wall_flag_russia_ripped",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/wall_flag_russia_ripped",
+      "y": 270
+    }
+  }
+}

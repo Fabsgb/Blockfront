@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/small_crate_birch"
+    },
+    "type=double": {
+      "model": "bf:block/small_crate_birch_double"
+    },
+    "type=top": {
+      "model": "bf:block/small_crate_birch"
+    }
+  }
+}

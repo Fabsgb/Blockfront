@@ -1,0 +1,7 @@
+{
+  "parent": "bf:block/horse_statue",
+  "textures": {
+    "0": "bf:block/stone_horse_statue",
+    "particle": "bf:block/stone_horse_statue"
+  }
+}

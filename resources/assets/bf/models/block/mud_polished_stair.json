@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "bf:block/mud_polished",
+    "side": "bf:block/mud_polished",
+    "top": "bf:block/mud_polished"
+  }
+}

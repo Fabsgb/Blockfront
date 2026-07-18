@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/pumice_smooth_cracked_brick_slab"
+    },
+    "type=double": {
+      "model": "bf:block/pumice_smooth_cracked_brick"
+    },
+    "type=top": {
+      "model": "bf:block/pumice_smooth_cracked_brick_slab_top"
+    }
+  }
+}

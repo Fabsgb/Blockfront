@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "bf:block/assorted_bricks_5"
+  }
+}

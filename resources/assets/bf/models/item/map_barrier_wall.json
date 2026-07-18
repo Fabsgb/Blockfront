@@ -1,0 +1,6 @@
+{
+  "parent": "bf:item/barrier_wall_inventory",
+  "textures": {
+    "0": "bf:item/map_barrier_wall_inventory"
+  }
+}

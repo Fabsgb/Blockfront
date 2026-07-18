@@ -1,0 +1,8 @@
+{
+  "parent": "bf:block/rafter_tail",
+  "render_type": "cutout",
+  "textures": {
+	"0": "bf:block/rafter_tail_dark_oak",
+	"particle": "bf:block/rafter_tail_dark_oak"
+  }
+}

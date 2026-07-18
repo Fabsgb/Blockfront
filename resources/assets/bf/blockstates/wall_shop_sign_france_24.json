@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/wall_shop_sign_france_24"
+    },
+    "facing=east": {
+      "model": "bf:block/wall_shop_sign_france_24",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bf:block/wall_shop_sign_france_24",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/wall_shop_sign_france_24",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "slots": [
+    {
+      "weapon": "light_infantry_primary"
+    },
+    {
+      "weapon": "pistol_service"
+    },
+    {
+      "weapon": "melee_standard"
+    }
+  ],
+  "exp": 2500
+}

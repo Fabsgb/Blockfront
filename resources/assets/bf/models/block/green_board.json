@@ -1,0 +1,7 @@
+{
+  "parent": "bf:block/wall_board",
+  "textures": {
+    "0": "bf:block/green_planks",
+    "particle": "bf:block/green_planks"
+  }
+}

@@ -1,0 +1,56 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "bf:block/wall_shop_sign_big_france_0",
+		"particle": "bf:block/wall_shop_sign_big_france_0"
+	},
+	"elements": [
+		{
+			"from": [-16, -16, 15.875],
+			"to": [32, 32, 15.875],
+			"rotation": {"angle": 0, "axis": "z", "origin": [8, 8, 15.875]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 0, -2],
+			"scale": [0.25, 0.25, 0.25]
+		},
+		"thirdperson_lefthand": {
+			"translation": [0, 0, -2],
+			"scale": [0.25, 0.25, 0.25]
+		},
+		"firstperson_righthand": {
+			"translation": [0, 2.75, 0],
+			"scale": [0.25, 0.25, 0.25]
+		},
+		"firstperson_lefthand": {
+			"translation": [0, 0, -2],
+			"scale": [0.25, 0.25, 0.25]
+		},
+		"ground": {
+			"translation": [-0.25, 2.25, -2],
+			"scale": [0.25, 0.25, 0.25]
+		},
+		"gui": {
+			"translation": [0, 0, -1],
+			"scale": [0.3, 0.3, 0.3]
+		},
+		"head": {
+			"translation": [0, 0, -8.5],
+			"scale": [0.25, 0.25, 0.25]
+		},
+		"fixed": {
+			"translation": [0, 0, -1],
+			"scale": [0.25, 0.25, 0.25]
+		}
+	}
+}

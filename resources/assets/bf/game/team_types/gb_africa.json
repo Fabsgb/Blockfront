@@ -1,0 +1,10 @@
+{
+  "id": 21,
+  "nation": "gb",
+  "skin": "africa",
+  "races": [
+    "caucasian",
+    "black"
+  ],
+  "inheritsFrom": "bf:gb_infantry"
+}

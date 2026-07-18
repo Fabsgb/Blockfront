@@ -1,0 +1,5 @@
+// 1.21.1	2026-05-06T11:20:50.8124886	Tags for minecraft:block mod id bf
+4eef694d76751e59cc814e3e98fb88bc3beda02f data/minecraft/tags/block/climbable.json
+f47c00626ae524a22b5a986ed4f5c6218cd79916 data/minecraft/tags/block/fences.json
+f52dcdcd90d94bf43b42fcdcba985fb554db4374 data/minecraft/tags/block/fence_gates.json
+b4003b4209802d32266c7f890c19ba1cd69f3d99 data/minecraft/tags/block/walls.json

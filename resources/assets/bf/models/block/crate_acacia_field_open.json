@@ -1,0 +1,7 @@
+{
+  "parent": "bf:block/crate_open_base_field",
+  "textures": {
+    "0": "bf:block/crate_acacia",
+    "particle": "bf:block/crate_acacia"
+  }
+}

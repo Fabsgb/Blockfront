@@ -1,0 +1,10 @@
+{
+  "impactSound": "bf:item.gun.bullet.impact.dirt",
+  "impactDebrisSound": "bf:item.gun.bullet.impact.dirt.debris",
+  "overlayEffectType": "spice_white",
+  "displayImpactEffects": true,
+  "directionalImpactParticles": [
+    { "count": 1, "particleType": "bf:bullet_impact_smoke_spice_white" },
+    { "count": 15, "particleType": "bf:bullet_impact_spice_white" }
+  ]
+}

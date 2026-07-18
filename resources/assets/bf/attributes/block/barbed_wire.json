@@ -1,0 +1,8 @@
+{
+  "traversable": "bf:air",
+  "blocks": [
+    "bf:barbed_wire_end",
+    "bf:barbed_wire_mid",
+    "bf:barbed_wire_mid_cross"
+  ]
+}

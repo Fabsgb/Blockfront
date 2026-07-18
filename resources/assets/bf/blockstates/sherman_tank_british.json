@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/sherman_tank_british"
+    },
+    "facing=east": {
+      "model": "bf:block/sherman_tank_british",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bf:block/sherman_tank_british",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/sherman_tank_british",
+      "y": 270
+    }
+  }
+}

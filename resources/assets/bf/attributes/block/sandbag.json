@@ -1,0 +1,9 @@
+{
+  "impact": "bf:sandbag",
+  "blocks": [
+    "bf:sandbag",
+    "bf:sandbag_snow",
+    "bf:sandbag_green",
+    "bf:sandbag_green_snow"
+  ]
+}

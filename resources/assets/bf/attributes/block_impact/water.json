@@ -1,0 +1,9 @@
+{
+  "impactSound": "bf:item.gun.bullet.impact.water",
+  "impactDebrisSound": "bf:item.gun.bullet.impact.water",
+  "impactParticles": [
+    { "count": 1, "particleType": "minecraft:splash" },
+    { "count": 1, "particleType": "minecraft:bubble_pop" },
+    { "count": 1, "particleType": "bf:poof_particle" }
+  ]
+}

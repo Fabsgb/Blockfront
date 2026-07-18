@@ -1,0 +1,8 @@
+{
+  "parent": "bf:item/flag_item",
+  "textures": {
+    "0": "bf:item/flag_item_japan",
+    "1": "bf:item/flag_item_pole",
+    "particle": "bf:item/flag_item_japan"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "id": "bf:binoculars"
+    }
+  ],
+  "slots": [
+    {
+      "weapon": "sniper_primary"
+    },
+    {
+      "weapon": "pistol_service"
+    },
+    {
+      "weapon": "melee_standard"
+    },
+    {
+      "weapon": "grenade_smoke"
+    }
+  ],
+  "exp": 0
+}

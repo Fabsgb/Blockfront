@@ -1,0 +1,25 @@
+{
+  "entries": [
+    {
+      "weight": 0.4,
+      "entryType": "sound_event",
+      "sound": "bf:ambient.wildlife.owl.call",
+      "volume": 0.25,
+      "offset": { "x": 0, "y": 16, "z": 0 }
+    },
+    {
+      "weight": 0.4,
+      "entryType": "sound_event",
+      "sound": "bf:ambient.wildlife.owl.call.distant",
+      "volume": 0.25,
+      "offset": { "x": 0, "y": 16, "z": 0 }
+    },
+    {
+      "weight": 0.1,
+      "entryType": "sound_event",
+      "sound": "bf:ambient.wildlife.owl.screech.distant",
+      "volume": 0.25,
+      "offset": { "x": 0, "y": 16, "z": 0 }
+    }
+  ]
+}

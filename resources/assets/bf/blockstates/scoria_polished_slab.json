@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/scoria_polished_slab"
+    },
+    "type=double": {
+      "model": "bf:block/scoria_polished"
+    },
+    "type=top": {
+      "model": "bf:block/scoria_polished_slab_top"
+    }
+  }
+}

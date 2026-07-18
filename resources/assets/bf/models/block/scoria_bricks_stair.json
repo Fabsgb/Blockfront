@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "bf:block/scoria_bricks",
+    "side": "bf:block/scoria_bricks",
+    "top": "bf:block/scoria_bricks"
+  }
+}

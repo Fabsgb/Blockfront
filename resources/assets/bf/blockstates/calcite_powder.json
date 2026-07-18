@@ -1,0 +1,36 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "bf:block/calcite_powder"
+      },
+      {
+        "model": "bf:block/calcite_powder_mirrored"
+      },
+      {
+        "model": "bf:block/calcite_powder",
+        "y": 90
+      },
+      {
+        "model": "bf:block/calcite_powder_mirrored",
+        "y": 90
+      },
+      {
+        "model": "bf:block/calcite_powder",
+        "y": 180
+      },
+      {
+        "model": "bf:block/calcite_powder_mirrored",
+        "y": 180
+      },
+      {
+        "model": "bf:block/calcite_powder",
+        "y": 270
+      },
+      {
+        "model": "bf:block/calcite_powder_mirrored",
+        "y": 270
+      }
+    ]
+  }
+}

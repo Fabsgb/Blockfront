@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/snow_height12",
+  "textures": {
+    "particle": "bf:block/spice_gold",
+    "texture": "bf:block/spice_gold"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/tuff_windswept_slab"
+    },
+    "type=double": {
+      "model": "bf:block/tuff_windswept"
+    },
+    "type=top": {
+      "model": "bf:block/tuff_windswept_slab_top"
+    }
+  }
+}

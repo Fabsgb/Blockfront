@@ -1,0 +1,27 @@
+{
+  "items": [
+    {
+      "id": "bf:medical_syringe",
+      "count": 2
+    },
+    {
+      "id": "bf:adrenaline_syringe",
+      "count": 2
+    },
+    {
+      "id": "bf:medic_bag"
+    }
+  ],
+  "slots": [
+    {
+      "weapon": "medic_primary"
+    },
+    {
+      "weapon": "pistol_service"
+    },
+    {
+      "weapon": "melee_standard"
+    }
+  ],
+  "exp": 2500
+}

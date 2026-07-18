@@ -1,0 +1,459 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.ju52.idle": {
+			"animation_length": 12,
+			"bones": {
+				"main": {
+					"scale": {
+						"vector": [1.25, 1.25, 1.25]
+					}
+				},
+				"body": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 20]
+						},
+						"6.0": {
+							"vector": [0, 0, -20],
+							"easing": "easeInOutElastic"
+						},
+						"12.0": {
+							"vector": [0, 0, 20],
+							"easing": "easeInOutElastic"
+						}
+					}
+				},
+				"propeller": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"12.0": {
+							"vector": [0, 0, 30000]
+						}
+					}
+				},
+				"propeller2": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"12.0": {
+							"vector": [0, 0, 30000]
+						}
+					}
+				},
+				"propeller3": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"12.0": {
+							"vector": [0, 0, 30000]
+						}
+					}
+				}
+			}
+		},
+		"animation.ju52.crashed_crete": {
+			"loop": true,
+			"animation_length": 30,
+			"bones": {
+				"main": {
+					"rotation": {
+						"vector": [0, -17.5, 0]
+					},
+					"scale": {
+						"vector": [1.25, 1.25, 1.25]
+					}
+				},
+				"glass": {
+					"scale": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"door": {
+					"rotation": {
+						"vector": [-15, 57.5, 0]
+					}
+				},
+				"left_wing": {
+					"rotation": {
+						"vector": [0, 0, -10]
+					}
+				},
+				"left_back_wing": {
+					"rotation": {
+						"vector": [0, 0, 17.5]
+					},
+					"position": {
+						"vector": [0, -12, 0]
+					}
+				},
+				"left_wheel": {
+					"scale": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"right_wheel": {
+					"scale": {
+						"vector": [1, 1, 1]
+					}
+				},
+				"right_back_wing": {
+					"rotation": {
+						"vector": [0, 0, -15]
+					},
+					"position": {
+						"vector": [0, -10, 0]
+					}
+				},
+				"body": {
+					"rotation": {
+						"vector": [-7.5216, -0.2432, 7.9952]
+					},
+					"position": {
+						"vector": [0, -33, 0]
+					}
+				},
+				"propeller": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"30.0": {
+							"vector": [0, 0, 360],
+							"easing": "linear"
+						}
+					}
+				},
+				"propeller2": {
+					"rotation": {
+						"vector": [-4.9174, 5.8461, -46.0255],
+						"easing": "easeInElastic"
+					}
+				},
+				"propeller_blade2": {
+					"scale": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"windows": {
+					"scale": {
+						"vector": [0, 0, 0]
+					}
+				}
+			}
+		},
+		"animation.ju52.crashing_crete": {
+			"loop": true,
+			"animation_length": 10.8333,
+			"bones": {
+				"main": {
+					"rotation": {
+						"vector": [0, -17.5, 0]
+					},
+					"scale": {
+						"vector": [1.25, 1.25, 1.25]
+					}
+				},
+				"glass": {
+					"scale": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"door": {
+					"rotation": {
+						"vector": [-15, 57.5, 0]
+					}
+				},
+				"left_wing": {
+					"rotation": {
+						"8.0": {
+							"vector": [0, 0, 0]
+						},
+						"8.6667": {
+							"vector": [0, 0, -10],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"left_back_wing": {
+					"rotation": {
+						"vector": [0, 0, 17.5]
+					},
+					"position": {
+						"vector": [0, -12, 0]
+					}
+				},
+				"left_wheel": {
+					"scale": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"right_wheel": {
+					"scale": {
+						"8.0": {
+							"vector": [0, 0, 0]
+						},
+						"8.0417": {
+							"vector": [1, 1, 1]
+						}
+					}
+				},
+				"right_back_wing": {
+					"rotation": {
+						"vector": [0, 0, -15]
+					},
+					"position": {
+						"vector": [0, -10, 0]
+					}
+				},
+				"body": {
+					"rotation": {
+						"0.0": {
+							"vector": [32.0251, -5.7912, 30.5653]
+						},
+						"8.0": {
+							"vector": [16.8046, 6.0465, -5.6437],
+							"easing": "easeOutElastic"
+						},
+						"10.8333": {
+							"vector": [-7.5216, -0.2432, 7.9952],
+							"easing": "easeOutQuad"
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [367.2818, 2786.71429, 5760.69343]
+						},
+						"8.0": {
+							"vector": [-1.35225, 0.19005, 325.99714]
+						},
+						"10.8333": {
+							"vector": [0, -33, 0],
+							"easing": "easeOutQuad"
+						}
+					}
+				},
+				"propeller": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 13640]
+						},
+						"8.0": {
+							"vector": [0, 0, -322.5]
+						},
+						"8.9167": {
+							"vector": [0, 0, 0],
+							"easing": "linear"
+						},
+						"9.0417": {
+							"vector": [0, 0, 20],
+							"easing": "easeInOutSine"
+						},
+						"9.2083": {
+							"vector": [0, 0, -17],
+							"easing": "easeInOutSine"
+						},
+						"9.4167": {
+							"vector": [0, 0, 14],
+							"easing": "easeInOutSine"
+						},
+						"9.6667": {
+							"vector": [0, 0, -11],
+							"easing": "easeInOutSine"
+						},
+						"9.9167": {
+							"vector": [0, 0, 8],
+							"easing": "easeInOutSine"
+						},
+						"10.25": {
+							"vector": [0, 0, -4],
+							"easing": "easeInOutSine"
+						},
+						"10.8333": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"propeller2": {
+					"rotation": {
+						"0.0": {
+							"vector": [1.65, -7.46, -558.39]
+						},
+						"8.0": {
+							"vector": [1.6535, -7.4586, -558.3872]
+						},
+						"10.8333": {
+							"vector": [-4.9174, 5.8461, -46.0255],
+							"easing": "easeInElastic"
+						}
+					}
+				},
+				"propeller3": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 11027.5]
+						},
+						"8.0": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"propeller_blade2": {
+					"scale": {
+						"7.9167": {
+							"vector": [1, 1, 1]
+						},
+						"8.0": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"windows": {
+					"scale": {
+						"vector": [0, 0, 0]
+					}
+				},
+				"body2": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"2.2083": {
+							"vector": [0, 0, -20],
+							"easing": "easeInOutElastic"
+						},
+						"5.2083": {
+							"vector": [0, 0, 15],
+							"easing": "easeInOutElastic"
+						},
+						"8.0": {
+							"vector": [0, 0, 0],
+							"easing": "easeInOutElastic"
+						},
+						"8.4167": {
+							"vector": [-17.2128, 2.6851, 12.2126],
+							"easing": "easeOutQuart"
+						},
+						"8.9167": {
+							"vector": [0, 0, 0],
+							"easing": "easeInQuart"
+						},
+						"9.1667": {
+							"vector": [0, 0, 2.5],
+							"easing": "easeInOutSine"
+						},
+						"9.5": {
+							"vector": [0, 0, -2],
+							"easing": "easeInOutSine"
+						},
+						"9.9167": {
+							"vector": [0, 0, 1.5],
+							"easing": "easeInOutSine"
+						},
+						"10.3333": {
+							"vector": [0, 0, 1],
+							"easing": "easeInOutSine"
+						},
+						"10.8333": {
+							"vector": [0, 0, 0],
+							"easing": "easeInOutSine"
+						}
+					},
+					"position": {
+						"8.0": {
+							"vector": [0, 0, 0]
+						},
+						"8.4167": {
+							"vector": [2.15615, 23.30663, 2.95597],
+							"easing": "easeOutQuart"
+						},
+						"8.9167": {
+							"vector": [0, 0, 0],
+							"easing": "easeInQuart"
+						}
+					}
+				}
+			},
+			"timeline": {
+				"0.0": "positionedSound(bf:ambient.lsp.vehicle.plane.crash.crete,5213.5,39.5,-1849.5,10,1);",
+				"8.0": "explosion(ARTILLERY_EXPLOSION,5199,39,-1854);",
+				"8.0417": "pshake(1.8,1.8,1.6,0.6,0.62,0.64,1.0,0.1,1,64);",
+				"8.0833": "pshake(1,0.4,0.6,1.6,0.32,0.34,0.3,0.05,1,64);",
+				"8.125": "enableEffect(crashed_plane_fire_metal);",
+				"8.9167": "explosion(ARTILLERY_EXPLOSION,5207,38,-1851);",
+				"8.9583": "pshake(1.8,1.8,1.6,0.6,0.62,0.64,1.0,0.1,1,64);",
+				"10.5": "enableEffect(crashed_plane_effect);"
+			}
+		},
+		"animation.ju52.parked": {
+			"animation_length": 12,
+			"bones": {
+				"main": {
+					"scale": {
+						"vector": [1.25, 1.25, 1.25]
+					}
+				},
+				"body": {
+					"rotation": {
+						"vector": [-11.5, 0, 0]
+					},
+					"position": {
+						"vector": [0, -13, 0]
+					}
+				}
+			}
+		},
+		"animation.ju52.parked_running": {
+			"animation_length": 12,
+			"bones": {
+				"main": {
+					"scale": {
+						"vector": [1.25, 1.25, 1.25]
+					}
+				},
+				"body": {
+					"rotation": {
+						"vector": [-11.5, 0, 0]
+					},
+					"position": {
+						"vector": [0, -13, 0]
+					}
+				},
+				"propeller": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"12.0": {
+							"vector": [0, 0, 50000]
+						}
+					}
+				},
+				"propeller2": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"12.0": {
+							"vector": [0, 0, 50000]
+						}
+					}
+				},
+				"propeller3": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"12.0": {
+							"vector": [0, 0, 50000]
+						}
+					}
+				}
+			}
+		}
+	}
+}

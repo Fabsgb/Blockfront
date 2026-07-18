@@ -1,0 +1,7 @@
+{
+  "parent": "bf:block/flower_box",
+  "render_type": "cutout",
+  "textures": {
+    "1": "minecraft:block/dandelion"
+  }
+}

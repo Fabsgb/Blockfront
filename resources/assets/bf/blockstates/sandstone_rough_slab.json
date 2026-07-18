@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/sandstone_rough_slab"
+    },
+    "type=double": {
+      "model": "bf:block/sandstone_rough"
+    },
+    "type=top": {
+      "model": "bf:block/sandstone_rough_slab_top"
+    }
+  }
+}

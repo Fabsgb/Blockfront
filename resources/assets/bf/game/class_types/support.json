@@ -1,0 +1,9 @@
+{
+  "index": 3,
+  "key": "support",
+  "displayTitle": "bf.message.gamemode.class.support.title",
+  "description": "bf.message.gamemode.class.support.desc",
+  "botFriendly": false,
+  "minRankRequired": "private_2nd_class",
+  "icon": "bf:textures/gui/game/loadout/support.png"
+}

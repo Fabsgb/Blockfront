@@ -1,0 +1,5 @@
+{
+  "traversable": "bf:snow",
+  "impact": "bf:snow",
+  "blocks": ["minecraft:snow", "minecraft:snow_block"]
+}

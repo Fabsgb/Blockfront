@@ -1,0 +1,9 @@
+{
+  "index": 7,
+  "key": "anti_tank",
+  "displayTitle": "bf.message.gamemode.class.anti.tank.title",
+  "description": "bf.message.gamemode.class.anti.tank.desc",
+  "botFriendly": false,
+  "minRankRequired": "captain",
+  "icon": "bf:textures/gui/game/loadout/anti_tank.png"
+}

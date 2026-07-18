@@ -1,0 +1,7 @@
+{
+  "top": "minecraft:textures/crosshair/torches/top.png",
+  "bottom": "minecraft:textures/crosshair/torches/bottom.png",
+  "left": "minecraft:textures/crosshair/torches/left.png",
+  "right": "minecraft:textures/crosshair/torches/right.png",
+  "middle": "minecraft:textures/crosshair/torches/middle.png"
+}

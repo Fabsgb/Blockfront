@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "bf:block/ozark_powder",
+    "side": "bf:block/ozark_powder",
+    "top": "bf:block/ozark_powder"
+  }
+}

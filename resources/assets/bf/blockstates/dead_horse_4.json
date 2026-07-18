@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/dead_horse_4"
+    },
+    "facing=east": {
+      "model": "bf:block/dead_horse_4",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bf:block/dead_horse_4",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/dead_horse_4",
+      "y": 270
+    }
+  }
+}

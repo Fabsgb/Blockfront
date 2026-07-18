@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "bf:block/hematite_polished_smooth_brick"
+  }
+}

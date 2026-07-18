@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "bf:block/hematite_stone",
+    "side": "bf:block/hematite_stone",
+    "top": "bf:block/hematite_stone"
+  }
+}

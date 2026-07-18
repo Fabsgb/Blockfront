@@ -1,0 +1,10 @@
+{
+  "key": "poland_male",
+  "goSound": "bf:team.pol.bot.go",
+  "grenadeSound": "bf:team.pol.bot.grenade",
+  "hurtSound": "bf:team.pol.bot.hurt",
+  "reloadingSound": "bf:team.pol.bot.reloading",
+  "spottedSound": "bf:team.pol.bot.spotted",
+  "tauntSound": "bf:team.pol.bot.taunt",
+  "introSound": "bf:team.pol.bot.intro"
+}

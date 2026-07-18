@@ -1,0 +1,7 @@
+{
+  "parent": "bf:block/plank_base_pile_2",
+  "textures": {
+    "0": "bf:block/plank_jungle",
+    "particle": "bf:block/plank_jungle"
+  }
+}

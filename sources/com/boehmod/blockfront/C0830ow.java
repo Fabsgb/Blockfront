@@ -1,0 +1,101 @@
+package com.boehmod.blockfront;
+
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import net.neoforged.neoforge.network.registration.PayloadRegistrar;
+import org.jetbrains.annotations.NotNull;
+
+/* JADX INFO: renamed from: com.boehmod.blockfront.ow */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:com/boehmod/blockfront/ow.class */
+public class C0830ow {
+    /* JADX INFO: renamed from: a */
+    public static void m4199a(@NotNull RegisterPayloadHandlersEvent registerPayloadHandlersEvent) {
+        PayloadRegistrar payloadRegistrarOptional = registerPayloadHandlersEvent.registrar("bf").versioned(C0029a.f248c).optional();
+        payloadRegistrarOptional.playToClient(C1202vw.f6321z, C1202vw.f6322A, C1202vw::m6696b);
+        payloadRegistrarOptional.playToClient(C1247wo.f7394ar, C1247wo.f7395as, C1247wo::m7691b);
+        payloadRegistrarOptional.playToClient(C1249wq.f7405at, C1249wq.f7406au, C1249wq::m7701b);
+        payloadRegistrarOptional.playToClient(C1250wr.f7410au, C1250wr.f7411av, C1250wr::m7704b);
+        payloadRegistrarOptional.playToClient(C1158vE.f6127H, C1158vE.f6128I, C1158vE::m6499b);
+        payloadRegistrarOptional.playToClient(C1209wC.f6350aF, C1209wC.f6351aG, C1209wC::m6720b);
+        payloadRegistrarOptional.playToClient(C1210wD.f6358aG, C1210wD.f6359aH, C1210wD::m6722b);
+        payloadRegistrarOptional.playToClient(C1243wk.f7382an, C1243wk.f7383ao, C1243wk::m7677b);
+        payloadRegistrarOptional.playToClient(C1241wi.f7367al, C1241wi.f7368am, C1241wi::m7662b);
+        payloadRegistrarOptional.playToClient(C1257wy.f7440aB, C1257wy.f7441aC, C1257wy::m7733b);
+        payloadRegistrarOptional.playToClient(C1174vU.f6201X, C1174vU.f6202Y, C1174vU::m6566b);
+        payloadRegistrarOptional.playToClient(C1175vV.f6208Y, C1175vV.f6209Z, C1175vV::m6572b);
+        payloadRegistrarOptional.playToClient(C1185vf.f6250j, C1185vf.f6251k, C1185vf::m6615b);
+        payloadRegistrarOptional.playToClient(C1159vF.f6130I, C1159vF.f6131J, C1159vF::m6502b);
+        payloadRegistrarOptional.playToClient(C1245wm.f7389ap, C1245wm.f7390aq, C1245wm::m7684b);
+        payloadRegistrarOptional.playToClient(C1176vW.f6212Z, C1176vW.f6213aa, C1176vW::m6579b);
+        payloadRegistrarOptional.playToClient(C1239wg.f7359aj, C1239wg.f7360ak, C1239wg::m7656b);
+        payloadRegistrarOptional.playToClient(C1163vJ.f6153M, C1163vJ.f6154N, C1163vJ::m6519b);
+        payloadRegistrarOptional.playToClient(C1199vt.f6311w, C1199vt.f6312x, C1199vt::m6682b);
+        payloadRegistrarOptional.playToClient(C1200vu.f6315x, C1200vu.f6316y, C1200vu::m6690b);
+        payloadRegistrarOptional.playToClient(C1180va.f6229e, C1180va.f6230f, C1180va::m6596b);
+        payloadRegistrarOptional.playToClient(C1184ve.f6245i, C1184ve.f6246j, C1184ve::m6613b);
+        payloadRegistrarOptional.playToClient(C1181vb.f6233f, C1181vb.f6234g, C1181vb::m6600b);
+        payloadRegistrarOptional.playToClient(C1173vT.f6195W, C1173vT.f6196X, C1173vT::m6563b);
+        payloadRegistrarOptional.playToClient(C1160vG.f6135J, C1160vG.f6136K, C1160vG::m6505b);
+        payloadRegistrarOptional.playToClient(C1235wc.f7345af, C1235wc.f7346ag, C1235wc::m7641b);
+        payloadRegistrarOptional.playToClient(C1154vA.f6114D, C1154vA.f6115E, C1154vA::m6486b);
+        payloadRegistrarOptional.playToClient(C1192vm.f6274q, C1192vm.f6275r, C1192vm::m6643b);
+        payloadRegistrarOptional.playToClient(C1191vl.f6271p, C1191vl.f6272q, C1191vl::m6640b);
+        payloadRegistrarOptional.playToClient(C1190vk.f6268o, C1190vk.f6269p, C1190vk::m6636b);
+        payloadRegistrarOptional.playToClient(C1244wl.f7385ao, C1244wl.f7386ap, C1244wl::m7681b);
+        payloadRegistrarOptional.playToClient(C1246wn.f7392aq, C1246wn.f7393ar, C1246wn::m7688b);
+        payloadRegistrarOptional.playToClient(C1161vH.f6138K, C1161vH.f6139L, C1161vH::m6511b);
+        payloadRegistrarOptional.playToClient(C1170vQ.f6185T, C1170vQ.f6186U, C1170vQ::m6554b);
+        payloadRegistrarOptional.playToClient(C1237we.f7351ah, C1237we.f7352ai, C1237we::m7647b);
+        payloadRegistrarOptional.playToClient(C1251ws.f7412av, C1251ws.f7413aw, C1251ws::m7709b);
+        payloadRegistrarOptional.playToClient(C1183vd.f6243h, C1183vd.f6244i, C1183vd::m6607b);
+        payloadRegistrarOptional.playToClient(C1165vL.f6161O, C1165vL.f6162P, C1165vL::m6529b);
+        payloadRegistrarOptional.playToClient(C1167vN.f6170Q, C1167vN.f6171R, C1167vN::m6537b);
+        payloadRegistrarOptional.playToClient(C1238wf.f7356ai, C1238wf.f7357aj, C1238wf::m7651b);
+        payloadRegistrarOptional.playToClient(C1156vC.f6120F, C1156vC.f6121G, C1156vC::m6491b);
+        payloadRegistrarOptional.playToClient(C1178vY.f6223ab, C1178vY.f6224ac, C1178vY::m6591b);
+        payloadRegistrarOptional.playToClient(C1203vx.f6329A, C1203vx.f6330B, C1203vx::m6699b);
+        payloadRegistrarOptional.playToServer(C1208wB.f6347aE, C1208wB.f6348aF, C1208wB::m6718a);
+        payloadRegistrarOptional.playToServer(C1242wj.f7377am, C1242wj.f7378an, C1242wj::m7666a);
+        payloadRegistrarOptional.playToServer(C1240wh.f7362ak, C1240wh.f7363al, C1240wh::m7659a);
+        payloadRegistrarOptional.playToServer(C1212wF.f6364aI, C1212wF.f6365aJ, C1212wF::m6733a);
+        payloadRegistrarOptional.playToServer(C1207wA.f6344aD, C1207wA.f6345aE, C1207wA::m6716a);
+        payloadRegistrarOptional.playToServer(C1254wv.f7428ay, C1254wv.f7429az, C1254wv::m7722a);
+        payloadRegistrarOptional.playToServer(C1258wz.f7443aC, C1258wz.f7444aD, C1258wz::m7736a);
+        payloadRegistrarOptional.playToServer(C1256wx.f7437aA, C1256wx.f7438aB, C1256wx::m7730a);
+        payloadRegistrarOptional.playToServer(C1201vv.f6317y, C1201vv.f6318z, C1201vv::m6694a);
+        payloadRegistrarOptional.playToServer(C1179vZ.f6225ac, C1179vZ.f6226ad, C1179vZ::m6594a);
+        payloadRegistrarOptional.playToServer(C1204vy.f6331B, C1204vy.f6332C, C1204vy::m6709a);
+        payloadRegistrarOptional.playToServer(C1162vI.f6142L, C1162vI.f6143M, C1162vI::m6514a);
+        payloadRegistrarOptional.playToServer(C1255ww.f7433az, C1255ww.f7434aA, C1255ww::m7726a);
+        payloadRegistrarOptional.playToServer(C1252wt.f7419aw, C1252wt.f7420ax, C1252wt::m7713a);
+        payloadRegistrarOptional.playToServer(C1126uZ.f5928d, C1126uZ.f5929e, C1126uZ::m6244a);
+        payloadRegistrarOptional.playToServer(C1157vD.f6124G, C1157vD.f6125H, C1157vD::m6495a);
+        payloadRegistrarOptional.playToServer(C1187vh.f6257l, C1187vh.f6258m, C1187vh::m6626a);
+        payloadRegistrarOptional.playToServer(C1193vn.f6277r, C1193vn.f6278s, C1193vn::m6646a);
+        payloadRegistrarOptional.playToServer(C1196vq.f6291t, C1196vq.f6292u, C1196vq::m6666a);
+        payloadRegistrarOptional.playToServer(C1188vi.f6260m, C1188vi.f6261n, C1188vi::m6629a);
+        payloadRegistrarOptional.playToServer(C1169vP.f6181S, C1169vP.f6182T, C1169vP::m6546a);
+        payloadRegistrarOptional.playToServer(C1189vj.f6264n, C1189vj.f6265o, C1189vj::m6632a);
+        payloadRegistrarOptional.playToServer(C1164vK.f6156N, C1164vK.f6157O, C1164vK::m6526a);
+        payloadRegistrarOptional.playToServer(C1186vg.f6254k, C1186vg.f6255l, C1186vg::m6620a);
+        payloadRegistrarOptional.playToServer(C1197vr.f6295u, C1197vr.f6296v, C1197vr::m6670a);
+        payloadRegistrarOptional.playToServer(C1198vs.f6300v, C1198vs.f6301w, C1198vs::m6675a);
+        payloadRegistrarOptional.playToServer(C1195vp.f6287s, C1195vp.f6288t, C1195vp::m6657a);
+        payloadRegistrarOptional.playToServer(C1211wE.f6361aH, C1211wE.f6362aI, C1211wE::m6730a);
+        payloadRegistrarOptional.playToServer(C1233wa.f7339ad, C1233wa.f7340ae, C1233wa::m7630a);
+        payloadRegistrarOptional.playToServer(C1236wd.f7347ag, C1236wd.f7348ah, C1236wd::m7645a);
+        payloadRegistrarOptional.playToServer(C1234wb.f7341ae, C1234wb.f7342af, C1234wb::m7639a);
+        payloadRegistrarOptional.playToServer(C1248wp.f7401as, C1248wp.f7402at, C1248wp::m7697a);
+        payloadRegistrarOptional.playToServer(C1253wu.f7423ax, C1253wu.f7424ay, C1253wu::m7719a);
+        payloadRegistrarOptional.playToServer(C1205vz.f6336C, C1205vz.f6337D, C1205vz::m6711a);
+        payloadRegistrarOptional.playToServer(C1177vX.f6218aa, C1177vX.f6219ab, C1177vX::m6588a);
+        payloadRegistrarOptional.playToServer(C1155vB.f6116E, C1155vB.f6117F, C1155vB::m6489a);
+        payloadRegistrarOptional.playToServer(C1172vS.f6191V, C1172vS.f6192W, C1172vS::m6560a);
+        payloadRegistrarOptional.playToServer(C1171vR.f6187U, C1171vR.f6188V, C1171vR::m6558a);
+        payloadRegistrarOptional.playToServer(C1166vM.f6164P, C1166vM.f6165Q, C1166vM::m6534a);
+        payloadRegistrarOptional.playToServer(C1168vO.f6174R, C1168vO.f6175S, C1168vO::m6542a);
+        payloadRegistrarOptional.playToServer(C1182vc.f6237g, C1182vc.f6238h, C1182vc::m6604a);
+        payloadRegistrarOptional.playToClient(C0519jC.f3058b, C0519jC.f3059b, C0519jC::m2279b);
+        payloadRegistrarOptional.playToClient(C0518jB.f3056a, C0518jB.f3057a, C0518jB::m2276b);
+        payloadRegistrarOptional.playToServer(C0520jD.f3061c, C0520jD.f3062c, C0520jD::m2281a);
+    }
+}
