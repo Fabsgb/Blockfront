@@ -1,0 +1,175 @@
+{
+  "variants": {
+    "type=bottom,facing=north": [
+      {
+        "model": "bf:block/sandbag",
+        "weight": 4,
+        "y": 90
+      },
+      {
+        "model": "bf:block/sandbag_var2",
+        "y": 90
+      },
+      {
+        "model": "bf:block/sandbag_var3",
+        "y": 90
+      }
+    ],
+    "type=bottom,facing=east": [
+      {
+        "model": "bf:block/sandbag",
+        "weight": 4,
+        "y": 180
+      },
+      {
+        "model": "bf:block/sandbag_var2",
+        "y": 180
+      },
+      {
+        "model": "bf:block/sandbag_var3",
+        "y": 180
+      }
+    ],
+    "type=bottom,facing=south": [
+      {
+        "model": "bf:block/sandbag",
+        "weight": 4,
+        "y": 270
+      },
+      {
+        "model": "bf:block/sandbag_var2",
+        "y": 270
+      },
+      {
+        "model": "bf:block/sandbag_var3",
+        "y": 270
+      }
+    ],
+    "type=bottom,facing=west": [
+      {
+        "model": "bf:block/sandbag",
+        "weight": 4
+      },
+      {
+        "model": "bf:block/sandbag_var2"
+      },
+      {
+        "model": "bf:block/sandbag_var3"
+      }
+    ],
+    "type=top,facing=north": [
+      {
+        "model": "bf:block/sandbag_top",
+        "weight": 4,
+        "y": 90
+      },
+      {
+        "model": "bf:block/sandbag_top_var2",
+        "y": 90
+      },
+      {
+        "model": "bf:block/sandbag_top_var3",
+        "y": 90
+      }
+    ],
+    "type=top,facing=east": [
+      {
+        "model": "bf:block/sandbag_top",
+        "weight": 4,
+        "y": 180
+      },
+      {
+        "model": "bf:block/sandbag_top_var2",
+        "y": 180
+      },
+      {
+        "model": "bf:block/sandbag_top_var3",
+        "y": 180
+      }
+    ],
+    "type=top,facing=south": [
+      {
+        "model": "bf:block/sandbag_top",
+        "weight": 4,
+        "y": 270
+      },
+      {
+        "model": "bf:block/sandbag_top_var2",
+        "y": 270
+      },
+      {
+        "model": "bf:block/sandbag_top_var3",
+        "y": 270
+      }
+    ],
+    "type=top,facing=west": [
+      {
+        "model": "bf:block/sandbag_top",
+        "weight": 4
+      },
+      {
+        "model": "bf:block/sandbag_top_var2"
+      },
+      {
+        "model": "bf:block/sandbag_top_var3"
+      }
+    ],
+    "type=double,facing=north": [
+      {
+        "model": "bf:block/sandbag_double",
+        "weight": 4,
+        "y": 90
+      },
+      {
+        "model": "bf:block/sandbag_double_var2",
+        "y": 90
+      },
+      {
+        "model": "bf:block/sandbag_double_var3",
+        "y": 90
+      }
+    ],
+    "type=double,facing=east": [
+      {
+        "model": "bf:block/sandbag_double",
+        "weight": 4,
+        "y": 180
+      },
+      {
+        "model": "bf:block/sandbag_double_var2",
+        "y": 180
+      },
+      {
+        "model": "bf:block/sandbag_double_var3",
+        "y": 180
+      }
+    ],
+    "type=double,facing=south": [
+      {
+        "model": "bf:block/sandbag_double",
+        "weight": 4,
+        "y": 270
+      },
+      {
+        "model": "bf:block/sandbag_double_var2",
+        "y": 270
+      },
+      {
+        "model": "bf:block/sandbag_double_var3",
+        "y": 270
+      }
+    ],
+    "type=double,facing=west": [
+      {
+        "model": "bf:block/sandbag_double",
+        "weight": 4
+      },
+      {
+        "model": "bf:block/sandbag_double_var2"
+      },
+      {
+        "model": "bf:block/sandbag_double_var3"
+      }
+    ]
+  }
+}

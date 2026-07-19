@@ -1,0 +1,5 @@
+{
+  "traversable": "bf:solid",
+  "impact": "bf:hard_metal",
+  "soundTypes": ["metal", "copper"]
+}

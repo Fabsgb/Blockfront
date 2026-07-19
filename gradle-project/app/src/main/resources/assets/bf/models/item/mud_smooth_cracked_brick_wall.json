@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "bf:block/mud_smooth_cracked_brick"
+  }
+}

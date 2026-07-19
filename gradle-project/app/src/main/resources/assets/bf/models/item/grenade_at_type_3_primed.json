@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "bf:item/grenade_at_type_3_primed"
+  }
+}

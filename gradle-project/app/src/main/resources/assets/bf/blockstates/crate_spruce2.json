@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/crate_spruce2"
+    },
+    "type=double": [
+      {
+        "model": "bf:block/crate_spruce2_double"
+      },
+      {
+        "model": "bf:block/crate_spruce2_double_var"
+      }
+    ],
+    "type=top": {
+      "model": "bf:block/crate_spruce2"
+    }
+  }
+}

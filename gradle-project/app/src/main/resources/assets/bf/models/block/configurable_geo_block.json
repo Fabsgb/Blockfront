@@ -1,0 +1,9 @@
+{
+  "parent": "block/cube_all",
+  "render_type": "cutout",
+  "ambientocclusion": false,
+  "textures": {
+    "all": "bf:block/decoration_block",
+    "particle": "bf:block/decoration_block"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/arkose_rough_slab"
+    },
+    "type=double": {
+      "model": "bf:block/arkose_rough"
+    },
+    "type=top": {
+      "model": "bf:block/arkose_rough_slab_top"
+    }
+  }
+}

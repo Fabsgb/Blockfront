@@ -1,0 +1,24 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.bicycle.idle": {
+			"loop": true,
+			"bones": {
+				"main": {
+					"rotation": {
+						"vector": [-1.95359, 82.42948, -2.38242]
+					},
+					"position": {
+						"vector": [3.75, 0.25, 1.25]
+					}
+				},
+				"front_handlebar": {
+					"rotation": {
+						"vector": [-8.58204, 38.73216, -26.52886]
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}

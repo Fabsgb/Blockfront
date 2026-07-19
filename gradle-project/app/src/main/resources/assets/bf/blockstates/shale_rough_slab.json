@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/shale_rough_slab"
+    },
+    "type=double": {
+      "model": "bf:block/shale_rough"
+    },
+    "type=top": {
+      "model": "bf:block/shale_rough_slab_top"
+    }
+  }
+}

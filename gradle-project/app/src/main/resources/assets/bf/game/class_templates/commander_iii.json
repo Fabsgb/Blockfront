@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "id": "bf:radio"
+    }
+  ],
+  "slots": [
+    {
+      "weapon": "commander_primary"
+    },
+    {
+      "weapon": "pistol_revolver"
+    },
+    {
+      "weapon": "commander_melee"
+    }
+  ],
+  "exp": 5000
+}

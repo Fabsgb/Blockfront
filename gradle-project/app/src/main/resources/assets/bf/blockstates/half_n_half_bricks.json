@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "bf:block/half_n_half_bricks"
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/map_barrier_players_slab"
+    },
+    "type=double": {
+      "model": "bf:block/map_barrier_players"
+    },
+    "type=top": {
+      "model": "bf:block/map_barrier_players_slab_top"
+    }
+  }
+}

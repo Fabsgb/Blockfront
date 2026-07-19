@@ -1,0 +1,7 @@
+{
+  "parent": "bf:block/oil_barrel",
+  "textures": {
+    "0": "bf:block/oil_barrel_red",
+    "particle": "bf:block/oil_barrel_red"
+  }
+}

@@ -1,0 +1,62 @@
+{
+	"credit": "Made with Blockbench",
+	"ambientocclusion": false,
+	"render_type": "cutout",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "bf:block/flower_box",
+		"particle": "bf:block/flower_box"
+	},
+	"elements": [
+		{
+			"name": "pot",
+			"from": [0, 7, 9],
+			"to": [16, 15, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 11, 12.5]},
+			"faces": {
+				"north": {"uv": [0, 0, 8, 4], "texture": "#0"},
+				"east": {"uv": [8, 3.5, 11.5, 7.5], "texture": "#0"},
+				"south": {"uv": [0, 4, 8, 8], "texture": "#0"},
+				"west": {"uv": [8, 7.5, 11.5, 11.5], "texture": "#0"},
+				"up": {"uv": [8, 11.5, 0, 8], "texture": "#0"},
+				"down": {"uv": [16, 0, 8, 3.5], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"thirdperson_lefthand": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"firstperson_righthand": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"firstperson_lefthand": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"ground": {
+			"translation": [0, -0.75, -4]
+		},
+		"gui": {
+			"rotation": [45, 145, 0],
+			"translation": [-2.25, -5, 0],
+			"scale": [0.8, 0.8, 0.8]
+		},
+		"head": {
+			"translation": [0, 7.25, -4.5]
+		},
+		"fixed": {
+			"translation": [0, -5.75, -7.5]
+		}
+	},
+	"groups": [
+		{
+			"name": "pot",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [0]
+		}
+	]
+}

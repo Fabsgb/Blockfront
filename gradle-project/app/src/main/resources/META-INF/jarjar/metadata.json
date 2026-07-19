@@ -1,0 +1,52 @@
+{
+  "jars": [
+    {
+      "identifier": {
+        "group": "com.boehmod.blockfront",
+        "artifact": "BlockFrontLibrary"
+      },
+      "version": {
+        "range": "[6.0.2,)",
+        "artifactVersion": "6.0.2"
+      },
+      "path": "META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar",
+      "isObfuscated": false
+    },
+    {
+      "identifier": {
+        "group": "com.github.JnCrMx",
+        "artifact": "discord-game-sdk4j"
+      },
+      "version": {
+        "range": "[08b2bf45a6db310fd54ef0b72bb86ca73a770895,)",
+        "artifactVersion": "08b2bf45a6db310fd54ef0b72bb86ca73a770895"
+      },
+      "path": "META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar",
+      "isObfuscated": false
+    },
+    {
+      "identifier": {
+        "group": "foundry.veil",
+        "artifact": "veil-neoforge-1.21.1"
+      },
+      "version": {
+        "range": "[4.3.0]",
+        "artifactVersion": "4.3.0"
+      },
+      "path": "META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar",
+      "isObfuscated": false
+    },
+    {
+      "identifier": {
+        "group": "software.bernie.geckolib",
+        "artifact": "geckolib-neoforge-1.21.1"
+      },
+      "version": {
+        "range": "[4.7.3]",
+        "artifactVersion": "4.7.3"
+      },
+      "path": "META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar",
+      "isObfuscated": false
+    }
+  ]
+}

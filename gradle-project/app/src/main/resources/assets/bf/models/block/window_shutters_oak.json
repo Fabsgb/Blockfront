@@ -1,0 +1,7 @@
+{
+  "parent": "bf:block/window_shutters_base",
+  "textures": {
+    "0": "bf:block/window_shutters_oak",
+    "particle": "bf:block/window_shutters_oak"
+  }
+}

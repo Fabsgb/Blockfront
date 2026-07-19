@@ -1,0 +1,96 @@
+{
+  "parent": "bf:block/wall_flag_japan_2",
+  "display": {
+    "thirdperson_righthand": {
+      "translation": [
+        0,
+        0,
+        -3.75
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "thirdperson_lefthand": {
+      "translation": [
+        0,
+        0,
+        -3.75
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "firstperson_righthand": {
+      "translation": [
+        -2.25,
+        2.75,
+        0
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "firstperson_lefthand": {
+      "translation": [
+        -2.25,
+        2.75,
+        0
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "ground": {
+      "translation": [
+        0,
+        8,
+        -3.75
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "gui": {
+      "rotation": [
+        45,
+        -45,
+        0
+      ],
+      "translation": [
+        2.5,
+        4.25,
+        0
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "head": {
+      "translation": [
+        0,
+        -4.25,
+        -14
+      ]
+    },
+    "fixed": {
+      "translation": [
+        0,
+        -20.75,
+        -8.75
+      ]
+    }
+  }
+}

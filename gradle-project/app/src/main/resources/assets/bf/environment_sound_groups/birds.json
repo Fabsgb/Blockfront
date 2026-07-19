@@ -1,0 +1,60 @@
+{
+  "entries": [
+    {
+      "weight": 0.9,
+      "entryType": "sound_event",
+      "sound": "bf:ambient.wildlife.birds.chirp",
+      "volume": 0.25,
+      "offset": { "x": 0, "y": 16, "z": 0 }
+    },
+    {
+      "weight": 0.2,
+      "entryType": "sound_event",
+      "sound": "bf:ambient.wildlife.birds.robin.cry",
+      "volume": 0.25,
+      "offset": { "x": 0, "y": 16, "z": 0 }
+    },
+    {
+      "weight": 0.2,
+      "entryType": "sound_event",
+      "sound": "bf:ambient.wildlife.birds.raven.cry",
+      "volume": 0.25,
+      "offset": { "x": 0, "y": 16, "z": 0 }
+    },
+    {
+      "weight": 0.2,
+      "entryType": "sound_event",
+      "sound": "bf:ambient.wildlife.birds.dove.call",
+      "volume": 0.25,
+      "offset": { "x": 0, "y": 16, "z": 0 }
+    },
+    {
+      "weight": 0.2,
+      "entryType": "sound_event",
+      "sound": "bf:ambient.wildlife.birds.crow.calls",
+      "volume": 0.25,
+      "offset": { "x": 0, "y": 16, "z": 0 }
+    },
+    {
+      "weight": 0.15,
+      "entryType": "sound_event",
+      "sound": "bf:ambient.wildlife.birds.bluejay",
+      "volume": 0.25,
+      "offset": { "x": 0, "y": 16, "z": 0 }
+    },
+    {
+      "weight": 0.15,
+      "entryType": "sound_event",
+      "sound": "bf:ambient.wildlife.birds.woodpecker",
+      "volume": 0.25,
+      "offset": { "x": 0, "y": 16, "z": 0 }
+    },
+    {
+      "weight": 0.1,
+      "entryType": "sound_event",
+      "sound": "bf:ambient.wildlife.birds.crow.calls.near",
+      "volume": 0.25,
+      "offset": { "x": 0, "y": 16, "z": 0 }
+    }
+  ]
+}

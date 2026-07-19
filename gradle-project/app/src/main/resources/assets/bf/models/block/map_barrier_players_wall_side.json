@@ -1,0 +1,8 @@
+{
+  "parent": "bf:block/barrier_template_wall_side",
+  "render_type": "cutout",
+  "ambientocclusion": false,
+  "textures": {
+    "0": "bf:block/map_barrier_players_wall_side"
+  }
+}

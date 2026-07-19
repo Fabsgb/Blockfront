@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "bf:block/map_barrier_players"
+    }
+  }
+}

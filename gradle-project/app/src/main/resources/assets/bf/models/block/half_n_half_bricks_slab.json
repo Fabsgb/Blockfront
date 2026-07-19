@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "bf:block/half_n_half_bricks",
+    "side": "bf:block/half_n_half_bricks",
+    "top": "bf:block/half_n_half_bricks"
+  }
+}

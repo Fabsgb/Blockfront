@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/soapstone_rough_slab"
+    },
+    "type=double": {
+      "model": "bf:block/soapstone_rough"
+    },
+    "type=top": {
+      "model": "bf:block/soapstone_rough_slab_top"
+    }
+  }
+}

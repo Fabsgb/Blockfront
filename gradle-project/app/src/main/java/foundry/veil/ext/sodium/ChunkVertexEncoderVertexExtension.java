@@ -1,0 +1,11 @@
+package foundry.veil.ext.sodium;
+
+import org.jetbrains.annotations.ApiStatus;
+
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/ext/sodium/ChunkVertexEncoderVertexExtension.class */
+@ApiStatus.Internal
+public interface ChunkVertexEncoderVertexExtension {
+    int veil$getPackedNormal();
+
+    void veil$setNormal(int i);
+}

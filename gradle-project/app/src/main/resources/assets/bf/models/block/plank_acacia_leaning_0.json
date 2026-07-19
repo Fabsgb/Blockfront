@@ -1,0 +1,7 @@
+{
+  "parent": "bf:block/plank_base_leaning_0",
+  "textures": {
+    "0": "bf:block/plank_acacia",
+    "particle": "bf:block/plank_acacia"
+  }
+}

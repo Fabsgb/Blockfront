@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/p51_mustang"
+    },
+    "facing=east": {
+      "model": "bf:block/p51_mustang",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bf:block/p51_mustang",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/p51_mustang",
+      "y": 270
+    }
+  }
+}

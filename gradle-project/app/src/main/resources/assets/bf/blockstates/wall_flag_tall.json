@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/wall_flag_tall"
+    },
+    "facing=east": {
+      "model": "bf:block/wall_flag_tall",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bf:block/wall_flag_tall",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/wall_flag_tall",
+      "y": 270
+    }
+  }
+}

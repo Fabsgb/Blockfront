@@ -1,0 +1,14 @@
+{
+  "slots": [
+    {
+      "weapon": "gunner_primary"
+    },
+    {
+      "weapon": "pistol_revolver"
+    },
+    {
+      "weapon": "melee_standard"
+    }
+  ],
+  "exp": 5000
+}

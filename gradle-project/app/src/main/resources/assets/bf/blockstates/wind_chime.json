@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/wind_chime"
+    },
+    "facing=east": {
+      "model": "bf:block/wind_chime",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bf:block/wind_chime",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/wind_chime",
+      "y": 270
+    }
+  }
+}

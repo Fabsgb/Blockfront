@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/wall_samurai"
+    },
+    "facing=east": {
+      "model": "bf:block/wall_samurai",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bf:block/wall_samurai",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/wall_samurai",
+      "y": 270
+    }
+  }
+}

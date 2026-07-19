@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/slab",
+  "render_type": "cutout",
+  "ambientocclusion": false,
+  "textures": {
+    "bottom": "bf:block/map_barrier_bots",
+    "side": "bf:block/map_barrier_bots_side",
+    "top": "bf:block/map_barrier_bots"
+  }
+}

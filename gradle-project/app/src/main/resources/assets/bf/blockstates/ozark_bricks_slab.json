@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/ozark_bricks_slab"
+    },
+    "type=double": {
+      "model": "bf:block/ozark_bricks"
+    },
+    "type=top": {
+      "model": "bf:block/ozark_bricks_slab_top"
+    }
+  }
+}

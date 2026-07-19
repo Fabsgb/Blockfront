@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_wall_side",
+  "textures": {
+    "wall": "bf:block/limestone_smooth_windswept"
+  }
+}

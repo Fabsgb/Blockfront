@@ -1,0 +1,9 @@
+{
+  "index": 5,
+  "key": "sniper",
+  "displayTitle": "bf.message.gamemode.class.sniper.title",
+  "description": "bf.message.gamemode.class.sniper.desc",
+  "botFriendly": true,
+  "minRankRequired": "sergeant_1st_class",
+  "icon": "bf:textures/gui/game/loadout/sniper.png"
+}

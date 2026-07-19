@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/small_crate_spruce"
+    },
+    "type=double": {
+      "model": "bf:block/small_crate_spruce_double"
+    },
+    "type=top": {
+      "model": "bf:block/small_crate_spruce"
+    }
+  }
+}

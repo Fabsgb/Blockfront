@@ -1,0 +1,7 @@
+{
+  "parent": "bf:block/rubble_0",
+  "textures": {
+    "particle": "block/stone",
+    "texture": "block/stone"
+  }
+}

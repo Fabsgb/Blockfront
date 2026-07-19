@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/fossil_rough_slab"
+    },
+    "type=double": {
+      "model": "bf:block/fossil_rough"
+    },
+    "type=top": {
+      "model": "bf:block/fossil_rough_slab_top"
+    }
+  }
+}

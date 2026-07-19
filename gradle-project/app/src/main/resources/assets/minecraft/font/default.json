@@ -1,0 +1,346 @@
+{
+  "providers": [
+    {
+      "type": "bitmap",
+      "file": "bf:text/warning.png",
+      "ascent": 9,
+      "height": 27,
+      "chars": [
+        "\uE002"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:text/question.png",
+      "ascent": 9,
+      "height": 27,
+      "chars": [
+        "\uE003"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:text/notice.png",
+      "ascent": 8,
+      "height": 9,
+      "chars": [
+        "\uE004"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:text/challenge.png",
+      "ascent": 8,
+      "height": 9,
+      "chars": [
+        "\uE005"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:text/anticheat.png",
+      "ascent": 9,
+      "height": 27,
+      "chars": [
+        "\uE006"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:text/info.png",
+      "ascent": 8,
+      "height": 9,
+      "chars": [
+        "\uE007"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:text/objective.png",
+      "ascent": 8,
+      "height": 9,
+      "chars": [
+        "\uE008"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:text/ammo.png",
+      "ascent": 8,
+      "height": 9,
+      "chars": [
+        "\uE009"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:text/objective_up.png",
+      "ascent": 8,
+      "height": 9,
+      "chars": [
+        "\uE010"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:text/login.png",
+      "ascent": 8,
+      "height": 9,
+      "chars": [
+        "\uE011"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:text/cloud.png",
+      "ascent": 8,
+      "height": 9,
+      "chars": [
+        "\uE012"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:text/command.png",
+      "ascent": 8,
+      "height": 9,
+      "chars": [
+        "\uE013"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:text/vc.png",
+      "ascent": 8,
+      "height": 9,
+      "chars": [
+        "\uE014"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:text/discord.png",
+      "ascent": 8,
+      "height": 9,
+      "chars": [
+        "\uE015"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:text/allies.png",
+      "ascent": 8,
+      "height": 9,
+      "chars": [
+        "\uE016"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:text/axis.png",
+      "ascent": 8,
+      "height": 9,
+      "chars": [
+        "\uE017"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:text/victory.png",
+      "ascent": 8,
+      "height": 9,
+      "chars": [
+        "\uE018"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:text/defeat.png",
+      "ascent": 8,
+      "height": 9,
+      "chars": [
+        "\uE019"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:misc/ranks/recruit.png",
+      "ascent": 8,
+      "height": 9,
+      "chars": [
+        "\uE100"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:misc/ranks/private.png",
+      "ascent": 8,
+      "height": 9,
+      "chars": [
+        "\uE101"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:misc/ranks/private_2nd_class.png",
+      "ascent": 8,
+      "height": 9,
+      "chars": [
+        "\uE102"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:misc/ranks/private_1st_class.png",
+      "ascent": 8,
+      "height": 9,
+      "chars": [
+        "\uE103"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:misc/ranks/corporal.png",
+      "ascent": 8,
+      "height": 9,
+      "chars": [
+        "\uE104"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:misc/ranks/sergeant.png",
+      "ascent": 8,
+      "height": 9,
+      "chars": [
+        "\uE105"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:misc/ranks/staff_sergeant.png",
+      "ascent": 8,
+      "height": 9,
+      "chars": [
+        "\uE106"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:misc/ranks/sergeant_1st_class.png",
+      "ascent": 8,
+      "height": 9,
+      "chars": [
+        "\uE107"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:misc/ranks/master_sergeant.png",
+      "ascent": 8,
+      "height": 9,
+      "chars": [
+        "\uE108"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:misc/ranks/1st_sergeant.png",
+      "ascent": 8,
+      "height": 9,
+      "chars": [
+        "\uE109"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:misc/ranks/2nd_lieutenant.png",
+      "ascent": 8,
+      "height": 9,
+      "chars": [
+        "\uE110"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:misc/ranks/1st_lieutenant.png",
+      "ascent": 8,
+      "height": 9,
+      "chars": [
+        "\uE111"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:misc/ranks/captain.png",
+      "ascent": 8,
+      "height": 9,
+      "chars": [
+        "\uE112"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:misc/ranks/major.png",
+      "ascent": 8,
+      "height": 9,
+      "chars": [
+        "\uE113"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:misc/ranks/lieutenant_colonel.png",
+      "ascent": 9,
+      "height": 9,
+      "chars": [
+        "\uE114"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:misc/ranks/colonel.png",
+      "ascent": 9,
+      "height": 9,
+      "chars": [
+        "\uE115"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:misc/ranks/brigadier_general.png",
+      "ascent": 9,
+      "height": 9,
+      "chars": [
+        "\uE116"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:misc/ranks/major_general.png",
+      "ascent": 9,
+      "height": 9,
+      "chars": [
+        "\uE117"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:misc/ranks/lieutenant_general.png",
+      "ascent": 9,
+      "height": 9,
+      "chars": [
+        "\uE118"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "bf:misc/ranks/general.png",
+      "ascent": 9,
+      "height": 9,
+      "chars": [
+        "\uE119"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/kimino"
+    },
+    "facing=east": {
+      "model": "bf:block/kimino",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bf:block/kimino",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/kimino",
+      "y": 270
+    }
+  }
+}

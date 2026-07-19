@@ -1,0 +1,7 @@
+{
+  "parent": "bf:block/crate_base_small",
+  "textures": {
+    "0": "bf:block/crate_spruce_small",
+    "particle": "bf:block/crate_spruce_small"
+  }
+}

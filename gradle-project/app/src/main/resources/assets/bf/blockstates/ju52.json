@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/ju52"
+    },
+    "facing=east": {
+      "model": "bf:block/ju52",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bf:block/ju52",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/ju52",
+      "y": 270
+    }
+  }
+}

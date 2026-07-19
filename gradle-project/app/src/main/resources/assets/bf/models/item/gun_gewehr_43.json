@@ -1,0 +1,109 @@
+{
+  "credit": "Made with Blockbench",
+  "parent": "builtin/entity",
+  "texture_size": [
+    64,
+    64
+  ],
+  "display": {
+    "thirdperson_righthand": {
+      "translation": [
+        0,
+        -1.75,
+        3
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "thirdperson_lefthand": {
+      "translation": [
+        0,
+        -1.75,
+        3
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "firstperson_righthand": {
+      "translation": [
+        -5.5,
+        -0.75,
+        7.25
+      ]
+    },
+    "firstperson_lefthand": {
+      "translation": [
+        -5.5,
+        -0.75,
+        7.25
+      ]
+    },
+    "ground": {
+      "translation": [
+        0,
+        -1.5,
+        5.25
+      ],
+      "scale": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    "gui": {
+      "rotation": [
+        0,
+        -90,
+        0
+      ],
+      "translation": [
+        -4.5,
+        -1.25,
+        0.5
+      ],
+      "scale": [
+        0.315,
+        0.315,
+        0.315
+      ]
+    },
+    "head": {
+      "translation": [
+        0,
+        5,
+        7.25
+      ],
+      "scale": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "translation": [
+        5.5,
+        -1.25,
+        0.75
+      ],
+      "scale": [
+        0.38,
+        0.38,
+        0.38
+      ]
+    }
+  },
+  "textures": {
+    "particle": "item/gun_gewehr_43"
+  }
+}

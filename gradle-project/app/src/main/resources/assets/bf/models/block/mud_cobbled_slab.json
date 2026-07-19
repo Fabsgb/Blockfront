@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "bf:block/mud_cobbled",
+    "side": "bf:block/mud_cobbled",
+    "top": "bf:block/mud_cobbled"
+  }
+}

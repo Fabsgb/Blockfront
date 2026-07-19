@@ -1,0 +1,8 @@
+{
+  "parent": "bf:block/floor_decal",
+  "render_type": "cutout",
+  "textures": {
+    "0": "bf:block/floor_decal_manhole",
+    "particle": "bf:block/floor_decal_manhole"
+  }
+}

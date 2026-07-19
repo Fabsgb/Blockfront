@@ -1,0 +1,8 @@
+{
+  "parent": "bf:block/wall_shop_sign_large",
+  "render_type": "cutout",
+  "textures": {
+    "0": "bf:block/wall_shop_sign_france_15",
+    "particle": "bf:block/wall_shop_sign_france_15"
+  }
+}

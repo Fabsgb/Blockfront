@@ -1,0 +1,41 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.p51_mustang.idle": {
+			"animation_length": 5,
+			"bones": {
+				"group": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"5.0": {
+							"vector": [0, 0, 10800]
+						}
+					}
+				},
+				"main": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, -35]
+						},
+						"2.5": {
+							"vector": [0, 0, 35],
+							"easing": "easeInOutBack"
+						},
+						"5.0": {
+							"vector": [0, 0, -35],
+							"easing": "easeInOutBack"
+						}
+					},
+					"position": {
+						"vector": [0, 16, 0]
+					},
+					"scale": {
+						"vector": [6, 6, 6]
+					}
+				}
+			}
+		}
+	}
+}

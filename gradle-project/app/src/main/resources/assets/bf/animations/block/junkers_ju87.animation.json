@@ -1,0 +1,70 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.junkers_ju87.idle": {
+			"animation_length": 5,
+			"bones": {
+				"group": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"5.0": {
+							"vector": [0, 0, 10800]
+						}
+					}
+				},
+				"main": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, -35]
+						},
+						"2.5": {
+							"vector": [0, 0, 35]
+						},
+						"5.0": {
+							"vector": [0, 0, -35]
+						}
+					},
+					"position": {
+						"vector": [0, 16, 0]
+					},
+					"scale": {
+						"vector": [4.5, 4.5, 4.5]
+					}
+				},
+				"wheel_left": {
+					"rotation": {
+						"vector": [0, 0, 75]
+					}
+				},
+				"wheel_right": {
+					"rotation": {
+						"vector": [0, 0, -75]
+					}
+				},
+				"wheel_back": {
+					"rotation": {
+						"vector": [0, 0, -75]
+					}
+				}
+			}
+		},
+		"animation.junkers_ju87.parked": {
+			"loop": true,
+			"bones": {
+				"main": {
+					"rotation": {
+						"vector": [-7.5, 0, 0]
+					},
+					"position": {
+						"vector": [0, 17.1, 0]
+					},
+					"scale": {
+						"vector": [4.5, 4.5, 4.5]
+					}
+				}
+			}
+		}
+	}
+}

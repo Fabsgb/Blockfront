@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/renault_ft_tank"
+    },
+    "facing=east": {
+      "model": "bf:block/renault_ft_tank",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bf:block/renault_ft_tank",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/renault_ft_tank",
+      "y": 270
+    }
+  }
+}

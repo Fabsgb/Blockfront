@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/a6m_zero_parked"
+    },
+    "facing=east": {
+      "model": "bf:block/a6m_zero_parked",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bf:block/a6m_zero_parked",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/a6m_zero_parked",
+      "y": 270
+    }
+  }
+}

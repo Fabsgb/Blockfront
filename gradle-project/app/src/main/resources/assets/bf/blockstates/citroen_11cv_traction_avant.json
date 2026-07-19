@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/citroen_11cv_traction_avant"
+    },
+    "facing=east": {
+      "model": "bf:block/citroen_11cv_traction_avant",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bf:block/citroen_11cv_traction_avant",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/citroen_11cv_traction_avant",
+      "y": 270
+    }
+  }
+}

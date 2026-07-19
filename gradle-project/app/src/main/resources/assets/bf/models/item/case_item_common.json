@@ -1,0 +1,7 @@
+{
+  "parent": "bf:item/case_item",
+  "textures": {
+    "0": "bf:item/case_item_common",
+    "particle": "bf:item/case_item_common"
+  }
+}

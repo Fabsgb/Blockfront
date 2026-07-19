@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/a6m_zero"
+    },
+    "facing=east": {
+      "model": "bf:block/a6m_zero",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bf:block/a6m_zero",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/a6m_zero",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/slate_powder_slab"
+    },
+    "type=double": {
+      "model": "bf:block/slate_powder"
+    },
+    "type=top": {
+      "model": "bf:block/slate_powder_slab_top"
+    }
+  }
+}

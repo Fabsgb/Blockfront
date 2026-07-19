@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/hematite_smooth_windswept_slab"
+    },
+    "type=double": {
+      "model": "bf:block/hematite_smooth_windswept"
+    },
+    "type=top": {
+      "model": "bf:block/hematite_smooth_windswept_slab_top"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "slots": [
+    {
+      "weapon": "rifleman_primary"
+    },
+    {
+      "weapon": "pistol_service_iii"
+    },
+    {
+      "weapon": "melee_standard"
+    },
+    {
+      "weapon": "grenade_smoke",
+      "count": 2
+    }
+  ],
+  "exp": 5000
+}

@@ -1,0 +1,11 @@
+{
+  "entries": [
+    {
+      "weight": 1.0,
+      "entryType": "sound_event",
+      "sound": "bf:ambient.wildlife.dog.bark.distant",
+      "volume": 0.25,
+      "offset": { "x": 0, "y": 32, "z": 0 }
+    }
+  ]
+}

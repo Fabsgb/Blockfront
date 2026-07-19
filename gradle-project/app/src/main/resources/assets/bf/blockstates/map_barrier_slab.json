@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/map_barrier_slab"
+    },
+    "type=double": {
+      "model": "bf:block/map_barrier"
+    },
+    "type=top": {
+      "model": "bf:block/map_barrier_slab_top"
+    }
+  }
+}

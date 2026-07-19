@@ -1,0 +1,10 @@
+{
+  "parent": "bf:block/dead_fish",
+  "textures": {
+    "0": "bf:block/dead_fish_1",
+    "particle": "bf:block/dead_fish_1"
+  },
+  "transform": {
+    "rotation": [0, 45, 90]
+  }
+}

@@ -1,0 +1,16 @@
+package foundry.veil.mixin.perspective.accessor;
+
+import net.minecraft.client.renderer.LevelRenderer;
+import net.minecraft.client.renderer.culling.Frustum;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.gen.Accessor;
+
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/mixin/perspective/accessor/LevelRendererAccessor.class */
+@Mixin({LevelRenderer.class})
+public interface LevelRendererAccessor {
+    @Accessor
+    Frustum getCullingFrustum();
+
+    @Accessor
+    void setCullingFrustum(Frustum frustum);
+}

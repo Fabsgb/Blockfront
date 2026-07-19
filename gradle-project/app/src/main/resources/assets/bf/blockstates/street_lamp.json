@@ -1,0 +1,62 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "OR": [
+          {
+            "up": "true",
+            "down": "false"
+          },
+          {
+            "up": "false",
+            "down": "false"
+          }
+        ]
+      },
+      "apply": {
+        "model": "bf:block/street_lamp_base"
+      }
+    },
+    {
+      "when": {
+        "up": "true",
+        "down": "true"
+      },
+      "apply": {
+        "model": "bf:block/street_lamp_post"
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "up": "false",
+            "down": "true"
+          },
+          {
+            "lit": "true"
+          }
+        ]
+      },
+      "apply": {
+        "model": "bf:block/street_lamp_top"
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "up": "false",
+            "down": "true"
+          },
+          {
+            "lit": "false"
+          }
+        ]
+      },
+      "apply": {
+        "model": "bf:block/street_lamp_top_off"
+      }
+    }
+  ]
+}

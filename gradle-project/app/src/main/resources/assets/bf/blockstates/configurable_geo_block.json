@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "bf:block/configurable_geo_block" },
+    "facing=east":  { "model": "bf:block/configurable_geo_block" },
+    "facing=south": { "model": "bf:block/configurable_geo_block" },
+    "facing=west":  { "model": "bf:block/configurable_geo_block" }
+  }
+}

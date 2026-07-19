@@ -1,0 +1,10 @@
+{
+  "key": "germany_male",
+  "goSound": "bf:team.ger.bot.go",
+  "grenadeSound": "bf:team.ger.bot.grenade",
+  "hurtSound": "bf:team.ger.bot.hurt",
+  "reloadingSound": "bf:team.ger.bot.reloading",
+  "spottedSound": "bf:team.ger.bot.spotted",
+  "tauntSound": "bf:team.ger.bot.taunt",
+  "introSound": "bf:team.ger.bot.intro"
+}

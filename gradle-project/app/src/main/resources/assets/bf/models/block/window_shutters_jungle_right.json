@@ -1,0 +1,7 @@
+{
+  "parent": "bf:block/window_shutters_base_right",
+  "textures": {
+    "0": "bf:block/window_shutters_jungle",
+    "particle": "bf:block/window_shutters_jungle"
+  }
+}

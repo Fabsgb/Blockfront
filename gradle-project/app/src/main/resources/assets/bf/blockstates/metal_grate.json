@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=east,half=bottom": {
+      "model": "bf:block/metal_grate_bottom",
+      "y": 90
+    },
+    "facing=east,half=top": {
+      "model": "bf:block/metal_grate_top",
+      "y": 90
+    },
+    "facing=north,half=bottom": {
+      "model": "bf:block/metal_grate_bottom"
+    },
+    "facing=north,half=top": {
+      "model": "bf:block/metal_grate_top"
+    },
+    "facing=south,half=bottom": {
+      "model": "bf:block/metal_grate_bottom",
+      "y": 180
+    },
+    "facing=south,half=top": {
+      "model": "bf:block/metal_grate_top",
+      "y": 180
+    },
+    "facing=west,half=bottom": {
+      "model": "bf:block/metal_grate_bottom",
+      "y": 270
+    },
+    "facing=west,half=top": {
+      "model": "bf:block/metal_grate_top",
+      "y": 270
+    }
+  }
+}

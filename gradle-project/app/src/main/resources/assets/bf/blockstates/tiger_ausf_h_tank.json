@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/tiger_ausf_h_tank"
+    },
+    "facing=east": {
+      "model": "bf:block/tiger_ausf_h_tank",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bf:block/tiger_ausf_h_tank",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/tiger_ausf_h_tank",
+      "y": 270
+    }
+  }
+}

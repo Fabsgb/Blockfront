@@ -1,0 +1,9 @@
+{
+  "index": 8,
+  "key": "specialist",
+  "displayTitle": "bf.message.gamemode.class.specialist.title",
+  "description": "bf.message.gamemode.class.specialist.desc",
+  "botFriendly": true,
+  "minRankRequired": "lieutenant_colonel",
+  "icon": "bf:textures/gui/game/loadout/specialist.png"
+}

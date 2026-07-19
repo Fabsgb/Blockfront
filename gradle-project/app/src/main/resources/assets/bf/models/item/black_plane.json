@@ -1,0 +1,15 @@
+{
+  "parent": "bf:block/black_plane",
+  "transform": {
+    "translation": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "scale": [
+      0.8,
+      0.8,
+      0.8
+    ]
+  }
+}

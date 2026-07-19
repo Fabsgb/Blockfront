@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "bf:block/scoria_tiles",
+    "side": "bf:block/scoria_tiles",
+    "top": "bf:block/scoria_tiles"
+  }
+}

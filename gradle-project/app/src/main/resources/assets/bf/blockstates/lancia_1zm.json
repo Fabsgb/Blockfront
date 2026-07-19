@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/lancia_1zm"
+    },
+    "facing=east": {
+      "model": "bf:block/lancia_1zm",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bf:block/lancia_1zm",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/lancia_1zm",
+      "y": 270
+    }
+  }
+}

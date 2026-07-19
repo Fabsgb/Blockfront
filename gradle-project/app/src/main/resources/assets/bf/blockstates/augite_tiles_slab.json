@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/augite_tiles_slab"
+    },
+    "type=double": {
+      "model": "bf:block/augite_tiles"
+    },
+    "type=top": {
+      "model": "bf:block/augite_tiles_slab_top"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "key": "gb_male_english",
+  "goSound": "bf:team.gb.bot.go",
+  "grenadeSound": "bf:team.gb.bot.grenade",
+  "hurtSound": "bf:team.gb.bot.hurt",
+  "reloadingSound": "bf:team.gb.bot.reloading",
+  "spottedSound": "bf:team.gb.bot.spotted",
+  "tauntSound": "bf:team.gb.bot.taunt",
+  "introSound": "bf:team.gb.bot.intro"
+}

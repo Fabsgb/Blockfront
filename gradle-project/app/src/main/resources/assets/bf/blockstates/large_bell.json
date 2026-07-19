@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/large_bell"
+    },
+    "facing=east": {
+      "model": "bf:block/large_bell",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bf:block/large_bell",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/large_bell",
+      "y": 270
+    }
+  }
+}

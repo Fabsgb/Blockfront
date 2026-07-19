@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/crate_walnut_oak2"
+    },
+    "type=double": [
+      {
+        "model": "bf:block/crate_walnut_oak2_double"
+      },
+      {
+        "model": "bf:block/crate_walnut_oak2_double_var"
+      }
+    ],
+    "type=top": {
+      "model": "bf:block/crate_walnut_oak2"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": 2,
+  "nation": "us",
+  "skin": "infantry",
+  "races": [
+    "caucasian",
+    "black"
+  ],
+  "inheritsFrom": "bf:us_airborne"
+}

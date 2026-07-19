@@ -1,0 +1,8 @@
+{
+  "index": 1,
+  "key": "light_infantry",
+  "displayTitle": "bf.message.gamemode.class.light.infantry.title",
+  "description": "bf.message.gamemode.class.light.infantry.desc",
+  "botFriendly": true,
+  "icon": "bf:textures/gui/game/loadout/light_infantry.png"
+}

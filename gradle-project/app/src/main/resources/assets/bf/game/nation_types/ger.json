@@ -1,0 +1,220 @@
+{
+  "index": 1,
+  "tag": "ger",
+  "name": "Germany",
+  "botVoices": [
+    "bf:germany_male"
+  ],
+  "miscItems": [
+    "bf:gun_flammenwerfer_34",
+    "bf:gun_m30",
+    "bf:gun_becker",
+    "bf:gun_panzerbuchse39",
+    "bf:gun_mg34"
+  ],
+  "usernames": [
+    "Hans",
+    "Michael",
+    "Helmut",
+    "Gerhard",
+    "Reiner",
+    "Rolf",
+    "Klaus",
+    "Werner",
+    "Karl",
+    "Berndt",
+    "Horst",
+    "Peter",
+    "Holger",
+    "Joachim",
+    "Herbert",
+    "Jens"
+  ],
+  "warCrySound": "bf:team.shared.warcry",
+  "warCrySoundDistant": "bf:team.shared.warcry.distant",
+  "warCryCrowdSound": "bf:team.shared.warcry.crowd",
+  "warCrySoundCommander": "bf:team.shared.whistle",
+  "weapons": {
+    "rifleman_primary": {
+      "id": "bf:gun_kar98k"
+    },
+    "pistol_service": {
+      "id": "bf:gun_walther_p38"
+    },
+    "pistol_service_iii": {
+      "id": "bf:gun_walther_p38"
+    },
+    "commander_pistol": {
+      "id": "bf:gun_luger"
+    },
+    "pistol_revolver": {
+      "id": "bf:gun_walther_p38"
+    },
+    "melee_standard": {
+      "id": "bf:melee_item_klappspaten"
+    },
+    "commander_melee": {
+      "id": "bf:melee_item_klappspaten"
+    },
+    "grenade_smoke": {
+      "id": "bf:grenade_smoke_stielhandgranate"
+    },
+    "grenade_frag": {
+      "id": "bf:grenade_frag_stielhandgranate"
+    },
+    "medic_primary": {
+      "id": "bf:gun_kar98k"
+    },
+    "sniper_primary": {
+      "id": "bf:gun_kar98k",
+      "components": {
+        "bf:scope": true
+      }
+    },
+    "anti_tank_primary": {
+      "id": "bf:gun_panzerschreck"
+    },
+    "grenade_at": {
+      "id": "bf:grenade_at_hafthohlladung"
+    },
+    "light_infantry_primary": {
+      "id": "bf:gun_gewehr_43"
+    },
+    "assault_primary": {
+      "id": "bf:gun_mp40"
+    },
+    "support_primary": {
+      "id": "bf:gun_stg44"
+    },
+    "gunner_primary": {
+      "id": "bf:gun_mg42"
+    },
+    "commander_primary": {
+      "id": "bf:gun_mp41"
+    }
+  },
+  "weaponOverrides": {
+    "rifleman_ii": {
+      "pistol_service": {
+        "id": "bf:gun_mauser_c96"
+      }
+    },
+    "medic_i": {
+      "pistol_revolver": {
+        "id": "bf:gun_fn_model_1910"
+      }
+    },
+    "medic_ii": {
+      "medic_primary": {
+        "id": "bf:gun_m30"
+      },
+      "pistol_service": {
+        "id": "bf:gun_fn_model_1910"
+      }
+    },
+    "medic_iii": {
+      "medic_primary": {
+        "id": "bf:gun_gewehr_43"
+      }
+    },
+    "sniper_i": {
+      "pistol_service": {
+        "id": "bf:gun_fn_model_1910"
+      }
+    },
+    "sniper_ii": {
+      "sniper_primary": {
+        "id": "bf:gun_gewehr_43",
+        "components": {
+          "bf:scope": true
+        }
+      },
+      "pistol_service": {
+        "id": "bf:gun_fn_model_1910"
+      }
+    },
+    "sniper_iii": {
+      "sniper_primary": {
+        "id": "bf:gun_fg42",
+        "components": {
+          "bf:scope": true
+        }
+      },
+      "pistol_service_iii": {
+        "id": "bf:gun_luger"
+      }
+    },
+    "anti_tank_i": {
+      "pistol_service": {
+        "id": "bf:gun_gewehr_43"
+      }
+    },
+    "anti_tank_ii": {
+      "anti_tank_primary": {
+        "id": "bf:gun_panzerbuchse39"
+      }
+    },
+    "anti_tank_iii": {
+      "anti_tank_primary": {
+        "id": "bf:gun_gewehr_43"
+      }
+    },
+    "light_infantry_ii": {
+      "pistol_service": {
+        "id": "bf:gun_mauser_c96"
+      }
+    },
+    "assault_ii": {
+      "assault_primary": {
+        "id": "bf:gun_m30"
+      }
+    },
+    "assault_iii": {
+      "assault_primary": {
+        "id": "bf:gun_mp_3008"
+      },
+      "pistol_service_iii": {
+        "id": "bf:gun_luger"
+      }
+    },
+    "support_ii": {
+      "support_primary": {
+        "id": "bf:gun_fg42"
+      }
+    },
+    "support_iii": {
+      "support_primary": {
+        "id": "bf:gun_mp40",
+        "components": {
+          "bf:mag_type": "double"
+        }
+      },
+      "pistol_service_iii": {
+        "id": "bf:gun_luger"
+      }
+    },
+    "gunner_ii": {
+      "gunner_primary": {
+        "id": "bf:gun_mg34"
+      }
+    },
+    "gunner_iii": {
+      "pistol_revolver": {
+        "id": "bf:gun_luger"
+      }
+    },
+    "commander_ii": {
+      "commander_primary": {
+        "id": "bf:gun_stg44"
+      }
+    },
+    "commander_iii": {
+      "commander_primary": {
+        "id": "bf:gun_mauser_m712"
+      },
+      "pistol_revolver": {
+        "id": "bf:gun_luger"
+      }
+    }
+  }
+}

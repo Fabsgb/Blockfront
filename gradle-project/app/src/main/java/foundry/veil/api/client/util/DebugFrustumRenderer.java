@@ -1,0 +1,64 @@
+package foundry.veil.api.client.util;
+
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
+import org.jetbrains.annotations.NotNull;
+import org.joml.Matrix4f;
+import org.joml.Matrix4fc;
+import org.joml.Vector3f;
+import org.joml.Vector3fc;
+
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/util/DebugFrustumRenderer.class */
+public class DebugFrustumRenderer {
+    private static final Vector3f[] POSITIONS = new Vector3f[8];
+    private static final Matrix4f MODELVIEW = new Matrix4f();
+    private static final Matrix4f PROJECTION = new Matrix4f();
+
+    static {
+        for (int i = 0; i < POSITIONS.length; i++) {
+            POSITIONS[i] = new Vector3f();
+        }
+    }
+
+    private static int getIndex(int x, int y, int z) {
+        return (((z * 2) + y) * 2) + x;
+    }
+
+    private static void putLine(@NotNull VertexConsumer consumer, int x0, int y0, int z0, int x1, int y1, int z1, float red, float green, float blue, float alpha) {
+        Vector3fc pos0 = POSITIONS[getIndex(x0, y0, z0)];
+        Vector3fc pos1 = POSITIONS[getIndex(x1, y1, z1)];
+        Vector3f vector3fNormalize = pos1.sub(pos0, new Vector3f()).normalize();
+        consumer.addVertex(pos0.x(), pos0.y(), pos0.z()).setColor(red, green, blue, alpha).setNormal(vector3fNormalize.x(), vector3fNormalize.y(), vector3fNormalize.z());
+        consumer.addVertex(pos1.x(), pos1.y(), pos1.z()).setColor(red, green, blue, alpha).setNormal(vector3fNormalize.x(), vector3fNormalize.y(), vector3fNormalize.z());
+    }
+
+    public static void renderFrustum(@NotNull MultiBufferSource source, @NotNull PoseStack stack, @NotNull Matrix4fc pose, @NotNull Matrix4fc projection, float red, float green, float blue, float alpha) {
+        stack.pushPose();
+        Matrix4f modelView = stack.last().pose();
+        modelView.mul(pose.invert(MODELVIEW));
+        modelView.mul(projection.invert(PROJECTION));
+        for (int z = 0; z < 2; z++) {
+            for (int x = 0; x < 2; x++) {
+                for (int y = 0; y < 2; y++) {
+                    modelView.transformPosition((x * 2) - 1, (y * 2) - 1, (z * 2) - 1, POSITIONS[getIndex(x, y, z)]);
+                }
+            }
+        }
+        VertexConsumer consumer = source.getBuffer(RenderType.lines());
+        putLine(consumer, 0, 0, 0, 0, 1, 0, red, green, blue, alpha);
+        putLine(consumer, 0, 0, 1, 0, 1, 1, red, green, blue, alpha);
+        putLine(consumer, 0, 0, 0, 0, 0, 1, red, green, blue, alpha);
+        putLine(consumer, 0, 1, 0, 1, 1, 0, red, green, blue, alpha);
+        putLine(consumer, 0, 1, 1, 1, 1, 1, red, green, blue, alpha);
+        putLine(consumer, 0, 1, 0, 0, 1, 1, red, green, blue, alpha);
+        putLine(consumer, 1, 1, 0, 1, 0, 0, red, green, blue, alpha);
+        putLine(consumer, 1, 1, 1, 1, 0, 1, red, green, blue, alpha);
+        putLine(consumer, 1, 1, 0, 1, 1, 1, red, green, blue, alpha);
+        putLine(consumer, 1, 0, 0, 0, 0, 0, red, green, blue, alpha);
+        putLine(consumer, 1, 0, 1, 0, 0, 1, red, green, blue, alpha);
+        putLine(consumer, 1, 0, 0, 1, 0, 1, red, green, blue, alpha);
+        stack.popPose();
+    }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/reverse_half_n_half_bricks_slab"
+    },
+    "type=double": {
+      "model": "bf:block/reverse_half_n_half_bricks"
+    },
+    "type=top": {
+      "model": "bf:block/reverse_half_n_half_bricks_slab_top"
+    }
+  }
+}

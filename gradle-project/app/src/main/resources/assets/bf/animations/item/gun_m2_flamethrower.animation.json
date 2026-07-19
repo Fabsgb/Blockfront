@@ -1,0 +1,97 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.gun_m2_flamethrower.idle": {
+			"loop": true,
+			"bones": {
+				"right": {
+					"rotation": {
+						"vector": [90, 0, 0]
+					},
+					"position": {
+						"vector": [2, -4.5, 13]
+					},
+					"scale": {
+						"vector": [1.4, 1.4, 1.4]
+					}
+				},
+				"left": {
+					"rotation": {
+						"vector": [82.50061, 31.6015, 0.20806]
+					},
+					"position": {
+						"vector": [5, -5.75, -7.5]
+					},
+					"scale": {
+						"vector": [1.4, 1.4, 1.4]
+					}
+				}
+			}
+		},
+		"animation.gun_m2_flamethrower.reload": {
+			"animation_length": 3.5,
+			"bones": {
+				"right": {
+					"rotation": {
+						"vector": [90, 0, 0]
+					},
+					"position": {
+						"vector": [2, -4.5, 13]
+					},
+					"scale": {
+						"vector": [1.4, 1.4, 1.4]
+					}
+				},
+				"left": {
+					"rotation": {
+						"vector": [82.50061, 31.6015, 0.20806]
+					},
+					"position": {
+						"vector": [5, -5.75, -7.5]
+					},
+					"scale": {
+						"vector": [1.4, 1.4, 1.4]
+					}
+				}
+			}
+		},
+		"animation.gun_m2_flamethrower.fire": {
+			"animation_length": 0.0417,
+			"bones": {
+				"right": {
+					"rotation": {
+						"vector": [90, 0, 0]
+					},
+					"position": {
+						"vector": [2, -4.5, 13]
+					},
+					"scale": {
+						"vector": [1.4, 1.4, 1.4]
+					}
+				},
+				"left": {
+					"rotation": {
+						"vector": [82.50061, 31.6015, 0.20806]
+					},
+					"position": {
+						"vector": [5, -5.75, -7.5]
+					},
+					"scale": {
+						"vector": [1.4, 1.4, 1.4]
+					}
+				},
+				"slide": {
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 2.5]
+						},
+						"0.0417": {
+							"vector": [0, 0, 0]
+						}
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}

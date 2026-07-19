@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "": [
+      { "model": "bf:block/ground_fire_small_p1" },
+      { "model": "bf:block/ground_fire_small_p2" },
+      { "model": "bf:block/ground_fire_small_p3" },
+      { "model": "bf:block/ground_fire_small_p4" }
+    ]
+  }
+}

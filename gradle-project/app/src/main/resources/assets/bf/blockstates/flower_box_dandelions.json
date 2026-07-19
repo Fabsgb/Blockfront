@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/flower_box_dandelions"
+    },
+    "facing=east": {
+      "model": "bf:block/flower_box_dandelions",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bf:block/flower_box_dandelions",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/flower_box_dandelions",
+      "y": 270
+    }
+  }
+}

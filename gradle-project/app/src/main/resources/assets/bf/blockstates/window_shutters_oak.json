@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "bf:block/window_shutters_oak",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "bf:block/window_shutters_oak"
+    },
+    "facing=south": {
+      "model": "bf:block/window_shutters_oak",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/window_shutters_oak",
+      "y": 270
+    }
+  }
+}

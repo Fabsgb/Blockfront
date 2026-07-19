@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/soapstone_windswept_slab"
+    },
+    "type=double": {
+      "model": "bf:block/soapstone_windswept"
+    },
+    "type=top": {
+      "model": "bf:block/soapstone_windswept_slab_top"
+    }
+  }
+}

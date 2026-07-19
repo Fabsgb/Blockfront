@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/wall_flag_japan"
+    },
+    "facing=east": {
+      "model": "bf:block/wall_flag_japan",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bf:block/wall_flag_japan",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/wall_flag_japan",
+      "y": 270
+    }
+  }
+}

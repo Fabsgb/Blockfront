@@ -1,0 +1,7 @@
+{
+  "parent": "bf:block/frame_14",
+  "textures": {
+    "0": "bf:block/frame_14_japanese_0",
+    "particle": "bf:block/frame_14_japanese_0"
+  }
+}

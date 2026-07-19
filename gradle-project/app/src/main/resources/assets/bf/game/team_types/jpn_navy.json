@@ -1,0 +1,9 @@
+{
+  "id": 52,
+  "nation": "jpn",
+  "skin": "navy",
+  "races": [
+    "asian"
+  ],
+  "inheritsFrom": "bf:jpn_infantry"
+}

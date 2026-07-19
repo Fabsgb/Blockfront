@@ -1,0 +1,170 @@
+{
+  "index": 5,
+  "tag": "pol",
+  "name": "Poland",
+  "botVoices": [
+    "bf:poland_male"
+  ],
+  "miscItems": [],
+  "usernames": [
+    "Zygmunt",
+    "W\u0142adys\u0142aw",
+    "Czes\u0142aw",
+    "Stanis\u0142aw",
+    "J\u00f3zef",
+    "Jan",
+    "Kazimierz",
+    "Tomasz",
+    "Andrzej",
+    "Ludwik",
+    "Zdzis\u0142aw",
+    "Henryk",
+    "Marian",
+    "Boles\u0142aw",
+    "Walerian",
+    "Stefan",
+    "Antoni",
+    "Franciszek",
+    "Edward",
+    "Roman"
+  ],
+  "warCrySound": "bf:team.shared.warcry",
+  "warCrySoundDistant": "bf:team.shared.warcry.distant",
+  "warCryCrowdSound": "bf:team.shared.warcry.crowd",
+  "warCrySoundCommander": "bf:team.shared.whistle",
+  "weapons": {
+    "rifleman_primary": {
+      "id": "bf:gun_kbk_wz_29"
+    },
+    "pistol_service": {
+      "id": "bf:gun_fb_vis"
+    },
+    "pistol_service_iii": {
+      "id": "bf:gun_fb_vis"
+    },
+    "commander_pistol": {
+      "id": "bf:gun_fb_vis"
+    },
+    "pistol_revolver": {
+      "id": "bf:gun_fb_vis"
+    },
+    "melee_standard": {
+      "id": "bf:melee_item_knife_wz_27"
+    },
+    "commander_melee": {
+      "id": "bf:melee_item_knife_wz_27"
+    },
+    "grenade_smoke": {
+      "id": "bf:grenade_smoke_stielhandgranate"
+    },
+    "grenade_frag": {
+      "id": "bf:grenade_frag_wz24"
+    },
+    "medic_primary": {
+      "id": "bf:gun_kbk_wz_29"
+    },
+    "sniper_primary": {
+      "id": "bf:gun_kbk_wz_29",
+      "components": {
+        "bf:scope": true
+      }
+    },
+    "anti_tank_primary": {
+      "id": "bf:gun_panzerfaust"
+    },
+    "grenade_at": {
+      "id": "bf:grenade_at_et_wz_38"
+    },
+    "light_infantry_primary": {
+      "id": "bf:gun_gewehr_43"
+    },
+    "assault_primary": {
+      "id": "bf:gun_blyskawica"
+    },
+    "support_primary": {
+      "id": "bf:gun_bar"
+    },
+    "gunner_primary": {
+      "id": "bf:gun_mg42"
+    },
+    "commander_primary": {
+      "id": "bf:gun_kop_pal"
+    }
+  },
+  "weaponOverrides": {
+    "medic_ii": {
+      "medic_primary": {
+        "id": "bf:gun_trenchgun"
+      }
+    },
+    "medic_iii": {
+      "medic_primary": {
+        "id": "bf:gun_gewehr_43"
+      }
+    },
+    "sniper_ii": {
+      "sniper_primary": {
+        "id": "bf:gun_tokarev_svt40",
+        "components": {
+          "bf:scope": true
+        }
+      }
+    },
+    "sniper_iii": {
+      "sniper_primary": {
+        "id": "bf:gun_tokarev_avt40",
+        "components": {
+          "bf:scope": true
+        }
+      }
+    },
+    "anti_tank_i": {
+      "pistol_service": {
+        "id": "bf:gun_gewehr_43"
+      }
+    },
+    "anti_tank_ii": {
+      "anti_tank_primary": {
+        "id": "bf:gun_wz_35"
+      }
+    },
+    "anti_tank_iii": {
+      "anti_tank_primary": {
+        "id": "bf:gun_gewehr_43"
+      }
+    },
+    "assault_ii": {
+      "assault_primary": {
+        "id": "bf:gun_trenchgun"
+      }
+    },
+    "assault_iii": {
+      "assault_primary": {
+        "id": "bf:gun_kis"
+      }
+    },
+    "support_iii": {
+      "support_primary": {
+        "id": "bf:gun_mp40",
+        "components": {
+          "bf:mag_type": "double"
+        }
+      }
+    },
+    "gunner_ii": {
+      "gunner_primary": {
+        "id": "bf:gun_mg34"
+      }
+    },
+    "commander_ii": {
+      "commander_primary": {
+        "id": "bf:gun_blyskawica"
+      }
+    },
+    "commander_iii": {
+      "commander_primary": {
+        "id": "bf:gun_kis"
+      }
+    }
+  }
+}

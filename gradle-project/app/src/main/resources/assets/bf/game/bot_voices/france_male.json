@@ -1,0 +1,10 @@
+{
+  "key": "france_male",
+  "goSound": "bf:team.fr.bot.go",
+  "grenadeSound": "bf:team.fr.bot.grenade",
+  "hurtSound": "bf:team.fr.bot.hurt",
+  "reloadingSound": "bf:team.fr.bot.reloading",
+  "spottedSound": "bf:team.fr.bot.spotted",
+  "tauntSound": "bf:team.fr.bot.taunt",
+  "introSound": "bf:team.fr.bot.intro"
+}

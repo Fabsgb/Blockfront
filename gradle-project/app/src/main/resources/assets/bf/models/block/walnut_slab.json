@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "bf:block/walnut_planks",
+    "side": "bf:block/walnut_planks",
+    "top": "bf:block/walnut_planks"
+  }
+}

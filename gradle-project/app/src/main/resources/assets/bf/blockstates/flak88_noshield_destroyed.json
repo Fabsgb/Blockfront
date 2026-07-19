@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/flak88_noshield_destroyed",
+      "y": 90
+    },
+    "facing=east": {
+      "model": "bf:block/flak88_noshield_destroyed",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "bf:block/flak88_noshield_destroyed",
+      "y": 270
+    },
+    "facing=west": {
+      "model": "bf:block/flak88_noshield_destroyed"
+    }
+  }
+}

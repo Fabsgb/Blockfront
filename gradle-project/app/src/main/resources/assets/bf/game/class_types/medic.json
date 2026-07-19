@@ -1,0 +1,10 @@
+{
+  "index": 4,
+  "key": "medic",
+  "displayTitle": "bf.message.gamemode.class.medic.title",
+  "description": "bf.message.gamemode.class.medic.desc",
+  "botFriendly": true,
+  "seeMedicCallouts": true,
+  "minRankRequired": "corporal",
+  "icon": "bf:textures/gui/game/loadout/medic.png"
+}

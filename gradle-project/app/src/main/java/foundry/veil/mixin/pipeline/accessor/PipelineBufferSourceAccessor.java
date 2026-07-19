@@ -1,0 +1,15 @@
+package foundry.veil.mixin.pipeline.accessor;
+
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
+import org.jetbrains.annotations.Nullable;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.gen.Accessor;
+
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/mixin/pipeline/accessor/PipelineBufferSourceAccessor.class */
+@Mixin({MultiBufferSource.BufferSource.class})
+public interface PipelineBufferSourceAccessor {
+    @Accessor
+    @Nullable
+    RenderType getLastSharedType();
+}

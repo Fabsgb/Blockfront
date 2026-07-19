@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/rod_3"
+    },
+    "facing=east": {
+      "model": "bf:block/rod_3",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bf:block/rod_3",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/rod_3",
+      "y": 270
+    }
+  }
+}

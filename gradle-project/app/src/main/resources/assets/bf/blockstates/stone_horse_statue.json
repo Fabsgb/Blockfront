@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/stone_horse_statue"
+    },
+    "facing=east": {
+      "model": "bf:block/stone_horse_statue",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bf:block/stone_horse_statue",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/stone_horse_statue",
+      "y": 270
+    }
+  }
+}

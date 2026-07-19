@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "bf:block/crate_mangrove1"
+    },
+    "type=double": [
+      {
+        "model": "bf:block/crate_mangrove1_double"
+      },
+      {
+        "model": "bf:block/crate_mangrove1_double_var"
+      }
+    ],
+    "type=top": {
+      "model": "bf:block/crate_mangrove1"
+    }
+  }
+}

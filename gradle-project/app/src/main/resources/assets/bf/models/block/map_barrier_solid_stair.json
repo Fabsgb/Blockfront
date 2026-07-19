@@ -1,0 +1,8 @@
+{
+  "parent": "bf:block/barrier_stairs",
+  "render_type": "minecraft:cutout",
+  "ambientocclusion": false,
+  "textures": {
+    "0": "bf:block/map_barrier_solid_stairs"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "": [
+      { "model": "bf:block/wet_sand1_0", "x": 0, "y": 0 },
+      { "model": "bf:block/wet_sand1_0", "x": 0, "y": 90 },
+      { "model": "bf:block/wet_sand1_0", "x": 0, "y": 180 },
+      { "model": "bf:block/wet_sand1_0", "x": 0, "y": 270 },
+      { "model": "bf:block/wet_sand1_1", "x": 0, "y": 0 },
+      { "model": "bf:block/wet_sand1_1", "x": 0, "y": 90 },
+      { "model": "bf:block/wet_sand1_1", "x": 0, "y": 180 },
+      { "model": "bf:block/wet_sand1_1", "x": 0, "y": 270 },
+      { "model": "bf:block/wet_sand1_2", "x": 0, "y": 0 },
+      { "model": "bf:block/wet_sand1_2", "x": 0, "y": 90 },
+      { "model": "bf:block/wet_sand1_2", "x": 0, "y": 180 },
+      { "model": "bf:block/wet_sand1_2", "x": 0, "y": 270 },
+      { "model": "bf:block/wet_sand1_3", "x": 0, "y": 0 },
+      { "model": "bf:block/wet_sand1_3", "x": 0, "y": 90 },
+      { "model": "bf:block/wet_sand1_3", "x": 0, "y": 180 },
+      { "model": "bf:block/wet_sand1_3", "x": 0, "y": 270 },
+      { "model": "bf:block/wet_sand1_4", "x": 0, "y": 0 },
+      { "model": "bf:block/wet_sand1_4", "x": 0, "y": 90 },
+      { "model": "bf:block/wet_sand1_4", "x": 0, "y": 180 },
+      { "model": "bf:block/wet_sand1_4", "x": 0, "y": 270 },
+      { "model": "bf:block/wet_sand1_5", "x": 0, "y": 0 },
+      { "model": "bf:block/wet_sand1_5", "x": 0, "y": 90 },
+      { "model": "bf:block/wet_sand1_5", "x": 0, "y": 180 },
+      { "model": "bf:block/wet_sand1_5", "x": 0, "y": 270 }
+    ]
+  }
+}

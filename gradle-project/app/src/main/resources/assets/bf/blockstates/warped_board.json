@@ -1,0 +1,23 @@
+{
+  "multipart": [
+    { "when": {"facing": "north"}, "apply": {"model": "bf:block/warped_board"} },
+    { "when": {"facing": "east"},  "apply": {"model": "bf:block/warped_board", "y": 90} },
+    { "when": {"facing": "south"}, "apply": {"model": "bf:block/warped_board", "y": 180} },
+    { "when": {"facing": "west"},  "apply": {"model": "bf:block/warped_board", "y": 270} },
+
+    { "when": {"facing": "north", "back": true}, "apply": {"model": "bf:block/warped_board", "y": 180} },
+    { "when": {"facing": "east",  "back": true}, "apply": {"model": "bf:block/warped_board", "y": 270} },
+    { "when": {"facing": "south", "back": true}, "apply": {"model": "bf:block/warped_board"} },
+    { "when": {"facing": "west",  "back": true}, "apply": {"model": "bf:block/warped_board", "y": 90} },
+
+    { "when": {"facing": "north", "left": true}, "apply": {"model": "bf:block/warped_board", "y": 270} },
+    { "when": {"facing": "east",  "left": true}, "apply": {"model": "bf:block/warped_board"} },
+    { "when": {"facing": "south", "left": true}, "apply": {"model": "bf:block/warped_board", "y": 90} },
+    { "when": {"facing": "west",  "left": true}, "apply": {"model": "bf:block/warped_board", "y": 180} },
+
+    { "when": {"facing": "north", "right": true}, "apply": {"model": "bf:block/warped_board", "y": 90} },
+    { "when": {"facing": "east",  "right": true}, "apply": {"model": "bf:block/warped_board", "y": 180} },
+    { "when": {"facing": "south", "right": true}, "apply": {"model": "bf:block/warped_board", "y": 270} },
+    { "when": {"facing": "west",  "right": true}, "apply": {"model": "bf:block/warped_board"} }
+  ]
+}

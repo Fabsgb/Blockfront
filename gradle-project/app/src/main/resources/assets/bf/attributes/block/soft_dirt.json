@@ -1,0 +1,6 @@
+{
+  "traversable": "bf:solid",
+  "impact": "bf:dirt",
+  "blocks": ["minecraft:rooted_dirt"],
+  "soundTypes": ["gravel", "grass"]
+}

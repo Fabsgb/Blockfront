@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "bf:block/pumice_polished_smooth_brick"
+  }
+}

@@ -1,0 +1,276 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.melee_item_klappspaten.idle": {
+      "loop": true,
+      "bones": {
+        "main": {
+          "position": {
+            "vector": [
+              1,
+              -4,
+              -1
+            ]
+          }
+        },
+        "right": {
+          "rotation": {
+            "vector": [
+              90,
+              0,
+              0
+            ]
+          },
+          "position": {
+            "vector": [
+              -10,
+              3,
+              2
+            ]
+          },
+          "scale": {
+            "vector": [
+              1.4,
+              1.4,
+              1.4
+            ]
+          }
+        },
+        "knife": {
+          "rotation": {
+            "vector": [
+              90,
+              -87.5,
+              -90
+            ]
+          },
+          "position": {
+            "vector": [
+              -11.25,
+              4.5,
+              -2
+            ]
+          },
+          "scale": {
+            "vector": [
+              1,
+              1,
+              1
+            ]
+          }
+        }
+      }
+    },
+    "animation.melee_item_klappspaten.attack": {
+      "animation_length": 0.58333,
+      "bones": {
+        "main": {
+          "position": {
+            "vector": [
+              1,
+              -4,
+              -1
+            ]
+          }
+        },
+        "right": {
+          "rotation": {
+            "0.0": {
+              "vector": [
+                90,
+                0,
+                0
+              ]
+            },
+            "0.0833": {
+              "vector": [
+                58.13076,
+                17.44003,
+                -9.33792
+              ],
+              "easing": "easeInOutSine"
+            },
+            "0.1667": {
+              "vector": [
+                95.27293,
+                -31.82588,
+                12.42159
+              ],
+              "easing": "easeInOutSine"
+            },
+            "0.4167": {
+              "vector": [
+                58.13076,
+                17.44003,
+                -9.33792
+              ],
+              "easing": "easeInOutSine"
+            },
+            "0.5833": {
+              "vector": [
+                90,
+                0,
+                0
+              ],
+              "easing": "easeInOutSine"
+            }
+          },
+          "position": {
+            "0.0": {
+              "vector": [
+                -10,
+                3,
+                2
+              ]
+            },
+            "0.0833": {
+              "vector": [
+                -19,
+                4,
+                7
+              ],
+              "easing": "easeInOutSine"
+            },
+            "0.1667": {
+              "vector": [
+                5,
+                1,
+                -12
+              ],
+              "easing": "easeInOutSine"
+            },
+            "0.4167": {
+              "vector": [
+                -19,
+                4,
+                7
+              ],
+              "easing": "easeInOutSine"
+            },
+            "0.5833": {
+              "vector": [
+                -10,
+                3,
+                2
+              ],
+              "easing": "easeInOutSine"
+            }
+          },
+          "scale": {
+            "vector": [
+              1.4,
+              1.4,
+              1.4
+            ]
+          }
+        },
+        "knife": {
+          "rotation": {
+            "0.0": {
+              "vector": [
+                90,
+                -87.5,
+                -90
+              ]
+            },
+            "0.0417": {
+              "vector": [
+                76.38314,
+                -57.63364,
+                -62.34634
+              ]
+            },
+            "0.0833": {
+              "vector": [
+                -56.6945,
+                -56.46179,
+                51.75329
+              ],
+              "easing": "easeInOutSine"
+            },
+            "0.1667": {
+              "vector": [
+                -197.85824,
+                -42.90654,
+                199.03532
+              ],
+              "easing": "easeInOutSine"
+            },
+            "0.25": {
+              "vector": [
+                -193.34355,
+                -24.18536,
+                225.93671
+              ]
+            },
+            "0.4167": {
+              "vector": [
+                -56.6945,
+                -56.46179,
+                51.75329
+              ],
+              "easing": "easeInOutSine"
+            },
+            "0.5833": {
+              "vector": [
+                90,
+                -87.5,
+                -90
+              ],
+              "easing": "easeInOutSine"
+            }
+          },
+          "position": {
+            "0.0": {
+              "vector": [
+                -11.25,
+                4.5,
+                -2
+              ]
+            },
+            "0.0833": {
+              "vector": [
+                -23,
+                7.5,
+                4
+              ],
+              "easing": "easeInOutSine"
+            },
+            "0.1667": {
+              "vector": [
+                7,
+                1.5,
+                -15
+              ],
+              "easing": "easeInOutSine"
+            },
+            "0.4167": {
+              "vector": [
+                -23,
+                7.5,
+                4
+              ],
+              "easing": "easeInOutSine"
+            },
+            "0.5833": {
+              "vector": [
+                -11.25,
+                4.5,
+                -2
+              ],
+              "easing": "easeInOutSine"
+            }
+          },
+          "scale": {
+            "vector": [
+              1,
+              1,
+              1
+            ]
+          }
+        }
+      }
+    }
+  },
+  "geckolib_format_version": 2
+}

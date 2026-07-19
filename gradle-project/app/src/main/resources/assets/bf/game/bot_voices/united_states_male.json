@@ -1,0 +1,10 @@
+{
+  "key": "united_states_male",
+  "goSound": "bf:team.us.bot.go",
+  "grenadeSound": "bf:team.us.bot.grenade",
+  "hurtSound": "bf:team.us.bot.hurt",
+  "reloadingSound": "bf:team.us.bot.reloading",
+  "spottedSound": "bf:team.us.bot.spotted",
+  "tauntSound": "bf:team.us.bot.taunt",
+  "introSound": "bf:team.us.bot.intro"
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bf:block/flower_box_empty"
+    },
+    "facing=east": {
+      "model": "bf:block/flower_box_empty",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bf:block/flower_box_empty",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bf:block/flower_box_empty",
+      "y": 270
+    }
+  }
+}
