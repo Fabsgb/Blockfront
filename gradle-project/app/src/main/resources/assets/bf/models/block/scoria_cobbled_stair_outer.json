@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "bf:block/scoria_cobbled",
-    "side": "bf:block/scoria_cobbled",
-    "top": "bf:block/scoria_cobbled"
-  }
-}

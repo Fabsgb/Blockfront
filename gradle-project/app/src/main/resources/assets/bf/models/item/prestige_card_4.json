@@ -1,6 +1,0 @@
-{
-  "parent": "bf:item/prestige_card",
-  "textures": {
-    "0": "bf:item/prestige_card_4"
-  }
-}

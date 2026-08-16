@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "bf:block/ozark_polished_brick",
-    "side": "bf:block/ozark_polished_brick",
-    "top": "bf:block/ozark_polished_brick"
-  }
-}

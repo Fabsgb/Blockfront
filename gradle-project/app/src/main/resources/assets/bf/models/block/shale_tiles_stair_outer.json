@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "bf:block/shale_tiles",
-    "side": "bf:block/shale_tiles",
-    "top": "bf:block/shale_tiles"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "bf:block/green_planks",
-    "side": "bf:block/green_planks",
-    "top": "bf:block/green_planks"
-  }
-}

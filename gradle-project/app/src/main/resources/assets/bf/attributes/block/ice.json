@@ -1,5 +1,0 @@
-{
-  "traversable": "bf:air",
-  "impact": "bf:glass",
-  "blocks": ["minecraft:ice"]
-}

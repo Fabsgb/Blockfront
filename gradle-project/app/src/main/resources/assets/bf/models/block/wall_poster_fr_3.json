@@ -1,9 +1,0 @@
-{
-  "parent": "bf:block/wall_poster",
-  "render_type": "cutout",
-  "render_type": "cutout",
-  "textures": {
-    "0": "bf:block/wall_poster_fr_3",
-    "particle": "bf:block/wall_poster_fr_3"
-  }
-}

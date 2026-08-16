@@ -1,7 +1,0 @@
-{
-  "parent": "bf:block/crate_double_base2_var",
-  "textures": {
-    "0": "bf:block/crate",
-    "particle": "bf:block/crate"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "bf:block/breccia_bricks",
-    "side": "bf:block/breccia_bricks",
-    "top": "bf:block/breccia_bricks"
-  }
-}

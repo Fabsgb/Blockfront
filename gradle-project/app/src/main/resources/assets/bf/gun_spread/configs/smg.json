@@ -1,9 +1,0 @@
-{
-  "jumping": 8.0,
-  "walking": 2.8,
-  "walkingAiming": 1.5,
-  "idle": 1.6,
-  "idleAiming": 0.9,
-  "crawling": 0.9,
-  "crawlingAiming": 0.45
-}

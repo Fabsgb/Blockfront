@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "bf:block/hematite_rough",
-    "side": "bf:block/hematite_rough",
-    "top": "bf:block/hematite_rough"
-  }
-}

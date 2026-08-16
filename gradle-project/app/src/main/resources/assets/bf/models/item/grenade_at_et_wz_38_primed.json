@@ -1,6 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "bf:item/grenade_at_et_wz_38_primed"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "bf:block/breccia_powder",
-    "side": "bf:block/breccia_powder",
-    "top": "bf:block/breccia_powder"
-  }
-}

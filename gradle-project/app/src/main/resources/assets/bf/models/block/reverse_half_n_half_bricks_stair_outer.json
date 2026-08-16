@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "bf:block/reverse_half_n_half_bricks",
-    "side": "bf:block/reverse_half_n_half_bricks",
-    "top": "bf:block/reverse_half_n_half_bricks"
-  }
-}

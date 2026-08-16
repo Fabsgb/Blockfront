@@ -1,9 +1,0 @@
-{
-  "index": 0,
-  "key": "rifleman",
-  "displayTitle": "bf.message.gamemode.class.rifleman.title",
-  "description": "bf.message.gamemode.class.rifleman.desc",
-  "botFriendly": true,
-  "isDefault": true,
-  "icon": "bf:textures/gui/game/loadout/rifleman.png"
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "bf:block/arenite_windswept",
-    "side": "bf:block/arenite_windswept",
-    "top": "bf:block/arenite_windswept"
-  }
-}

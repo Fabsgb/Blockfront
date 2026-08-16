@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "bf:block/augite_smooth_windswept",
-    "side": "bf:block/augite_smooth_windswept",
-    "top": "bf:block/augite_smooth_windswept"
-  }
-}

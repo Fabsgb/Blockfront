@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "bf:block/scoria_rough",
-    "side": "bf:block/scoria_rough",
-    "top": "bf:block/scoria_rough"
-  }
-}

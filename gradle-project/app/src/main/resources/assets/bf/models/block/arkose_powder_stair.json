@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "bf:block/arkose_powder",
-    "side": "bf:block/arkose_powder",
-    "top": "bf:block/arkose_powder"
-  }
-}

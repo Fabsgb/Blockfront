@@ -1,9 +1,0 @@
-{
-  "index": 6,
-  "key": "gunner",
-  "displayTitle": "bf.message.gamemode.class.gunner.title",
-  "description": "bf.message.gamemode.class.gunner.desc",
-  "botFriendly": false,
-  "minRankRequired": "1st_sergeant",
-  "icon": "bf:textures/gui/game/loadout/gunner.png"
-}

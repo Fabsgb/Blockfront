@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "bf:block/feldspar_smooth",
-    "side": "bf:block/feldspar_smooth",
-    "top": "bf:block/feldspar_smooth"
-  }
-}

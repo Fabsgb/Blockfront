@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "bf:block/coquina_powder",
-    "side": "bf:block/coquina_powder",
-    "top": "bf:block/coquina_powder"
-  }
-}

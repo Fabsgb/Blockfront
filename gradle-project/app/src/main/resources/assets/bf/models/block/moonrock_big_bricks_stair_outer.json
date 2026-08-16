@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "bf:block/moonrock_big_bricks",
-    "side": "bf:block/moonrock_big_bricks",
-    "top": "bf:block/moonrock_big_bricks"
-  }
-}

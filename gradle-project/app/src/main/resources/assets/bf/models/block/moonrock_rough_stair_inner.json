@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "bf:block/moonrock_rough",
-    "side": "bf:block/moonrock_rough",
-    "top": "bf:block/moonrock_rough"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "bf:block/deepslate_cobbled",
-    "side": "bf:block/deepslate_cobbled",
-    "top": "bf:block/deepslate_cobbled"
-  }
-}

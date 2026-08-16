@@ -1,8 +1,0 @@
-{
-  "parent": "bf:block/barrier_template_wall_post",
-  "render_type": "cutout",
-  "ambientocclusion": false,
-  "textures": {
-    "0": "bf:block/map_barrier_wall_post"
-  }
-}

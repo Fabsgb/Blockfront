@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "bf:block/arkose_cobbled",
-    "side": "bf:block/arkose_cobbled",
-    "top": "bf:block/arkose_cobbled"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "bf:block/fossil_smooth",
-    "side": "bf:block/fossil_smooth",
-    "top": "bf:block/fossil_smooth"
-  }
-}

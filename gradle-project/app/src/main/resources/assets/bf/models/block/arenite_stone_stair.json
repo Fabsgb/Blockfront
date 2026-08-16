@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "bf:block/arenite_stone",
-    "side": "bf:block/arenite_stone",
-    "top": "bf:block/arenite_stone"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "bf:block/chert_polished",
-    "side": "bf:block/chert_polished",
-    "top": "bf:block/chert_polished"
-  }
-}

@@ -1,7 +1,0 @@
-{
-  "parent": "bf:block/mine_sign_0",
-  "textures": {
-    "1": "bf:block/mine_sign_1",
-    "particle": "bf:block/mine_sign_1"
-  }
-}

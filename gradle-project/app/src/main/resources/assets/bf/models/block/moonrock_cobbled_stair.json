@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "bf:block/moonrock_cobbled",
-    "side": "bf:block/moonrock_cobbled",
-    "top": "bf:block/moonrock_cobbled"
-  }
-}

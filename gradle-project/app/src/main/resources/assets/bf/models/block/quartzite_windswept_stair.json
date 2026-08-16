@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "bf:block/quartzite_windswept",
-    "side": "bf:block/quartzite_windswept",
-    "top": "bf:block/quartzite_windswept"
-  }
-}

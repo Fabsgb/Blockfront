@@ -1,7 +1,0 @@
-{
-  "parent": "bf:block/wall_flag",
-  "textures": {
-    "0": "bf:block/wall_flag_britain_ripped",
-    "particle": "bf:block/wall_flag_britain_ripped"
-  }
-}

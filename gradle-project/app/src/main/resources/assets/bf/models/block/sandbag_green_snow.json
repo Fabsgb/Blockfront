@@ -1,7 +1,0 @@
-{
-  "parent": "bf:block/sandbag",
-  "textures": {
-    "0": "bf:block/sandbag_green_snow",
-    "particle": "bf:block/sandbag_green_snow"
-  }
-}

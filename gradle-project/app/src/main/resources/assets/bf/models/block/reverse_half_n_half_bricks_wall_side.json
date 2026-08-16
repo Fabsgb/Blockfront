@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/template_wall_side",
-  "textures": {
-    "wall": "bf:block/reverse_half_n_half_bricks"
-  }
-}

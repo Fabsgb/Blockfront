@@ -1,7 +1,0 @@
-{
-  "traversable": "bf:soft_metal",
-  "impact": "bf:metal_translucent",
-  "seeThrough": true,
-  "blocks": ["minecraft:iron_bars", "bf:metal_bars", "bf:metal_grate"],
-  "soundTypes": ["copper_grate"]
-}

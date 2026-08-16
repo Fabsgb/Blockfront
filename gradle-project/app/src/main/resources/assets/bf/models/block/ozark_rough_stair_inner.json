@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "bf:block/ozark_rough",
-    "side": "bf:block/ozark_rough",
-    "top": "bf:block/ozark_rough"
-  }
-}

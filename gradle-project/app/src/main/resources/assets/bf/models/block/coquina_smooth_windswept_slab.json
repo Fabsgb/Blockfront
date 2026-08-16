@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "bf:block/coquina_smooth_windswept",
-    "side": "bf:block/coquina_smooth_windswept",
-    "top": "bf:block/coquina_smooth_windswept"
-  }
-}

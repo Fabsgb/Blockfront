@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "bf:block/pumice_polished",
-    "side": "bf:block/pumice_polished",
-    "top": "bf:block/pumice_polished"
-  }
-}

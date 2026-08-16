@@ -1,7 +1,0 @@
-{
-  "parent": "bf:block/plank_base_single_0",
-  "textures": {
-    "0": "bf:block/plank_dark_oak",
-    "particle": "bf:block/plank_dark_oak"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "bf:block/arenite_smooth_windswept",
-    "side": "bf:block/arenite_smooth_windswept",
-    "top": "bf:block/arenite_smooth_windswept"
-  }
-}

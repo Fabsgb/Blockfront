@@ -1,8 +1,0 @@
-{
-  "parent": "bf:block/wall_flag",
-  "render_type": "cutout",
-  "textures": {
-    "0": "bf:block/wall_flag_italy_ripped",
-    "particle": "bf:block/wall_flag_italy_ripped"
-  }
-}

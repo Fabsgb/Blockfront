@@ -1,7 +1,0 @@
-{
-  "parent": "bf:block/wall_board",
-  "textures": {
-    "0": "minecraft:block/jungle_planks",
-    "particle": "minecraft:block/jungle_planks"
-  }
-}

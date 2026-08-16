@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "bf:block/coquina_polished",
-    "side": "bf:block/coquina_polished",
-    "top": "bf:block/coquina_polished"
-  }
-}

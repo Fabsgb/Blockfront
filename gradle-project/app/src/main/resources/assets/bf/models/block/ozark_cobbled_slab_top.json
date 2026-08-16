@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "bf:block/ozark_cobbled",
-    "side": "bf:block/ozark_cobbled",
-    "top": "bf:block/ozark_cobbled"
-  }
-}

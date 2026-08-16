@@ -1,7 +1,0 @@
-{
-  "parent": "bf:block/rubble_3",
-  "textures": {
-    "particle": "block/bricks",
-    "texture": "block/bricks"
-  }
-}

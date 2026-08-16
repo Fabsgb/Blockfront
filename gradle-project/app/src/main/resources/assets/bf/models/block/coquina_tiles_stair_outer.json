@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "bf:block/coquina_tiles",
-    "side": "bf:block/coquina_tiles",
-    "top": "bf:block/coquina_tiles"
-  }
-}
