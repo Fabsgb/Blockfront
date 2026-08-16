@@ -12,7 +12,7 @@ import java.lang.invoke.MethodType;
 import java.lang.runtime.ObjectMethods;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/PacketDailyReward.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/PacketDailyReward.class */
 public final class PacketDailyReward extends Record implements IPacket {
     private final int streak;
     private final boolean graced;
@@ -20,8 +20,9 @@ public final class PacketDailyReward extends Record implements IPacket {
     @NotNull
     private final ObjectList<RewardType> rewards;
 
+    /* JADX INFO: renamed from: ID */
     @NotNull
-    public static final PacketIdentifier ID = new PacketIdentifier("PacketDailyReward");
+    public static final PacketIdentifier f29ID = new PacketIdentifier("PacketDailyReward");
 
     public PacketDailyReward(int streak, boolean graced, @NotNull ObjectList<RewardType> rewards) {
         this.streak = streak;
@@ -71,6 +72,6 @@ public final class PacketDailyReward extends Record implements IPacket {
     @Override // com.boehmod.bflib.cloud.packet.IPacket
     @NotNull
     public PacketIdentifier getPacketIdentifier() {
-        return ID;
+        return f29ID;
     }
 }

@@ -8,11 +8,11 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/network/handler/PacketContext.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/network/handler/PacketContext.class */
 public interface PacketContext {
     @Nullable
     /* JADX INFO: renamed from: player */
-    Player mo1889player();
+    Player mo9446player();
 
     Packet<?> createPacket(CustomPacketPayload customPacketPayload);
 
@@ -22,7 +22,7 @@ public interface PacketContext {
 
     @Nullable
     default Level level() {
-        Player player = mo1889player();
+        Player player = mo9446player();
         if (player != null) {
             return player.level();
         }

@@ -15,7 +15,7 @@ import imgui.ImGui;
 import imgui.type.ImString;
 import net.minecraft.resources.ResourceLocation;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/data/module/update/TickSubEmitterModuleData.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/data/module/update/TickSubEmitterModuleData.class */
 public final class TickSubEmitterModuleData implements ParticleModuleData, EditorAttributeProvider {
     public static final MapCodec<TickSubEmitterModuleData> CODEC = RecordCodecBuilder.mapCodec(instance -> {
         return instance.group(ResourceLocation.CODEC.fieldOf("subemitter").forGetter((v0) -> {

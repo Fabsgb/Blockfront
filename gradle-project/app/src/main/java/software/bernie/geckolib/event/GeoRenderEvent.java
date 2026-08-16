@@ -18,11 +18,11 @@ import software.bernie.geckolib.renderer.GeoRenderer;
 import software.bernie.geckolib.renderer.GeoReplacedEntityRenderer;
 import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/event/GeoRenderEvent.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/event/GeoRenderEvent.class */
 public interface GeoRenderEvent {
     GeoRenderer<?> getRenderer();
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/event/GeoRenderEvent$Armor.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/event/GeoRenderEvent$Armor.class */
     public static abstract class Armor extends Event implements GeoRenderEvent {
         private final GeoArmorRenderer<?> renderer;
 
@@ -50,7 +50,7 @@ public interface GeoRenderEvent {
             return getRenderer().getCurrentSlot();
         }
 
-        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/event/GeoRenderEvent$Armor$Pre.class */
+        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/event/GeoRenderEvent$Armor$Pre.class */
         public static class Pre extends Armor implements ICancellableEvent {
             private final PoseStack poseStack;
             private final BakedGeoModel model;
@@ -93,7 +93,7 @@ public interface GeoRenderEvent {
             }
         }
 
-        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/event/GeoRenderEvent$Armor$Post.class */
+        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/event/GeoRenderEvent$Armor$Post.class */
         public static class Post extends Armor {
             private final PoseStack poseStack;
             private final BakedGeoModel model;
@@ -136,7 +136,7 @@ public interface GeoRenderEvent {
             }
         }
 
-        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/event/GeoRenderEvent$Armor$CompileRenderLayers.class */
+        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/event/GeoRenderEvent$Armor$CompileRenderLayers.class */
         public static class CompileRenderLayers extends Armor {
             @Override // software.bernie.geckolib.event.GeoRenderEvent.Armor, software.bernie.geckolib.event.GeoRenderEvent
             public /* bridge */ /* synthetic */ GeoRenderer getRenderer() {
@@ -153,7 +153,7 @@ public interface GeoRenderEvent {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/event/GeoRenderEvent$Block.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/event/GeoRenderEvent$Block.class */
     public static abstract class Block extends Event implements GeoRenderEvent {
         private final GeoBlockRenderer<?> renderer;
 
@@ -167,10 +167,10 @@ public interface GeoRenderEvent {
         }
 
         public BlockEntity getBlockEntity() {
-            return getRenderer().mo2142getAnimatable();
+            return getRenderer().mo9710getAnimatable();
         }
 
-        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/event/GeoRenderEvent$Block$Pre.class */
+        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/event/GeoRenderEvent$Block$Pre.class */
         public static class Pre extends Block implements ICancellableEvent {
             private final PoseStack poseStack;
             private final BakedGeoModel model;
@@ -213,7 +213,7 @@ public interface GeoRenderEvent {
             }
         }
 
-        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/event/GeoRenderEvent$Block$Post.class */
+        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/event/GeoRenderEvent$Block$Post.class */
         public static class Post extends Block {
             private final PoseStack poseStack;
             private final BakedGeoModel model;
@@ -256,7 +256,7 @@ public interface GeoRenderEvent {
             }
         }
 
-        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/event/GeoRenderEvent$Block$CompileRenderLayers.class */
+        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/event/GeoRenderEvent$Block$CompileRenderLayers.class */
         public static class CompileRenderLayers extends Block {
             @Override // software.bernie.geckolib.event.GeoRenderEvent.Block, software.bernie.geckolib.event.GeoRenderEvent
             public /* bridge */ /* synthetic */ GeoRenderer getRenderer() {
@@ -273,7 +273,7 @@ public interface GeoRenderEvent {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/event/GeoRenderEvent$Entity.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/event/GeoRenderEvent$Entity.class */
     public static abstract class Entity extends Event implements GeoRenderEvent {
         private final GeoEntityRenderer<?> renderer;
 
@@ -287,10 +287,10 @@ public interface GeoRenderEvent {
         }
 
         public net.minecraft.world.entity.Entity getEntity() {
-            return this.renderer.mo2142getAnimatable();
+            return this.renderer.mo9710getAnimatable();
         }
 
-        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/event/GeoRenderEvent$Entity$Pre.class */
+        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/event/GeoRenderEvent$Entity$Pre.class */
         public static class Pre extends Entity implements ICancellableEvent {
             private final PoseStack poseStack;
             private final BakedGeoModel model;
@@ -333,7 +333,7 @@ public interface GeoRenderEvent {
             }
         }
 
-        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/event/GeoRenderEvent$Entity$Post.class */
+        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/event/GeoRenderEvent$Entity$Post.class */
         public static class Post extends Entity {
             private final PoseStack poseStack;
             private final BakedGeoModel model;
@@ -376,7 +376,7 @@ public interface GeoRenderEvent {
             }
         }
 
-        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/event/GeoRenderEvent$Entity$CompileRenderLayers.class */
+        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/event/GeoRenderEvent$Entity$CompileRenderLayers.class */
         public static class CompileRenderLayers extends Entity {
             @Override // software.bernie.geckolib.event.GeoRenderEvent.Entity, software.bernie.geckolib.event.GeoRenderEvent
             public /* bridge */ /* synthetic */ GeoRenderer getRenderer() {
@@ -393,7 +393,7 @@ public interface GeoRenderEvent {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/event/GeoRenderEvent$Item.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/event/GeoRenderEvent$Item.class */
     public static abstract class Item extends Event implements GeoRenderEvent {
         private final GeoItemRenderer<?> renderer;
 
@@ -410,7 +410,7 @@ public interface GeoRenderEvent {
             return getRenderer().getCurrentItemStack();
         }
 
-        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/event/GeoRenderEvent$Item$Pre.class */
+        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/event/GeoRenderEvent$Item$Pre.class */
         public static class Pre extends Item implements ICancellableEvent {
             private final PoseStack poseStack;
             private final BakedGeoModel model;
@@ -453,7 +453,7 @@ public interface GeoRenderEvent {
             }
         }
 
-        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/event/GeoRenderEvent$Item$Post.class */
+        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/event/GeoRenderEvent$Item$Post.class */
         public static class Post extends Item {
             private final PoseStack poseStack;
             private final BakedGeoModel model;
@@ -496,7 +496,7 @@ public interface GeoRenderEvent {
             }
         }
 
-        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/event/GeoRenderEvent$Item$CompileRenderLayers.class */
+        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/event/GeoRenderEvent$Item$CompileRenderLayers.class */
         public static class CompileRenderLayers extends Item {
             @Override // software.bernie.geckolib.event.GeoRenderEvent.Item, software.bernie.geckolib.event.GeoRenderEvent
             public /* bridge */ /* synthetic */ GeoRenderer getRenderer() {
@@ -513,7 +513,7 @@ public interface GeoRenderEvent {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/event/GeoRenderEvent$Object.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/event/GeoRenderEvent$Object.class */
     public static abstract class Object extends Event implements GeoRenderEvent {
         private final GeoObjectRenderer<?> renderer;
 
@@ -526,7 +526,7 @@ public interface GeoRenderEvent {
             return this.renderer;
         }
 
-        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/event/GeoRenderEvent$Object$Pre.class */
+        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/event/GeoRenderEvent$Object$Pre.class */
         public static class Pre extends Object implements ICancellableEvent {
             private final PoseStack poseStack;
             private final BakedGeoModel model;
@@ -569,7 +569,7 @@ public interface GeoRenderEvent {
             }
         }
 
-        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/event/GeoRenderEvent$Object$Post.class */
+        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/event/GeoRenderEvent$Object$Post.class */
         public static class Post extends Object {
             private final PoseStack poseStack;
             private final BakedGeoModel model;
@@ -612,7 +612,7 @@ public interface GeoRenderEvent {
             }
         }
 
-        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/event/GeoRenderEvent$Object$CompileRenderLayers.class */
+        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/event/GeoRenderEvent$Object$CompileRenderLayers.class */
         public static class CompileRenderLayers extends Object {
             @Override // software.bernie.geckolib.event.GeoRenderEvent.Object, software.bernie.geckolib.event.GeoRenderEvent
             public /* bridge */ /* synthetic */ GeoRenderer getRenderer() {
@@ -629,7 +629,7 @@ public interface GeoRenderEvent {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/event/GeoRenderEvent$ReplacedEntity.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/event/GeoRenderEvent$ReplacedEntity.class */
     public static abstract class ReplacedEntity extends Event implements GeoRenderEvent {
         private final GeoReplacedEntityRenderer<?, ?> renderer;
 
@@ -646,7 +646,7 @@ public interface GeoRenderEvent {
             return getRenderer().getCurrentEntity();
         }
 
-        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/event/GeoRenderEvent$ReplacedEntity$Pre.class */
+        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/event/GeoRenderEvent$ReplacedEntity$Pre.class */
         public static class Pre extends ReplacedEntity implements ICancellableEvent {
             private final PoseStack poseStack;
             private final BakedGeoModel model;
@@ -689,7 +689,7 @@ public interface GeoRenderEvent {
             }
         }
 
-        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/event/GeoRenderEvent$ReplacedEntity$Post.class */
+        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/event/GeoRenderEvent$ReplacedEntity$Post.class */
         public static class Post extends ReplacedEntity {
             private final PoseStack poseStack;
             private final BakedGeoModel model;
@@ -732,7 +732,7 @@ public interface GeoRenderEvent {
             }
         }
 
-        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/event/GeoRenderEvent$ReplacedEntity$CompileRenderLayers.class */
+        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/event/GeoRenderEvent$ReplacedEntity$CompileRenderLayers.class */
         public static class CompileRenderLayers extends ReplacedEntity {
             @Override // software.bernie.geckolib.event.GeoRenderEvent.ReplacedEntity, software.bernie.geckolib.event.GeoRenderEvent
             public /* bridge */ /* synthetic */ GeoRenderer getRenderer() {

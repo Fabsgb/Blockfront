@@ -15,12 +15,12 @@ import software.bernie.geckolib.GeckoLibConstants;
 import software.bernie.geckolib.animatable.GeoBlockEntity;
 import software.bernie.geckolib.util.ClientUtil;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/network/packet/StopTriggeredBlockEntityAnimPacket.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/network/packet/StopTriggeredBlockEntityAnimPacket.class */
 public final class StopTriggeredBlockEntityAnimPacket extends Record implements MultiloaderPacket {
     private final BlockPos pos;
     private final String controllerName;
     private final String animName;
-    public static final CustomPacketPayload.Type<StopTriggeredBlockEntityAnimPacket> TYPE = new CustomPacketPayload.Type<>(GeckoLibConstants.m8005id("stop_triggered_blockentity_anim"));
+    public static final CustomPacketPayload.Type<StopTriggeredBlockEntityAnimPacket> TYPE = new CustomPacketPayload.Type<>(GeckoLibConstants.m8356id("stop_triggered_blockentity_anim"));
     public static final StreamCodec<FriendlyByteBuf, StopTriggeredBlockEntityAnimPacket> CODEC = StreamCodec.composite(BlockPos.STREAM_CODEC, (v0) -> {
         return v0.pos();
     }, ByteBufCodecs.STRING_UTF8, (v0) -> {

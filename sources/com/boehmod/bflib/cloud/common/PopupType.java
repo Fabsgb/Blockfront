@@ -3,7 +3,7 @@ package com.boehmod.bflib.cloud.common;
 import com.boehmod.bflib.common.ColorReferences;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/PopupType.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/PopupType.class */
 public enum PopupType {
     SUCCESS(ColorReferences.COLOR_TEAM_ALLIES, "player"),
     FAIL(ColorReferences.COLOR_THEME_RED, "player_error"),
@@ -16,7 +16,7 @@ public enum PopupType {
     @NotNull
     private final String image;
 
-    PopupType(int color, @NotNull String image) {
+    PopupType(int color, String image) {
         this.color = color;
         this.image = image;
     }

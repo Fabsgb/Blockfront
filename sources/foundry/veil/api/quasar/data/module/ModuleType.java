@@ -8,7 +8,7 @@ import java.lang.runtime.ObjectMethods;
 import java.util.function.Supplier;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/data/module/ModuleType.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/data/module/ModuleType.class */
 public interface ModuleType<T extends ParticleModuleData> {
     MapCodec<T> codec();
 
@@ -21,7 +21,7 @@ public interface ModuleType<T extends ParticleModuleData> {
         return null;
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/data/module/ModuleType$DeprecationStatus.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/data/module/ModuleType$DeprecationStatus.class */
     public static final class DeprecationStatus extends Record {
 
         @Nullable

@@ -24,7 +24,7 @@ import software.bernie.geckolib.loading.object.BakedAnimations;
 import software.bernie.geckolib.renderer.GeoRenderer;
 import software.bernie.geckolib.util.RenderUtil;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/model/GeoModel.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/model/GeoModel.class */
 public abstract class GeoModel<T extends GeoAnimatable> {
     private double animTime;
     private double lastGameTickTime;
@@ -32,10 +32,10 @@ public abstract class GeoModel<T extends GeoAnimatable> {
     private BakedGeoModel currentModel = null;
     private long lastRenderedInstance = -1;
 
-    @Deprecated(forRemoval = true)
+    @Deprecated
     public abstract ResourceLocation getModelResource(T t);
 
-    @Deprecated(forRemoval = true)
+    @Deprecated
     public abstract ResourceLocation getTextureResource(T t);
 
     public abstract ResourceLocation getAnimationResource(T t);

@@ -1,7 +1,7 @@
 package com.boehmod.blockfront.client.corpse.physics;
 
-import com.boehmod.blockfront.C0562jt;
-import com.boehmod.blockfront.InterfaceC0019Q;
+import com.boehmod.blockfront.C0530jM;
+import com.boehmod.blockfront.InterfaceC0026W;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -12,23 +12,23 @@ import org.jetbrains.annotations.NotNull;
 import org.joml.Quaterniondc;
 import org.joml.Vector3dc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:com/boehmod/blockfront/client/corpse/physics/RustCorpsePhysics.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:com/boehmod/blockfront/client/corpse/physics/RustCorpsePhysics.class */
 public class RustCorpsePhysics {
 
-    /* JADX INFO: renamed from: w */
-    private static final String f1440w = "corpse_physics";
+    /* JADX INFO: renamed from: B */
+    private static final String f1359B = "corpse_physics";
 
-    /* JADX INFO: renamed from: x */
-    private static final String f1441x = "corpse_physics_natives";
+    /* JADX INFO: renamed from: C */
+    private static final String f1360C = "corpse_physics_natives";
 
-    /* JADX INFO: renamed from: H */
-    private static final boolean f1442H = System.getProperty("os.name").toLowerCase().contains("win");
+    /* JADX INFO: renamed from: M */
+    private static final boolean f1361M = System.getProperty("os.name").toLowerCase().contains("win");
 
-    /* JADX INFO: renamed from: I */
-    private static final boolean f1443I = System.getProperty("os.name").toLowerCase().contains("mac");
+    /* JADX INFO: renamed from: N */
+    private static final boolean f1362N = System.getProperty("os.name").toLowerCase().contains("mac");
 
-    /* JADX INFO: renamed from: J */
-    public static boolean f1444J = false;
+    /* JADX INFO: renamed from: O */
+    public static boolean f1363O = false;
 
     public static native void initialize(double d, double d2, double d3);
 
@@ -61,61 +61,69 @@ public class RustCorpsePhysics {
     public static native void clearLevel();
 
     static {
-        m1038s();
+        m1062v();
     }
 
-    /* JADX INFO: renamed from: j */
-    private static String m1037j() {
+    /* JADX INFO: renamed from: n */
+    private static String m1061n() {
         Object obj;
         if (System.getProperty("os.arch").equals("arm") || System.getProperty("os.arch").startsWith("aarch64")) {
             obj = "aarch64";
         } else {
             obj = "x86_64";
         }
-        if (f1442H) {
+        if (f1361M) {
             return "corpse_physics_" + obj + "_windows.dll";
         }
-        if (f1443I) {
+        if (f1362N) {
             return "corpse_physics_" + obj + "_macos.dylib";
         }
         return "corpse_physics_" + obj + "_linux.so";
     }
 
-    /* JADX INFO: renamed from: s */
-    private static void m1038s() {
-        String strM1037j = m1037j();
+    /* JADX INFO: renamed from: v */
+    private static void m1062v() {
+        String strM1061n = m1061n();
         try {
-            InputStream resourceAsStream = RustCorpsePhysics.class.getResourceAsStream("/natives/" + strM1037j);
+            InputStream resourceAsStream = RustCorpsePhysics.class.getResourceAsStream("/natives/" + strM1061n);
             try {
                 if (resourceAsStream == null) {
-                    throw new FileNotFoundException(f1440w);
+                    throw new FileNotFoundException(f1359B);
                 }
-                Path pathCreateTempFile = Files.createTempFile(f1441x, null, new FileAttribute[0]);
+                Path pathCreateTempFile = Files.createTempFile(f1360C, null, new FileAttribute[0]);
                 Files.copy(resourceAsStream, pathCreateTempFile, StandardCopyOption.REPLACE_EXISTING);
                 System.load(pathCreateTempFile.toAbsolutePath().toString());
-                f1444J = true;
+                f1363O = true;
                 if (resourceAsStream != null) {
                     resourceAsStream.close();
                 }
-            } finally {
+            } catch (Throwable th) {
+                if (resourceAsStream != null) {
+                    try {
+                        resourceAsStream.close();
+                    } catch (Throwable th2) {
+                        th.addSuppressed(th2);
+                    }
+                }
+                throw th;
             }
         } catch (Exception e) {
-            f1444J = false;
-            C0562jt.m2516a("Failed to load `%s` native library", e, strM1037j);
+            f1363O = false;
+            C0530jM.m2338a("Failed to load `%s` native library", e, strM1061n);
         }
     }
 
     @NotNull
     /* JADX INFO: renamed from: a */
-    public static C0177d m1039a(int i, InterfaceC0019Q interfaceC0019Q, Vector3dc vector3dc, double d) {
-        Vector3dc vector3dcMo124d = interfaceC0019Q.mo124d();
-        Quaterniondc quaterniondcMo123a = interfaceC0019Q.mo123a();
-        createObject(i, new double[]{vector3dcMo124d.x(), vector3dcMo124d.y(), vector3dcMo124d.z(), quaterniondcMo123a.x(), quaterniondcMo123a.y(), quaterniondcMo123a.z(), quaterniondcMo123a.w()}, vector3dc.x(), vector3dc.y(), vector3dc.z(), d);
-        return new C0177d(i);
+    public static C0178d m1063a(int i, InterfaceC0026W interfaceC0026W, Vector3dc vector3dc, double d) {
+        Vector3dc vector3dcMo157d = interfaceC0026W.mo157d();
+        Quaterniondc quaterniondcMo156a = interfaceC0026W.mo156a();
+        createObject(i, new double[]{vector3dcMo157d.x(), vector3dcMo157d.y(), vector3dcMo157d.z(), quaterniondcMo156a.x(), quaterniondcMo156a.y(), quaterniondcMo156a.z(), quaterniondcMo156a.w()}, vector3dc.x(), vector3dc.y(), vector3dc.z(), d);
+        return new C0178d(i);
     }
 
     /* JADX INFO: renamed from: a */
-    public static C0174a m1040a() {
-        return new C0174a(uploadBlock());
+    public static C0175a m1064a() {
+        return new C0175a(uploadBlock());
     }
 }

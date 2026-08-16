@@ -10,14 +10,15 @@ import java.lang.runtime.ObjectMethods;
 import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/party/PacketPartyJoin.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/party/PacketPartyJoin.class */
 public final class PacketPartyJoin extends Record implements IPacket {
 
     @NotNull
     private final UUID uuid;
 
+    /* JADX INFO: renamed from: ID */
     @NotNull
-    public static final PacketIdentifier ID = new PacketIdentifier("PacketPartyJoin");
+    public static final PacketIdentifier f89ID = new PacketIdentifier("PacketPartyJoin");
 
     public PacketPartyJoin(@NotNull UUID uuid) {
         this.uuid = uuid;
@@ -55,6 +56,6 @@ public final class PacketPartyJoin extends Record implements IPacket {
     @Override // com.boehmod.bflib.cloud.packet.IPacket
     @NotNull
     public PacketIdentifier getPacketIdentifier() {
-        return ID;
+        return f89ID;
     }
 }

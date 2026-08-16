@@ -8,7 +8,7 @@ import java.util.Optional;
 import net.minecraft.client.renderer.ShaderInstance;
 import org.jetbrains.annotations.Contract;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/property/InvertibleProperty.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/property/InvertibleProperty.class */
 public abstract class InvertibleProperty<T> extends Property<T> {
     protected T overrideInverseValue;
     private final T inverseValue;

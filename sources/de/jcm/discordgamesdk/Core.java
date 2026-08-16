@@ -29,7 +29,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/Core.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/Core.class */
 public class Core implements AutoCloseable {
     public static final Consumer<Result> DEFAULT_CALLBACK = result -> {
         if (result != Result.OK) {
@@ -97,12 +97,10 @@ public class Core implements AutoCloseable {
         this.suppressExceptions = (this.createParams.flags & 2) != 0;
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/Core$CorePrivate.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/Core$CorePrivate.class */
     public class CorePrivate {
         public DiscordUser currentUser;
         private static final DiscordEventAdapter NULL_ADAPTER = new DiscordEventAdapter() { // from class: de.jcm.discordgamesdk.Core.CorePrivate.1
-            C13061() {
-            }
         };
         public Queue<Runnable> workQueue = new ArrayDeque();
         public int pid = (int) ProcessHandle.current().pid();
@@ -111,13 +109,6 @@ public class Core implements AutoCloseable {
         public VoiceSettingsUpdate2Event.Data voiceData = new VoiceSettingsUpdate2Event.Data();
 
         private CorePrivate() {
-        }
-
-        /* JADX INFO: renamed from: de.jcm.discordgamesdk.Core$CorePrivate$1 */
-        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/Core$CorePrivate$1.class */
-        class C13061 extends DiscordEventAdapter {
-            C13061() {
-            }
         }
 
         public DiscordEventAdapter getEventAdapter() {
@@ -205,7 +196,7 @@ public class Core implements AutoCloseable {
         this.corePrivate.log(LogLevel.VERBOSE, "Sent string \"" + message + "\" at state " + this.state);
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/Core$Res.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/Core$Res.class */
     private static class Res {
         public ConnectionState result;
         public String data;

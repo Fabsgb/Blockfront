@@ -26,7 +26,7 @@ import org.joml.Vector4dc;
 import org.joml.Vector4fc;
 import org.joml.Vector4ic;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/shader/uniform/WrapperUniformAccess.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/shader/uniform/WrapperUniformAccess.class */
 @ApiStatus.Internal
 public final class WrapperUniformAccess extends Record implements ShaderUniformAccess {
     private final Supplier<ShaderUniformAccess> getter;

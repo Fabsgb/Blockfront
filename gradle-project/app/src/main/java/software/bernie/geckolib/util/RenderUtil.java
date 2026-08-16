@@ -33,7 +33,7 @@ import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.renderer.GeoRenderer;
 import software.bernie.geckolib.renderer.GeoReplacedEntityRenderer;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/util/RenderUtil.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/util/RenderUtil.class */
 public final class RenderUtil {
     public static void translateMatrixToBone(PoseStack poseStack, GeoBone bone) {
         poseStack.translate((-bone.getPosX()) / 16.0f, bone.getPosY() / 16.0f, bone.getPosZ() / 16.0f);
@@ -181,9 +181,9 @@ public final class RenderUtil {
         }
     }
 
-    /* JADX INFO: renamed from: software.bernie.geckolib.util.RenderUtil$1, reason: invalid class name */
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/util/RenderUtil$1.class */
-    static /* synthetic */ class AnonymousClass1 {
+    /* JADX INFO: renamed from: software.bernie.geckolib.util.RenderUtil$1 */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/util/RenderUtil$1.class */
+    static /* synthetic */ class C15061 {
         static final /* synthetic */ int[] $SwitchMap$net$minecraft$core$Direction = new int[Direction.values().length];
 
         static {
@@ -203,7 +203,7 @@ public final class RenderUtil {
     }
 
     public static float getDirectionAngle(Direction direction) {
-        switch (AnonymousClass1.$SwitchMap$net$minecraft$core$Direction[direction.ordinal()]) {
+        switch (C15061.$SwitchMap$net$minecraft$core$Direction[direction.ordinal()]) {
             case 1:
                 return 90.0f;
             case 2:
@@ -239,7 +239,7 @@ public final class RenderUtil {
             return null;
         }
         GeoReplacedEntityRenderer<?, ?> replacedEntityRenderer = (GeoReplacedEntityRenderer) renderer;
-        return replacedEntityRenderer.mo2142getAnimatable();
+        return replacedEntityRenderer.mo9710getAnimatable();
     }
 
     @Nullable

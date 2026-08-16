@@ -8,7 +8,7 @@ import net.minecraft.client.gui.navigation.ScreenRectangle;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/util/ScissorStack.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/util/ScissorStack.class */
 public final class ScissorStack {
     private final Deque<ScreenRectangle> regions = new ArrayDeque();
 

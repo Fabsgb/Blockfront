@@ -12,12 +12,12 @@ import net.minecraft.server.packs.metadata.MetadataSectionSerializer;
 import net.minecraft.util.GsonHelper;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/texture/TextureTypeMetadataSection.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/texture/TextureTypeMetadataSection.class */
 public final class TextureTypeMetadataSection extends Record {
     private final TextureType type;
     public static final Serializer SERIALIZER = new Serializer();
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/texture/TextureTypeMetadataSection$TextureType.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/texture/TextureTypeMetadataSection$TextureType.class */
     public enum TextureType {
         TEXTURE_2D,
         TEXTURE_2D_ARRAY,
@@ -49,11 +49,11 @@ public final class TextureTypeMetadataSection extends Record {
         return this.type;
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/texture/TextureTypeMetadataSection$Serializer.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/texture/TextureTypeMetadataSection$Serializer.class */
     public static class Serializer implements MetadataSectionSerializer<TextureTypeMetadataSection> {
         /* JADX INFO: Thrown type has an unknown type hierarchy: com.google.gson.JsonSyntaxException */
         /* JADX INFO: renamed from: fromJson, reason: merged with bridge method [inline-methods] */
-        public TextureTypeMetadataSection m1852fromJson(@NotNull JsonObject json) throws JsonSyntaxException {
+        public TextureTypeMetadataSection m9409fromJson(@NotNull JsonObject json) throws JsonSyntaxException {
             String type = GsonHelper.getAsString(json, "type", "2d");
             for (TextureType value : TextureType.VALUES) {
                 if (value.name().substring(8).equalsIgnoreCase(type)) {

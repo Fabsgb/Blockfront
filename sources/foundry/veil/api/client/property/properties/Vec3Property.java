@@ -14,7 +14,7 @@ import net.minecraft.client.renderer.ShaderInstance;
 import org.joml.Vector3f;
 import org.joml.Vector3fc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/property/properties/Vec3Property.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/property/properties/Vec3Property.class */
 public class Vec3Property extends Property<Vector3f> {
     @Override // foundry.veil.api.client.property.Property
     public /* bridge */ /* synthetic */ void modify(Vector3f vector3f, PropertyModifier.PropertyModifierMode propertyModifierMode, Optional optional) {

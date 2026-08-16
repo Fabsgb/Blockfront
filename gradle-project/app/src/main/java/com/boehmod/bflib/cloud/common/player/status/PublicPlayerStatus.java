@@ -1,13 +1,13 @@
 package com.boehmod.bflib.cloud.common.player.status;
 
-import com.boehmod.bflib.cloud.common.mm.SearchGame;
+import com.boehmod.bflib.cloud.common.p001mm.SearchGame;
 import com.boehmod.bflib.cloud.packet.IPacket;
 import io.netty.buffer.ByteBuf;
 import java.io.IOException;
 import javax.annotation.Nullable;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/player/status/PublicPlayerStatus.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/player/status/PublicPlayerStatus.class */
 public class PublicPlayerStatus extends PlayerStatus {
     private boolean inGame = false;
     private boolean spectating = false;
@@ -102,6 +102,7 @@ public class PublicPlayerStatus extends PlayerStatus {
         }
     }
 
+    @Override // com.boehmod.bflib.cloud.common.player.status.PlayerStatus
     @NotNull
     public String toString() {
         return "PublicPlayerStatus{onlineStatus=" + String.valueOf(getOnlineStatus()) + ", inGame=" + this.inGame + ", spectating=" + this.spectating + ", matchGame=" + String.valueOf(this.matchGame) + ", matchMapName=" + this.matchMapName + "}";

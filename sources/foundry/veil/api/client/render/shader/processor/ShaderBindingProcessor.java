@@ -1,6 +1,5 @@
 package foundry.veil.api.client.render.shader.processor;
 
-import foundry.veil.api.client.render.shader.processor.ShaderPreProcessor;
 import io.github.ocelot.glslprocessor.api.GlslSyntaxException;
 import io.github.ocelot.glslprocessor.api.grammar.GlslSpecifiedType;
 import io.github.ocelot.glslprocessor.api.grammar.GlslTypeQualifier;
@@ -16,7 +15,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/processor/ShaderBindingProcessor.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/processor/ShaderBindingProcessor.class */
 public class ShaderBindingProcessor implements ShaderPreProcessor {
     @Override // foundry.veil.api.client.render.shader.processor.ShaderPreProcessor
     public void modify(ShaderPreProcessor.Context ctx, GlslTree tree) throws IOException, GlslSyntaxException, LexerException {

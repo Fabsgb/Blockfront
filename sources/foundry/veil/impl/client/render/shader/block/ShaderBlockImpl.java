@@ -10,7 +10,7 @@ import org.jetbrains.annotations.Nullable;
 import org.lwjgl.opengl.ARBDirectStateAccess;
 import org.lwjgl.opengl.GL15C;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/shader/block/ShaderBlockImpl.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/shader/block/ShaderBlockImpl.class */
 @ApiStatus.Internal
 public abstract class ShaderBlockImpl<T> implements ShaderBlock<T> {
     private static StorageType storageType;
@@ -20,7 +20,7 @@ public abstract class ShaderBlockImpl<T> implements ShaderBlock<T> {
     protected boolean dirty = false;
     private int index = -1;
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/shader/block/ShaderBlockImpl$StorageType.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/shader/block/ShaderBlockImpl$StorageType.class */
     public enum StorageType {
         LEGACY { // from class: foundry.veil.impl.client.render.shader.block.ShaderBlockImpl.StorageType.1
             @Override // foundry.veil.impl.client.render.shader.block.ShaderBlockImpl.StorageType

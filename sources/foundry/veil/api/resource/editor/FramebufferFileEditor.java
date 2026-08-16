@@ -22,9 +22,7 @@ import gg.moonflower.molangcompiler.api.MolangExpression;
 import gg.moonflower.molangcompiler.api.MolangRuntime;
 import gg.moonflower.molangcompiler.api.exception.MolangRuntimeException;
 import gg.moonflower.molangcompiler.api.exception.MolangSyntaxException;
-import imgui.ImDrawList;
 import imgui.ImFont;
-import imgui.ImFontGlyph;
 import imgui.ImGui;
 import imgui.ImGuiStyle;
 import imgui.ImVec4;
@@ -44,13 +42,13 @@ import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/resource/editor/FramebufferFileEditor.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/resource/editor/FramebufferFileEditor.class */
 @ApiStatus.Internal
 public class FramebufferFileEditor implements ResourceFileEditor<FramebufferResource> {
     private static final StringBuilder BUILDER = new StringBuilder();
-    private static final MolangRuntime RUNTIME = MolangRuntime.runtime().setQuery("screen_width", MolangExpression.m8000of((Supplier<Float>) () -> {
+    private static final MolangRuntime RUNTIME = MolangRuntime.runtime().setQuery("screen_width", MolangExpression.m8351of((Supplier<Float>) () -> {
         return Float.valueOf(Minecraft.getInstance().getWindow().getWidth());
-    })).setQuery("screen_height", MolangExpression.m8000of((Supplier<Float>) () -> {
+    })).setQuery("screen_height", MolangExpression.m8351of((Supplier<Float>) () -> {
         return Float.valueOf(Minecraft.getInstance().getWindow().getHeight());
     })).create();
     private final VeilResourceManager resourceManager;
@@ -193,38 +191,44 @@ public class FramebufferFileEditor implements ResourceFileEditor<FramebufferReso
 
     @Override // foundry.veil.api.resource.editor.ResourceFileEditor
     public void loadFromDisk() {
-        BufferedReader reader;
-        DataResult<FramebufferDefinition> result;
         try {
-            reader = this.resource.resourceInfo().openAsReader(this.resourceManager);
+            BufferedReader reader = this.resource.resourceInfo().openAsReader(this.resourceManager);
             try {
-                result = FramebufferDefinition.CODEC.parse(JsonOps.INSTANCE, JsonParser.parseReader(reader));
-            } finally {
+                DataResult<FramebufferDefinition> result = FramebufferDefinition.CODEC.parse(JsonOps.INSTANCE, JsonParser.parseReader(reader));
+                if (result.error().isPresent()) {
+                    throw new JsonParseException(((DataResult.Error) result.error().get()).message());
+                }
+                this.builder = new FramebufferDefinitionBuilder((FramebufferDefinition) result.result().orElseThrow());
+                if (reader != null) {
+                    reader.close();
+                }
+                if (this.attachmentIndex == 0 && this.builder.getDepthBuffer() == null) {
+                    this.attachmentIndex++;
+                }
+                FramebufferAttachmentDefinition[] colorBuffers = this.builder.getColorBuffers();
+                this.useDepth = this.builder.getDepthBuffer() != null;
+                this.colorBuffers = 0;
+                for (FramebufferAttachmentDefinition colorBuffer : colorBuffers) {
+                    if (colorBuffer != null) {
+                        this.colorBuffers++;
+                    }
+                }
+                updateSize();
+                setAttachment(Math.min(this.attachmentIndex, (this.useDepth ? 1 : 0) + this.colorBuffers));
+            } catch (Throwable th) {
+                if (reader != null) {
+                    try {
+                        reader.close();
+                    } catch (Throwable th2) {
+                        th.addSuppressed(th2);
+                    }
+                }
+                throw th;
             }
         } catch (IOException e) {
             Veil.LOGGER.error("Failed to open resource: {}", this.resource.resourceInfo().location(), e);
             this.builder = new FramebufferDefinitionBuilder();
         }
-        if (result.error().isPresent()) {
-            throw new JsonParseException(((DataResult.Error) result.error().get()).message());
-        }
-        this.builder = new FramebufferDefinitionBuilder((FramebufferDefinition) result.result().orElseThrow());
-        if (reader != null) {
-            reader.close();
-        }
-        if (this.attachmentIndex == 0 && this.builder.getDepthBuffer() == null) {
-            this.attachmentIndex++;
-        }
-        FramebufferAttachmentDefinition[] colorBuffers = this.builder.getColorBuffers();
-        this.useDepth = this.builder.getDepthBuffer() != null;
-        this.colorBuffers = 0;
-        for (FramebufferAttachmentDefinition colorBuffer : colorBuffers) {
-            if (colorBuffer != null) {
-                this.colorBuffers++;
-            }
-        }
-        updateSize();
-        setAttachment(Math.min(this.attachmentIndex, (this.useDepth ? 1 : 0) + this.colorBuffers));
     }
 
     @Override // foundry.veil.api.resource.editor.ResourceFileEditor
@@ -238,6 +242,7 @@ public class FramebufferFileEditor implements ResourceFileEditor<FramebufferReso
     }
 
     private static void drawBuffer(String name, FramebufferAttachmentDefinition attachment, float width, boolean selected) {
+        int i;
         ImGuiStyle style = ImGui.getStyle();
         float lineHeight = ImGui.getTextLineHeightWithSpacing();
         boolean hovered = ImGui.isItemHovered();
@@ -245,7 +250,12 @@ public class FramebufferFileEditor implements ResourceFileEditor<FramebufferReso
         ImGui.sameLine();
         ImGui.setCursorPosX(ImGui.getCursorStartPosX());
         ImVec4 col = new ImVec4();
-        style.getColor(active ? 23 : hovered ? 22 : 21, col);
+        if (active) {
+            i = 23;
+        } else {
+            i = hovered ? 22 : 21;
+        }
+        style.getColor(i, col);
         int colorU32 = ImGui.getColorU32(col.x, col.y, col.z, col.w);
         float x = ImGui.getCursorScreenPosX();
         float y = ImGui.getCursorScreenPosY();
@@ -281,19 +291,6 @@ public class FramebufferFileEditor implements ResourceFileEditor<FramebufferReso
     }
 
     private static void drawVerticalText(String next) {
-        ImFont font = ImGui.getFont();
-        float pad = ImGui.getStyle().getFramePaddingX();
-        float posX = ImGui.getCursorScreenPosX() + pad;
-        float posY = ImGui.getCursorScreenPosY() + pad;
-        ImDrawList drawList = ImGui.getWindowDrawList();
-        int length = next.length();
-        drawList.primReserve(6 * length, 4 * length);
-        for (int i = 0; i < length; i++) {
-            int codePoint = next.codePointAt(i);
-            ImFontGlyph glyph = font.findGlyph(codePoint);
-            posY -= font.getCharAdvance(codePoint);
-            drawList.primQuadUV((int) (posX + glyph.getY1()), (int) (posY + glyph.getX0()), (int) (posX + glyph.getY1()), (int) (posY + glyph.getX1()), (int) (posX + glyph.getY0()), (int) (posY + glyph.getX1()), (int) (posX + glyph.getY0()), (int) (posY + glyph.getX0()), glyph.getU1(), glyph.getV1(), glyph.getU0(), glyph.getV1(), glyph.getU0(), glyph.getV0(), glyph.getU1(), glyph.getV0(), -1);
-        }
     }
 
     /* JADX INFO: Thrown type has an unknown type hierarchy: com.google.gson.JsonSyntaxException */
@@ -437,7 +434,7 @@ public class FramebufferFileEditor implements ResourceFileEditor<FramebufferReso
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/resource/editor/FramebufferFileEditor$FramebufferDefinitionBuilder.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/resource/editor/FramebufferFileEditor$FramebufferDefinitionBuilder.class */
     private static class FramebufferDefinitionBuilder {
         private MolangExpression width;
         private MolangExpression height;

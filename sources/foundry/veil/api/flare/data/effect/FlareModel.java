@@ -30,7 +30,7 @@ import org.joml.Quaternionfc;
 import org.joml.Vector3f;
 import org.joml.Vector3fc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/flare/data/effect/FlareModel.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/flare/data/effect/FlareModel.class */
 public final class FlareModel {
     public static final Codec<FlareModel> CODEC = RecordCodecBuilder.create(instance -> {
         return instance.group(ResourceLocation.CODEC.fieldOf("path").forGetter((v0) -> {

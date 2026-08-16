@@ -42,7 +42,7 @@ import org.joml.Quaterniond;
 import org.joml.Quaternionf;
 import org.joml.Vector3d;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/resource/editor/BlockModelInspector.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/resource/editor/BlockModelInspector.class */
 @ApiStatus.Internal
 public class BlockModelInspector implements ResourceFileEditor<BlockModelResource> {
     private static final Component TITLE = Component.translatable("inspector.veil.block_model.title");
@@ -108,7 +108,7 @@ public class BlockModelInspector implements ResourceFileEditor<BlockModelResourc
                 }
             });
             if (ImGui.beginChild("3D View", (desiredWidth / 2.0f) + 2.0f, (desiredHeight / 2.0f) + 2.0f, false, 8)) {
-                ImGui.image(texture, desiredWidth / 2.0f, desiredHeight / 2.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.1f);
+                ImGui.imageWithBg(texture, desiredWidth / 2.0f, desiredHeight / 2.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 0.1f, 1.0f, 1.0f, 1.0f, 1.0f);
             }
             ImGui.endChild();
         }
@@ -142,7 +142,15 @@ public class BlockModelInspector implements ResourceFileEditor<BlockModelResourc
                                 parentReader.close();
                             }
                             return blockModelFromStream;
-                        } finally {
+                        } catch (Throwable th) {
+                            if (parentReader != null) {
+                                try {
+                                    parentReader.close();
+                                } catch (Throwable th2) {
+                                    th.addSuppressed(th2);
+                                }
+                            }
+                            throw th;
                         }
                     } catch (Exception e) {
                         Veil.LOGGER.error("Failed to load block model", e);
@@ -161,7 +169,15 @@ public class BlockModelInspector implements ResourceFileEditor<BlockModelResourc
                 if (reader != null) {
                     reader.close();
                 }
-            } finally {
+            } catch (Throwable th) {
+                if (reader != null) {
+                    try {
+                        reader.close();
+                    } catch (Throwable th2) {
+                        th.addSuppressed(th2);
+                    }
+                }
+                throw th;
             }
         } catch (Exception e) {
             Veil.LOGGER.error("Failed to load block model", e);

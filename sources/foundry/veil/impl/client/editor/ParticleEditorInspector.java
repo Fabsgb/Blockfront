@@ -64,7 +64,7 @@ import org.joml.Vector3dc;
 import org.joml.Vector3f;
 import org.joml.Vector3fc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/editor/ParticleEditorInspector.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/editor/ParticleEditorInspector.class */
 @ApiStatus.Internal
 public class ParticleEditorInspector extends SingleWindowInspector {
     public static final Component TITLE = Component.literal("Particle Editor");
@@ -532,7 +532,7 @@ public class ParticleEditorInspector extends SingleWindowInspector {
         return RESOURCE_GROUP;
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/editor/ParticleEditorInspector$MutableParticleEmitter.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/editor/ParticleEditorInspector$MutableParticleEmitter.class */
     private static class MutableParticleEmitter extends ParticleEmitter {
         private boolean forceRemoved;
         public boolean renderEmitterShape;
@@ -683,7 +683,7 @@ public class ParticleEditorInspector extends SingleWindowInspector {
             remove();
         }
 
-        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/editor/ParticleEditorInspector$MutableParticleEmitter$ParticleSettingsBuilder.class */
+        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/editor/ParticleEditorInspector$MutableParticleEmitter$ParticleSettingsBuilder.class */
         private static class ParticleSettingsBuilder {
             private float particleSpeed;
             private float particleSize;

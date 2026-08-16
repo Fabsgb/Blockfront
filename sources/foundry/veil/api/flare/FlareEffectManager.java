@@ -11,7 +11,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/flare/FlareEffectManager.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/flare/FlareEffectManager.class */
 public final class FlareEffectManager {
     private final ShellManager shellManager = new ShellManager();
     private final ControllerManager controllerManager = new ControllerManager();

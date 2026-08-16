@@ -1,6 +1,6 @@
 package com.boehmod.bflib.cloud.common;
 
-import com.boehmod.bflib.cloud.common.mm.SearchGame;
+import com.boehmod.bflib.cloud.common.p001mm.SearchGame;
 import com.boehmod.bflib.cloud.packet.IPacket;
 import io.netty.buffer.ByteBuf;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
@@ -11,7 +11,7 @@ import java.util.Set;
 import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/MatchData.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/MatchData.class */
 public class MatchData {
 
     @NotNull

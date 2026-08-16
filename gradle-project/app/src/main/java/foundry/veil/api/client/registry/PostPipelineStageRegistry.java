@@ -16,7 +16,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/registry/PostPipelineStageRegistry.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/registry/PostPipelineStageRegistry.class */
 public final class PostPipelineStageRegistry {
     public static final ResourceKey<Registry<PipelineType<?>>> REGISTRY_KEY = ResourceKey.createRegistryKey(Veil.veilPath("post_pipeline_stage"));
     private static final RegistrationProvider<PipelineType<?>> PROVIDER = RegistrationProvider.get(REGISTRY_KEY, Veil.MODID);
@@ -39,7 +39,7 @@ public final class PostPipelineStageRegistry {
         });
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/registry/PostPipelineStageRegistry$PipelineType.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/registry/PostPipelineStageRegistry$PipelineType.class */
     public static final class PipelineType<T extends PostPipeline> extends Record {
         private final MapCodec<T> codec;
 

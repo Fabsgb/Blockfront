@@ -18,7 +18,7 @@ import org.objectweb.asm.Label;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.MethodNode;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/core/compiler/BytecodeCompiler.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/core/compiler/BytecodeCompiler.class */
 @ApiStatus.Internal
 public class BytecodeCompiler extends ClassLoader {
     public static final int FLAG_OPTIMIZE = 1;
@@ -46,7 +46,7 @@ public class BytecodeCompiler extends ClassLoader {
         environment.reset();
         try {
             if (environment.optimize() && node.isConstant()) {
-                return MolangExpression.m7998of(node.evaluate(environment));
+                return MolangExpression.m8349of(node.evaluate(environment));
             }
             ClassNode classNode = new ClassNode(327680);
             classNode.version = 52;

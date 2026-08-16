@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Contract;
 import org.joml.Vector2f;
 import org.joml.Vector2fc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/flare/modifier/modifiers/Vec2PropertyModifier.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/flare/modifier/modifiers/Vec2PropertyModifier.class */
 public class Vec2PropertyModifier extends PropertyModifier<Vector2fc> {
     protected final List<FloatCurve> curveList;
     protected final Vector2f dummy;

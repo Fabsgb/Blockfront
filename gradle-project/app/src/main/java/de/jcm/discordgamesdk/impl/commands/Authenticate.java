@@ -5,12 +5,12 @@ import de.jcm.discordgamesdk.user.DiscordUser;
 import java.util.Date;
 import java.util.Set;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/impl/commands/Authenticate.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/impl/commands/Authenticate.class */
 public class Authenticate {
     private Authenticate() {
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/impl/commands/Authenticate$Response.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/impl/commands/Authenticate$Response.class */
     public static class Response {
         public String access_token;
         public Set<String> scopes;
@@ -18,9 +18,11 @@ public class Authenticate {
         public DiscordUser user;
         public Application application;
 
-        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/impl/commands/Authenticate$Response$Application.class */
+        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/impl/commands/Authenticate$Response$Application.class */
         public static class Application {
-            String id;
+
+            /* JADX INFO: renamed from: id */
+            String f9106id;
             String name;
             String icon;
             String description;
@@ -35,7 +37,7 @@ public class Authenticate {
             boolean storefront_available;
 
             public ApplicationManager.Application toApplication() {
-                return new ApplicationManager.Application(Long.parseLong(this.id), this.name, this.icon, this.description, this.type, this.cover_image, this.summary, this.is_monetized, this.is_verified, this.verify_key, this.flags, this.hook, this.storefront_available);
+                return new ApplicationManager.Application(Long.parseLong(this.f9106id), this.name, this.icon, this.description, this.type, this.cover_image, this.summary, this.is_monetized, this.is_verified, this.verify_key, this.flags, this.hook, this.storefront_available);
             }
         }
 

@@ -1,14 +1,14 @@
 package com.boehmod.bflib.cloud.common.player.achievement;
 
 import com.boehmod.bflib.cloud.common.CloudRegistry;
-import com.boehmod.blockfront.C0203dE;
-import com.boehmod.blockfront.C0357g;
-import com.boehmod.blockfront.C0942rB;
+import com.boehmod.blockfront.C0215dP;
+import com.boehmod.blockfront.C0358g;
+import com.boehmod.blockfront.C0966rY;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectRBTreeMap;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/player/achievement/CloudAchievements.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/player/achievement/CloudAchievements.class */
 public class CloudAchievements {
 
     @NotNull
@@ -35,6 +35,7 @@ public class CloudAchievements {
     public static final CloudAchievement ACH_MATCH_WIN_INF = new CloudAchievement(45, "bf.achievement.win_inf");
     public static final CloudAchievement ACH_USER_PRESTIGE_1 = new CloudAchievement(50, "bf.achievement.prestige_1");
     public static final CloudAchievement ACH_USER_PRESTIGE_MAX = new CloudAchievement(51, "bf.achievement.prestige_max");
+    public static final CloudAchievement ACH_USER_CLASS_MASTER = new CloudAchievement(52, "bf.achievement.class_master");
     public static final CloudAchievement ACH_USER_RAGEQUIT = new CloudAchievement(80, "bf.achievement.ragequit").disableReward();
     public static final CloudAchievement ACH_USER_BOOTCAMP = new CloudAchievement(81, "bf.achievement.bootcamp").disableReward();
     public static final CloudAchievement ACH_USER_SHOT_THE_SHERIFF = new CloudAchievement(82, "bf.achievement.shot_the_sheriff").disableReward();
@@ -43,13 +44,15 @@ public class CloudAchievements {
     public static final CloudAchievement ACH_USER_END_STREAK = new CloudAchievement(85, "bf.achievement.end_streak").disableReward();
     public static final CloudAchievement ACH_USER_END_STREAK_SELF = new CloudAchievement(86, "bf.achievement.end_streak_self").disableReward();
     public static final CloudAchievement ACH_USER_LOSE_STREAK = new CloudAchievement(87, "bf.achievement.lose_streak").disableReward();
+    public static final CloudAchievement ACH_USER_OVERCOOK = new CloudAchievement(88, "bf.achievement.overcook").disableReward();
+    public static final CloudAchievement ACH_USER_BAYONET_DRY = new CloudAchievement(89, "bf.achievement.bayonet_dry");
     public static final CloudAchievement ACH_STATS_INFECTED_KILLS_FIRST = new CloudAchievement(100, "bf.achievement.infected_kills_1");
     public static final CloudAchievement ACH_STATS_INFECTED_KILLS_50 = new CloudAchievement(101, "bf.achievement.infected_kills_50");
     public static final CloudAchievement ACH_STATS_INFECTED_KILLS_100 = new CloudAchievement(102, "bf.achievement.infected_kills_100");
     public static final CloudAchievement ACH_STATS_INFECTED_KILLS_500 = new CloudAchievement(103, "bf.achievement.infected_kills_500");
     public static final CloudAchievement ACH_STATS_INFECTED_KILLS_1000 = new CloudAchievement(104, "bf.achievement.infected_kills_1000");
     public static final CloudAchievement ACH_STATS_INFECTED_KILLS_5000 = new CloudAchievement(105, "bf.achievement.infected_kills_5000");
-    public static final CloudAchievement ACH_STATS_ASSISTS_1 = new CloudAchievement(C0357g.f2439g, "bf.achievement.assists_1");
+    public static final CloudAchievement ACH_STATS_ASSISTS_1 = new CloudAchievement(C0358g.f2490g, "bf.achievement.assists_1");
     public static final CloudAchievement ACH_STATS_ASSISTS_20 = new CloudAchievement(121, "bf.achievement.assists_20");
     public static final CloudAchievement ACH_STATS_ASSISTS_50 = new CloudAchievement(122, "bf.achievement.assists_50");
     public static final CloudAchievement ACH_STATS_ASSISTS_100 = new CloudAchievement(123, "bf.achievement.assists_100");
@@ -59,7 +62,7 @@ public class CloudAchievements {
     public static final CloudAchievement ACH_STATS_BACKSTABS_20 = new CloudAchievement(130, "bf.achievement.backstabs_20");
     public static final CloudAchievement ACH_STATS_BACKSTABS_50 = new CloudAchievement(131, "bf.achievement.backstabs_50");
     public static final CloudAchievement ACH_STATS_BACKSTABS_100 = new CloudAchievement(132, "bf.achievement.backstabs_100");
-    public static final CloudAchievement ACH_STATS_BACKSTABS_300 = new CloudAchievement(C0203dE.f1640gN, "bf.achievement.backstabs_300");
+    public static final CloudAchievement ACH_STATS_BACKSTABS_300 = new CloudAchievement(C0215dP.f1669hX, "bf.achievement.backstabs_300");
     public static final CloudAchievement ACH_STATS_BACKSTABS_800 = new CloudAchievement(134, "bf.achievement.backstabs_800");
     public static final CloudAchievement ACH_STATS_NOSCOPES_20 = new CloudAchievement(140, "bf.achievement.noscopes_20");
     public static final CloudAchievement ACH_STATS_NOSCOPES_50 = new CloudAchievement(141, "bf.achievement.noscopes_50");
@@ -76,7 +79,7 @@ public class CloudAchievements {
     public static final CloudAchievement ACH_STATS_FIRE_KILLS_60 = new CloudAchievement(403, "bf.achievement.fire_kills_60");
     public static final CloudAchievement ACH_STATS_FIRE_KILLS_100 = new CloudAchievement(404, "bf.achievement.fire_kills_100");
     public static final CloudAchievement ACH_STATS_FIRE_KILLS_300 = new CloudAchievement(405, "bf.achievement.fire_kills_300");
-    public static final CloudAchievement ACH_USER_STREAK_3 = new CloudAchievement(C0942rB.f5014pJ, "bf.achievement.streak_3").disableReward();
+    public static final CloudAchievement ACH_USER_STREAK_3 = new CloudAchievement(C0966rY.f5366rI, "bf.achievement.streak_3").disableReward();
     public static final CloudAchievement ACH_USER_STREAK_7 = new CloudAchievement(501, "bf.achievement.streak_7").disableReward();
     public static final CloudAchievement ACH_USER_STREAK_14 = new CloudAchievement(502, "bf.achievement.streak_14").disableReward();
     public static final CloudAchievement ACH_USER_STREAK_30 = new CloudAchievement(503, "bf.achievement.streak_30").disableReward();

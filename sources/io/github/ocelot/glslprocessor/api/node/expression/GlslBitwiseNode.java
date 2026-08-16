@@ -10,7 +10,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/node/expression/GlslBitwiseNode.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/node/expression/GlslBitwiseNode.class */
 public final class GlslBitwiseNode implements GlslNode {
     private final List<GlslNode> expressions;
     private Operand operand;
@@ -111,7 +111,7 @@ public final class GlslBitwiseNode implements GlslNode {
         return "GlslBitwiseNode{expressions=" + this.expressions + ", operator=" + this.operand + "}";
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/node/expression/GlslBitwiseNode$Operand.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/node/expression/GlslBitwiseNode$Operand.class */
     public enum Operand {
         BITWISE_AND("&", GlslNodeType.AND),
         BITWISE_INCLUSIVE_OR("|", GlslNodeType.OR),

@@ -20,7 +20,7 @@ import org.joml.Vector2fc;
 import org.joml.Vector3fc;
 import org.joml.Vector4fc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/registry/PropertyModifierRegistry.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/registry/PropertyModifierRegistry.class */
 public final class PropertyModifierRegistry {
     public static final ResourceKey<Registry<PropertyModifierType<?, ?>>> REGISTRY_KEY = ResourceKey.createRegistryKey(Veil.veilPath("property_modifier"));
     private static final RegistrationProvider<PropertyModifierType<?, ?>> PROVIDER = RegistrationProvider.get(REGISTRY_KEY, Veil.MODID);
@@ -44,7 +44,7 @@ public final class PropertyModifierRegistry {
         });
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/registry/PropertyModifierRegistry$PropertyModifierType.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/registry/PropertyModifierRegistry$PropertyModifierType.class */
     public static final class PropertyModifierType<T, M extends PropertyModifier<T>> extends Record {
         private final MapCodec<M> codec;
 

@@ -1,5 +1,6 @@
 package io.github.ocelot.glslprocessor.api.visitor;
 
+import com.boehmod.blockfront.C0994s;
 import io.github.ocelot.glslprocessor.api.grammar.GlslFunctionHeader;
 import io.github.ocelot.glslprocessor.api.grammar.GlslParameterDeclaration;
 import io.github.ocelot.glslprocessor.api.grammar.GlslSpecifiedType;
@@ -20,6 +21,7 @@ import io.github.ocelot.glslprocessor.api.node.constant.GlslConstantNode;
 import io.github.ocelot.glslprocessor.api.node.constant.GlslDoubleConstantNode;
 import io.github.ocelot.glslprocessor.api.node.constant.GlslFloatConstantNode;
 import io.github.ocelot.glslprocessor.api.node.constant.GlslIntConstantNode;
+import io.github.ocelot.glslprocessor.api.node.constant.GlslIntFormat;
 import io.github.ocelot.glslprocessor.api.node.expression.GlslAssignmentNode;
 import io.github.ocelot.glslprocessor.api.node.expression.GlslBitwiseNode;
 import io.github.ocelot.glslprocessor.api.node.expression.GlslCompareNode;
@@ -40,7 +42,7 @@ import java.util.List;
 import java.util.Locale;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/visitor/GlslNodeStringWriter.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/visitor/GlslNodeStringWriter.class */
 public final class GlslNodeStringWriter extends GlslNodeVisitor {
     private final String prefix;
     private final String base;
@@ -447,13 +449,13 @@ public final class GlslNodeStringWriter extends GlslNodeVisitor {
     public void visitUnary(GlslUnaryNode node) {
         GlslUnaryNode.Operand operand = node.getOperand();
         GlslNode expression = node.getExpression();
-        switch (operand) {
-            case PRE_INCREMENT:
-            case PRE_DECREMENT:
-            case PLUS:
-            case DASH:
-            case BANG:
-            case TILDE:
+        switch (C14845.f9178x9c884513[operand.ordinal()]) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
                 this.builder.append(operand.getDelimiter());
                 boolean simple = (expression instanceof GlslConstantNode) || (expression instanceof GlslGetArrayNode) || (expression instanceof GlslGetFieldNode) || (expression instanceof GlslVariableNode);
                 if (!simple) {
@@ -465,8 +467,8 @@ public final class GlslNodeStringWriter extends GlslNodeVisitor {
                     this.builder.append(')');
                 }
                 break;
-            case POST_INCREMENT:
-            case POST_DECREMENT:
+            case C0994s.f5462C /* 7 */:
+            case 8:
                 expression.visit(inline());
                 trimSemicolon();
                 this.builder.append(operand.getDelimiter());
@@ -554,6 +556,88 @@ public final class GlslNodeStringWriter extends GlslNodeVisitor {
             }
             if (!constantNode.signed()) {
                 this.builder.append('u');
+            }
+        }
+    }
+
+    /* JADX INFO: renamed from: io.github.ocelot.glslprocessor.api.visitor.GlslNodeStringWriter$5 */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/visitor/GlslNodeStringWriter$5.class */
+    static /* synthetic */ class C14845 {
+
+        /* JADX INFO: renamed from: $SwitchMap$io$github$ocelot$glslprocessor$api$node$expression$GlslUnaryNode$Operand */
+        static final /* synthetic */ int[] f9178x9c884513;
+
+        static {
+            try {
+                f9179xa914b5cf[GlslIntFormat.HEXADECIMAL.ordinal()] = 1;
+            } catch (NoSuchFieldError e) {
+            }
+            try {
+                f9179xa914b5cf[GlslIntFormat.OCTAL.ordinal()] = 2;
+            } catch (NoSuchFieldError e2) {
+            }
+            try {
+                f9179xa914b5cf[GlslIntFormat.DECIMAL.ordinal()] = 3;
+            } catch (NoSuchFieldError e3) {
+            }
+            f9178x9c884513 = new int[GlslUnaryNode.Operand.values().length];
+            try {
+                f9178x9c884513[GlslUnaryNode.Operand.PRE_INCREMENT.ordinal()] = 1;
+            } catch (NoSuchFieldError e4) {
+            }
+            try {
+                f9178x9c884513[GlslUnaryNode.Operand.PRE_DECREMENT.ordinal()] = 2;
+            } catch (NoSuchFieldError e5) {
+            }
+            try {
+                f9178x9c884513[GlslUnaryNode.Operand.PLUS.ordinal()] = 3;
+            } catch (NoSuchFieldError e6) {
+            }
+            try {
+                f9178x9c884513[GlslUnaryNode.Operand.DASH.ordinal()] = 4;
+            } catch (NoSuchFieldError e7) {
+            }
+            try {
+                f9178x9c884513[GlslUnaryNode.Operand.BANG.ordinal()] = 5;
+            } catch (NoSuchFieldError e8) {
+            }
+            try {
+                f9178x9c884513[GlslUnaryNode.Operand.TILDE.ordinal()] = 6;
+            } catch (NoSuchFieldError e9) {
+            }
+            try {
+                f9178x9c884513[GlslUnaryNode.Operand.POST_INCREMENT.ordinal()] = 7;
+            } catch (NoSuchFieldError e10) {
+            }
+            try {
+                f9178x9c884513[GlslUnaryNode.Operand.POST_DECREMENT.ordinal()] = 8;
+            } catch (NoSuchFieldError e11) {
+            }
+            f9177x726b1e29 = new int[GlslJumpNode.values().length];
+            try {
+                f9177x726b1e29[GlslJumpNode.CONTINUE.ordinal()] = 1;
+            } catch (NoSuchFieldError e12) {
+            }
+            try {
+                f9177x726b1e29[GlslJumpNode.BREAK.ordinal()] = 2;
+            } catch (NoSuchFieldError e13) {
+            }
+            try {
+                f9177x726b1e29[GlslJumpNode.DISCARD.ordinal()] = 3;
+            } catch (NoSuchFieldError e14) {
+            }
+            f9176xfaa6874 = new int[GlslTypeQualifier.Precision.values().length];
+            try {
+                f9176xfaa6874[GlslTypeQualifier.Precision.HIGH_PRECISION.ordinal()] = 1;
+            } catch (NoSuchFieldError e15) {
+            }
+            try {
+                f9176xfaa6874[GlslTypeQualifier.Precision.MEDIUM_PRECISION.ordinal()] = 2;
+            } catch (NoSuchFieldError e16) {
+            }
+            try {
+                f9176xfaa6874[GlslTypeQualifier.Precision.LOW_PRECISION.ordinal()] = 3;
+            } catch (NoSuchFieldError e17) {
             }
         }
     }

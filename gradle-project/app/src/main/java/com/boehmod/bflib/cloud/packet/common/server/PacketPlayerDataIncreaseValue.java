@@ -11,7 +11,7 @@ import java.lang.runtime.ObjectMethods;
 import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/server/PacketPlayerDataIncreaseValue.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/server/PacketPlayerDataIncreaseValue.class */
 public final class PacketPlayerDataIncreaseValue extends Record implements IPacket {
 
     @NotNull
@@ -24,8 +24,9 @@ public final class PacketPlayerDataIncreaseValue extends Record implements IPack
     private final String value;
     private final int amount;
 
+    /* JADX INFO: renamed from: ID */
     @NotNull
-    public static final PacketIdentifier ID = new PacketIdentifier("PacketPlayerDataIncreaseValue");
+    public static final PacketIdentifier f110ID = new PacketIdentifier("PacketPlayerDataIncreaseValue");
 
     public PacketPlayerDataIncreaseValue(@NotNull PlayerStatExtra extra, @NotNull UUID uuid, @NotNull String value, int amount) {
         this.extra = extra;
@@ -87,6 +88,6 @@ public final class PacketPlayerDataIncreaseValue extends Record implements IPack
     @Override // com.boehmod.bflib.cloud.packet.IPacket
     @NotNull
     public PacketIdentifier getPacketIdentifier() {
-        return ID;
+        return f110ID;
     }
 }

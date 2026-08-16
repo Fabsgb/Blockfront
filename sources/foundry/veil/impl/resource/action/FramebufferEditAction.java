@@ -7,7 +7,7 @@ import foundry.veil.api.resource.type.FramebufferResource;
 import java.util.OptionalInt;
 import net.minecraft.network.chat.Component;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/resource/action/FramebufferEditAction.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/resource/action/FramebufferEditAction.class */
 public enum FramebufferEditAction implements VeilResourceAction<FramebufferResource> {
     INSTANCE;
 

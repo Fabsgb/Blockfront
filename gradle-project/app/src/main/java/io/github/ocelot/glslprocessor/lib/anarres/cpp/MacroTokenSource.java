@@ -1,12 +1,12 @@
 package io.github.ocelot.glslprocessor.lib.anarres.cpp;
 
-import com.boehmod.blockfront.C0407pb;
+import com.boehmod.blockfront.C0885px;
 import java.util.Iterator;
 import java.util.List;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/lib/anarres/cpp/MacroTokenSource.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/lib/anarres/cpp/MacroTokenSource.class */
 @ApiStatus.Internal
 class MacroTokenSource extends Source {
     private final Macro macro;
@@ -40,7 +40,7 @@ class MacroTokenSource extends Source {
                 case '\n':
                     buf.append("\\n");
                     break;
-                case C0407pb.nu /* 13 */:
+                case C0885px.f4841pt /* 13 */:
                     buf.append("\\r");
                     break;
                 case '\"':
@@ -80,48 +80,44 @@ class MacroTokenSource extends Source {
         StringBuilder buf = new StringBuilder();
         int count = 2;
         boolean comma = false;
-        int i = 0;
-        while (true) {
-            if (i < count) {
-                if (!this.tokens.hasNext()) {
-                    error(ptok.getLine(), ptok.getColumn(), "Paste at end of expansion");
-                    buf.append(' ').append(ptok.getText());
-                } else {
-                    Token tok = this.tokens.next();
-                    switch (tok.getType()) {
-                        case 44:
-                            comma = true;
-                            buf.append(tok.getText());
-                            continue;
-                            i++;
-                            break;
-                        case Token.CCOMMENT /* 260 */:
-                        case Token.CPPCOMMENT /* 261 */:
-                            break;
-                        case Token.M_ARG /* 296 */:
-                            int idx = ((Integer) tok.getValue()).intValue();
-                            Argument arg = this.args.get(idx);
-                            if (comma && isVariadicArgument(idx) && arg.isEmpty()) {
-                                buf.setLength(buf.length() - 1);
-                            } else {
-                                concat(buf, arg);
-                            }
-                            break;
-                        case Token.M_PASTE /* 297 */:
-                            count += 2;
-                            ptok = tok;
-                            break;
-                        default:
-                            buf.append(tok.getText());
-                            break;
-                    }
-                    comma = false;
-                    i++;
-                }
+        for (int i = 0; i < count; i++) {
+            if (!this.tokens.hasNext()) {
+                error(ptok.getLine(), ptok.getColumn(), "Paste at end of expansion");
+                buf.append(' ').append(ptok.getText());
+                StringLexerSource sl = new StringLexerSource(buf.toString());
+                this.arg = new SourceIterator(sl);
             }
+            Token tok = this.tokens.next();
+            switch (tok.getType()) {
+                case 44:
+                    comma = true;
+                    buf.append(tok.getText());
+                    continue;
+                    break;
+                case Token.CCOMMENT /* 260 */:
+                case Token.CPPCOMMENT /* 261 */:
+                    break;
+                case Token.M_ARG /* 296 */:
+                    int idx = ((Integer) tok.getValue()).intValue();
+                    Argument arg = this.args.get(idx);
+                    if (comma && isVariadicArgument(idx) && arg.isEmpty()) {
+                        buf.setLength(buf.length() - 1);
+                    } else {
+                        concat(buf, arg);
+                    }
+                    break;
+                case Token.M_PASTE /* 297 */:
+                    count += 2;
+                    ptok = tok;
+                    break;
+                default:
+                    buf.append(tok.getText());
+                    break;
+            }
+            comma = false;
         }
-        StringLexerSource sl = new StringLexerSource(buf.toString());
-        this.arg = new SourceIterator(sl);
+        StringLexerSource sl2 = new StringLexerSource(buf.toString());
+        this.arg = new SourceIterator(sl2);
     }
 
     @Override // io.github.ocelot.glslprocessor.lib.anarres.cpp.Source

@@ -19,7 +19,7 @@ import java.util.Set;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/resource/type/VeilShaderIncludeResource.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/resource/type/VeilShaderIncludeResource.class */
 @ApiStatus.Internal
 public final class VeilShaderIncludeResource extends Record implements VeilShaderResource<VeilShaderIncludeResource> {
     private final VeilResourceInfo resourceInfo;
@@ -73,13 +73,11 @@ public final class VeilShaderIncludeResource extends Record implements VeilShade
         for (Map.Entry<ResourceLocation, ShaderProgram> entry : shaderManager.getShaders().entrySet()) {
             ShaderProgram program = entry.getValue();
             ObjectIterator it = program.getShaders().values().iterator();
-            while (true) {
-                if (it.hasNext()) {
-                    CompiledShader shader = (CompiledShader) it.next();
-                    if (shader.includes().contains(id)) {
-                        programs.add(entry.getKey());
-                        break;
-                    }
+            while (it.hasNext()) {
+                CompiledShader shader = (CompiledShader) it.next();
+                if (shader.includes().contains(id)) {
+                    programs.add(entry.getKey());
+                    break;
                 }
             }
         }

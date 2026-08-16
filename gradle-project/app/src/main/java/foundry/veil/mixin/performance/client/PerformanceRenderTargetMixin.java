@@ -1,6 +1,6 @@
 package foundry.veil.mixin.performance.client;
 
-import com.boehmod.blockfront.InterfaceC0638xq;
+import com.boehmod.blockfront.InterfaceC1274xN;
 import com.mojang.blaze3d.pipeline.MainTarget;
 import com.mojang.blaze3d.pipeline.RenderTarget;
 import com.mojang.blaze3d.platform.GlStateManager;
@@ -24,7 +24,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/mixin/performance/client/PerformanceRenderTargetMixin.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/mixin/performance/client/PerformanceRenderTargetMixin.class */
 @Mixin({RenderTarget.class})
 public abstract class PerformanceRenderTargetMixin implements PerformanceRenderTargetExtension {
 
@@ -141,7 +141,7 @@ public abstract class PerformanceRenderTargetMixin implements PerformanceRenderT
             RenderSystem.assertOnRenderThread();
             int drawFramebuffer = GL11C.glGetInteger(36006);
             GlStateManager._colorMask(true, true, true, false);
-            ARBDirectStateAccess.glBlitNamedFramebuffer(this.frameBufferId, drawFramebuffer, 0, 0, this.width, this.height, 0, 0, width, height, InterfaceC0638xq.tV, 9728);
+            ARBDirectStateAccess.glBlitNamedFramebuffer(this.frameBufferId, drawFramebuffer, 0, 0, this.width, this.height, 0, 0, width, height, InterfaceC1274xN.f6857vZ, 9728);
         } else {
             ShaderProgram shader = VeilRenderSystem.setShader(veil$BLIT_SHADER);
             if (shader == null) {
@@ -178,7 +178,7 @@ public abstract class PerformanceRenderTargetMixin implements PerformanceRenderT
         } else {
             bindWrite(true);
             GlStateManager._clearColor(this.clearChannels[0], this.clearChannels[1], this.clearChannels[2], this.clearChannels[3]);
-            GlStateManager._clear(InterfaceC0638xq.tV, clearError);
+            GlStateManager._clear(InterfaceC1274xN.f6857vZ, clearError);
             unbindWrite();
         }
         if (clearError) {

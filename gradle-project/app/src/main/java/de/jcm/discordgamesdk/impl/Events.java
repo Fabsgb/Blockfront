@@ -1,7 +1,6 @@
 package de.jcm.discordgamesdk.impl;
 
 import de.jcm.discordgamesdk.Core;
-import de.jcm.discordgamesdk.impl.Command;
 import de.jcm.discordgamesdk.impl.events.ActivityJoinEvent;
 import de.jcm.discordgamesdk.impl.events.ActivityJoinRequestEvent;
 import de.jcm.discordgamesdk.impl.events.CurrentUserUpdateEvent;
@@ -14,7 +13,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/impl/Events.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/impl/Events.class */
 public class Events {
     private final Core.CorePrivate core;
     private final Map<Command.Event, EventHandler<?>> handlers = new HashMap();

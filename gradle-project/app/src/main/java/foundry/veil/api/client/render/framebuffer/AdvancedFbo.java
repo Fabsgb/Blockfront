@@ -1,11 +1,10 @@
 package foundry.veil.api.client.render.framebuffer;
 
-import com.boehmod.blockfront.InterfaceC0638xq;
+import com.boehmod.blockfront.InterfaceC1274xN;
 import com.mojang.blaze3d.pipeline.RenderTarget;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import foundry.veil.api.client.render.VeilRenderSystem;
-import foundry.veil.api.client.render.framebuffer.FramebufferAttachmentDefinition;
 import foundry.veil.api.client.render.texture.TextureFilter;
 import foundry.veil.impl.client.render.framebuffer.AdvancedFboImpl;
 import foundry.veil.impl.client.render.framebuffer.AdvancedFboMutableTextureAttachment;
@@ -19,7 +18,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.Nullable;
 import org.lwjgl.system.NativeResource;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/framebuffer/AdvancedFbo.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/framebuffer/AdvancedFbo.class */
 public interface AdvancedFbo extends NativeResource {
     void create();
 
@@ -76,7 +75,7 @@ public interface AdvancedFbo extends NativeResource {
     String getDebugLabel();
 
     /* JADX INFO: renamed from: toRenderTarget */
-    RenderTarget mo1982toRenderTarget();
+    RenderTarget mo9539toRenderTarget();
 
     default void clear() {
         clear(0.0f, 0.0f, 0.0f, 0.0f, 1.0f, getClearMask(), getDrawBuffers());
@@ -143,7 +142,7 @@ public interface AdvancedFbo extends NativeResource {
     }
 
     default void resolveToScreen() {
-        resolveToAdvancedFbo(getMainFramebuffer(), InterfaceC0638xq.tV, 9728);
+        resolveToAdvancedFbo(getMainFramebuffer(), InterfaceC1274xN.f6857vZ, 9728);
     }
 
     default void resolveToScreen(int mask, int filtering) {
@@ -244,7 +243,7 @@ public interface AdvancedFbo extends NativeResource {
         return AdvancedFboImpl.copy(parent);
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/framebuffer/AdvancedFbo$Builder.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/framebuffer/AdvancedFbo$Builder.class */
     public static class Builder {
         private final int width;
         private final int height;
@@ -321,12 +320,12 @@ public interface AdvancedFbo extends NativeResource {
 
         public Builder addAttachments(AdvancedFbo parent) {
             for (int i = 0; i < parent.getColorAttachments(); i++) {
-                this.colorAttachments.add(parent.getColorAttachment(i).mo1772clone());
+                this.colorAttachments.add(parent.getColorAttachment(i).mo9329clone());
             }
             validateColorSize();
             if (parent.hasDepthAttachment()) {
                 Validate.isTrue(this.depthAttachment == null, "Only one depth attachment can be applied to an FBO.", new Object[0]);
-                this.depthAttachment = parent.getDepthAttachment().mo1772clone();
+                this.depthAttachment = parent.getDepthAttachment().mo9329clone();
             }
             return this;
         }
@@ -512,8 +511,8 @@ public interface AdvancedFbo extends NativeResource {
                     return new AdvancedFboAttachment[x$0];
                 }), this.depthAttachment, this.debugLabel);
             } else {
-                legacyAdvancedFboImpl = new LegacyAdvancedFboImpl(this.width, this.height, (AdvancedFboAttachment[]) this.colorAttachments.toArray(x$02 -> {
-                    return new AdvancedFboAttachment[x$02];
+                legacyAdvancedFboImpl = new LegacyAdvancedFboImpl(this.width, this.height, (AdvancedFboAttachment[]) this.colorAttachments.toArray(x$1 -> {
+                    return new AdvancedFboAttachment[x$1];
                 }), this.depthAttachment, this.debugLabel);
             }
             AdvancedFbo framebuffer = legacyAdvancedFboImpl;

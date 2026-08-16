@@ -14,7 +14,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import net.minecraft.client.renderer.ShaderInstance;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/property/Property.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/property/Property.class */
 public abstract class Property<T> {
     protected T overrideValue;
     protected final T value;

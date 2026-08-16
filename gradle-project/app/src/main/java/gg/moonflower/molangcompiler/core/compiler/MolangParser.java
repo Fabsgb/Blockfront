@@ -1,7 +1,8 @@
 package gg.moonflower.molangcompiler.core.compiler;
 
-import com.boehmod.blockfront.AbstractC0422pq;
-import com.boehmod.blockfront.C0407pb;
+import com.boehmod.blockfront.C0885px;
+import com.boehmod.blockfront.C0994s;
+import com.boehmod.blockfront.C1089to;
 import gg.moonflower.molangcompiler.api.exception.MolangSyntaxException;
 import gg.moonflower.molangcompiler.core.ast.BinaryConditionalNode;
 import gg.moonflower.molangcompiler.core.ast.BinaryOperation;
@@ -14,6 +15,7 @@ import gg.moonflower.molangcompiler.core.ast.FunctionNode;
 import gg.moonflower.molangcompiler.core.ast.LoopNode;
 import gg.moonflower.molangcompiler.core.ast.MathNode;
 import gg.moonflower.molangcompiler.core.ast.MathOperation;
+import gg.moonflower.molangcompiler.core.ast.NegateNode;
 import gg.moonflower.molangcompiler.core.ast.Node;
 import gg.moonflower.molangcompiler.core.ast.OptionalValueNode;
 import gg.moonflower.molangcompiler.core.ast.ReturnNode;
@@ -22,13 +24,12 @@ import gg.moonflower.molangcompiler.core.ast.TernaryOperationNode;
 import gg.moonflower.molangcompiler.core.ast.ThisNode;
 import gg.moonflower.molangcompiler.core.ast.VariableGetNode;
 import gg.moonflower.molangcompiler.core.ast.VariableSetNode;
-import gg.moonflower.molangcompiler.core.compiler.MolangLexer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/core/compiler/MolangParser.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/core/compiler/MolangParser.class */
 @ApiStatus.Internal
 public final class MolangParser {
     public static Node parseTokens(MolangLexer.Token[] tokens) throws MolangSyntaxException {
@@ -42,16 +43,16 @@ public final class MolangParser {
 
     private static Node parseTokensUntil(TokenReader reader, boolean insertReturn, Predicate<MolangLexer.Token> filter) throws MolangSyntaxException {
         List<Node> nodes = new ArrayList<>(2);
-        while (true) {
-            if (!reader.canRead() || filter.test(reader.peek())) {
-                break;
-            }
+        while (reader.canRead() && !filter.test(reader.peek())) {
             nodes.add(parseExpression(reader));
             if (reader.canRead()) {
                 MolangLexer.Token token = reader.peek();
                 if (token.type().isTerminating()) {
                     reader.skip();
-                } else if (!filter.test(token)) {
+                } else {
+                    if (filter.test(token)) {
+                        break;
+                    }
                     throw error("Trailing statement", reader);
                 }
             }
@@ -81,7 +82,7 @@ public final class MolangParser {
         Node node;
         expectLength(reader, 1);
         MolangLexer.Token token = reader.peek();
-        switch (AnonymousClass1.$SwitchMap$gg$moonflower$molangcompiler$core$compiler$MolangLexer$TokenType[token.type().ordinal()]) {
+        switch (C14741.f9170x77a837da[token.type().ordinal()]) {
             case 1:
                 reader.skip();
                 Node value = parseExpression(reader);
@@ -140,13 +141,13 @@ public final class MolangParser {
             case 6:
                 reader.skip();
                 return new ThisNode();
-            case 7:
+            case C0994s.f5462C /* 7 */:
                 reader.skip();
                 return new ConstNode(1.0f);
             case 8:
                 reader.skip();
                 return new ConstNode(0.0f);
-            case C0407pb.nv /* 9 */:
+            case 9:
                 try {
                     float value2 = Integer.parseInt(reader.peek().value());
                     reader.skip();
@@ -167,7 +168,7 @@ public final class MolangParser {
                 }
             case 10:
                 return parseAlphanumeric(reader);
-            case AbstractC0422pq.nO /* 11 */:
+            case 11:
                 switch (token.value()) {
                     case "-":
                         if (!reader.canRead(2) || !reader.peekAfter(1).type().canNegate()) {
@@ -190,7 +191,7 @@ public final class MolangParser {
                 expect(reader, MolangLexer.TokenType.RIGHT_PARENTHESIS);
                 reader.skip();
                 return node2;
-            case C0407pb.nu /* 13 */:
+            case C0885px.f4841pt /* 13 */:
                 reader.skip();
                 Node node3 = parseTokensUntil(reader, false, t3 -> {
                     return t3.type() == MolangLexer.TokenType.RIGHT_BRACE;
@@ -203,93 +204,194 @@ public final class MolangParser {
         }
     }
 
-    /* JADX INFO: renamed from: gg.moonflower.molangcompiler.core.compiler.MolangParser$1, reason: invalid class name */
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/core/compiler/MolangParser$1.class */
-    static /* synthetic */ class AnonymousClass1 {
-        static final /* synthetic */ int[] $SwitchMap$gg$moonflower$molangcompiler$core$compiler$MolangLexer$TokenType = new int[MolangLexer.TokenType.values().length];
+    /* JADX INFO: renamed from: gg.moonflower.molangcompiler.core.compiler.MolangParser$1 */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/core/compiler/MolangParser$1.class */
+    static /* synthetic */ class C14741 {
+
+        /* JADX INFO: renamed from: $SwitchMap$gg$moonflower$molangcompiler$core$compiler$MolangLexer$TokenType */
+        static final /* synthetic */ int[] f9170x77a837da = new int[MolangLexer.TokenType.values().length];
 
         static {
             try {
-                $SwitchMap$gg$moonflower$molangcompiler$core$compiler$MolangLexer$TokenType[MolangLexer.TokenType.RETURN.ordinal()] = 1;
+                f9170x77a837da[MolangLexer.TokenType.RETURN.ordinal()] = 1;
             } catch (NoSuchFieldError e) {
             }
             try {
-                $SwitchMap$gg$moonflower$molangcompiler$core$compiler$MolangLexer$TokenType[MolangLexer.TokenType.LOOP.ordinal()] = 2;
+                f9170x77a837da[MolangLexer.TokenType.LOOP.ordinal()] = 2;
             } catch (NoSuchFieldError e2) {
             }
             try {
-                $SwitchMap$gg$moonflower$molangcompiler$core$compiler$MolangLexer$TokenType[MolangLexer.TokenType.CONTINUE.ordinal()] = 3;
+                f9170x77a837da[MolangLexer.TokenType.CONTINUE.ordinal()] = 3;
             } catch (NoSuchFieldError e3) {
             }
             try {
-                $SwitchMap$gg$moonflower$molangcompiler$core$compiler$MolangLexer$TokenType[MolangLexer.TokenType.BREAK.ordinal()] = 4;
+                f9170x77a837da[MolangLexer.TokenType.BREAK.ordinal()] = 4;
             } catch (NoSuchFieldError e4) {
             }
             try {
-                $SwitchMap$gg$moonflower$molangcompiler$core$compiler$MolangLexer$TokenType[MolangLexer.TokenType.IF.ordinal()] = 5;
+                f9170x77a837da[MolangLexer.TokenType.IF.ordinal()] = 5;
             } catch (NoSuchFieldError e5) {
             }
             try {
-                $SwitchMap$gg$moonflower$molangcompiler$core$compiler$MolangLexer$TokenType[MolangLexer.TokenType.THIS.ordinal()] = 6;
+                f9170x77a837da[MolangLexer.TokenType.THIS.ordinal()] = 6;
             } catch (NoSuchFieldError e6) {
             }
             try {
-                $SwitchMap$gg$moonflower$molangcompiler$core$compiler$MolangLexer$TokenType[MolangLexer.TokenType.TRUE.ordinal()] = 7;
+                f9170x77a837da[MolangLexer.TokenType.TRUE.ordinal()] = 7;
             } catch (NoSuchFieldError e7) {
             }
             try {
-                $SwitchMap$gg$moonflower$molangcompiler$core$compiler$MolangLexer$TokenType[MolangLexer.TokenType.FALSE.ordinal()] = 8;
+                f9170x77a837da[MolangLexer.TokenType.FALSE.ordinal()] = 8;
             } catch (NoSuchFieldError e8) {
             }
             try {
-                $SwitchMap$gg$moonflower$molangcompiler$core$compiler$MolangLexer$TokenType[MolangLexer.TokenType.NUMERAL.ordinal()] = 9;
+                f9170x77a837da[MolangLexer.TokenType.NUMERAL.ordinal()] = 9;
             } catch (NoSuchFieldError e9) {
             }
             try {
-                $SwitchMap$gg$moonflower$molangcompiler$core$compiler$MolangLexer$TokenType[MolangLexer.TokenType.ALPHANUMERIC.ordinal()] = 10;
+                f9170x77a837da[MolangLexer.TokenType.ALPHANUMERIC.ordinal()] = 10;
             } catch (NoSuchFieldError e10) {
             }
             try {
-                $SwitchMap$gg$moonflower$molangcompiler$core$compiler$MolangLexer$TokenType[MolangLexer.TokenType.BINARY_OPERATION.ordinal()] = 11;
+                f9170x77a837da[MolangLexer.TokenType.BINARY_OPERATION.ordinal()] = 11;
             } catch (NoSuchFieldError e11) {
             }
             try {
-                $SwitchMap$gg$moonflower$molangcompiler$core$compiler$MolangLexer$TokenType[MolangLexer.TokenType.LEFT_PARENTHESIS.ordinal()] = 12;
+                f9170x77a837da[MolangLexer.TokenType.LEFT_PARENTHESIS.ordinal()] = 12;
             } catch (NoSuchFieldError e12) {
             }
             try {
-                $SwitchMap$gg$moonflower$molangcompiler$core$compiler$MolangLexer$TokenType[MolangLexer.TokenType.LEFT_BRACE.ordinal()] = 13;
+                f9170x77a837da[MolangLexer.TokenType.LEFT_BRACE.ordinal()] = 13;
             } catch (NoSuchFieldError e13) {
             }
             try {
-                $SwitchMap$gg$moonflower$molangcompiler$core$compiler$MolangLexer$TokenType[MolangLexer.TokenType.NULL_COALESCING.ordinal()] = 14;
+                f9170x77a837da[MolangLexer.TokenType.NULL_COALESCING.ordinal()] = 14;
             } catch (NoSuchFieldError e14) {
             }
             try {
-                $SwitchMap$gg$moonflower$molangcompiler$core$compiler$MolangLexer$TokenType[MolangLexer.TokenType.EQUAL.ordinal()] = 15;
+                f9170x77a837da[MolangLexer.TokenType.EQUAL.ordinal()] = 15;
             } catch (NoSuchFieldError e15) {
             }
             try {
-                $SwitchMap$gg$moonflower$molangcompiler$core$compiler$MolangLexer$TokenType[MolangLexer.TokenType.SPECIAL.ordinal()] = 16;
+                f9170x77a837da[MolangLexer.TokenType.SPECIAL.ordinal()] = 16;
             } catch (NoSuchFieldError e16) {
             }
         }
     }
 
-    /* JADX WARN: Code restructure failed: missing block: B:10:0x0026, code lost:
-    
-        return r7;
-     */
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
-    */
-    public static gg.moonflower.molangcompiler.core.ast.Node parseExpression(gg.moonflower.molangcompiler.core.compiler.TokenReader r6) throws gg.moonflower.molangcompiler.api.exception.MolangSyntaxException {
-        /*
-            Method dump skipped, instruction units count: 767
-            To view this dump change 'Code comments level' option to 'DEBUG'
-        */
-        throw new UnsupportedOperationException("Method not decompiled: gg.moonflower.molangcompiler.core.compiler.MolangParser.parseExpression(gg.moonflower.molangcompiler.core.compiler.TokenReader):gg.moonflower.molangcompiler.core.ast.Node");
+    public static Node parseExpression(TokenReader reader) throws MolangSyntaxException {
+        Node node = parseNode(reader);
+        while (true) {
+            Node result = node;
+            if (reader.canRead()) {
+                MolangLexer.Token token = reader.peek();
+                if (token.type() == MolangLexer.TokenType.SEMICOLON || token.type().isOutOfScope()) {
+                    return result;
+                }
+                if (result instanceof OptionalValueNode) {
+                    OptionalValueNode setNode = (OptionalValueNode) result;
+                    result = setNode.withReturnValue();
+                }
+                switch (C14741.f9170x77a837da[token.type().ordinal()]) {
+                    case 9:
+                    case 10:
+                    case 12:
+                    case C0885px.f4841pt /* 13 */:
+                        if (result != null) {
+                            throw error("Unexpected token", reader);
+                        }
+                        node = parseNode(reader);
+                        break;
+                        break;
+                    case 11:
+                        if (result == null) {
+                            throw error("Unexpected token", reader);
+                        }
+                        node = parseBinaryExpression(result, reader);
+                        break;
+                        break;
+                    case 14:
+                        reader.skip();
+                        node = new BinaryOperationNode(BinaryOperation.NULL_COALESCING, result, parseNode(reader));
+                        break;
+                    case 15:
+                        reader.skip();
+                        expect(reader, MolangLexer.TokenType.EQUAL);
+                        reader.skip();
+                        node = new BinaryOperationNode(BinaryOperation.EQUALS, result, parseNode(reader));
+                        break;
+                    case 16:
+                        switch (token.value()) {
+                            case "&":
+                                expect(reader, MolangLexer.TokenType.SPECIAL, "&");
+                                reader.skip(2);
+                                node = new BinaryOperationNode(BinaryOperation.AND, result, parseNode(reader));
+                                break;
+                            case "|":
+                                expect(reader, MolangLexer.TokenType.SPECIAL, "|");
+                                reader.skip(2);
+                                node = new BinaryOperationNode(BinaryOperation.OR, result, parseNode(reader));
+                                break;
+                            case "?":
+                                reader.skip();
+                                Node left = parseExpression(reader);
+                                if (reader.canRead() && !reader.peek().type().isTerminating()) {
+                                    expect(reader, MolangLexer.TokenType.SPECIAL, ":");
+                                    reader.skip();
+                                    node = new TernaryOperationNode(result, left, parseExpression(reader));
+                                    break;
+                                } else {
+                                    node = new BinaryConditionalNode(result, left);
+                                    break;
+                                }
+                                break;
+                            case "!":
+                                reader.skip();
+                                if (reader.peek().type() == MolangLexer.TokenType.EQUAL) {
+                                    reader.skip();
+                                    node = new BinaryOperationNode(BinaryOperation.NOT_EQUALS, result, parseNode(reader));
+                                    break;
+                                } else {
+                                    if (result != null) {
+                                        throw error("Unexpected token", reader);
+                                    }
+                                    node = new NegateNode(parseNode(reader));
+                                    break;
+                                }
+                                break;
+                            case ">":
+                                reader.skip();
+                                if (reader.peek().type() == MolangLexer.TokenType.EQUAL) {
+                                    reader.skip();
+                                    node = new BinaryOperationNode(BinaryOperation.GREATER_EQUALS, result, parseNode(reader));
+                                    break;
+                                } else {
+                                    node = new BinaryOperationNode(BinaryOperation.GREATER, result, parseNode(reader));
+                                    break;
+                                }
+                                break;
+                            case "<":
+                                reader.skip();
+                                if (reader.peek().type() == MolangLexer.TokenType.EQUAL) {
+                                    reader.skip();
+                                    node = new BinaryOperationNode(BinaryOperation.LESS_EQUALS, result, parseNode(reader));
+                                    break;
+                                } else {
+                                    node = new BinaryOperationNode(BinaryOperation.LESS, result, parseNode(reader));
+                                    break;
+                                }
+                                break;
+                            default:
+                                return result;
+                        }
+                        break;
+                    default:
+                        throw error("Unexpected token: " + token, reader);
+                }
+            } else {
+                return result;
+            }
+        }
     }
 
     private static Node parseAlphanumeric(TokenReader reader) throws MolangSyntaxException {
@@ -351,17 +453,41 @@ public final class MolangParser {
             MolangLexer.Token secondOperand = reader.peekAfter(1);
             if (secondOperand.type() == MolangLexer.TokenType.EQUAL) {
                 reader.skip(2);
-                switch (operand.value()) {
-                    case "-":
+                String strValue = operand.value();
+                byte b = -1;
+                switch (strValue.hashCode()) {
+                    case 42:
+                        if (strValue.equals("*")) {
+                            b = 2;
+                        }
+                        break;
+                    case C1089to.f5856ti /* 43 */:
+                        if (strValue.equals("+")) {
+                            b = 1;
+                        }
+                        break;
+                    case 45:
+                        if (strValue.equals("-")) {
+                            b = 0;
+                        }
+                        break;
+                    case 47:
+                        if (strValue.equals("/")) {
+                            b = 3;
+                        }
+                        break;
+                }
+                switch (b) {
+                    case 0:
                         binaryOperationNode = new BinaryOperationNode(BinaryOperation.SUBTRACT, left, parseExpression(reader));
                         break;
-                    case "+":
+                    case 1:
                         binaryOperationNode = new BinaryOperationNode(BinaryOperation.ADD, left, parseExpression(reader));
                         break;
-                    case "*":
+                    case 2:
                         binaryOperationNode = new BinaryOperationNode(BinaryOperation.MULTIPLY, left, parseExpression(reader));
                         break;
-                    case "/":
+                    case 3:
                         binaryOperationNode = new BinaryOperationNode(BinaryOperation.DIVIDE, left, parseExpression(reader));
                         break;
                     default:
@@ -393,8 +519,8 @@ public final class MolangParser {
                             return new Node[x$0];
                         }));
                     }
-                    return new FunctionNode(object, name, (Node[]) parameters.toArray(x$02 -> {
-                        return new Node[x$02];
+                    return new FunctionNode(object, name, (Node[]) parameters.toArray(x$1 -> {
+                        return new Node[x$1];
                     }));
                 }
             }
@@ -417,17 +543,41 @@ public final class MolangParser {
 
     private static Node parseBinaryExpression(Node left, TokenReader reader) throws MolangSyntaxException {
         MolangLexer.Token token = reader.peek();
-        switch (token.value()) {
-            case "+":
+        String strValue = token.value();
+        byte b = -1;
+        switch (strValue.hashCode()) {
+            case 42:
+                if (strValue.equals("*")) {
+                    b = 2;
+                }
+                break;
+            case C1089to.f5856ti /* 43 */:
+                if (strValue.equals("+")) {
+                    b = 0;
+                }
+                break;
+            case 45:
+                if (strValue.equals("-")) {
+                    b = 1;
+                }
+                break;
+            case 47:
+                if (strValue.equals("/")) {
+                    b = 3;
+                }
+                break;
+        }
+        switch (b) {
+            case 0:
                 reader.skip();
                 return new BinaryOperationNode(BinaryOperation.ADD, left, parseTerm(reader));
-            case "-":
+            case 1:
                 reader.skip();
                 return new BinaryOperationNode(BinaryOperation.SUBTRACT, left, parseTerm(reader));
-            case "*":
+            case 2:
                 reader.skip();
                 return new BinaryOperationNode(BinaryOperation.MULTIPLY, left, parseNode(reader));
-            case "/":
+            case 3:
                 reader.skip();
                 return new BinaryOperationNode(BinaryOperation.DIVIDE, left, parseNode(reader));
             default:

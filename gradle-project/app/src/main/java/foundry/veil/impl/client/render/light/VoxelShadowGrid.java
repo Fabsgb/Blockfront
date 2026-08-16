@@ -22,7 +22,7 @@ import org.joml.Vector3fc;
 import org.lwjgl.opengl.GL15C;
 import org.lwjgl.system.MemoryUtil;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/light/VoxelShadowGrid.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/light/VoxelShadowGrid.class */
 @ApiStatus.Internal
 public final class VoxelShadowGrid {
     public static final int GRID_SIZE = 64;

@@ -10,11 +10,12 @@ import java.io.IOException;
 import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/requests/PacketRequestedCloudData.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/requests/PacketRequestedCloudData.class */
 public class PacketRequestedCloudData implements IPacket {
 
+    /* JADX INFO: renamed from: ID */
     @NotNull
-    public static final PacketIdentifier ID = new PacketIdentifier("PacketRequestedCloudData");
+    public static final PacketIdentifier f100ID = new PacketIdentifier("PacketRequestedCloudData");
     private final int usersOnline;
 
     @NotNull
@@ -116,6 +117,6 @@ public class PacketRequestedCloudData implements IPacket {
     @Override // com.boehmod.bflib.cloud.packet.IPacket
     @NotNull
     public PacketIdentifier getPacketIdentifier() {
-        return ID;
+        return f100ID;
     }
 }

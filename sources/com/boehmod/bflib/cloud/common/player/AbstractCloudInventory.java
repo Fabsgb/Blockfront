@@ -33,7 +33,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.OverridingMethodsMustInvokeSuper;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/player/AbstractCloudInventory.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/player/AbstractCloudInventory.class */
 public class AbstractCloudInventory<P extends AbstractPlayerCloudData<?, ?>> {
     protected static final int INVENTORY_SPLITS_AT = 64;
     private static final int SHOWCASE_SIZE = 5;

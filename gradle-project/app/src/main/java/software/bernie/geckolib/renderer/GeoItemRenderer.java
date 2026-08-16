@@ -13,6 +13,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.ItemRenderer;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
@@ -28,12 +29,13 @@ import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.cache.object.GeoBone;
 import software.bernie.geckolib.cache.texture.AnimatableTexture;
 import software.bernie.geckolib.constant.DataTickets;
+import software.bernie.geckolib.model.DefaultedItemGeoModel;
 import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
 import software.bernie.geckolib.renderer.layer.GeoRenderLayersContainer;
 import software.bernie.geckolib.util.RenderUtil;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/renderer/GeoItemRenderer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/renderer/GeoItemRenderer.class */
 public class GeoItemRenderer<T extends Item & GeoAnimatable> extends BlockEntityWithoutLevelRenderer implements GeoRenderer<T> {
     protected final GeoRenderLayersContainer<T> renderLayers;
     protected final GeoModel<T> model;
@@ -45,6 +47,11 @@ public class GeoItemRenderer<T extends Item & GeoAnimatable> extends BlockEntity
     protected boolean useEntityGuiLighting;
     protected Matrix4f itemRenderTranslations;
     protected Matrix4f modelRenderTranslations;
+
+    /* JADX WARN: Incorrect types in method signature: <I:TT;>(TI;)V */
+    public GeoItemRenderer(Item item) {
+        this(new DefaultedItemGeoModel(BuiltInRegistries.ITEM.getKey(item)));
+    }
 
     public GeoItemRenderer(GeoModel<T> model) {
         this(Minecraft.getInstance().getBlockEntityRenderDispatcher(), Minecraft.getInstance().getEntityModels(), model);
@@ -68,7 +75,7 @@ public class GeoItemRenderer<T extends Item & GeoAnimatable> extends BlockEntity
 
     @Override // software.bernie.geckolib.renderer.GeoRenderer
     /* JADX INFO: renamed from: getAnimatable, reason: merged with bridge method [inline-methods] */
-    public T mo2142getAnimatable() {
+    public T mo9710getAnimatable() {
         return this.animatable;
     }
 
@@ -139,8 +146,8 @@ public class GeoItemRenderer<T extends Item & GeoAnimatable> extends BlockEntity
         MultiBufferSource.BufferSource bufferSource2;
         setupLightingForGuiRender();
         if (bufferSource instanceof MultiBufferSource.BufferSource) {
-            MultiBufferSource.BufferSource bufferSource22 = (MultiBufferSource.BufferSource) bufferSource;
-            bufferSource2 = bufferSource22;
+            MultiBufferSource.BufferSource bufferSource3 = (MultiBufferSource.BufferSource) bufferSource;
+            bufferSource2 = bufferSource3;
         } else {
             bufferSource2 = Minecraft.getInstance().levelRenderer.renderBuffers.bufferSource();
         }

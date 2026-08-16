@@ -11,14 +11,15 @@ import java.lang.runtime.ObjectMethods;
 import java.util.List;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/PacketProfanitySync.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/PacketProfanitySync.class */
 public final class PacketProfanitySync extends Record implements IPacket {
 
     @NotNull
     private final List<Profanity> profanities;
 
+    /* JADX INFO: renamed from: ID */
     @NotNull
-    public static final PacketIdentifier ID = new PacketIdentifier("PacketProfanitySync");
+    public static final PacketIdentifier f35ID = new PacketIdentifier("PacketProfanitySync");
 
     public PacketProfanitySync(@NotNull List<Profanity> profanities) {
         this.profanities = profanities;
@@ -56,6 +57,6 @@ public final class PacketProfanitySync extends Record implements IPacket {
     @Override // com.boehmod.bflib.cloud.packet.IPacket
     @NotNull
     public PacketIdentifier getPacketIdentifier() {
-        return ID;
+        return f35ID;
     }
 }

@@ -9,11 +9,11 @@ import org.jetbrains.annotations.Nullable;
 import org.lwjgl.opengl.ARBDirectStateAccess;
 import org.lwjgl.opengl.GL30;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/framebuffer/AdvancedFboRenderAttachment.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/framebuffer/AdvancedFboRenderAttachment.class */
 public class AdvancedFboRenderAttachment implements AdvancedFboAttachment {
 
     /* JADX INFO: renamed from: id */
-    private int f8743id;
+    private int f9129id;
     private final int attachmentType;
     private final int attachmentFormat;
     private final int width;
@@ -94,10 +94,10 @@ public class AdvancedFboRenderAttachment implements AdvancedFboAttachment {
 
     public int getId() {
         RenderSystem.assertOnRenderThreadOrInit();
-        if (this.f8743id == 0) {
-            this.f8743id = VeilRenderSystem.directStateAccessSupported() ? ARBDirectStateAccess.glCreateRenderbuffers() : GL30.glGenRenderbuffers();
+        if (this.f9129id == 0) {
+            this.f9129id = VeilRenderSystem.directStateAccessSupported() ? ARBDirectStateAccess.glCreateRenderbuffers() : GL30.glGenRenderbuffers();
         }
-        return this.f8743id;
+        return this.f9129id;
     }
 
     @Override // foundry.veil.api.client.render.framebuffer.AdvancedFboAttachment
@@ -129,7 +129,7 @@ public class AdvancedFboRenderAttachment implements AdvancedFboAttachment {
     @Override // foundry.veil.api.client.render.framebuffer.AdvancedFboAttachment
     @NotNull
     /* JADX INFO: renamed from: clone, reason: merged with bridge method [inline-methods] */
-    public AdvancedFboAttachment m8945clone() {
+    public AdvancedFboAttachment m9328clone() {
         return new AdvancedFboRenderAttachment(this.attachmentType, this.attachmentFormat, this.width, this.height, this.samples);
     }
 
@@ -138,18 +138,18 @@ public class AdvancedFboRenderAttachment implements AdvancedFboAttachment {
             return false;
         }
         AdvancedFboRenderAttachment that = (AdvancedFboRenderAttachment) o;
-        return this.f8743id == that.f8743id && this.attachmentType == that.attachmentType && this.attachmentFormat == that.attachmentFormat && this.width == that.width && this.height == that.height && this.samples == that.samples;
+        return this.f9129id == that.f9129id && this.attachmentType == that.attachmentType && this.attachmentFormat == that.attachmentFormat && this.width == that.width && this.height == that.height && this.samples == that.samples;
     }
 
     public int hashCode() {
-        int result = this.f8743id;
+        int result = this.f9129id;
         return (31 * ((31 * ((31 * ((31 * ((31 * result) + this.attachmentType)) + this.attachmentFormat)) + this.width)) + this.height)) + this.samples;
     }
 
     public void free() {
-        if (this.f8743id != 0) {
-            GL30.glDeleteRenderbuffers(this.f8743id);
+        if (this.f9129id != 0) {
+            GL30.glDeleteRenderbuffers(this.f9129id);
         }
-        this.f8743id = 0;
+        this.f9129id = 0;
     }
 }

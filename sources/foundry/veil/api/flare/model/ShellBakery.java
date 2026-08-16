@@ -19,7 +19,7 @@ import org.joml.Matrix4f;
 import org.joml.Vector3f;
 import org.joml.Vector3fc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/flare/model/ShellBakery.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/flare/model/ShellBakery.class */
 public final class ShellBakery {
     public static final ResourceLocation MISSING_SHELL_LOCATION = Veil.veilPath("builtin/missing");
     public static final BakedShell MISSING_SHELL;
@@ -37,22 +37,24 @@ public final class ShellBakery {
     }
 
     public static FlareBakedQuad bakeQuad(ShellElement element, ShellElementFace face, Direction direction) {
-        return bakeQuad(element.from(), element.m7990to(), face, direction, element.rotation());
+        return bakeQuad(element.from(), element.m8341to(), face, direction, element.rotation());
     }
 
+    /* JADX INFO: Thrown type has an unknown type hierarchy: java.lang.MatchException */
     public static FlareBakedQuad bakeQuad(Vector3fc from, Vector3fc to, ShellElementFace face, Direction facing, ShellElementRotation rotation) throws MatchException {
         Vector3f normal = facing.step();
-        float[] vertexData = makeVertices(face.m7991uv(), normal, facing, setupShape(from, to), rotation);
+        float[] vertexData = makeVertices(face.m8342uv(), normal, facing, setupShape(from, to), rotation);
         return new FlareBakedQuad(vertexData);
     }
 
+    /* JADX INFO: Thrown type has an unknown type hierarchy: java.lang.MatchException */
     private static float[] makeVertices(ShellFaceUV uvs, Vector3f normal, Direction direction, float[] posDiv16, @Nullable ShellElementRotation rotation) throws MatchException {
         Matrix4f matrix4fRotationZ;
         float[] vertexData = new float[32];
         Matrix4f rotationMatrix = null;
         if (rotation != null) {
             float angle = rotation.angle() * 0.017453292f;
-            switch (C14091.$SwitchMap$net$minecraft$core$Direction$Axis[rotation.axis().ordinal()]) {
+            switch (C14351.$SwitchMap$net$minecraft$core$Direction$Axis[rotation.axis().ordinal()]) {
                 case 1:
                     matrix4fRotationZ = new Matrix4f().rotationX(angle);
                     break;
@@ -75,8 +77,8 @@ public final class ShellBakery {
     }
 
     /* JADX INFO: renamed from: foundry.veil.api.flare.model.ShellBakery$1 */
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/flare/model/ShellBakery$1.class */
-    static /* synthetic */ class C14091 {
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/flare/model/ShellBakery$1.class */
+    static /* synthetic */ class C14351 {
         static final /* synthetic */ int[] $SwitchMap$net$minecraft$core$Direction$Axis = new int[Direction.Axis.values().length];
 
         static {

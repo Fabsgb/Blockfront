@@ -3,7 +3,6 @@ package foundry.veil.api.client.render.post.uniform;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import foundry.veil.api.client.render.post.uniform.UniformValue;
 import foundry.veil.api.client.render.shader.uniform.ShaderUniform;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
@@ -11,7 +10,7 @@ import java.lang.runtime.ObjectMethods;
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/post/uniform/FloatUniform.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/post/uniform/FloatUniform.class */
 public final class FloatUniform extends Record implements UniformValue {
     private final float[] values;
     public static final MapCodec<FloatUniform> CODEC = RecordCodecBuilder.mapCodec(instance -> {

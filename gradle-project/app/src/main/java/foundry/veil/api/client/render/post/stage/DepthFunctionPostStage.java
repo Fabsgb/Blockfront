@@ -1,6 +1,6 @@
 package foundry.veil.api.client.render.post.stage;
 
-import com.boehmod.blockfront.InterfaceC0638xq;
+import com.boehmod.blockfront.InterfaceC1274xN;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
@@ -11,7 +11,7 @@ import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
 import java.lang.runtime.ObjectMethods;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/post/stage/DepthFunctionPostStage.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/post/stage/DepthFunctionPostStage.class */
 public final class DepthFunctionPostStage extends Record implements PostPipeline {
     private final DepthFunc func;
     public static final MapCodec<DepthFunctionPostStage> CODEC = DepthFunc.CODEC.fieldOf("function").xmap(DepthFunctionPostStage::new, (v0) -> {
@@ -51,9 +51,9 @@ public final class DepthFunctionPostStage extends Record implements PostPipeline
         return PostPipelineStageRegistry.DEPTH_FUNC.get();
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/post/stage/DepthFunctionPostStage$DepthFunc.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/post/stage/DepthFunctionPostStage$DepthFunc.class */
     public enum DepthFunc {
-        NEVER(InterfaceC0638xq.tQ),
+        NEVER(InterfaceC1274xN.f6852vU),
         LESS(513),
         EQUAL(514),
         LEQUAL(515),
@@ -74,14 +74,16 @@ public final class DepthFunctionPostStage extends Record implements PostPipeline
         }, type -> {
             return DataResult.success(type.name());
         });
-        private final int id;
+
+        /* JADX INFO: renamed from: id */
+        private final int f9133id;
 
         DepthFunc(int id) {
-            this.id = id;
+            this.f9133id = id;
         }
 
         public int getId() {
-            return this.id;
+            return this.f9133id;
         }
     }
 }

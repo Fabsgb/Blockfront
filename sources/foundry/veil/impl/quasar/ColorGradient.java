@@ -15,7 +15,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 import net.minecraft.util.Mth;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/quasar/ColorGradient.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/quasar/ColorGradient.class */
 public class ColorGradient implements EditorAttributeProvider {
     private static final Codec<Colorc> SINGLE_COLOR_CODEC = Color.ARGB_CODEC.fieldOf("color").codec();
     private static final Codec<ColorGradient> FULL_CODEC = RecordCodecBuilder.create(instance -> {
@@ -236,7 +236,7 @@ public class ColorGradient implements EditorAttributeProvider {
         return toReturn;
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/quasar/ColorGradient$RGBPoint.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/quasar/ColorGradient$RGBPoint.class */
     public static final class RGBPoint extends Record {
         private final float percent;
         private final Colorc color;
@@ -279,7 +279,7 @@ public class ColorGradient implements EditorAttributeProvider {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/quasar/ColorGradient$AlphaPoint.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/quasar/ColorGradient$AlphaPoint.class */
     public static final class AlphaPoint extends Record {
         private final float percent;
         private final float alpha;

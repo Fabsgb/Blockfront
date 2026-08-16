@@ -10,7 +10,7 @@ import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.resources.ResourceLocation;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/rendertype/WhiteTextureStateShard.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/rendertype/WhiteTextureStateShard.class */
 public class WhiteTextureStateShard extends RenderStateShard.EmptyTextureStateShard {
     private static final ResourceLocation TEXTURE = Veil.veilPath("special/white.png");
 

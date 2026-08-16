@@ -11,7 +11,7 @@ import java.lang.runtime.ObjectMethods;
 import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/requests/PacketRequestedPlayerData.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/requests/PacketRequestedPlayerData.class */
 public final class PacketRequestedPlayerData extends Record implements IPacket {
 
     @NotNull
@@ -21,8 +21,9 @@ public final class PacketRequestedPlayerData extends Record implements IPacket {
     private final PlayerDataContext context;
     private final byte[] data;
 
+    /* JADX INFO: renamed from: ID */
     @NotNull
-    public static final PacketIdentifier ID = new PacketIdentifier("PacketRequestedPlayerData");
+    public static final PacketIdentifier f106ID = new PacketIdentifier("PacketRequestedPlayerData");
 
     public PacketRequestedPlayerData(@NotNull UUID uuid, @NotNull PlayerDataContext context, byte[] data) {
         this.uuid = uuid;
@@ -73,6 +74,6 @@ public final class PacketRequestedPlayerData extends Record implements IPacket {
     @Override // com.boehmod.bflib.cloud.packet.IPacket
     @NotNull
     public PacketIdentifier getPacketIdentifier() {
-        return ID;
+        return f106ID;
     }
 }

@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/requests/PacketRequestedPlayerDataSet.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/requests/PacketRequestedPlayerDataSet.class */
 public final class PacketRequestedPlayerDataSet extends Record implements IPacket {
 
     @NotNull
@@ -22,7 +22,7 @@ public final class PacketRequestedPlayerDataSet extends Record implements IPacke
 
     /* JADX INFO: renamed from: ID */
     @NotNull
-    public static final PacketIdentifier f93ID = new PacketIdentifier("PacketRequestedPlayerDataSet");
+    public static final PacketIdentifier f107ID = new PacketIdentifier("PacketRequestedPlayerDataSet");
 
     public PacketRequestedPlayerDataSet(@NotNull Map<UUID, Pair<PlayerDataContext, byte[]>> dataSet) {
         this.dataSet = dataSet;
@@ -59,8 +59,8 @@ public final class PacketRequestedPlayerDataSet extends Record implements IPacke
 
     @NotNull
     private static Map<UUID, Pair<PlayerDataContext, byte[]>> readDataSetWithContext(@NotNull ByteBuf byteBuffer) throws IOException {
-        int size = byteBuffer.readInt();
-        Object2ObjectOpenHashMap object2ObjectOpenHashMap = new Object2ObjectOpenHashMap(size);
+        int size = IPacket.readSize(byteBuffer);
+        Object2ObjectOpenHashMap object2ObjectOpenHashMap = new Object2ObjectOpenHashMap(IPacket.presize(size));
         for (int i = 0; i < size; i++) {
             UUID uuid = IPacket.readUUID(byteBuffer);
             PlayerDataContext context = IPacket.readPlayerDataContext(byteBuffer);
@@ -83,6 +83,6 @@ public final class PacketRequestedPlayerDataSet extends Record implements IPacke
     @Override // com.boehmod.bflib.cloud.packet.IPacket
     @NotNull
     public PacketIdentifier getPacketIdentifier() {
-        return f93ID;
+        return f107ID;
     }
 }

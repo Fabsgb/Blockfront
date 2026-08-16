@@ -23,7 +23,7 @@ import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.lwjgl.system.NativeResource;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/flare/ShellManager.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/flare/ShellManager.class */
 @ApiStatus.Internal
 public class ShellManager extends SimplePreparableReloadListener<Map<ResourceLocation, BakedShell>> implements NativeResource {
     private static final FileToIdConverter CONVERTER = FileToIdConverter.json("flare/shells");
@@ -32,32 +32,38 @@ public class ShellManager extends SimplePreparableReloadListener<Map<ResourceLoc
     /* JADX INFO: Access modifiers changed from: protected */
     @NotNull
     /* JADX INFO: renamed from: prepare, reason: merged with bridge method [inline-methods] */
-    public Map<ResourceLocation, BakedShell> m9199prepare(@NotNull ResourceManager resourceManager, @NotNull ProfilerFiller profiler) {
-        Reader reader;
-        DataResult<FlareShell> result;
+    public Map<ResourceLocation, BakedShell> m9583prepare(@NotNull ResourceManager resourceManager, @NotNull ProfilerFiller profiler) {
         Map<ResourceLocation, BakedShell> data = new HashMap<>();
         Map<ResourceLocation, Resource> resources = CONVERTER.listMatchingResources(resourceManager);
         for (Map.Entry<ResourceLocation, Resource> entry : resources.entrySet()) {
             ResourceLocation location = entry.getKey();
             ResourceLocation id = CONVERTER.fileToId(location);
             try {
-                reader = entry.getValue().openAsReader();
+                Reader reader = entry.getValue().openAsReader();
                 try {
                     JsonElement element = JsonParser.parseReader(reader);
-                    result = FlareShell.CODEC.parse(JsonOps.INSTANCE, element);
-                } finally {
+                    DataResult<FlareShell> result = FlareShell.CODEC.parse(JsonOps.INSTANCE, element);
+                    if (result.error().isPresent()) {
+                        throw new JsonSyntaxException(((DataResult.Error) result.error().get()).message());
+                    }
+                    if (data.put(id, ((FlareShell) result.result().orElseThrow()).bake()) != null) {
+                        throw new IllegalStateException("Duplicate data file ignored with ID " + String.valueOf(id));
+                    }
+                    if (reader != null) {
+                        reader.close();
+                    }
+                } catch (Throwable th) {
+                    if (reader != null) {
+                        try {
+                            reader.close();
+                        } catch (Throwable th2) {
+                            th.addSuppressed(th2);
+                        }
+                    }
+                    throw th;
                 }
             } catch (Exception e) {
                 Veil.LOGGER.error("Couldn't parse data file {} from {}", new Object[]{id, location, e});
-            }
-            if (result.error().isPresent()) {
-                throw new JsonSyntaxException(((DataResult.Error) result.error().get()).message());
-            }
-            if (data.put(id, ((FlareShell) result.result().orElseThrow()).bake()) != null) {
-                throw new IllegalStateException("Duplicate data file ignored with ID " + String.valueOf(id));
-            }
-            if (reader != null) {
-                reader.close();
             }
         }
         return data;

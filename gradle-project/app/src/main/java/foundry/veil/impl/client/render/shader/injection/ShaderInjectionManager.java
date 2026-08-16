@@ -1,7 +1,6 @@
 package foundry.veil.impl.client.render.shader.injection;
 
 import foundry.veil.Veil;
-import foundry.veil.impl.client.render.shader.injection.ShaderInjectionLoader;
 import foundry.veil.impl.client.render.shader.injection.util.ShaderInjection;
 import foundry.veil.impl.client.render.shader.injection.util.ShaderInjectionDefinition;
 import io.github.ocelot.glslprocessor.api.node.GlslTree;
@@ -23,7 +22,7 @@ import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/shader/injection/ShaderInjectionManager.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/shader/injection/ShaderInjectionManager.class */
 @ApiStatus.Internal
 public class ShaderInjectionManager extends SimplePreparableReloadListener<Preparations> {
     private static final Pattern SHADER_EXTENSION = Pattern.compile("\\.(fsh|vsh|tcsh|tesh|gsh|comp)$");
@@ -73,7 +72,7 @@ public class ShaderInjectionManager extends SimplePreparableReloadListener<Prepa
     /* JADX INFO: Access modifiers changed from: protected */
     @NotNull
     /* JADX INFO: renamed from: prepare, reason: merged with bridge method [inline-methods] */
-    public Preparations m2007prepare(@NotNull ResourceManager resourceManager, @NotNull ProfilerFiller profilerFiller) {
+    public Preparations m9565prepare(@NotNull ResourceManager resourceManager, @NotNull ProfilerFiller profilerFiller) {
         Map<ResourceLocation, List<ShaderInjection>> modifiers = new HashMap<>();
         Map<ShaderInjection, ResourceLocation> names = new HashMap<>();
         Map<ResourceLocation, ResourceLocation> replacements = new HashMap<>();
@@ -99,7 +98,7 @@ public class ShaderInjectionManager extends SimplePreparableReloadListener<Prepa
                     try {
                         for (ShaderInjection m : ShaderInjectionAdapter.toModifications(definition, resourceManager)) {
                             mods.add(m);
-                            names.put(m, definition.id() != null ? definition.id() : patch.resourceLocation());
+                            names.put(m, definition.m8348id() != null ? definition.m8348id() : patch.resourceLocation());
                         }
                     } catch (Throwable t) {
                         Veil.LOGGER.error("Couldn't adapt shader injection {}", patch.resourceLocation(), t);
@@ -124,7 +123,7 @@ public class ShaderInjectionManager extends SimplePreparableReloadListener<Prepa
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/shader/injection/ShaderInjectionManager$Preparations.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/shader/injection/ShaderInjectionManager$Preparations.class */
     @ApiStatus.Internal
     public static final class Preparations extends Record {
         private final Map<ResourceLocation, List<ShaderInjection>> shaders;

@@ -12,7 +12,7 @@ import foundry.veil.api.quasar.emitters.module.update.VectorField;
 import foundry.veil.api.quasar.particle.ParticleModuleSet;
 import imgui.ImGui;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/data/module/force/VectorFieldForceData.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/data/module/force/VectorFieldForceData.class */
 public final class VectorFieldForceData implements ParticleModuleData, EditorAttributeProvider {
     public static final MapCodec<VectorFieldForceData> CODEC = RecordCodecBuilder.mapCodec(instance -> {
         return instance.group(VectorField.CODEC.fieldOf("vector_field").forGetter((v0) -> {

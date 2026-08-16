@@ -8,13 +8,12 @@ import java.lang.runtime.ObjectMethods;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import software.bernie.geckolib.animatable.GeoAnimatable;
-import software.bernie.geckolib.animation.AnimationController;
 import software.bernie.geckolib.animation.keyframe.BoneAnimation;
 import software.bernie.geckolib.animation.keyframe.event.data.CustomInstructionKeyframeData;
 import software.bernie.geckolib.animation.keyframe.event.data.ParticleKeyframeData;
 import software.bernie.geckolib.animation.keyframe.event.data.SoundKeyframeData;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/animation/Animation.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/animation/Animation.class */
 public final class Animation extends Record {
     private final String name;
     private final double length;
@@ -22,7 +21,7 @@ public final class Animation extends Record {
     private final BoneAnimation[] boneAnimations;
     private final Keyframes keyFrames;
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/animation/Animation$Keyframes.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/animation/Animation$Keyframes.class */
     public static final class Keyframes extends Record {
         private final SoundKeyframeData[] sounds;
         private final ParticleKeyframeData[] particles;
@@ -109,7 +108,7 @@ public final class Animation extends Record {
         return new Animation("internal.wait", length, LoopType.PLAY_ONCE, new BoneAnimation[0], new Keyframes(new SoundKeyframeData[0], new ParticleKeyframeData[0], new CustomInstructionKeyframeData[0]));
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/animation/Animation$LoopType.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/animation/Animation$LoopType.class */
     @FunctionalInterface
     public interface LoopType {
         public static final Map<String, LoopType> LOOP_TYPES = new ConcurrentHashMap(4);
@@ -141,6 +140,15 @@ public final class Animation extends Record {
                 return fromString(primitive.getAsString());
             }
             return PLAY_ONCE;
+        }
+
+        default String getId() throws IllegalStateException {
+            for (String loopType : LOOP_TYPES.keySet()) {
+                if (LOOP_TYPES.get(loopType) == this) {
+                    return loopType;
+                }
+            }
+            throw new IllegalStateException("LoopType has not been registered before being used!");
         }
 
         static LoopType fromString(String name) {

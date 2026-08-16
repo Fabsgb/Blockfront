@@ -1,6 +1,6 @@
 package com.boehmod.bflib.common;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/common/ColorReferences.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/common/ColorReferences.class */
 public class ColorReferences {
     public static final int COLOR_TEAM_AXIS = 8271921;
     public static final int COLOR_TEAM_AXIS_CHAT = 14996948;

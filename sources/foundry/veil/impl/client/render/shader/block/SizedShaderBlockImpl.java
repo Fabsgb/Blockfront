@@ -2,7 +2,6 @@ package foundry.veil.impl.client.render.shader.block;
 
 import foundry.veil.api.client.render.VeilRenderSystem;
 import foundry.veil.api.client.render.shader.block.ShaderBlock;
-import foundry.veil.impl.client.render.shader.block.ShaderBlockImpl;
 import java.nio.ByteBuffer;
 import java.util.function.BiConsumer;
 import org.apache.commons.lang3.Validate;
@@ -10,7 +9,7 @@ import org.jetbrains.annotations.ApiStatus;
 import org.lwjgl.opengl.GL30C;
 import org.lwjgl.system.MemoryUtil;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/shader/block/SizedShaderBlockImpl.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/shader/block/SizedShaderBlockImpl.class */
 @ApiStatus.Internal
 public class SizedShaderBlockImpl<T> extends ShaderBlockImpl<T> {
     private final int size;

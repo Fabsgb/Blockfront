@@ -5,7 +5,7 @@ import java.lang.invoke.MethodType;
 import java.lang.runtime.ObjectMethods;
 import net.minecraft.world.phys.Vec3;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/cache/object/GeoCube.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/cache/object/GeoCube.class */
 public final class GeoCube extends Record {
     private final GeoQuad[] quads;
     private final Vec3 pivot;

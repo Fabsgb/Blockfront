@@ -1,16 +1,16 @@
 package de.jcm.discordgamesdk.impl.events;
 
-import com.boehmod.blockfront.wX;
+import com.boehmod.blockfront.C1307xu;
 import com.google.gson.JsonObject;
 import de.jcm.discordgamesdk.Core;
 import de.jcm.discordgamesdk.impl.Command;
 import de.jcm.discordgamesdk.impl.EventHandler;
 import de.jcm.discordgamesdk.user.DiscordUser;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/impl/events/ActivityJoinRequestEvent.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/impl/events/ActivityJoinRequestEvent.class */
 public class ActivityJoinRequestEvent {
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/impl/events/ActivityJoinRequestEvent$Handler.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/impl/events/ActivityJoinRequestEvent$Handler.class */
     public static class Handler extends EventHandler<DiscordUser> {
         public Handler(Core.CorePrivate core) {
             super(core);
@@ -37,8 +37,8 @@ public class ActivityJoinRequestEvent {
             if (!userData.get("avatar").isJsonNull()) {
                 avatar = userData.get("avatar").getAsString();
             }
-            if (!userData.get(wX.ed).isJsonNull()) {
-                bot = userData.get(wX.ed).getAsBoolean();
+            if (!userData.get(C1307xu.f7568eo).isJsonNull()) {
+                bot = userData.get(C1307xu.f7568eo).getAsBoolean();
             }
             DiscordUser user = new DiscordUser(userID, username, discriminator, avatar, Boolean.valueOf(bot));
             this.core.getEventAdapter().onActivityJoinRequest(user);

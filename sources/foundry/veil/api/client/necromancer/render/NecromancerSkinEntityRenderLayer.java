@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.entity.Entity;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/necromancer/render/NecromancerSkinEntityRenderLayer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/necromancer/render/NecromancerSkinEntityRenderLayer.class */
 public abstract class NecromancerSkinEntityRenderLayer<T extends Entity & SkeletonParent<T, M>, M extends Skeleton> extends NecromancerEntityRenderLayer<T, M> {
     @Nullable
     public abstract RenderType getRenderType(T t);

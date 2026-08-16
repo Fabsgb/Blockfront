@@ -6,7 +6,7 @@ import gg.moonflower.molangcompiler.api.bridge.MolangJavaFunction;
 import gg.moonflower.molangcompiler.api.exception.MolangRuntimeException;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/core/node/MolangFunctionNode.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/core/node/MolangFunctionNode.class */
 @ApiStatus.Internal
 public class MolangFunctionNode implements MolangExpression {
     private final int params;

@@ -19,7 +19,7 @@ import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/TickTaskSchedulerImpl.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/TickTaskSchedulerImpl.class */
 @ApiStatus.Internal
 public class TickTaskSchedulerImpl implements TickTaskScheduler {
     private final Queue<Task<?>> tasks = new PriorityBlockingQueue();
@@ -179,7 +179,7 @@ public class TickTaskSchedulerImpl implements TickTaskScheduler {
         return this.stopped;
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/TickTaskSchedulerImpl$TickTaskImpl.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/TickTaskSchedulerImpl$TickTaskImpl.class */
     private class TickTaskImpl<V> implements TickTaskScheduler.TickTask<V> {
         private final CompletableFuture<V> future = new CompletableFuture<>();
         private Task<?> task = null;
@@ -237,7 +237,7 @@ public class TickTaskSchedulerImpl implements TickTaskScheduler {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/TickTaskSchedulerImpl$Task.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/TickTaskSchedulerImpl$Task.class */
     private class Task<V> implements ScheduledFuture<V> {
         private final Runnable runnable;
         private final AtomicBoolean cancelled;

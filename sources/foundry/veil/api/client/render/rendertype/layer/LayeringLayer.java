@@ -9,7 +9,7 @@ import java.lang.invoke.MethodType;
 import java.lang.runtime.ObjectMethods;
 import net.minecraft.client.renderer.RenderStateShard;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/rendertype/layer/LayeringLayer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/rendertype/layer/LayeringLayer.class */
 public final class LayeringLayer extends Record implements RenderTypeLayer {
     private final LayerTemplateValue<LayeringState> mode;
     public static final MapCodec<LayeringLayer> CODEC = LayerTemplateValue.enumCodec(LayeringState.class).optionalFieldOf("mode", LayerTemplateValue.raw(LayeringState.POLYGON_OFFSET)).xmap(LayeringLayer::new, (v0) -> {
@@ -49,7 +49,7 @@ public final class LayeringLayer extends Record implements RenderTypeLayer {
         return RenderTypeLayerRegistry.LAYERING.get();
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/rendertype/layer/LayeringLayer$LayeringState.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/rendertype/layer/LayeringLayer$LayeringState.class */
     public enum LayeringState {
         NONE(VeilRenderType.noLayering()),
         POLYGON_OFFSET(VeilRenderType.polygonOffsetLayering()),

@@ -20,7 +20,7 @@ import org.lwjgl.opengl.ARBGPUShaderInt64;
 import org.lwjgl.opengl.ARBSeparateShaderObjects;
 import org.lwjgl.opengl.GL30C;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/uniform/ShaderUniform.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/uniform/ShaderUniform.class */
 public interface ShaderUniform extends ShaderUniformAccess {
     void invalidateCache();
 
@@ -110,7 +110,7 @@ public interface ShaderUniform extends ShaderUniformAccess {
         getLongs(fill, 0, fill.length);
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/uniform/ShaderUniform$Type.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/uniform/ShaderUniform$Type.class */
     public enum Type {
         SAMPLER(0) { // from class: foundry.veil.api.client.render.shader.uniform.ShaderUniform.Type.1
             @Override // foundry.veil.api.client.render.shader.uniform.ShaderUniform.Type

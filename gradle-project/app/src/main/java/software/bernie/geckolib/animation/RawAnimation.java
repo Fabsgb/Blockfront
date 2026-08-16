@@ -1,18 +1,28 @@
 package software.bernie.geckolib.animation;
 
+import io.netty.buffer.ByteBuf;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
 import java.lang.runtime.ObjectMethods;
 import java.util.List;
 import java.util.Objects;
-import software.bernie.geckolib.animation.Animation;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/animation/RawAnimation.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/animation/RawAnimation.class */
 public final class RawAnimation {
-    private final List<Stage> animationList = new ObjectArrayList();
+    public static final StreamCodec<ByteBuf, RawAnimation> STREAM_CODEC = StreamCodec.composite(Stage.STREAM_CODEC.apply(ByteBufCodecs.list()), instance -> {
+        return instance.animationList;
+    }, RawAnimation::new);
+    private final List<Stage> animationList;
 
     private RawAnimation() {
+        this(new ObjectArrayList());
+    }
+
+    private RawAnimation(List<Stage> animationList) {
+        this.animationList = animationList;
     }
 
     public static RawAnimation begin() {
@@ -60,6 +70,10 @@ public final class RawAnimation {
         return newInstance;
     }
 
+    public int getStageCount() {
+        return this.animationList.size();
+    }
+
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -71,11 +85,22 @@ public final class RawAnimation {
         return Objects.hash(this.animationList);
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/animation/RawAnimation$Stage.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/animation/RawAnimation$Stage.class */
     public static final class Stage extends Record {
         private final String animationName;
         private final Animation.LoopType loopType;
         private final int additionalTicks;
+        public static final StreamCodec<ByteBuf, Stage> STREAM_CODEC = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, (v0) -> {
+            return v0.animationName();
+        }, ByteBufCodecs.STRING_UTF8.map(Animation.LoopType::fromString, (v0) -> {
+            return v0.getId();
+        }), (v0) -> {
+            return v0.loopType();
+        }, ByteBufCodecs.VAR_INT, (v0) -> {
+            return v0.additionalTicks();
+        }, (v1, v2, v3) -> {
+            return new Stage(v1, v2, v3);
+        });
         static final String WAIT = "internal.wait";
 
         public Stage(String animationName, Animation.LoopType loopType, int additionalTicks) {

@@ -83,7 +83,7 @@ import org.jetbrains.annotations.Nullable;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GLCapabilities;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/ShaderManager.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/ShaderManager.class */
 public class ShaderManager implements PreparableReloadListener, Closeable {
     private static final Gson GSON = new GsonBuilder().registerTypeAdapter(ResourceLocation.class, new ResourceLocation.Serializer()).registerTypeAdapter(ProgramDefinition.class, new ProgramDefinition.Deserializer()).create();
     public static final FileToIdConverter INCLUDE_LISTER = new FileToIdConverter("pinwheel/shaders/include", ".glsl");
@@ -653,7 +653,7 @@ public class ShaderManager implements PreparableReloadListener, Closeable {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/ShaderManager$PreProcessorContext.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/ShaderManager$PreProcessorContext.class */
     private static final class PreProcessorContext extends Record implements ShaderPreProcessor.VeilContext {
         private final Map<String, Object> customProgramData;
         private final ShaderPreProcessor preProcessor;
@@ -796,7 +796,7 @@ public class ShaderManager implements PreparableReloadListener, Closeable {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/ShaderManager$ProgramSource.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/ShaderManager$ProgramSource.class */
     private static final class ProgramSource extends Record {
         private final ProgramDefinition definition;
         private final Map<ResourceLocation, VeilShaderSource> sources;

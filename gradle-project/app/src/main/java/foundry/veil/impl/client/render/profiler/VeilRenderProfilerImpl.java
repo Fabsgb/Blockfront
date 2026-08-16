@@ -22,7 +22,7 @@ import org.jetbrains.annotations.Nullable;
 import org.lwjgl.opengl.GL15C;
 import org.lwjgl.opengl.GL33C;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/profiler/VeilRenderProfilerImpl.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/profiler/VeilRenderProfilerImpl.class */
 @ApiStatus.Internal
 public final class VeilRenderProfilerImpl {
     private static final Map<String, PathEntry> ENTRIES = new Object2ObjectOpenHashMap();
@@ -106,7 +106,7 @@ public final class VeilRenderProfilerImpl {
         return entry.length() > sectionPath.length() && entry.startsWith(sectionPath) && entry.indexOf(30, sectionPath.length() + 1) < 0;
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/profiler/VeilRenderProfilerImpl$ResultField.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/profiler/VeilRenderProfilerImpl$ResultField.class */
     public static final class ResultField extends Record implements Comparable<ResultField> {
         private final String name;
         private final long[] count;
@@ -196,7 +196,7 @@ public final class VeilRenderProfilerImpl {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/profiler/VeilRenderProfilerImpl$PathEntry.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/profiler/VeilRenderProfilerImpl$PathEntry.class */
     public static class PathEntry {
         private final RenderProfilerCounter[] statistics;
         private final long[] accumulatedCounters = new long[RenderProfilerCounter.ALL.length];
@@ -261,7 +261,7 @@ public final class VeilRenderProfilerImpl {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/profiler/VeilRenderProfilerImpl$ActiveProfiler.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/profiler/VeilRenderProfilerImpl$ActiveProfiler.class */
     private enum ActiveProfiler implements VeilRenderProfiler {
         INSTANCE;
 
@@ -323,7 +323,7 @@ public final class VeilRenderProfilerImpl {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/profiler/VeilRenderProfilerImpl$InactiveProfiler.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/profiler/VeilRenderProfilerImpl$InactiveProfiler.class */
     private enum InactiveProfiler implements VeilRenderProfiler {
         INSTANCE;
 

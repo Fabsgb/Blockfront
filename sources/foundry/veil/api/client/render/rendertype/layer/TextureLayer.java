@@ -12,7 +12,7 @@ import net.minecraft.ResourceLocationException;
 import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.resources.ResourceLocation;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/rendertype/layer/TextureLayer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/rendertype/layer/TextureLayer.class */
 public final class TextureLayer extends Record implements RenderTypeLayer {
     private final LayerTemplateValue<ResourceLocation> texture;
     private final boolean blur;
@@ -62,6 +62,7 @@ public final class TextureLayer extends Record implements RenderTypeLayer {
         return this.mipmap;
     }
 
+    /* JADX INFO: Thrown type has an unknown type hierarchy: net.minecraft.ResourceLocationException */
     @Override // foundry.veil.api.client.render.rendertype.layer.RenderTypeLayer
     public void addShard(VeilRenderTypeBuilder builder, Object... params) throws ResourceLocationException {
         ResourceLocation location = this.texture.parse(params);

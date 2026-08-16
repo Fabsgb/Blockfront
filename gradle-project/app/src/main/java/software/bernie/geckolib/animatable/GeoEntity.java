@@ -7,7 +7,7 @@ import software.bernie.geckolib.GeckoLibServices;
 import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.constant.dataticket.SerializableDataTicket;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/animatable/GeoEntity.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/animatable/GeoEntity.class */
 public interface GeoEntity extends GeoAnimatable {
     @ApiStatus.NonExtendable
     @Nullable

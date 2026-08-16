@@ -21,7 +21,7 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/forge/network/NeoForgeVeilPacketManager.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/forge/network/NeoForgeVeilPacketManager.class */
 @ApiStatus.Internal
 public class NeoForgeVeilPacketManager implements VeilPacketManager {
     private final String version;
@@ -47,13 +47,13 @@ public class NeoForgeVeilPacketManager implements VeilPacketManager {
         PayloadRegistrar optionalRegistrar = registrar.optional();
         for (RegisteredPacket<ClientPacketContext> packet : this.clientPackets) {
             VeilPacketManager.PacketHandler handler = ((RegisteredPacket) packet).handler;
-            (((RegisteredPacket) packet).optional ? optionalRegistrar : registrar).playToClient(((RegisteredPacket) packet).f8765id, ((RegisteredPacket) packet).codec, (payload, context) -> {
+            (((RegisteredPacket) packet).optional ? optionalRegistrar : registrar).playToClient(((RegisteredPacket) packet).f9151id, ((RegisteredPacket) packet).codec, (payload, context) -> {
                 handler.handlePacket(payload, new NeoForgeClientPacketContext(context));
             });
         }
         for (RegisteredPacket<ServerPacketContext> packet2 : this.serverPackets) {
             VeilPacketManager.PacketHandler handler2 = ((RegisteredPacket) packet2).handler;
-            (((RegisteredPacket) packet2).optional ? optionalRegistrar : registrar).playToServer(((RegisteredPacket) packet2).f8765id, ((RegisteredPacket) packet2).codec, (payload2, context2) -> {
+            (((RegisteredPacket) packet2).optional ? optionalRegistrar : registrar).playToServer(((RegisteredPacket) packet2).f9151id, ((RegisteredPacket) packet2).codec, (payload2, context2) -> {
                 handler2.handlePacket(payload2, new NeoForgeServerPacketContext(context2));
             });
         }
@@ -69,17 +69,17 @@ public class NeoForgeVeilPacketManager implements VeilPacketManager {
         this.serverPackets.add(new RegisteredPacket<>(id, codec, handler, optional));
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/forge/network/NeoForgeVeilPacketManager$RegisteredPacket.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/forge/network/NeoForgeVeilPacketManager$RegisteredPacket.class */
     private static final class RegisteredPacket<T extends PacketContext> extends Record {
 
         /* JADX INFO: renamed from: id */
-        private final CustomPacketPayload.Type<? extends CustomPacketPayload> f8765id;
+        private final CustomPacketPayload.Type<? extends CustomPacketPayload> f9151id;
         private final StreamCodec<? super RegistryFriendlyByteBuf, ?> codec;
         private final VeilPacketManager.PacketHandler<T, ?> handler;
         private final boolean optional;
 
         private RegisteredPacket(CustomPacketPayload.Type<? extends CustomPacketPayload> id, StreamCodec<? super RegistryFriendlyByteBuf, ?> codec, VeilPacketManager.PacketHandler<T, ?> handler, boolean optional) {
-            this.f8765id = id;
+            this.f9151id = id;
             this.codec = codec;
             this.handler = handler;
             this.optional = optional;
@@ -101,8 +101,8 @@ public class NeoForgeVeilPacketManager implements VeilPacketManager {
         }
 
         /* JADX INFO: renamed from: id */
-        public CustomPacketPayload.Type<? extends CustomPacketPayload> m7996id() {
-            return this.f8765id;
+        public CustomPacketPayload.Type<? extends CustomPacketPayload> m8347id() {
+            return this.f9151id;
         }
 
         public StreamCodec<? super RegistryFriendlyByteBuf, ?> codec() {

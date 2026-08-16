@@ -4,14 +4,16 @@ import foundry.veil.api.client.color.Colorc;
 import foundry.veil.api.client.editor.EditorAttributeProvider;
 import foundry.veil.api.client.registry.LightTypeRegistry;
 import foundry.veil.api.client.render.CullFrustum;
+import foundry.veil.api.client.render.light.DDALightData;
 import imgui.ImGui;
 import net.minecraft.client.Camera;
 import org.joml.Vector3f;
 import org.joml.Vector3fc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/light/data/DirectionalLightData.class */
-public class DirectionalLightData extends LightData implements EditorAttributeProvider {
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/light/data/DirectionalLightData.class */
+public class DirectionalLightData extends LightData implements EditorAttributeProvider, DDALightData {
     protected final Vector3f direction = new Vector3f(0.0f, -1.0f, 0.0f);
+    protected boolean occlusionEnabled = false;
 
     public Vector3f getDirection() {
         return this.direction;
@@ -61,6 +63,12 @@ public class DirectionalLightData extends LightData implements EditorAttributePr
         return this;
     }
 
+    public DirectionalLightData setOcclusionEnabled(boolean occlusionEnabled) {
+        this.occlusionEnabled = occlusionEnabled;
+        markDirty();
+        return this;
+    }
+
     @Override // foundry.veil.api.client.render.light.data.LightData
     public boolean isVisible(CullFrustum frustum) {
         return true;
@@ -85,5 +93,13 @@ public class DirectionalLightData extends LightData implements EditorAttributePr
         }
         ImGui.sameLine(0.0f, ImGui.getStyle().getItemInnerSpacingX());
         ImGui.text("direction");
+        if (ImGui.checkbox("Occluded", this.occlusionEnabled)) {
+            setOcclusionEnabled(!this.occlusionEnabled);
+        }
+    }
+
+    @Override // foundry.veil.api.client.render.light.DDALightData
+    public boolean isOcclusionEnabled() {
+        return this.occlusionEnabled;
     }
 }

@@ -9,7 +9,7 @@ import java.lang.invoke.MethodType;
 import java.lang.runtime.ObjectMethods;
 import net.minecraft.client.renderer.RenderStateShard;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/rendertype/layer/TransparencyLayer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/rendertype/layer/TransparencyLayer.class */
 public final class TransparencyLayer extends Record implements RenderTypeLayer {
     private final LayerTemplateValue<BlendState> mode;
     public static final MapCodec<TransparencyLayer> CODEC = LayerTemplateValue.enumCodec(BlendState.class).fieldOf("mode").xmap(TransparencyLayer::new, (v0) -> {
@@ -49,7 +49,7 @@ public final class TransparencyLayer extends Record implements RenderTypeLayer {
         return RenderTypeLayerRegistry.TRANSPARENCY.get();
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/rendertype/layer/TransparencyLayer$BlendState.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/rendertype/layer/TransparencyLayer$BlendState.class */
     public enum BlendState {
         NONE(VeilRenderType.noTransparencyShard()),
         ADDITIVE(VeilRenderType.additiveTransparencyShard()),

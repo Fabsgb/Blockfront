@@ -3,12 +3,12 @@ package de.jcm.discordgamesdk.voice;
 import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/voice/VoiceInputMode.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/voice/VoiceInputMode.class */
 public class VoiceInputMode {
     private InputModeType type;
     private String shortcut;
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/voice/VoiceInputMode$InputModeType.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/voice/VoiceInputMode$InputModeType.class */
     public enum InputModeType {
         VOICE_ACTIVITY,
         PUSH_TO_TALK;

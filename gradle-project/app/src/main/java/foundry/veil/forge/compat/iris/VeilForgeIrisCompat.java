@@ -13,7 +13,7 @@ import net.irisshaders.iris.pipeline.WorldRenderingPipeline;
 import net.irisshaders.iris.targets.RenderTargets;
 import net.minecraft.client.renderer.ShaderInstance;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/forge/compat/iris/VeilForgeIrisCompat.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/forge/compat/iris/VeilForgeIrisCompat.class */
 public class VeilForgeIrisCompat implements IrisCompat {
     @Override // foundry.veil.api.compat.IrisCompat
     public Set<ShaderInstance> getLoadedShaders() {

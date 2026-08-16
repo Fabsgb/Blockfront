@@ -10,7 +10,7 @@ import java.lang.runtime.ObjectMethods;
 import java.util.Optional;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/framebuffer/FramebufferAttachmentDefinition.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/framebuffer/FramebufferAttachmentDefinition.class */
 public final class FramebufferAttachmentDefinition extends Record {
     private final Type type;
     private final Format format;
@@ -104,7 +104,7 @@ public final class FramebufferAttachmentDefinition extends Record {
         return this.type == Type.TEXTURE && this.format == Format.DEPTH_COMPONENT && this.filter.equals(TextureFilter.CLAMP) && this.levels == 1 && this.name == null;
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/framebuffer/FramebufferAttachmentDefinition$Type.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/framebuffer/FramebufferAttachmentDefinition$Type.class */
     public enum Type {
         TEXTURE("Texture"),
         RENDER_BUFFER("Render Buffer");
@@ -133,7 +133,7 @@ public final class FramebufferAttachmentDefinition extends Record {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/framebuffer/FramebufferAttachmentDefinition$Format.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/framebuffer/FramebufferAttachmentDefinition$Format.class */
     public enum Format {
         RED(6403, 6403),
         RG(33319, 33319),
@@ -231,16 +231,18 @@ public final class FramebufferAttachmentDefinition extends Record {
         }, type -> {
             return DataResult.success(type.name());
         });
-        private final int id;
+
+        /* JADX INFO: renamed from: id */
+        private final int f9132id;
         private final int internalId;
 
         Format(int id, int internalId) {
-            this.id = id;
+            this.f9132id = id;
             this.internalId = internalId;
         }
 
         public int getFormat() {
-            return this.id;
+            return this.f9132id;
         }
 
         public int getInternalFormat() {

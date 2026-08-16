@@ -68,7 +68,7 @@ import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 import org.lwjgl.system.NativeResource;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/resource/VeilResourceManagerImpl.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/resource/VeilResourceManagerImpl.class */
 @ApiStatus.Internal
 public class VeilResourceManagerImpl implements VeilResourceManager, NativeResource {
     private static final AtomicInteger WATCHER_ID = new AtomicInteger(1);
@@ -154,26 +154,8 @@ public class VeilResourceManagerImpl implements VeilResourceManager, NativeResou
         return new UnknownResource(new VeilResourceInfo(packType, loc, path, modResourcePath, false));
     }
 
-    /* JADX INFO: renamed from: foundry.veil.impl.resource.VeilResourceManagerImpl$1 */
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/resource/VeilResourceManagerImpl$1.class */
-    class C14381 implements PreparableReloadListener {
-        C14381() {
-        }
-
-        public CompletableFuture<Void> reload(PreparableReloadListener.PreparationBarrier preparationBarrier, ResourceManager resourceManager, ProfilerFiller prepareProfiler, ProfilerFiller applyProfiler, Executor backgroundExecutor, Executor gameExecutor) {
-            return VeilResourceManagerImpl.this.reloadClient(preparationBarrier, resourceManager, prepareProfiler, applyProfiler, backgroundExecutor, gameExecutor);
-        }
-
-        public String getName() {
-            return VeilResourceManager.class.getSimpleName() + " Client";
-        }
-    }
-
     public PreparableReloadListener createReloadListener() {
-        return CompositeReloadListener.m7995of(new PreparableReloadListener() { // from class: foundry.veil.impl.resource.VeilResourceManagerImpl.1
-            C14381() {
-            }
-
+        return CompositeReloadListener.m8346of(new PreparableReloadListener() { // from class: foundry.veil.impl.resource.VeilResourceManagerImpl.1
             public CompletableFuture<Void> reload(PreparableReloadListener.PreparationBarrier preparationBarrier, ResourceManager resourceManager, ProfilerFiller prepareProfiler, ProfilerFiller applyProfiler, Executor backgroundExecutor, Executor gameExecutor) {
                 return VeilResourceManagerImpl.this.reloadClient(preparationBarrier, resourceManager, prepareProfiler, applyProfiler, backgroundExecutor, gameExecutor);
             }
@@ -182,9 +164,6 @@ public class VeilResourceManagerImpl implements VeilResourceManager, NativeResou
                 return VeilResourceManager.class.getSimpleName() + " Client";
             }
         }, new PreparableReloadListener() { // from class: foundry.veil.impl.resource.VeilResourceManagerImpl.2
-            C14392() {
-            }
-
             public CompletableFuture<Void> reload(PreparableReloadListener.PreparationBarrier preparationBarrier, ResourceManager resourceManager, ProfilerFiller prepareProfiler, ProfilerFiller applyProfiler, Executor backgroundExecutor, Executor gameExecutor) {
                 return VeilResourceManagerImpl.this.reloadServer(preparationBarrier, resourceManager, prepareProfiler, applyProfiler, backgroundExecutor, gameExecutor);
             }
@@ -193,21 +172,6 @@ public class VeilResourceManagerImpl implements VeilResourceManager, NativeResou
                 return VeilResourceManager.class.getSimpleName() + " Server";
             }
         });
-    }
-
-    /* JADX INFO: renamed from: foundry.veil.impl.resource.VeilResourceManagerImpl$2 */
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/resource/VeilResourceManagerImpl$2.class */
-    class C14392 implements PreparableReloadListener {
-        C14392() {
-        }
-
-        public CompletableFuture<Void> reload(PreparableReloadListener.PreparationBarrier preparationBarrier, ResourceManager resourceManager, ProfilerFiller prepareProfiler, ProfilerFiller applyProfiler, Executor backgroundExecutor, Executor gameExecutor) {
-            return VeilResourceManagerImpl.this.reloadServer(preparationBarrier, resourceManager, prepareProfiler, applyProfiler, backgroundExecutor, gameExecutor);
-        }
-
-        public String getName() {
-            return VeilResourceManager.class.getSimpleName() + " Server";
-        }
     }
 
     private CompletableFuture<Void> reloadClient(PreparableReloadListener.PreparationBarrier preparationBarrier, ResourceManager resourceManager, ProfilerFiller preparationsProfiler, ProfilerFiller reloadProfiler, Executor backgroundExecutor, Executor gameExecutor) {
@@ -324,7 +288,7 @@ public class VeilResourceManagerImpl implements VeilResourceManager, NativeResou
         return this.packResources;
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/resource/VeilResourceManagerImpl$Preparations.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/resource/VeilResourceManagerImpl$Preparations.class */
     private static final class Preparations extends Record {
         private final List<VeilPackResources> packs;
         private final Object2ObjectMap<Path, PackResourceListener> watchers;
@@ -358,7 +322,7 @@ public class VeilResourceManagerImpl implements VeilResourceManager, NativeResou
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/resource/VeilResourceManagerImpl$PackResourceListener.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/resource/VeilResourceManagerImpl$PackResourceListener.class */
     private static class PackResourceListener implements Closeable {
         private final VeilResourceManager resourceManager;
         private final Path path;

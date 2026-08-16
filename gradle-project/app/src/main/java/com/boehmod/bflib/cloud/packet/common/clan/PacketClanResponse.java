@@ -10,15 +10,16 @@ import java.lang.runtime.ObjectMethods;
 import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/clan/PacketClanResponse.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/clan/PacketClanResponse.class */
 public final class PacketClanResponse extends Record implements IPacket {
 
     @NotNull
     private final UUID clan;
     private final boolean response;
 
+    /* JADX INFO: renamed from: ID */
     @NotNull
-    public static final PacketIdentifier ID = new PacketIdentifier("PacketClanInviteResponse");
+    public static final PacketIdentifier f45ID = new PacketIdentifier("PacketClanInviteResponse");
 
     public PacketClanResponse(@NotNull UUID clan, boolean response) {
         this.clan = clan;
@@ -62,6 +63,6 @@ public final class PacketClanResponse extends Record implements IPacket {
     @Override // com.boehmod.bflib.cloud.packet.IPacket
     @NotNull
     public PacketIdentifier getPacketIdentifier() {
-        return ID;
+        return f45ID;
     }
 }

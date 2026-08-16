@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.OptionalDouble;
 import net.minecraft.client.renderer.RenderStateShard;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/rendertype/layer/LineLayer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/rendertype/layer/LineLayer.class */
 public final class LineLayer extends Record implements RenderTypeLayer {
     private final OptionalDouble width;
     public static final MapCodec<LineLayer> CODEC = Codec.DOUBLE.optionalFieldOf("width").xmap(width -> {

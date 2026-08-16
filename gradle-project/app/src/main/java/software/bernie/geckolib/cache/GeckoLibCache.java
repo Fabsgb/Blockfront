@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executor;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
@@ -26,12 +27,13 @@ import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.loading.FileLoader;
 import software.bernie.geckolib.loading.json.FormatVersion;
 import software.bernie.geckolib.loading.json.raw.Model;
+import software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter;
 import software.bernie.geckolib.loading.object.BakedAnimations;
 import software.bernie.geckolib.loading.object.BakedModelFactory;
 import software.bernie.geckolib.loading.object.GeometryTree;
 import software.bernie.geckolib.util.CompoundException;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/cache/GeckoLibCache.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/cache/GeckoLibCache.class */
 public final class GeckoLibCache {
     private static final Set<String> EXCLUDED_NAMESPACES = ObjectOpenHashSet.of("moreplayermodels", "customnpcs", "gunsrpg");
     private static Map<ResourceLocation, BakedAnimations> ANIMATIONS = Collections.emptyMap();
@@ -76,16 +78,22 @@ public final class GeckoLibCache {
     }
 
     private static CompletableFuture<Void> loadAnimations(Executor backgroundExecutor, ResourceManager resourceManager, BiConsumer<ResourceLocation, BakedAnimations> elementConsumer) {
-        return loadResources(backgroundExecutor, resourceManager, "animations", resource -> {
-            try {
-                return FileLoader.loadAnimationsFile(resource, resourceManager);
-            } catch (CompoundException ex) {
-                ex.withMessage(resource.toString() + ": Error loading animation file").printStackTrace();
-                return new BakedAnimations(new Object2ObjectOpenHashMap());
-            } catch (Exception ex2) {
-                throw GeckoLibConstants.exception(resource, "Error loading animation file", ex2);
-            }
-        }, elementConsumer);
+        return CompletableFuture.runAsync(() -> {
+            BakedAnimationsAdapter.COMPRESSION_CACHE = new ConcurrentHashMap();
+        }, backgroundExecutor).thenRunAsync(() -> {
+            loadResources(backgroundExecutor, resourceManager, "animations", resource -> {
+                try {
+                    return FileLoader.loadAnimationsFile(resource, resourceManager);
+                } catch (CompoundException ex) {
+                    ex.withMessage(resource.toString() + ": Error loading animation file").printStackTrace();
+                    return new BakedAnimations(new Object2ObjectOpenHashMap());
+                } catch (Exception ex2) {
+                    throw GeckoLibConstants.exception(resource, "Error loading animation file", ex2);
+                }
+            }, elementConsumer);
+        }).thenRunAsync(() -> {
+            BakedAnimationsAdapter.COMPRESSION_CACHE = null;
+        });
     }
 
     private static CompletableFuture<Void> loadModels(Executor backgroundExecutor, ResourceManager resourceManager, BiConsumer<ResourceLocation, BakedGeoModel> elementConsumer) {
@@ -114,9 +122,10 @@ public final class GeckoLibCache {
         }, elementConsumer);
     }
 
-    private static <T> CompletableFuture<Void> loadResources(Executor executor, ResourceManager resourceManager, String type, Function<ResourceLocation, T> loader, BiConsumer<ResourceLocation, T> map) {
+    /* JADX INFO: Access modifiers changed from: private */
+    public static <T> CompletableFuture<Void> loadResources(Executor executor, ResourceManager resourceManager, String path, Function<ResourceLocation, T> loader, BiConsumer<ResourceLocation, T> map) {
         return CompletableFuture.supplyAsync(() -> {
-            return resourceManager.listResources(type, fileName -> {
+            return resourceManager.listResources(path, fileName -> {
                 return fileName.toString().endsWith(".json");
             });
         }, executor).thenApplyAsync(resources -> {

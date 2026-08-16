@@ -1,6 +1,5 @@
 package foundry.veil.api.client.editor;
 
-import foundry.imgui.api.ImGuiMC;
 import foundry.veil.Veil;
 import foundry.veil.VeilClient;
 import foundry.veil.api.event.VeilRegisterInspectorsEvent;
@@ -37,9 +36,12 @@ import net.minecraft.util.profiling.ProfilerFiller;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/editor/EditorManager.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/editor/EditorManager.class */
 public class EditorManager implements VeilEditorEnvironment, PreparableReloadListener {
-    public static final ResourceLocation DEFAULT_FONT = Veil.veilPath("jetbrains_mono");
+
+    @ApiStatus.ScheduledForRemoval(inVersion = "5.0.0")
+    @Deprecated
+    public static final ResourceLocation DEFAULT_FONT = ResourceLocation.fromNamespaceAndPath("imguimc", "jetbrains_mono");
     private final Map<Inspector, ImBoolean> editors = new TreeMap(Comparator.comparing(inspector -> {
         return inspector.getClass().getSimpleName();
     }));
@@ -62,7 +64,6 @@ public class EditorManager implements VeilEditorEnvironment, PreparableReloadLis
             VeilClient.clientPlatform().onRegisterInspectors(new EditorRegistry(this));
             reload(CompletableFuture::completedFuture, Minecraft.getInstance().getResourceManager(), InactiveProfiler.INSTANCE, InactiveProfiler.INSTANCE, Util.backgroundExecutor(), Minecraft.getInstance());
         }
-        ImGui.pushFont(ImGuiMC.getFont(DEFAULT_FONT, false, false));
         if (ImGui.beginMainMenuBar()) {
             ImFont font = ImGui.getFont();
             float dingleWidth = font.calcTextSizeAX(ImGui.getFontSize(), Float.MAX_VALUE, 0.0f, " Veil ") + 1.0f;
@@ -122,7 +123,6 @@ public class EditorManager implements VeilEditorEnvironment, PreparableReloadLis
                 next.render();
             }
         }
-        ImGui.popFont();
     }
 
     @ApiStatus.Internal
@@ -130,7 +130,6 @@ public class EditorManager implements VeilEditorEnvironment, PreparableReloadLis
         if (!this.enabled) {
             return;
         }
-        ImGui.pushFont(ImGuiMC.getFont(DEFAULT_FONT, false, false));
         for (Map.Entry<Inspector, ImBoolean> entry : this.editors.entrySet()) {
             Inspector inspector = entry.getKey();
             ImBoolean enabled = entry.getValue();
@@ -138,7 +137,6 @@ public class EditorManager implements VeilEditorEnvironment, PreparableReloadLis
                 inspector.renderLast();
             }
         }
-        ImGui.popFont();
     }
 
     @ApiStatus.Internal
@@ -227,7 +225,7 @@ public class EditorManager implements VeilEditorEnvironment, PreparableReloadLis
         if (listeners.isEmpty()) {
             return preparationBarrier.wait((Object) null);
         }
-        PreparableReloadListener listener3 = CompositeReloadListener.m7995of((PreparableReloadListener[]) listeners.toArray(x$0 -> {
+        PreparableReloadListener listener3 = CompositeReloadListener.m8346of((PreparableReloadListener[]) listeners.toArray(x$0 -> {
             return new PreparableReloadListener[x$0];
         }));
         return listener3.reload(preparationBarrier, resourceManager, prepareProfiler, applyProfiler, backgroundExecutor, gameExecutor);
@@ -250,7 +248,7 @@ public class EditorManager implements VeilEditorEnvironment, PreparableReloadLis
         return VeilClient.resourceManager();
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/editor/EditorManager$EditorRegistry.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/editor/EditorManager$EditorRegistry.class */
     private static final class EditorRegistry extends Record implements VeilRegisterInspectorsEvent.Registry {
         private final EditorManager editorManager;
 

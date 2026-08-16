@@ -1,6 +1,5 @@
 package de.jcm.discordgamesdk;
 
-import de.jcm.discordgamesdk.Core;
 import de.jcm.discordgamesdk.activity.Activity;
 import de.jcm.discordgamesdk.activity.ActivityActionType;
 import de.jcm.discordgamesdk.activity.ActivityJoinRequestReply;
@@ -10,7 +9,7 @@ import de.jcm.discordgamesdk.impl.commands.SendActivityJoinInvite;
 import de.jcm.discordgamesdk.impl.commands.SetActivity;
 import java.util.function.Consumer;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/ActivityManager.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/ActivityManager.class */
 public class ActivityManager {
     private final Core.CorePrivate core;
 

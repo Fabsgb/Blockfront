@@ -5,7 +5,7 @@ import de.jcm.discordgamesdk.user.Relationship;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/DiscordEventHandler.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/DiscordEventHandler.class */
 public class DiscordEventHandler extends DiscordEventAdapter {
     private final List<DiscordEventAdapter> listeners = new CopyOnWriteArrayList();
 

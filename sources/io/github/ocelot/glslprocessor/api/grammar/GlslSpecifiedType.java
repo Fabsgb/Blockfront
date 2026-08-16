@@ -1,6 +1,5 @@
 package io.github.ocelot.glslprocessor.api.grammar;
 
-import io.github.ocelot.glslprocessor.api.grammar.GlslTypeQualifier;
 import io.github.ocelot.glslprocessor.api.node.GlslNode;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,7 +7,7 @@ import java.util.Collection;
 import java.util.List;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/grammar/GlslSpecifiedType.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/grammar/GlslSpecifiedType.class */
 public final class GlslSpecifiedType implements GlslType {
     private GlslTypeSpecifier specifier;
     private final List<GlslTypeQualifier> qualifiers;

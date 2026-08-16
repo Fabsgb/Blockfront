@@ -7,7 +7,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/platform/registry/RegistrationProvider.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/platform/registry/RegistrationProvider.class */
 public interface RegistrationProvider<T> {
     public static final Factory FACTORY = (Factory) ServiceLoader.load(Factory.class).findFirst().orElseThrow(() -> {
         return new RuntimeException("Failed to load registration provider");
@@ -33,7 +33,7 @@ public interface RegistrationProvider<T> {
         return register(ResourceLocation.fromNamespaceAndPath(getModId(), name), supplier);
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/platform/registry/RegistrationProvider$Factory.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/platform/registry/RegistrationProvider$Factory.class */
     public interface Factory {
         <T> RegistrationProvider<T> create(ResourceKey<? extends Registry<T>> resourceKey, String str);
 

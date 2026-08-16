@@ -12,7 +12,7 @@ import java.security.GeneralSecurityException;
 import java.security.PublicKey;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/primitives/EncryptionKeyExchangePacket.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/primitives/EncryptionKeyExchangePacket.class */
 public final class EncryptionKeyExchangePacket extends Record implements IPacket {
 
     @NotNull
@@ -20,7 +20,7 @@ public final class EncryptionKeyExchangePacket extends Record implements IPacket
 
     /* JADX INFO: renamed from: ID */
     @NotNull
-    public static final PacketIdentifier f106ID = new PacketIdentifier("EncryptionKeyExchangePacket");
+    public static final PacketIdentifier f121ID = new PacketIdentifier("EncryptionKeyExchangePacket");
 
     public EncryptionKeyExchangePacket(@NotNull PublicKey serverPublicKey) {
         this.serverPublicKey = serverPublicKey;
@@ -69,6 +69,6 @@ public final class EncryptionKeyExchangePacket extends Record implements IPacket
     @Override // com.boehmod.bflib.cloud.packet.IPacket
     @NotNull
     public PacketIdentifier getPacketIdentifier() {
-        return f106ID;
+        return f121ID;
     }
 }

@@ -15,7 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.profiling.ProfilerFiller;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/pipeline/VeilFirstPersonRenderer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/pipeline/VeilFirstPersonRenderer.class */
 @ApiStatus.Internal
 public final class VeilFirstPersonRenderer {
     private static final ResourceLocation FIRST_PERSON = Veil.veilPath("core/first_person");
@@ -48,7 +48,7 @@ public final class VeilFirstPersonRenderer {
 
     public static void unbind() {
         ProfilerFiller profiler = Minecraft.getInstance().getProfiler();
-        boolean rendered = VeilRenderSystem.drawLights(profiler, VeilRenderSystem.getCullingFrustum());
+        boolean rendered = VeilRenderSystem.drawLights(profiler, VeilRenderSystem.getCullingFrustum(), false);
         Minecraft.getInstance().getMainRenderTarget().veil$setWrapper(null);
         if (rendered) {
             VeilRenderSystem.compositeLights(profiler);

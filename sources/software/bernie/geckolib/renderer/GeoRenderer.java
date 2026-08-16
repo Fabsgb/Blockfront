@@ -32,12 +32,12 @@ import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
 import software.bernie.geckolib.util.Color;
 import software.bernie.geckolib.util.RenderUtil;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/renderer/GeoRenderer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/renderer/GeoRenderer.class */
 public interface GeoRenderer<T extends GeoAnimatable> {
     GeoModel<T> getGeoModel();
 
     /* JADX INFO: renamed from: getAnimatable */
-    T mo9316getAnimatable();
+    T mo9710getAnimatable();
 
     void fireCompileRenderLayersEvent();
 
@@ -89,7 +89,7 @@ public interface GeoRenderer<T extends GeoAnimatable> {
         }
         preRender(poseStack, animatable, model, bufferSource, buffer, false, partialTick, packedLight, packedOverlay, renderColor);
         if (firePreRenderEvent(poseStack, model, bufferSource, partialTick, packedLight)) {
-            preApplyRenderLayers(poseStack, animatable, model, renderType, bufferSource, buffer, packedLight, packedLight, packedOverlay);
+            preApplyRenderLayers(poseStack, animatable, model, renderType, bufferSource, buffer, partialTick, packedLight, packedOverlay);
             actuallyRender(poseStack, animatable, model, renderType, bufferSource, buffer, false, partialTick, packedLight, packedOverlay, renderColor);
             applyRenderLayers(poseStack, animatable, model, renderType, bufferSource, buffer, partialTick, packedLight, packedOverlay);
             postRender(poseStack, animatable, model, bufferSource, buffer, false, partialTick, packedLight, packedOverlay, renderColor);
@@ -159,7 +159,7 @@ public interface GeoRenderer<T extends GeoAnimatable> {
         VertexConsumer buffer2 = checkAndRefreshBuffer(isReRender, buffer, bufferSource, renderType);
         renderCubesOfBone(poseStack, bone, buffer2, packedLight, packedOverlay, colour);
         if (!isReRender) {
-            applyRenderLayersForBone(poseStack, mo9316getAnimatable(), bone, renderType, bufferSource, buffer2, partialTick, packedLight, packedOverlay);
+            applyRenderLayersForBone(poseStack, mo9710getAnimatable(), bone, renderType, bufferSource, buffer2, partialTick, packedLight, packedOverlay);
         }
         renderChildBones(poseStack, animatable, bone, renderType, bufferSource, buffer2, isReRender, partialTick, packedLight, packedOverlay, colour);
         poseStack.popPose();
@@ -217,46 +217,41 @@ public interface GeoRenderer<T extends GeoAnimatable> {
         }
     }
 
-    /* JADX WARN: Code restructure failed: missing block: B:71:0x00be, code lost:
-    
-        if (bufferNeedsRefresh(r0.first) == false) goto L73;
-     */
-    /* JADX WARN: Code restructure failed: missing block: B:72:0x00c1, code lost:
-    
-        r2 = r9.getBuffer(r10);
-     */
-    /* JADX WARN: Code restructure failed: missing block: B:73:0x00cc, code lost:
-    
-        r2 = r0.first;
-     */
-    /* JADX WARN: Code restructure failed: missing block: B:75:0x00dc, code lost:
-    
-        if (bufferNeedsRefresh(r0.second) == false) goto L77;
-     */
-    /* JADX WARN: Code restructure failed: missing block: B:76:0x00df, code lost:
-    
-        r3 = r9.getBuffer(r10);
-     */
-    /* JADX WARN: Code restructure failed: missing block: B:77:0x00ea, code lost:
-    
-        r3 = r0.second;
-     */
-    /* JADX WARN: Code restructure failed: missing block: B:94:?, code lost:
-    
-        return new com.mojang.blaze3d.vertex.VertexMultiConsumer.Double(r2, r3);
-     */
-    @org.jetbrains.annotations.ApiStatus.Internal
-    @java.lang.Deprecated(forRemoval = true)
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
-    */
-    default com.mojang.blaze3d.vertex.VertexConsumer checkAndRefreshBuffer(boolean r7, com.mojang.blaze3d.vertex.VertexConsumer r8, net.minecraft.client.renderer.MultiBufferSource r9, net.minecraft.client.renderer.RenderType r10) {
-        /*
-            Method dump skipped, instruction units count: 250
-            To view this dump change 'Code comments level' option to 'DEBUG'
-        */
-        throw new UnsupportedOperationException("Method not decompiled: software.bernie.geckolib.renderer.GeoRenderer.checkAndRefreshBuffer(boolean, com.mojang.blaze3d.vertex.VertexConsumer, net.minecraft.client.renderer.MultiBufferSource, net.minecraft.client.renderer.RenderType):com.mojang.blaze3d.vertex.VertexConsumer");
+    @ApiStatus.Internal
+    default VertexConsumer checkAndRefreshBuffer(boolean isReRender, VertexConsumer buffer, MultiBufferSource bufferSource, RenderType renderType) {
+        if (isReRender) {
+            return buffer;
+        }
+        Objects.requireNonNull(buffer);
+        int i = 0;
+        while (true) {
+            switch ((int) SwitchBootstraps.typeSwitch(MethodHandles.lookup(), "typeSwitch", MethodType.methodType(Integer.TYPE, Object.class, Integer.TYPE), BufferBuilder.class, OutlineBufferSource.EntityOutlineGenerator.class, VertexMultiConsumer.Double.class).dynamicInvoker().invoke(buffer, i) /* invoke-custom */) {
+                case 0:
+                    BufferBuilder builder = (BufferBuilder) buffer;
+                    if (!builder.building) {
+                        return bufferSource.getBuffer(renderType);
+                    }
+                    i = 1;
+                    break;
+                    break;
+                case 1:
+                    OutlineBufferSource.EntityOutlineGenerator outlines = (OutlineBufferSource.EntityOutlineGenerator) buffer;
+                    if (bufferNeedsRefresh(outlines.delegate())) {
+                        return new OutlineBufferSource.EntityOutlineGenerator(bufferSource.getBuffer(renderType), outlines.color());
+                    }
+                    i = 2;
+                    break;
+                case 2:
+                    VertexMultiConsumer.Double pair = (VertexMultiConsumer.Double) buffer;
+                    if (bufferNeedsRefresh(pair.first) || bufferNeedsRefresh(pair.second)) {
+                        return new VertexMultiConsumer.Double(bufferNeedsRefresh(pair.first) ? bufferSource.getBuffer(renderType) : pair.first, bufferNeedsRefresh(pair.second) ? bufferSource.getBuffer(renderType) : pair.second);
+                    }
+                    i = 3;
+                    break;
+                default:
+                    return buffer;
+            }
+        }
     }
 
     @ApiStatus.Internal

@@ -9,7 +9,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.util.GsonHelper;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/loading/json/raw/UVFaces.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/loading/json/raw/UVFaces.class */
 public final class UVFaces extends Record {
 
     @Nullable
@@ -24,8 +24,9 @@ public final class UVFaces extends Record {
     @Nullable
     private final FaceUV west;
 
+    /* JADX INFO: renamed from: up */
     @Nullable
-    private final FaceUV up;
+    private final FaceUV f9198up;
 
     @Nullable
     private final FaceUV down;
@@ -35,7 +36,7 @@ public final class UVFaces extends Record {
         this.south = south;
         this.east = east;
         this.west = west;
-        this.up = up;
+        this.f9198up = up;
         this.down = down;
     }
 
@@ -75,8 +76,9 @@ public final class UVFaces extends Record {
     }
 
     @Nullable
-    public FaceUV up() {
-        return this.up;
+    /* JADX INFO: renamed from: up */
+    public FaceUV m8362up() {
+        return this.f9198up;
     }
 
     @Nullable
@@ -97,9 +99,9 @@ public final class UVFaces extends Record {
         };
     }
 
-    /* JADX INFO: renamed from: software.bernie.geckolib.loading.json.raw.UVFaces$1, reason: invalid class name */
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/loading/json/raw/UVFaces$1.class */
-    static /* synthetic */ class AnonymousClass1 {
+    /* JADX INFO: renamed from: software.bernie.geckolib.loading.json.raw.UVFaces$1 */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/loading/json/raw/UVFaces$1.class */
+    static /* synthetic */ class C14971 {
         static final /* synthetic */ int[] $SwitchMap$net$minecraft$core$Direction = new int[Direction.values().length];
 
         static {
@@ -132,7 +134,7 @@ public final class UVFaces extends Record {
 
     /* JADX INFO: Thrown type has an unknown type hierarchy: java.lang.MatchException */
     public FaceUV fromDirection(Direction direction) throws MatchException {
-        switch (AnonymousClass1.$SwitchMap$net$minecraft$core$Direction[direction.ordinal()]) {
+        switch (C14971.$SwitchMap$net$minecraft$core$Direction[direction.ordinal()]) {
             case 1:
                 return this.north;
             case 2:
@@ -142,7 +144,7 @@ public final class UVFaces extends Record {
             case 4:
                 return this.west;
             case 5:
-                return this.up;
+                return this.f9198up;
             case 6:
                 return this.down;
             default:

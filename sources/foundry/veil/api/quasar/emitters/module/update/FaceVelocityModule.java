@@ -7,7 +7,7 @@ import net.minecraft.util.Mth;
 import org.joml.Vector3d;
 import org.joml.Vector3f;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/emitters/module/update/FaceVelocityModule.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/emitters/module/update/FaceVelocityModule.class */
 public class FaceVelocityModule implements UpdateParticleModule {
     private final Vector3d temp = new Vector3d();
 

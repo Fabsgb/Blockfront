@@ -10,14 +10,15 @@ import java.lang.runtime.ObjectMethods;
 import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/inventory/PacketInventorySetItemDefault.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/inventory/PacketInventorySetItemDefault.class */
 public final class PacketInventorySetItemDefault extends Record implements IPacket {
 
     @NotNull
     private final UUID stack;
 
+    /* JADX INFO: renamed from: ID */
     @NotNull
-    public static final PacketIdentifier ID = new PacketIdentifier("PacketInventorySetItemDefault");
+    public static final PacketIdentifier f64ID = new PacketIdentifier("PacketInventorySetItemDefault");
 
     public PacketInventorySetItemDefault(@NotNull UUID stack) {
         this.stack = stack;
@@ -55,6 +56,6 @@ public final class PacketInventorySetItemDefault extends Record implements IPack
     @Override // com.boehmod.bflib.cloud.packet.IPacket
     @NotNull
     public PacketIdentifier getPacketIdentifier() {
-        return ID;
+        return f64ID;
     }
 }

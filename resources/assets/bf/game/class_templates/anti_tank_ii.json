@@ -12,7 +12,8 @@
       "weapon": "pistol_service"
     },
     {
-      "weapon": "grenade_at"
+      "weapon": "grenade_at",
+      "count": 2
     },
     {
       "weapon": "grenade_smoke",

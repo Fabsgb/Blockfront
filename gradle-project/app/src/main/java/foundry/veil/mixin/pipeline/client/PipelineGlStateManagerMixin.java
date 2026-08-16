@@ -8,7 +8,7 @@ import org.lwjgl.opengl.ARBDirectStateAccess;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/mixin/pipeline/client/PipelineGlStateManagerMixin.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/mixin/pipeline/client/PipelineGlStateManagerMixin.class */
 @Mixin({GlStateManager.class})
 public class PipelineGlStateManagerMixin {
     @WrapOperation(method = {"_glGenBuffers"}, at = {@At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL15;glGenBuffers()I", remap = false)}, remap = false)

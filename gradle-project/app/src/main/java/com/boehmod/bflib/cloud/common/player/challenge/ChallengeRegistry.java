@@ -19,7 +19,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/player/challenge/ChallengeRegistry.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/player/challenge/ChallengeRegistry.class */
 public class ChallengeRegistry {
 
     @NotNull
@@ -32,9 +32,9 @@ public class ChallengeRegistry {
     private static final Object2ObjectMap<Class<? extends Challenge>, PacketIdentifier> PACKET_CLASS_TO_IDENTIFIER_MAP = Object2ObjectMaps.synchronize(new Object2ObjectOpenHashMap());
 
     static {
-        registerChallenge(KillCountChallenge.ID, KillCountChallenge.class);
-        registerChallenge(ItemKillChallenge.ID, ItemKillChallenge.class);
-        registerChallenge(WeaponTypeKillChallenge.ID, WeaponTypeKillChallenge.class);
+        registerChallenge(KillCountChallenge.f17ID, KillCountChallenge.class);
+        registerChallenge(ItemKillChallenge.f16ID, ItemKillChallenge.class);
+        registerChallenge(WeaponTypeKillChallenge.f18ID, WeaponTypeKillChallenge.class);
     }
 
     public static void registerChallenge(@NotNull PacketIdentifier identifier, @NotNull Class<? extends Challenge> challengeClass) {

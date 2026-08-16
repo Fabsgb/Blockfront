@@ -14,7 +14,7 @@ import net.minecraft.client.renderer.ShaderInstance;
 import org.joml.Vector4f;
 import org.joml.Vector4fc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/property/properties/Vec4Property.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/property/properties/Vec4Property.class */
 public class Vec4Property extends Property<Vector4f> {
     @Override // foundry.veil.api.client.property.Property
     public /* bridge */ /* synthetic */ void modify(Vector4f vector4f, PropertyModifier.PropertyModifierMode propertyModifierMode, Optional optional) {

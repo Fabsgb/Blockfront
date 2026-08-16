@@ -9,7 +9,7 @@ import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
 import java.lang.runtime.ObjectMethods;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/rendertype/layer/PatchesLayer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/rendertype/layer/PatchesLayer.class */
 public final class PatchesLayer extends Record implements RenderTypeLayer {
     private final int patchVertices;
     public static final MapCodec<PatchesLayer> CODEC = Codec.intRange(1, Integer.MAX_VALUE).fieldOf("patchVertices").xmap((v1) -> {

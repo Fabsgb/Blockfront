@@ -9,7 +9,7 @@ import net.neoforged.fml.loading.FMLLoader;
 import net.neoforged.neoforge.common.extensions.ICommonPacketListener;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/forge/platform/NeoForgeVeilPlatform.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/forge/platform/NeoForgeVeilPlatform.class */
 @ApiStatus.Internal
 public class NeoForgeVeilPlatform implements VeilPlatform {
     @Override // foundry.veil.platform.VeilPlatform

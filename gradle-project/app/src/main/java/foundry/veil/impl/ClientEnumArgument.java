@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.network.chat.Component;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/ClientEnumArgument.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/ClientEnumArgument.class */
 public class ClientEnumArgument<T extends Enum<T>> implements ArgumentType<T> {
     private static final Dynamic2CommandExceptionType INVALID_ENUM = new Dynamic2CommandExceptionType((found, constants) -> {
         return Component.translatable("commands.veil.arguments.enum.invalid", new Object[]{found, constants});
@@ -33,7 +33,7 @@ public class ClientEnumArgument<T extends Enum<T>> implements ArgumentType<T> {
 
     /* JADX INFO: Thrown type has an unknown type hierarchy: com.mojang.brigadier.exceptions.CommandSyntaxException */
     /* JADX INFO: renamed from: parse, reason: merged with bridge method [inline-methods] */
-    public T m1960parse(StringReader stringReader) throws CommandSyntaxException {
+    public T m9517parse(StringReader stringReader) throws CommandSyntaxException {
         String unquotedString = stringReader.readUnquotedString();
         try {
             return (T) Enum.valueOf(this.enumClass, unquotedString.toUpperCase(Locale.ROOT));

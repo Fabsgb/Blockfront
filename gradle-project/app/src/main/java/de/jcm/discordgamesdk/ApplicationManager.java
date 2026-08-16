@@ -1,6 +1,5 @@
 package de.jcm.discordgamesdk;
 
-import de.jcm.discordgamesdk.Core;
 import de.jcm.discordgamesdk.impl.Command;
 import de.jcm.discordgamesdk.impl.commands.Authenticate;
 import de.jcm.discordgamesdk.user.DiscordUser;
@@ -11,11 +10,11 @@ import java.util.Date;
 import java.util.Set;
 import java.util.function.BiConsumer;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/ApplicationManager.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/ApplicationManager.class */
 public class ApplicationManager {
     private final Core.CorePrivate core;
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/ApplicationManager$DiscordOAuth2Token.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/ApplicationManager$DiscordOAuth2Token.class */
     public static final class DiscordOAuth2Token extends Record {
         private final String accessToken;
         private final Set<String> scopes;
@@ -55,9 +54,11 @@ public class ApplicationManager {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/ApplicationManager$Application.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/ApplicationManager$Application.class */
     public static final class Application extends Record {
-        private final long id;
+
+        /* JADX INFO: renamed from: id */
+        private final long f9098id;
         private final String name;
         private final String icon;
         private final String description;
@@ -72,7 +73,7 @@ public class ApplicationManager {
         private final boolean storefrontAvailable;
 
         public Application(long id, String name, String icon, String description, String type, String coverImage, String summary, boolean monetized, boolean verified, String verifyKey, int flags, boolean hook, boolean storefrontAvailable) {
-            this.id = id;
+            this.f9098id = id;
             this.name = name;
             this.icon = icon;
             this.description = description;
@@ -102,8 +103,9 @@ public class ApplicationManager {
             return (boolean) ObjectMethods.bootstrap(MethodHandles.lookup(), "equals", MethodType.methodType(Boolean.TYPE, Application.class, Object.class), Application.class, "id;name;icon;description;type;coverImage;summary;monetized;verified;verifyKey;flags;hook;storefrontAvailable", "FIELD:Lde/jcm/discordgamesdk/ApplicationManager$Application;->id:J", "FIELD:Lde/jcm/discordgamesdk/ApplicationManager$Application;->name:Ljava/lang/String;", "FIELD:Lde/jcm/discordgamesdk/ApplicationManager$Application;->icon:Ljava/lang/String;", "FIELD:Lde/jcm/discordgamesdk/ApplicationManager$Application;->description:Ljava/lang/String;", "FIELD:Lde/jcm/discordgamesdk/ApplicationManager$Application;->type:Ljava/lang/String;", "FIELD:Lde/jcm/discordgamesdk/ApplicationManager$Application;->coverImage:Ljava/lang/String;", "FIELD:Lde/jcm/discordgamesdk/ApplicationManager$Application;->summary:Ljava/lang/String;", "FIELD:Lde/jcm/discordgamesdk/ApplicationManager$Application;->monetized:Z", "FIELD:Lde/jcm/discordgamesdk/ApplicationManager$Application;->verified:Z", "FIELD:Lde/jcm/discordgamesdk/ApplicationManager$Application;->verifyKey:Ljava/lang/String;", "FIELD:Lde/jcm/discordgamesdk/ApplicationManager$Application;->flags:I", "FIELD:Lde/jcm/discordgamesdk/ApplicationManager$Application;->hook:Z", "FIELD:Lde/jcm/discordgamesdk/ApplicationManager$Application;->storefrontAvailable:Z").dynamicInvoker().invoke(this, o) /* invoke-custom */;
         }
 
-        public long id() {
-            return this.id;
+        /* JADX INFO: renamed from: id */
+        public long m8328id() {
+            return this.f9098id;
         }
 
         public String name() {
@@ -155,7 +157,7 @@ public class ApplicationManager {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/ApplicationManager$AuthenticationData.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/ApplicationManager$AuthenticationData.class */
     public static final class AuthenticationData extends Record {
         private final DiscordOAuth2Token token;
         private final Application application;

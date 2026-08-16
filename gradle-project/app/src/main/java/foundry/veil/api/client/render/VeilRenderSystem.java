@@ -29,6 +29,7 @@ import foundry.veil.api.client.render.texture.VeilPreloadedTexture;
 import foundry.veil.api.compat.SodiumCompat;
 import foundry.veil.api.event.VeilRenderLevelStageEvent;
 import foundry.veil.api.flare.modifier.RandomnessController;
+import foundry.veil.api.quasar.registry.RenderStyleRegistry;
 import foundry.veil.ext.VertexBufferExtension;
 import foundry.veil.impl.client.imgui.AdvancedFboImGuiAreaImpl;
 import foundry.veil.impl.client.necromancer.render.NecromancerRenderDispatcher;
@@ -78,7 +79,7 @@ import org.lwjgl.opengl.GL43C;
 import org.lwjgl.opengl.GLCapabilities;
 import org.lwjgl.system.MemoryUtil;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/VeilRenderSystem.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/VeilRenderSystem.class */
 public final class VeilRenderSystem {
     public static final RenderStateShard.OutputStateShard BLOOM_SHARD = new RenderStateShard.OutputStateShard("veil:bloom", VeilBloomRenderer::setupRenderState, VeilBloomRenderer::clearRenderState);
     private static final Executor RENDER_THREAD_EXECUTOR = task -> {
@@ -928,6 +929,7 @@ public final class VeilRenderSystem {
         GL43C.glDeleteVertexArrays(screenQuadVao);
         MemoryUtil.memFree(emptySamplers);
         SHADER_BUFFER_CACHE.free();
+        RenderStyleRegistry.freeRenderStyles();
     }
 
     @ApiStatus.Internal
@@ -953,10 +955,11 @@ public final class VeilRenderSystem {
     }
 
     @ApiStatus.Internal
-    public static boolean drawLights(ProfilerFiller profiler, CullFrustum cullFrustum) {
+    public static boolean drawLights(ProfilerFiller profiler, CullFrustum cullFrustum, boolean renderInscattering) {
         FramebufferManager framebufferManager = renderer.getFramebufferManager();
         AdvancedFbo lightFbo = framebufferManager.getFramebuffer(VeilFramebuffers.LIGHT);
-        if (lightFbo == null) {
+        AdvancedFbo lightInscatteringFbo = framebufferManager.getFramebuffer(VeilFramebuffers.LIGHT_INSCATTERING);
+        if (lightFbo == null || lightInscatteringFbo == null) {
             AdvancedFbo.unbind();
             return false;
         }
@@ -966,7 +969,7 @@ public final class VeilRenderSystem {
         renderProfiler.push("veil_lights", RenderProfilerCounter.VERTICES_SUBMITTED, RenderProfilerCounter.PRIMITIVES_SUBMITTED, RenderProfilerCounter.VERTEX_SHADER_INVOCATIONS, RenderProfilerCounter.FRAGMENT_SHADER_INVOCATIONS, RenderProfilerCounter.COMPUTE_SHADER_INVOCATIONS, RenderProfilerCounter.CLIPPING_INPUT_PRIMITIVES, RenderProfilerCounter.CLIPPING_OUTPUT_PRIMITIVES);
         LightRenderer lightRenderer = renderer.getLightRenderer();
         profiler.push("draw_lights");
-        boolean rendered = lightRenderer.render(cullFrustum, lightFbo);
+        boolean rendered = lightRenderer.render(cullFrustum, lightFbo, lightInscatteringFbo, renderInscattering);
         profiler.pop();
         renderProfiler.pop();
         debug.popDebugGroup();

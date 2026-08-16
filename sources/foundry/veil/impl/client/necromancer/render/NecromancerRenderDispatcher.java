@@ -38,7 +38,7 @@ import org.lwjgl.opengl.GL15C;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.MemoryUtil;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/necromancer/render/NecromancerRenderDispatcher.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/necromancer/render/NecromancerRenderDispatcher.class */
 @ApiStatus.Internal
 public class NecromancerRenderDispatcher {
     private static final Batched BATCHED = new Batched();
@@ -109,22 +109,22 @@ public class NecromancerRenderDispatcher {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/necromancer/render/NecromancerRenderDispatcher$RendererImpl.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/necromancer/render/NecromancerRenderDispatcher$RendererImpl.class */
     private static abstract class RendererImpl implements NecromancerRenderer {
         protected int overlay;
         protected int light;
 
         /* JADX INFO: renamed from: r */
-        protected int f8767r;
+        protected int f9153r;
 
         /* JADX INFO: renamed from: g */
-        protected int f8768g;
+        protected int f9154g;
 
         /* JADX INFO: renamed from: b */
-        protected int f8769b;
+        protected int f9155b;
 
         /* JADX INFO: renamed from: a */
-        protected int f8770a;
+        protected int f9156a;
         protected final Matrix4f transform = new Matrix4f();
 
         private RendererImpl() {
@@ -142,28 +142,28 @@ public class NecromancerRenderDispatcher {
 
         @Override // foundry.veil.api.client.necromancer.render.NecromancerRenderer
         public void setColor(float r, float g, float b, float a) {
-            this.f8767r = ((int) (((double) r) * 255.0d)) & 255;
-            this.f8768g = ((int) (((double) g) * 255.0d)) & 255;
-            this.f8769b = ((int) (((double) b) * 255.0d)) & 255;
-            this.f8770a = ((int) (((double) a) * 255.0d)) & 255;
+            this.f9153r = ((int) (((double) r) * 255.0d)) & 255;
+            this.f9154g = ((int) (((double) g) * 255.0d)) & 255;
+            this.f9155b = ((int) (((double) b) * 255.0d)) & 255;
+            this.f9156a = ((int) (((double) a) * 255.0d)) & 255;
         }
 
         @Override // foundry.veil.api.client.necromancer.render.NecromancerRenderer
         public void setColor(int color) {
-            this.f8767r = (color >> 16) & 255;
-            this.f8768g = (color >> 8) & 255;
-            this.f8769b = color & 255;
-            this.f8770a = (color >> 24) & 255;
+            this.f9153r = (color >> 16) & 255;
+            this.f9154g = (color >> 8) & 255;
+            this.f9155b = color & 255;
+            this.f9156a = (color >> 24) & 255;
         }
 
         @Override // foundry.veil.api.client.necromancer.render.NecromancerRenderer
         public void reset() {
             this.overlay = 160;
             this.light = 255;
-            this.f8767r = 255;
-            this.f8768g = 255;
-            this.f8769b = 255;
-            this.f8770a = 255;
+            this.f9153r = 255;
+            this.f9154g = 255;
+            this.f9155b = 255;
+            this.f9156a = 255;
             this.transform.identity();
         }
 
@@ -173,7 +173,7 @@ public class NecromancerRenderDispatcher {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/necromancer/render/NecromancerRenderDispatcher$Immediate.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/necromancer/render/NecromancerRenderDispatcher$Immediate.class */
     public static class Immediate extends RendererImpl {
         private final Matrix4x3f affineTransform = new Matrix4x3f();
 
@@ -219,10 +219,10 @@ public class NecromancerRenderDispatcher {
                 ByteBuffer instancedData = stack.malloc(8);
                 instancedData.put(0, (byte) this.overlay);
                 instancedData.put(1, (byte) this.light);
-                instancedData.put(2, (byte) this.f8767r);
-                instancedData.put(3, (byte) this.f8768g);
-                instancedData.put(4, (byte) this.f8769b);
-                instancedData.put(5, (byte) this.f8770a);
+                instancedData.put(2, (byte) this.f9153r);
+                instancedData.put(3, (byte) this.f9154g);
+                instancedData.put(4, (byte) this.f9155b);
+                instancedData.put(5, (byte) this.f9156a);
                 instancedData.put(6, (byte) 0);
                 instancedData.put(7, (byte) 0);
                 this.affineTransform.set(this.transform);
@@ -257,7 +257,7 @@ public class NecromancerRenderDispatcher {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/necromancer/render/NecromancerRenderDispatcher$Batched.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/necromancer/render/NecromancerRenderDispatcher$Batched.class */
     public static class Batched extends RendererImpl {
         private final List<ByteBufferBuilder> bufferBuilderList = new ObjectArrayList();
         private final Int2ObjectMap<SkeletonBatch> skeletonBatches = new Int2ObjectArrayMap();
@@ -299,7 +299,7 @@ public class NecromancerRenderDispatcher {
             SkeletonBatch batch = (SkeletonBatch) this.skeletonBatches.computeIfAbsent((skin.hashCode() * 31) + renderType.hashCode(), unused -> {
                 return new SkeletonBatch(renderType, skin);
             });
-            batch.add(this.transform, skeleton, this.overlay, this.light, this.f8767r, this.f8768g, this.f8769b, this.f8770a, partialTicks);
+            batch.add(this.transform, skeleton, this.overlay, this.light, this.f9153r, this.f9154g, this.f9155b, this.f9156a, partialTicks);
         }
 
         @NotNull
@@ -365,7 +365,7 @@ public class NecromancerRenderDispatcher {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/necromancer/render/NecromancerRenderDispatcher$SkeletonBatch.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/necromancer/render/NecromancerRenderDispatcher$SkeletonBatch.class */
     private static class SkeletonBatch {
         private final RenderType renderType;
         private final Skin skin;

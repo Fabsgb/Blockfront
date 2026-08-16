@@ -10,7 +10,7 @@ import software.bernie.geckolib.loading.json.raw.MinecraftGeometry;
 import software.bernie.geckolib.loading.json.raw.Model;
 import software.bernie.geckolib.loading.json.raw.ModelProperties;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/loading/object/GeometryTree.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/loading/object/GeometryTree.class */
 public final class GeometryTree extends Record {
     private final Map<String, BoneStructure> topLevelBones;
     private final ModelProperties properties;

@@ -7,7 +7,7 @@ import java.lang.runtime.ObjectMethods;
 import java.util.List;
 import software.bernie.geckolib.animation.keyframe.Keyframe;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/animation/keyframe/KeyframeStack.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/animation/keyframe/KeyframeStack.class */
 public final class KeyframeStack<T extends Keyframe<?>> extends Record {
     private final List<T> xKeyframes;
     private final List<T> yKeyframes;

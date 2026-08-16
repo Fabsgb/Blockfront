@@ -1,12 +1,12 @@
 package foundry.veil.forge.mixin.compat.iris;
 
 import com.boehmod.bflib.cloud.common.ProgressionValues;
-import com.boehmod.blockfront.AbstractC0422pq;
-import com.boehmod.blockfront.C0093dj;
-import com.boehmod.blockfront.C0407pb;
-import com.boehmod.blockfront.pQ;
-import com.boehmod.blockfront.rY;
-import com.boehmod.blockfront.sR;
+import com.boehmod.blockfront.AbstractC0927qm;
+import com.boehmod.blockfront.C0244ds;
+import com.boehmod.blockfront.C0885px;
+import com.boehmod.blockfront.C0994s;
+import com.boehmod.blockfront.C1043sv;
+import com.boehmod.blockfront.C1089to;
 import foundry.veil.api.client.render.framebuffer.FramebufferAttachmentDefinition;
 import foundry.veil.ext.iris.IrisRenderTargetExtension;
 import net.irisshaders.iris.gl.texture.InternalTextureFormat;
@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/forge/mixin/compat/iris/IrisRenderTargetMixin.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/forge/mixin/compat/iris/IrisRenderTargetMixin.class */
 @Mixin({RenderTarget.class})
 public abstract class IrisRenderTargetMixin implements IrisRenderTargetExtension {
 
@@ -67,9 +67,9 @@ public abstract class IrisRenderTargetMixin implements IrisRenderTargetExtension
         return getHeight();
     }
 
-    /* JADX INFO: renamed from: foundry.veil.forge.mixin.compat.iris.IrisRenderTargetMixin$1, reason: invalid class name */
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/forge/mixin/compat/iris/IrisRenderTargetMixin$1.class */
-    static /* synthetic */ class AnonymousClass1 {
+    /* JADX INFO: renamed from: foundry.veil.forge.mixin.compat.iris.IrisRenderTargetMixin$1 */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/forge/mixin/compat/iris/IrisRenderTargetMixin$1.class */
+    static /* synthetic */ class C14411 {
         static final /* synthetic */ int[] $SwitchMap$net$irisshaders$iris$gl$texture$InternalTextureFormat = new int[InternalTextureFormat.values().length];
 
         static {
@@ -311,7 +311,7 @@ public abstract class IrisRenderTargetMixin implements IrisRenderTargetExtension
     /* JADX INFO: Thrown type has an unknown type hierarchy: java.lang.MatchException */
     @Override // foundry.veil.ext.iris.IrisRenderTargetExtension
     public FramebufferAttachmentDefinition.Format veil$getFormat() throws MatchException {
-        switch (AnonymousClass1.$SwitchMap$net$irisshaders$iris$gl$texture$InternalTextureFormat[getInternalFormat().ordinal()]) {
+        switch (C14411.$SwitchMap$net$irisshaders$iris$gl$texture$InternalTextureFormat[getInternalFormat().ordinal()]) {
             case 1:
                 return FramebufferAttachmentDefinition.Format.RGBA;
             case 2:
@@ -324,19 +324,19 @@ public abstract class IrisRenderTargetMixin implements IrisRenderTargetExtension
                 return FramebufferAttachmentDefinition.Format.RGBA8;
             case 6:
                 return FramebufferAttachmentDefinition.Format.R8_SNORM;
-            case 7:
+            case C0994s.f5462C /* 7 */:
                 return FramebufferAttachmentDefinition.Format.RG8_SNORM;
             case 8:
                 return FramebufferAttachmentDefinition.Format.RGB8_SNORM;
-            case C0407pb.nv /* 9 */:
+            case 9:
                 return FramebufferAttachmentDefinition.Format.RGBA8_SNORM;
             case 10:
                 return FramebufferAttachmentDefinition.Format.R16;
-            case AbstractC0422pq.nO /* 11 */:
+            case 11:
                 return FramebufferAttachmentDefinition.Format.RG16;
             case 12:
                 return FramebufferAttachmentDefinition.Format.RGB16;
-            case C0407pb.nu /* 13 */:
+            case C0885px.f4841pt /* 13 */:
                 return FramebufferAttachmentDefinition.Format.RGBA16;
             case 14:
                 return FramebufferAttachmentDefinition.Format.R16_SNORM;
@@ -356,7 +356,7 @@ public abstract class IrisRenderTargetMixin implements IrisRenderTargetExtension
                 return FramebufferAttachmentDefinition.Format.RGBA16F;
             case 22:
                 return FramebufferAttachmentDefinition.Format.R32F;
-            case C0407pb.nw /* 23 */:
+            case C0885px.f4843pv /* 23 */:
                 return FramebufferAttachmentDefinition.Format.RG32F;
             case 24:
                 return FramebufferAttachmentDefinition.Format.RGB32F;
@@ -366,7 +366,7 @@ public abstract class IrisRenderTargetMixin implements IrisRenderTargetExtension
                 return FramebufferAttachmentDefinition.Format.R8I;
             case 27:
                 return FramebufferAttachmentDefinition.Format.RG8I;
-            case pQ.nU /* 28 */:
+            case AbstractC0927qm.f5121pT /* 28 */:
                 return FramebufferAttachmentDefinition.Format.RGB8I;
             case 29:
                 return FramebufferAttachmentDefinition.Format.RGBA8I;
@@ -380,11 +380,11 @@ public abstract class IrisRenderTargetMixin implements IrisRenderTargetExtension
                 return FramebufferAttachmentDefinition.Format.RGBA8UI;
             case 34:
                 return FramebufferAttachmentDefinition.Format.R16I;
-            case rY.qj /* 35 */:
+            case C1043sv.f5687sk /* 35 */:
                 return FramebufferAttachmentDefinition.Format.RG16I;
             case 36:
                 return FramebufferAttachmentDefinition.Format.RGB16I;
-            case sR.rf /* 37 */:
+            case C1089to.f5854tg /* 37 */:
                 return FramebufferAttachmentDefinition.Format.RGBA16I;
             case 38:
                 return FramebufferAttachmentDefinition.Format.R16UI;
@@ -396,7 +396,7 @@ public abstract class IrisRenderTargetMixin implements IrisRenderTargetExtension
                 return FramebufferAttachmentDefinition.Format.RGBA16UI;
             case 42:
                 return FramebufferAttachmentDefinition.Format.R32I;
-            case sR.rh /* 43 */:
+            case C1089to.f5856ti /* 43 */:
                 return FramebufferAttachmentDefinition.Format.RG32I;
             case 44:
                 return FramebufferAttachmentDefinition.Format.RGB32I;
@@ -422,7 +422,7 @@ public abstract class IrisRenderTargetMixin implements IrisRenderTargetExtension
                 return FramebufferAttachmentDefinition.Format.RGB565;
             case 55:
                 return FramebufferAttachmentDefinition.Format.RGB10_A2;
-            case C0093dj.ge /* 56 */:
+            case C0244ds.f1990he /* 56 */:
                 return FramebufferAttachmentDefinition.Format.RGB10_A2UI;
             case 57:
                 return FramebufferAttachmentDefinition.Format.R11F_G11F_B10F;

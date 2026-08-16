@@ -6,7 +6,7 @@ import net.minecraft.server.packs.resources.ResourceProvider;
 import net.neoforged.bus.api.Event;
 import net.neoforged.fml.event.IModBusEvent;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/forge/event/ForgeVeilAddShaderProcessorsEvent.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/forge/event/ForgeVeilAddShaderProcessorsEvent.class */
 public class ForgeVeilAddShaderProcessorsEvent extends Event implements VeilAddShaderPreProcessorsEvent.Registry, IModBusEvent {
     private final ResourceProvider resourceProvider;
     private final VeilAddShaderPreProcessorsEvent.Registry registry;

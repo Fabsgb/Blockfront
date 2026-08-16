@@ -4,7 +4,7 @@ import imgui.ImGui;
 import imgui.ImGuiStyle;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/imgui/VeilImGuiStylesheet.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/imgui/VeilImGuiStylesheet.class */
 @ApiStatus.Internal
 public final class VeilImGuiStylesheet {
     private VeilImGuiStylesheet() {
@@ -45,28 +45,28 @@ public final class VeilImGuiStylesheet {
         style.setColor(30, 0.11f, 0.11f, 0.11f, 1.0f);
         style.setColor(31, 0.54f, 0.54f, 0.54f, 1.0f);
         style.setColor(32, 0.85f, 0.85f, 0.85f, 1.0f);
-        style.setColor(34, 0.32f, 0.32f, 0.32f, 0.53f);
-        style.setColor(33, 0.35f, 0.35f, 0.35f, 0.8f);
-        style.setColor(35, 0.39f, 0.39f, 0.39f, 1.0f);
-        style.setColor(37, 0.07f, 0.1f, 0.15f, 0.97f);
-        style.setColor(38, 0.14f, 0.26f, 0.42f, 1.0f);
-        style.setColor(40, 0.24f, 0.31f, 0.41f, 0.53f);
-        style.setColor(41, 0.2f, 0.2f, 0.2f, 1.0f);
-        style.setColor(42, 0.61f, 0.61f, 0.61f, 1.0f);
-        style.setColor(43, 1.0f, 0.43f, 0.35f, 1.0f);
-        style.setColor(44, 0.9f, 0.7f, 0.0f, 1.0f);
-        style.setColor(45, 1.0f, 0.6f, 0.0f, 1.0f);
-        style.setColor(46, 0.19f, 0.19f, 0.2f, 1.0f);
-        style.setColor(47, 0.31f, 0.31f, 0.35f, 1.0f);
-        style.setColor(48, 0.23f, 0.23f, 0.25f, 1.0f);
-        style.setColor(49, 0.0f, 0.0f, 0.0f, 0.0f);
-        style.setColor(50, 1.0f, 1.0f, 1.0f, 0.06f);
-        style.setColor(51, 0.26f, 0.59f, 0.98f, 0.35f);
-        style.setColor(52, 0.35f, 0.28f, 0.2f, 1.0f);
-        style.setColor(53, 0.76f, 0.76f, 0.76f, 1.0f);
-        style.setColor(54, 1.0f, 1.0f, 1.0f, 0.7f);
-        style.setColor(55, 0.8f, 0.8f, 0.8f, 0.2f);
-        style.setColor(56, 0.8f, 0.8f, 0.8f, 0.35f);
+        style.setColor(35, 0.32f, 0.32f, 0.32f, 0.53f);
+        style.setColor(34, 0.35f, 0.35f, 0.35f, 0.8f);
+        style.setColor(36, 0.39f, 0.39f, 0.39f, 1.0f);
+        style.setColor(38, 0.07f, 0.1f, 0.15f, 0.97f);
+        style.setColor(39, 0.14f, 0.26f, 0.42f, 1.0f);
+        style.setColor(41, 0.24f, 0.31f, 0.41f, 0.53f);
+        style.setColor(42, 0.2f, 0.2f, 0.2f, 1.0f);
+        style.setColor(43, 0.61f, 0.61f, 0.61f, 1.0f);
+        style.setColor(44, 1.0f, 0.43f, 0.35f, 1.0f);
+        style.setColor(45, 0.9f, 0.7f, 0.0f, 1.0f);
+        style.setColor(46, 1.0f, 0.6f, 0.0f, 1.0f);
+        style.setColor(47, 0.19f, 0.19f, 0.2f, 1.0f);
+        style.setColor(48, 0.31f, 0.31f, 0.35f, 1.0f);
+        style.setColor(49, 0.23f, 0.23f, 0.25f, 1.0f);
+        style.setColor(50, 0.0f, 0.0f, 0.0f, 0.0f);
+        style.setColor(51, 1.0f, 1.0f, 1.0f, 0.06f);
+        style.setColor(53, 0.26f, 0.59f, 0.98f, 0.35f);
+        style.setColor(55, 0.35f, 0.28f, 0.2f, 1.0f);
+        style.setColor(58, 0.76f, 0.76f, 0.76f, 1.0f);
+        style.setColor(59, 1.0f, 1.0f, 1.0f, 0.7f);
+        style.setColor(60, 0.8f, 0.8f, 0.8f, 0.2f);
+        style.setColor(61, 0.8f, 0.8f, 0.8f, 0.35f);
         style.setWindowPadding(5.0f, 4.0f);
         style.setFramePadding(10.0f, 5.0f);
         style.setCellPadding(4.0f, 2.0f);

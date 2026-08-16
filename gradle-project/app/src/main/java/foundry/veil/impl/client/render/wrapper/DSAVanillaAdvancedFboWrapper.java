@@ -1,6 +1,6 @@
 package foundry.veil.impl.client.render.wrapper;
 
-import com.boehmod.blockfront.InterfaceC0638xq;
+import com.boehmod.blockfront.InterfaceC1274xN;
 import com.mojang.blaze3d.pipeline.RenderTarget;
 import foundry.veil.api.client.render.VeilRenderSystem;
 import foundry.veil.api.client.render.framebuffer.AdvancedFbo;
@@ -13,7 +13,7 @@ import org.lwjgl.opengl.ARBDirectStateAccess;
 import org.lwjgl.opengl.GL30C;
 import org.lwjgl.system.MemoryStack;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/wrapper/DSAVanillaAdvancedFboWrapper.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/wrapper/DSAVanillaAdvancedFboWrapper.class */
 @ApiStatus.Internal
 public class DSAVanillaAdvancedFboWrapper extends VanillaAdvancedFboWrapper {
     public DSAVanillaAdvancedFboWrapper(Supplier<RenderTarget> renderTargetSupplier) {
@@ -28,8 +28,8 @@ public class DSAVanillaAdvancedFboWrapper extends VanillaAdvancedFboWrapper {
         MemoryStack stack = MemoryStack.stackPush();
         try {
             boolean clearTex = VeilRenderSystem.clearTextureSupported();
-            RenderTarget renderTarget = mo1982toRenderTarget();
-            if ((clearMask & InterfaceC0638xq.tV) != 0) {
+            RenderTarget renderTarget = mo9539toRenderTarget();
+            if ((clearMask & InterfaceC1274xN.f6857vZ) != 0) {
                 if (clearTex) {
                     ARBClearTexture.glClearTexImage(renderTarget.getColorTextureId(), 0, 6408, 5126, stack.floats(red, green, blue, alpha));
                 } else {
@@ -39,7 +39,7 @@ public class DSAVanillaAdvancedFboWrapper extends VanillaAdvancedFboWrapper {
             if (renderTarget.useDepth) {
                 boolean hasStencilAttachment = hasStencilAttachment();
                 boolean hasDepth = (clearMask & 256) != 0;
-                boolean hasStencil = hasStencilAttachment && (clearMask & InterfaceC0638xq.tR) != 0;
+                boolean hasStencil = hasStencilAttachment && (clearMask & 1024) != 0;
                 if (hasDepth || hasStencil) {
                     if (hasStencilAttachment) {
                         if (hasDepth && hasStencil) {

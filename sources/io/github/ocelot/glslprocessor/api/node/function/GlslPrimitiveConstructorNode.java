@@ -6,7 +6,7 @@ import io.github.ocelot.glslprocessor.api.node.GlslNodeType;
 import io.github.ocelot.glslprocessor.api.visitor.GlslNodeVisitor;
 import java.util.stream.Stream;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/node/function/GlslPrimitiveConstructorNode.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/node/function/GlslPrimitiveConstructorNode.class */
 public final class GlslPrimitiveConstructorNode implements GlslNode {
     private GlslTypeSpecifier primitiveType;
 

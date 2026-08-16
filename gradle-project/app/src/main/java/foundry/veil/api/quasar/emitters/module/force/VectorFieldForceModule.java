@@ -6,7 +6,7 @@ import foundry.veil.api.quasar.emitters.module.update.VectorField;
 import foundry.veil.api.quasar.particle.QuasarParticle;
 import org.joml.Vector3d;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/emitters/module/force/VectorFieldForceModule.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/emitters/module/force/VectorFieldForceModule.class */
 public class VectorFieldForceModule implements ForceParticleModule {
     private VectorField vectorField;
     private float strength;

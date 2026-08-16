@@ -6,7 +6,7 @@ import org.joml.Matrix3fc;
 import org.lwjgl.opengl.GL20C;
 import org.lwjgl.system.MemoryStack;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/forge/compat/sodium/VeilNormalUniform.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/forge/compat/sodium/VeilNormalUniform.class */
 public class VeilNormalUniform extends GlUniform<Matrix3fc> {
     public VeilNormalUniform(int index) {
         super(index);

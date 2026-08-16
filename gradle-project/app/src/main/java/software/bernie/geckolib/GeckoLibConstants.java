@@ -8,7 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/GeckoLibConstants.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/GeckoLibConstants.class */
 public final class GeckoLibConstants {
     public static final String MODID = "geckolib";
     public static final Logger LOGGER = LogManager.getLogger("GeckoLib");
@@ -19,7 +19,8 @@ public final class GeckoLibConstants {
     public static void init() {
     }
 
-    public static ResourceLocation id(String path) {
+    /* JADX INFO: renamed from: id */
+    public static ResourceLocation m8356id(String path) {
         return ResourceLocation.fromNamespaceAndPath(MODID, path);
     }
 

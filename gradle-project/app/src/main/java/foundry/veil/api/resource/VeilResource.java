@@ -21,7 +21,7 @@ import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import org.apache.commons.io.IOUtils;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/resource/VeilResource.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/resource/VeilResource.class */
 public interface VeilResource<T extends VeilResource<?>> {
     VeilResourceInfo resourceInfo();
 
@@ -94,17 +94,25 @@ public interface VeilResource<T extends VeilResource<?>> {
                 if (is != null) {
                     is.close();
                 }
-            } finally {
+            } catch (Throwable th) {
+                if (os != null) {
+                    try {
+                        os.close();
+                    } catch (Throwable th2) {
+                        th.addSuppressed(th2);
+                    }
+                }
+                throw th;
             }
-        } catch (Throwable th) {
+        } catch (Throwable th3) {
             if (is != null) {
                 try {
                     is.close();
-                } catch (Throwable th2) {
-                    th.addSuppressed(th2);
+                } catch (Throwable th4) {
+                    th3.addSuppressed(th4);
                 }
             }
-            throw th;
+            throw th3;
         }
     }
 }

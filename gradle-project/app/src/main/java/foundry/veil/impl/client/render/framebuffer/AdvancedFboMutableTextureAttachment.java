@@ -10,7 +10,7 @@ import org.lwjgl.opengl.ARBDirectStateAccess;
 import org.lwjgl.opengl.GL30;
 import org.lwjgl.opengl.GL30C;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/framebuffer/AdvancedFboMutableTextureAttachment.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/framebuffer/AdvancedFboMutableTextureAttachment.class */
 @ApiStatus.Internal
 public class AdvancedFboMutableTextureAttachment extends AdvancedFboTextureAttachment {
     private int textureId;
@@ -47,7 +47,7 @@ public class AdvancedFboMutableTextureAttachment extends AdvancedFboTextureAttac
 
     @Override // foundry.veil.api.client.render.framebuffer.AdvancedFboTextureAttachment
     /* JADX INFO: renamed from: clone */
-    public AdvancedFboMutableTextureAttachment mo1772clone() {
+    public AdvancedFboMutableTextureAttachment mo9329clone() {
         return new AdvancedFboMutableTextureAttachment(getAttachmentType(), this.textureId, this.layer, getName());
     }
 

@@ -1,6 +1,6 @@
 package foundry.veil.api.client.render.light.renderer;
 
-import com.boehmod.blockfront.InterfaceC1294xq;
+import com.boehmod.blockfront.InterfaceC1274xN;
 import com.mojang.blaze3d.systems.RenderSystem;
 import foundry.veil.Veil;
 import foundry.veil.api.client.registry.LightTypeRegistry;
@@ -22,14 +22,14 @@ import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.ApiStatus;
 import org.lwjgl.system.NativeResource;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/light/renderer/LightRenderer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/light/renderer/LightRenderer.class */
 public final class LightRenderer implements NativeResource {
     private static final ResourceLocation BUFFER_ID = Veil.veilPath("lights");
     private final Map<LightTypeRegistry.LightType<?>, LightTypeRenderer<?>> renderers = new Object2ObjectArrayMap();
     private final Map<LightTypeRegistry.LightType<?>, LightTypeRenderer<?>> renderersView = Collections.unmodifiableMap(this.renderers);
 
     @ApiStatus.Internal
-    public boolean render(CullFrustum frustum, AdvancedFbo lightFbo) {
+    public boolean render(CullFrustum frustum, AdvancedFbo lightFbo, AdvancedFbo lightInscatteringFbo, boolean renderInscattering) {
         boolean hasRendered = false;
         boolean setupDDA = false;
         VeilRenderer renderer = VeilRenderSystem.renderer();
@@ -41,7 +41,7 @@ public final class LightRenderer implements NativeResource {
                         return false;
                     }
                     lightFbo.bind(true);
-                    lightFbo.clear(InterfaceC1294xq.f8660tV);
+                    lightFbo.clear(InterfaceC1274xN.f6857vZ);
                     AdvancedFbo.getMainFramebuffer().resolveToAdvancedFbo(lightFbo, 256, 9728);
                 }
                 hasRendered = true;
@@ -54,7 +54,19 @@ public final class LightRenderer implements NativeResource {
                     ddalightRenderer.uploadVoxelGridUniforms(VoxelShadowGrid.getTextureId(), VoxelShadowGrid.getUniformGridPos());
                 }
                 lightRenderer.renderLights(this);
+                if (lightRenderer instanceof InscatteringLightRenderer) {
+                    InscatteringLightRenderer<?> inscatteringLightRenderer = (InscatteringLightRenderer) lightRenderer;
+                    if (renderInscattering) {
+                        lightInscatteringFbo.bind(true);
+                        AdvancedFbo.getMainFramebuffer().resolveToAdvancedFbo(lightInscatteringFbo, 256, 9728);
+                        inscatteringLightRenderer.renderLightInscattering(this);
+                        AdvancedFbo.unbind();
+                    }
+                }
             }
+        }
+        if (hasRendered && !renderInscattering) {
+            lightInscatteringFbo.clear(InterfaceC1274xN.f6857vZ);
         }
         if (!hasRendered) {
             renderer.disableBuffers(BUFFER_ID, DynamicBufferType.ALBEDO, DynamicBufferType.NORMAL);

@@ -13,7 +13,7 @@ import java.lang.runtime.ObjectMethods;
 import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/requests/PacketRequestedInventoryMinimal.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/requests/PacketRequestedInventoryMinimal.class */
 public final class PacketRequestedInventoryMinimal extends Record implements IPacket {
 
     @NotNull
@@ -30,7 +30,7 @@ public final class PacketRequestedInventoryMinimal extends Record implements IPa
 
     /* JADX INFO: renamed from: ID */
     @NotNull
-    public static final PacketIdentifier f89ID = new PacketIdentifier("PacketRequestedInventoryMinimal");
+    public static final PacketIdentifier f103ID = new PacketIdentifier("PacketRequestedInventoryMinimal");
 
     public PacketRequestedInventoryMinimal(@NotNull UUID uuid, @NotNull ObjectList<CloudItemStack> stacks, @NotNull ObjectSet<UUID> showcased, @NotNull ObjectSet<UUID> equipped) {
         this.uuid = uuid;
@@ -89,6 +89,6 @@ public final class PacketRequestedInventoryMinimal extends Record implements IPa
     @Override // com.boehmod.bflib.cloud.packet.IPacket
     @NotNull
     public PacketIdentifier getPacketIdentifier() {
-        return f89ID;
+        return f103ID;
     }
 }

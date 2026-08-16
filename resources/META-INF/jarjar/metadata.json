@@ -30,10 +30,10 @@
         "artifact": "veil-neoforge-1.21.1"
       },
       "version": {
-        "range": "[4.3.0]",
-        "artifactVersion": "4.3.0"
+        "range": "[4.4.1]",
+        "artifactVersion": "4.4.1"
       },
-      "path": "META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar",
+      "path": "META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar",
       "isObfuscated": false
     },
     {
@@ -42,10 +42,10 @@
         "artifact": "geckolib-neoforge-1.21.1"
       },
       "version": {
-        "range": "[4.7.3]",
-        "artifactVersion": "4.7.3"
+        "range": "[4.9.2]",
+        "artifactVersion": "4.9.2"
       },
-      "path": "META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar",
+      "path": "META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar",
       "isObfuscated": false
     }
   ]

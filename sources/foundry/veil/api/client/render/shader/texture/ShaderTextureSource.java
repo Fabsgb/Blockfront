@@ -15,7 +15,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/texture/ShaderTextureSource.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/texture/ShaderTextureSource.class */
 public interface ShaderTextureSource {
     public static final Codec<ShaderTextureSource> CODEC = Codec.either(ResourceLocation.CODEC, Type.CODEC.dispatch((v0) -> {
         return v0.type();
@@ -47,7 +47,7 @@ public interface ShaderTextureSource {
 
     Type type();
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/texture/ShaderTextureSource$Type.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/texture/ShaderTextureSource$Type.class */
     public enum Type {
         LOCATION(LocationSource.CODEC),
         FRAMEBUFFER(FramebufferSource.CODEC);
@@ -64,7 +64,7 @@ public interface ShaderTextureSource {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/texture/ShaderTextureSource$Context.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/texture/ShaderTextureSource$Context.class */
     @FunctionalInterface
     public interface Context {
         @Nullable

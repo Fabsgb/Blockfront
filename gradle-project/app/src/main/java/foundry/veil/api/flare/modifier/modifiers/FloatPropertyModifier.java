@@ -8,7 +8,7 @@ import gg.moonflower.molangcompiler.api.MolangExpression;
 import java.util.List;
 import java.util.Optional;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/flare/modifier/modifiers/FloatPropertyModifier.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/flare/modifier/modifiers/FloatPropertyModifier.class */
 public class FloatPropertyModifier extends PropertyModifier<Float> {
     public final FloatCurve curve;
 

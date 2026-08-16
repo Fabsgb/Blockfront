@@ -7,7 +7,7 @@ import io.github.ocelot.glslprocessor.api.visitor.GlslNodeVisitor;
 import java.util.stream.Stream;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/node/expression/GlslUnaryNode.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/node/expression/GlslUnaryNode.class */
 public final class GlslUnaryNode implements GlslNode {
     private GlslNode expression;
     private Operand operand;
@@ -73,7 +73,7 @@ public final class GlslUnaryNode implements GlslNode {
         return (31 * result) + this.operand.hashCode();
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/node/expression/GlslUnaryNode$Operand.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/node/expression/GlslUnaryNode$Operand.class */
     public enum Operand {
         PRE_INCREMENT("++"),
         PRE_DECREMENT("--"),

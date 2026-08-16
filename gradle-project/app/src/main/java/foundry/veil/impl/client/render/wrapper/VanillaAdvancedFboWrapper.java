@@ -16,18 +16,18 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.lwjgl.opengl.GL30C;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/wrapper/VanillaAdvancedFboWrapper.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/wrapper/VanillaAdvancedFboWrapper.class */
 @ApiStatus.Internal
 public abstract class VanillaAdvancedFboWrapper implements AdvancedFbo {
     private final Supplier<RenderTarget> renderTargetSupplier;
     private final Supplier<AttachmentWrapper> colorBuffer = Suppliers.memoize(() -> {
         return new AttachmentWrapper(this, () -> {
-            return mo1982toRenderTarget().getColorTextureId();
+            return mo9539toRenderTarget().getColorTextureId();
         }, 36064);
     });
     private final Supplier<AttachmentWrapper> depthBuffer = Suppliers.memoize(() -> {
         return new AttachmentWrapper(this, () -> {
-            return mo1982toRenderTarget().getDepthTextureId();
+            return mo9539toRenderTarget().getDepthTextureId();
         }, 36096);
     });
     private final int[] drawBuffers = {36064};
@@ -45,13 +45,13 @@ public abstract class VanillaAdvancedFboWrapper implements AdvancedFbo {
 
     @Override // foundry.veil.api.client.render.framebuffer.AdvancedFbo
     public void clear() {
-        float[] clearChannels = mo1982toRenderTarget().getClearChannels();
+        float[] clearChannels = mo9539toRenderTarget().getClearChannels();
         clear(clearChannels[0], clearChannels[1], clearChannels[2], clearChannels[3], getClearMask(), getDrawBuffers());
     }
 
     @Override // foundry.veil.api.client.render.framebuffer.AdvancedFbo
     public void clear(int clearMask) {
-        float[] clearChannels = mo1982toRenderTarget().getClearChannels();
+        float[] clearChannels = mo9539toRenderTarget().getClearChannels();
         clear(clearChannels[0], clearChannels[1], clearChannels[2], clearChannels[3], clearMask, getDrawBuffers());
     }
 
@@ -65,12 +65,12 @@ public abstract class VanillaAdvancedFboWrapper implements AdvancedFbo {
 
     @Override // foundry.veil.api.client.render.framebuffer.AdvancedFbo
     public void bind(boolean setViewport) {
-        mo1982toRenderTarget().bindWrite(setViewport);
+        mo9539toRenderTarget().bindWrite(setViewport);
     }
 
     @Override // foundry.veil.api.client.render.framebuffer.AdvancedFbo
     public void bindDraw(boolean setViewport) {
-        RenderTarget renderTarget = mo1982toRenderTarget();
+        RenderTarget renderTarget = mo9539toRenderTarget();
         GlStateManager._glBindFramebuffer(36009, renderTarget.frameBufferId);
         if (setViewport) {
             RenderSystem.viewport(0, 0, renderTarget.viewWidth, renderTarget.viewHeight);
@@ -79,17 +79,17 @@ public abstract class VanillaAdvancedFboWrapper implements AdvancedFbo {
 
     @Override // foundry.veil.api.client.render.framebuffer.AdvancedFbo
     public int getId() {
-        return mo1982toRenderTarget().frameBufferId;
+        return mo9539toRenderTarget().frameBufferId;
     }
 
     @Override // foundry.veil.api.client.render.framebuffer.AdvancedFbo
     public int getWidth() {
-        return mo1982toRenderTarget().width;
+        return mo9539toRenderTarget().width;
     }
 
     @Override // foundry.veil.api.client.render.framebuffer.AdvancedFbo
     public int getHeight() {
-        return mo1982toRenderTarget().height;
+        return mo9539toRenderTarget().height;
     }
 
     @Override // foundry.veil.api.client.render.framebuffer.AdvancedFbo
@@ -99,7 +99,7 @@ public abstract class VanillaAdvancedFboWrapper implements AdvancedFbo {
 
     @Override // foundry.veil.api.client.render.framebuffer.AdvancedFbo
     public int getClearMask() {
-        return 16384 | (mo1982toRenderTarget().useDepth ? 256 : 0);
+        return 16384 | (mo9539toRenderTarget().useDepth ? 256 : 0);
     }
 
     @Override // foundry.veil.api.client.render.framebuffer.AdvancedFbo
@@ -114,12 +114,12 @@ public abstract class VanillaAdvancedFboWrapper implements AdvancedFbo {
 
     @Override // foundry.veil.api.client.render.framebuffer.AdvancedFbo
     public boolean hasDepthAttachment() {
-        return mo1982toRenderTarget().useDepth;
+        return mo9539toRenderTarget().useDepth;
     }
 
     @Override // foundry.veil.api.client.render.framebuffer.AdvancedFbo
     public boolean hasStencilAttachment() {
-        RenderTarget renderTarget = mo1982toRenderTarget();
+        RenderTarget renderTarget = mo9539toRenderTarget();
         if (!renderTarget.useDepth) {
             return false;
         }
@@ -155,23 +155,25 @@ public abstract class VanillaAdvancedFboWrapper implements AdvancedFbo {
 
     @Override // foundry.veil.api.client.render.framebuffer.AdvancedFbo
     /* JADX INFO: renamed from: toRenderTarget */
-    public RenderTarget mo1982toRenderTarget() {
+    public RenderTarget mo9539toRenderTarget() {
         return this.renderTargetSupplier.get();
     }
 
     public void free() {
-        mo1982toRenderTarget().destroyBuffers();
+        mo9539toRenderTarget().destroyBuffers();
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/wrapper/VanillaAdvancedFboWrapper$AttachmentWrapper.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/wrapper/VanillaAdvancedFboWrapper$AttachmentWrapper.class */
     private static class AttachmentWrapper extends AdvancedFboTextureAttachment {
         private final AdvancedFbo parent;
-        private final IntSupplier id;
+
+        /* JADX INFO: renamed from: id */
+        private final IntSupplier f9163id;
 
         private AttachmentWrapper(AdvancedFbo parent, IntSupplier id, int type) {
             super(type, 0, 0, 0, 0, 1, TextureFilter.CLAMP, null);
             this.parent = parent;
-            this.id = id;
+            this.f9163id = id;
         }
 
         @Override // foundry.veil.api.client.render.framebuffer.AdvancedFboTextureAttachment, foundry.veil.api.client.render.framebuffer.AdvancedFboAttachment
@@ -186,14 +188,14 @@ public abstract class VanillaAdvancedFboWrapper implements AdvancedFbo {
 
         @Override // foundry.veil.api.client.render.framebuffer.AdvancedFboTextureAttachment
         public int getId() {
-            return this.id.getAsInt();
+            return this.f9163id.getAsInt();
         }
 
         @Override // foundry.veil.api.client.render.framebuffer.AdvancedFboTextureAttachment
         @NotNull
         /* JADX INFO: renamed from: clone */
-        public AdvancedFboTextureAttachment mo1772clone() {
-            return new AttachmentWrapper(this.parent, this.id, getAttachmentType());
+        public AdvancedFboTextureAttachment mo9329clone() {
+            return new AttachmentWrapper(this.parent, this.f9163id, getAttachmentType());
         }
 
         @Override // foundry.veil.api.client.render.framebuffer.AdvancedFboTextureAttachment
@@ -202,12 +204,12 @@ public abstract class VanillaAdvancedFboWrapper implements AdvancedFbo {
                 return false;
             }
             AttachmentWrapper that = (AttachmentWrapper) o;
-            return this.id.getAsInt() == that.id.getAsInt();
+            return this.f9163id.getAsInt() == that.f9163id.getAsInt();
         }
 
         @Override // foundry.veil.api.client.render.framebuffer.AdvancedFboTextureAttachment
         public int hashCode() {
-            return this.id.getAsInt();
+            return this.f9163id.getAsInt();
         }
 
         @Override // foundry.veil.api.client.render.framebuffer.AdvancedFboTextureAttachment

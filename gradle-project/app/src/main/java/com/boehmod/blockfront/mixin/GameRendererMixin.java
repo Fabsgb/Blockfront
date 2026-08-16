@@ -1,9 +1,9 @@
 package com.boehmod.blockfront.mixin;
 
-import com.boehmod.blockfront.C0026ax;
-import com.boehmod.blockfront.C0297l;
-import com.boehmod.blockfront.oF;
-import com.boehmod.blockfront.tO;
+import com.boehmod.blockfront.AbstractC0863pb;
+import com.boehmod.blockfront.AbstractC1140um;
+import com.boehmod.blockfront.C0035aE;
+import com.boehmod.blockfront.C0623l;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:com/boehmod/blockfront/mixin/GameRendererMixin.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:com/boehmod/blockfront/mixin/GameRendererMixin.class */
 @Mixin({GameRenderer.class})
 public class GameRendererMixin {
     @Shadow
@@ -29,7 +29,7 @@ public class GameRendererMixin {
     @Redirect(method = {"renderItemInHand"}, at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/GameRenderer;bobView(Lcom/mojang/blaze3d/vertex/PoseStack;F)V"))
     private void bf$skipBobViewForSkinnableItems(GameRenderer gameRenderer, PoseStack poseStack, float f) {
         LocalPlayer localPlayer = Minecraft.getInstance().player;
-        if (localPlayer != null && (localPlayer.getMainHandItem().getItem() instanceof tO)) {
+        if (localPlayer != null && (localPlayer.getMainHandItem().getItem() instanceof AbstractC1140um)) {
             return;
         }
         bobView(poseStack, f);
@@ -47,32 +47,32 @@ public class GameRendererMixin {
 
     @Inject(method = {"renderItemInHand"}, at = {@At("HEAD")})
     private void bf$applyWorldFogToHand(CallbackInfo callbackInfo) {
-        if (C0026ax.Y < Float.MAX_VALUE) {
-            RenderSystem.setShaderFogStart(C0026ax.Y);
-            RenderSystem.setShaderFogEnd(C0026ax.Z);
-            RenderSystem.setShaderFogColor(C0026ax.aa, C0026ax.ab, C0026ax.ac, 1.0f);
-            RenderSystem.setShaderFogShape(C0026ax.a);
+        if (C0035aE.f303ad < Float.MAX_VALUE) {
+            RenderSystem.setShaderFogStart(C0035aE.f303ad);
+            RenderSystem.setShaderFogEnd(C0035aE.f304ae);
+            RenderSystem.setShaderFogColor(C0035aE.f305af, C0035aE.f306ag, C0035aE.f307ah, 1.0f);
+            RenderSystem.setShaderFogShape(C0035aE.f308a);
         }
     }
 
     @Inject(method = {"renderItemInHand"}, at = {@At("RETURN")})
     private void bf$resetFogAfterHand(CallbackInfo callbackInfo) {
-        if (C0026ax.Y < Float.MAX_VALUE) {
+        if (C0035aE.f303ad < Float.MAX_VALUE) {
             FogRenderer.setupNoFog();
         }
     }
 
     @Inject(method = {"getDarkenWorldAmount(F)F"}, at = {@At("RETURN")}, cancellable = true)
     private void bf$composeWeatherDarkness(float f, CallbackInfoReturnable<Float> callbackInfoReturnable) {
-        oF<?, ?, ?> oFVarM591a;
-        C0297l c0297lB = C0297l.b();
-        if (c0297lB == null || (oFVarM591a = c0297lB.m591a()) == null) {
+        AbstractC0863pb<?, ?, ?> abstractC0863pbM2874a;
+        C0623l c0623lM2852b = C0623l.m2852b();
+        if (c0623lM2852b == null || (abstractC0863pbM2874a = c0623lM2852b.m2874a()) == null) {
             return;
         }
-        float fAY = oFVarM591a.m767a().aY();
-        if (fAY <= 0.0f) {
+        float fM6130be = abstractC0863pbM2874a.m4089a().m6130be();
+        if (fM6130be <= 0.0f) {
             return;
         }
-        callbackInfoReturnable.setReturnValue(Float.valueOf(1.0f - ((1.0f - callbackInfoReturnable.getReturnValueF()) * (1.0f - fAY))));
+        callbackInfoReturnable.setReturnValue(Float.valueOf(1.0f - ((1.0f - callbackInfoReturnable.getReturnValueF()) * (1.0f - fM6130be))));
     }
 }

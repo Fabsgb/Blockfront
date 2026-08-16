@@ -1,6 +1,7 @@
 package com.boehmod.bflib.cloud.packet.primitives;
 
 import com.boehmod.bflib.cloud.connection.Connection;
+import com.boehmod.bflib.cloud.packet.ILifecyclePacket;
 import com.boehmod.bflib.cloud.packet.IPacket;
 import com.boehmod.bflib.cloud.packet.PacketIdentifier;
 import io.netty.buffer.ByteBuf;
@@ -10,15 +11,15 @@ import java.lang.invoke.MethodType;
 import java.lang.runtime.ObjectMethods;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/primitives/CloudDisconnectedPacket.class */
-public final class CloudDisconnectedPacket extends Record implements IPacket {
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/primitives/CloudDisconnectedPacket.class */
+public final class CloudDisconnectedPacket extends Record implements ILifecyclePacket {
 
     @NotNull
     private final String reason;
 
     /* JADX INFO: renamed from: ID */
     @NotNull
-    public static final PacketIdentifier f104ID = new PacketIdentifier("CloudDisconnectedPacket");
+    public static final PacketIdentifier f119ID = new PacketIdentifier("CloudDisconnectedPacket");
 
     public CloudDisconnectedPacket(@NotNull String reason) {
         this.reason = reason;
@@ -60,6 +61,6 @@ public final class CloudDisconnectedPacket extends Record implements IPacket {
     @Override // com.boehmod.bflib.cloud.packet.IPacket
     @NotNull
     public PacketIdentifier getPacketIdentifier() {
-        return f104ID;
+        return f119ID;
     }
 }

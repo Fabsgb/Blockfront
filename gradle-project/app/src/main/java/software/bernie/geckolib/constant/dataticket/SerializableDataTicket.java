@@ -6,10 +6,10 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.constant.DataTickets;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/constant/dataticket/SerializableDataTicket.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/constant/dataticket/SerializableDataTicket.class */
 public abstract class SerializableDataTicket<D> extends DataTicket<D> {
     public static final StreamCodec<RegistryFriendlyByteBuf, SerializableDataTicket<?>> STREAM_CODEC = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, (v0) -> {
-        return v0.id();
+        return v0.m8359id();
     }, DataTickets::byName);
 
     public abstract StreamCodec<? super RegistryFriendlyByteBuf, D> streamCodec();

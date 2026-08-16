@@ -1,6 +1,6 @@
 package foundry.veil.api.client.render.rendertype;
 
-import com.boehmod.blockfront.InterfaceC1294xq;
+import com.boehmod.blockfront.InterfaceC1274xN;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.BufferUploader;
@@ -33,9 +33,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Matrix4f;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/rendertype/VeilRenderType.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/rendertype/VeilRenderType.class */
 public final class VeilRenderType extends RenderType {
-    public static final RenderStateShard.DepthTestStateShard NEVER_DEPTH_TEST = new RenderStateShard.DepthTestStateShard("never", InterfaceC1294xq.f8655tQ);
+    public static final RenderStateShard.DepthTestStateShard NEVER_DEPTH_TEST = new RenderStateShard.DepthTestStateShard("never", InterfaceC1274xN.f6852vU);
     public static final RenderStateShard.DepthTestStateShard LESS_DEPTH_TEST = new RenderStateShard.DepthTestStateShard("<", 513);
     public static final RenderStateShard.DepthTestStateShard NOTEQUAL_DEPTH_TEST = new RenderStateShard.DepthTestStateShard("<", 517);
     public static final RenderStateShard.DepthTestStateShard GEQUAL_DEPTH_TEST = new RenderStateShard.DepthTestStateShard(">=", 518);
@@ -46,7 +46,6 @@ public final class VeilRenderType extends RenderType {
     public static final RenderStateShard.EmptyTextureStateShard WHITE_TEXTURE = new WhiteTextureStateShard();
     private static final EnumMap<GlStateManager.LogicOp, RenderStateShard.ColorLogicStateShard> COLOR_LOGIC_SHARDS = new EnumMap<>(GlStateManager.LogicOp.class);
     private static final RenderStateShard.ShaderStateShard PARTICLE;
-    private static final RenderStateShard.ShaderStateShard PARTICLE_ADDITIVE;
     private static final BiFunction<ResourceLocation, Boolean, RenderType> QUASAR_PARTICLE;
     private static final BiFunction<ResourceLocation, Boolean, RenderType> QUASAR_TRAIL;
     private static final Function<Boolean, RenderType> NO_TEXTURE_QUASAR_TRAIL;
@@ -59,10 +58,9 @@ public final class VeilRenderType extends RenderType {
             }, RenderSystem::disableColorLogicOp));
         }
         PARTICLE = VeilRenderBridge.shaderState(Veil.veilPath("quasar/particle"));
-        PARTICLE_ADDITIVE = VeilRenderBridge.shaderState(Veil.veilPath("quasar/particle_additive"));
         QUASAR_PARTICLE = Util.memoize((texture, additive) -> {
-            RenderType.CompositeState state = RenderType.CompositeState.builder().setShaderState(additive.booleanValue() ? PARTICLE_ADDITIVE : PARTICLE).setTextureState(new RenderStateShard.TextureStateShard(texture, false, false)).setTransparencyState(additive.booleanValue() ? ADDITIVE_TRANSPARENCY : TRANSLUCENT_TRANSPARENCY).setLightmapState(LIGHTMAP).setWriteMaskState(COLOR_DEPTH_WRITE).createCompositeState(false);
-            return create("veil:quasar_particle", VeilVertexFormat.QUASAR_PARTICLE, VertexFormat.Mode.QUADS, 786432, false, false, state);
+            RenderType.CompositeState state = RenderType.CompositeState.builder().setShaderState(PARTICLE).setTextureState(new RenderStateShard.TextureStateShard(texture, false, false)).setTransparencyState(additive.booleanValue() ? ADDITIVE_TRANSPARENCY : TRANSLUCENT_TRANSPARENCY).setLightmapState(LIGHTMAP).setWriteMaskState(COLOR_DEPTH_WRITE).createCompositeState(false);
+            return create("veil:quasar_particle", VeilVertexFormat.QUASAR_PARTICLE, VertexFormat.Mode.QUADS, 786432, false, true, state);
         });
         QUASAR_TRAIL = Util.memoize((texture2, additive2) -> {
             RenderType.CompositeState state = RenderType.CompositeState.builder().setShaderState(RENDERTYPE_ENTITY_TRANSLUCENT_EMISSIVE_SHADER).setTextureState(new RenderStateShard.TextureStateShard(texture2, false, false)).setTransparencyState(additive2.booleanValue() ? ADDITIVE_TRANSPARENCY : TRANSLUCENT_TRANSPARENCY).setWriteMaskState(COLOR_DEPTH_WRITE).setCullState(NO_CULL).createCompositeState(false);
@@ -235,7 +233,7 @@ public final class VeilRenderType extends RenderType {
         }).collect(Collectors.joining(", "))) + "]", bufferSize, sortOnUpload);
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/rendertype/VeilRenderType$LayeredRenderType.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/rendertype/VeilRenderType$LayeredRenderType.class */
     public static class LayeredRenderType extends RenderType {
         private final RenderType[] layers;
 
@@ -272,19 +270,19 @@ public final class VeilRenderType extends RenderType {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/rendertype/VeilRenderType$RenderTypeWrapper.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/rendertype/VeilRenderType$RenderTypeWrapper.class */
     public static class RenderTypeWrapper extends RenderType {
         private static final Object[] NO_PARAMS = new Object[0];
 
         /* JADX INFO: renamed from: id */
-        private final ResourceLocation f8750id;
+        private final ResourceLocation f9136id;
         private Object[] params;
 
         private RenderTypeWrapper(ResourceLocation id) {
             super(id.toString(), DefaultVertexFormat.POSITION, VertexFormat.Mode.QUADS, 0, false, false, () -> {
             }, () -> {
             });
-            this.f8750id = id;
+            this.f9136id = id;
             this.params = NO_PARAMS;
         }
 
@@ -366,7 +364,7 @@ public final class VeilRenderType extends RenderType {
 
         @Nullable
         public RenderType get() {
-            return VeilRenderSystem.renderer().getDynamicRenderTypeManager().get(this.f8750id, this.params);
+            return VeilRenderSystem.renderer().getDynamicRenderTypeManager().get(this.f9136id, this.params);
         }
     }
 

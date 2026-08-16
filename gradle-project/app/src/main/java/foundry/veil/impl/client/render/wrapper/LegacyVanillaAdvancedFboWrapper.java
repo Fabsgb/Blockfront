@@ -1,6 +1,6 @@
 package foundry.veil.impl.client.render.wrapper;
 
-import com.boehmod.blockfront.InterfaceC0638xq;
+import com.boehmod.blockfront.InterfaceC1274xN;
 import com.mojang.blaze3d.pipeline.RenderTarget;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -10,7 +10,7 @@ import net.minecraft.client.Minecraft;
 import org.jetbrains.annotations.ApiStatus;
 import org.lwjgl.opengl.GL30C;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/wrapper/LegacyVanillaAdvancedFboWrapper.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/wrapper/LegacyVanillaAdvancedFboWrapper.class */
 @ApiStatus.Internal
 public class LegacyVanillaAdvancedFboWrapper extends VanillaAdvancedFboWrapper {
     public LegacyVanillaAdvancedFboWrapper(Supplier<RenderTarget> renderTargetSupplier) {
@@ -27,7 +27,7 @@ public class LegacyVanillaAdvancedFboWrapper extends VanillaAdvancedFboWrapper {
         if (old != id) {
             bind(false);
         }
-        if ((buffers & InterfaceC0638xq.tV) != 0) {
+        if ((buffers & InterfaceC1274xN.f6857vZ) != 0) {
             RenderSystem.clearColor(red, green, blue, alpha);
         }
         if ((buffers & 256) != 0) {

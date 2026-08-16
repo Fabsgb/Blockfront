@@ -13,7 +13,7 @@ import gg.moonflower.molangcompiler.api.exception.MolangRuntimeException;
 import imgui.ImGui;
 import imgui.type.ImString;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/data/module/update/TickSizeParticleModuleData.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/data/module/update/TickSizeParticleModuleData.class */
 public final class TickSizeParticleModuleData implements ParticleModuleData, EditorAttributeProvider {
     public static final MapCodec<TickSizeParticleModuleData> CODEC = MolangExpressionCodec.CODEC.fieldOf("size").xmap(TickSizeParticleModuleData::new, (v0) -> {
         return v0.size();

@@ -27,30 +27,30 @@ import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 import org.lwjgl.opengl.GLCapabilities;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/processor/ShaderPreProcessor.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/processor/ShaderPreProcessor.class */
 public interface ShaderPreProcessor {
     public static final ShaderPreProcessor NOOP = (ctx, source) -> {
     };
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/processor/ShaderPreProcessor$IncludeOverloadStrategy.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/processor/ShaderPreProcessor$IncludeOverloadStrategy.class */
     public enum IncludeOverloadStrategy {
         FAIL,
         SOURCE,
         INCLUDE
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/processor/ShaderPreProcessor$MinecraftContext.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/processor/ShaderPreProcessor$MinecraftContext.class */
     public interface MinecraftContext extends Context {
         String shaderInstance();
 
         VertexFormat vertexFormat();
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/processor/ShaderPreProcessor$SodiumContext.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/processor/ShaderPreProcessor$SodiumContext.class */
     public interface SodiumContext extends Context {
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/processor/ShaderPreProcessor$VeilContext.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/processor/ShaderPreProcessor$VeilContext.class */
     public interface VeilContext extends Context {
         void addUniformBinding(String str, int i);
 
@@ -71,6 +71,7 @@ public interface ShaderPreProcessor {
         return allOf(Arrays.asList(processors));
     }
 
+    /* JADX INFO: Thrown type has an unknown type hierarchy: java.lang.MatchException */
     static ShaderPreProcessor allOf(Collection<ShaderPreProcessor> processors) throws MatchException {
         List<ShaderPreProcessor> list = new ArrayList<>(processors.size());
         for (ShaderPreProcessor processor : processors) {
@@ -96,7 +97,7 @@ public interface ShaderPreProcessor {
         }));
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/processor/ShaderPreProcessor$Context.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/processor/ShaderPreProcessor$Context.class */
     public interface Context {
         GlslTree modifyInclude(@Nullable ResourceLocation resourceLocation, String str) throws IOException, GlslSyntaxException, LexerException;
 

@@ -32,12 +32,12 @@ import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
 import software.bernie.geckolib.util.Color;
 import software.bernie.geckolib.util.RenderUtil;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/renderer/GeoRenderer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/renderer/GeoRenderer.class */
 public interface GeoRenderer<T extends GeoAnimatable> {
     GeoModel<T> getGeoModel();
 
     /* JADX INFO: renamed from: getAnimatable */
-    T mo2142getAnimatable();
+    T mo9710getAnimatable();
 
     void fireCompileRenderLayersEvent();
 
@@ -89,7 +89,7 @@ public interface GeoRenderer<T extends GeoAnimatable> {
         }
         preRender(poseStack, animatable, model, bufferSource, buffer, false, partialTick, packedLight, packedOverlay, renderColor);
         if (firePreRenderEvent(poseStack, model, bufferSource, partialTick, packedLight)) {
-            preApplyRenderLayers(poseStack, animatable, model, renderType, bufferSource, buffer, packedLight, packedLight, packedOverlay);
+            preApplyRenderLayers(poseStack, animatable, model, renderType, bufferSource, buffer, partialTick, packedLight, packedOverlay);
             actuallyRender(poseStack, animatable, model, renderType, bufferSource, buffer, false, partialTick, packedLight, packedOverlay, renderColor);
             applyRenderLayers(poseStack, animatable, model, renderType, bufferSource, buffer, partialTick, packedLight, packedOverlay);
             postRender(poseStack, animatable, model, bufferSource, buffer, false, partialTick, packedLight, packedOverlay, renderColor);
@@ -159,7 +159,7 @@ public interface GeoRenderer<T extends GeoAnimatable> {
         VertexConsumer buffer2 = checkAndRefreshBuffer(isReRender, buffer, bufferSource, renderType);
         renderCubesOfBone(poseStack, bone, buffer2, packedLight, packedOverlay, colour);
         if (!isReRender) {
-            applyRenderLayersForBone(poseStack, mo2142getAnimatable(), bone, renderType, bufferSource, buffer2, partialTick, packedLight, packedOverlay);
+            applyRenderLayersForBone(poseStack, mo9710getAnimatable(), bone, renderType, bufferSource, buffer2, partialTick, packedLight, packedOverlay);
         }
         renderChildBones(poseStack, animatable, bone, renderType, bufferSource, buffer2, isReRender, partialTick, packedLight, packedOverlay, colour);
         poseStack.popPose();
@@ -218,9 +218,7 @@ public interface GeoRenderer<T extends GeoAnimatable> {
     }
 
     @ApiStatus.Internal
-    @Deprecated(forRemoval = true)
     default VertexConsumer checkAndRefreshBuffer(boolean isReRender, VertexConsumer buffer, MultiBufferSource bufferSource, RenderType renderType) {
-        VertexMultiConsumer.Double pair;
         if (isReRender) {
             return buffer;
         }
@@ -244,16 +242,16 @@ public interface GeoRenderer<T extends GeoAnimatable> {
                     i = 2;
                     break;
                 case 2:
-                    pair = (VertexMultiConsumer.Double) buffer;
-                    if (!bufferNeedsRefresh(pair.first) && !bufferNeedsRefresh(pair.second)) {
-                        i = 3;
+                    VertexMultiConsumer.Double pair = (VertexMultiConsumer.Double) buffer;
+                    if (bufferNeedsRefresh(pair.first) || bufferNeedsRefresh(pair.second)) {
+                        return new VertexMultiConsumer.Double(bufferNeedsRefresh(pair.first) ? bufferSource.getBuffer(renderType) : pair.first, bufferNeedsRefresh(pair.second) ? bufferSource.getBuffer(renderType) : pair.second);
                     }
+                    i = 3;
                     break;
                 default:
                     return buffer;
             }
         }
-        return new VertexMultiConsumer.Double(bufferNeedsRefresh(pair.first) ? bufferSource.getBuffer(renderType) : pair.first, bufferNeedsRefresh(pair.second) ? bufferSource.getBuffer(renderType) : pair.second);
     }
 
     @ApiStatus.Internal

@@ -9,18 +9,18 @@ import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoItem;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/animatable/client/GeoRenderProvider.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/animatable/client/GeoRenderProvider.class */
 public interface GeoRenderProvider {
     public static final GeoRenderProvider DEFAULT = new GeoRenderProvider() { // from class: software.bernie.geckolib.animatable.client.GeoRenderProvider.1
     };
 
     /* JADX INFO: renamed from: of */
-    static GeoRenderProvider m8006of(ItemStack itemStack) {
-        return m8007of(itemStack.getItem());
+    static GeoRenderProvider m8357of(ItemStack itemStack) {
+        return m8358of(itemStack.getItem());
     }
 
     /* JADX INFO: renamed from: of */
-    static GeoRenderProvider m8007of(Item item) {
+    static GeoRenderProvider m8358of(Item item) {
         if (item instanceof GeoItem) {
             GeoItem geoItem = (GeoItem) item;
             return (GeoRenderProvider) geoItem.getRenderProvider();

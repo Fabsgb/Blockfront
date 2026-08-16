@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/PacketClientRequest.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/PacketClientRequest.class */
 public final class PacketClientRequest extends Record implements IPacket {
 
     @NotNull
@@ -25,7 +25,7 @@ public final class PacketClientRequest extends Record implements IPacket {
 
     /* JADX INFO: renamed from: ID */
     @NotNull
-    public static final PacketIdentifier f24ID = new PacketIdentifier("PacketClientRequest");
+    public static final PacketIdentifier f25ID = new PacketIdentifier("PacketClientRequest");
 
     public PacketClientRequest(@NotNull EnumSet<RequestType> types, @NotNull ObjectList<Map.Entry<UUID, EnumSet<RequestType>>> identifiableTypes) {
         this.types = types;
@@ -70,6 +70,6 @@ public final class PacketClientRequest extends Record implements IPacket {
     @Override // com.boehmod.bflib.cloud.packet.IPacket
     @NotNull
     public PacketIdentifier getPacketIdentifier() {
-        return f24ID;
+        return f25ID;
     }
 }

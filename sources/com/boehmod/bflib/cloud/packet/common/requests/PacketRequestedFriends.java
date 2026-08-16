@@ -11,7 +11,7 @@ import java.lang.runtime.ObjectMethods;
 import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/requests/PacketRequestedFriends.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/requests/PacketRequestedFriends.class */
 public final class PacketRequestedFriends extends Record implements IPacket {
 
     @NotNull
@@ -25,7 +25,7 @@ public final class PacketRequestedFriends extends Record implements IPacket {
 
     /* JADX INFO: renamed from: ID */
     @NotNull
-    public static final PacketIdentifier f87ID = new PacketIdentifier("PacketRequestedFriends");
+    public static final PacketIdentifier f101ID = new PacketIdentifier("PacketRequestedFriends");
 
     public PacketRequestedFriends(@NotNull ObjectSet<UUID> friends, @NotNull ObjectSet<UUID> requests, @NotNull ObjectSet<UUID> clanRequests) {
         this.friends = friends;
@@ -77,6 +77,6 @@ public final class PacketRequestedFriends extends Record implements IPacket {
     @Override // com.boehmod.bflib.cloud.packet.IPacket
     @NotNull
     public PacketIdentifier getPacketIdentifier() {
-        return f87ID;
+        return f101ID;
     }
 }

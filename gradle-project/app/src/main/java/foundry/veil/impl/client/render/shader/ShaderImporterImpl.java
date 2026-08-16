@@ -18,7 +18,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceProvider;
 import org.apache.commons.io.IOUtils;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/shader/ShaderImporterImpl.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/shader/ShaderImporterImpl.class */
 public class ShaderImporterImpl implements ShaderImporter {
     private static final String DEPRECATED_MARKER = "#veil:deprecated";
     private final ResourceProvider resourceProvider;
@@ -51,7 +51,15 @@ public class ShaderImporterImpl implements ShaderImporter {
                     if (reader != null) {
                         reader.close();
                     }
-                } finally {
+                } catch (Throwable th) {
+                    if (reader != null) {
+                        try {
+                            reader.close();
+                        } catch (Throwable th2) {
+                            th.addSuppressed(th2);
+                        }
+                    }
+                    throw th;
                 }
             }
             GlslTree tree = context.modifyInclude(name, this.imports.get(name));

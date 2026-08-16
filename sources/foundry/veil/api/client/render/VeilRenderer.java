@@ -33,7 +33,7 @@ import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/VeilRenderer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/VeilRenderer.class */
 public class VeilRenderer implements ResourceManagerReloadListener {
     public static final ResourceLocation ALBEDO_BUFFER_TEXTURE = Veil.veilPath("dynamic_buffer/albedo");
     public static final ResourceLocation NORMAL_BUFFER_TEXTURE = Veil.veilPath("dynamic_buffer/normal");

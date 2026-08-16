@@ -12,6 +12,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.OutlineBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ItemRenderer;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.Entity;
@@ -22,6 +23,7 @@ import net.minecraft.world.item.component.DyedItemColor;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Matrix4f;
+import software.bernie.geckolib.GeckoLibConstants;
 import software.bernie.geckolib.GeckoLibServices;
 import software.bernie.geckolib.animatable.GeoAnimatable;
 import software.bernie.geckolib.animatable.GeoItem;
@@ -30,13 +32,14 @@ import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.cache.object.GeoBone;
 import software.bernie.geckolib.cache.texture.AnimatableTexture;
 import software.bernie.geckolib.constant.DataTickets;
+import software.bernie.geckolib.model.DefaultedGeoModel;
 import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
 import software.bernie.geckolib.renderer.layer.GeoRenderLayersContainer;
 import software.bernie.geckolib.util.Color;
 import software.bernie.geckolib.util.RenderUtil;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/renderer/GeoArmorRenderer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/renderer/GeoArmorRenderer.class */
 public class GeoArmorRenderer<T extends Item & GeoItem> extends HumanoidModel implements GeoRenderer<T> {
     protected final GeoRenderLayersContainer<T> renderLayers;
     protected final GeoModel<T> model;
@@ -64,6 +67,16 @@ public class GeoArmorRenderer<T extends Item & GeoItem> extends HumanoidModel im
     protected float limbSwingAmount;
     protected float netHeadYaw;
     protected float headPitch;
+
+    /* JADX WARN: Incorrect types in method signature: <I:TT;>(TI;)V */
+    public GeoArmorRenderer(Item item) {
+        this(new DefaultedGeoModel<T>(BuiltInRegistries.ITEM.getKey(item)) { // from class: software.bernie.geckolib.renderer.GeoArmorRenderer.1
+            @Override // software.bernie.geckolib.model.DefaultedGeoModel
+            protected String subtype() {
+                return "armor";
+            }
+        });
+    }
 
     public GeoArmorRenderer(GeoModel<T> model) {
         super(Minecraft.getInstance().getEntityModels().bakeLayer(ModelLayers.PLAYER_INNER_ARMOR));
@@ -96,7 +109,7 @@ public class GeoArmorRenderer<T extends Item & GeoItem> extends HumanoidModel im
 
     @Override // software.bernie.geckolib.renderer.GeoRenderer
     /* JADX INFO: renamed from: getAnimatable, reason: merged with bridge method [inline-methods] */
-    public T mo2142getAnimatable() {
+    public T mo9710getAnimatable() {
         return this.animatable;
     }
 
@@ -114,7 +127,11 @@ public class GeoArmorRenderer<T extends Item & GeoItem> extends HumanoidModel im
 
     @Override // software.bernie.geckolib.renderer.GeoRenderer
     public long getInstanceId(T animatable) {
-        return GeoItem.getId(this.currentStack) + ((long) this.currentEntity.getId());
+        long stackId = GeoItem.getId(this.currentStack);
+        if (stackId == Long.MAX_VALUE) {
+            return ((long) Math.pow(this.currentEntity.getId(), 7.0d)) * ((long) (-(this.currentSlot.ordinal() + 1)));
+        }
+        return -stackId;
     }
 
     @Override // software.bernie.geckolib.renderer.GeoRenderer
@@ -202,6 +219,10 @@ public class GeoArmorRenderer<T extends Item & GeoItem> extends HumanoidModel im
 
     @ApiStatus.Internal
     public void renderToBuffer(PoseStack poseStack, @Nullable VertexConsumer buffer, int packedLight, int packedOverlay, int colour) {
+        if (this.currentEntity == null) {
+            GeckoLibConstants.LOGGER.error("A mod is attempting to render GeckoLib armor ({}) without using GeoRenderProvider! IClientItemExtensions is not supported for GeckoLib!", getClass());
+            return;
+        }
         Minecraft mc = Minecraft.getInstance();
         OutlineBufferSource outlineBufferSourceBufferSource = mc.levelRenderer.renderBuffers.bufferSource();
         if (mc.levelRenderer.shouldShowEntityOutlines() && mc.shouldEntityAppearGlowing(this.currentEntity)) {
@@ -309,38 +330,45 @@ public class GeoArmorRenderer<T extends Item & GeoItem> extends HumanoidModel im
     }
 
     protected void applyBaseModel(HumanoidModel<?> baseModel) {
-        this.young = baseModel.young;
-        this.crouching = baseModel.crouching;
-        this.riding = baseModel.riding;
-        this.rightArmPose = baseModel.rightArmPose;
-        this.leftArmPose = baseModel.leftArmPose;
+        ((HumanoidModel) this).young = baseModel.young;
+        ((HumanoidModel) this).crouching = baseModel.crouching;
+        ((HumanoidModel) this).riding = baseModel.riding;
+        ((HumanoidModel) this).rightArmPose = baseModel.rightArmPose;
+        ((HumanoidModel) this).leftArmPose = baseModel.leftArmPose;
+        ((HumanoidModel) this).head.visible = baseModel.head.visible;
+        ((HumanoidModel) this).hat.visible = baseModel.hat.visible;
+        ((HumanoidModel) this).body.visible = baseModel.body.visible;
+        ((HumanoidModel) this).rightArm.visible = baseModel.rightArm.visible;
+        ((HumanoidModel) this).leftArm.visible = baseModel.leftArm.visible;
+        ((HumanoidModel) this).rightLeg.visible = baseModel.rightLeg.visible;
+        ((HumanoidModel) this).leftLeg.visible = baseModel.leftLeg.visible;
     }
 
     protected void applyBoneVisibilityBySlot(EquipmentSlot currentSlot) {
-        setAllVisible(false);
-        switch (AnonymousClass1.$SwitchMap$net$minecraft$world$entity$EquipmentSlot[currentSlot.ordinal()]) {
+        setAllBonesVisible(false);
+        switch (C15002.$SwitchMap$net$minecraft$world$entity$EquipmentSlot[currentSlot.ordinal()]) {
             case 1:
-                setBoneVisible(this.head, true);
+                setBoneVisible(this.head, ((HumanoidModel) this).head.visible);
                 break;
             case 2:
-                setBoneVisible(this.body, true);
-                setBoneVisible(this.rightArm, true);
-                setBoneVisible(this.leftArm, true);
+                setBoneVisible(this.body, ((HumanoidModel) this).body.visible);
+                setBoneVisible(this.rightArm, ((HumanoidModel) this).rightArm.visible);
+                setBoneVisible(this.leftArm, ((HumanoidModel) this).leftArm.visible);
                 break;
             case 3:
-                setBoneVisible(this.rightLeg, true);
-                setBoneVisible(this.leftLeg, true);
+                setBoneVisible(this.rightLeg, ((HumanoidModel) this).rightLeg.visible);
+                setBoneVisible(this.leftLeg, ((HumanoidModel) this).leftLeg.visible);
                 break;
             case 4:
-                setBoneVisible(this.rightBoot, true);
-                setBoneVisible(this.leftBoot, true);
+                setBoneVisible(this.rightBoot, ((HumanoidModel) this).rightLeg.visible);
+                setBoneVisible(this.leftBoot, ((HumanoidModel) this).leftLeg.visible);
                 break;
         }
     }
 
-    /* JADX INFO: renamed from: software.bernie.geckolib.renderer.GeoArmorRenderer$1, reason: invalid class name */
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/renderer/GeoArmorRenderer$1.class */
-    static /* synthetic */ class AnonymousClass1 {
+    /* JADX INFO: renamed from: software.bernie.geckolib.renderer.GeoArmorRenderer$2 */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/renderer/GeoArmorRenderer$2.class */
+    static /* synthetic */ class C15002 {
         static final /* synthetic */ int[] $SwitchMap$net$minecraft$world$entity$EquipmentSlot = new int[EquipmentSlot.values().length];
 
         static {
@@ -426,16 +454,20 @@ public class GeoArmorRenderer<T extends Item & GeoItem> extends HumanoidModel im
         }
     }
 
-    public void setAllVisible(boolean pVisible) {
-        super.setAllVisible(pVisible);
-        setBoneVisible(this.head, pVisible);
-        setBoneVisible(this.body, pVisible);
-        setBoneVisible(this.rightArm, pVisible);
-        setBoneVisible(this.leftArm, pVisible);
-        setBoneVisible(this.rightLeg, pVisible);
-        setBoneVisible(this.leftLeg, pVisible);
-        setBoneVisible(this.rightBoot, pVisible);
-        setBoneVisible(this.leftBoot, pVisible);
+    public void setAllVisible(boolean visible) {
+        super.setAllVisible(visible);
+        setAllBonesVisible(visible);
+    }
+
+    protected void setAllBonesVisible(boolean visible) {
+        setBoneVisible(this.head, visible);
+        setBoneVisible(this.body, visible);
+        setBoneVisible(this.rightArm, visible);
+        setBoneVisible(this.leftArm, visible);
+        setBoneVisible(this.rightLeg, visible);
+        setBoneVisible(this.leftLeg, visible);
+        setBoneVisible(this.rightBoot, visible);
+        setBoneVisible(this.leftBoot, visible);
     }
 
     public void scaleModelForBaby(PoseStack poseStack, T animatable, float partialTick, boolean isReRender) {

@@ -11,7 +11,7 @@ import foundry.veil.api.quasar.particle.ParticleModuleSet;
 import imgui.ImGui;
 import org.joml.Vector3d;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/data/module/force/GravityForceData.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/data/module/force/GravityForceData.class */
 public final class GravityForceData implements ParticleModuleData, EditorAttributeProvider {
     public static final MapCodec<GravityForceData> CODEC = Codec.DOUBLE.fieldOf("strength").xmap((v1) -> {
         return new GravityForceData(v1);

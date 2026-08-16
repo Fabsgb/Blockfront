@@ -17,13 +17,13 @@ import software.bernie.geckolib.constant.dataticket.SerializableDataTicket;
 import software.bernie.geckolib.util.ClientUtil;
 import software.bernie.geckolib.util.RenderUtil;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/network/packet/EntityDataSyncPacket.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/network/packet/EntityDataSyncPacket.class */
 public final class EntityDataSyncPacket<D> extends Record implements MultiloaderPacket {
     private final int entityId;
     private final boolean isReplacedEntity;
     private final SerializableDataTicket<D> dataTicket;
     private final D data;
-    public static final CustomPacketPayload.Type<EntityDataSyncPacket<?>> TYPE = new CustomPacketPayload.Type<>(GeckoLibConstants.m8005id("entity_data_sync"));
+    public static final CustomPacketPayload.Type<EntityDataSyncPacket<?>> TYPE = new CustomPacketPayload.Type<>(GeckoLibConstants.m8356id("entity_data_sync"));
     public static final StreamCodec<RegistryFriendlyByteBuf, EntityDataSyncPacket<?>> CODEC = StreamCodec.of((buf, packet) -> {
         SerializableDataTicket.STREAM_CODEC.encode(buf, packet.dataTicket);
         buf.writeVarInt(packet.entityId);

@@ -1,10 +1,18 @@
 package io.github.ocelot.glslprocessor.lib.anarres.cpp;
 
-import com.boehmod.blockfront.AbstractC0422pq;
-import com.boehmod.blockfront.C0407pb;
-import com.boehmod.blockfront.dE;
-import com.boehmod.blockfront.rY;
-import com.boehmod.blockfront.sR;
+import com.boehmod.blockfront.AbstractC0223dX;
+import com.boehmod.blockfront.C0215dP;
+import com.boehmod.blockfront.C0244ds;
+import com.boehmod.blockfront.C0245dt;
+import com.boehmod.blockfront.C0248dw;
+import com.boehmod.blockfront.C0304ez;
+import com.boehmod.blockfront.C0358g;
+import com.boehmod.blockfront.C0847pL;
+import com.boehmod.blockfront.C0885px;
+import com.boehmod.blockfront.C0994s;
+import com.boehmod.blockfront.C1043sv;
+import com.boehmod.blockfront.C1089to;
+import foundry.veil.api.client.necromancer.Skeleton;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,7 +28,7 @@ import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/lib/anarres/cpp/Preprocessor.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/lib/anarres/cpp/Preprocessor.class */
 @ApiStatus.Internal
 public class Preprocessor {
     private static final Source INTERNAL = new Source() { // from class: io.github.ocelot.glslprocessor.lib.anarres.cpp.Preprocessor.1
@@ -201,77 +209,34 @@ public class Preprocessor {
         return new Token(Token.P_LINE, line, 0, buf.toString(), null);
     }
 
-    /* JADX WARN: Code restructure failed: missing block: B:14:0x0039, code lost:
-    
-        return r0;
-     */
-    /* JADX WARN: Code restructure failed: missing block: B:24:0x005c, code lost:
-    
-        return r0;
-     */
-    @org.jetbrains.annotations.NotNull
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
-    */
-    private io.github.ocelot.glslprocessor.lib.anarres.cpp.Token source_token() throws io.github.ocelot.glslprocessor.lib.anarres.cpp.LexerException {
-        /*
-            r3 = this;
-            r0 = r3
-            io.github.ocelot.glslprocessor.lib.anarres.cpp.Token r0 = r0.source_token
-            if (r0 == 0) goto L13
-            r0 = r3
-            io.github.ocelot.glslprocessor.lib.anarres.cpp.Token r0 = r0.source_token
-            r4 = r0
-            r0 = r3
-            r1 = 0
-            r0.source_token = r1
-            r0 = r4
-            return r0
-        L13:
-            r0 = r3
-            io.github.ocelot.glslprocessor.lib.anarres.cpp.Source r0 = r0.getSource()
-            r4 = r0
-            r0 = r4
-            if (r0 != 0) goto L3a
-            r0 = r3
-            io.github.ocelot.glslprocessor.lib.anarres.cpp.Token r0 = r0.next_source()
-            r5 = r0
-            r0 = r5
-            int r0 = r0.getType()
-            r1 = 299(0x12b, float:4.19E-43)
-            if (r0 != r1) goto L38
-            r0 = r3
-            io.github.ocelot.glslprocessor.lib.anarres.cpp.Feature r1 = io.github.ocelot.glslprocessor.lib.anarres.cpp.Feature.LINEMARKERS
-            boolean r0 = r0.getFeature(r1)
-            if (r0 != 0) goto L38
-            goto L13
-        L38:
-            r0 = r5
-            return r0
-        L3a:
-            r0 = r4
-            io.github.ocelot.glslprocessor.lib.anarres.cpp.Token r0 = r0.token()
-            r5 = r0
-            r0 = r5
-            int r0 = r0.getType()
-            r1 = 265(0x109, float:3.71E-43)
-            if (r0 != r1) goto L5b
-            r0 = r4
-            boolean r0 = r0.isAutopop()
-            if (r0 == 0) goto L5b
-            r0 = r3
-            io.github.ocelot.glslprocessor.lib.anarres.cpp.Token r0 = r0.pop_source()
-            r6 = r0
-            r0 = r6
-            if (r0 == 0) goto L13
-            r0 = r6
-            return r0
-        L5b:
-            r0 = r5
-            return r0
-        */
-        throw new UnsupportedOperationException("Method not decompiled: io.github.ocelot.glslprocessor.lib.anarres.cpp.Preprocessor.source_token():io.github.ocelot.glslprocessor.lib.anarres.cpp.Token");
+    @NotNull
+    private Token source_token() throws LexerException {
+        Token t;
+        if (this.source_token != null) {
+            Token tok = this.source_token;
+            this.source_token = null;
+            return tok;
+        }
+        while (true) {
+            Source s = getSource();
+            if (s == null) {
+                t = next_source();
+                if (t.getType() != 299 || getFeature(Feature.LINEMARKERS)) {
+                    break;
+                }
+            } else {
+                Token tok2 = s.token();
+                if (tok2.getType() == 265 && s.isAutopop()) {
+                    Token mark = pop_source();
+                    if (mark != null) {
+                        return mark;
+                    }
+                } else {
+                    return tok2;
+                }
+            }
+        }
+        return t;
     }
 
     private void source_untoken(Token tok) {
@@ -373,7 +338,7 @@ public class Preprocessor {
                                         break;
                                     case Token.CCOMMENT /* 260 */:
                                     case Token.CPPCOMMENT /* 261 */:
-                                    case Token.NL /* 284 */:
+                                    case Token.f9194NL /* 284 */:
                                     case Token.WHITESPACE /* 294 */:
                                         z = true;
                                         continue;
@@ -402,7 +367,7 @@ public class Preprocessor {
                         break;
                     case Token.CCOMMENT /* 260 */:
                     case Token.CPPCOMMENT /* 261 */:
-                    case Token.NL /* 284 */:
+                    case Token.f9194NL /* 284 */:
                     case Token.WHITESPACE /* 294 */:
                         break;
                     default:
@@ -505,7 +470,7 @@ public class Preprocessor {
                             source_untoken(tok3);
                             break;
                         case Token.EOF /* 265 */:
-                        case Token.NL /* 284 */:
+                        case Token.f9194NL /* 284 */:
                             error(tok3, "Unterminated macro parameter list");
                             return tok3;
                         case Token.IDENTIFIER /* 270 */:
@@ -530,7 +495,7 @@ public class Preprocessor {
                             m.setVariadic(true);
                             break;
                         case Token.EOF /* 265 */:
-                        case Token.NL /* 284 */:
+                        case Token.f9194NL /* 284 */:
                             error(tok4, "Unterminated macro parameters");
                             return tok4;
                         default:
@@ -552,7 +517,7 @@ public class Preprocessor {
         while (true) {
             Token tok6 = tokenSource_token_nonwhite;
             switch (tok6.getType()) {
-                case rY.qj /* 35 */:
+                case C1043sv.f5687sk /* 35 */:
                     if (space) {
                         m.addToken(Token.space);
                     }
@@ -573,7 +538,7 @@ public class Preprocessor {
                     }
                     break;
                 case Token.EOF /* 265 */:
-                case Token.NL /* 284 */:
+                case Token.f9194NL /* 284 */:
                     addMacro(m);
                     return tok6;
                 case Token.IDENTIFIER /* 270 */:
@@ -637,7 +602,7 @@ public class Preprocessor {
                     tok = token_nonwhite();
                     switch (tok.getType()) {
                         case Token.EOF /* 265 */:
-                        case Token.NL /* 284 */:
+                        case Token.f9194NL /* 284 */:
                             break;
                         case Token.STRING /* 292 */:
                             break;
@@ -653,14 +618,16 @@ public class Preprocessor {
                     error(tok2, "Expected string or header, not " + tok2.getText());
                     switch (tok2.getType()) {
                         case Token.EOF /* 265 */:
-                        case Token.NL /* 284 */:
+                        case Token.f9194NL /* 284 */:
                             tokenSource_skipline = tok2;
                             break;
                         default:
                             tokenSource_skipline = source_skipline(false);
                             break;
                     }
-                    return tokenSource_skipline;
+                    Token token = tokenSource_skipline;
+                    lexer.setInclude(false);
+                    return token;
                 }
                 tok = source_skipline(true);
             }
@@ -669,11 +636,12 @@ public class Preprocessor {
                 lexer.setInclude(false);
                 return tokenLine_token;
             }
-            Token token = tok;
+            Token token2 = tok;
             lexer.setInclude(false);
-            return token;
-        } finally {
+            return token2;
+        } catch (Throwable th) {
             lexer.setInclude(false);
+            throw th;
         }
     }
 
@@ -704,13 +672,15 @@ public class Preprocessor {
                             case Token.EOF /* 265 */:
                                 warning(tok, "End of file in #pragma");
                                 break;
-                            case Token.NL /* 284 */:
+                            case Token.f9194NL /* 284 */:
+                                break;
+                            default:
                                 break;
                         }
                     }
                     pragma(tok2);
                     return tok;
-                case Token.NL /* 284 */:
+                case Token.f9194NL /* 284 */:
                     warning(tok2, "Empty #pragma");
                     return tok2;
                 default:
@@ -728,7 +698,7 @@ public class Preprocessor {
             Token tok = tokenSource_token_nonwhite;
             switch (tok.getType()) {
                 case Token.EOF /* 265 */:
-                case Token.NL /* 284 */:
+                case Token.f9194NL /* 284 */:
                     if (is_error) {
                         error(pptok, buf.toString());
                         return;
@@ -816,19 +786,19 @@ public class Preprocessor {
 
     private int expr_priority(@NotNull Token op) {
         switch (op.getType()) {
-            case sR.rf /* 37 */:
+            case C1089to.f5854tg /* 37 */:
             case 42:
             case 47:
                 return 11;
             case 38:
                 return 6;
-            case sR.rh /* 43 */:
+            case C1089to.f5856ti /* 43 */:
             case 45:
                 return 10;
             case 60:
             case NumericValue.FF_SIZE /* 62 */:
-            case Token.GE /* 267 */:
-            case Token.LE /* 275 */:
+            case Token.f9191GE /* 267 */:
+            case Token.f9192LE /* 275 */:
                 return 8;
             case 63:
                 return 1;
@@ -836,8 +806,8 @@ public class Preprocessor {
                 return 5;
             case 124:
                 return 4;
-            case Token.EQ /* 266 */:
-            case Token.NE /* 283 */:
+            case Token.f9190EQ /* 266 */:
+            case Token.f9193NE /* 283 */:
                 return 7;
             case Token.LAND /* 273 */:
                 return 3;
@@ -864,24 +834,136 @@ public class Preprocessor {
         return text.charAt(0);
     }
 
-    /* JADX WARN: Code restructure failed: missing block: B:103:0x0321, code lost:
-    
-        return r8;
-     */
-    /* JADX WARN: Code restructure failed: missing block: B:27:0x010e, code lost:
-    
-        expr_untoken(r0);
-     */
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
-    */
-    private long expr(int r6) throws java.io.IOException, io.github.ocelot.glslprocessor.lib.anarres.cpp.LexerException {
-        /*
-            Method dump skipped, instruction units count: 802
-            To view this dump change 'Code comments level' option to 'DEBUG'
-        */
-        throw new UnsupportedOperationException("Method not decompiled: io.github.ocelot.glslprocessor.lib.anarres.cpp.Preprocessor.expr(int):long");
+    private long expr(int priority) throws IOException, LexerException {
+        long lhs;
+        Token op;
+        Token tok = expr_token();
+        switch (tok.getType()) {
+            case 33:
+                lhs = expr(11) == 0 ? 1L : 0L;
+                break;
+            case 40:
+                lhs = expr(0);
+                Token tok2 = expr_token();
+                if (tok2.getType() != 41) {
+                    expr_untoken(tok2);
+                    error(tok2, "Missing ) in expression. Got " + tok2.getText());
+                    return 0L;
+                }
+                break;
+            case 45:
+                lhs = -expr(11);
+                break;
+            case 126:
+                lhs = expr(11) ^ (-1);
+                break;
+            case Token.CHARACTER /* 259 */:
+                lhs = expr_char(tok);
+                break;
+            case Token.IDENTIFIER /* 270 */:
+                if (this.warnings.contains(Warning.UNDEF)) {
+                    warning(tok, "Undefined token '" + tok.getText() + "' encountered in conditional.");
+                }
+                lhs = 0;
+                break;
+            case Token.NUMBER /* 272 */:
+                NumericValue value = (NumericValue) tok.getValue();
+                lhs = value.longValue();
+                break;
+            default:
+                expr_untoken(tok);
+                error(tok, "Bad token in expression: " + tok.getText());
+                return 0L;
+        }
+        while (true) {
+            op = expr_token();
+            int pri = expr_priority(op);
+            if (pri != 0 && priority < pri) {
+                long rhs = expr(pri);
+                switch (op.getType()) {
+                    case C1089to.f5854tg /* 37 */:
+                        if (rhs == 0) {
+                            error(op, "Modulus by zero");
+                            lhs = 0;
+                        } else {
+                            lhs %= rhs;
+                        }
+                        break;
+                    case 38:
+                        lhs &= rhs;
+                        break;
+                    case 42:
+                        lhs *= rhs;
+                        break;
+                    case C1089to.f5856ti /* 43 */:
+                        lhs += rhs;
+                        break;
+                    case 45:
+                        lhs -= rhs;
+                        break;
+                    case 47:
+                        if (rhs == 0) {
+                            error(op, "Division by zero");
+                            lhs = 0;
+                        } else {
+                            lhs /= rhs;
+                        }
+                        break;
+                    case 60:
+                        lhs = lhs < rhs ? 1L : 0L;
+                        break;
+                    case NumericValue.FF_SIZE /* 62 */:
+                        lhs = lhs > rhs ? 1L : 0L;
+                        break;
+                    case 63:
+                        Token tok3 = expr_token();
+                        if (tok3.getType() != 58) {
+                            expr_untoken(tok3);
+                            error(tok3, "Missing : in conditional expression. Got " + tok3.getText());
+                            return 0L;
+                        }
+                        long falseResult = expr(0);
+                        lhs = lhs != 0 ? rhs : falseResult;
+                        break;
+                        break;
+                    case 94:
+                        lhs ^= rhs;
+                        break;
+                    case 124:
+                        lhs |= rhs;
+                        break;
+                    case Token.f9190EQ /* 266 */:
+                        lhs = lhs == rhs ? 1L : 0L;
+                        break;
+                    case Token.f9191GE /* 267 */:
+                        lhs = lhs >= rhs ? 1L : 0L;
+                        break;
+                    case Token.LAND /* 273 */:
+                        lhs = (lhs == 0 || rhs == 0) ? 0L : 1L;
+                        break;
+                    case Token.f9192LE /* 275 */:
+                        lhs = lhs <= rhs ? 1L : 0L;
+                        break;
+                    case Token.LOR /* 277 */:
+                        lhs = (lhs == 0 && rhs == 0) ? 0L : 1L;
+                        break;
+                    case Token.LSH /* 279 */:
+                        lhs <<= (int) rhs;
+                        break;
+                    case Token.f9193NE /* 283 */:
+                        lhs = lhs != rhs ? 1L : 0L;
+                        break;
+                    case Token.RSH /* 289 */:
+                        lhs >>= (int) rhs;
+                        break;
+                    default:
+                        error(op, "Unexpected operator " + op.getText());
+                        return 0L;
+                }
+            }
+        }
+        expr_untoken(op);
+        return lhs;
     }
 
     @NotNull
@@ -898,18 +980,19 @@ public class Preprocessor {
                         cr = false;
                     }
                     break;
-                case AbstractC0422pq.nO /* 11 */:
+                case 11:
                 case '\f':
-                case dE.gN /* 133 */:
+                case C0215dP.f1669hX /* 133 */:
                 case 8232:
                 case 8233:
                     break;
-                case C0407pb.nu /* 13 */:
+                case C0885px.f4841pt /* 13 */:
                     cr = true;
                     nls++;
                     continue;
                     break;
                 default:
+                    continue;
                     break;
             }
             cr = false;
@@ -920,83 +1003,540 @@ public class Preprocessor {
         return new Token(Token.WHITESPACE, tok.getLine(), tok.getColumn(), new String(cbuf));
     }
 
-    /* JADX WARN: Code restructure failed: missing block: B:12:0x002d, code lost:
-    
-        return r0;
-     */
-    @org.jetbrains.annotations.NotNull
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
-    */
-    private io.github.ocelot.glslprocessor.lib.anarres.cpp.Token _token() throws java.io.IOException, io.github.ocelot.glslprocessor.lib.anarres.cpp.LexerException {
-        /*
-            Method dump skipped, instruction units count: 2188
-            To view this dump change 'Code comments level' option to 'DEBUG'
-        */
-        throw new UnsupportedOperationException("Method not decompiled: io.github.ocelot.glslprocessor.lib.anarres.cpp.Preprocessor._token():io.github.ocelot.glslprocessor.lib.anarres.cpp.Token");
+    @NotNull
+    private Token _token() throws IOException, LexerException {
+        Token tok;
+        Token t;
+        while (true) {
+            if (isNotActive()) {
+                Source s = getSource();
+                if (s == null) {
+                    t = next_source();
+                    if (t.getType() != 299 || getFeature(Feature.LINEMARKERS)) {
+                    }
+                } else {
+                    tok = source_token();
+                    switch (tok.getType()) {
+                        case Token.CCOMMENT /* 260 */:
+                        case Token.CPPCOMMENT /* 261 */:
+                            if (getFeature(Feature.KEEPALLCOMMENTS)) {
+                                return tok;
+                            }
+                            if (isNotActive()) {
+                                return toWhitespace(tok);
+                            }
+                            if (getFeature(Feature.KEEPCOMMENTS)) {
+                                return tok;
+                            }
+                            return toWhitespace(tok);
+                        case Token.EOF /* 265 */:
+                        case Token.HASH /* 268 */:
+                        case Token.f9194NL /* 284 */:
+                            break;
+                        case Token.WHITESPACE /* 294 */:
+                            return tok;
+                        default:
+                            return source_skipline(false);
+                    }
+                }
+            } else {
+                tok = source_token();
+            }
+            switch (tok.getType()) {
+                case 33:
+                case C1089to.f5854tg /* 37 */:
+                case 38:
+                case 40:
+                case 41:
+                case 42:
+                case C1089to.f5856ti /* 43 */:
+                case 44:
+                case 45:
+                case 46:
+                case 47:
+                case 58:
+                case 59:
+                case 60:
+                case 61:
+                case NumericValue.FF_SIZE /* 62 */:
+                case 63:
+                case 64:
+                case 91:
+                case 93:
+                case 94:
+                case 96:
+                case 123:
+                case 124:
+                case 125:
+                case 126:
+                case Token.AND_EQ /* 257 */:
+                case Token.ARROW /* 258 */:
+                case Token.CHARACTER /* 259 */:
+                case Token.DEC /* 262 */:
+                case Token.DIV_EQ /* 263 */:
+                case Token.ELLIPSIS /* 264 */:
+                case Token.f9190EQ /* 266 */:
+                case Token.f9191GE /* 267 */:
+                case Token.HEADER /* 269 */:
+                case Token.INC /* 271 */:
+                case Token.LAND /* 273 */:
+                case Token.f9192LE /* 275 */:
+                case Token.LOR /* 277 */:
+                case Token.LSH /* 279 */:
+                case Token.LSH_EQ /* 280 */:
+                case Token.MOD_EQ /* 281 */:
+                case Token.MULT_EQ /* 282 */:
+                case Token.f9193NE /* 283 */:
+                case Token.OR_EQ /* 285 */:
+                case Token.PLUS_EQ /* 287 */:
+                case Token.RANGE /* 288 */:
+                case Token.RSH /* 289 */:
+                case Token.RSH_EQ /* 290 */:
+                case Token.SQSTRING /* 291 */:
+                case Token.STRING /* 292 */:
+                case Token.SUB_EQ /* 293 */:
+                case Token.XOR_EQ /* 295 */:
+                    return tok;
+                case 34:
+                case C1043sv.f5687sk /* 35 */:
+                case 36:
+                case 39:
+                case 48:
+                case 49:
+                case 50:
+                case 51:
+                case 52:
+                case 53:
+                case 54:
+                case 55:
+                case C0244ds.f1990he /* 56 */:
+                case 57:
+                case 65:
+                case 66:
+                case 67:
+                case 68:
+                case 69:
+                case C0304ez.f2369je /* 70 */:
+                case 71:
+                case 72:
+                case 73:
+                case 74:
+                case 75:
+                case 76:
+                case 77:
+                case 78:
+                case 79:
+                case 80:
+                case 81:
+                case 82:
+                case 83:
+                case 84:
+                case 85:
+                case 86:
+                case 87:
+                case 88:
+                case 89:
+                case 90:
+                case 92:
+                case 95:
+                case 97:
+                case 98:
+                case 99:
+                case 100:
+                case 101:
+                case 102:
+                case 103:
+                case 104:
+                case 105:
+                case 106:
+                case 107:
+                case 108:
+                case 109:
+                case C0244ds.f1979hd /* 110 */:
+                case 111:
+                case Skeleton.UNIFORM_STRIDE /* 112 */:
+                case 113:
+                case C0248dw.f2042hx /* 114 */:
+                case 115:
+                case 116:
+                case 117:
+                case 118:
+                case 119:
+                case C0358g.f2490g /* 120 */:
+                case 121:
+                case 122:
+                case 127:
+                case 128:
+                case 129:
+                case 130:
+                case 131:
+                case 132:
+                case C0215dP.f1669hX /* 133 */:
+                case 134:
+                case 135:
+                case 136:
+                case 137:
+                case 138:
+                case 139:
+                case 140:
+                case 141:
+                case 142:
+                case 143:
+                case 144:
+                case 145:
+                case 146:
+                case 147:
+                case 148:
+                case 149:
+                case 150:
+                case 151:
+                case 152:
+                case 153:
+                case 154:
+                case 155:
+                case 156:
+                case 157:
+                case 158:
+                case 159:
+                case 160:
+                case 161:
+                case 162:
+                case 163:
+                case 164:
+                case 165:
+                case 166:
+                case 167:
+                case 168:
+                case 169:
+                case 170:
+                case 171:
+                case 172:
+                case C0244ds.f1978hc /* 173 */:
+                case 174:
+                case 175:
+                case 176:
+                case 177:
+                case 178:
+                case 179:
+                case 180:
+                case 181:
+                case 182:
+                case 183:
+                case 184:
+                case 185:
+                case 186:
+                case 187:
+                case 188:
+                case 189:
+                case AbstractC0223dX.f1766ij /* 190 */:
+                case 191:
+                case 192:
+                case 193:
+                case 194:
+                case 195:
+                case 196:
+                case 197:
+                case 198:
+                case 199:
+                case 200:
+                case 201:
+                case 202:
+                case 203:
+                case 204:
+                case 205:
+                case 206:
+                case 207:
+                case 208:
+                case 209:
+                case 210:
+                case 211:
+                case 212:
+                case 213:
+                case 214:
+                case 215:
+                case 216:
+                case 217:
+                case 218:
+                case 219:
+                case 220:
+                case 221:
+                case 222:
+                case 223:
+                case 224:
+                case 225:
+                case 226:
+                case 227:
+                case 228:
+                case 229:
+                case 230:
+                case 231:
+                case 232:
+                case C0248dw.f2040hv /* 233 */:
+                case 234:
+                case 235:
+                case 236:
+                case 237:
+                case 238:
+                case 239:
+                case C0847pL.f4563pM /* 240 */:
+                case C0245dt.f2006hm /* 241 */:
+                case 242:
+                case 243:
+                case 244:
+                case 245:
+                case 246:
+                case 247:
+                case 248:
+                case 249:
+                case 250:
+                case 251:
+                case 252:
+                case 253:
+                case 254:
+                case 255:
+                case 256:
+                case Token.LAND_EQ /* 274 */:
+                case Token.LITERAL /* 276 */:
+                case Token.LOR_EQ /* 278 */:
+                case Token.PASTE /* 286 */:
+                case Token.M_ARG /* 296 */:
+                case Token.M_PASTE /* 297 */:
+                case Token.M_STRING /* 298 */:
+                default:
+                    throw new AssertionError("Bad token " + tok);
+                case Token.CCOMMENT /* 260 */:
+                case Token.CPPCOMMENT /* 261 */:
+                    return tok;
+                case Token.EOF /* 265 */:
+                    return tok;
+                case Token.HASH /* 268 */:
+                    Token tok2 = source_token_nonwhite();
+                    switch (tok2.getType()) {
+                        case Token.IDENTIFIER /* 270 */:
+                            PreprocessorCommand ppcmd = PreprocessorCommand.forText(tok2.getText());
+                            if (ppcmd == null) {
+                                error(tok2, "Unknown preprocessor directive " + tok2.getText());
+                                return source_skipline(false);
+                            }
+                            switch (C14882.f9189xb3f08209[ppcmd.ordinal()]) {
+                                case 1:
+                                    if (isNotActive()) {
+                                        return source_skipline(false);
+                                    }
+                                    return define();
+                                case 2:
+                                    if (isNotActive()) {
+                                        return source_skipline(false);
+                                    }
+                                    return undef();
+                                case 3:
+                                    if (isNotActive()) {
+                                        return source_skipline(false);
+                                    }
+                                    return include();
+                                case 4:
+                                    if (isNotActive()) {
+                                        return source_skipline(false);
+                                    }
+                                    if (!getFeature(Feature.INCLUDENEXT)) {
+                                        error(tok2, "Directive include_next not enabled");
+                                        return source_skipline(false);
+                                    }
+                                    return include();
+                                case 5:
+                                case 6:
+                                    if (isNotActive()) {
+                                        return source_skipline(false);
+                                    }
+                                    error(tok2, ppcmd == PreprocessorCommand.PP_ERROR);
+                                    break;
+                                    break;
+                                case C0994s.f5462C /* 7 */:
+                                    push_state();
+                                    if (isNotActive()) {
+                                        return source_skipline(false);
+                                    }
+                                    this.expr_token = null;
+                                    this.states.peek().setActive(expr(0) != 0);
+                                    Token tok3 = expr_token();
+                                    if (tok3.getType() == 284) {
+                                        return tok3;
+                                    }
+                                    return source_skipline(true);
+                                case 8:
+                                    State state = this.states.peek();
+                                    if (state.sawElse()) {
+                                        error(tok2, "#elif after #else");
+                                        return source_skipline(false);
+                                    }
+                                    if (!state.isParentActive()) {
+                                        return source_skipline(false);
+                                    }
+                                    if (state.isActive()) {
+                                        state.setParentActive(false);
+                                        state.setActive(false);
+                                        return source_skipline(false);
+                                    }
+                                    this.expr_token = null;
+                                    state.setActive(expr(0) != 0);
+                                    Token tok4 = expr_token();
+                                    if (tok4.getType() == 284) {
+                                        return tok4;
+                                    }
+                                    return source_skipline(true);
+                                case 9:
+                                    State state2 = this.states.peek();
+                                    if (state2.sawElse()) {
+                                        error(tok2, "#else after #else");
+                                        return source_skipline(false);
+                                    }
+                                    state2.setSawElse();
+                                    state2.setActive(!state2.isActive());
+                                    return source_skipline(this.warnings.contains(Warning.ENDIF_LABELS));
+                                case 10:
+                                    push_state();
+                                    if (isNotActive()) {
+                                        return source_skipline(false);
+                                    }
+                                    Token tok5 = source_token_nonwhite();
+                                    if (tok5.getType() != 270) {
+                                        error(tok5, "Expected identifier, not " + tok5.getText());
+                                        return source_skipline(false);
+                                    }
+                                    String text = tok5.getText();
+                                    boolean exists = this.macros.containsKey(text);
+                                    this.states.peek().setActive(exists);
+                                    return source_skipline(true);
+                                case 11:
+                                    push_state();
+                                    if (isNotActive()) {
+                                        return source_skipline(false);
+                                    }
+                                    Token tok6 = source_token_nonwhite();
+                                    if (tok6.getType() != 270) {
+                                        error(tok6, "Expected identifier, not " + tok6.getText());
+                                        return source_skipline(false);
+                                    }
+                                    String text2 = tok6.getText();
+                                    boolean exists2 = this.macros.containsKey(text2);
+                                    this.states.peek().setActive(!exists2);
+                                    return source_skipline(true);
+                                case 12:
+                                    pop_state();
+                                    return source_skipline(this.warnings.contains(Warning.ENDIF_LABELS));
+                                case C0885px.f4841pt /* 13 */:
+                                    return source_skipline(false);
+                                case 14:
+                                    if (isNotActive()) {
+                                        return source_skipline(false);
+                                    }
+                                    return pragma();
+                                default:
+                                    throw new AssertionError("Internal error: Unknown directive " + tok2);
+                            }
+                            break;
+                        case Token.f9194NL /* 284 */:
+                            break;
+                        default:
+                            error(tok2, "Preprocessor directive not a word " + tok2.getText());
+                            return source_skipline(false);
+                    }
+                    break;
+                case Token.IDENTIFIER /* 270 */:
+                    Macro m = getMacro(tok.getText());
+                    if (m == null) {
+                        return tok;
+                    }
+                    if (this.source.isExpanding(m)) {
+                        return tok;
+                    }
+                    if (!macro(m, tok)) {
+                        return tok;
+                    }
+                    break;
+                    break;
+                case Token.NUMBER /* 272 */:
+                    return tok;
+                case Token.f9194NL /* 284 */:
+                case Token.WHITESPACE /* 294 */:
+                    return tok;
+                case Token.P_LINE /* 299 */:
+                    if (getFeature(Feature.LINEMARKERS)) {
+                        return tok;
+                    }
+                    break;
+                case 300:
+                    if (getFeature(Feature.CSYNTAX)) {
+                        error(tok, String.valueOf(tok.getValue()));
+                    }
+                    return tok;
+            }
+        }
+        return t;
     }
 
-    /* JADX INFO: renamed from: io.github.ocelot.glslprocessor.lib.anarres.cpp.Preprocessor$2, reason: invalid class name */
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/lib/anarres/cpp/Preprocessor$2.class */
-    static /* synthetic */ class AnonymousClass2 {
-        static final /* synthetic */ int[] $SwitchMap$io$github$ocelot$glslprocessor$lib$anarres$cpp$PreprocessorCommand = new int[PreprocessorCommand.values().length];
+    /* JADX INFO: renamed from: io.github.ocelot.glslprocessor.lib.anarres.cpp.Preprocessor$2 */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/lib/anarres/cpp/Preprocessor$2.class */
+    static /* synthetic */ class C14882 {
+
+        /* JADX INFO: renamed from: $SwitchMap$io$github$ocelot$glslprocessor$lib$anarres$cpp$PreprocessorCommand */
+        static final /* synthetic */ int[] f9189xb3f08209 = new int[PreprocessorCommand.values().length];
 
         static {
             try {
-                $SwitchMap$io$github$ocelot$glslprocessor$lib$anarres$cpp$PreprocessorCommand[PreprocessorCommand.PP_DEFINE.ordinal()] = 1;
+                f9189xb3f08209[PreprocessorCommand.PP_DEFINE.ordinal()] = 1;
             } catch (NoSuchFieldError e) {
             }
             try {
-                $SwitchMap$io$github$ocelot$glslprocessor$lib$anarres$cpp$PreprocessorCommand[PreprocessorCommand.PP_UNDEF.ordinal()] = 2;
+                f9189xb3f08209[PreprocessorCommand.PP_UNDEF.ordinal()] = 2;
             } catch (NoSuchFieldError e2) {
             }
             try {
-                $SwitchMap$io$github$ocelot$glslprocessor$lib$anarres$cpp$PreprocessorCommand[PreprocessorCommand.PP_INCLUDE.ordinal()] = 3;
+                f9189xb3f08209[PreprocessorCommand.PP_INCLUDE.ordinal()] = 3;
             } catch (NoSuchFieldError e3) {
             }
             try {
-                $SwitchMap$io$github$ocelot$glslprocessor$lib$anarres$cpp$PreprocessorCommand[PreprocessorCommand.PP_INCLUDE_NEXT.ordinal()] = 4;
+                f9189xb3f08209[PreprocessorCommand.PP_INCLUDE_NEXT.ordinal()] = 4;
             } catch (NoSuchFieldError e4) {
             }
             try {
-                $SwitchMap$io$github$ocelot$glslprocessor$lib$anarres$cpp$PreprocessorCommand[PreprocessorCommand.PP_WARNING.ordinal()] = 5;
+                f9189xb3f08209[PreprocessorCommand.PP_WARNING.ordinal()] = 5;
             } catch (NoSuchFieldError e5) {
             }
             try {
-                $SwitchMap$io$github$ocelot$glslprocessor$lib$anarres$cpp$PreprocessorCommand[PreprocessorCommand.PP_ERROR.ordinal()] = 6;
+                f9189xb3f08209[PreprocessorCommand.PP_ERROR.ordinal()] = 6;
             } catch (NoSuchFieldError e6) {
             }
             try {
-                $SwitchMap$io$github$ocelot$glslprocessor$lib$anarres$cpp$PreprocessorCommand[PreprocessorCommand.PP_IF.ordinal()] = 7;
+                f9189xb3f08209[PreprocessorCommand.PP_IF.ordinal()] = 7;
             } catch (NoSuchFieldError e7) {
             }
             try {
-                $SwitchMap$io$github$ocelot$glslprocessor$lib$anarres$cpp$PreprocessorCommand[PreprocessorCommand.PP_ELIF.ordinal()] = 8;
+                f9189xb3f08209[PreprocessorCommand.PP_ELIF.ordinal()] = 8;
             } catch (NoSuchFieldError e8) {
             }
             try {
-                $SwitchMap$io$github$ocelot$glslprocessor$lib$anarres$cpp$PreprocessorCommand[PreprocessorCommand.PP_ELSE.ordinal()] = 9;
+                f9189xb3f08209[PreprocessorCommand.PP_ELSE.ordinal()] = 9;
             } catch (NoSuchFieldError e9) {
             }
             try {
-                $SwitchMap$io$github$ocelot$glslprocessor$lib$anarres$cpp$PreprocessorCommand[PreprocessorCommand.PP_IFDEF.ordinal()] = 10;
+                f9189xb3f08209[PreprocessorCommand.PP_IFDEF.ordinal()] = 10;
             } catch (NoSuchFieldError e10) {
             }
             try {
-                $SwitchMap$io$github$ocelot$glslprocessor$lib$anarres$cpp$PreprocessorCommand[PreprocessorCommand.PP_IFNDEF.ordinal()] = 11;
+                f9189xb3f08209[PreprocessorCommand.PP_IFNDEF.ordinal()] = 11;
             } catch (NoSuchFieldError e11) {
             }
             try {
-                $SwitchMap$io$github$ocelot$glslprocessor$lib$anarres$cpp$PreprocessorCommand[PreprocessorCommand.PP_ENDIF.ordinal()] = 12;
+                f9189xb3f08209[PreprocessorCommand.PP_ENDIF.ordinal()] = 12;
             } catch (NoSuchFieldError e12) {
             }
             try {
-                $SwitchMap$io$github$ocelot$glslprocessor$lib$anarres$cpp$PreprocessorCommand[PreprocessorCommand.PP_LINE.ordinal()] = 13;
+                f9189xb3f08209[PreprocessorCommand.PP_LINE.ordinal()] = 13;
             } catch (NoSuchFieldError e13) {
             }
             try {
-                $SwitchMap$io$github$ocelot$glslprocessor$lib$anarres$cpp$PreprocessorCommand[PreprocessorCommand.PP_PRAGMA.ordinal()] = 14;
+                f9189xb3f08209[PreprocessorCommand.PP_PRAGMA.ordinal()] = 14;
             } catch (NoSuchFieldError e14) {
             }
         }

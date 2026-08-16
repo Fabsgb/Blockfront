@@ -11,7 +11,7 @@ import java.util.Optional;
 import org.joml.Vector4f;
 import org.joml.Vector4fc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/flare/modifier/modifiers/Vec4PropertyModifier.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/flare/modifier/modifiers/Vec4PropertyModifier.class */
 public class Vec4PropertyModifier extends PropertyModifier<Vector4fc> {
     protected final List<FloatCurve> curveList;
     protected final Vector4f dummy;

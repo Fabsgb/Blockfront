@@ -10,7 +10,7 @@ import org.joml.Vector3d;
 import org.joml.Vector3dc;
 import org.joml.Vector3fc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/emitters/shape/EmitterShape.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/emitters/shape/EmitterShape.class */
 public interface EmitterShape {
     public static final Codec<EmitterShape> CODEC = CodecUtil.registryOrLegacyCodec(EmitterShapeRegistry.REGISTRY);
 

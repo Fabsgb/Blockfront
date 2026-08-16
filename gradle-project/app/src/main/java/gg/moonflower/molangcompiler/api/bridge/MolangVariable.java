@@ -3,7 +3,7 @@ package gg.moonflower.molangcompiler.api.bridge;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/api/bridge/MolangVariable.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/api/bridge/MolangVariable.class */
 public interface MolangVariable {
     float getValue();
 
@@ -38,7 +38,8 @@ public interface MolangVariable {
         };
     }
 
-    static MolangVariable of(final Supplier<Float> getter, final Consumer<Float> setter) {
+    /* JADX INFO: renamed from: of */
+    static MolangVariable m8355of(final Supplier<Float> getter, final Consumer<Float> setter) {
         return new MolangVariable() { // from class: gg.moonflower.molangcompiler.api.bridge.MolangVariable.2
             @Override // gg.moonflower.molangcompiler.api.bridge.MolangVariable
             public float getValue() {

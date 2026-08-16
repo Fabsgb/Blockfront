@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/server/PacketServerNotification.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/server/PacketServerNotification.class */
 public final class PacketServerNotification extends Record implements IPacket {
 
     @NotNull
@@ -22,7 +22,7 @@ public final class PacketServerNotification extends Record implements IPacket {
 
     /* JADX INFO: renamed from: ID */
     @NotNull
-    public static final PacketIdentifier f99ID = new PacketIdentifier("PacketServerNotification");
+    public static final PacketIdentifier f114ID = new PacketIdentifier("PacketServerNotification");
 
     public PacketServerNotification(@NotNull String message, @NotNull Optional<UUID> match) {
         this.message = message;
@@ -67,6 +67,6 @@ public final class PacketServerNotification extends Record implements IPacket {
     @Override // com.boehmod.bflib.cloud.packet.IPacket
     @NotNull
     public PacketIdentifier getPacketIdentifier() {
-        return f99ID;
+        return f114ID;
     }
 }

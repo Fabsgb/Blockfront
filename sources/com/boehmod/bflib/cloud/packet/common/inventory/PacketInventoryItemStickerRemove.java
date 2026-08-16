@@ -10,7 +10,7 @@ import java.lang.runtime.ObjectMethods;
 import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/inventory/PacketInventoryItemStickerRemove.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/inventory/PacketInventoryItemStickerRemove.class */
 public final class PacketInventoryItemStickerRemove extends Record implements IPacket {
 
     @NotNull
@@ -19,7 +19,7 @@ public final class PacketInventoryItemStickerRemove extends Record implements IP
 
     /* JADX INFO: renamed from: ID */
     @NotNull
-    public static final PacketIdentifier f60ID = new PacketIdentifier("PacketInventoryItemStickerRemove");
+    public static final PacketIdentifier f62ID = new PacketIdentifier("PacketInventoryItemStickerRemove");
 
     public PacketInventoryItemStickerRemove(@NotNull UUID stack, int index) {
         this.stack = stack;
@@ -63,6 +63,6 @@ public final class PacketInventoryItemStickerRemove extends Record implements IP
     @Override // com.boehmod.bflib.cloud.packet.IPacket
     @NotNull
     public PacketIdentifier getPacketIdentifier() {
-        return f60ID;
+        return f62ID;
     }
 }

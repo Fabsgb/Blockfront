@@ -1,12 +1,13 @@
 package foundry.veil.api.client.render.vertex;
 
+import com.boehmod.blockfront.C0994s;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormatElement;
 import foundry.veil.api.client.render.VeilRenderSystem;
 import java.util.List;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/vertex/VertexArrayBuilder.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/vertex/VertexArrayBuilder.class */
 public interface VertexArrayBuilder {
     VertexArray vertexArray();
 
@@ -78,7 +79,7 @@ public interface VertexArrayBuilder {
         return this;
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/vertex/VertexArrayBuilder$DataType.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/vertex/VertexArrayBuilder$DataType.class */
     public enum DataType {
         BYTE(5120),
         SHORT(5122),
@@ -115,8 +116,9 @@ public interface VertexArrayBuilder {
             return this.glType;
         }
 
+        /* JADX INFO: Thrown type has an unknown type hierarchy: java.lang.MatchException */
         public static DataType fromType(VertexFormatElement.Type type) throws MatchException {
-            switch (C13731.$SwitchMap$com$mojang$blaze3d$vertex$VertexFormatElement$Type[type.ordinal()]) {
+            switch (C13991.$SwitchMap$com$mojang$blaze3d$vertex$VertexFormatElement$Type[type.ordinal()]) {
                 case 1:
                     return FLOAT;
                 case 2:
@@ -129,7 +131,7 @@ public interface VertexArrayBuilder {
                     return SHORT;
                 case 6:
                     return UNSIGNED_INT;
-                case 7:
+                case C0994s.f5462C /* 7 */:
                     return INT;
                 default:
                     throw new MatchException((String) null, (Throwable) null);
@@ -138,8 +140,8 @@ public interface VertexArrayBuilder {
     }
 
     /* JADX INFO: renamed from: foundry.veil.api.client.render.vertex.VertexArrayBuilder$1 */
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/vertex/VertexArrayBuilder$1.class */
-    static /* synthetic */ class C13731 {
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/vertex/VertexArrayBuilder$1.class */
+    static /* synthetic */ class C13991 {
         static final /* synthetic */ int[] $SwitchMap$com$mojang$blaze3d$vertex$VertexFormatElement$Type = new int[VertexFormatElement.Type.values().length];
 
         static {

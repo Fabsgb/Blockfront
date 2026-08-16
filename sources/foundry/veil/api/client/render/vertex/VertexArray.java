@@ -32,14 +32,15 @@ import org.lwjgl.opengl.GLCapabilities;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.NativeResource;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/vertex/VertexArray.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/vertex/VertexArray.class */
 public abstract class VertexArray implements NativeResource {
     public static final int VERTEX_BUFFER = 0;
     public static final int ELEMENT_ARRAY_BUFFER = 1;
+    public static final int INSTANCE_BUFFER = 2;
     private static VertexArrayType vertexArrayType;
 
     /* JADX INFO: renamed from: id */
-    protected final int f8756id;
+    protected final int f9142id;
     protected final VertexArrayBuilder builder;
     protected final Int2IntMap buffers = new Int2IntArrayMap();
     protected int indexCount = 0;
@@ -51,7 +52,7 @@ public abstract class VertexArray implements NativeResource {
 
     @ApiStatus.Internal
     protected VertexArray(int id, Function<VertexArray, VertexArrayBuilder> builder) {
-        this.f8756id = id;
+        this.f9142id = id;
         this.builder = builder.apply(this);
     }
 
@@ -141,7 +142,7 @@ public abstract class VertexArray implements NativeResource {
     }
 
     public int getId() {
-        return this.f8756id;
+        return this.f9142id;
     }
 
     public int getIndexCount() {
@@ -225,7 +226,7 @@ public abstract class VertexArray implements NativeResource {
 
     public void bind() {
         IndexType expectedIndexType;
-        VeilRenderSystem.bindVertexArray(this.f8756id);
+        VeilRenderSystem.bindVertexArray(this.f9142id);
         if (this.indexBuffer != null && this.indexType != (expectedIndexType = IndexType.fromBlaze3D(this.indexBuffer.type()))) {
             this.indexBuffer.bind(this.indexCount);
             this.indexType = expectedIndexType;
@@ -346,11 +347,11 @@ public abstract class VertexArray implements NativeResource {
     public void free() {
         RenderSystem.assertOnRenderThreadOrInit();
         GL15C.glDeleteBuffers(this.buffers.values().toIntArray());
-        GL30C.glDeleteVertexArrays(this.f8756id);
+        GL30C.glDeleteVertexArrays(this.f9142id);
         this.buffers.clear();
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/vertex/VertexArray$VertexArrayType.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/vertex/VertexArray$VertexArrayType.class */
     private enum VertexArrayType {
         LEGACY(LegacyVertexArray::new),
         ARB(ARBVertexArray::new),
@@ -363,7 +364,7 @@ public abstract class VertexArray implements NativeResource {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/vertex/VertexArray$IndexType.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/vertex/VertexArray$IndexType.class */
     public enum IndexType {
         BYTE(5121),
         SHORT(5123),
@@ -384,8 +385,9 @@ public abstract class VertexArray implements NativeResource {
             return this.bytes;
         }
 
+        /* JADX INFO: Thrown type has an unknown type hierarchy: java.lang.MatchException */
         public static IndexType fromBlaze3D(VertexFormat.IndexType type) throws MatchException {
-            switch (C13721.$SwitchMap$com$mojang$blaze3d$vertex$VertexFormat$IndexType[type.ordinal()]) {
+            switch (C13981.$SwitchMap$com$mojang$blaze3d$vertex$VertexFormat$IndexType[type.ordinal()]) {
                 case 1:
                     return SHORT;
                 case 2:
@@ -406,7 +408,7 @@ public abstract class VertexArray implements NativeResource {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/vertex/VertexArray$DrawUsage.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/vertex/VertexArray$DrawUsage.class */
     public enum DrawUsage {
         STATIC(35044),
         DYNAMIC(35048),
@@ -422,8 +424,9 @@ public abstract class VertexArray implements NativeResource {
             return this.glType;
         }
 
+        /* JADX INFO: Thrown type has an unknown type hierarchy: java.lang.MatchException */
         public static DrawUsage fromBlaze3D(VertexBuffer.Usage type) throws MatchException {
-            switch (C13721.$SwitchMap$com$mojang$blaze3d$vertex$VertexBuffer$Usage[type.ordinal()]) {
+            switch (C13981.$SwitchMap$com$mojang$blaze3d$vertex$VertexBuffer$Usage[type.ordinal()]) {
                 case 1:
                     return STATIC;
                 case 2:
@@ -435,8 +438,8 @@ public abstract class VertexArray implements NativeResource {
     }
 
     /* JADX INFO: renamed from: foundry.veil.api.client.render.vertex.VertexArray$1 */
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/vertex/VertexArray$1.class */
-    static /* synthetic */ class C13721 {
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/vertex/VertexArray$1.class */
+    static /* synthetic */ class C13981 {
         static final /* synthetic */ int[] $SwitchMap$com$mojang$blaze3d$vertex$VertexFormat$IndexType;
         static final /* synthetic */ int[] $SwitchMap$com$mojang$blaze3d$vertex$VertexBuffer$Usage = new int[VertexBuffer.Usage.values().length];
 

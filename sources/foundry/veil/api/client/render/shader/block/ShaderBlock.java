@@ -11,7 +11,7 @@ import java.util.function.BiConsumer;
 import org.jetbrains.annotations.Nullable;
 import org.lwjgl.system.NativeResource;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/block/ShaderBlock.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/block/ShaderBlock.class */
 public interface ShaderBlock<T> extends NativeResource {
     void set(@Nullable T t);
 
@@ -40,7 +40,7 @@ public interface ShaderBlock<T> extends NativeResource {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/block/ShaderBlock$BufferBinding.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/block/ShaderBlock$BufferBinding.class */
     public enum BufferBinding {
         UNIFORM(35345),
         SHADER_STORAGE(37074);
@@ -56,7 +56,7 @@ public interface ShaderBlock<T> extends NativeResource {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/block/ShaderBlock$MemoryLayout.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/block/ShaderBlock$MemoryLayout.class */
     public enum MemoryLayout {
         PACKED,
         SHARED,

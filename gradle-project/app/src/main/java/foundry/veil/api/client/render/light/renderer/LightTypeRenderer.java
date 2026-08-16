@@ -7,7 +7,7 @@ import java.util.Collection;
 import org.jetbrains.annotations.ApiStatus;
 import org.lwjgl.system.NativeResource;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/light/renderer/LightTypeRenderer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/light/renderer/LightTypeRenderer.class */
 public interface LightTypeRenderer<T extends LightData> extends NativeResource {
     LightRenderHandle<T> addLight(T t);
 

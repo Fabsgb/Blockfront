@@ -42,7 +42,7 @@ import software.bernie.geckolib.renderer.layer.GeoRenderLayersContainer;
 import software.bernie.geckolib.util.ClientUtil;
 import software.bernie.geckolib.util.RenderUtil;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/renderer/GeoReplacedEntityRenderer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/renderer/GeoReplacedEntityRenderer.class */
 public class GeoReplacedEntityRenderer<E extends Entity, T extends GeoAnimatable> extends EntityRenderer<E> implements GeoRenderer<T> {
     protected final GeoRenderLayersContainer<T> renderLayers;
     protected final GeoModel<T> model;
@@ -71,7 +71,7 @@ public class GeoReplacedEntityRenderer<E extends Entity, T extends GeoAnimatable
 
     @Override // software.bernie.geckolib.renderer.GeoRenderer
     /* JADX INFO: renamed from: getAnimatable */
-    public T mo9316getAnimatable() {
+    public T mo9710getAnimatable() {
         return this.animatable;
     }
 
@@ -344,23 +344,29 @@ public class GeoReplacedEntityRenderer<E extends Entity, T extends GeoAnimatable
             return Minecraft.renderNames() && entity != minecraft.getCameraEntity() && visibleToClient && !entity.isVehicle();
         }
         PlayerTeam team2 = minecraft.player.getTeam();
-        switch (C14761.$SwitchMap$net$minecraft$world$scores$Team$Visibility[team.getNameTagVisibility().ordinal()]) {
+        switch (C15031.$SwitchMap$net$minecraft$world$scores$Team$Visibility[team.getNameTagVisibility().ordinal()]) {
             case 1:
                 return visibleToClient;
             case 2:
                 return false;
             case 3:
-                return team2 == null ? visibleToClient : team.isAlliedTo(team2) && (team.canSeeFriendlyInvisibles() || visibleToClient);
+                if (team2 == null) {
+                    return visibleToClient;
+                }
+                return team.isAlliedTo(team2) && (team.canSeeFriendlyInvisibles() || visibleToClient);
             case 4:
-                return team2 == null ? visibleToClient : !team.isAlliedTo(team2) && visibleToClient;
+                if (team2 == null) {
+                    return visibleToClient;
+                }
+                return !team.isAlliedTo(team2) && visibleToClient;
             default:
                 throw new MatchException((String) null, (Throwable) null);
         }
     }
 
     /* JADX INFO: renamed from: software.bernie.geckolib.renderer.GeoReplacedEntityRenderer$1 */
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/renderer/GeoReplacedEntityRenderer$1.class */
-    static /* synthetic */ class C14761 {
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/renderer/GeoReplacedEntityRenderer$1.class */
+    static /* synthetic */ class C15031 {
         static final /* synthetic */ int[] $SwitchMap$net$minecraft$world$scores$Team$Visibility = new int[Team.Visibility.values().length];
 
         static {

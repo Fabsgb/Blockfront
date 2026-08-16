@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.function.BiConsumer;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/api/object/MolangLibrary.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/api/object/MolangLibrary.class */
 public abstract class MolangLibrary implements MolangObject {
     private final Map<String, MolangExpression> values = new HashMap();
 

@@ -18,7 +18,7 @@ import software.bernie.geckolib.cache.AnimatableIdCache;
 import software.bernie.geckolib.constant.DataTickets;
 import software.bernie.geckolib.util.RenderUtil;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/animatable/GeoItem.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/animatable/GeoItem.class */
 public interface GeoItem extends SingletonGeoAnimatable {
     static void registerSyncedAnimatable(GeoAnimatable animatable) {
         SingletonGeoAnimatable.registerSyncedAnimatable(animatable);
@@ -66,7 +66,7 @@ public interface GeoItem extends SingletonGeoAnimatable {
         return super.animatableCacheOverride();
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/animatable/GeoItem$ContextBasedAnimatableInstanceCache.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/animatable/GeoItem$ContextBasedAnimatableInstanceCache.class */
     public static class ContextBasedAnimatableInstanceCache extends SingletonAnimatableInstanceCache {
         public ContextBasedAnimatableInstanceCache(GeoAnimatable animatable) {
             super(animatable);

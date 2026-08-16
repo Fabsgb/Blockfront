@@ -9,7 +9,7 @@ import java.lang.invoke.MethodType;
 import java.lang.runtime.ObjectMethods;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/PacketClientSound.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/PacketClientSound.class */
 public final class PacketClientSound extends Record implements IPacket {
 
     @NotNull
@@ -17,7 +17,7 @@ public final class PacketClientSound extends Record implements IPacket {
 
     /* JADX INFO: renamed from: ID */
     @NotNull
-    public static final PacketIdentifier f25ID = new PacketIdentifier("PacketClientSound");
+    public static final PacketIdentifier f26ID = new PacketIdentifier("PacketClientSound");
 
     public PacketClientSound(@NotNull String sound) {
         this.sound = sound;
@@ -55,6 +55,6 @@ public final class PacketClientSound extends Record implements IPacket {
     @Override // com.boehmod.bflib.cloud.packet.IPacket
     @NotNull
     public PacketIdentifier getPacketIdentifier() {
-        return f25ID;
+        return f26ID;
     }
 }

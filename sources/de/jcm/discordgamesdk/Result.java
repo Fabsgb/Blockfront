@@ -2,7 +2,7 @@ package de.jcm.discordgamesdk;
 
 import foundry.veil.impl.client.render.shader.injection.util.ShaderInjectionDefinition;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/Result.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/Result.class */
 public enum Result {
     OK,
     SERVICE_UNAVAILABLE,
@@ -52,16 +52,17 @@ public enum Result {
     public static Result fromCode(int code) {
         switch (code) {
             case ShaderInjectionDefinition.DEFAULT_PRIORITY /* 1000 */:
-                break;
+                return INTERNAL_ERROR;
             case 4000:
-                break;
+                return INVALID_PAYLOAD;
             case 4002:
-                break;
+                return INVALID_COMMAND;
             case 4010:
-                break;
+                return NOT_FOUND;
             case 5006:
-                break;
+                return NO_ELIGIBLE_ACTIVITY;
+            default:
+                return INTERNAL_ERROR;
         }
-        return INTERNAL_ERROR;
     }
 }

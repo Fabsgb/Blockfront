@@ -10,7 +10,7 @@ import java.lang.runtime.ObjectMethods;
 import java.util.Collection;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/core/ImmutableMolangEnvironment.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/core/ImmutableMolangEnvironment.class */
 @ApiStatus.Internal
 public final class ImmutableMolangEnvironment extends Record implements MolangEnvironment {
     private final MolangEnvironment environment;

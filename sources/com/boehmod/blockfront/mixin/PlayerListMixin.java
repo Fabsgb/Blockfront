@@ -1,7 +1,7 @@
 package com.boehmod.blockfront.mixin;
 
-import com.boehmod.blockfront.AbstractC0563ju;
-import com.boehmod.blockfront.C0029a;
+import com.boehmod.blockfront.AbstractC0531jN;
+import com.boehmod.blockfront.C0030a;
 import java.util.List;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.contents.TranslatableContents;
@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:com/boehmod/blockfront/mixin/PlayerListMixin.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:com/boehmod/blockfront/mixin/PlayerListMixin.class */
 @Mixin({PlayerList.class})
 public abstract class PlayerListMixin {
 
@@ -31,9 +31,9 @@ public abstract class PlayerListMixin {
         if (isJoinLeaveMessage(component)) {
             callbackInfo.cancel();
             this.server.sendSystemMessage(component);
-            AbstractC0563ju<?, ?, ?> abstractC0563juM168a = C0029a.m164a().m168a();
+            AbstractC0531jN<?, ?, ?> abstractC0531jNM179a = C0030a.m175a().m179a();
             for (ServerPlayer serverPlayer : getPlayers()) {
-                if (abstractC0563juM168a == null || abstractC0563juM168a.mo2531a(serverPlayer.getUUID()) == null) {
+                if (abstractC0531jNM179a == null || abstractC0531jNM179a.mo2354a(serverPlayer.getUUID()) == null) {
                     serverPlayer.sendSystemMessage(component);
                 }
             }
@@ -46,7 +46,12 @@ public abstract class PlayerListMixin {
             return false;
         }
         switch (contents.getKey()) {
+            case "multiplayer.player.joined":
+            case "multiplayer.player.joined.renamed":
+            case "multiplayer.player.left":
+                return true;
+            default:
+                return false;
         }
-        return false;
     }
 }

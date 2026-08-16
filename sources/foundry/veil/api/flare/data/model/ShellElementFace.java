@@ -8,18 +8,18 @@ import java.util.Map;
 import net.minecraft.core.Direction;
 import net.minecraft.util.StringRepresentable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/flare/data/model/ShellElementFace.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/flare/data/model/ShellElementFace.class */
 public final class ShellElementFace extends Record {
 
     /* JADX INFO: renamed from: uv */
-    private final ShellFaceUV f8758uv;
+    private final ShellFaceUV f9144uv;
     public static final Codec<ShellElementFace> CODEC = ShellFaceUV.CODEC.xmap(ShellElementFace::new, (v0) -> {
-        return v0.m7991uv();
+        return v0.m8342uv();
     });
     public static final Codec<Map<Direction, ShellElementFace>> FULL_CODEC = Codec.simpleMap(Direction.CODEC, CODEC, StringRepresentable.keys(Direction.values())).codec();
 
     public ShellElementFace(ShellFaceUV uv) {
-        this.f8758uv = uv;
+        this.f9144uv = uv;
     }
 
     @Override // java.lang.Record
@@ -38,7 +38,7 @@ public final class ShellElementFace extends Record {
     }
 
     /* JADX INFO: renamed from: uv */
-    public ShellFaceUV m7991uv() {
-        return this.f8758uv;
+    public ShellFaceUV m8342uv() {
+        return this.f9144uv;
     }
 }

@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.WeakHashMap;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/flare/modifier/ControllerManager.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/flare/modifier/ControllerManager.class */
 public class ControllerManager {
     private final Table<String, String, HostBoundController> controllers = Tables.newCustomTable(new WeakHashMap(), WeakHashMap::new);
     private final Map<String, GlobalController> globalControllers = new HashMap();

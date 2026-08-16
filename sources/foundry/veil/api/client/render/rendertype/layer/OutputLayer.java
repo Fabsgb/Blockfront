@@ -12,7 +12,7 @@ import java.lang.runtime.ObjectMethods;
 import net.minecraft.ResourceLocationException;
 import net.minecraft.resources.ResourceLocation;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/rendertype/layer/OutputLayer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/rendertype/layer/OutputLayer.class */
 public final class OutputLayer extends Record implements RenderTypeLayer {
     private final LayerTemplateValue<ResourceLocation> framebufferId;
     public static final MapCodec<OutputLayer> CODEC = LayerTemplateValue.LOCATION_CODEC.fieldOf("framebuffer").xmap(OutputLayer::new, (v0) -> {
@@ -42,6 +42,7 @@ public final class OutputLayer extends Record implements RenderTypeLayer {
         return this.framebufferId;
     }
 
+    /* JADX INFO: Thrown type has an unknown type hierarchy: net.minecraft.ResourceLocationException */
     @Override // foundry.veil.api.client.render.rendertype.layer.RenderTypeLayer
     public void addShard(VeilRenderTypeBuilder builder, Object... params) throws ResourceLocationException {
         ResourceLocation id = this.framebufferId.parse(params);

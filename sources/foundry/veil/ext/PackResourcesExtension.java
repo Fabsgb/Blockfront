@@ -16,12 +16,12 @@ import net.minecraft.server.packs.resources.IoSupplier;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/ext/PackResourcesExtension.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/ext/PackResourcesExtension.class */
 @ApiStatus.Internal
 public interface PackResourcesExtension {
     public static final String BUILD_RESOURCES_NAME = "resources";
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/ext/PackResourcesExtension$PackResourceConsumer.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/ext/PackResourcesExtension$PackResourceConsumer.class */
     @FunctionalInterface
     public interface PackResourceConsumer {
         void accept(@Nullable PackType packType, ResourceLocation resourceLocation, Path path, Path path2, @Nullable Path path3);
@@ -93,7 +93,15 @@ public interface PackResourcesExtension {
                     walk.close();
                 }
                 return null;
-            } finally {
+            } catch (Throwable th) {
+                if (walk != null) {
+                    try {
+                        walk.close();
+                    } catch (Throwable th2) {
+                        th.addSuppressed(th2);
+                    }
+                }
+                throw th;
             }
         }
         return null;
@@ -151,7 +159,15 @@ public interface PackResourcesExtension {
                 if (walk != null) {
                     walk.close();
                 }
-            } finally {
+            } catch (Throwable th) {
+                if (walk != null) {
+                    try {
+                        walk.close();
+                    } catch (Throwable th2) {
+                        th.addSuppressed(th2);
+                    }
+                }
+                throw th;
             }
         }
         return paths;

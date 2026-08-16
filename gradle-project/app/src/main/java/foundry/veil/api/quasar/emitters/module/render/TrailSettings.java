@@ -1,9 +1,10 @@
 package foundry.veil.api.quasar.emitters.module.render;
 
+import com.boehmod.blockfront.InterfaceC1274xN;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import foundry.veil.api.client.editor.EditorAttributeProvider;
-import foundry.veil.api.quasar.fx.Trail;
+import foundry.veil.api.quasar.p003fx.Trail;
 import foundry.veil.api.util.CodecUtil;
 import imgui.ImGui;
 import imgui.type.ImBoolean;
@@ -17,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 import org.joml.Vector4f;
 import org.joml.Vector4fc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/emitters/module/render/TrailSettings.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/emitters/module/render/TrailSettings.class */
 public class TrailSettings implements EditorAttributeProvider {
     public static final Codec<TrailSettings> CODEC = RecordCodecBuilder.create(instance -> {
         return instance.group(Codec.INT.optionalFieldOf("trailFrequency", 1).forGetter(settings -> {
@@ -56,13 +57,13 @@ public class TrailSettings implements EditorAttributeProvider {
     private boolean parentRotation;
     private float trailWidthModifierFloat;
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/emitters/module/render/TrailSettings$TrailPointModifier.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/emitters/module/render/TrailSettings$TrailPointModifier.class */
     @FunctionalInterface
     public interface TrailPointModifier {
         Vector4f modify(Vector4f vector4f, Integer num, Vec3 vec3);
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/emitters/module/render/TrailSettings$TrailWidthModifier.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/emitters/module/render/TrailSettings$TrailWidthModifier.class */
     @FunctionalInterface
     public interface TrailWidthModifier {
         float modify(float f, double d);
@@ -209,7 +210,7 @@ public class TrailSettings implements EditorAttributeProvider {
         ImGui.inputInt("Trail Length", trailLengthInt);
         this.trailLength = trailLengthInt.get();
         float[] trailColorVector4f = {this.trailColor.x(), this.trailColor.y(), this.trailColor.z(), this.trailColor.w()};
-        ImGui.colorEdit4("Trail Color", trailColorVector4f, 196608);
+        ImGui.colorEdit4("Trail Color", trailColorVector4f, InterfaceC1274xN.f6861wd);
         this.trailColor = new Vector4f(trailColorVector4f[0], trailColorVector4f[1], trailColorVector4f[2], trailColorVector4f[3]);
         if (ImGui.beginCombo("Tiling Mode", this.tilingMode.name())) {
             ImGui.pushItemWidth(-1.0f);

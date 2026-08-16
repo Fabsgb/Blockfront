@@ -1,7 +1,7 @@
 package com.boehmod.blockfront.client.corpse.physics;
 
-import com.boehmod.blockfront.C0263jt;
-import com.boehmod.blockfront.Q;
+import com.boehmod.blockfront.C0530jM;
+import com.boehmod.blockfront.InterfaceC0026W;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -12,13 +12,23 @@ import org.jetbrains.annotations.NotNull;
 import org.joml.Quaterniondc;
 import org.joml.Vector3dc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:com/boehmod/blockfront/client/corpse/physics/RustCorpsePhysics.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:com/boehmod/blockfront/client/corpse/physics/RustCorpsePhysics.class */
 public class RustCorpsePhysics {
-    private static final String w = "corpse_physics";
-    private static final String x = "corpse_physics_natives";
-    private static final boolean H = System.getProperty("os.name").toLowerCase().contains("win");
-    private static final boolean I = System.getProperty("os.name").toLowerCase().contains("mac");
-    public static boolean J = false;
+
+    /* JADX INFO: renamed from: B */
+    private static final String f1359B = "corpse_physics";
+
+    /* JADX INFO: renamed from: C */
+    private static final String f1360C = "corpse_physics_natives";
+
+    /* JADX INFO: renamed from: M */
+    private static final boolean f1361M = System.getProperty("os.name").toLowerCase().contains("win");
+
+    /* JADX INFO: renamed from: N */
+    private static final boolean f1362N = System.getProperty("os.name").toLowerCase().contains("mac");
+
+    /* JADX INFO: renamed from: O */
+    public static boolean f1363O = false;
 
     public static native void initialize(double d, double d2, double d3);
 
@@ -51,57 +61,69 @@ public class RustCorpsePhysics {
     public static native void clearLevel();
 
     static {
-        s();
+        m1062v();
     }
 
-    private static String j() {
+    /* JADX INFO: renamed from: n */
+    private static String m1061n() {
         Object obj;
         if (System.getProperty("os.arch").equals("arm") || System.getProperty("os.arch").startsWith("aarch64")) {
             obj = "aarch64";
         } else {
             obj = "x86_64";
         }
-        if (H) {
+        if (f1361M) {
             return "corpse_physics_" + obj + "_windows.dll";
         }
-        if (I) {
+        if (f1362N) {
             return "corpse_physics_" + obj + "_macos.dylib";
         }
         return "corpse_physics_" + obj + "_linux.so";
     }
 
-    private static void s() {
-        String strJ = j();
+    /* JADX INFO: renamed from: v */
+    private static void m1062v() {
+        String strM1061n = m1061n();
         try {
-            InputStream resourceAsStream = RustCorpsePhysics.class.getResourceAsStream("/natives/" + strJ);
+            InputStream resourceAsStream = RustCorpsePhysics.class.getResourceAsStream("/natives/" + strM1061n);
             try {
                 if (resourceAsStream == null) {
-                    throw new FileNotFoundException(w);
+                    throw new FileNotFoundException(f1359B);
                 }
-                Path pathCreateTempFile = Files.createTempFile(x, null, new FileAttribute[0]);
+                Path pathCreateTempFile = Files.createTempFile(f1360C, null, new FileAttribute[0]);
                 Files.copy(resourceAsStream, pathCreateTempFile, StandardCopyOption.REPLACE_EXISTING);
                 System.load(pathCreateTempFile.toAbsolutePath().toString());
-                J = true;
+                f1363O = true;
                 if (resourceAsStream != null) {
                     resourceAsStream.close();
                 }
-            } finally {
+            } catch (Throwable th) {
+                if (resourceAsStream != null) {
+                    try {
+                        resourceAsStream.close();
+                    } catch (Throwable th2) {
+                        th.addSuppressed(th2);
+                    }
+                }
+                throw th;
             }
         } catch (Exception e) {
-            J = false;
-            C0263jt.a("Failed to load `%s` native library", e, strJ);
+            f1363O = false;
+            C0530jM.m2338a("Failed to load `%s` native library", e, strM1061n);
         }
     }
 
     @NotNull
-    public static d a(int i, Q q, Vector3dc vector3dc, double d) {
-        Vector3dc vector3dcD = q.d();
-        Quaterniondc quaterniondcMo158a = q.mo158a();
-        createObject(i, new double[]{vector3dcD.x(), vector3dcD.y(), vector3dcD.z(), quaterniondcMo158a.x(), quaterniondcMo158a.y(), quaterniondcMo158a.z(), quaterniondcMo158a.w()}, vector3dc.x(), vector3dc.y(), vector3dc.z(), d);
-        return new d(i);
+    /* JADX INFO: renamed from: a */
+    public static C0178d m1063a(int i, InterfaceC0026W interfaceC0026W, Vector3dc vector3dc, double d) {
+        Vector3dc vector3dcMo157d = interfaceC0026W.mo157d();
+        Quaterniondc quaterniondcMo156a = interfaceC0026W.mo156a();
+        createObject(i, new double[]{vector3dcMo157d.x(), vector3dcMo157d.y(), vector3dcMo157d.z(), quaterniondcMo156a.x(), quaterniondcMo156a.y(), quaterniondcMo156a.z(), quaterniondcMo156a.w()}, vector3dc.x(), vector3dc.y(), vector3dc.z(), d);
+        return new C0178d(i);
     }
 
-    public static a a() {
-        return new a(uploadBlock());
+    /* JADX INFO: renamed from: a */
+    public static C0175a m1064a() {
+        return new C0175a(uploadBlock());
     }
 }

@@ -5,7 +5,7 @@ import io.github.ocelot.glslprocessor.api.node.GlslNodeType;
 import io.github.ocelot.glslprocessor.api.visitor.GlslNodeVisitor;
 import java.util.stream.Stream;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/node/expression/GlslCompareNode.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/node/expression/GlslCompareNode.class */
 public final class GlslCompareNode implements GlslNode {
     private GlslNode first;
     private GlslNode second;
@@ -76,7 +76,7 @@ public final class GlslCompareNode implements GlslNode {
         return "GlslCompareNode{first=" + this.first + ", second=" + this.second + ", operand=" + this.operand + "}";
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/node/expression/GlslCompareNode$Operand.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/node/expression/GlslCompareNode$Operand.class */
     public enum Operand {
         EQUAL("=="),
         NOT_EQUAL("!="),

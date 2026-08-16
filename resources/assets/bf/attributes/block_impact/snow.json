@@ -2,9 +2,15 @@
   "impactSound": "bf:item.gun.bullet.impact.dirt",
   "impactDebrisSound": "bf:item.gun.bullet.impact.dirt.debris",
   "overlayEffectType": "snow",
-  "displayImpactEffects": true,
+  "displayBlockBreakParticles": true,
   "directionalImpactParticles": [
-    { "count": 1, "particleType": "bf:bullet_impact_smoke_snow" },
-    { "count": 15, "particleType": "bf:bullet_impact_snow" }
+    {
+      "count": 1,
+      "particleType": "bf:bullet_impact_smoke_snow"
+    },
+    {
+      "count": 15,
+      "particleType": "bf:bullet_impact_snow"
+    }
   ]
 }

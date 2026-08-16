@@ -10,7 +10,7 @@ import java.lang.runtime.ObjectMethods;
 import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/inventory/PacketInventoryActivateItem.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/inventory/PacketInventoryActivateItem.class */
 public final class PacketInventoryActivateItem extends Record implements IPacket {
 
     @NotNull
@@ -18,7 +18,7 @@ public final class PacketInventoryActivateItem extends Record implements IPacket
 
     /* JADX INFO: renamed from: ID */
     @NotNull
-    public static final PacketIdentifier f53ID = new PacketIdentifier("PacketInventoryActivateItem");
+    public static final PacketIdentifier f55ID = new PacketIdentifier("PacketInventoryActivateItem");
 
     public PacketInventoryActivateItem(@NotNull UUID uuid) {
         this.uuid = uuid;
@@ -56,6 +56,6 @@ public final class PacketInventoryActivateItem extends Record implements IPacket
     @Override // com.boehmod.bflib.cloud.packet.IPacket
     @NotNull
     public PacketIdentifier getPacketIdentifier() {
-        return f53ID;
+        return f55ID;
     }
 }

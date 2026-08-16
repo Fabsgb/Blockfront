@@ -1,24 +1,27 @@
 package io.github.ocelot.glslprocessor.lib.anarres.cpp;
 
-import com.boehmod.blockfront.AbstractC0422pq;
-import com.boehmod.blockfront.C0093dj;
-import com.boehmod.blockfront.C0097dn;
-import com.boehmod.blockfront.C0163g;
-import com.boehmod.blockfront.C0407pb;
-import com.boehmod.blockfront.dE;
-import com.boehmod.blockfront.rY;
-import com.boehmod.blockfront.sR;
+import com.boehmod.blockfront.C0215dP;
+import com.boehmod.blockfront.C0244ds;
+import com.boehmod.blockfront.C0248dw;
+import com.boehmod.blockfront.C0358g;
+import com.boehmod.blockfront.C0885px;
+import com.boehmod.blockfront.C1043sv;
+import com.boehmod.blockfront.C1089to;
 import java.util.Arrays;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/lib/anarres/cpp/LexerSource.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/lib/anarres/cpp/LexerSource.class */
 @ApiStatus.Internal
 public class LexerSource extends Source {
     private final JoinReader reader;
     private final boolean ppvalid;
-    private int u0;
-    private int u1;
+
+    /* JADX INFO: renamed from: u0 */
+    private int f9186u0;
+
+    /* JADX INFO: renamed from: u1 */
+    private int f9187u1;
     static final /* synthetic */ boolean $assertionsDisabled;
     private boolean bol = true;
     private boolean include = false;
@@ -27,7 +30,9 @@ public class LexerSource extends Source {
     private int line = 1;
     private int column = 0;
     private int lastcolumn = -1;
-    private boolean cr = false;
+
+    /* JADX INFO: renamed from: cr */
+    private boolean f9188cr = false;
 
     static {
         $assertionsDisabled = !LexerSource.class.desiredAssertionStatus();
@@ -84,10 +89,10 @@ public class LexerSource extends Source {
     private static boolean isLineSeparator(int c) {
         switch ((char) c) {
             case '\n':
-            case AbstractC0422pq.nO /* 11 */:
+            case 11:
             case '\f':
-            case C0407pb.nu /* 13 */:
-            case dE.gN /* 133 */:
+            case C0885px.f4841pt /* 13 */:
+            case C0215dP.f1669hX /* 133 */:
             case 8232:
             case 8233:
                 return true;
@@ -104,11 +109,11 @@ public class LexerSource extends Source {
         switch (this.ucount) {
             case 1:
                 this.ucount = 0;
-                i = this.u0;
+                i = this.f9186u0;
                 break;
             case 2:
                 this.ucount = 1;
-                i = this.u1;
+                i = this.f9187u1;
                 break;
             default:
                 i = this.reader.read();
@@ -117,31 +122,31 @@ public class LexerSource extends Source {
         int c = i;
         switch (c) {
             case -1:
-                this.cr = false;
+                this.f9188cr = false;
                 break;
             case 10:
-                if (this.cr) {
-                    this.cr = false;
+                if (this.f9188cr) {
+                    this.f9188cr = false;
                     break;
                 }
-            case AbstractC0422pq.nO /* 11 */:
+            case 11:
             case 12:
-            case dE.gN /* 133 */:
+            case C0215dP.f1669hX /* 133 */:
             case 8232:
             case 8233:
-                this.cr = false;
+                this.f9188cr = false;
                 this.line++;
                 this.lastcolumn = this.column;
                 this.column = 0;
                 break;
-            case C0407pb.nu /* 13 */:
-                this.cr = true;
+            case C0885px.f4841pt /* 13 */:
+                this.f9188cr = true;
                 this.line++;
                 this.lastcolumn = this.column;
                 this.column = 0;
                 break;
             default:
-                this.cr = false;
+                this.f9188cr = false;
                 this.column++;
                 break;
         }
@@ -153,17 +158,17 @@ public class LexerSource extends Source {
             if (isLineSeparator(c)) {
                 this.line--;
                 this.column = this.lastcolumn;
-                this.cr = false;
+                this.f9188cr = false;
             } else {
                 this.column--;
             }
             switch (this.ucount) {
                 case 0:
-                    this.u0 = c;
+                    this.f9186u0 = c;
                     this.ucount = 1;
                     return;
                 case 1:
-                    this.u1 = c;
+                    this.f9187u1 = c;
                     this.ucount = 2;
                     return;
                 default:
@@ -256,10 +261,10 @@ public class LexerSource extends Source {
             case 102:
                 text.append('f');
                 return 12;
-            case C0093dj.gd /* 110 */:
+            case C0244ds.f1979hd /* 110 */:
                 text.append('n');
                 return 10;
-            case C0097dn.gs /* 114 */:
+            case C0248dw.f2042hx /* 114 */:
                 text.append('r');
                 return 13;
             case 116:
@@ -268,7 +273,7 @@ public class LexerSource extends Source {
             case 118:
                 text.append('v');
                 return 11;
-            case C0163g.g /* 120 */:
+            case C0358g.f2490g /* 120 */:
                 text.append((char) d);
                 int len2 = 0;
                 int val2 = 0;
@@ -572,7 +577,7 @@ public class LexerSource extends Source {
                 if (this.ppvalid) {
                     this.bol = true;
                     if (this.include) {
-                        tok = new Token(Token.NL, _l, _c, "\n");
+                        tok = new Token(Token.f9194NL, _l, _c, "\n");
                     } else {
                         int nls = 0;
                         do {
@@ -582,21 +587,21 @@ public class LexerSource extends Source {
                         unread(d);
                         char[] text = new char[nls];
                         Arrays.fill(text, '\n');
-                        tok = new Token(Token.NL, _l, _c, new String(text));
+                        tok = new Token(Token.f9194NL, _l, _c, new String(text));
                     }
                     return tok;
                 }
                 break;
             case 33:
-                tok2 = cond('=', Token.NE, 33);
+                tok2 = cond('=', Token.f9193NE, 33);
                 break;
             case 34:
                 tok2 = string('\"', '\"');
                 break;
-            case rY.qj /* 35 */:
+            case C1043sv.f5687sk /* 35 */:
                 tok2 = this.bol ? new Token(Token.HASH) : cond('#', Token.PASTE, 35);
                 break;
-            case sR.rf /* 37 */:
+            case C1089to.f5854tg /* 37 */:
                 int d2 = read();
                 if (d2 == 61) {
                     tok2 = new Token(Token.MOD_EQ);
@@ -637,7 +642,7 @@ public class LexerSource extends Source {
             case 42:
                 tok2 = cond('=', Token.MULT_EQ, 42);
                 break;
-            case sR.rh /* 43 */:
+            case C1089to.f5856ti /* 43 */:
                 int d6 = read();
                 if (d6 == 43) {
                     tok2 = new Token(Token.INC);
@@ -697,7 +702,7 @@ public class LexerSource extends Source {
                 } else {
                     int d11 = read();
                     if (d11 == 61) {
-                        tok2 = new Token(Token.LE);
+                        tok2 = new Token(Token.f9192LE);
                     } else if (d11 == 60) {
                         tok2 = cond('=', Token.LSH_EQ, Token.LSH);
                     } else if (this.digraphs && d11 == 58) {
@@ -710,12 +715,12 @@ public class LexerSource extends Source {
                 }
                 break;
             case 61:
-                tok2 = cond('=', Token.EQ, 61);
+                tok2 = cond('=', Token.f9190EQ, 61);
                 break;
             case NumericValue.FF_SIZE /* 62 */:
                 int d12 = read();
                 if (d12 == 61) {
-                    tok2 = new Token(Token.GE);
+                    tok2 = new Token(Token.f9191GE);
                 } else if (d12 == 62) {
                     tok2 = cond('=', Token.RSH_EQ, Token.RSH);
                 } else {

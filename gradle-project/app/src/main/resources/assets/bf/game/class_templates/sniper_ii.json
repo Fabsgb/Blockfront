@@ -15,7 +15,12 @@
       "weapon": "melee_standard"
     },
     {
-      "weapon": "grenade_frag"
+      "weapon": "grenade_smoke",
+      "count": 1
+    },
+    {
+      "weapon": "grenade_frag",
+      "count": 2
     }
   ],
   "exp": 2500

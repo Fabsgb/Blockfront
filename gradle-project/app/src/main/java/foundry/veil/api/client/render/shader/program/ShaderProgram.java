@@ -20,7 +20,7 @@ import org.lwjgl.opengl.GL31C;
 import org.lwjgl.opengl.GL43C;
 import org.lwjgl.system.NativeResource;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/program/ShaderProgram.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/program/ShaderProgram.class */
 @ApiStatus.NonExtendable
 public interface ShaderProgram extends NativeResource, UniformAccess, TextureUniformAccess {
     void setDefaultUniforms(VertexFormat.Mode mode, Matrix4fc matrix4fc, Matrix4fc matrix4fc2);

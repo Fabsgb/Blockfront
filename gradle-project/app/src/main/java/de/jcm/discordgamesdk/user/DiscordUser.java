@@ -2,7 +2,7 @@ package de.jcm.discordgamesdk.user;
 
 import com.google.gson.annotations.SerializedName;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/user/DiscordUser.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/user/DiscordUser.class */
 public class DiscordUser {
 
     @SerializedName("id")

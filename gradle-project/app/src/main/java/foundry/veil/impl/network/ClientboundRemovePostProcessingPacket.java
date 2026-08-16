@@ -10,7 +10,7 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/network/ClientboundRemovePostProcessingPacket.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/network/ClientboundRemovePostProcessingPacket.class */
 public final class ClientboundRemovePostProcessingPacket extends Record implements CustomPacketPayload {
     private final ResourceLocation pipeline;
     public static final StreamCodec<ByteBuf, ClientboundRemovePostProcessingPacket> CODEC = ResourceLocation.STREAM_CODEC.map(ClientboundRemovePostProcessingPacket::new, (v0) -> {

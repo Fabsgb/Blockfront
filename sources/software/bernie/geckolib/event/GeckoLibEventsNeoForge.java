@@ -4,7 +4,6 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.neoforged.neoforge.common.NeoForge;
 import software.bernie.geckolib.cache.object.BakedGeoModel;
-import software.bernie.geckolib.event.GeoRenderEvent;
 import software.bernie.geckolib.renderer.GeoArmorRenderer;
 import software.bernie.geckolib.renderer.GeoBlockRenderer;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
@@ -13,7 +12,7 @@ import software.bernie.geckolib.renderer.GeoObjectRenderer;
 import software.bernie.geckolib.renderer.GeoReplacedEntityRenderer;
 import software.bernie.geckolib.service.GeckoLibEvents;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/event/GeckoLibEventsNeoForge.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/event/GeckoLibEventsNeoForge.class */
 public class GeckoLibEventsNeoForge implements GeckoLibEvents {
     @Override // software.bernie.geckolib.service.GeckoLibEvents
     public void fireCompileBlockRenderLayers(GeoBlockRenderer<?> renderer) {

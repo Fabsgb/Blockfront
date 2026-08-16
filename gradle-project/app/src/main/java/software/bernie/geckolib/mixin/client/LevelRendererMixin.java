@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import software.bernie.geckolib.loading.math.MathParser;
 import software.bernie.geckolib.loading.math.MolangQueries;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/mixin/client/LevelRendererMixin.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/mixin/client/LevelRendererMixin.class */
 @Mixin({LevelRenderer.class})
 public class LevelRendererMixin {
 

@@ -34,7 +34,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/rendertype/DynamicRenderTypeManager.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/rendertype/DynamicRenderTypeManager.class */
 @ApiStatus.Internal
 public class DynamicRenderTypeManager extends SimplePreparableReloadListener<Map<ResourceLocation, byte[]>> {
     private static final FileToIdConverter CONVERTER = FileToIdConverter.json("pinwheel/rendertypes");
@@ -53,7 +53,7 @@ public class DynamicRenderTypeManager extends SimplePreparableReloadListener<Map
     /* JADX INFO: Access modifiers changed from: protected */
     @NotNull
     /* JADX INFO: renamed from: prepare, reason: merged with bridge method [inline-methods] */
-    public Map<ResourceLocation, byte[]> m9174prepare(@NotNull ResourceManager resourceManager, @NotNull ProfilerFiller profilerFiller) {
+    public Map<ResourceLocation, byte[]> m9558prepare(@NotNull ResourceManager resourceManager, @NotNull ProfilerFiller profilerFiller) {
         Map<ResourceLocation, byte[]> data = new HashMap<>();
         Map<ResourceLocation, Resource> resources = CONVERTER.listMatchingResources(resourceManager);
         for (Map.Entry<ResourceLocation, Resource> entry : resources.entrySet()) {
@@ -85,36 +85,40 @@ public class DynamicRenderTypeManager extends SimplePreparableReloadListener<Map
 
     /* JADX INFO: Access modifiers changed from: protected */
     public void apply(Map<ResourceLocation, byte[]> fileData, ResourceManager resourceManager, ProfilerFiller profilerFiller) {
-        Reader reader;
-        DataResult<CompositeRenderTypeData> result;
         Map<ResourceLocation, RenderTypeCache> renderTypes = new HashMap<>();
         for (Map.Entry<ResourceLocation, byte[]> entry : fileData.entrySet()) {
             ResourceLocation id = entry.getKey();
             try {
-                reader = new InputStreamReader(new ByteArrayInputStream(entry.getValue()));
+                Reader reader = new InputStreamReader(new ByteArrayInputStream(entry.getValue()));
                 try {
                     JsonElement element = JsonParser.parseReader(reader);
-                    result = CompositeRenderTypeData.CODEC.parse(JsonOps.INSTANCE, element);
-                } finally {
+                    DataResult<CompositeRenderTypeData> result = CompositeRenderTypeData.CODEC.parse(JsonOps.INSTANCE, element);
+                    if (result.error().isPresent()) {
+                        throw new JsonSyntaxException(((DataResult.Error) result.error().get()).message());
+                    }
+                    CompositeRenderTypeData data = (CompositeRenderTypeData) result.result().orElseThrow();
+                    if (renderTypes.put(id, new RenderTypeCache(id.toString(), data)) != null) {
+                        throw new IllegalStateException("Duplicate data file ignored with ID " + String.valueOf(id));
+                    }
+                    reader.close();
+                } catch (Throwable th) {
+                    try {
+                        reader.close();
+                    } catch (Throwable th2) {
+                        th.addSuppressed(th2);
+                    }
+                    throw th;
                 }
             } catch (Exception e) {
                 Veil.LOGGER.error("Couldn't parse data file {} from {}", new Object[]{id, CONVERTER.idToFile(id), e});
             }
-            if (result.error().isPresent()) {
-                throw new JsonSyntaxException(((DataResult.Error) result.error().get()).message());
-            }
-            CompositeRenderTypeData data = (CompositeRenderTypeData) result.result().orElseThrow();
-            if (renderTypes.put(id, new RenderTypeCache(id.toString(), data)) != null) {
-                throw new IllegalStateException("Duplicate data file ignored with ID " + String.valueOf(id));
-            }
-            reader.close();
         }
         this.renderTypes.clear();
         this.renderTypes.putAll(renderTypes);
         Veil.LOGGER.info("Loaded {} render types", Integer.valueOf(renderTypes.size()));
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/rendertype/DynamicRenderTypeManager$RenderTypeCache.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/rendertype/DynamicRenderTypeManager$RenderTypeCache.class */
     private static class RenderTypeCache {
         private final String name;
         private final CompositeRenderTypeData data;

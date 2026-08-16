@@ -18,6 +18,7 @@ import it.unimi.dsi.fastutil.ints.IntList;
 import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +40,7 @@ import org.lwjgl.opengl.GL30C;
 import org.lwjgl.system.MemoryUtil;
 import org.lwjgl.system.NativeResource;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/necromancer/render/Skin.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/necromancer/render/Skin.class */
 public class Skin implements NativeResource {
     private final VertexArray vertexArray;
     private final Object2IntMap<String> boneIds;
@@ -163,7 +164,7 @@ public class Skin implements NativeResource {
         return new Builder(textureWidth, textureHeight);
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/necromancer/render/Skin$Builder.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/necromancer/render/Skin$Builder.class */
     public static class Builder {
         private static final Vector3f POS = new Vector3f();
         private static final Vector3f NORMAL = new Vector3f();
@@ -264,71 +265,71 @@ public class Skin implements NativeResource {
             float u3 = u2 + zSize;
             float u4 = u3 + xSize;
             float u0 = uOffset / this.textureWidth;
-            float u12 = u1 / this.textureWidth;
-            float u22 = u2 / this.textureWidth;
-            float u32 = u3 / this.textureWidth;
-            float u42 = u4 / this.textureWidth;
+            float u5 = u1 / this.textureWidth;
+            float u6 = u2 / this.textureWidth;
+            float u7 = u3 / this.textureWidth;
+            float u8 = u4 / this.textureWidth;
             float topBottomU0 = uOffset + zSize;
             float topBottomU1 = topBottomU0 + xSize;
             float topBottomU2 = topBottomU1 + xSize;
-            float topBottomU02 = topBottomU0 / this.textureWidth;
-            float topBottomU12 = topBottomU1 / this.textureWidth;
-            float topBottomU22 = topBottomU2 / this.textureWidth;
+            float topBottomU3 = topBottomU0 / this.textureWidth;
+            float topBottomU4 = topBottomU1 / this.textureWidth;
+            float topBottomU5 = topBottomU2 / this.textureWidth;
             float v1 = vOffset + zSize;
             float v2 = v1 + ySize;
             float v0 = vOffset / this.textureHeight;
-            float v12 = v1 / this.textureHeight;
-            float v22 = v2 / this.textureHeight;
+            float v3 = v1 / this.textureHeight;
+            float v4 = v2 / this.textureHeight;
             if (!mirrored) {
-                addVertex(minX, maxY, minZ, topBottomU12, v12, 0.0f, 1.0f, 0.0f);
-                addVertex(minX, maxY, maxZ, topBottomU12, v0, 0.0f, 1.0f, 0.0f);
-                addVertex(maxX, maxY, maxZ, topBottomU02, v0, 0.0f, 1.0f, 0.0f);
-                addVertex(maxX, maxY, minZ, topBottomU02, v12, 0.0f, 1.0f, 0.0f);
-                addVertex(maxX, minY, maxZ, topBottomU12, v0, 0.0f, -1.0f, 0.0f);
-                addVertex(minX, minY, maxZ, topBottomU22, v0, 0.0f, -1.0f, 0.0f);
-                addVertex(minX, minY, minZ, topBottomU22, v12, 0.0f, -1.0f, 0.0f);
-                addVertex(maxX, minY, minZ, topBottomU12, v12, 0.0f, -1.0f, 0.0f);
-                addVertex(maxX, minY, maxZ, u0, v22, 1.0f, 0.0f, 0.0f);
-                addVertex(maxX, minY, minZ, u12, v22, 1.0f, 0.0f, 0.0f);
-                addVertex(maxX, maxY, minZ, u12, v12, 1.0f, 0.0f, 0.0f);
-                addVertex(maxX, maxY, maxZ, u0, v12, 1.0f, 0.0f, 0.0f);
-                addVertex(minX, minY, minZ, u22, v22, -1.0f, 0.0f, 0.0f);
-                addVertex(minX, minY, maxZ, u32, v22, -1.0f, 0.0f, 0.0f);
-                addVertex(minX, maxY, maxZ, u32, v12, -1.0f, 0.0f, 0.0f);
-                addVertex(minX, maxY, minZ, u22, v12, -1.0f, 0.0f, 0.0f);
-                addVertex(maxX, minY, minZ, u12, v22, 0.0f, 0.0f, -1.0f);
-                addVertex(minX, minY, minZ, u22, v22, 0.0f, 0.0f, -1.0f);
-                addVertex(minX, maxY, minZ, u22, v12, 0.0f, 0.0f, -1.0f);
-                addVertex(maxX, maxY, minZ, u12, v12, 0.0f, 0.0f, -1.0f);
-                addVertex(minX, minY, maxZ, u32, v22, 0.0f, 0.0f, 1.0f);
-                addVertex(maxX, minY, maxZ, u42, v22, 0.0f, 0.0f, 1.0f);
-                addVertex(maxX, maxY, maxZ, u42, v12, 0.0f, 0.0f, 1.0f);
-                addVertex(minX, maxY, maxZ, u32, v12, 0.0f, 0.0f, 1.0f);
+                addVertex(minX, maxY, minZ, topBottomU4, v3, 0.0f, 1.0f, 0.0f);
+                addVertex(minX, maxY, maxZ, topBottomU4, v0, 0.0f, 1.0f, 0.0f);
+                addVertex(maxX, maxY, maxZ, topBottomU3, v0, 0.0f, 1.0f, 0.0f);
+                addVertex(maxX, maxY, minZ, topBottomU3, v3, 0.0f, 1.0f, 0.0f);
+                addVertex(maxX, minY, maxZ, topBottomU4, v0, 0.0f, -1.0f, 0.0f);
+                addVertex(minX, minY, maxZ, topBottomU5, v0, 0.0f, -1.0f, 0.0f);
+                addVertex(minX, minY, minZ, topBottomU5, v3, 0.0f, -1.0f, 0.0f);
+                addVertex(maxX, minY, minZ, topBottomU4, v3, 0.0f, -1.0f, 0.0f);
+                addVertex(maxX, minY, maxZ, u0, v4, 1.0f, 0.0f, 0.0f);
+                addVertex(maxX, minY, minZ, u5, v4, 1.0f, 0.0f, 0.0f);
+                addVertex(maxX, maxY, minZ, u5, v3, 1.0f, 0.0f, 0.0f);
+                addVertex(maxX, maxY, maxZ, u0, v3, 1.0f, 0.0f, 0.0f);
+                addVertex(minX, minY, minZ, u6, v4, -1.0f, 0.0f, 0.0f);
+                addVertex(minX, minY, maxZ, u7, v4, -1.0f, 0.0f, 0.0f);
+                addVertex(minX, maxY, maxZ, u7, v3, -1.0f, 0.0f, 0.0f);
+                addVertex(minX, maxY, minZ, u6, v3, -1.0f, 0.0f, 0.0f);
+                addVertex(maxX, minY, minZ, u5, v4, 0.0f, 0.0f, -1.0f);
+                addVertex(minX, minY, minZ, u6, v4, 0.0f, 0.0f, -1.0f);
+                addVertex(minX, maxY, minZ, u6, v3, 0.0f, 0.0f, -1.0f);
+                addVertex(maxX, maxY, minZ, u5, v3, 0.0f, 0.0f, -1.0f);
+                addVertex(minX, minY, maxZ, u7, v4, 0.0f, 0.0f, 1.0f);
+                addVertex(maxX, minY, maxZ, u8, v4, 0.0f, 0.0f, 1.0f);
+                addVertex(maxX, maxY, maxZ, u8, v3, 0.0f, 0.0f, 1.0f);
+                addVertex(minX, maxY, maxZ, u7, v3, 0.0f, 0.0f, 1.0f);
             } else {
-                addVertex(minX, maxY, minZ, topBottomU02, v12, 0.0f, 1.0f, 0.0f);
-                addVertex(minX, maxY, maxZ, topBottomU02, v0, 0.0f, 1.0f, 0.0f);
-                addVertex(maxX, maxY, maxZ, topBottomU12, v0, 0.0f, 1.0f, 0.0f);
-                addVertex(maxX, maxY, minZ, topBottomU12, v12, 0.0f, 1.0f, 0.0f);
-                addVertex(maxX, minY, maxZ, topBottomU22, v0, 0.0f, -1.0f, 0.0f);
-                addVertex(minX, minY, maxZ, topBottomU12, v0, 0.0f, -1.0f, 0.0f);
-                addVertex(minX, minY, minZ, topBottomU12, v12, 0.0f, -1.0f, 0.0f);
-                addVertex(maxX, minY, minZ, topBottomU22, v12, 0.0f, -1.0f, 0.0f);
-                addVertex(maxX, minY, maxZ, u32, v22, 1.0f, 0.0f, 0.0f);
-                addVertex(maxX, minY, minZ, u22, v22, 1.0f, 0.0f, 0.0f);
-                addVertex(maxX, maxY, minZ, u22, v12, 1.0f, 0.0f, 0.0f);
-                addVertex(maxX, maxY, maxZ, u32, v12, 1.0f, 0.0f, 0.0f);
-                addVertex(minX, minY, minZ, u12, v22, -1.0f, 0.0f, 0.0f);
-                addVertex(minX, minY, maxZ, u0, v22, -1.0f, 0.0f, 0.0f);
-                addVertex(minX, maxY, maxZ, u0, v12, -1.0f, 0.0f, 0.0f);
-                addVertex(minX, maxY, minZ, u12, v12, -1.0f, 0.0f, 0.0f);
-                addVertex(maxX, minY, minZ, u22, v22, 0.0f, 0.0f, -1.0f);
-                addVertex(minX, minY, minZ, u12, v22, 0.0f, 0.0f, -1.0f);
-                addVertex(minX, maxY, minZ, u12, v12, 0.0f, 0.0f, -1.0f);
-                addVertex(maxX, maxY, minZ, u22, v12, 0.0f, 0.0f, -1.0f);
-                addVertex(minX, minY, maxZ, u42, v22, 0.0f, 0.0f, 1.0f);
-                addVertex(maxX, minY, maxZ, u32, v22, 0.0f, 0.0f, 1.0f);
-                addVertex(maxX, maxY, maxZ, u32, v12, 0.0f, 0.0f, 1.0f);
-                addVertex(minX, maxY, maxZ, u42, v12, 0.0f, 0.0f, 1.0f);
+                addVertex(minX, maxY, minZ, topBottomU3, v3, 0.0f, 1.0f, 0.0f);
+                addVertex(minX, maxY, maxZ, topBottomU3, v0, 0.0f, 1.0f, 0.0f);
+                addVertex(maxX, maxY, maxZ, topBottomU4, v0, 0.0f, 1.0f, 0.0f);
+                addVertex(maxX, maxY, minZ, topBottomU4, v3, 0.0f, 1.0f, 0.0f);
+                addVertex(maxX, minY, maxZ, topBottomU5, v0, 0.0f, -1.0f, 0.0f);
+                addVertex(minX, minY, maxZ, topBottomU4, v0, 0.0f, -1.0f, 0.0f);
+                addVertex(minX, minY, minZ, topBottomU4, v3, 0.0f, -1.0f, 0.0f);
+                addVertex(maxX, minY, minZ, topBottomU5, v3, 0.0f, -1.0f, 0.0f);
+                addVertex(maxX, minY, maxZ, u7, v4, 1.0f, 0.0f, 0.0f);
+                addVertex(maxX, minY, minZ, u6, v4, 1.0f, 0.0f, 0.0f);
+                addVertex(maxX, maxY, minZ, u6, v3, 1.0f, 0.0f, 0.0f);
+                addVertex(maxX, maxY, maxZ, u7, v3, 1.0f, 0.0f, 0.0f);
+                addVertex(minX, minY, minZ, u5, v4, -1.0f, 0.0f, 0.0f);
+                addVertex(minX, minY, maxZ, u0, v4, -1.0f, 0.0f, 0.0f);
+                addVertex(minX, maxY, maxZ, u0, v3, -1.0f, 0.0f, 0.0f);
+                addVertex(minX, maxY, minZ, u5, v3, -1.0f, 0.0f, 0.0f);
+                addVertex(maxX, minY, minZ, u6, v4, 0.0f, 0.0f, -1.0f);
+                addVertex(minX, minY, minZ, u5, v4, 0.0f, 0.0f, -1.0f);
+                addVertex(minX, maxY, minZ, u5, v3, 0.0f, 0.0f, -1.0f);
+                addVertex(maxX, maxY, minZ, u6, v3, 0.0f, 0.0f, -1.0f);
+                addVertex(minX, minY, maxZ, u8, v4, 0.0f, 0.0f, 1.0f);
+                addVertex(maxX, minY, maxZ, u7, v4, 0.0f, 0.0f, 1.0f);
+                addVertex(maxX, maxY, maxZ, u7, v3, 0.0f, 0.0f, 1.0f);
+                addVertex(minX, maxY, maxZ, u8, v3, 0.0f, 0.0f, 1.0f);
             }
             for (int i = 0; i < 6; i++) {
                 addQuadIndices(nextIndex());
@@ -379,7 +380,6 @@ public class Skin implements NativeResource {
         }
 
         public Skin build() {
-            ByteBuffer indices = null;
             try {
                 ByteBufferBuilder byteBufferBuilder = this.vertices;
                 try {
@@ -391,7 +391,7 @@ public class Skin implements NativeResource {
                         int vertexBuffer = this.vertexArray.getOrCreateBuffer(0);
                         VertexArray.upload(vertexBuffer, result.byteBuffer(), VertexArray.DrawUsage.STATIC);
                         VertexArray.IndexType indexType = VertexArray.IndexType.least(this.nextIndex - 1);
-                        indices = MemoryUtil.memAlloc(this.indices.size() << indexType.ordinal());
+                        ByteBuffer indices = MemoryUtil.memAlloc(this.indices.size() << indexType.ordinal());
                         storeIndices(indexType, indices);
                         this.vertexArray.uploadIndexBuffer(indices, indexType);
                         Object2IntArrayMap object2IntArrayMap = new Object2IntArrayMap(this.boneNames.size());
@@ -405,6 +405,7 @@ public class Skin implements NativeResource {
                         if (byteBufferBuilder != null) {
                             byteBufferBuilder.close();
                         }
+                        MemoryUtil.memFree(indices);
                         return skin;
                     } catch (Throwable th) {
                         if (result != null) {
@@ -416,10 +417,19 @@ public class Skin implements NativeResource {
                         }
                         throw th;
                     }
-                } finally {
+                } catch (Throwable th3) {
+                    if (byteBufferBuilder != null) {
+                        try {
+                            byteBufferBuilder.close();
+                        } catch (Throwable th4) {
+                            th3.addSuppressed(th4);
+                        }
+                    }
+                    throw th3;
                 }
-            } finally {
-                MemoryUtil.memFree(indices);
+            } catch (Throwable th5) {
+                MemoryUtil.memFree((Buffer) null);
+                throw th5;
             }
         }
     }

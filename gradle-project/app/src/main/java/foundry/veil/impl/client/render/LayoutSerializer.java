@@ -21,7 +21,7 @@ import org.lwjgl.opengl.ARBProgramInterfaceQuery;
 import org.lwjgl.opengl.GL31C;
 import org.lwjgl.system.MemoryStack;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/LayoutSerializer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/LayoutSerializer.class */
 @ApiStatus.Internal
 public final class LayoutSerializer<T> extends Record implements BiConsumer<T, ByteBuffer> {
     private final Field<T>[] fields;
@@ -113,8 +113,8 @@ public final class LayoutSerializer<T> extends Record implements BiConsumer<T, B
         layoutFields2.sort(Comparator.comparingInt((v0) -> {
             return v0.offset();
         }));
-        LayoutSerializer<T> serializer2 = new LayoutSerializer<>((Field[]) layoutFields2.toArray(x$02 -> {
-            return new Field[x$02];
+        LayoutSerializer<T> serializer2 = new LayoutSerializer<>((Field[]) layoutFields2.toArray(x$1 -> {
+            return new Field[x$1];
         }));
         return new LayoutShaderBlockImpl<>(binding, size2, serializer2);
     }
@@ -126,7 +126,7 @@ public final class LayoutSerializer<T> extends Record implements BiConsumer<T, B
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/LayoutSerializer$Field.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/LayoutSerializer$Field.class */
     private static final class Field<T> extends Record {
         private final int offset;
         private final VeilShaderBufferLayout.FieldSerializer<T> serializer;

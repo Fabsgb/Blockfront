@@ -1,6 +1,6 @@
 package foundry.veil.api.client.util;
 
-import com.boehmod.blockfront.InterfaceC0638xq;
+import com.boehmod.blockfront.InterfaceC1274xN;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormatElement;
@@ -13,11 +13,11 @@ import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import java.util.Locale;
 import java.util.Map;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/util/VertexFormatCodec.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/util/VertexFormatCodec.class */
 public class VertexFormatCodec {
     private static final Map<String, VertexFormatElement> DEFAULT_ELEMENTS = Map.of("POSITION", VertexFormatElement.POSITION, "COLOR", VertexFormatElement.COLOR, "UV0", VertexFormatElement.UV0, "UV1", VertexFormatElement.UV1, "UV2", VertexFormatElement.UV2, "NORMAL", VertexFormatElement.NORMAL, "UV", VertexFormatElement.UV);
     private static final Map<String, VertexFormat> DEFAULT_FORMATS = Map.ofEntries(Map.entry("BLIT_SCREEN", DefaultVertexFormat.BLIT_SCREEN), Map.entry("BLOCK", DefaultVertexFormat.BLOCK), Map.entry("NEW_ENTITY", DefaultVertexFormat.NEW_ENTITY), Map.entry("PARTICLE", DefaultVertexFormat.PARTICLE), Map.entry("POSITION", DefaultVertexFormat.POSITION), Map.entry("POSITION_COLOR", DefaultVertexFormat.POSITION_COLOR), Map.entry("POSITION_COLOR_NORMAL", DefaultVertexFormat.POSITION_COLOR_NORMAL), Map.entry("POSITION_COLOR_LIGHTMAP", DefaultVertexFormat.POSITION_COLOR_LIGHTMAP), Map.entry("POSITION_TEX", DefaultVertexFormat.POSITION_TEX), Map.entry("POSITION_TEX_COLOR", DefaultVertexFormat.POSITION_TEX_COLOR), Map.entry("POSITION_COLOR_TEX_LIGHTMAP", DefaultVertexFormat.POSITION_COLOR_TEX_LIGHTMAP), Map.entry("POSITION_TEX_LIGHTMAP_COLOR", DefaultVertexFormat.POSITION_TEX_LIGHTMAP_COLOR), Map.entry("POSITION_TEX_COLOR_NORMAL", DefaultVertexFormat.POSITION_TEX_COLOR_NORMAL));
-    private static final Object2IntMap<String> DEFAULT_BUFFER_SIZES = new Object2IntArrayMap(Map.of("BIG", Integer.valueOf(InterfaceC0638xq.ud), "SMALL", 786432, "TRANSIENT", 1536));
+    private static final Object2IntMap<String> DEFAULT_BUFFER_SIZES = new Object2IntArrayMap(Map.of("BIG", Integer.valueOf(InterfaceC1274xN.f6865wh), "SMALL", 786432, "TRANSIENT", 1536));
     private static final Codec<VertexFormatElement.Type> ELEMENT_TYPE_CODEC = Codec.STRING.flatXmap(name -> {
         for (VertexFormatElement.Type type : VertexFormatElement.Type.values()) {
             if (type.name().equalsIgnoreCase(name)) {

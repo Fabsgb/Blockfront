@@ -14,6 +14,10 @@
     },
     {
       "weapon": "pistol_service_iii"
+    },
+    {
+      "weapon": "grenade_smoke",
+      "count": 1
     }
   ],
   "exp": 5000

@@ -5,8 +5,6 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import foundry.veil.api.client.render.VeilRenderSystem;
-import foundry.veil.api.client.render.framebuffer.AdvancedFbo;
-import foundry.veil.api.client.render.framebuffer.FramebufferAttachmentDefinition;
 import foundry.veil.api.client.render.texture.TextureFilter;
 import foundry.veil.api.molang.MolangExpressionCodec;
 import foundry.veil.api.molang.VeilMolang;
@@ -22,7 +20,7 @@ import java.util.Optional;
 import org.apache.commons.lang3.Validate;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/framebuffer/FramebufferDefinition.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/framebuffer/FramebufferDefinition.class */
 public final class FramebufferDefinition extends Record {
     private final MolangExpression width;
     private final MolangExpression height;

@@ -1,19 +1,21 @@
 package de.jcm.discordgamesdk.activity;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/activity/ActivityParty.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/activity/ActivityParty.class */
 public class ActivityParty {
-    private String id;
+
+    /* JADX INFO: renamed from: id */
+    private String f9101id;
     private int[] size = null;
 
     ActivityParty() {
     }
 
     public void setID(String id) {
-        this.id = id;
+        this.f9101id = id;
     }
 
     public String getID() {
-        return this.id;
+        return this.f9101id;
     }
 
     public ActivityPartySize size() {
@@ -24,6 +26,6 @@ public class ActivityParty {
     }
 
     public String toString() {
-        return "ActivityParty{id='" + this.id + "', size=" + size() + "}";
+        return "ActivityParty{id='" + this.f9101id + "', size=" + size() + "}";
     }
 }

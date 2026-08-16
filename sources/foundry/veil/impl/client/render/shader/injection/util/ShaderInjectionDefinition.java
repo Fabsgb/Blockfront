@@ -19,13 +19,13 @@ import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/shader/injection/util/ShaderInjectionDefinition.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/shader/injection/util/ShaderInjectionDefinition.class */
 @ApiStatus.Internal
 public final class ShaderInjectionDefinition extends Record {
 
     /* JADX INFO: renamed from: id */
     @Nullable
-    private final ResourceLocation f8775id;
+    private final ResourceLocation f9161id;
     private final List<ResourceLocation> targets;
     private final List<ResourceLocation> redirects;
     private final int priority;
@@ -52,8 +52,8 @@ public final class ShaderInjectionDefinition extends Record {
 
     @Nullable
     /* JADX INFO: renamed from: id */
-    public ResourceLocation m7997id() {
-        return this.f8775id;
+    public ResourceLocation m8348id() {
+        return this.f9161id;
     }
 
     public List<ResourceLocation> targets() {
@@ -81,7 +81,7 @@ public final class ShaderInjectionDefinition extends Record {
         priority = priority == 0 ? 1000 : priority;
         List<ResourceLocation> targets2 = List.copyOf(targets);
         List<ResourceLocation> redirects2 = List.copyOf(redirects);
-        this.f8775id = id;
+        this.f9161id = id;
         this.targets = targets2;
         this.redirects = redirects2;
         this.priority = priority;
@@ -98,7 +98,7 @@ public final class ShaderInjectionDefinition extends Record {
     }
 
     public ShaderInjectionDefinition withDefaultId(ResourceLocation defaultId) {
-        return new ShaderInjectionDefinition(this.f8775id != null ? this.f8775id : defaultId, this.targets, this.redirects, this.priority, this.replace, this.debug);
+        return new ShaderInjectionDefinition(this.f9161id != null ? this.f9161id : defaultId, this.targets, this.redirects, this.priority, this.replace, this.debug);
     }
 
     @Nullable
@@ -109,13 +109,13 @@ public final class ShaderInjectionDefinition extends Record {
         return (ResourceLocation) this.targets.getFirst();
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/shader/injection/util/ShaderInjectionDefinition$Deserializer.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/shader/injection/util/ShaderInjectionDefinition$Deserializer.class */
     private static class Deserializer implements JsonDeserializer<ShaderInjectionDefinition> {
         private Deserializer() {
         }
 
         /* JADX INFO: renamed from: deserialize, reason: merged with bridge method [inline-methods] */
-        public ShaderInjectionDefinition m9183deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+        public ShaderInjectionDefinition m9567deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
             JsonObject obj = json.getAsJsonObject();
             List<ResourceLocation> targets = ShaderInjectionDefinition.parseResourceLocations(obj, "target");
             List<ResourceLocation> redirects = ShaderInjectionDefinition.parseResourceLocations(obj, "redirect");

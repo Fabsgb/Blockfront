@@ -40,7 +40,7 @@ import org.jetbrains.annotations.ApiStatus;
 import org.joml.Vector3d;
 import org.joml.Vector3f;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/data/ParticleModuleTypeRegistry.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/data/ParticleModuleTypeRegistry.class */
 public class ParticleModuleTypeRegistry {
     public static final ResourceKey<Registry<ModuleType<?>>> REGISTRY_KEY = ResourceKey.createRegistryKey(Veil.veilPath("quasar/module_type"));
     private static final RegistrationProvider<ModuleType<?>> PROVIDER = RegistrationProvider.get(REGISTRY_KEY, Veil.MODID);
@@ -92,7 +92,7 @@ public class ParticleModuleTypeRegistry {
     @ApiStatus.ScheduledForRemoval(inVersion = "5.0.0")
     @Deprecated
     public static final ModuleType<InitSizeParticleModuleData> INIT_SIZE = registerDeprecatedModule("init_size", InitSizeParticleModuleData.CODEC, () -> {
-        return new InitSizeParticleModuleData(MolangExpression.m7998of(1.0f));
+        return new InitSizeParticleModuleData(MolangExpression.m8349of(1.0f));
     }, "Use \"random_size\" instead", "5.0.0");
 
     @ApiStatus.ScheduledForRemoval(inVersion = "5.0.0")
@@ -101,7 +101,7 @@ public class ParticleModuleTypeRegistry {
         return new InitRandomRotationModuleData(new Vector3f(-180.0f, -180.0f, -180.0f), new Vector3f(180.0f, 180.0f, 180.0f));
     }, "Use \"random_initial_rotation\" instead", "5.0.0");
     public static final ModuleType<LightModuleData> LIGHT = registerModule("light", LightModuleData.CODEC, () -> {
-        return new LightModuleData(new ColorGradient(1.0f, 1.0f, 1.0f, 1.0f), MolangExpression.m7998of(1.0f), MolangExpression.m7998of(1.0f));
+        return new LightModuleData(new ColorGradient(1.0f, 1.0f, 1.0f, 1.0f), MolangExpression.m8349of(1.0f), MolangExpression.m8349of(1.0f));
     });
     public static final ModuleType<LightmapParticleModuleData> LIGHTMAP = registerModule("lightmap", LightmapParticleModuleData.CODEC, () -> {
         return new LightmapParticleModuleData(15728880);
@@ -116,7 +116,7 @@ public class ParticleModuleTypeRegistry {
         return new ColorParticleModuleData(new ColorGradient(1.0f, 1.0f, 1.0f, 1.0f), MolangExpression.ZERO);
     });
     public static final ModuleType<TickSizeParticleModuleData> TICK_SIZE = registerModule("size", TickSizeParticleModuleData.CODEC, () -> {
-        return new TickSizeParticleModuleData(MolangExpression.m7998of(1.0f));
+        return new TickSizeParticleModuleData(MolangExpression.m8349of(1.0f));
     });
     public static final ModuleType<TickSubEmitterModuleData> TICK_SUB_EMITTER = registerModule("tick_sub_emitter", TickSubEmitterModuleData.CODEC, () -> {
         return new TickSubEmitterModuleData(ResourceLocation.withDefaultNamespace(""), 5);
@@ -151,38 +151,8 @@ public class ParticleModuleTypeRegistry {
     public static void bootstrap() {
     }
 
-    /* JADX INFO: renamed from: foundry.veil.api.quasar.data.ParticleModuleTypeRegistry$1 */
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/data/ParticleModuleTypeRegistry$1.class */
-    class C14101<T> implements ModuleType<T> {
-        final /* synthetic */ MapCodec val$codec;
-        final /* synthetic */ Supplier val$defaultValue;
-
-        C14101(MapCodec mapCodec, Supplier supplier) {
-            mapCodec = mapCodec;
-            supplier = supplier;
-        }
-
-        @Override // foundry.veil.api.quasar.data.module.ModuleType
-        public MapCodec<T> codec() {
-            return mapCodec;
-        }
-
-        @Override // foundry.veil.api.quasar.data.module.ModuleType
-        public Supplier<T> defaultValue() {
-            return supplier;
-        }
-    }
-
-    private static <T extends ParticleModuleData> ModuleType<T> registerModule(String name, MapCodec<T> codec, Supplier<T> defaultValue) {
-        ModuleType<T> type = new ModuleType<T>() { // from class: foundry.veil.api.quasar.data.ParticleModuleTypeRegistry.1
-            final /* synthetic */ MapCodec val$codec;
-            final /* synthetic */ Supplier val$defaultValue;
-
-            C14101(MapCodec codec2, Supplier defaultValue2) {
-                mapCodec = codec2;
-                supplier = defaultValue2;
-            }
-
+    private static <T extends ParticleModuleData> ModuleType<T> registerModule(String str, final MapCodec<T> mapCodec, final Supplier<T> supplier) {
+        ModuleType<T> moduleType = (ModuleType<T>) new ModuleType<T>() { // from class: foundry.veil.api.quasar.data.ParticleModuleTypeRegistry.1
             @Override // foundry.veil.api.quasar.data.module.ModuleType
             public MapCodec<T> codec() {
                 return mapCodec;
@@ -193,55 +163,16 @@ public class ParticleModuleTypeRegistry {
                 return supplier;
             }
         };
-        PROVIDER.register(name, () -> {
-            return type;
+        PROVIDER.register(str, () -> {
+            return moduleType;
         });
-        return type;
-    }
-
-    /* JADX INFO: renamed from: foundry.veil.api.quasar.data.ParticleModuleTypeRegistry$2 */
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/data/ParticleModuleTypeRegistry$2.class */
-    class C14112<T> implements ModuleType<T> {
-        final /* synthetic */ MapCodec val$codec;
-        final /* synthetic */ Supplier val$defaultValue;
-        final /* synthetic */ ModuleType.DeprecationStatus val$status;
-
-        C14112(MapCodec mapCodec, Supplier supplier, ModuleType.DeprecationStatus deprecationStatus) {
-            mapCodec = mapCodec;
-            supplier = supplier;
-            deprecationStatus = deprecationStatus;
-        }
-
-        @Override // foundry.veil.api.quasar.data.module.ModuleType
-        public MapCodec<T> codec() {
-            return mapCodec;
-        }
-
-        @Override // foundry.veil.api.quasar.data.module.ModuleType
-        public Supplier<T> defaultValue() {
-            return supplier;
-        }
-
-        @Override // foundry.veil.api.quasar.data.module.ModuleType
-        public ModuleType.DeprecationStatus deprecationStatus() {
-            return deprecationStatus;
-        }
+        return moduleType;
     }
 
     @Deprecated
-    private static <T extends ParticleModuleData> ModuleType<T> registerDeprecatedModule(String name, MapCodec<T> codec, Supplier<T> defaultValue, String reason, String removeVersion) {
-        ModuleType.DeprecationStatus status = new ModuleType.DeprecationStatus(reason, removeVersion);
-        ModuleType<T> type = new ModuleType<T>() { // from class: foundry.veil.api.quasar.data.ParticleModuleTypeRegistry.2
-            final /* synthetic */ MapCodec val$codec;
-            final /* synthetic */ Supplier val$defaultValue;
-            final /* synthetic */ ModuleType.DeprecationStatus val$status;
-
-            C14112(MapCodec codec2, Supplier defaultValue2, ModuleType.DeprecationStatus status2) {
-                mapCodec = codec2;
-                supplier = defaultValue2;
-                deprecationStatus = status2;
-            }
-
+    private static <T extends ParticleModuleData> ModuleType<T> registerDeprecatedModule(String str, final MapCodec<T> mapCodec, final Supplier<T> supplier, String str2, String str3) {
+        final ModuleType.DeprecationStatus deprecationStatus = new ModuleType.DeprecationStatus(str2, str3);
+        ModuleType<T> moduleType = (ModuleType<T>) new ModuleType<T>() { // from class: foundry.veil.api.quasar.data.ParticleModuleTypeRegistry.2
             @Override // foundry.veil.api.quasar.data.module.ModuleType
             public MapCodec<T> codec() {
                 return mapCodec;
@@ -257,9 +188,9 @@ public class ParticleModuleTypeRegistry {
                 return deprecationStatus;
             }
         };
-        PROVIDER.register(name, () -> {
-            return type;
+        PROVIDER.register(str, () -> {
+            return moduleType;
         });
-        return type;
+        return moduleType;
     }
 }

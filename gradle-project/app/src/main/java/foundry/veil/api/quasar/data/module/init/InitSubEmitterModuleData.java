@@ -16,7 +16,7 @@ import imgui.type.ImString;
 import net.minecraft.resources.ResourceLocation;
 import org.joml.Vector3dc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/data/module/init/InitSubEmitterModuleData.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/data/module/init/InitSubEmitterModuleData.class */
 public final class InitSubEmitterModuleData implements ParticleModuleData, EditorAttributeProvider {
     public static final MapCodec<InitSubEmitterModuleData> CODEC = ResourceLocation.CODEC.fieldOf("subemitter").xmap(InitSubEmitterModuleData::new, (v0) -> {
         return v0.subEmitter();

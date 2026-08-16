@@ -5,7 +5,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectRBTreeMap;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/player/PlayerRank.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/player/PlayerRank.class */
 public class PlayerRank {
 
     @NotNull
@@ -30,7 +30,9 @@ public class PlayerRank {
     public static final PlayerRank MAJOR_GENERAL = new PlayerRank(17, "Maj. General", "major_general", 26000, 909930702202626148L, 57623);
     public static final PlayerRank LIEUTENANT_GENERAL = new PlayerRank(18, "Lt. General", "lieutenant_general", 28000, 909930750864945212L, 57624);
     public static final PlayerRank GENERAL = new PlayerRank(19, "General", "general", 30000, 909930794649276416L, 57625);
-    private final int id;
+
+    /* JADX INFO: renamed from: id */
+    private final int f11id;
 
     @NotNull
     private final String title;
@@ -42,7 +44,7 @@ public class PlayerRank {
     private final char graphic;
 
     public PlayerRank(int id, @NotNull String title, @NotNull String texture, int expRequired, long roleID, char graphic) {
-        this.id = id;
+        this.f11id = id;
         this.title = title;
         this.texture = texture;
         this.expRequired = expRequired;
@@ -104,7 +106,7 @@ public class PlayerRank {
     }
 
     public int getID() {
-        return this.id;
+        return this.f11id;
     }
 
     public char getGraphic() {
@@ -134,6 +136,10 @@ public class PlayerRank {
             return super.equals(obj);
         }
         PlayerRank playerRank = (PlayerRank) obj;
-        return playerRank.id == this.id;
+        return playerRank.f11id == this.f11id;
+    }
+
+    public int hashCode() {
+        return Integer.hashCode(this.f11id);
     }
 }

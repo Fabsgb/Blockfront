@@ -1,6 +1,7 @@
 package foundry.veil.impl.client.editor;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import foundry.imgui.api.ImGuiMC;
 import foundry.veil.Veil;
 import foundry.veil.api.client.editor.SingleWindowInspector;
 import foundry.veil.api.client.imgui.VeilImGuiUtil;
@@ -41,7 +42,7 @@ import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 import org.lwjgl.opengl.GL11C;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/editor/FramebufferInspector.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/editor/FramebufferInspector.class */
 @ApiStatus.Internal
 public class FramebufferInspector extends SingleWindowInspector {
     public static final Component TITLE = Component.translatable("inspector.veil.framebuffer.title");
@@ -173,7 +174,7 @@ public class FramebufferInspector extends SingleWindowInspector {
                         ImGui.beginGroup();
                         AdvancedFboTextureAttachment attachment = buffer.getColorTextureAttachment(i);
                         ImGui.text(getAttachmentName(i, attachment.getId(), attachment.getName()));
-                        ImGui.image(attachment.getId(), width, height, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.5f);
+                        ImGuiMC.image(ImGuiMC.getTexture(attachment), width, height, 0.0f, 1.0f, 1.0f, 0.0f);
                         ImGui.endGroup();
                     }
                     i++;
@@ -185,7 +186,7 @@ public class FramebufferInspector extends SingleWindowInspector {
                     ImGui.beginGroup();
                     AdvancedFboTextureAttachment attachment2 = buffer.getDepthTextureAttachment();
                     ImGui.text(getAttachmentName(-1, attachment2.getId(), attachment2.getName()));
-                    ImGui.image(attachment2.getId(), width, height, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.5f);
+                    ImGuiMC.image(ImGuiMC.getTexture(attachment2), width, height, 0.0f, 1.0f, 1.0f, 0.0f);
                     ImGui.endGroup();
                 }
                 if (saveCallback != null && ImGui.button(SAVE.getString(), ImGui.getContentRegionAvailX() - 4.0f, 0.0f)) {
@@ -210,7 +211,7 @@ public class FramebufferInspector extends SingleWindowInspector {
                 int texture = this.showAlt.get() ? renderTarget.veil$getAltTexture() : renderTarget.veil$getMainTexture();
                 ImGui.beginGroup();
                 ImGui.text(getAttachmentName(0, texture, this.showAlt.get() ? "Alt" : "Main"));
-                ImGui.image(texture, width, height, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.5f);
+                ImGui.imageWithBg(texture, width, height, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 0.5f);
                 ImGui.endGroup();
                 if (saveCallback != null && ImGui.button(SAVE.getString(), ImGui.getContentRegionAvailX() - 4.0f, 0.0f)) {
                     saveCallback.accept(renderTarget);

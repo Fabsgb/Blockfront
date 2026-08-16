@@ -4,7 +4,6 @@ import foundry.veil.api.client.necromancer.Bone;
 import foundry.veil.api.client.necromancer.Skeleton;
 import foundry.veil.api.client.necromancer.SkeletonParent;
 import foundry.veil.api.client.necromancer.animation.Animation;
-import foundry.veil.api.client.necromancer.animation.keyframe.Keyframe;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -15,7 +14,7 @@ import org.joml.Quaternionf;
 import org.joml.Quaternionfc;
 import org.joml.Vector3fc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/necromancer/animation/keyframe/KeyframedAnimation.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/necromancer/animation/keyframe/KeyframedAnimation.class */
 public class KeyframedAnimation<P extends SkeletonParent<?, ?>, S extends Skeleton> extends Animation<P, S> {
     private final Map<String, KeyframeTimeline> keyframesByBoneName;
     private final boolean additive;
@@ -41,26 +40,26 @@ public class KeyframedAnimation<P extends SkeletonParent<?, ?>, S extends Skelet
                 Keyframe b = this.tempKeyframes[2];
                 Interpolation interpolation = a.interpolation();
                 if (this.additive) {
-                    bone.position.add(interpolation.interpolate(a.transform().m7978px(), b.transform().m7978px(), t), interpolation.interpolate(a.transform().m7979py(), b.transform().m7979py(), t), interpolation.interpolate(a.transform().m7980pz(), b.transform().m7980pz(), t));
-                    this.tempRotationA.set(a.transform().m7984qx(), a.transform().m7985qy(), a.transform().m7986qz(), a.transform().m7987qw());
-                    this.tempRotationB.set(b.transform().m7984qx(), b.transform().m7985qy(), b.transform().m7986qz(), b.transform().m7987qw());
+                    bone.position.add(interpolation.interpolate(a.transform().m8329px(), b.transform().m8329px(), t), interpolation.interpolate(a.transform().m8330py(), b.transform().m8330py(), t), interpolation.interpolate(a.transform().m8331pz(), b.transform().m8331pz(), t));
+                    this.tempRotationA.set(a.transform().m8335qx(), a.transform().m8336qy(), a.transform().m8337qz(), a.transform().m8338qw());
+                    this.tempRotationB.set(b.transform().m8335qx(), b.transform().m8336qy(), b.transform().m8337qz(), b.transform().m8338qw());
                     interpolation.interpolate(this.tempRotationA, this.tempRotationB, t, this.tempRotationA);
                     this.tempRotationA.slerp(this.tempRotationB.identity(), mixFactor);
                     bone.rotation.premul(this.tempRotationA);
-                    bone.size.mul(Mth.lerp(mixFactor, 1.0f, interpolation.interpolate(a.transform().m7981sx(), b.transform().m7981sx(), t)), Mth.lerp(mixFactor, 1.0f, interpolation.interpolate(a.transform().m7982sy(), b.transform().m7982sy(), t)), Mth.lerp(mixFactor, 1.0f, interpolation.interpolate(a.transform().m7983sz(), b.transform().m7983sz(), t)));
+                    bone.size.mul(Mth.lerp(mixFactor, 1.0f, interpolation.interpolate(a.transform().m8332sx(), b.transform().m8332sx(), t)), Mth.lerp(mixFactor, 1.0f, interpolation.interpolate(a.transform().m8333sy(), b.transform().m8333sy(), t)), Mth.lerp(mixFactor, 1.0f, interpolation.interpolate(a.transform().m8334sz(), b.transform().m8334sz(), t)));
                 } else {
-                    bone.size.set(Mth.lerp(mixFactor, bone.position.x, interpolation.interpolate(a.transform().m7978px(), b.transform().m7978px(), t)), Mth.lerp(mixFactor, bone.position.y, interpolation.interpolate(a.transform().m7979py(), b.transform().m7979py(), t)), Mth.lerp(mixFactor, bone.position.z, interpolation.interpolate(a.transform().m7980pz(), b.transform().m7980pz(), t)));
-                    this.tempRotationA.set(a.transform().m7984qx(), a.transform().m7985qy(), a.transform().m7986qz(), a.transform().m7987qw());
-                    this.tempRotationB.set(b.transform().m7984qx(), b.transform().m7985qy(), b.transform().m7986qz(), b.transform().m7987qw());
+                    bone.size.set(Mth.lerp(mixFactor, bone.position.x, interpolation.interpolate(a.transform().m8329px(), b.transform().m8329px(), t)), Mth.lerp(mixFactor, bone.position.y, interpolation.interpolate(a.transform().m8330py(), b.transform().m8330py(), t)), Mth.lerp(mixFactor, bone.position.z, interpolation.interpolate(a.transform().m8331pz(), b.transform().m8331pz(), t)));
+                    this.tempRotationA.set(a.transform().m8335qx(), a.transform().m8336qy(), a.transform().m8337qz(), a.transform().m8338qw());
+                    this.tempRotationB.set(b.transform().m8335qx(), b.transform().m8336qy(), b.transform().m8337qz(), b.transform().m8338qw());
                     interpolation.interpolate(this.tempRotationA, this.tempRotationB, t, this.tempRotationA);
                     bone.rotation.slerp(this.tempRotationA, mixFactor);
-                    bone.size.set(Mth.lerp(mixFactor, bone.size.x, interpolation.interpolate(a.transform().m7981sx(), b.transform().m7981sx(), t)), Mth.lerp(mixFactor, bone.size.y, interpolation.interpolate(a.transform().m7982sy(), b.transform().m7982sy(), t)), Mth.lerp(mixFactor, bone.size.z, interpolation.interpolate(a.transform().m7983sz(), b.transform().m7983sz(), t)));
+                    bone.size.set(Mth.lerp(mixFactor, bone.size.x, interpolation.interpolate(a.transform().m8332sx(), b.transform().m8332sx(), t)), Mth.lerp(mixFactor, bone.size.y, interpolation.interpolate(a.transform().m8333sy(), b.transform().m8333sy(), t)), Mth.lerp(mixFactor, bone.size.z, interpolation.interpolate(a.transform().m8334sz(), b.transform().m8334sz(), t)));
                 }
             }
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/necromancer/animation/keyframe/KeyframedAnimation$Builder.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/necromancer/animation/keyframe/KeyframedAnimation$Builder.class */
     public static class Builder {
         boolean looped = false;
         boolean additive = false;

@@ -8,7 +8,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/registry/RenderStyleRegistry.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/registry/RenderStyleRegistry.class */
 public class RenderStyleRegistry {
     public static final ResourceKey<Registry<RenderStyle>> REGISTRY_KEY = ResourceKey.createRegistryKey(Veil.veilPath("quasar/render_style"));
     private static final RegistrationProvider<RenderStyle> PROVIDER = RegistrationProvider.get(REGISTRY_KEY, Veil.MODID);
@@ -18,6 +18,20 @@ public class RenderStyleRegistry {
 
     @ApiStatus.Internal
     public static void bootstrap() {
+    }
+
+    @ApiStatus.Internal
+    public static void initRenderStyles() {
+        REGISTRY.entrySet().forEach(e -> {
+            ((RenderStyle) e.getValue()).init();
+        });
+    }
+
+    @ApiStatus.Internal
+    public static void freeRenderStyles() {
+        REGISTRY.entrySet().forEach(e -> {
+            ((RenderStyle) e.getValue()).free();
+        });
     }
 
     private static <T extends RenderStyle> RegistryObject<T> register(String str, T t) {

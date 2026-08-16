@@ -8,7 +8,7 @@ import java.lang.runtime.ObjectMethods;
 import net.minecraft.resources.ResourceLocation;
 import org.joml.Vector4f;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/particle/SpriteData.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/particle/SpriteData.class */
 public final class SpriteData extends Record {
     private final ResourceLocation sprite;
     private final int frameCount;
@@ -83,7 +83,7 @@ public final class SpriteData extends Record {
     }
 
     /* JADX INFO: renamed from: uv */
-    public Vector4f m7992uv(float renderAge, float agePercent, Vector4f store) {
+    public Vector4f m8343uv(float renderAge, float agePercent, Vector4f store) {
         int frameIndex = this.stretchToLifetime ? (int) Math.min(agePercent * (this.frameCount + 1), this.frameCount) : (int) (renderAge / this.frameTime);
         int frameColumn = frameIndex / this.frameWidth;
         if (this.frameWidth > 1) {
@@ -105,7 +105,7 @@ public final class SpriteData extends Record {
     }
 
     /* JADX INFO: renamed from: u */
-    public float m7993u(float renderAge, float agePercent, float u) {
+    public float m8344u(float renderAge, float agePercent, float u) {
         if (this.frameWidth <= 1) {
             return u;
         }
@@ -115,7 +115,7 @@ public final class SpriteData extends Record {
     }
 
     /* JADX INFO: renamed from: v */
-    public float m7994v(float renderAge, float agePercent, float v) {
+    public float m8345v(float renderAge, float agePercent, float v) {
         if (this.frameHeight <= 1) {
             return v;
         }

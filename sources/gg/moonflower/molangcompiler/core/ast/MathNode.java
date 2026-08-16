@@ -1,10 +1,10 @@
 package gg.moonflower.molangcompiler.core.ast;
 
 import com.boehmod.bflib.cloud.common.ProgressionValues;
-import com.boehmod.blockfront.AbstractC0851pQ;
-import com.boehmod.blockfront.AbstractC0877pq;
-import com.boehmod.blockfront.C0238dn;
-import com.boehmod.blockfront.C0862pb;
+import com.boehmod.blockfront.AbstractC0927qm;
+import com.boehmod.blockfront.C0248dw;
+import com.boehmod.blockfront.C0885px;
+import com.boehmod.blockfront.C0994s;
 import gg.moonflower.molangcompiler.api.exception.MolangException;
 import gg.moonflower.molangcompiler.core.MolangUtil;
 import gg.moonflower.molangcompiler.core.compiler.BytecodeCompiler;
@@ -19,7 +19,7 @@ import org.jetbrains.annotations.Nullable;
 import org.objectweb.asm.Label;
 import org.objectweb.asm.tree.MethodNode;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/core/ast/MathNode.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/core/ast/MathNode.class */
 @ApiStatus.Internal
 public final class MathNode extends Record implements Node {
     private final MathOperation function;
@@ -84,7 +84,7 @@ public final class MathNode extends Record implements Node {
         for (int i = 0; i < values.length; i++) {
             values[i] = this.arguments[i].evaluate(environment);
         }
-        switch (C14471.$SwitchMap$gg$moonflower$molangcompiler$core$ast$MathOperation[this.function.ordinal()]) {
+        switch (C14731.$SwitchMap$gg$moonflower$molangcompiler$core$ast$MathOperation[this.function.ordinal()]) {
             case 1:
                 return Math.abs(values[0]);
             case 2:
@@ -97,19 +97,19 @@ public final class MathNode extends Record implements Node {
                 return RADIANS_TO_DEGREES * ((float) Math.atan2(values[0], values[1]));
             case 6:
                 return (float) Math.ceil(values[0]);
-            case 7:
+            case C0994s.f5462C /* 7 */:
                 return MolangUtil.clamp(values[0], values[1], values[2]);
             case 8:
                 return (float) Math.cos(0.017453292f * values[0]);
-            case C0862pb.f4509nv /* 9 */:
+            case 9:
                 return (float) Math.sin(0.017453292f * values[0]);
             case 10:
                 return (float) Math.exp(values[0]);
-            case AbstractC0877pq.f4599nO /* 11 */:
+            case 11:
                 return (float) Math.floor(values[0]);
             case 12:
                 return MolangUtil.hermiteBlend(values[0]);
-            case C0862pb.f4508nu /* 13 */:
+            case C0885px.f4841pt /* 13 */:
                 return MolangUtil.lerp(values[0], values[1], values[2]);
             case 14:
                 return MolangUtil.lerpRotate(values[0], values[1], values[2]);
@@ -129,7 +129,7 @@ public final class MathNode extends Record implements Node {
                 return (float) Math.pow(values[0], values[1]);
             case 22:
                 return Math.round(values[0]);
-            case C0862pb.f4510nw /* 23 */:
+            case C0885px.f4843pv /* 23 */:
                 return (float) Math.sqrt(values[0]);
             case 24:
                 return (int) values[0];
@@ -143,8 +143,8 @@ public final class MathNode extends Record implements Node {
     }
 
     /* JADX INFO: renamed from: gg.moonflower.molangcompiler.core.ast.MathNode$1 */
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/core/ast/MathNode$1.class */
-    static /* synthetic */ class C14471 {
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/core/ast/MathNode$1.class */
+    static /* synthetic */ class C14731 {
         static final /* synthetic */ int[] $SwitchMap$gg$moonflower$molangcompiler$core$ast$MathOperation = new int[MathOperation.values().length];
 
         static {
@@ -273,7 +273,7 @@ public final class MathNode extends Record implements Node {
 
     @Override // gg.moonflower.molangcompiler.core.ast.Node
     public void writeBytecode(MethodNode method, MolangBytecodeEnvironment env, @Nullable Label breakLabel, @Nullable Label continueLabel) throws MolangException {
-        switch (C14471.$SwitchMap$gg$moonflower$molangcompiler$core$ast$MathOperation[this.function.ordinal()]) {
+        switch (C14731.$SwitchMap$gg$moonflower$molangcompiler$core$ast$MathOperation[this.function.ordinal()]) {
             case 1:
                 this.arguments[0].writeBytecode(method, env, breakLabel, continueLabel);
                 method.visitMethodInsn(184, "java/lang/Math", this.function.getName(), "(F)F", false);
@@ -300,22 +300,22 @@ public final class MathNode extends Record implements Node {
                 break;
             case 6:
             case 10:
-            case AbstractC0877pq.f4599nO /* 11 */:
+            case 11:
             case 15:
-            case C0862pb.f4510nw /* 23 */:
+            case C0885px.f4843pv /* 23 */:
                 this.arguments[0].writeBytecode(method, env, breakLabel, continueLabel);
                 method.visitInsn(141);
                 method.visitMethodInsn(184, "java/lang/Math", this.function.getName(), "(D)D", false);
                 method.visitInsn(144);
                 break;
-            case 7:
+            case C0994s.f5462C /* 7 */:
                 this.arguments[0].writeBytecode(method, env, breakLabel, continueLabel);
                 this.arguments[1].writeBytecode(method, env, breakLabel, continueLabel);
                 this.arguments[2].writeBytecode(method, env, breakLabel, continueLabel);
                 method.visitMethodInsn(184, "gg/moonflower/molangcompiler/core/MolangUtil", "clamp", "(FFF)F", false);
                 break;
             case 8:
-            case C0862pb.f4509nv /* 9 */:
+            case 9:
                 this.arguments[0].writeBytecode(method, env, breakLabel, continueLabel);
                 BytecodeCompiler.writeFloatConst(method, 0.017453292f);
                 method.visitInsn(106);
@@ -327,7 +327,7 @@ public final class MathNode extends Record implements Node {
                 this.arguments[0].writeBytecode(method, env, breakLabel, continueLabel);
                 method.visitMethodInsn(184, "gg/moonflower/molangcompiler/core/MolangUtil", "hermiteBlend", "(F)F", false);
                 break;
-            case C0862pb.f4508nu /* 13 */:
+            case C0885px.f4841pt /* 13 */:
                 this.arguments[0].writeBytecode(method, env, breakLabel, continueLabel);
                 this.arguments[1].writeBytecode(method, env, breakLabel, continueLabel);
                 this.arguments[2].writeBytecode(method, env, breakLabel, continueLabel);
@@ -352,7 +352,7 @@ public final class MathNode extends Record implements Node {
             case 19:
                 this.arguments[0].writeBytecode(method, env, breakLabel, continueLabel);
                 this.arguments[1].writeBytecode(method, env, breakLabel, continueLabel);
-                method.visitInsn(C0238dn.f1978gs);
+                method.visitInsn(C0248dw.f2042hx);
                 break;
             case 20:
                 BytecodeCompiler.writeFloatConst(method, 3.1415927f);
@@ -391,7 +391,7 @@ public final class MathNode extends Record implements Node {
                 this.arguments[2].writeBytecode(method, env, breakLabel, continueLabel);
                 method.visitMethodInsn(184, "gg/moonflower/molangcompiler/core/MolangUtil", "dieRoll", "(IFF)F", false);
                 break;
-            case AbstractC0851pQ.f4482nU /* 28 */:
+            case AbstractC0927qm.f5121pT /* 28 */:
                 this.arguments[0].writeBytecode(method, env, breakLabel, continueLabel);
                 method.visitInsn(139);
                 this.arguments[1].writeBytecode(method, env, breakLabel, continueLabel);

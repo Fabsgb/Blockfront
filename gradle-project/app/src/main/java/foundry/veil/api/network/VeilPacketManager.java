@@ -25,19 +25,19 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/network/VeilPacketManager.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/network/VeilPacketManager.class */
 public interface VeilPacketManager {
     public static final Factory FACTORY = (Factory) ServiceLoader.load(Factory.class).findFirst().orElseThrow(() -> {
         return new RuntimeException("Failed to load packet provider");
     });
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/network/VeilPacketManager$Factory.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/network/VeilPacketManager$Factory.class */
     @ApiStatus.Internal
     public interface Factory {
         VeilPacketManager create(String str, String str2);
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/network/VeilPacketManager$PacketHandler.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/network/VeilPacketManager$PacketHandler.class */
     @FunctionalInterface
     public interface PacketHandler<T extends PacketContext, P extends CustomPacketPayload> {
         void handlePacket(P p, T t);
@@ -134,7 +134,7 @@ public interface VeilPacketManager {
         return tracking(serverLevel, blockEntity.getBlockPos());
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/network/VeilPacketManager$PacketSink.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/network/VeilPacketManager$PacketSink.class */
     @FunctionalInterface
     public interface PacketSink {
         void sendPacket(Packet<?> packet);

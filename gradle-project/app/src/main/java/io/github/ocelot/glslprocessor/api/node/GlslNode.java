@@ -12,13 +12,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Stream;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/node/GlslNode.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/node/GlslNode.class */
 @ApiStatus.NonExtendable
 public interface GlslNode {
     void visit(GlslNodeVisitor glslNodeVisitor);
@@ -90,12 +89,7 @@ public interface GlslNode {
             return nodes.iterator().next();
         }
         List<GlslNode> list = new ArrayList<>();
-        Iterator<GlslNode> it = nodes.iterator();
-        while (true) {
-            if (!it.hasNext()) {
-                break;
-            }
-            GlslNode node = it.next();
+        for (GlslNode node : nodes) {
             if (!(node instanceof GlslCompoundNode)) {
                 list.clear();
                 list.addAll(nodes);

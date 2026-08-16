@@ -1,0 +1,11 @@
+{
+  "traversable": "bf:solid",
+  "impact": "bf:barrel",
+  "blocks": [
+    "bf:oil_barrel_red",
+    "bf:oil_barrel_white",
+    "bf:oil_barrel_green",
+    "bf:oil_barrel_yellow",
+    "bf:oil_barrel_gray"
+  ]
+}

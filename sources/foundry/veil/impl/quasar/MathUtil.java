@@ -4,7 +4,7 @@ import net.minecraft.world.phys.Vec3;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/quasar/MathUtil.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/quasar/MathUtil.class */
 public class MathUtil {
     public static float angleCos(Vector3f v1, Vector3f v2) {
         float x = v1.x();
@@ -18,7 +18,8 @@ public class MathUtil {
 
     public static float angle(Vector3f v1, Vector3f v2) {
         float cos = angleCos(v1, v2);
-        return (float) Math.acos((cos < 1.0f ? cos : 1.0f) > -1.0f ? r5 : -1.0f);
+        float cos2 = cos < 1.0f ? cos : 1.0f;
+        return (float) Math.acos(cos2 > -1.0f ? cos2 : -1.0f);
     }
 
     public static Vector4f vec4fFromVec3(Vec3 vec3, float w) {

@@ -9,7 +9,7 @@ import java.lang.runtime.ObjectMethods;
 import org.joml.Vector4f;
 import org.joml.Vector4fc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/flare/data/model/ShellFaceUV.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/flare/data/model/ShellFaceUV.class */
 public final class ShellFaceUV extends Record {
     private final Vector4fc uvs;
     private final int rotation;

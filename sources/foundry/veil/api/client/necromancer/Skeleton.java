@@ -15,7 +15,7 @@ import org.joml.Matrix4x3f;
 import org.joml.Quaternionf;
 import org.joml.Vector4f;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/necromancer/Skeleton.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/necromancer/Skeleton.class */
 public abstract class Skeleton {
     public static final int MAX_BONES = 256;
     public static final int UNIFORM_STRIDE = 112;

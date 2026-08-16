@@ -1,14 +1,14 @@
 package io.github.ocelot.glslprocessor.api.grammar;
 
-import com.boehmod.blockfront.C0234dj;
+import com.boehmod.blockfront.C0244ds;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/grammar/GlslVersionStatement.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/grammar/GlslVersionStatement.class */
 public final class GlslVersionStatement {
     private int version;
     private boolean core;
 
     public GlslVersionStatement() {
-        this(C0234dj.f1919gd, true);
+        this(C0244ds.f1979hd, true);
     }
 
     public GlslVersionStatement(int version, boolean core) {

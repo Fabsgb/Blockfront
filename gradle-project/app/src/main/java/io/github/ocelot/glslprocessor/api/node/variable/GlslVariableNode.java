@@ -5,7 +5,7 @@ import io.github.ocelot.glslprocessor.api.node.GlslNodeType;
 import io.github.ocelot.glslprocessor.api.visitor.GlslNodeVisitor;
 import java.util.stream.Stream;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/node/variable/GlslVariableNode.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/node/variable/GlslVariableNode.class */
 public final class GlslVariableNode implements GlslNode {
     private String name;
 

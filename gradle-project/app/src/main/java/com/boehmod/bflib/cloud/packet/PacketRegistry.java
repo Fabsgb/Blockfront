@@ -7,6 +7,7 @@ import com.boehmod.bflib.cloud.packet.common.PacketChatMessageFromCloud;
 import com.boehmod.bflib.cloud.packet.common.PacketClientMessagePopup;
 import com.boehmod.bflib.cloud.packet.common.PacketClientRequest;
 import com.boehmod.bflib.cloud.packet.common.PacketClientSound;
+import com.boehmod.bflib.cloud.packet.common.PacketClientState;
 import com.boehmod.bflib.cloud.packet.common.PacketClientUpdateStatus;
 import com.boehmod.bflib.cloud.packet.common.PacketDailyReward;
 import com.boehmod.bflib.cloud.packet.common.PacketFeatureFlags;
@@ -44,15 +45,23 @@ import com.boehmod.bflib.cloud.packet.common.inventory.PacketInventoryItemSticke
 import com.boehmod.bflib.cloud.packet.common.inventory.PacketInventoryItemStickerRemove;
 import com.boehmod.bflib.cloud.packet.common.inventory.PacketInventoryOpenCase;
 import com.boehmod.bflib.cloud.packet.common.inventory.PacketInventorySetItemDefault;
-import com.boehmod.bflib.cloud.packet.common.mm.PacketMMJoinServer;
-import com.boehmod.bflib.cloud.packet.common.mm.PacketMMMapRating;
-import com.boehmod.bflib.cloud.packet.common.mm.PacketMMMatchReport;
-import com.boehmod.bflib.cloud.packet.common.mm.PacketMMPlayerLeft;
-import com.boehmod.bflib.cloud.packet.common.mm.PacketMMPlayerSuspicious;
-import com.boehmod.bflib.cloud.packet.common.mm.PacketMMSchedulePlayer;
-import com.boehmod.bflib.cloud.packet.common.mm.PacketMMSearch;
-import com.boehmod.bflib.cloud.packet.common.mm.PacketMMSearchCloudCanceled;
-import com.boehmod.bflib.cloud.packet.common.mm.PacketMMSearchHostCanceled;
+import com.boehmod.bflib.cloud.packet.common.news.PacketNewsArticleRequest;
+import com.boehmod.bflib.cloud.packet.common.news.PacketNewsArticleResponse;
+import com.boehmod.bflib.cloud.packet.common.news.PacketNewsImageRequest;
+import com.boehmod.bflib.cloud.packet.common.news.PacketNewsImageResponse;
+import com.boehmod.bflib.cloud.packet.common.news.PacketNewsListRequest;
+import com.boehmod.bflib.cloud.packet.common.news.PacketNewsListResponse;
+import com.boehmod.bflib.cloud.packet.common.p002mm.PacketMMChatReport;
+import com.boehmod.bflib.cloud.packet.common.p002mm.PacketMMJoinServer;
+import com.boehmod.bflib.cloud.packet.common.p002mm.PacketMMMapRating;
+import com.boehmod.bflib.cloud.packet.common.p002mm.PacketMMMatchReport;
+import com.boehmod.bflib.cloud.packet.common.p002mm.PacketMMPlayerAimVerdict;
+import com.boehmod.bflib.cloud.packet.common.p002mm.PacketMMPlayerLeft;
+import com.boehmod.bflib.cloud.packet.common.p002mm.PacketMMPlayerSuspicious;
+import com.boehmod.bflib.cloud.packet.common.p002mm.PacketMMSchedulePlayer;
+import com.boehmod.bflib.cloud.packet.common.p002mm.PacketMMSearch;
+import com.boehmod.bflib.cloud.packet.common.p002mm.PacketMMSearchCloudCanceled;
+import com.boehmod.bflib.cloud.packet.common.p002mm.PacketMMSearchHostCanceled;
 import com.boehmod.bflib.cloud.packet.common.party.PacketPartyCreate;
 import com.boehmod.bflib.cloud.packet.common.party.PacketPartyEditSettings;
 import com.boehmod.bflib.cloud.packet.common.party.PacketPartyInvite;
@@ -78,6 +87,7 @@ import com.boehmod.bflib.cloud.packet.common.requests.PacketRequestedPlayerDataS
 import com.boehmod.bflib.cloud.packet.common.requests.PacketRequestedPlayerStatusSet;
 import com.boehmod.bflib.cloud.packet.common.requests.PacketRequestedRecentMatches;
 import com.boehmod.bflib.cloud.packet.common.server.PacketPlayerDataIncreaseValue;
+import com.boehmod.bflib.cloud.packet.common.server.PacketPlayerDataIncreaseValueBatch;
 import com.boehmod.bflib.cloud.packet.common.server.PacketPlayerDataSetValue;
 import com.boehmod.bflib.cloud.packet.common.server.PacketServerGameStatus;
 import com.boehmod.bflib.cloud.packet.common.server.PacketServerNotification;
@@ -93,16 +103,14 @@ import io.netty.buffer.ByteBuf;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import java.io.IOException;
-import java.lang.reflect.Constructor;
 import java.util.Map;
 import java.util.UUID;
-import java.util.function.Function;
 import javax.annotation.Nullable;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/PacketRegistry.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/PacketRegistry.class */
 public final class PacketRegistry {
     private static boolean logErrors = true;
 
@@ -113,7 +121,7 @@ public final class PacketRegistry {
     public static final UUID EMPTY_UUID = new UUID(0, 0);
 
     @NotNull
-    private static final Int2ObjectOpenHashMap<Function<ByteBuf, IPacket>> PACKET_FACTORIES = new Int2ObjectOpenHashMap<>();
+    private static final Int2ObjectOpenHashMap<PacketFactory<?>> PACKET_FACTORIES = new Int2ObjectOpenHashMap<>();
 
     @NotNull
     private static final Map<Class<? extends IPacket>, PacketIdentifier> PACKET_CLASS_TO_IDENTIFIER_MAP = new Object2ObjectOpenHashMap();
@@ -122,102 +130,112 @@ public final class PacketRegistry {
     private static final Map<Class<? extends IPacket>, PacketHandler<?, ?>> PACKET_HANDLER_MAP = new Object2ObjectOpenHashMap();
 
     static {
-        registerPacket(ClientLoginPacket.ID, ClientLoginPacket.class);
-        registerPacket(ClientHeartBeatPacket.ID, ClientHeartBeatPacket.class);
-        registerPacket(ClientLogoutPacket.ID, ClientLogoutPacket.class);
-        registerPacket(CloudHeartBeatPacket.ID, CloudHeartBeatPacket.class);
-        registerPacket(CloudDisconnectedPacket.ID, CloudDisconnectedPacket.class);
-        registerPacket(CloudConnectionStatusPacket.ID, CloudConnectionStatusPacket.class);
-        registerPacket(EncryptionKeyExchangePacket.ID, EncryptionKeyExchangePacket.class);
-        registerPacket(EncryptionReadyPacket.ID, EncryptionReadyPacket.class);
+        registerPacket(ClientLoginPacket.f116ID, ClientLoginPacket.class, ClientLoginPacket::new);
+        registerPacket(ClientHeartBeatPacket.f115ID, ClientHeartBeatPacket.class, ClientHeartBeatPacket::new);
+        registerPacket(ClientLogoutPacket.f117ID, ClientLogoutPacket.class, ClientLogoutPacket::new);
+        registerPacket(CloudHeartBeatPacket.f120ID, CloudHeartBeatPacket.class, CloudHeartBeatPacket::new);
+        registerPacket(CloudDisconnectedPacket.f119ID, CloudDisconnectedPacket.class, CloudDisconnectedPacket::new);
+        registerPacket(CloudConnectionStatusPacket.f118ID, CloudConnectionStatusPacket.class, CloudConnectionStatusPacket::new);
+        registerPacket(EncryptionKeyExchangePacket.f121ID, EncryptionKeyExchangePacket.class, EncryptionKeyExchangePacket::new);
+        registerPacket(EncryptionReadyPacket.f122ID, EncryptionReadyPacket.class, EncryptionReadyPacket::new);
         registerPacketHandler(CloudDisconnectedPacket.class, CloudDisconnectedPacket::handle, Connection.class);
         registerPacketHandler(CloudConnectionStatusPacket.class, CloudConnectionStatusPacket::handle, Connection.class);
         registerPacketHandler(EncryptionReadyPacket.class, EncryptionReadyPacket::handle, Connection.class);
-        registerPacket(PacketClientRequest.ID, PacketClientRequest.class);
-        registerPacket(PacketClientUpdateStatus.ID, PacketClientUpdateStatus.class);
-        registerPacket(PacketPunishPlayer.ID, PacketPunishPlayer.class);
-        registerPacket(PacketNotificationFromCloud.ID, PacketNotificationFromCloud.class);
-        registerPacket(PacketClientSound.ID, PacketClientSound.class);
-        registerPacket(PacketTriggerNewRank.ID, PacketTriggerNewRank.class);
-        registerPacket(PacketClientMessagePopup.ID, PacketClientMessagePopup.class);
-        registerPacket(PacketDailyReward.ID, PacketDailyReward.class);
-        registerPacket(PacketScreenshotRequest.ID, PacketScreenshotRequest.class);
-        registerPacket(PacketScreenshotResponse.ID, PacketScreenshotResponse.class);
-        registerPacket(PacketInventoryItemAdded.ID, PacketInventoryItemAdded.class);
-        registerPacket(PacketInventoryItemDeleteRequest.ID, PacketInventoryItemDeleteRequest.class);
-        registerPacket(PacketInventoryItemRemoved.ID, PacketInventoryItemRemoved.class);
-        registerPacket(PacketInventorySetItemDefault.ID, PacketInventorySetItemDefault.class);
-        registerPacket(PacketInventoryOpenCase.ID, PacketInventoryOpenCase.class);
-        registerPacket(PacketInventoryCaseResults.ID, PacketInventoryCaseResults.class);
-        registerPacket(PacketInventoryActivateItem.ID, PacketInventoryActivateItem.class);
-        registerPacket(PacketInventoryItemStickerAdd.ID, PacketInventoryItemStickerAdd.class);
-        registerPacket(PacketInventoryItemStickerRemove.ID, PacketInventoryItemStickerRemove.class);
-        registerPacket(PacketInventoryItemShowcase.ID, PacketInventoryItemShowcase.class);
-        registerPacket(PacketRequestedPlayerData.ID, PacketRequestedPlayerData.class);
-        registerPacket(PacketRequestedPlayerDataSet.ID, PacketRequestedPlayerDataSet.class);
-        registerPacket(PacketRequestedInventory.ID, PacketRequestedInventory.class);
-        registerPacket(PacketRequestedInventoryMinimal.ID, PacketRequestedInventoryMinimal.class);
-        registerPacket(PacketRequestedFriends.ID, PacketRequestedFriends.class);
-        registerPacket(PacketRequestedCloudData.ID, PacketRequestedCloudData.class);
-        registerPacket(PacketRequestedItemDefault.ID, PacketRequestedItemDefault.class);
-        registerPacket(PacketRequestedItemShowcase.ID, PacketRequestedItemShowcase.class);
-        registerPacket(PacketRequestedClanData.ID, PacketRequestedClanData.class);
-        registerPacket(PacketRequestedChallenges.ID, PacketRequestedChallenges.class);
-        registerPacket(PacketRequestedPlayerStatusSet.ID, PacketRequestedPlayerStatusSet.class);
-        registerPacket(PacketRequestedRecentMatches.ID, PacketRequestedRecentMatches.class);
-        registerPacket(PacketPartyCreate.ID, PacketPartyCreate.class);
-        registerPacket(PacketPartyEditSettings.ID, PacketPartyEditSettings.class);
-        registerPacket(PacketPartyLeave.ID, PacketPartyLeave.class);
-        registerPacket(PacketPartyInvite.ID, PacketPartyInvite.class);
-        registerPacket(PacketPartyJoin.ID, PacketPartyJoin.class);
-        registerPacket(PacketPartyJoined.ID, PacketPartyJoined.class);
-        registerPacket(PacketPartyKick.ID, PacketPartyKick.class);
-        registerPacket(PacketFriendRequest.ID, PacketFriendRequest.class);
-        registerPacket(PacketFriendRequestAccept.ID, PacketFriendRequestAccept.class);
-        registerPacket(PacketFriendRemove.ID, PacketFriendRemove.class);
-        registerPacket(PacketFriendJoinGame.ID, PacketFriendJoinGame.class);
-        registerPacket(PacketFriendSpectateGame.ID, PacketFriendSpectateGame.class);
-        registerPacket(PacketCheckPrestige.ID, PacketCheckPrestige.class);
-        registerPacket(PacketSkipBootcamp.ID, PacketSkipBootcamp.class);
-        registerPacket(PacketMMJoinServer.ID, PacketMMJoinServer.class);
-        registerPacket(PacketMMSearch.ID, PacketMMSearch.class);
-        registerPacket(PacketMMSearchCloudCanceled.ID, PacketMMSearchCloudCanceled.class);
-        registerPacket(PacketMMSearchHostCanceled.ID, PacketMMSearchHostCanceled.class);
-        registerPacket(PacketMMMatchReport.ID, PacketMMMatchReport.class);
-        registerPacket(PacketMMSchedulePlayer.ID, PacketMMSchedulePlayer.class);
-        registerPacket(PacketMMPlayerLeft.ID, PacketMMPlayerLeft.class);
-        registerPacket(PacketMMPlayerSuspicious.ID, PacketMMPlayerSuspicious.class);
-        registerPacket(PacketMMMapRating.ID, PacketMMMapRating.class);
-        registerPacket(PacketDiscordLinkRequest.ID, PacketDiscordLinkRequest.class);
-        registerPacket(PacketDiscordLinkResponse.ID, PacketDiscordLinkResponse.class);
-        registerPacket(PacketDiscordUnlinkRequest.ID, PacketDiscordUnlinkRequest.class);
-        registerPacket(PacketDiscordVCPlayers.ID, PacketDiscordVCPlayers.class);
-        registerPacket(PacketPatreonLinkRequest.ID, PacketPatreonLinkRequest.class);
-        registerPacket(PacketPatreonLinkResponse.ID, PacketPatreonLinkResponse.class);
-        registerPacket(PacketPatreonUnlinkRequest.ID, PacketPatreonUnlinkRequest.class);
-        registerPacket(PacketPlayerDataIncreaseValue.ID, PacketPlayerDataIncreaseValue.class);
-        registerPacket(PacketPlayerRandomDrop.ID, PacketPlayerRandomDrop.class);
-        registerPacket(PacketServerGameStatus.ID, PacketServerGameStatus.class);
-        registerPacket(PacketServerNotification.ID, PacketServerNotification.class);
-        registerPacket(PacketKickedPlayer.ID, PacketKickedPlayer.class);
-        registerPacket(PacketPlayerDataSetValue.ID, PacketPlayerDataSetValue.class);
-        registerPacket(PacketProfanity.ID, PacketProfanity.class);
-        registerPacket(PacketChatMessageFromCloud.ID, PacketChatMessageFromCloud.class);
-        registerPacket(PacketFeatureFlags.ID, PacketFeatureFlags.class);
-        registerPacket(PacketProfanitySync.ID, PacketProfanitySync.class);
-        registerPacket(PacketClanCreate.ID, PacketClanCreate.class);
-        registerPacket(PacketClanDelete.ID, PacketClanDelete.class);
-        registerPacket(PacketClanInvite.ID, PacketClanInvite.class);
-        registerPacket(PacketClanResponse.ID, PacketClanResponse.class);
-        registerPacket(PacketClanKick.ID, PacketClanKick.class);
-        registerPacket(PacketClanLeave.ID, PacketClanLeave.class);
+        registerPacket(PacketClientRequest.f25ID, PacketClientRequest.class, PacketClientRequest::new);
+        registerPacket(PacketClientUpdateStatus.f28ID, PacketClientUpdateStatus.class, PacketClientUpdateStatus::new);
+        registerPacket(PacketPunishPlayer.f36ID, PacketPunishPlayer.class, PacketPunishPlayer::new);
+        registerPacket(PacketNotificationFromCloud.f32ID, PacketNotificationFromCloud.class, PacketNotificationFromCloud::new);
+        registerPacket(PacketClientSound.f26ID, PacketClientSound.class, PacketClientSound::new);
+        registerPacket(PacketTriggerNewRank.f39ID, PacketTriggerNewRank.class, PacketTriggerNewRank::new);
+        registerPacket(PacketClientMessagePopup.f24ID, PacketClientMessagePopup.class, PacketClientMessagePopup::new);
+        registerPacket(PacketDailyReward.f29ID, PacketDailyReward.class, PacketDailyReward::new);
+        registerPacket(PacketScreenshotRequest.f37ID, PacketScreenshotRequest.class, PacketScreenshotRequest::new);
+        registerPacket(PacketScreenshotResponse.f38ID, PacketScreenshotResponse.class, PacketScreenshotResponse::new);
+        registerPacket(PacketClientState.f27ID, PacketClientState.class, PacketClientState::new);
+        registerPacket(PacketInventoryItemAdded.f57ID, PacketInventoryItemAdded.class, PacketInventoryItemAdded::new);
+        registerPacket(PacketInventoryItemDeleteRequest.f58ID, PacketInventoryItemDeleteRequest.class, PacketInventoryItemDeleteRequest::new);
+        registerPacket(PacketInventoryItemRemoved.f59ID, PacketInventoryItemRemoved.class, PacketInventoryItemRemoved::new);
+        registerPacket(PacketInventorySetItemDefault.f64ID, PacketInventorySetItemDefault.class, PacketInventorySetItemDefault::new);
+        registerPacket(PacketInventoryOpenCase.f63ID, PacketInventoryOpenCase.class, PacketInventoryOpenCase::new);
+        registerPacket(PacketInventoryCaseResults.f56ID, PacketInventoryCaseResults.class, PacketInventoryCaseResults::new);
+        registerPacket(PacketInventoryActivateItem.f55ID, PacketInventoryActivateItem.class, PacketInventoryActivateItem::new);
+        registerPacket(PacketInventoryItemStickerAdd.f61ID, PacketInventoryItemStickerAdd.class, PacketInventoryItemStickerAdd::new);
+        registerPacket(PacketInventoryItemStickerRemove.f62ID, PacketInventoryItemStickerRemove.class, PacketInventoryItemStickerRemove::new);
+        registerPacket(PacketInventoryItemShowcase.f60ID, PacketInventoryItemShowcase.class, PacketInventoryItemShowcase::new);
+        registerPacket(PacketRequestedPlayerData.f106ID, PacketRequestedPlayerData.class, PacketRequestedPlayerData::new);
+        registerPacket(PacketRequestedPlayerDataSet.f107ID, PacketRequestedPlayerDataSet.class, PacketRequestedPlayerDataSet::new);
+        registerPacket(PacketRequestedInventory.f102ID, PacketRequestedInventory.class, PacketRequestedInventory::new);
+        registerPacket(PacketRequestedInventoryMinimal.f103ID, PacketRequestedInventoryMinimal.class, PacketRequestedInventoryMinimal::new);
+        registerPacket(PacketRequestedFriends.f101ID, PacketRequestedFriends.class, PacketRequestedFriends::new);
+        registerPacket(PacketRequestedCloudData.f100ID, PacketRequestedCloudData.class, PacketRequestedCloudData::new);
+        registerPacket(PacketRequestedItemDefault.f104ID, PacketRequestedItemDefault.class, PacketRequestedItemDefault::new);
+        registerPacket(PacketRequestedItemShowcase.f105ID, PacketRequestedItemShowcase.class, PacketRequestedItemShowcase::new);
+        registerPacket(PacketRequestedClanData.f99ID, PacketRequestedClanData.class, PacketRequestedClanData::new);
+        registerPacket(PacketRequestedChallenges.f98ID, PacketRequestedChallenges.class, PacketRequestedChallenges::new);
+        registerPacket(PacketRequestedPlayerStatusSet.f108ID, PacketRequestedPlayerStatusSet.class, PacketRequestedPlayerStatusSet::new);
+        registerPacket(PacketRequestedRecentMatches.f109ID, PacketRequestedRecentMatches.class, PacketRequestedRecentMatches::new);
+        registerPacket(PacketPartyCreate.f86ID, PacketPartyCreate.class, PacketPartyCreate::new);
+        registerPacket(PacketPartyEditSettings.f87ID, PacketPartyEditSettings.class, PacketPartyEditSettings::new);
+        registerPacket(PacketPartyLeave.f92ID, PacketPartyLeave.class, PacketPartyLeave::new);
+        registerPacket(PacketPartyInvite.f88ID, PacketPartyInvite.class, PacketPartyInvite::new);
+        registerPacket(PacketPartyJoin.f89ID, PacketPartyJoin.class, PacketPartyJoin::new);
+        registerPacket(PacketPartyJoined.f90ID, PacketPartyJoined.class, PacketPartyJoined::new);
+        registerPacket(PacketPartyKick.f91ID, PacketPartyKick.class, PacketPartyKick::new);
+        registerPacket(PacketFriendRequest.f52ID, PacketFriendRequest.class, PacketFriendRequest::new);
+        registerPacket(PacketFriendRequestAccept.f53ID, PacketFriendRequestAccept.class, PacketFriendRequestAccept::new);
+        registerPacket(PacketFriendRemove.f51ID, PacketFriendRemove.class, PacketFriendRemove::new);
+        registerPacket(PacketFriendJoinGame.f50ID, PacketFriendJoinGame.class, PacketFriendJoinGame::new);
+        registerPacket(PacketFriendSpectateGame.f54ID, PacketFriendSpectateGame.class, PacketFriendSpectateGame::new);
+        registerPacket(PacketCheckPrestige.f96ID, PacketCheckPrestige.class, PacketCheckPrestige::new);
+        registerPacket(PacketSkipBootcamp.f97ID, PacketSkipBootcamp.class, PacketSkipBootcamp::new);
+        registerPacket(PacketMMJoinServer.f66ID, PacketMMJoinServer.class, PacketMMJoinServer::new);
+        registerPacket(PacketMMSearch.f73ID, PacketMMSearch.class, PacketMMSearch::new);
+        registerPacket(PacketMMSearchCloudCanceled.f74ID, PacketMMSearchCloudCanceled.class, PacketMMSearchCloudCanceled::new);
+        registerPacket(PacketMMSearchHostCanceled.f75ID, PacketMMSearchHostCanceled.class, PacketMMSearchHostCanceled::new);
+        registerPacket(PacketMMMatchReport.f68ID, PacketMMMatchReport.class, PacketMMMatchReport::new);
+        registerPacket(PacketMMSchedulePlayer.f72ID, PacketMMSchedulePlayer.class, PacketMMSchedulePlayer::new);
+        registerPacket(PacketMMPlayerLeft.f70ID, PacketMMPlayerLeft.class, PacketMMPlayerLeft::new);
+        registerPacket(PacketMMPlayerSuspicious.f71ID, PacketMMPlayerSuspicious.class, PacketMMPlayerSuspicious::new);
+        registerPacket(PacketMMPlayerAimVerdict.f69ID, PacketMMPlayerAimVerdict.class, PacketMMPlayerAimVerdict::new);
+        registerPacket(PacketMMMapRating.f67ID, PacketMMMapRating.class, PacketMMMapRating::new);
+        registerPacket(PacketMMChatReport.f65ID, PacketMMChatReport.class, PacketMMChatReport::new);
+        registerPacket(PacketDiscordLinkRequest.f46ID, PacketDiscordLinkRequest.class, PacketDiscordLinkRequest::new);
+        registerPacket(PacketDiscordLinkResponse.f47ID, PacketDiscordLinkResponse.class, PacketDiscordLinkResponse::new);
+        registerPacket(PacketDiscordUnlinkRequest.f48ID, PacketDiscordUnlinkRequest.class, PacketDiscordUnlinkRequest::new);
+        registerPacket(PacketDiscordVCPlayers.f49ID, PacketDiscordVCPlayers.class, PacketDiscordVCPlayers::new);
+        registerPacket(PacketNewsListRequest.f84ID, PacketNewsListRequest.class, PacketNewsListRequest::new);
+        registerPacket(PacketNewsListResponse.f85ID, PacketNewsListResponse.class, PacketNewsListResponse::new);
+        registerPacket(PacketNewsImageRequest.f81ID, PacketNewsImageRequest.class, PacketNewsImageRequest::new);
+        registerPacket(PacketNewsImageResponse.f83ID, PacketNewsImageResponse.class, PacketNewsImageResponse::new);
+        registerPacket(PacketNewsArticleRequest.f77ID, PacketNewsArticleRequest.class, PacketNewsArticleRequest::new);
+        registerPacket(PacketNewsArticleResponse.f79ID, PacketNewsArticleResponse.class, PacketNewsArticleResponse::new);
+        registerPacket(PacketPatreonLinkRequest.f93ID, PacketPatreonLinkRequest.class, PacketPatreonLinkRequest::new);
+        registerPacket(PacketPatreonLinkResponse.f94ID, PacketPatreonLinkResponse.class, PacketPatreonLinkResponse::new);
+        registerPacket(PacketPatreonUnlinkRequest.f95ID, PacketPatreonUnlinkRequest.class, PacketPatreonUnlinkRequest::new);
+        registerPacket(PacketPlayerDataIncreaseValue.f110ID, PacketPlayerDataIncreaseValue.class, PacketPlayerDataIncreaseValue::new);
+        registerPacket(PacketPlayerDataIncreaseValueBatch.f111ID, PacketPlayerDataIncreaseValueBatch.class, PacketPlayerDataIncreaseValueBatch::new);
+        registerPacket(PacketPlayerRandomDrop.f33ID, PacketPlayerRandomDrop.class, PacketPlayerRandomDrop::new);
+        registerPacket(PacketServerGameStatus.f113ID, PacketServerGameStatus.class, PacketServerGameStatus::new);
+        registerPacket(PacketServerNotification.f114ID, PacketServerNotification.class, PacketServerNotification::new);
+        registerPacket(PacketKickedPlayer.f31ID, PacketKickedPlayer.class, PacketKickedPlayer::new);
+        registerPacket(PacketPlayerDataSetValue.f112ID, PacketPlayerDataSetValue.class, PacketPlayerDataSetValue::new);
+        registerPacket(PacketProfanity.f34ID, PacketProfanity.class, PacketProfanity::new);
+        registerPacket(PacketChatMessageFromCloud.f23ID, PacketChatMessageFromCloud.class, PacketChatMessageFromCloud::new);
+        registerPacket(PacketFeatureFlags.f30ID, PacketFeatureFlags.class, PacketFeatureFlags::new);
+        registerPacket(PacketProfanitySync.f35ID, PacketProfanitySync.class, PacketProfanitySync::new);
+        registerPacket(PacketClanCreate.f40ID, PacketClanCreate.class, PacketClanCreate::new);
+        registerPacket(PacketClanDelete.f41ID, PacketClanDelete.class, PacketClanDelete::new);
+        registerPacket(PacketClanInvite.f42ID, PacketClanInvite.class, PacketClanInvite::new);
+        registerPacket(PacketClanResponse.f45ID, PacketClanResponse.class, PacketClanResponse::new);
+        registerPacket(PacketClanKick.f43ID, PacketClanKick.class, PacketClanKick::new);
+        registerPacket(PacketClanLeave.f44ID, PacketClanLeave.class, PacketClanLeave::new);
     }
 
     public static void setLogErrors(boolean value) {
         logErrors = value;
     }
 
-    public static void registerPacket(@NotNull PacketIdentifier identifier, @NotNull Class<? extends IPacket> packetClass) {
+    public static <P extends IPacket> void registerPacket(@NotNull PacketIdentifier identifier, @NotNull Class<P> packetClass, @NotNull PacketFactory<P> factory) {
         Class<? extends IPacket> existing;
         int hash = identifier.hash();
         if (PACKET_FACTORIES.containsKey(hash) && (existing = (Class) PACKET_CLASS_TO_IDENTIFIER_MAP.entrySet().stream().filter(entry -> {
@@ -229,24 +247,8 @@ public final class PacketRegistry {
             throw new IllegalStateException("Hash collision detected for packet identifier: " + String.valueOf(identifier));
         }
         LOGGER.info("[Packet] Registering packet mapping for '{}' with Hash '{}'", packetClass.getName(), Integer.valueOf(hash));
-        try {
-            Constructor<? extends IPacket> constructor = packetClass.getConstructor(ByteBuf.class);
-            PACKET_FACTORIES.put(hash, byteBuf -> {
-                try {
-                    return (IPacket) constructor.newInstance(byteBuf);
-                } catch (Exception e) {
-                    if (logErrors) {
-                        LOGGER.error("Failed to instantiate packet for class: {}", packetClass.getName(), e);
-                        return null;
-                    }
-                    return null;
-                }
-            });
-            PACKET_CLASS_TO_IDENTIFIER_MAP.put(packetClass, identifier);
-        } catch (NoSuchMethodException e) {
-            LOGGER.error("[Packet] Failed to find ByteBuf constructor for class: {}", packetClass.getName(), e);
-            throw new IllegalArgumentException("Packet class must have a constructor accepting ByteBuf", e);
-        }
+        PACKET_FACTORIES.put(hash, factory);
+        PACKET_CLASS_TO_IDENTIFIER_MAP.put(packetClass, identifier);
     }
 
     public static <P extends IPacket, H extends Connection<? extends AbstractPlayerCloudData<?, ?>>> void registerPacketHandler(@NotNull Class<P> packetClass, @NotNull IPacketHandlerFunction<P, H> handler, @NotNull Class<H> handlerType) {
@@ -282,7 +284,7 @@ public final class PacketRegistry {
     public static IPacket readPacket(@NotNull ByteBuf byteBuf) {
         try {
             int packetHash = byteBuf.readInt();
-            Function<ByteBuf, IPacket> factory = (Function) PACKET_FACTORIES.get(packetHash);
+            PacketFactory<?> factory = (PacketFactory) PACKET_FACTORIES.get(packetHash);
             if (factory == null) {
                 if (logErrors) {
                     LOGGER.error("Failed to find packet factory for hash: {}", Integer.valueOf(packetHash));
@@ -290,7 +292,7 @@ public final class PacketRegistry {
                 }
                 return null;
             }
-            return factory.apply(byteBuf);
+            return factory.create(byteBuf);
         } catch (Exception e) {
             if (logErrors) {
                 LOGGER.error("Failed to read packet data from ByteBuf.", e);

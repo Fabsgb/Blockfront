@@ -10,7 +10,7 @@ import java.lang.runtime.ObjectMethods;
 import java.util.concurrent.TimeUnit;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/PacketKickedPlayer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/PacketKickedPlayer.class */
 public final class PacketKickedPlayer extends Record implements IPacket {
 
     @NotNull
@@ -23,8 +23,9 @@ public final class PacketKickedPlayer extends Record implements IPacket {
     @NotNull
     private final String reason;
 
+    /* JADX INFO: renamed from: ID */
     @NotNull
-    public static final PacketIdentifier ID = new PacketIdentifier("PacketKickedPlayer");
+    public static final PacketIdentifier f31ID = new PacketIdentifier("PacketKickedPlayer");
 
     public PacketKickedPlayer(@NotNull String username, int time, @NotNull TimeUnit timeUnit, @NotNull String reason) {
         this.username = username;
@@ -82,6 +83,6 @@ public final class PacketKickedPlayer extends Record implements IPacket {
     @Override // com.boehmod.bflib.cloud.packet.IPacket
     @NotNull
     public PacketIdentifier getPacketIdentifier() {
-        return ID;
+        return f31ID;
     }
 }

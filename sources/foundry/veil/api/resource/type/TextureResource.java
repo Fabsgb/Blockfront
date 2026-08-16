@@ -36,7 +36,7 @@ import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.util.profiling.InactiveProfiler;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/resource/type/TextureResource.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/resource/type/TextureResource.class */
 @ApiStatus.Internal
 public final class TextureResource extends Record implements VeilResource<TextureResource> {
     private final VeilResourceInfo resourceInfo;
@@ -120,13 +120,9 @@ public final class TextureResource extends Record implements VeilResource<Textur
         boolean reloadRequired = client.getGuiSprites().veil$hasTexture(id);
         if (!reloadRequired) {
             Iterator<Map.Entry<ResourceLocation, AtlasSet.AtlasEntry>> it = atlases.getAtlases().entrySet().iterator();
-            while (true) {
-                if (it.hasNext()) {
-                    if (it.next().getValue().atlas().veil$hasTexture(id)) {
-                        reloadRequired = true;
-                        break;
-                    }
-                } else {
+            while (it.hasNext()) {
+                if (it.next().getValue().atlas().veil$hasTexture(id)) {
+                    reloadRequired = true;
                     break;
                 }
             }
@@ -135,7 +131,7 @@ public final class TextureResource extends Record implements VeilResource<Textur
             return;
         }
         if (SodiumCompat.INSTANCE != null) {
-            CompositeReloadListener.m7995of(modelManager, client.getBlockRenderer(), client.getItemRenderer(), client.getGuiSprites()).reload(CompletableFuture::completedFuture, resources, InactiveProfiler.INSTANCE, InactiveProfiler.INSTANCE, Util.backgroundExecutor(), client).thenRunAsync(VeilRenderSystem::rebuildChunks, VeilRenderSystem.renderThreadExecutor());
+            CompositeReloadListener.m8346of(modelManager, client.getBlockRenderer(), client.getItemRenderer(), client.getGuiSprites()).reload(CompletableFuture::completedFuture, resources, InactiveProfiler.INSTANCE, InactiveProfiler.INSTANCE, Util.backgroundExecutor(), client).thenRunAsync(VeilRenderSystem::rebuildChunks, VeilRenderSystem.renderThreadExecutor());
             return;
         }
         for (Map.Entry<ResourceLocation, AtlasSet.AtlasEntry> entry : atlases.getAtlases().entrySet()) {

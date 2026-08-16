@@ -1,19 +1,21 @@
 package io.github.ocelot.glslprocessor.lib.anarres.cpp;
 
-import com.boehmod.blockfront.C0234dj;
-import com.boehmod.blockfront.C0965rY;
-import com.boehmod.blockfront.C1011sR;
+import com.boehmod.blockfront.C0215dP;
+import com.boehmod.blockfront.C0244ds;
+import com.boehmod.blockfront.C0885px;
+import com.boehmod.blockfront.C1043sv;
+import com.boehmod.blockfront.C1089to;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/lib/anarres/cpp/JoinReader.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/lib/anarres/cpp/JoinReader.class */
 @ApiStatus.Internal
 class JoinReader {
 
     /* JADX INFO: renamed from: in */
-    private final Reader f8799in;
+    private final Reader f9185in;
     private LexerSource source;
     private boolean warnings;
     static final /* synthetic */ boolean $assertionsDisabled;
@@ -28,7 +30,7 @@ class JoinReader {
     }
 
     public JoinReader(String in) {
-        this.f8799in = new StringReader(in);
+        this.f9185in = new StringReader(in);
     }
 
     public void setTrigraphs(boolean enable, boolean warnings) {
@@ -49,7 +51,7 @@ class JoinReader {
             return iArr[i];
         }
         try {
-            return this.f8799in.read();
+            return this.f9185in.read();
         } catch (IOException e) {
             throw new AssertionError(e);
         }
@@ -100,12 +102,12 @@ class JoinReader {
                     case 33:
                         return trigraph('!', '|');
                     case 34:
-                    case C0965rY.f5110qj /* 35 */:
+                    case C1043sv.f5687sk /* 35 */:
                     case 36:
-                    case C1011sR.f5290rf /* 37 */:
+                    case C1089to.f5854tg /* 37 */:
                     case 38:
                     case 42:
-                    case C1011sR.f5292rh /* 43 */:
+                    case C1089to.f5856ti /* 43 */:
                     case 44:
                     case 46:
                     case 48:
@@ -116,7 +118,7 @@ class JoinReader {
                     case 53:
                     case 54:
                     case 55:
-                    case C0234dj.f1929ge /* 56 */:
+                    case C0244ds.f1990he /* 56 */:
                     case 57:
                     case 58:
                     case 59:
@@ -146,20 +148,53 @@ class JoinReader {
         return c;
     }
 
-    /* JADX WARN: Code restructure failed: missing block: B:65:0x00e5, code lost:
-    
-        return r0;
-     */
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
-    */
-    public int read() throws io.github.ocelot.glslprocessor.lib.anarres.cpp.LexerException {
-        /*
-            Method dump skipped, instruction units count: 230
-            To view this dump change 'Code comments level' option to 'DEBUG'
-        */
-        throw new UnsupportedOperationException("Method not decompiled: io.github.ocelot.glslprocessor.lib.anarres.cpp.JoinReader.read():int");
+    public int read() throws LexerException {
+        if (this.flushnl) {
+            if (this.newlines > 0) {
+                this.newlines--;
+                return 10;
+            }
+            this.flushnl = false;
+        }
+        while (true) {
+            int c = _read();
+            switch (c) {
+                case -1:
+                    if (this.newlines > 0) {
+                        this.newlines--;
+                        return 10;
+                    }
+                    break;
+                case 10:
+                case 11:
+                case 12:
+                case C0885px.f4841pt /* 13 */:
+                case C0215dP.f1669hX /* 133 */:
+                case 8232:
+                case 8233:
+                    this.flushnl = true;
+                    return c;
+                case 92:
+                    int d = _read();
+                    switch (d) {
+                        case 10:
+                            this.newlines++;
+                            break;
+                        case C0885px.f4841pt /* 13 */:
+                            this.newlines++;
+                            int e = _read();
+                            if (e != 10) {
+                                _unread(e);
+                            }
+                            break;
+                        default:
+                            _unread(d);
+                            return c;
+                    }
+                    break;
+            }
+            return c;
+        }
     }
 
     public String toString() {

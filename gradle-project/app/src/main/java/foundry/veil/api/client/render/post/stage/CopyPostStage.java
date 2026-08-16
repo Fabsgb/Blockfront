@@ -1,6 +1,6 @@
 package foundry.veil.api.client.render.post.stage;
 
-import com.boehmod.blockfront.InterfaceC0638xq;
+import com.boehmod.blockfront.InterfaceC1274xN;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -11,7 +11,7 @@ import foundry.veil.api.client.render.post.PostPipeline;
 import java.util.Objects;
 import net.minecraft.resources.ResourceLocation;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/post/stage/CopyPostStage.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/post/stage/CopyPostStage.class */
 public class CopyPostStage extends FramebufferPostStage {
     public static final MapCodec<CopyPostStage> CODEC = RecordCodecBuilder.mapCodec(instance -> {
         return instance.group(FramebufferManager.FRAMEBUFFER_CODEC.fieldOf("in").forGetter((v0) -> {
@@ -33,7 +33,7 @@ public class CopyPostStage extends FramebufferPostStage {
 
     public CopyPostStage(ResourceLocation in, ResourceLocation out, boolean copyColor, boolean copyDepth, boolean linear) {
         super(in, out, false);
-        this.mask = (copyColor ? InterfaceC0638xq.tV : 0) | (copyDepth ? 256 : 0);
+        this.mask = (copyColor ? InterfaceC1274xN.f6857vZ : 0) | (copyDepth ? 256 : 0);
         this.filter = linear ? 9729 : 9728;
     }
 
@@ -65,7 +65,7 @@ public class CopyPostStage extends FramebufferPostStage {
     }
 
     public boolean copyColor() {
-        return (this.mask & InterfaceC0638xq.tV) > 0;
+        return (this.mask & InterfaceC1274xN.f6857vZ) > 0;
     }
 
     public boolean copyDepth() {

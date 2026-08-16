@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Supplier;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/ThreadTaskScheduler.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/ThreadTaskScheduler.class */
 public class ThreadTaskScheduler {
     private final int threadCount;
     private final Supplier<Runnable> source;
@@ -23,11 +23,7 @@ public class ThreadTaskScheduler {
     public ThreadTaskScheduler(String name, int threadCount, Supplier<Runnable> source) {
         this.source = source;
         int spawnedThreads = 0;
-        int i = 0;
-        while (true) {
-            if (i >= threadCount) {
-                break;
-            }
+        for (int i = 0; i < threadCount; i++) {
             Runnable work = source.get();
             if (work == null) {
                 this.running.set(false);
@@ -40,7 +36,6 @@ public class ThreadTaskScheduler {
             thread.setPriority(1);
             thread.start();
             spawnedThreads++;
-            i++;
         }
         this.threadCount = spawnedThreads;
     }

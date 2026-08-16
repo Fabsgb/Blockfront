@@ -15,7 +15,7 @@ import java.util.function.Consumer;
 import org.joml.Vector3fc;
 import org.joml.Vector4fc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/color/Color.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/color/Color.class */
 public class Color implements Colorc {
     public static final Codec<Integer> RGB_INT_CODEC = new ColorCodec(false);
     public static final Codec<Integer> ARGB_INT_CODEC = new ColorCodec(true);
@@ -246,7 +246,7 @@ public class Color implements Colorc {
         return (31 * ((31 * ((31 * result) + Float.hashCode(this.green))) + Float.hashCode(this.blue))) + Float.hashCode(this.alpha);
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/color/Color$ColorCodec.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/color/Color$ColorCodec.class */
     private static final class ColorCodec extends Record implements Codec<Integer> {
         private final boolean alpha;
 

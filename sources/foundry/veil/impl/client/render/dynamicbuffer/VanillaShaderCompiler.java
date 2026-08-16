@@ -31,7 +31,7 @@ import org.jetbrains.annotations.NotNull;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GLCapabilities;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/dynamicbuffer/VanillaShaderCompiler.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/dynamicbuffer/VanillaShaderCompiler.class */
 public class VanillaShaderCompiler {
     private static final Set<String> LAST_FRAME_SHADERS = ConcurrentHashMap.newKeySet();
     private ThreadTaskScheduler scheduler;
@@ -41,26 +41,19 @@ public class VanillaShaderCompiler {
         Collection<ResourceLocation> shaderSources = extension.veil$getShaderSources();
         VertexFormat vertexFormat = shader.getVertexFormat();
         Map<String, Object> customProgramData = new HashMap<>();
-        ResourceManager resourceManager = Minecraft.getInstance().getResourceManager();
+        final ResourceManager resourceManager = Minecraft.getInstance().getResourceManager();
         VanillaShaderProcessor.setup(resourceManager);
-        for (ResourceLocation path : shaderSources) {
+        for (final ResourceLocation path : shaderSources) {
             try {
                 Reader reader = resourceManager.openAsReader(path);
                 try {
                     String source = IOUtils.toString(reader);
                     GlslPreprocessor preprocessor = new GlslPreprocessor(this) { // from class: foundry.veil.impl.client.render.dynamicbuffer.VanillaShaderCompiler.1
                         private final Set<ResourceLocation> importedPaths = new HashSet();
-                        final /* synthetic */ ResourceLocation val$path;
-                        final /* synthetic */ ResourceManager val$resourceManager;
-
-                        C14301(VanillaShaderCompiler this, ResourceLocation path2, ResourceManager resourceManager2) {
-                            resourceLocation = path2;
-                            resourceManager = resourceManager2;
-                        }
 
                         public String applyImport(boolean useFullPath, @NotNull String directory) {
                             ResourceLocation loc = ResourceLocation.parse(directory);
-                            String normalised = FileUtil.normalizeResourcePath(String.valueOf(useFullPath ? resourceLocation : "shaders/include/") + loc.getPath());
+                            String normalised = FileUtil.normalizeResourcePath(String.valueOf(useFullPath ? path : "shaders/include/") + loc.getPath());
                             ResourceLocation resourcelocation = ResourceLocation.fromNamespaceAndPath(loc.getNamespace(), normalised);
                             if (!this.importedPaths.add(resourcelocation)) {
                                 return null;
@@ -73,7 +66,15 @@ public class VanillaShaderCompiler {
                                         reader2.close();
                                     }
                                     return string;
-                                } finally {
+                                } catch (Throwable th) {
+                                    if (reader2 != null) {
+                                        try {
+                                            reader2.close();
+                                        } catch (Throwable th2) {
+                                            th.addSuppressed(th2);
+                                        }
+                                    }
+                                    throw th;
                                 }
                             } catch (IOException e) {
                                 throw new RuntimeException("Could not open GLSL import " + String.valueOf(resourcelocation), e);
@@ -81,8 +82,8 @@ public class VanillaShaderCompiler {
                         }
                     };
                     String source2 = String.join("", preprocessor.process(source));
-                    boolean vertex = path2.getPath().endsWith(".vsh");
-                    String processed = VanillaShaderProcessor.modify(customProgramData, shader.getName(), path2, vertexFormat, activeBuffers, vertex ? 35633 : 35632, source2, glCapabilities);
+                    boolean vertex = path.getPath().endsWith(".vsh");
+                    String processed = VanillaShaderProcessor.modify(customProgramData, shader.getName(), path, vertexFormat, activeBuffers, vertex ? 35633 : 35632, source2, glCapabilities);
                     Minecraft.getInstance().execute(() -> {
                         extension.veil$recompile(vertex, processed, activeBuffers);
                         VeilRenderSystem.renderer().getDynamicBufferManger().markRecompiled(shader);
@@ -101,45 +102,10 @@ public class VanillaShaderCompiler {
                     throw th;
                 }
             } catch (Throwable t) {
-                Veil.LOGGER.error("Couldn't load vanilla shader from {}, skipping", path2, t);
+                Veil.LOGGER.error("Couldn't load vanilla shader from {}, skipping", path, t);
             }
         }
         VanillaShaderProcessor.free();
-    }
-
-    /* JADX INFO: renamed from: foundry.veil.impl.client.render.dynamicbuffer.VanillaShaderCompiler$1 */
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/dynamicbuffer/VanillaShaderCompiler$1.class */
-    class C14301 extends GlslPreprocessor {
-        private final Set<ResourceLocation> importedPaths = new HashSet();
-        final /* synthetic */ ResourceLocation val$path;
-        final /* synthetic */ ResourceManager val$resourceManager;
-
-        C14301(VanillaShaderCompiler this, ResourceLocation path2, ResourceManager resourceManager2) {
-            resourceLocation = path2;
-            resourceManager = resourceManager2;
-        }
-
-        public String applyImport(boolean useFullPath, @NotNull String directory) {
-            ResourceLocation loc = ResourceLocation.parse(directory);
-            String normalised = FileUtil.normalizeResourcePath(String.valueOf(useFullPath ? resourceLocation : "shaders/include/") + loc.getPath());
-            ResourceLocation resourcelocation = ResourceLocation.fromNamespaceAndPath(loc.getNamespace(), normalised);
-            if (!this.importedPaths.add(resourcelocation)) {
-                return null;
-            }
-            try {
-                Reader reader2 = resourceManager.openAsReader(resourcelocation);
-                try {
-                    String string = IOUtils.toString(reader2);
-                    if (reader2 != null) {
-                        reader2.close();
-                    }
-                    return string;
-                } finally {
-                }
-            } catch (IOException e) {
-                throw new RuntimeException("Could not open GLSL import " + String.valueOf(resourcelocation), e);
-            }
-        }
     }
 
     public CompletableFuture<?> reload(Collection<ShaderInstance> shaders) {

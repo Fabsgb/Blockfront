@@ -1,56 +1,37 @@
 package com.boehmod.blockfront.cloud.connection;
 
+import com.boehmod.bflib.cloud.connection.AbstractConnectionInboundHandler;
 import com.boehmod.bflib.cloud.packet.IPacket;
 import com.boehmod.bflib.cloud.packet.primitives.EncryptionKeyExchangePacket;
-import com.boehmod.blockfront.C0263jt;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
+import com.boehmod.blockfront.C0530jM;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:com/boehmod/blockfront/cloud/connection/ModConnectionInboundHandler.class */
-public class ModConnectionInboundHandler extends ChannelInboundHandlerAdapter {
-
-    @Nullable
-    private ByteBuf cumulativeBuffer = Unpooled.buffer();
-
-    @NotNull
-    private final ModConnection connectionHandler;
-
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:com/boehmod/blockfront/cloud/connection/ModConnectionInboundHandler.class */
+public class ModConnectionInboundHandler extends AbstractConnectionInboundHandler<ModConnection> {
     public ModConnectionInboundHandler(@NotNull ModConnection modConnection) {
-        this.connectionHandler = modConnection;
+        super(modConnection, "Connection closed by server");
     }
 
     public void channelRead(@NotNull ChannelHandlerContext channelHandlerContext, @NotNull Object obj) {
         if (obj instanceof IPacket) {
             IPacket iPacket = (IPacket) obj;
-            this.connectionHandler.bumpIdle();
             if (iPacket instanceof EncryptionKeyExchangePacket) {
-                C0263jt.log("[Connection Handler] Received encryption key exchange packet", new Object[0]);
-                this.connectionHandler.handleEncryptionKeyExchange((EncryptionKeyExchangePacket) iPacket);
+                C0530jM.log("[Connection Handler] Received encryption key exchange packet", new Object[0]);
+                ((ModConnection) this.connectionHandler).handleEncryptionKeyExchange((EncryptionKeyExchangePacket) iPacket);
                 return;
             }
-            this.connectionHandler.addIncomingPacket(iPacket);
+            ((ModConnection) this.connectionHandler).addIncomingPacket(iPacket);
         }
     }
 
-    public void channelInactive(@NotNull ChannelHandlerContext channelHandlerContext) {
-        C0263jt.log("[Connection Handler] Channel inactive", new Object[0]);
-        this.connectionHandler.disconnect("Connection closed by server", false);
-        if (this.cumulativeBuffer != null) {
-            this.cumulativeBuffer.release();
-            this.cumulativeBuffer = null;
-        }
+    @Override // com.boehmod.bflib.cloud.connection.AbstractConnectionInboundHandler
+    protected void onIdleTimeout() {
+        ((ModConnection) this.connectionHandler).disconnect("Idle Timeout.", false);
     }
 
     public void exceptionCaught(ChannelHandlerContext channelHandlerContext, Throwable th) {
-        C0263jt.a("[Connection Handler] Channel exception", th, new Object[0]);
-        this.connectionHandler.disconnect("Channel error: " + th.getMessage(), false);
-        if (this.cumulativeBuffer != null) {
-            this.cumulativeBuffer.release();
-            this.cumulativeBuffer = null;
-        }
+        C0530jM.m2338a("[Connection Handler] Channel exception", th, new Object[0]);
+        ((ModConnection) this.connectionHandler).disconnect("Channel error: " + th.getMessage(), false);
     }
 }

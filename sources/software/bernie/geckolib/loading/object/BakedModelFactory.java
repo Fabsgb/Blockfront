@@ -21,7 +21,7 @@ import software.bernie.geckolib.loading.json.raw.ModelProperties;
 import software.bernie.geckolib.loading.json.raw.UVUnion;
 import software.bernie.geckolib.util.RenderUtil;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/loading/object/BakedModelFactory.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/loading/object/BakedModelFactory.class */
 public interface BakedModelFactory {
     public static final Map<String, BakedModelFactory> FACTORIES = new Object2ObjectOpenHashMap(1);
     public static final BakedModelFactory DEFAULT_FACTORY = new Builtin();
@@ -37,64 +37,48 @@ public interface BakedModelFactory {
         return quads;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
-    /* JADX WARN: Type inference failed for: r0v11, types: [double[]] */
-    /* JADX WARN: Type inference failed for: r0v13, types: [double[]] */
-    /* JADX WARN: Type inference failed for: r0v15, types: [double[]] */
-    /* JADX WARN: Type inference failed for: r0v17, types: [double[]] */
-    /* JADX WARN: Type inference failed for: r0v19, types: [double[]] */
-    /* JADX WARN: Type inference failed for: r0v20 */
-    /* JADX WARN: Type inference failed for: r0v25, types: [double[]] */
-    /* JADX WARN: Type inference failed for: r0v34 */
-    /* JADX WARN: Type inference failed for: r0v35 */
-    /* JADX WARN: Type inference failed for: r0v36 */
-    /* JADX WARN: Type inference failed for: r0v37 */
-    /* JADX WARN: Type inference failed for: r0v38 */
-    /* JADX WARN: Type inference failed for: r0v39 */
-    /* JADX WARN: Type inference failed for: r1v15, types: [double[]] */
-    /* JADX WARN: Type inference failed for: r22v0 */
-    /* JADX WARN: Type inference failed for: r2v16, types: [double[]] */
-    default GeoQuad buildQuad(VertexSet vertexSet, Cube cube, UVUnion uVUnion, float f, float f2, boolean z, Direction direction) throws MatchException {
-        ?? r0;
-        if (!uVUnion.isBoxUV()) {
-            FaceUV faceUVFromDirection = uVUnion.faceUV().fromDirection(direction);
-            if (faceUVFromDirection == null) {
+    /* JADX INFO: Thrown type has an unknown type hierarchy: java.lang.MatchException */
+    default GeoQuad buildQuad(VertexSet vertices, Cube cube, UVUnion uvUnion, float textureWidth, float textureHeight, boolean mirror, Direction direction) throws MatchException {
+        double[][] dArr;
+        if (!uvUnion.isBoxUV()) {
+            FaceUV faceUV = uvUnion.faceUV().fromDirection(direction);
+            if (faceUV == null) {
                 return null;
             }
-            return GeoQuad.build(vertexSet.verticesForQuad(direction, false, z || cube.mirror() == Boolean.TRUE), faceUVFromDirection.m8010uv(), faceUVFromDirection.uvSize(), faceUVFromDirection.uvRotation(), f, f2, z, direction);
+            return GeoQuad.build(vertices.verticesForQuad(direction, false, mirror || cube.mirror() == Boolean.TRUE), faceUV.m8361uv(), faceUV.uvSize(), faceUV.uvRotation(), textureWidth, textureHeight, mirror, direction);
         }
-        double[] dArrBoxUVCoords = cube.m8009uv().boxUVCoords();
-        double[] size = cube.size();
-        Vec3 vec3 = new Vec3(Math.floor(size[0]), Math.floor(size[1]), Math.floor(size[2]));
-        switch (C14721.$SwitchMap$net$minecraft$core$Direction[direction.ordinal()]) {
+        double[] uv = cube.m8360uv().boxUVCoords();
+        double[] uvSize = cube.size();
+        Vec3 uvSizeVec = new Vec3(Math.floor(uvSize[0]), Math.floor(uvSize[1]), Math.floor(uvSize[2]));
+        switch (C14981.$SwitchMap$net$minecraft$core$Direction[direction.ordinal()]) {
             case 1:
-                r0 = new double[]{new double[]{dArrBoxUVCoords[0] + vec3.z + vec3.x, dArrBoxUVCoords[1] + vec3.z}, new double[]{vec3.z, vec3.y}};
+                dArr = new double[][]{new double[]{uv[0] + uvSizeVec.z + uvSizeVec.x, uv[1] + uvSizeVec.z}, new double[]{uvSizeVec.z, uvSizeVec.y}};
                 break;
             case 2:
-                r0 = new double[]{new double[]{dArrBoxUVCoords[0], dArrBoxUVCoords[1] + vec3.z}, new double[]{vec3.z, vec3.y}};
+                dArr = new double[][]{new double[]{uv[0], uv[1] + uvSizeVec.z}, new double[]{uvSizeVec.z, uvSizeVec.y}};
                 break;
             case 3:
-                r0 = new double[]{new double[]{dArrBoxUVCoords[0] + vec3.z, dArrBoxUVCoords[1] + vec3.z}, new double[]{vec3.x, vec3.y}};
+                dArr = new double[][]{new double[]{uv[0] + uvSizeVec.z, uv[1] + uvSizeVec.z}, new double[]{uvSizeVec.x, uvSizeVec.y}};
                 break;
             case 4:
-                r0 = new double[]{new double[]{dArrBoxUVCoords[0] + vec3.z + vec3.x + vec3.z, dArrBoxUVCoords[1] + vec3.z}, new double[]{vec3.x, vec3.y}};
+                dArr = new double[][]{new double[]{uv[0] + uvSizeVec.z + uvSizeVec.x + uvSizeVec.z, uv[1] + uvSizeVec.z}, new double[]{uvSizeVec.x, uvSizeVec.y}};
                 break;
             case 5:
-                r0 = new double[]{new double[]{dArrBoxUVCoords[0] + vec3.z, dArrBoxUVCoords[1]}, new double[]{vec3.x, vec3.z}};
+                dArr = new double[][]{new double[]{uv[0] + uvSizeVec.z, uv[1]}, new double[]{uvSizeVec.x, uvSizeVec.z}};
                 break;
             case 6:
-                r0 = new double[]{new double[]{dArrBoxUVCoords[0] + vec3.z + vec3.x, dArrBoxUVCoords[1] + vec3.z}, new double[]{vec3.x, -vec3.z}};
+                dArr = new double[][]{new double[]{uv[0] + uvSizeVec.z + uvSizeVec.x, uv[1] + uvSizeVec.z}, new double[]{uvSizeVec.x, -uvSizeVec.z}};
                 break;
             default:
                 throw new MatchException((String) null, (Throwable) null);
         }
-        ?? r22 = r0;
-        return GeoQuad.build(vertexSet.verticesForQuad(direction, true, z || cube.mirror() == Boolean.TRUE), r22[0], r22[1], FaceUV.Rotation.NONE, f, f2, z, direction);
+        double[][] uvData = dArr;
+        return GeoQuad.build(vertices.verticesForQuad(direction, true, mirror || cube.mirror() == Boolean.TRUE), uvData[0], uvData[1], FaceUV.Rotation.NONE, textureWidth, textureHeight, mirror, direction);
     }
 
     /* JADX INFO: renamed from: software.bernie.geckolib.loading.object.BakedModelFactory$1 */
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/loading/object/BakedModelFactory$1.class */
-    static /* synthetic */ class C14721 {
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/loading/object/BakedModelFactory$1.class */
+    static /* synthetic */ class C14981 {
         static final /* synthetic */ int[] $SwitchMap$net$minecraft$core$Direction = new int[Direction.values().length];
 
         static {
@@ -133,7 +117,7 @@ public interface BakedModelFactory {
         FACTORIES.put(namespace, factory);
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/loading/object/BakedModelFactory$Builtin.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/loading/object/BakedModelFactory$Builtin.class */
     public static final class Builtin implements BakedModelFactory {
         @Override // software.bernie.geckolib.loading.object.BakedModelFactory
         public BakedGeoModel constructGeoModel(GeometryTree geometryTree) {
@@ -163,8 +147,14 @@ public interface BakedModelFactory {
 
         @Override // software.bernie.geckolib.loading.object.BakedModelFactory
         public GeoCube constructCube(Cube cube, ModelProperties properties, GeoBone bone) {
+            double dDoubleValue;
             boolean mirror = cube.mirror() == Boolean.TRUE;
-            double inflate = cube.inflate() != null ? cube.inflate().doubleValue() / 16.0d : bone.getInflate() == null ? 0.0d : bone.getInflate().doubleValue() / 16.0d;
+            if (cube.inflate() != null) {
+                dDoubleValue = cube.inflate().doubleValue() / 16.0d;
+            } else {
+                dDoubleValue = bone.getInflate() == null ? 0.0d : bone.getInflate().doubleValue() / 16.0d;
+            }
+            double inflate = dDoubleValue;
             Vec3 size = RenderUtil.arrayToVec(cube.size());
             Vec3 origin = RenderUtil.arrayToVec(cube.origin());
             Vec3 rotation = RenderUtil.arrayToVec(cube.rotation());
@@ -173,12 +163,12 @@ public interface BakedModelFactory {
             Vec3 vertexSize = size.multiply(0.0625d, 0.0625d, 0.0625d);
             Vec3 pivot2 = pivot.multiply(-1.0d, 1.0d, 1.0d);
             Vec3 rotation2 = new Vec3(Math.toRadians(-rotation.x), Math.toRadians(-rotation.y), Math.toRadians(rotation.z));
-            GeoQuad[] quads = buildQuads(cube.m8009uv(), new VertexSet(origin2, vertexSize, inflate), cube, (float) properties.textureWidth(), (float) properties.textureHeight(), mirror);
+            GeoQuad[] quads = buildQuads(cube.m8360uv(), new VertexSet(origin2, vertexSize, inflate), cube, (float) properties.textureWidth(), (float) properties.textureHeight(), mirror);
             return new GeoCube(quads, pivot2, rotation2, size, inflate, mirror);
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/loading/object/BakedModelFactory$VertexSet.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/loading/object/BakedModelFactory$VertexSet.class */
     public static final class VertexSet extends Record {
         private final GeoVertex bottomLeftBack;
         private final GeoVertex bottomRightBack;
@@ -275,8 +265,9 @@ public interface BakedModelFactory {
             return new GeoVertex[]{this.bottomLeftBack, this.bottomLeftFront, this.bottomRightFront, this.bottomRightBack};
         }
 
+        /* JADX INFO: Thrown type has an unknown type hierarchy: java.lang.MatchException */
         public GeoVertex[] verticesForQuad(Direction direction, boolean boxUv, boolean mirror) throws MatchException {
-            switch (C14721.$SwitchMap$net$minecraft$core$Direction[direction.ordinal()]) {
+            switch (C14981.$SwitchMap$net$minecraft$core$Direction[direction.ordinal()]) {
                 case 1:
                     return mirror ? quadEast() : quadWest();
                 case 2:

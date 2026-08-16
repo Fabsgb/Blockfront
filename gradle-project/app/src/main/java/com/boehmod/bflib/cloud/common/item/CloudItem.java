@@ -13,7 +13,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import javax.annotation.Nullable;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/item/CloudItem.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/item/CloudItem.class */
 public class CloudItem<T extends CloudItem<T>> {
 
     @NotNull
@@ -24,7 +24,9 @@ public class CloudItem<T extends CloudItem<T>> {
 
     @Nullable
     private static RandomCollection<CloudItemRarity> cachedRarityCollection = null;
-    private final int id;
+
+    /* JADX INFO: renamed from: id */
+    private final int f1id;
 
     @NotNull
     private final CloudResourceLocation cloudResourceLocation;
@@ -56,7 +58,7 @@ public class CloudItem<T extends CloudItem<T>> {
     private CloudItemRarity rarity = CloudItemRarity.DEFAULT;
 
     public CloudItem(int id, @NotNull String name, @NotNull CloudResourceLocation cloudResourceLocation) {
-        this.id = id;
+        this.f1id = id;
         this.name = name;
         this.cloudResourceLocation = cloudResourceLocation;
         if (CloudItems.CLOUD_ITEMS.containsKey(id)) {
@@ -107,7 +109,7 @@ public class CloudItem<T extends CloudItem<T>> {
     }
 
     public int getId() {
-        return this.id;
+        return this.f1id;
     }
 
     @NotNull
@@ -236,7 +238,10 @@ public class CloudItem<T extends CloudItem<T>> {
     public String getDisplayName(boolean reversed) {
         String name = getName();
         String suffix = getSuffix();
-        return suffix.isEmpty() ? name : reversed ? suffix + " " + name : name + " " + suffix;
+        if (suffix.isEmpty()) {
+            return name;
+        }
+        return reversed ? suffix + " " + name : name + " " + suffix;
     }
 
     public boolean equals(Object object) {
@@ -248,5 +253,9 @@ public class CloudItem<T extends CloudItem<T>> {
         }
         CloudItem<?> cloudItem = (CloudItem) object;
         return cloudItem.getId() == getId();
+    }
+
+    public int hashCode() {
+        return Integer.hashCode(getId());
     }
 }

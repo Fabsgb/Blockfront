@@ -8,7 +8,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.resources.RegistryFileCodec;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/data/module/ParticleModuleData.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/data/module/ParticleModuleData.class */
 public interface ParticleModuleData {
     public static final Codec<ParticleModuleData> DIRECT_CODEC = ParticleModuleTypeRegistry.CODEC.dispatch("module", (v0) -> {
         return v0.getType();

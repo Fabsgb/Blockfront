@@ -15,7 +15,7 @@ import net.minecraft.util.profiling.ProfilerFiller;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/util/CompositeReloadListener.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/util/CompositeReloadListener.class */
 public final class CompositeReloadListener implements PreparableReloadListener {
     private final PreparableReloadListener[] listeners;
 
@@ -23,7 +23,8 @@ public final class CompositeReloadListener implements PreparableReloadListener {
         this.listeners = listeners;
     }
 
-    public static PreparableReloadListener of(PreparableReloadListener... listeners) {
+    /* JADX INFO: renamed from: of */
+    public static PreparableReloadListener m8346of(PreparableReloadListener... listeners) {
         if (listeners.length == 0) {
             return new PreparableReloadListener() { // from class: foundry.veil.api.util.CompositeReloadListener.1
                 @NotNull

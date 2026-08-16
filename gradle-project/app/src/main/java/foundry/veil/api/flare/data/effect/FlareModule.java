@@ -6,7 +6,7 @@ import java.lang.invoke.MethodType;
 import java.lang.runtime.ObjectMethods;
 import java.util.Map;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/flare/data/effect/FlareModule.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/flare/data/effect/FlareModule.class */
 public final class FlareModule extends Record {
     private final Map<String, FlareSubModule> subModules;
     public static final Codec<FlareModule> CODEC = Codec.unboundedMap(Codec.STRING, FlareSubModule.CODEC).xmap(FlareModule::new, (v0) -> {

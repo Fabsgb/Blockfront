@@ -15,7 +15,7 @@ import software.bernie.geckolib.renderer.GeoArmorRenderer;
 import software.bernie.geckolib.renderer.GeoRenderer;
 import software.bernie.geckolib.service.GeckoLibClient;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/platform/GeckoLibClientNeoForge.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/platform/GeckoLibClientNeoForge.class */
 public class GeckoLibClientNeoForge implements GeckoLibClient {
     @Override // software.bernie.geckolib.service.GeckoLibClient
     @NotNull
@@ -23,7 +23,7 @@ public class GeckoLibClientNeoForge implements GeckoLibClient {
         Item item = stack.getItem();
         HumanoidModel<?> model = IClientItemExtensions.of(item).getHumanoidArmorModel(animatable, stack, slot, defaultModel);
         if (model == defaultModel) {
-            HumanoidModel<?> geoArmorRenderer = GeoRenderProvider.of(item).getGeoArmorRenderer(animatable, stack, slot, defaultModel);
+            HumanoidModel<?> geoArmorRenderer = GeoRenderProvider.m8358of(item).getGeoArmorRenderer(animatable, stack, slot, defaultModel);
             if (geoArmorRenderer instanceof GeoArmorRenderer) {
                 GeoArmorRenderer<?> geoArmorRenderer2 = (GeoArmorRenderer) geoArmorRenderer;
                 return geoArmorRenderer2;
@@ -40,7 +40,7 @@ public class GeckoLibClientNeoForge implements GeckoLibClient {
             GeoRenderer<?> geoRenderer = customRenderer;
             return geoRenderer.getGeoModel();
         }
-        GeoRenderer<?> geoItemRenderer = GeoRenderProvider.of(item).getGeoItemRenderer();
+        GeoRenderer<?> geoItemRenderer = GeoRenderProvider.m8357of(item).getGeoItemRenderer();
         if (geoItemRenderer instanceof GeoRenderer) {
             GeoRenderer<?> geoRenderer2 = geoItemRenderer;
             return geoRenderer2.getGeoModel();
@@ -56,7 +56,7 @@ public class GeckoLibClientNeoForge implements GeckoLibClient {
             GeoArmorRenderer<?> armorRenderer = (GeoArmorRenderer) humanoidArmorModel;
             return armorRenderer.getGeoModel();
         }
-        HumanoidModel<?> geoArmorRenderer = GeoRenderProvider.of(armour).getGeoArmorRenderer(null, armour, null, null);
+        HumanoidModel<?> geoArmorRenderer = GeoRenderProvider.m8357of(armour).getGeoArmorRenderer(null, armour, null, null);
         if (geoArmorRenderer instanceof GeoArmorRenderer) {
             GeoArmorRenderer<?> armorRenderer2 = (GeoArmorRenderer) geoArmorRenderer;
             return armorRenderer2.getGeoModel();

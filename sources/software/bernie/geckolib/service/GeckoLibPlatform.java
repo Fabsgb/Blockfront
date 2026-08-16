@@ -5,7 +5,7 @@ import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 import net.minecraft.core.component.DataComponentType;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/service/GeckoLibPlatform.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/service/GeckoLibPlatform.class */
 public interface GeckoLibPlatform {
     boolean isDevelopmentEnvironment();
 

@@ -13,19 +13,21 @@ import org.jetbrains.annotations.Nullable;
 import org.lwjgl.opengl.GL20C;
 import org.lwjgl.system.NativeResource;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/compiler/CompiledShader.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/compiler/CompiledShader.class */
 public final class CompiledShader extends Record implements NativeResource {
 
     @Nullable
     private final ResourceLocation sourceFile;
-    private final int id;
+
+    /* JADX INFO: renamed from: id */
+    private final int f9137id;
     private final Object2IntMap<String> uniformBindings;
     private final Set<String> definitionDependencies;
     private final Set<ResourceLocation> includes;
 
     public CompiledShader(@Nullable ResourceLocation sourceFile, int id, Object2IntMap<String> uniformBindings, Set<String> definitionDependencies, Set<ResourceLocation> includes) {
         this.sourceFile = sourceFile;
-        this.id = id;
+        this.f9137id = id;
         this.uniformBindings = uniformBindings;
         this.definitionDependencies = definitionDependencies;
         this.includes = includes;
@@ -51,8 +53,9 @@ public final class CompiledShader extends Record implements NativeResource {
         return this.sourceFile;
     }
 
-    public int id() {
-        return this.id;
+    /* JADX INFO: renamed from: id */
+    public int m8339id() {
+        return this.f9137id;
     }
 
     public Object2IntMap<String> uniformBindings() {
@@ -79,6 +82,6 @@ public final class CompiledShader extends Record implements NativeResource {
     }
 
     public void free() {
-        GL20C.glDeleteShader(this.id);
+        GL20C.glDeleteShader(this.f9137id);
     }
 }

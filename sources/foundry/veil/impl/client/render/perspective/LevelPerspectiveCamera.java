@@ -11,7 +11,7 @@ import org.joml.Quaternionfc;
 import org.joml.Vector3dc;
 import org.joml.Vector3f;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/perspective/LevelPerspectiveCamera.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/perspective/LevelPerspectiveCamera.class */
 @ApiStatus.Internal
 public class LevelPerspectiveCamera extends Camera {
     private static final Vector3f EULER_ANGLES = new Vector3f();

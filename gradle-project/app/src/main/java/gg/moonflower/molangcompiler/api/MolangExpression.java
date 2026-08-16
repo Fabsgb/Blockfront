@@ -13,9 +13,9 @@ import java.util.function.BooleanSupplier;
 import java.util.function.Supplier;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/api/MolangExpression.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/api/MolangExpression.class */
 public interface MolangExpression {
-    public static final MolangExpression ZERO = of(0.0f);
+    public static final MolangExpression ZERO = m8349of(0.0f);
 
     @ApiStatus.OverrideOnly
     float get(MolangEnvironment molangEnvironment) throws MolangRuntimeException;
@@ -44,15 +44,18 @@ public interface MolangExpression {
         return this;
     }
 
-    static MolangExpression of(float value) {
+    /* JADX INFO: renamed from: of */
+    static MolangExpression m8349of(float value) {
         return new MolangConstantNode(value);
     }
 
-    static MolangExpression of(boolean value) {
+    /* JADX INFO: renamed from: of */
+    static MolangExpression m8350of(boolean value) {
         return new MolangConstantNode(value ? 1.0f : 0.0f);
     }
 
-    static MolangExpression of(Supplier<Float> value) {
+    /* JADX INFO: renamed from: of */
+    static MolangExpression m8351of(Supplier<Float> value) {
         return new MolangDynamicNode(value);
     }
 
@@ -68,7 +71,8 @@ public interface MolangExpression {
         return new MolangFunctionNode(-1, consumer);
     }
 
-    static MolangExpression of(BooleanSupplier value) {
+    /* JADX INFO: renamed from: of */
+    static MolangExpression m8352of(BooleanSupplier value) {
         return new MolangDynamicNode(() -> {
             return Float.valueOf(value.getAsBoolean() ? 1.0f : 0.0f);
         });
@@ -80,11 +84,13 @@ public interface MolangExpression {
         });
     }
 
-    static MolangExpression of(MolangVariable value) {
+    /* JADX INFO: renamed from: of */
+    static MolangExpression m8353of(MolangVariable value) {
         return new MolangVariableNode(value);
     }
 
-    static MolangExpression of(MolangExpression... expressions) {
+    /* JADX INFO: renamed from: of */
+    static MolangExpression m8354of(MolangExpression... expressions) {
         if (expressions.length == 0) {
             return ZERO;
         }

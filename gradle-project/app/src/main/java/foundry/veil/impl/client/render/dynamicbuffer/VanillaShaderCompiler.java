@@ -31,7 +31,7 @@ import org.jetbrains.annotations.NotNull;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GLCapabilities;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/dynamicbuffer/VanillaShaderCompiler.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/dynamicbuffer/VanillaShaderCompiler.class */
 public class VanillaShaderCompiler {
     private static final Set<String> LAST_FRAME_SHADERS = ConcurrentHashMap.newKeySet();
     private ThreadTaskScheduler scheduler;
@@ -66,7 +66,15 @@ public class VanillaShaderCompiler {
                                         reader2.close();
                                     }
                                     return string;
-                                } finally {
+                                } catch (Throwable th) {
+                                    if (reader2 != null) {
+                                        try {
+                                            reader2.close();
+                                        } catch (Throwable th2) {
+                                            th.addSuppressed(th2);
+                                        }
+                                    }
+                                    throw th;
                                 }
                             } catch (IOException e) {
                                 throw new RuntimeException("Could not open GLSL import " + String.valueOf(resourcelocation), e);

@@ -32,7 +32,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/program/ProgramDefinition.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/program/ProgramDefinition.class */
 public final class ProgramDefinition extends Record {
 
     @Nullable
@@ -153,17 +153,14 @@ public final class ProgramDefinition extends Record {
             if (definition != null) {
                 macros.put(name.toUpperCase(Locale.ROOT), definition);
             } else {
-                String definitionDefault = this.definitionDefaults.get(name);
-                if (definitionDefault != null) {
-                    macros.put(name.toUpperCase(Locale.ROOT), definitionDefault);
-                }
+                macros.put(name.toUpperCase(Locale.ROOT), this.definitionDefaults.getOrDefault(name, "1"));
             }
             dependencies.add(name);
         }
         return macros;
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/program/ProgramDefinition$Deserializer.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/program/ProgramDefinition$Deserializer.class */
     public static class Deserializer implements JsonDeserializer<ProgramDefinition> {
         @Nullable
         private static ResourceLocation deserializeSource(JsonObject json, String name, JsonDeserializationContext context) {
@@ -217,7 +214,7 @@ public final class ProgramDefinition extends Record {
         /* JADX INFO: Thrown type has an unknown type hierarchy: com.google.gson.JsonParseException */
         /* JADX INFO: Thrown type has an unknown type hierarchy: com.google.gson.JsonSyntaxException */
         /* JADX INFO: renamed from: deserialize, reason: merged with bridge method [inline-methods] */
-        public ProgramDefinition m9007deserialize(JsonElement element, Type type, JsonDeserializationContext context) throws JsonParseException, JsonSyntaxException {
+        public ProgramDefinition m9390deserialize(JsonElement element, Type type, JsonDeserializationContext context) throws JsonParseException, JsonSyntaxException {
             String[] definitions;
             Map<String, String> definitionDefaults;
             ShaderBlendMode blendMode;

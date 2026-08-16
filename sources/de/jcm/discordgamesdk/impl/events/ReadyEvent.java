@@ -5,18 +5,18 @@ import de.jcm.discordgamesdk.impl.Command;
 import de.jcm.discordgamesdk.impl.EventHandler;
 import de.jcm.discordgamesdk.user.DiscordUser;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/impl/events/ReadyEvent.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/impl/events/ReadyEvent.class */
 public class ReadyEvent {
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/impl/events/ReadyEvent$Data.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/impl/events/ReadyEvent$Data.class */
     public static class Data {
 
         /* JADX INFO: renamed from: v */
-        int f8722v;
+        int f9108v;
         Config config;
         DiscordUser user;
 
-        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/impl/events/ReadyEvent$Data$Config.class */
+        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/impl/events/ReadyEvent$Data$Config.class */
         static class Config {
             String cdn_host;
             String api_endpoint;
@@ -31,11 +31,11 @@ public class ReadyEvent {
         }
 
         public String toString() {
-            return "ReadyData{v=" + this.f8722v + ", config=" + this.config + ", user=" + this.user + "}";
+            return "ReadyData{v=" + this.f9108v + ", config=" + this.config + ", user=" + this.user + "}";
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/impl/events/ReadyEvent$Handler.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/impl/events/ReadyEvent$Handler.class */
     public static class Handler extends EventHandler<Data> {
         public Handler(Core.CorePrivate core) {
             super(core);

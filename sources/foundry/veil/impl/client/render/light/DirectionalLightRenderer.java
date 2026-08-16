@@ -11,6 +11,7 @@ import foundry.veil.Veil;
 import foundry.veil.api.client.color.Colorc;
 import foundry.veil.api.client.render.CullFrustum;
 import foundry.veil.api.client.render.light.data.DirectionalLightData;
+import foundry.veil.api.client.render.light.renderer.DDALightRenderer;
 import foundry.veil.api.client.render.light.renderer.LightRenderHandle;
 import foundry.veil.api.client.render.light.renderer.LightRenderer;
 import foundry.veil.api.client.render.light.renderer.LightTypeRenderer;
@@ -24,10 +25,11 @@ import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.ApiStatus;
 import org.joml.Vector3f;
+import org.joml.Vector3fc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/light/DirectionalLightRenderer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/light/DirectionalLightRenderer.class */
 @ApiStatus.Internal
-public class DirectionalLightRenderer implements LightTypeRenderer<DirectionalLightData> {
+public class DirectionalLightRenderer implements DDALightRenderer<DirectionalLightData> {
     private static final Vector3f DIRECTION = new Vector3f();
     private static final ResourceLocation RENDER_TYPE = Veil.veilPath("light/directional");
     private final List<LightHandle> lights = new LinkedList();
@@ -105,6 +107,11 @@ public class DirectionalLightRenderer implements LightTypeRenderer<DirectionalLi
                 lightDirection.set(light.getDirection().normalize(DIRECTION));
                 lightDirection.upload();
             }
+            Uniform occluded = shader.getUniform("Occluded");
+            if (occluded != null) {
+                occluded.set(light.isOcclusionEnabled() ? 1.0f : 0.0f);
+                occluded.upload();
+            }
             this.vertexArray.draw();
         }
     }
@@ -124,7 +131,16 @@ public class DirectionalLightRenderer implements LightTypeRenderer<DirectionalLi
         this.freed = true;
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/light/DirectionalLightRenderer$LightHandle.class */
+    @Override // foundry.veil.api.client.render.light.renderer.DDALightRenderer
+    public void uploadVoxelGridUniforms(int voxelGridTexture, Vector3fc voxelGridOrigin) {
+        ResourceLocation veilShaderId;
+        RenderType renderType = VeilRenderType.get(RENDER_TYPE, new Object[0]);
+        if (renderType != null && (veilShaderId = VeilRenderType.getShards(renderType).veilShaderId()) != null) {
+            DDALightRenderer.uploadVoxelGridUniforms(veilShaderId, voxelGridTexture, voxelGridOrigin);
+        }
+    }
+
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/light/DirectionalLightRenderer$LightHandle.class */
     private class LightHandle implements LightRenderHandle<DirectionalLightData> {
         private final DirectionalLightData data;
 

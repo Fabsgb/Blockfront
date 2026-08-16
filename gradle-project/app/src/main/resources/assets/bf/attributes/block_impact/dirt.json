@@ -2,9 +2,12 @@
   "impactSound": "bf:item.gun.bullet.impact.dirt",
   "impactDebrisSound": "bf:item.gun.bullet.impact.dirt.debris",
   "overlayEffectType": "dirt",
-  "displayImpactEffects": true,
+  "displayBlockBreakParticles": true,
   "displayBulletHole": true,
   "directionalImpactParticles": [
-    { "count": 1, "particleType": "bf:bullet_impact_smoke" }
+    {
+      "count": 1,
+      "particleType": "bf:bullet_impact_smoke"
+    }
   ]
 }

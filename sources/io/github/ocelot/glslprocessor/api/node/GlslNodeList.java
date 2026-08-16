@@ -14,7 +14,7 @@ import java.util.function.UnaryOperator;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/node/GlslNodeList.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/node/GlslNodeList.class */
 public class GlslNodeList implements List<GlslNode> {
     private final ArrayList<GlslNode> nodes;
 
@@ -201,6 +201,7 @@ public class GlslNodeList implements List<GlslNode> {
         return this.nodes.hashCode();
     }
 
+    /* JADX WARN: Can't rename method to resolve collision */
     @Override // java.util.List
     public GlslNode get(int index) {
         return this.nodes.get(index);
@@ -211,6 +212,7 @@ public class GlslNodeList implements List<GlslNode> {
         return this.nodes.set(index, element);
     }
 
+    /* JADX WARN: Can't rename method to resolve collision */
     @Override // java.util.List
     public GlslNode remove(int index) {
         return this.nodes.remove(index);

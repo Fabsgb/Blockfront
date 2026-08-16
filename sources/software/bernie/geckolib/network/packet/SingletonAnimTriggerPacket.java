@@ -14,13 +14,13 @@ import software.bernie.geckolib.GeckoLibConstants;
 import software.bernie.geckolib.animatable.GeoAnimatable;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/network/packet/SingletonAnimTriggerPacket.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/network/packet/SingletonAnimTriggerPacket.class */
 public final class SingletonAnimTriggerPacket extends Record implements MultiloaderPacket {
     private final String syncableId;
     private final long instanceId;
     private final String controllerName;
     private final String animName;
-    public static final CustomPacketPayload.Type<SingletonAnimTriggerPacket> TYPE = new CustomPacketPayload.Type<>(GeckoLibConstants.m8005id("singleton_anim_trigger"));
+    public static final CustomPacketPayload.Type<SingletonAnimTriggerPacket> TYPE = new CustomPacketPayload.Type<>(GeckoLibConstants.m8356id("singleton_anim_trigger"));
     public static final StreamCodec<FriendlyByteBuf, SingletonAnimTriggerPacket> CODEC = StreamCodec.composite(ByteBufCodecs.STRING_UTF8, (v0) -> {
         return v0.syncableId();
     }, ByteBufCodecs.VAR_LONG, (v0) -> {

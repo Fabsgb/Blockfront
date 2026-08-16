@@ -2,9 +2,8 @@ package com.boehmod.bflib.cloud.common.player;
 
 import com.boehmod.bflib.cloud.common.AbstractClanData;
 import com.boehmod.bflib.cloud.common.CloudRegistry;
-import com.boehmod.bflib.cloud.common.mm.MatchParty;
+import com.boehmod.bflib.cloud.common.p001mm.MatchParty;
 import com.boehmod.bflib.cloud.common.player.AbstractCloudInventory;
-import com.boehmod.bflib.cloud.common.player.PlayerDataContext;
 import com.boehmod.bflib.cloud.common.player.achievement.CloudAchievement;
 import com.boehmod.bflib.cloud.common.player.challenge.Challenge;
 import com.boehmod.bflib.cloud.common.player.status.PlayerStatus;
@@ -36,7 +35,7 @@ import javax.annotation.Nullable;
 import javax.annotation.OverridingMethodsMustInvokeSuper;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/player/AbstractPlayerCloudData.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/player/AbstractPlayerCloudData.class */
 public abstract class AbstractPlayerCloudData<I extends AbstractCloudInventory<?>, S extends PlayerStatus> {
     public static final int MAX_PRESTIGE_LEVEL = 5;
 

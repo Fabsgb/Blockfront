@@ -18,7 +18,7 @@ import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/registry/RenderTypeShardRegistry.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/registry/RenderTypeShardRegistry.class */
 public final class RenderTypeShardRegistry {
     private static final Map<String, List<RenderStateShard>> SHARDS = new HashMap();
     private static final Set<GenericShard> GENERIC_SHARDS = new HashSet();
@@ -86,7 +86,7 @@ public final class RenderTypeShardRegistry {
         CREATED_RENDER_TYPES.add(renderType);
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/registry/RenderTypeShardRegistry$GenericShard.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/registry/RenderTypeShardRegistry$GenericShard.class */
     private static final class GenericShard extends Record {
         private final Predicate<RenderType.CompositeRenderType> filter;
         private final RenderStateShard[] shards;

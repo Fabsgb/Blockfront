@@ -58,7 +58,7 @@ import software.bernie.geckolib.loading.math.value.Variable;
 import software.bernie.geckolib.loading.math.value.VariableAssignment;
 import software.bernie.geckolib.util.CompoundException;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/loading/math/MathParser.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/loading/math/MathParser.class */
 public class MathParser {
     private static final String MOLANG_RETURN = "return ";
     private static final String STATEMENT_DELIMITER = ";";
@@ -182,6 +182,9 @@ public class MathParser {
     }
 
     public static char[] decomposeExpression(String expression) throws CompoundException {
+        if (expression.isEmpty()) {
+            return new char[]{0};
+        }
         if (!EXPRESSION_FORMAT.matcher(expression).matches()) {
             throw new CompoundException("Invalid characters found in expression: '" + expression + "'");
         }
@@ -222,6 +225,7 @@ public class MathParser {
         return null;
     }
 
+    /* JADX WARN: Code duplicated, block: B:52:0x01a0  */
     public static List<Either<String, List<MathValue>>> compileSymbols(char[] chars) {
         ObjectArrayList objectArrayList = new ObjectArrayList();
         StringBuilder buffer = new StringBuilder();
@@ -248,11 +252,7 @@ public class MathParser {
                     }
                     ObjectArrayList objectArrayList2 = new ObjectArrayList();
                     int groupState = 1;
-                    int j = i + 1;
-                    while (true) {
-                        if (j >= chars.length) {
-                            break;
-                        }
+                    for (int j = i + 1; j < chars.length; j++) {
                         char groupChar = chars[j];
                         if (groupChar == '(') {
                             groupState++;
@@ -263,19 +263,29 @@ public class MathParser {
                                 objectArrayList2.add(parseSymbols(compileSymbols(buffer.toString().toCharArray())));
                                 buffer.setLength(0);
                             }
-                            j++;
                         }
                         if (groupState == 0) {
                             if (!buffer.isEmpty()) {
-                                objectArrayList2.add(parseSymbols(compileSymbols(buffer.toString().toCharArray())));
+                                if (!objectArrayList.isEmpty()) {
+                                    String str = "-";
+                                    if (((Either) objectArrayList.getLast()).left().filter((v1) -> {
+                                        return r1.equals(v1);
+                                    }).isPresent() && (objectArrayList.size() == 1 || ((Either) objectArrayList.get(objectArrayList.size() - 2)).left().filter(Operator::isOperator).isPresent())) {
+                                        objectArrayList.removeLast();
+                                        objectArrayList2.add(new Negative(parseSymbols(compileSymbols(buffer.toString().toCharArray()))));
+                                    } else {
+                                        objectArrayList2.add(parseSymbols(compileSymbols(buffer.toString().toCharArray())));
+                                    }
+                                } else {
+                                    objectArrayList2.add(parseSymbols(compileSymbols(buffer.toString().toCharArray())));
+                                }
                             }
                             i = j;
                             objectArrayList.add(Either.right(objectArrayList2));
                             buffer.setLength(0);
-                        } else {
-                            buffer.append(groupChar);
-                            j++;
+                            break;
                         }
+                        buffer.append(groupChar);
                     }
                 } else {
                     buffer.append(ch);
@@ -345,10 +355,14 @@ public class MathParser {
 
     @Nullable
     protected static MathValue compileCalculation(List<Either<String, List<MathValue>>> symbols) throws CompoundException {
+        if (symbols.size() < 3) {
+            return null;
+        }
         int symbolCount = symbols.size();
-        int operatorIndex = -1;
-        Operator lastOperator = null;
-        for (int i = 1; i < symbolCount; i++) {
+        ObjectArrayList objectArrayList = new ObjectArrayList(symbolCount / 2);
+        ObjectArrayList objectArrayList2 = new ObjectArrayList((symbolCount / 2) + 1);
+        int lastOperatorIndex = -1;
+        for (int i = 0; i < symbolCount; i++) {
             Operator operator = (Operator) symbols.get(i).left().filter(Operator::isOperator).map(MathParser::getOperatorFor).orElse(null);
             if (operator != null) {
                 if (operator == Operator.ASSIGN_VARIABLE) {
@@ -359,17 +373,37 @@ public class MathParser {
                     Variable variable = (Variable) symbols2;
                     return new VariableAssignment(variable, parseSymbols(symbols.subList(i + 1, symbolCount)));
                 }
-                if (lastOperator != null && operator.takesPrecedenceOver(lastOperator)) {
-                    break;
-                }
-                operatorIndex = i;
-                lastOperator = operator;
+                objectArrayList2.add(parseSymbols(symbols.subList(lastOperatorIndex + 1, i)));
+                objectArrayList.add(operator);
+                lastOperatorIndex = i;
             }
         }
-        if (lastOperator == null) {
+        if (objectArrayList2.isEmpty()) {
             return null;
         }
-        return new Calculation(lastOperator, parseSymbols(symbols.subList(0, operatorIndex)), parseSymbols(symbols.subList(operatorIndex + 1, symbolCount)));
+        objectArrayList2.add(parseSymbols(symbols.subList(lastOperatorIndex + 1, symbolCount)));
+        while (true) {
+            Operator lastOperator = null;
+            int highestOperatorIndex = -1;
+            for (int i2 = 0; i2 < objectArrayList.size(); i2++) {
+                Operator operator2 = (Operator) objectArrayList.get(i2);
+                if (lastOperator == null || operator2.takesPrecedenceOver(lastOperator)) {
+                    lastOperator = operator2;
+                    highestOperatorIndex = i2;
+                }
+            }
+            if (highestOperatorIndex == -1) {
+                break;
+            }
+            objectArrayList2.add(highestOperatorIndex, new Calculation(lastOperator, (MathValue) objectArrayList2.get(highestOperatorIndex), (MathValue) objectArrayList2.get(highestOperatorIndex + 1)));
+            objectArrayList.remove(highestOperatorIndex);
+            objectArrayList2.remove(highestOperatorIndex + 1);
+            objectArrayList2.remove(highestOperatorIndex + 1);
+        }
+        if (objectArrayList2.size() != 1) {
+            throw new CompoundException("Invalidly formatted expression: " + String.valueOf(symbols));
+        }
+        return (MathValue) objectArrayList2.getFirst();
     }
 
     @Nullable

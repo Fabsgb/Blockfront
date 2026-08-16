@@ -7,7 +7,7 @@ import imgui.type.ImBoolean;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/editor/DemoInspector.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/editor/DemoInspector.class */
 @ApiStatus.Internal
 public class DemoInspector implements Inspector {
     public static final Component TITLE = Component.translatable("inspector.veil.example.imgui.title");

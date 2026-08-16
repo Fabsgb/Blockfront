@@ -11,7 +11,7 @@ import net.caffeinemc.mods.sodium.client.render.vertex.VertexFormatAttribute;
 import net.minecraft.util.Mth;
 import org.lwjgl.system.MemoryUtil;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/forge/compat/sodium/VeilChunkVertex.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/forge/compat/sodium/VeilChunkVertex.class */
 public class VeilChunkVertex implements ChunkVertexType {
     public static final int STRIDE = 24;
     public static final GlVertexFormat VERTEX_FORMAT = GlVertexFormat.builder(24).addElement(DefaultChunkMeshAttributes.POSITION, 0, 0).addElement(DefaultChunkMeshAttributes.COLOR, 1, 8).addElement(DefaultChunkMeshAttributes.TEXTURE, 2, 12).addElement(DefaultChunkMeshAttributes.LIGHT_MATERIAL_INDEX, 3, 16).addElement(new VertexFormatAttribute("NORMAL_INDEX", GlVertexAttributeFormat.BYTE, 4, false, true), 4, 20).build();

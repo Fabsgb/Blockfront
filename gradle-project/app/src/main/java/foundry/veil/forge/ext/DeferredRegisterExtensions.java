@@ -5,7 +5,7 @@ import java.util.function.Supplier;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/forge/ext/DeferredRegisterExtensions.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/forge/ext/DeferredRegisterExtensions.class */
 public interface DeferredRegisterExtensions<T> {
     <I extends T> DeferredHolder<T, I> register(ResourceLocation resourceLocation, Function<ResourceLocation, ? extends I> function);
 

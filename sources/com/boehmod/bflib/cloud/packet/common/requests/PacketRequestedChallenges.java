@@ -11,7 +11,7 @@ import java.lang.invoke.MethodType;
 import java.lang.runtime.ObjectMethods;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/requests/PacketRequestedChallenges.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/requests/PacketRequestedChallenges.class */
 public final class PacketRequestedChallenges extends Record implements IPacket {
 
     @NotNull
@@ -19,7 +19,7 @@ public final class PacketRequestedChallenges extends Record implements IPacket {
 
     /* JADX INFO: renamed from: ID */
     @NotNull
-    public static final PacketIdentifier f84ID = new PacketIdentifier("PacketRequestedChallenges");
+    public static final PacketIdentifier f98ID = new PacketIdentifier("PacketRequestedChallenges");
 
     public PacketRequestedChallenges(@NotNull ObjectList<Challenge> challenges) {
         this.challenges = challenges;
@@ -57,6 +57,6 @@ public final class PacketRequestedChallenges extends Record implements IPacket {
     @Override // com.boehmod.bflib.cloud.packet.IPacket
     @NotNull
     public PacketIdentifier getPacketIdentifier() {
-        return f84ID;
+        return f98ID;
     }
 }

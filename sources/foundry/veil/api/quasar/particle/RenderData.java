@@ -5,7 +5,7 @@ import foundry.veil.api.client.color.Colorc;
 import foundry.veil.api.client.render.MatrixStack;
 import foundry.veil.api.client.render.rendertype.VeilRenderType;
 import foundry.veil.api.quasar.data.QuasarParticleData;
-import foundry.veil.api.quasar.p002fx.Trail;
+import foundry.veil.api.quasar.p003fx.Trail;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -22,7 +22,7 @@ import org.joml.Vector3f;
 import org.joml.Vector3fc;
 import org.joml.Vector4fc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/particle/RenderData.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/particle/RenderData.class */
 public final class RenderData {
 
     @Deprecated

@@ -15,7 +15,7 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/forge/network/NeoForgeClientPacketContext.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/forge/network/NeoForgeClientPacketContext.class */
 @ApiStatus.Internal
 public final class NeoForgeClientPacketContext extends Record implements ClientPacketContext {
     private final IPayloadContext context;
@@ -50,7 +50,7 @@ public final class NeoForgeClientPacketContext extends Record implements ClientP
 
     @Override // foundry.veil.api.network.handler.ClientPacketContext, foundry.veil.api.network.handler.PacketContext
     /* JADX INFO: renamed from: player */
-    public LocalPlayer mo1889player() {
+    public LocalPlayer mo9446player() {
         return this.context.player();
     }
 

@@ -9,7 +9,7 @@ import java.lang.runtime.ObjectMethods;
 import org.jetbrains.annotations.ApiStatus;
 import org.lwjgl.opengl.ARBDirectStateAccess;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/vertex/DSAVertexAttribBindingBuilder.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/vertex/DSAVertexAttribBindingBuilder.class */
 @ApiStatus.Internal
 public final class DSAVertexAttribBindingBuilder extends Record implements VertexArrayBuilder {
     private final VertexArray vertexArray;

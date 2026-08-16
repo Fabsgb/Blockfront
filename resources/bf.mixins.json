@@ -9,23 +9,26 @@
     "ClientHooksMixin",
     "ClientLevelDataMixin",
     "ClientLevelMixin",
+    "ClientPacketListenerMixin",
     "ConnectScreenMixin",
     "DisconnectedScreenMixin",
     "GameRendererMixin",
     "GeoBoneMixin",
     "GeoModelAccessor",
     "GeoRendererMixin",
+    "KeyboardHandlerMixin",
     "LevelRendererMixin",
     "LivingEntityMixin",
     "RenderUtilMixin",
     "LightTextureMixin",
     "LocalPlayerMixin",
     "MinecraftMixin",
+    "MouseHandlerMixin",
     "MusicManagerMixin",
     "ReceivingLevelScreenMixin",
     "ScreenEffectRendererMixin",
-    "SectionCompilerMixin",
-    "TutorialMixin"
+    "TutorialMixin",
+    "WeighedSoundEventsAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

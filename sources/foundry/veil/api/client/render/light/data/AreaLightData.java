@@ -1,11 +1,14 @@
 package foundry.veil.api.client.render.light.data;
 
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import foundry.veil.api.client.color.Colorc;
 import foundry.veil.api.client.editor.EditorAttributeProvider;
 import foundry.veil.api.client.registry.LightTypeRegistry;
 import foundry.veil.api.client.render.CullFrustum;
+import foundry.veil.api.client.render.MatrixStack;
 import foundry.veil.api.client.render.light.DDALightData;
 import foundry.veil.api.client.render.light.InstancedLightData;
+import foundry.veil.api.client.render.light.LightGuideProvider;
 import imgui.ImGui;
 import java.nio.ByteBuffer;
 import net.minecraft.client.Camera;
@@ -13,14 +16,16 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.ApiStatus;
 import org.joml.Matrix4d;
+import org.joml.Matrix4f;
 import org.joml.Quaternionf;
+import org.joml.Quaternionfc;
 import org.joml.Vector2f;
 import org.joml.Vector3d;
 import org.joml.Vector3f;
 import org.joml.Vector3fc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/light/data/AreaLightData.class */
-public class AreaLightData extends LightData implements InstancedLightData, DDALightData, EditorAttributeProvider {
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/light/data/AreaLightData.class */
+public class AreaLightData extends LightData implements InstancedLightData, DDALightData, EditorAttributeProvider, LightGuideProvider {
     private static final float MAX_ANGLE_SIZE = 10430.219f;
     private final Matrix4d matrix = new Matrix4d();
     protected final Vector3d position = new Vector3d();
@@ -29,6 +34,7 @@ public class AreaLightData extends LightData implements InstancedLightData, DDAL
     protected float angle = (float) Math.toRadians(45.0d);
     protected float distance = 1.0f;
     protected boolean occlusionEnabled = false;
+    protected float inscattering = 0.0f;
 
     @ApiStatus.ScheduledForRemoval(inVersion = "5.0.0")
     @Deprecated
@@ -55,6 +61,7 @@ public class AreaLightData extends LightData implements InstancedLightData, DDAL
     }
 
     public Quaternionf getOrientationMutable() {
+        markDirty();
         return this.orientation;
     }
 
@@ -79,6 +86,10 @@ public class AreaLightData extends LightData implements InstancedLightData, DDAL
         return this.occlusionEnabled;
     }
 
+    public float getInscatteringStrength() {
+        return this.inscattering;
+    }
+
     public AreaLightData setSize(double x, double y) {
         this.size.set(x, y);
         markDirty();
@@ -99,6 +110,12 @@ public class AreaLightData extends LightData implements InstancedLightData, DDAL
 
     public AreaLightData setOcclusionEnabled(boolean occlusionEnabled) {
         this.occlusionEnabled = occlusionEnabled;
+        markDirty();
+        return this;
+    }
+
+    public AreaLightData setInscatteringStrength(float inscattering) {
+        this.inscattering = inscattering;
         markDirty();
         return this;
     }
@@ -143,8 +160,10 @@ public class AreaLightData extends LightData implements InstancedLightData, DDAL
         this.size.get(buffer.position(), buffer);
         buffer.position(buffer.position() + 8);
         buffer.putShort((short) Mth.clamp((int) (this.angle * MAX_ANGLE_SIZE), 0, 65535));
+        buffer.position(buffer.position() + 2);
         buffer.putFloat(this.distance);
         buffer.putFloat(this.occlusionEnabled ? 1.0f : 0.0f);
+        buffer.putFloat(this.inscattering);
     }
 
     @Override // foundry.veil.api.client.render.light.data.LightData
@@ -174,6 +193,7 @@ public class AreaLightData extends LightData implements InstancedLightData, DDAL
         float[] editZRot = {orientationAngles.z()};
         float[] editAngle = {this.angle};
         float[] editDistance = {this.distance};
+        float[] editInscattering = {this.inscattering};
         if (ImGui.dragFloat2("size", editSize, 0.02f, 1.0E-4f)) {
             setSize(editSize[0], editSize[1]);
         }
@@ -223,8 +243,37 @@ public class AreaLightData extends LightData implements InstancedLightData, DDAL
             setDistance(editDistance[0]);
         }
         if (ImGui.checkbox("Occluded", this.occlusionEnabled)) {
-            this.occlusionEnabled = !this.occlusionEnabled;
-            markDirty();
+            setOcclusionEnabled(!this.occlusionEnabled);
         }
+        if (ImGui.dragScalar("In-scattering", editInscattering, 0.01f, 0.0f)) {
+            setInscatteringStrength(editInscattering[0]);
+        }
+    }
+
+    @Override // foundry.veil.api.client.render.light.LightGuideProvider
+    public void renderLightGuide(MatrixStack stack, VertexConsumer consumer) {
+        stack.matrixPush();
+        stack.translate(this.position.x, this.position.y, this.position.z);
+        Vector3f rot = this.orientation.getEulerAnglesXYZ(new Vector3f()).mul(-1.0f);
+        stack.rotate((Quaternionfc) new Quaternionf().rotateX(rot.x).rotateLocalY(rot.y).rotateLocalZ(rot.z));
+        Matrix4f pose = stack.position();
+        consumer.addVertex(pose, -this.size.x, -this.size.y, 0.0f).setColor(this.color.red(), this.color.green(), this.color.blue(), this.color.alpha());
+        consumer.addVertex(pose, -this.size.x, this.size.y, 0.0f).setColor(this.color.red(), this.color.green(), this.color.blue(), this.color.alpha());
+        consumer.addVertex(pose, this.size.x, this.size.y, 0.0f).setColor(this.color.red(), this.color.green(), this.color.blue(), this.color.alpha());
+        consumer.addVertex(pose, this.size.x, -this.size.y, 0.0f).setColor(this.color.red(), this.color.green(), this.color.blue(), this.color.alpha());
+        consumer.addVertex(pose, -this.size.x, -this.size.y, 0.0f).setColor(this.color.red(), this.color.green(), this.color.blue(), this.color.alpha());
+        Vector3f endSize = new Vector3f(this.size.x + (this.distance * ((float) Math.tan(((double) this.angle) * 0.5d))), this.size.y + (this.distance * ((float) Math.tan(((double) this.angle) * 0.5d))), this.distance);
+        consumer.addVertex(pose, -endSize.x, -endSize.y, this.distance).setColor(this.color.red(), this.color.green(), this.color.blue(), this.color.alpha());
+        consumer.addVertex(pose, -endSize.x, endSize.y, this.distance).setColor(this.color.red(), this.color.green(), this.color.blue(), this.color.alpha());
+        consumer.addVertex(pose, -this.size.x, this.size.y, 0.0f).setColor(this.color.red(), this.color.green(), this.color.blue(), this.color.alpha());
+        consumer.addVertex(pose, -endSize.x, endSize.y, this.distance).setColor(this.color.red(), this.color.green(), this.color.blue(), this.color.alpha());
+        consumer.addVertex(pose, endSize.x, endSize.y, this.distance).setColor(this.color.red(), this.color.green(), this.color.blue(), this.color.alpha());
+        consumer.addVertex(pose, this.size.x, this.size.y, 0.0f).setColor(this.color.red(), this.color.green(), this.color.blue(), this.color.alpha());
+        consumer.addVertex(pose, endSize.x, endSize.y, this.distance).setColor(this.color.red(), this.color.green(), this.color.blue(), this.color.alpha());
+        consumer.addVertex(pose, endSize.x, -endSize.y, this.distance).setColor(this.color.red(), this.color.green(), this.color.blue(), this.color.alpha());
+        consumer.addVertex(pose, this.size.x, -this.size.y, 0.0f).setColor(this.color.red(), this.color.green(), this.color.blue(), this.color.alpha());
+        consumer.addVertex(pose, endSize.x, -endSize.y, this.distance).setColor(this.color.red(), this.color.green(), this.color.blue(), this.color.alpha());
+        consumer.addVertex(pose, -endSize.x, -endSize.y, this.distance).setColor(this.color.red(), this.color.green(), this.color.blue(), this.color.alpha());
+        stack.matrixPop();
     }
 }

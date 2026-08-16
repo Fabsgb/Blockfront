@@ -29,6 +29,7 @@ import foundry.veil.api.client.render.texture.VeilPreloadedTexture;
 import foundry.veil.api.compat.SodiumCompat;
 import foundry.veil.api.event.VeilRenderLevelStageEvent;
 import foundry.veil.api.flare.modifier.RandomnessController;
+import foundry.veil.api.quasar.registry.RenderStyleRegistry;
 import foundry.veil.ext.VertexBufferExtension;
 import foundry.veil.impl.client.imgui.AdvancedFboImGuiAreaImpl;
 import foundry.veil.impl.client.necromancer.render.NecromancerRenderDispatcher;
@@ -78,7 +79,7 @@ import org.lwjgl.opengl.GL43C;
 import org.lwjgl.opengl.GLCapabilities;
 import org.lwjgl.system.MemoryUtil;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/VeilRenderSystem.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/VeilRenderSystem.class */
 public final class VeilRenderSystem {
     public static final RenderStateShard.OutputStateShard BLOOM_SHARD = new RenderStateShard.OutputStateShard("veil:bloom", VeilBloomRenderer::setupRenderState, VeilBloomRenderer::clearRenderState);
     private static final Executor RENDER_THREAD_EXECUTOR = task -> {
@@ -290,46 +291,17 @@ public final class VeilRenderSystem {
     private VeilRenderSystem() {
     }
 
-    /* JADX INFO: renamed from: foundry.veil.api.client.render.VeilRenderSystem$1 */
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/VeilRenderSystem$1.class */
-    class C13181 implements BooleanSupplier {
-        private boolean value;
-        private boolean initialized;
-        final /* synthetic */ Function val$delegate;
-
-        C13181(Function function) {
-            function = function;
-        }
-
-        @Override // java.util.function.BooleanSupplier
-        public boolean getAsBoolean() {
-            RenderSystem.assertOnRenderThreadOrInit();
-            if (!this.initialized) {
-                this.initialized = true;
-                boolean zBooleanValue = ((Boolean) function.apply(GL.getCapabilities())).booleanValue();
-                this.value = zBooleanValue;
-                return zBooleanValue;
-            }
-            return this.value;
-        }
-    }
-
-    private static BooleanSupplier glCapability(Function<GLCapabilities, Boolean> delegate) {
+    private static BooleanSupplier glCapability(final Function<GLCapabilities, Boolean> delegate) {
         return new BooleanSupplier() { // from class: foundry.veil.api.client.render.VeilRenderSystem.1
             private boolean value;
             private boolean initialized;
-            final /* synthetic */ Function val$delegate;
-
-            C13181(Function delegate2) {
-                function = delegate2;
-            }
 
             @Override // java.util.function.BooleanSupplier
             public boolean getAsBoolean() {
                 RenderSystem.assertOnRenderThreadOrInit();
                 if (!this.initialized) {
                     this.initialized = true;
-                    boolean zBooleanValue = ((Boolean) function.apply(GL.getCapabilities())).booleanValue();
+                    boolean zBooleanValue = ((Boolean) delegate.apply(GL.getCapabilities())).booleanValue();
                     this.value = zBooleanValue;
                     return zBooleanValue;
                 }
@@ -338,42 +310,15 @@ public final class VeilRenderSystem {
         };
     }
 
-    /* JADX INFO: renamed from: foundry.veil.api.client.render.VeilRenderSystem$2 */
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/VeilRenderSystem$2.class */
-    class C13192 implements IntSupplier {
-        private int value = Integer.MAX_VALUE;
-        final /* synthetic */ IntSupplier val$delegate;
-
-        C13192(IntSupplier intSupplier) {
-            intSupplier = intSupplier;
-        }
-
-        @Override // java.util.function.IntSupplier
-        public int getAsInt() {
-            RenderSystem.assertOnRenderThreadOrInit();
-            if (this.value == Integer.MAX_VALUE) {
-                int asInt = intSupplier.getAsInt();
-                this.value = asInt;
-                return asInt;
-            }
-            return this.value;
-        }
-    }
-
-    private static IntSupplier glGetter(IntSupplier delegate) {
+    private static IntSupplier glGetter(final IntSupplier delegate) {
         return new IntSupplier() { // from class: foundry.veil.api.client.render.VeilRenderSystem.2
             private int value = Integer.MAX_VALUE;
-            final /* synthetic */ IntSupplier val$delegate;
-
-            C13192(IntSupplier delegate2) {
-                intSupplier = delegate2;
-            }
 
             @Override // java.util.function.IntSupplier
             public int getAsInt() {
                 RenderSystem.assertOnRenderThreadOrInit();
                 if (this.value == Integer.MAX_VALUE) {
-                    int asInt = intSupplier.getAsInt();
+                    int asInt = delegate.getAsInt();
                     this.value = asInt;
                     return asInt;
                 }
@@ -382,42 +327,15 @@ public final class VeilRenderSystem {
         };
     }
 
-    /* JADX INFO: renamed from: foundry.veil.api.client.render.VeilRenderSystem$3 */
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/VeilRenderSystem$3.class */
-    class C13203 implements LongSupplier {
-        private long value = Long.MAX_VALUE;
-        final /* synthetic */ LongSupplier val$delegate;
-
-        C13203(LongSupplier longSupplier) {
-            longSupplier = longSupplier;
-        }
-
-        @Override // java.util.function.LongSupplier
-        public long getAsLong() {
-            RenderSystem.assertOnRenderThreadOrInit();
-            if (this.value == Long.MAX_VALUE) {
-                long asLong = longSupplier.getAsLong();
-                this.value = asLong;
-                return asLong;
-            }
-            return this.value;
-        }
-    }
-
-    private static LongSupplier glGetter(LongSupplier delegate) {
+    private static LongSupplier glGetter(final LongSupplier delegate) {
         return new LongSupplier() { // from class: foundry.veil.api.client.render.VeilRenderSystem.3
             private long value = Long.MAX_VALUE;
-            final /* synthetic */ LongSupplier val$delegate;
-
-            C13203(LongSupplier delegate2) {
-                longSupplier = delegate2;
-            }
 
             @Override // java.util.function.LongSupplier
             public long getAsLong() {
                 RenderSystem.assertOnRenderThreadOrInit();
                 if (this.value == Long.MAX_VALUE) {
-                    long asLong = longSupplier.getAsLong();
+                    long asLong = delegate.getAsLong();
                     this.value = asLong;
                     return asLong;
                 }
@@ -426,42 +344,15 @@ public final class VeilRenderSystem {
         };
     }
 
-    /* JADX INFO: renamed from: foundry.veil.api.client.render.VeilRenderSystem$4 */
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/VeilRenderSystem$4.class */
-    class C13214<T> implements Supplier<T> {
-        private T value = null;
-        final /* synthetic */ Supplier val$delegate;
-
-        C13214(Supplier supplier) {
-            supplier = supplier;
-        }
-
-        @Override // java.util.function.Supplier
-        public T get() {
-            RenderSystem.assertOnRenderThreadOrInit();
-            if (this.value == null) {
-                T t = (T) supplier.get();
-                this.value = t;
-                return t;
-            }
-            return this.value;
-        }
-    }
-
-    private static <T> Supplier<T> glGetter(Supplier<T> delegate) {
+    private static <T> Supplier<T> glGetter(final Supplier<T> delegate) {
         return new Supplier<T>() { // from class: foundry.veil.api.client.render.VeilRenderSystem.4
             private T value = null;
-            final /* synthetic */ Supplier val$delegate;
-
-            C13214(Supplier delegate2) {
-                supplier = delegate2;
-            }
 
             @Override // java.util.function.Supplier
             public T get() {
                 RenderSystem.assertOnRenderThreadOrInit();
                 if (this.value == null) {
-                    T t = (T) supplier.get();
+                    T t = (T) delegate.get();
                     this.value = t;
                     return t;
                 }
@@ -1038,6 +929,7 @@ public final class VeilRenderSystem {
         GL43C.glDeleteVertexArrays(screenQuadVao);
         MemoryUtil.memFree(emptySamplers);
         SHADER_BUFFER_CACHE.free();
+        RenderStyleRegistry.freeRenderStyles();
     }
 
     @ApiStatus.Internal
@@ -1063,10 +955,11 @@ public final class VeilRenderSystem {
     }
 
     @ApiStatus.Internal
-    public static boolean drawLights(ProfilerFiller profiler, CullFrustum cullFrustum) {
+    public static boolean drawLights(ProfilerFiller profiler, CullFrustum cullFrustum, boolean renderInscattering) {
         FramebufferManager framebufferManager = renderer.getFramebufferManager();
         AdvancedFbo lightFbo = framebufferManager.getFramebuffer(VeilFramebuffers.LIGHT);
-        if (lightFbo == null) {
+        AdvancedFbo lightInscatteringFbo = framebufferManager.getFramebuffer(VeilFramebuffers.LIGHT_INSCATTERING);
+        if (lightFbo == null || lightInscatteringFbo == null) {
             AdvancedFbo.unbind();
             return false;
         }
@@ -1076,7 +969,7 @@ public final class VeilRenderSystem {
         renderProfiler.push("veil_lights", RenderProfilerCounter.VERTICES_SUBMITTED, RenderProfilerCounter.PRIMITIVES_SUBMITTED, RenderProfilerCounter.VERTEX_SHADER_INVOCATIONS, RenderProfilerCounter.FRAGMENT_SHADER_INVOCATIONS, RenderProfilerCounter.COMPUTE_SHADER_INVOCATIONS, RenderProfilerCounter.CLIPPING_INPUT_PRIMITIVES, RenderProfilerCounter.CLIPPING_OUTPUT_PRIMITIVES);
         LightRenderer lightRenderer = renderer.getLightRenderer();
         profiler.push("draw_lights");
-        boolean rendered = lightRenderer.render(cullFrustum, lightFbo);
+        boolean rendered = lightRenderer.render(cullFrustum, lightFbo, lightInscatteringFbo, renderInscattering);
         profiler.pop();
         renderProfiler.pop();
         debug.popDebugGroup();

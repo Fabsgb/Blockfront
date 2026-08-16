@@ -12,6 +12,7 @@ import foundry.veil.api.resource.VeilResourceInfo;
 import foundry.veil.api.resource.VeilResourceManager;
 import foundry.veil.impl.resource.action.FramebufferEditAction;
 import foundry.veil.impl.resource.action.TextEditAction;
+import imgui.extension.texteditor.TextEditorLanguage;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.lang.invoke.MethodHandles;
@@ -20,7 +21,7 @@ import java.lang.runtime.ObjectMethods;
 import java.util.List;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/resource/type/FramebufferResource.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/resource/type/FramebufferResource.class */
 @ApiStatus.Internal
 public final class FramebufferResource extends Record implements VeilTextResource<FramebufferResource> {
     private final VeilResourceInfo resourceInfo;
@@ -86,5 +87,10 @@ public final class FramebufferResource extends Record implements VeilTextResourc
     @Override // foundry.veil.api.resource.VeilResource
     public int getIconCode() {
         return 60687;
+    }
+
+    @Override // foundry.veil.api.resource.type.VeilTextResource
+    public TextEditorLanguage languageDefinition() {
+        return TextEditorLanguage.Json();
     }
 }

@@ -13,18 +13,20 @@ import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.GeckoLibConstants;
 import software.bernie.geckolib.util.JsonUtil;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/loading/json/raw/FaceUV.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/loading/json/raw/FaceUV.class */
 public final class FaceUV extends Record {
 
     @Nullable
     private final String materialInstance;
-    private final double[] uv;
+
+    /* JADX INFO: renamed from: uv */
+    private final double[] f9197uv;
     private final double[] uvSize;
     private final Rotation uvRotation;
 
     public FaceUV(@Nullable String materialInstance, double[] uv, double[] uvSize, Rotation uvRotation) {
         this.materialInstance = materialInstance;
-        this.uv = uv;
+        this.f9197uv = uv;
         this.uvSize = uvSize;
         this.uvRotation = uvRotation;
     }
@@ -49,8 +51,9 @@ public final class FaceUV extends Record {
         return this.materialInstance;
     }
 
-    public double[] uv() {
-        return this.uv;
+    /* JADX INFO: renamed from: uv */
+    public double[] m8361uv() {
+        return this.f9197uv;
     }
 
     public double[] uvSize() {
@@ -76,7 +79,7 @@ public final class FaceUV extends Record {
         };
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/loading/json/raw/FaceUV$Rotation.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/loading/json/raw/FaceUV$Rotation.class */
     public enum Rotation {
         NONE,
         CLOCKWISE_90,

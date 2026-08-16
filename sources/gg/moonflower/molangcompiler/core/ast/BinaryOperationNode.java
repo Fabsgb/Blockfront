@@ -1,8 +1,8 @@
 package gg.moonflower.molangcompiler.core.ast;
 
-import com.boehmod.blockfront.AbstractC0877pq;
-import com.boehmod.blockfront.C0234dj;
-import com.boehmod.blockfront.C0862pb;
+import com.boehmod.blockfront.C0244ds;
+import com.boehmod.blockfront.C0885px;
+import com.boehmod.blockfront.C0994s;
 import gg.moonflower.molangcompiler.api.exception.MolangException;
 import gg.moonflower.molangcompiler.api.exception.MolangSyntaxException;
 import gg.moonflower.molangcompiler.core.compiler.BytecodeCompiler;
@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 import org.objectweb.asm.Label;
 import org.objectweb.asm.tree.MethodNode;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/core/ast/BinaryOperationNode.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/core/ast/BinaryOperationNode.class */
 @ApiStatus.Internal
 public final class BinaryOperationNode extends Record implements Node {
     private final BinaryOperation operator;
@@ -69,7 +69,7 @@ public final class BinaryOperationNode extends Record implements Node {
     public float evaluate(MolangBytecodeEnvironment environment) throws MolangException {
         float left = this.left.evaluate(environment);
         float right = this.right.evaluate(environment);
-        switch (C14461.$SwitchMap$gg$moonflower$molangcompiler$core$ast$BinaryOperation[this.operator.ordinal()]) {
+        switch (C14721.$SwitchMap$gg$moonflower$molangcompiler$core$ast$BinaryOperation[this.operator.ordinal()]) {
             case 1:
                 return left + right;
             case 2:
@@ -82,19 +82,19 @@ public final class BinaryOperationNode extends Record implements Node {
                 return (left == 0.0f || right == 0.0f) ? 0.0f : 1.0f;
             case 6:
                 return (left == 0.0f && right == 0.0f) ? 0.0f : 1.0f;
-            case 7:
+            case C0994s.f5462C /* 7 */:
                 return left < right ? 1.0f : 0.0f;
             case 8:
                 return left <= right ? 1.0f : 0.0f;
-            case C0862pb.f4509nv /* 9 */:
+            case 9:
                 return left > right ? 1.0f : 0.0f;
             case 10:
                 return left >= right ? 1.0f : 0.0f;
-            case AbstractC0877pq.f4599nO /* 11 */:
+            case 11:
                 return left == right ? 1.0f : 0.0f;
             case 12:
                 return left != right ? 1.0f : 0.0f;
-            case C0862pb.f4508nu /* 13 */:
+            case C0885px.f4841pt /* 13 */:
                 return left;
             default:
                 throw new IncompatibleClassChangeError();
@@ -102,8 +102,8 @@ public final class BinaryOperationNode extends Record implements Node {
     }
 
     /* JADX INFO: renamed from: gg.moonflower.molangcompiler.core.ast.BinaryOperationNode$1 */
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/core/ast/BinaryOperationNode$1.class */
-    static /* synthetic */ class C14461 {
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/core/ast/BinaryOperationNode$1.class */
+    static /* synthetic */ class C14721 {
         static final /* synthetic */ int[] $SwitchMap$gg$moonflower$molangcompiler$core$ast$BinaryOperation = new int[BinaryOperation.values().length];
 
         static {
@@ -168,7 +168,7 @@ public final class BinaryOperationNode extends Record implements Node {
             BytecodeCompiler.writeFloatConst(method, evaluate(environment));
             return;
         }
-        switch (C14461.$SwitchMap$gg$moonflower$molangcompiler$core$ast$BinaryOperation[this.operator.ordinal()]) {
+        switch (C14721.$SwitchMap$gg$moonflower$molangcompiler$core$ast$BinaryOperation[this.operator.ordinal()]) {
             case 3:
                 if (environment.optimize() && tryWriteNegate(method, environment, breakLabel, continueLabel)) {
                     return;
@@ -183,7 +183,7 @@ public final class BinaryOperationNode extends Record implements Node {
                 }
                 writeNode(this.left, method, environment, breakLabel, continueLabel);
                 writeNode(this.right, method, environment, breakLabel, continueLabel);
-                method.visitInsn(C0234dj.f1919gd);
+                method.visitInsn(C0244ds.f1979hd);
                 return;
             case 5:
                 Label label_false = new Label();
@@ -219,16 +219,16 @@ public final class BinaryOperationNode extends Record implements Node {
                 method.visitInsn(12);
                 method.visitLabel(label_end2);
                 return;
-            case 7:
+            case C0994s.f5462C /* 7 */:
             case 8:
-            case C0862pb.f4509nv /* 9 */:
+            case 9:
             case 10:
-            case AbstractC0877pq.f4599nO /* 11 */:
+            case 11:
             case 12:
             default:
                 writeNode(this.left, method, environment, breakLabel, continueLabel);
                 writeNode(this.right, method, environment, breakLabel, continueLabel);
-                switch (C14461.$SwitchMap$gg$moonflower$molangcompiler$core$ast$BinaryOperation[this.operator.ordinal()]) {
+                switch (C14721.$SwitchMap$gg$moonflower$molangcompiler$core$ast$BinaryOperation[this.operator.ordinal()]) {
                     case 1:
                         method.visitInsn(98);
                         return;
@@ -241,26 +241,26 @@ public final class BinaryOperationNode extends Record implements Node {
                     case 6:
                     default:
                         return;
-                    case 7:
+                    case C0994s.f5462C /* 7 */:
                         writeComparision(method, 156);
                         return;
                     case 8:
                         writeComparision(method, 157);
                         return;
-                    case C0862pb.f4509nv /* 9 */:
+                    case 9:
                         writeComparision(method, 158);
                         return;
                     case 10:
                         writeComparision(method, 155);
                         return;
-                    case AbstractC0877pq.f4599nO /* 11 */:
+                    case 11:
                         writeComparision(method, 154);
                         return;
                     case 12:
                         writeComparision(method, 153);
                         return;
                 }
-            case C0862pb.f4508nu /* 13 */:
+            case C0885px.f4841pt /* 13 */:
                 Node node = this.left;
                 if (!(node instanceof VariableGetNode)) {
                     throw new MolangSyntaxException("Expected variable lookup, got " + this.left);

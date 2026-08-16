@@ -9,7 +9,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.packs.resources.ResourceManager;
 import org.lwjgl.opengl.GL12C;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/texture/DynamicCubemapTexture.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/texture/DynamicCubemapTexture.class */
 public class DynamicCubemapTexture extends CubemapTexture {
     private final int[] width = new int[6];
     private final int[] height = new int[6];

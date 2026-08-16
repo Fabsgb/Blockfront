@@ -12,7 +12,7 @@ import foundry.veil.api.quasar.particle.ParticleModuleSet;
 import imgui.ImGui;
 import net.minecraft.client.renderer.LightTexture;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/data/module/init/LightmapParticleModuleData.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/data/module/init/LightmapParticleModuleData.class */
 public final class LightmapParticleModuleData implements ParticleModuleData, EditorAttributeProvider {
     public static final MapCodec<LightmapParticleModuleData> CODEC = Codec.mapEither(Codec.BOOL.optionalFieldOf("fullbright", false).xmap(bright -> {
         return Integer.valueOf(bright.booleanValue() ? 15728880 : -1);

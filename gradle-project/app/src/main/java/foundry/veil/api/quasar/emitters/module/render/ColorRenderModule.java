@@ -8,7 +8,7 @@ import foundry.veil.impl.quasar.ColorGradient;
 import gg.moonflower.molangcompiler.api.MolangExpression;
 import gg.moonflower.molangcompiler.api.exception.MolangRuntimeException;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/emitters/module/render/ColorRenderModule.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/emitters/module/render/ColorRenderModule.class */
 public class ColorRenderModule implements RenderParticleModule {
     private static final ThreadLocal<Color> COLOR = ThreadLocal.withInitial(Color::new);
     private final ColorGradient gradient;

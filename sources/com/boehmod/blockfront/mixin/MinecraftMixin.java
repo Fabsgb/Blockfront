@@ -1,9 +1,9 @@
 package com.boehmod.blockfront.mixin;
 
-import com.boehmod.blockfront.C0304f;
-import com.boehmod.blockfront.C0466iC;
-import com.boehmod.blockfront.C0468iE;
-import com.boehmod.blockfront.C0622l;
+import com.boehmod.blockfront.C0305f;
+import com.boehmod.blockfront.C0485iU;
+import com.boehmod.blockfront.C0488iX;
+import com.boehmod.blockfront.C0623l;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.client.KeyMapping;
@@ -18,37 +18,37 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:com/boehmod/blockfront/mixin/MinecraftMixin.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:com/boehmod/blockfront/mixin/MinecraftMixin.class */
 @Mixin({Minecraft.class})
 public class MinecraftMixin {
     @Inject(method = {"updateTitle"}, at = {@At("TAIL")})
     private void bf$postUpdateTitle(CallbackInfo callbackInfo) {
-        C0622l c0622lM2667b = C0622l.m2667b();
-        if (c0622lM2667b != null) {
-            C0304f.m1601a(c0622lM2667b, (Minecraft) this);
+        C0623l c0623lM2852b = C0623l.m2852b();
+        if (c0623lM2852b != null) {
+            C0305f.m1654a(c0623lM2852b, (Minecraft) this);
         }
     }
 
     @WrapOperation(method = {"handleKeybinds"}, at = {@At(value = "FIELD", target = "Lnet/minecraft/world/entity/player/Inventory;selected:I", opcode = 181)})
     private void bf$onHotbarKeySelect(Inventory inventory, int i, Operation<Void> operation) {
         LocalPlayer localPlayer = Minecraft.getInstance().player;
-        if (localPlayer == null || !C0468iE.m2118a(localPlayer, i)) {
+        if (localPlayer == null || !C0488iX.m2210a(localPlayer, i)) {
             operation.call(new Object[]{inventory, Integer.valueOf(i)});
         }
     }
 
     @WrapOperation(method = {"handleKeybinds"}, at = {@At(value = "INVOKE", target = "Lnet/minecraft/client/gui/components/spectator/SpectatorGui;onHotbarSelected(I)V")})
     private void bf$onSpectatorHotbarSelect(SpectatorGui spectatorGui, int i, Operation<Void> operation) {
-        C0622l c0622lM2667b = C0622l.m2667b();
-        if (c0622lM2667b == null || !c0622lM2667b.m2690e()) {
+        C0623l c0623lM2852b = C0623l.m2852b();
+        if (c0623lM2852b == null || !c0623lM2852b.m2876e()) {
             operation.call(new Object[]{spectatorGui, Integer.valueOf(i)});
         }
     }
 
     @WrapOperation(method = {"shouldEntityAppearGlowing"}, at = {@At(value = "INVOKE", target = "Lnet/minecraft/client/KeyMapping;isDown()Z")})
     private boolean bf$suppressSpectatorOutlines(KeyMapping keyMapping, Operation<Boolean> operation) {
-        C0622l c0622lM2667b = C0622l.m2667b();
-        if (c0622lM2667b == null || !c0622lM2667b.m2690e()) {
+        C0623l c0623lM2852b = C0623l.m2852b();
+        if (c0623lM2852b == null || !c0623lM2852b.m2876e()) {
             return ((Boolean) operation.call(new Object[]{keyMapping})).booleanValue();
         }
         return false;
@@ -57,8 +57,8 @@ public class MinecraftMixin {
     @WrapOperation(method = {"openChatScreen"}, at = {@At(value = "INVOKE", target = "Lnet/minecraft/client/gui/Gui;setOverlayMessage(Lnet/minecraft/network/chat/Component;Z)V")})
     private void bf$brandChatDisabledMessage(Gui gui, Component component, boolean z, Operation<Void> operation) {
         Minecraft minecraft = (Minecraft) this;
-        if (C0466iC.m2101X() && minecraft.getChatStatus() == Minecraft.ChatStatus.DISABLED_BY_PROFILE) {
-            C0466iC.m2099c(minecraft, C0466iC.f2882hL);
+        if (C0485iU.m2174Y() && minecraft.getChatStatus() == Minecraft.ChatStatus.DISABLED_BY_PROFILE) {
+            C0485iU.m2172c(minecraft, C0485iU.f2956hW);
         } else {
             operation.call(new Object[]{gui, component, Boolean.valueOf(z)});
         }

@@ -1,6 +1,6 @@
 package com.boehmod.blockfront.mixin;
 
-import com.boehmod.blockfront.C0389gf;
+import com.boehmod.blockfront.C0406gv;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:com/boehmod/blockfront/mixin/LevelRendererMixin.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:com/boehmod/blockfront/mixin/LevelRendererMixin.class */
 @Mixin({LevelRenderer.class})
 public class LevelRendererMixin {
 
@@ -24,7 +24,7 @@ public class LevelRendererMixin {
 
     @Inject(method = {"renderClouds(Lcom/mojang/blaze3d/vertex/PoseStack;Lorg/joml/Matrix4f;Lorg/joml/Matrix4f;FDDD)V"}, at = {@At("HEAD")}, cancellable = true)
     private void bf$replaceRenderClouds(PoseStack poseStack, Matrix4f matrix4f, Matrix4f matrix4f2, float f, double d, double d2, double d3, CallbackInfo callbackInfo) {
-        if (C0389gf.m1870a(Minecraft.getInstance(), this.level, this.ticks, poseStack, matrix4f, matrix4f2, f, d, d2, d3)) {
+        if (C0406gv.m1935a(Minecraft.getInstance(), this.level, this.ticks, poseStack, matrix4f, matrix4f2, f, d, d2, d3)) {
             callbackInfo.cancel();
         }
     }

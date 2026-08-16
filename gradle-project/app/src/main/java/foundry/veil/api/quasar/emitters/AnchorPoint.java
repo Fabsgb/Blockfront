@@ -14,10 +14,12 @@ import net.minecraft.world.phys.Vec3;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/emitters/AnchorPoint.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/emitters/AnchorPoint.class */
 public class AnchorPoint {
     public static AnchorPoint TEST_POINT = new AnchorPoint(ResourceLocation.fromNamespaceAndPath("quasar", "test_point"));
-    private final ResourceLocation id;
+
+    /* JADX INFO: renamed from: id */
+    private final ResourceLocation f9145id;
     public Vector3f localOffset = new Vector3f(0.0f, 0.0f, 0.0f);
     public Vector3f worldOffset = new Vector3f(0.0f, 0.0f, 0.0f);
     public List<ModelPart> modelParts = null;
@@ -25,11 +27,11 @@ public class AnchorPoint {
     public Vector4f transformMatrix = new Vector4f();
 
     public AnchorPoint(ResourceLocation id) {
-        this.id = id;
+        this.f9145id = id;
     }
 
     public ResourceLocation getId() {
-        return this.id;
+        return this.f9145id;
     }
 
     public Vector3f getLocalOffset() {

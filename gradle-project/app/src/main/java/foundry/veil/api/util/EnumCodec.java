@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 import net.minecraft.network.VarInt;
 import net.minecraft.network.codec.StreamCodec;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/util/EnumCodec.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/util/EnumCodec.class */
 public class EnumCodec<T extends Enum<?>> implements Codec<T> {
     private final String name;
     private final T[] values;
@@ -97,7 +97,7 @@ public class EnumCodec<T extends Enum<?>> implements Codec<T> {
         return new Builder<>(name);
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/util/EnumCodec$Builder.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/util/EnumCodec$Builder.class */
     public static class Builder<T extends Enum<?>> {
         private static final Function<Enum<?>, String> LOWERCASE = e -> {
             return e.name().toLowerCase(Locale.ROOT);

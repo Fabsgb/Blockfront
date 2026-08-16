@@ -2,7 +2,6 @@ package foundry.veil.api.flare.data.model;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import foundry.veil.api.flare.data.model.SimpleBakedShell;
 import foundry.veil.api.flare.model.BakedShell;
 import foundry.veil.api.flare.model.ShellBakery;
 import foundry.veil.api.flare.model.UnbakedShell;
@@ -12,7 +11,7 @@ import java.util.Map;
 import net.minecraft.core.Direction;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/flare/data/model/FlareShell.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/flare/data/model/FlareShell.class */
 public final class FlareShell implements UnbakedShell {
     public static final Codec<FlareShell> CODEC = RecordCodecBuilder.create(instance -> {
         return instance.group(ShellElement.CODEC.listOf().fieldOf("elements").forGetter((v0) -> {

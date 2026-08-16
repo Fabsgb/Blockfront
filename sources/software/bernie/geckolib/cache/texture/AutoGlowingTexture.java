@@ -27,7 +27,7 @@ import software.bernie.geckolib.GeckoLibConstants;
 import software.bernie.geckolib.GeckoLibServices;
 import software.bernie.geckolib.resource.GeoGlowingTextureMeta;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/cache/texture/AutoGlowingTexture.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/cache/texture/AutoGlowingTexture.class */
 public class AutoGlowingTexture extends GeoAbstractTexture {
     private static final String APPENDIX = "_glowmask";
     protected final ResourceLocation textureBase;
@@ -65,10 +65,12 @@ public class AutoGlowingTexture extends GeoAbstractTexture {
         return path;
     }
 
+    /* JADX WARN: Code duplicated, block: B:55:0x01b7  */
     @Override // software.bernie.geckolib.cache.texture.GeoAbstractTexture
     @Nullable
     protected RenderCall loadTexture(ResourceManager resourceManager, Minecraft mc) throws IOException {
         NativeImage pixels;
+        boolean z;
         try {
             DynamicTexture dynamicTexture = (AbstractTexture) mc.submit(() -> {
                 return mc.getTextureManager().getTexture(this.textureBase);
@@ -91,6 +93,9 @@ public class AutoGlowingTexture extends GeoAbstractTexture {
                 if (glowLayerResource.isPresent()) {
                     glowImage = NativeImage.read(glowLayerResource.get().open());
                     glowLayerMeta = GeoGlowingTextureMeta.fromExistingImage(glowImage);
+                    if (baseImage != null && (glowImage.getWidth() != baseImage.getWidth() || glowImage.getHeight() != baseImage.getHeight())) {
+                        throw new IllegalStateException(String.format("Glowmask texture dimensions do not match base texture dimensions! Mask: %s, Base: %s", this.glowLayer, this.textureBase));
+                    }
                 } else {
                     Optional<GeoGlowingTextureMeta> meta = textureBaseResource.metadata().getSection(GeoGlowingTextureMeta.DESERIALIZER);
                     if (meta.isPresent()) {
@@ -112,8 +117,24 @@ public class AutoGlowingTexture extends GeoAbstractTexture {
             if (mask == null) {
                 return null;
             }
+            if (dynamicTexture instanceof AnimatableTexture) {
+                AnimatableTexture animatableTexture = (AnimatableTexture) dynamicTexture;
+                if (animatableTexture.isAnimated()) {
+                    z = true;
+                } else {
+                    z = false;
+                }
+            } else {
+                z = false;
+            }
+            boolean animated = z;
+            if (animated) {
+                ((AnimatableTexture) dynamicTexture).animationContents.animatedTexture.setGlowMaskTexture(this, baseImage, mask);
+            }
             return () -> {
-                uploadSimple(getId(), mask, blur, clamp);
+                if (!animated) {
+                    uploadSimple(getId(), mask, blur, clamp);
+                }
                 if (dynamicTexture instanceof DynamicTexture) {
                     DynamicTexture dynamicTexture3 = (DynamicTexture) dynamicTexture;
                     dynamicTexture3.upload();

@@ -6,9 +6,11 @@ import com.google.gson.JsonObject;
 import io.netty.buffer.ByteBuf;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/player/challenge/ItemKillChallenge.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/player/challenge/ItemKillChallenge.class */
 public class ItemKillChallenge extends Challenge {
-    public static final PacketIdentifier ID = new PacketIdentifier("ItemKillChallenge");
+
+    /* JADX INFO: renamed from: ID */
+    public static final PacketIdentifier f16ID = new PacketIdentifier("ItemKillChallenge");
 
     @NotNull
     private final CloudResourceLocation item;

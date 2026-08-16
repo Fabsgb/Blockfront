@@ -11,7 +11,7 @@ import foundry.veil.api.quasar.emitters.module.UpdateParticleModule;
 import foundry.veil.api.quasar.particle.QuasarParticle;
 import net.minecraft.util.Mth;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/emitters/module/render/DynamicLightModule.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/emitters/module/render/DynamicLightModule.class */
 public class DynamicLightModule implements UpdateParticleModule, RenderParticleModule {
     private final LightModuleData data;
     private float brightness;

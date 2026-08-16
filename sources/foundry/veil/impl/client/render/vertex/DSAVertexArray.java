@@ -8,7 +8,7 @@ import java.nio.ByteBuffer;
 import org.jetbrains.annotations.ApiStatus;
 import org.lwjgl.opengl.ARBDirectStateAccess;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/vertex/DSAVertexArray.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/vertex/DSAVertexArray.class */
 @ApiStatus.Internal
 public class DSAVertexArray extends VertexArray {
     public DSAVertexArray(int id) {
@@ -22,7 +22,7 @@ public class DSAVertexArray extends VertexArray {
         this.indexBuffer = null;
         int elementArrayBuffer = getOrCreateBuffer(1);
         ARBDirectStateAccess.glNamedBufferData(elementArrayBuffer, data, 35044);
-        ARBDirectStateAccess.glVertexArrayElementBuffer(this.f8756id, elementArrayBuffer);
+        ARBDirectStateAccess.glVertexArrayElementBuffer(this.f9142id, elementArrayBuffer);
     }
 
     @Override // foundry.veil.api.client.render.vertex.VertexArray
@@ -30,6 +30,6 @@ public class DSAVertexArray extends VertexArray {
         this.indexBuffer = RenderSystem.getSequentialBuffer(drawState.mode());
         AutoStorageIndexBufferExtension ext = this.indexBuffer;
         ext.veil$ensureStorage(drawState.indexCount());
-        ARBDirectStateAccess.glVertexArrayElementBuffer(this.f8756id, ext.veil$getBuffer());
+        ARBDirectStateAccess.glVertexArrayElementBuffer(this.f9142id, ext.veil$getBuffer());
     }
 }

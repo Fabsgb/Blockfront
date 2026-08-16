@@ -1,5 +1,6 @@
 package com.boehmod.bflib.cloud.common.reward;
 
+import com.boehmod.bflib.cloud.packet.IPacket;
 import com.boehmod.bflib.cloud.packet.PacketIdentifier;
 import io.netty.buffer.ByteBuf;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
@@ -8,9 +9,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectMaps;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import javax.annotation.Nullable;
@@ -18,7 +17,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/reward/RewardRegistry.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/reward/RewardRegistry.class */
 public final class RewardRegistry {
 
     @NotNull
@@ -31,9 +30,9 @@ public final class RewardRegistry {
     private static final Object2ObjectMap<Class<? extends RewardType>, PacketIdentifier> CLASS_TO_IDENTIFIER_MAP = Object2ObjectMaps.synchronize(new Object2ObjectOpenHashMap());
 
     static {
-        registerRewardType(ExpRewardType.ID, ExpRewardType.class);
-        registerRewardType(ItemRewardType.ID, ItemRewardType.class);
-        registerRewardType(RandomItemRewardType.ID, RandomItemRewardType.class);
+        registerRewardType(ExpRewardType.f20ID, ExpRewardType.class);
+        registerRewardType(ItemRewardType.f21ID, ItemRewardType.class);
+        registerRewardType(RandomItemRewardType.f22ID, RandomItemRewardType.class);
     }
 
     private RewardRegistry() {
@@ -79,24 +78,13 @@ public final class RewardRegistry {
     }
 
     public static void writeRewardTypeList(@NotNull ByteBuf byteBuffer, @NotNull ObjectList<RewardType> rewardTypes) throws IOException {
-        byteBuffer.writeInt(rewardTypes.size());
-        ObjectListIterator it = rewardTypes.iterator();
-        while (it.hasNext()) {
-            RewardType rewardType = (RewardType) it.next();
-            writeRewardType(rewardType, byteBuffer);
-        }
+        IPacket.writeCollection(byteBuffer, rewardTypes, (buffer, rewardType) -> {
+            writeRewardType(rewardType, buffer);
+        });
     }
 
     @NotNull
     public static ObjectList<RewardType> readRewardTypeList(@NotNull ByteBuf byteBuffer) throws IOException {
-        int size = byteBuffer.readInt();
-        ObjectArrayList objectArrayList = new ObjectArrayList(size);
-        for (int i = 0; i < size; i++) {
-            RewardType rewardType = readRewardType(byteBuffer);
-            if (rewardType != null) {
-                objectArrayList.add(rewardType);
-            }
-        }
-        return objectArrayList;
+        return IPacket.readListSkippingNulls(byteBuffer, RewardRegistry::readRewardType);
     }
 }

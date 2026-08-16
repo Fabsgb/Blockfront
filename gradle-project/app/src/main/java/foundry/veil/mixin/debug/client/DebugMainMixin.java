@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/mixin/debug/client/DebugMainMixin.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/mixin/debug/client/DebugMainMixin.class */
 @Mixin({Main.class})
 public class DebugMainMixin {
 
@@ -33,17 +33,8 @@ public class DebugMainMixin {
         String path = System.getProperty("java.library.path");
         String name = System.mapLibraryName("renderdoc");
         boolean detected = false;
-        String[] strArrSplit = path.split(";");
-        int length = strArrSplit.length;
-        int i = 0;
-        while (true) {
-            if (i >= length) {
-                break;
-            }
-            String folder = strArrSplit[i];
-            if (!Files.exists(Path.of(folder + "/" + name, new String[0]), new LinkOption[0])) {
-                i++;
-            } else {
+        for (String folder : path.split(";")) {
+            if (Files.exists(Path.of(folder + "/" + name, new String[0]), new LinkOption[0])) {
                 detected = true;
                 break;
             }

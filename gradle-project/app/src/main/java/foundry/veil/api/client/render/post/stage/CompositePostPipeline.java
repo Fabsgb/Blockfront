@@ -24,7 +24,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/post/stage/CompositePostPipeline.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/post/stage/CompositePostPipeline.class */
 public final class CompositePostPipeline implements PostPipeline {
     private static final Codec<Map<ResourceLocation, FramebufferDefinition>> FRAMEBUFFER_CODEC = Codec.unboundedMap(Codec.STRING.xmap(name -> {
         return ResourceLocation.fromNamespaceAndPath("temp", name);
@@ -167,7 +167,7 @@ public final class CompositePostPipeline implements PostPipeline {
             }).toArray(x$0 -> {
                 return new ShaderUniformAccess[x$0];
             });
-            return ShaderUniformAccess.of(uniforms);
+            return ShaderUniformAccess.m8340of(uniforms);
         });
     }
 

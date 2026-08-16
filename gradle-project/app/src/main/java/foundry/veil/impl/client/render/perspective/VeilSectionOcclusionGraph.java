@@ -24,7 +24,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/perspective/VeilSectionOcclusionGraph.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/perspective/VeilSectionOcclusionGraph.class */
 public class VeilSectionOcclusionGraph {
     private static final int MINIMUM_ADVANCED_CULLING_DISTANCE = 60;
     private final NodeQueue nodeQueue = new NodeQueue(64);
@@ -94,12 +94,18 @@ public class VeilSectionOcclusionGraph {
         this.nodeQueue.addAll(list);
     }
 
+    /* JADX WARN: Code duplicated, block: B:100:0x035e  */
+    /* JADX WARN: Code duplicated, block: B:110:0x0369 A[SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:44:0x018c  */
+    /* JADX WARN: Code duplicated, block: B:92:0x02f9  */
+    /* JADX WARN: Code duplicated, block: B:94:0x0309  */
+    /* JADX WARN: Code duplicated, block: B:95:0x0313  */
+    /* JADX WARN: Code duplicated, block: B:97:0x033b  */
+    /* JADX WARN: Code duplicated, block: B:98:0x0353  */
     /* JADX WARN: Code restructure failed: missing block: B:55:0x01c5, code lost:
     
         r0 = 0;
      */
-    /* JADX WARN: Removed duplicated region for block: B:44:0x018c  */
-    /* JADX WARN: Removed duplicated region for block: B:92:0x02f9  */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
         To view partially-correct code enable 'Show inconsistent code' option in preferences
@@ -129,7 +135,7 @@ public class VeilSectionOcclusionGraph {
         return null;
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/perspective/VeilSectionOcclusionGraph$GraphStorage.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/perspective/VeilSectionOcclusionGraph$GraphStorage.class */
     private static class GraphStorage {
         public final SectionToNodeMap sectionToNodeMap;
         public final IntSet renderSections;
@@ -140,7 +146,7 @@ public class VeilSectionOcclusionGraph {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/perspective/VeilSectionOcclusionGraph$Node.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/perspective/VeilSectionOcclusionGraph$Node.class */
     private static class Node {
         private final SectionRenderDispatcher.RenderSection section;
         private int sourceDirections;
@@ -169,7 +175,7 @@ public class VeilSectionOcclusionGraph {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/perspective/VeilSectionOcclusionGraph$SectionToNodeMap.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/perspective/VeilSectionOcclusionGraph$SectionToNodeMap.class */
     private static class SectionToNodeMap {
         private final Node[] nodes;
 
@@ -191,7 +197,7 @@ public class VeilSectionOcclusionGraph {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/perspective/VeilSectionOcclusionGraph$NodeQueue.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/perspective/VeilSectionOcclusionGraph$NodeQueue.class */
     private static class NodeQueue implements Queue<Node> {
         private Node[] data;
         private int size = 0;

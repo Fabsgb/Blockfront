@@ -1,7 +1,7 @@
 package foundry.veil.api.resource.editor;
 
+import foundry.imgui.api.ImGuiMC;
 import foundry.veil.Veil;
-import foundry.veil.api.client.imgui.VeilImGuiUtil;
 import foundry.veil.api.resource.VeilEditorEnvironment;
 import foundry.veil.api.resource.VeilResource;
 import foundry.veil.api.resource.VeilResourceInfo;
@@ -19,7 +19,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/resource/editor/ResourceOverrideEditor.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/resource/editor/ResourceOverrideEditor.class */
 @ApiStatus.Internal
 public class ResourceOverrideEditor implements ResourceFileEditor<VeilResource<?>> {
     private static final Component NAME = Component.translatable("resource.veil.action.override");
@@ -59,7 +59,7 @@ public class ResourceOverrideEditor implements ResourceFileEditor<VeilResource<?
             this.closed = true;
             return;
         }
-        VeilImGuiUtil.component(NAME);
+        ImGuiMC.component(NAME);
         VeilResourceManager resourceManager = this.environment.getResourceManager();
         for (Path writePath : this.options) {
             if (ImGui.selectable(writePath.toString(), false, 16)) {

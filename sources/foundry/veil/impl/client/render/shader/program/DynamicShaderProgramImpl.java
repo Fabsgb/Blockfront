@@ -13,7 +13,6 @@ import foundry.veil.api.client.render.shader.processor.ShaderImporter;
 import foundry.veil.api.client.render.shader.processor.ShaderPreProcessor;
 import foundry.veil.api.client.render.shader.program.ProgramDefinition;
 import foundry.veil.impl.client.render.shader.processor.ShaderProcessorList;
-import foundry.veil.impl.client.render.shader.program.ShaderProgramImpl;
 import io.github.ocelot.glslprocessor.api.GlslParser;
 import io.github.ocelot.glslprocessor.api.GlslSyntaxException;
 import io.github.ocelot.glslprocessor.api.node.GlslTree;
@@ -37,7 +36,7 @@ import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 import org.lwjgl.opengl.GLCapabilities;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/shader/program/DynamicShaderProgramImpl.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/shader/program/DynamicShaderProgramImpl.class */
 @ApiStatus.Internal
 public class DynamicShaderProgramImpl extends ShaderProgramImpl {
     private final Runnable onFree;
@@ -129,7 +128,7 @@ public class DynamicShaderProgramImpl extends ShaderProgramImpl {
         this.oldShader = program;
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/shader/program/DynamicShaderProgramImpl$PreProcessorContext.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/shader/program/DynamicShaderProgramImpl$PreProcessorContext.class */
     private static final class PreProcessorContext extends Record implements ShaderPreProcessor.VeilContext {
         private final Map<String, Object> customProgramData;
         private final ShaderProcessorList processor;

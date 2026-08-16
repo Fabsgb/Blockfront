@@ -8,12 +8,12 @@ import net.minecraft.core.Direction;
 import org.lwjgl.opengl.ARBDirectStateAccess;
 import org.lwjgl.opengl.GL13C;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/texture/CubemapTexture.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/texture/CubemapTexture.class */
 public abstract class CubemapTexture extends AbstractTexture implements AbstractTextureExtension {
 
     /* JADX INFO: renamed from: foundry.veil.api.client.render.texture.CubemapTexture$1 */
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/texture/CubemapTexture$1.class */
-    static /* synthetic */ class C13701 {
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/texture/CubemapTexture$1.class */
+    static /* synthetic */ class C13961 {
         static final /* synthetic */ int[] $SwitchMap$net$minecraft$core$Direction = new int[Direction.values().length];
 
         static {
@@ -46,7 +46,7 @@ public abstract class CubemapTexture extends AbstractTexture implements Abstract
 
     /* JADX INFO: Thrown type has an unknown type hierarchy: java.lang.MatchException */
     public static int getGlFace(Direction direction) throws MatchException {
-        switch (C13701.$SwitchMap$net$minecraft$core$Direction[direction.ordinal()]) {
+        switch (C13961.$SwitchMap$net$minecraft$core$Direction[direction.ordinal()]) {
             case 1:
                 return 34072;
             case 2:

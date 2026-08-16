@@ -8,7 +8,7 @@ import foundry.veil.api.client.render.shader.program.UniformAccess;
 import net.minecraft.resources.ResourceLocation;
 import org.joml.Vector3fc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/light/renderer/DDALightRenderer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/light/renderer/DDALightRenderer.class */
 public interface DDALightRenderer<T extends LightData & DDALightData> extends LightTypeRenderer<T> {
     void uploadVoxelGridUniforms(int i, Vector3fc vector3fc);
 

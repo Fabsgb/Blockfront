@@ -3,7 +3,7 @@ package foundry.veil.platform;
 import net.minecraft.network.PacketListener;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/platform/VeilPlatform.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/platform/VeilPlatform.class */
 public interface VeilPlatform {
     PlatformType getPlatformType();
 
@@ -17,7 +17,7 @@ public interface VeilPlatform {
 
     boolean hasChannel(PacketListener packetListener, CustomPacketPayload.Type<?> type);
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/platform/VeilPlatform$PlatformType.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/platform/VeilPlatform$PlatformType.class */
     public enum PlatformType {
         NEOFORGE("NeoForge", "forge"),
         FABRIC("Fabric", "fabric");

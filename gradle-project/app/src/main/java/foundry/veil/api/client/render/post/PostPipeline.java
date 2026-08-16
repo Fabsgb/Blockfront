@@ -14,7 +14,7 @@ import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 import org.lwjgl.system.NativeResource;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/post/PostPipeline.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/post/PostPipeline.class */
 public interface PostPipeline extends UniformAccess, NativeResource {
     public static final Codec<PostPipeline> CODEC = PostPipelineStageRegistry.REGISTRY.byNameCodec().dispatch((v0) -> {
         return v0.getType();
@@ -79,7 +79,7 @@ public interface PostPipeline extends UniformAccess, NativeResource {
     default void setStorageBlock(CharSequence name, int binding) {
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/post/PostPipeline$Context.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/post/PostPipeline$Context.class */
     @ApiStatus.NonExtendable
     public interface Context extends ShaderTextureSource.Context {
         void setTexture(CharSequence charSequence, int i, int i2, int i3);

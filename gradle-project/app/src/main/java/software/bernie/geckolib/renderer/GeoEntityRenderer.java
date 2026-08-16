@@ -15,9 +15,11 @@ import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.Pose;
@@ -35,6 +37,7 @@ import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.cache.object.GeoBone;
 import software.bernie.geckolib.cache.texture.AnimatableTexture;
 import software.bernie.geckolib.constant.DataTickets;
+import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.model.data.EntityModelData;
 import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
@@ -43,7 +46,7 @@ import software.bernie.geckolib.util.ClientUtil;
 import software.bernie.geckolib.util.Color;
 import software.bernie.geckolib.util.RenderUtil;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/renderer/GeoEntityRenderer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/renderer/GeoEntityRenderer.class */
 public class GeoEntityRenderer<T extends Entity & GeoAnimatable> extends EntityRenderer<T> implements GeoRenderer<T> {
     protected final GeoRenderLayersContainer<T> renderLayers;
     protected final GeoModel<T> model;
@@ -52,6 +55,10 @@ public class GeoEntityRenderer<T extends Entity & GeoAnimatable> extends EntityR
     protected float scaleHeight;
     protected Matrix4f entityRenderTranslations;
     protected Matrix4f modelRenderTranslations;
+
+    public GeoEntityRenderer(EntityRendererProvider.Context context, EntityType<? extends T> entityType) {
+        this(context, new DefaultedEntityGeoModel(BuiltInRegistries.ENTITY_TYPE.getKey(entityType)));
+    }
 
     public GeoEntityRenderer(EntityRendererProvider.Context renderManager, GeoModel<T> model) {
         super(renderManager);
@@ -70,7 +77,7 @@ public class GeoEntityRenderer<T extends Entity & GeoAnimatable> extends EntityR
 
     @Override // software.bernie.geckolib.renderer.GeoRenderer
     /* JADX INFO: renamed from: getAnimatable, reason: merged with bridge method [inline-methods] */
-    public T mo2142getAnimatable() {
+    public T mo9710getAnimatable() {
         return this.animatable;
     }
 
@@ -326,23 +333,29 @@ public class GeoEntityRenderer<T extends Entity & GeoAnimatable> extends EntityR
             return Minecraft.renderNames() && animatable != minecraft.getCameraEntity() && visibleToClient && !animatable.isVehicle();
         }
         PlayerTeam team2 = minecraft.player.getTeam();
-        switch (AnonymousClass1.$SwitchMap$net$minecraft$world$scores$Team$Visibility[team.getNameTagVisibility().ordinal()]) {
+        switch (C15021.$SwitchMap$net$minecraft$world$scores$Team$Visibility[team.getNameTagVisibility().ordinal()]) {
             case 1:
                 return visibleToClient;
             case 2:
                 return false;
             case 3:
-                return team2 == null ? visibleToClient : team.isAlliedTo(team2) && (team.canSeeFriendlyInvisibles() || visibleToClient);
+                if (team2 == null) {
+                    return visibleToClient;
+                }
+                return team.isAlliedTo(team2) && (team.canSeeFriendlyInvisibles() || visibleToClient);
             case 4:
-                return team2 == null ? visibleToClient : !team.isAlliedTo(team2) && visibleToClient;
+                if (team2 == null) {
+                    return visibleToClient;
+                }
+                return !team.isAlliedTo(team2) && visibleToClient;
             default:
                 throw new MatchException((String) null, (Throwable) null);
         }
     }
 
-    /* JADX INFO: renamed from: software.bernie.geckolib.renderer.GeoEntityRenderer$1, reason: invalid class name */
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/renderer/GeoEntityRenderer$1.class */
-    static /* synthetic */ class AnonymousClass1 {
+    /* JADX INFO: renamed from: software.bernie.geckolib.renderer.GeoEntityRenderer$1 */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/renderer/GeoEntityRenderer$1.class */
+    static /* synthetic */ class C15021 {
         static final /* synthetic */ int[] $SwitchMap$net$minecraft$world$scores$Team$Visibility = new int[Team.Visibility.values().length];
 
         static {

@@ -13,7 +13,7 @@ import foundry.veil.api.event.VeilRendererAvailableEvent;
 import foundry.veil.api.event.VeilShaderCompileEvent;
 import java.util.ServiceLoader;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/platform/VeilEventPlatform.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/platform/VeilEventPlatform.class */
 public interface VeilEventPlatform {
     public static final VeilEventPlatform INSTANCE = (VeilEventPlatform) ServiceLoader.load(VeilEventPlatform.class).findFirst().orElseThrow(() -> {
         return new RuntimeException("Failed to find platform event provider");

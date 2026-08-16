@@ -5,7 +5,7 @@ import net.minecraft.world.level.LevelHeightAccessor;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:com/boehmod/blockfront/mixin/ClientLevelDataMixin.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:com/boehmod/blockfront/mixin/ClientLevelDataMixin.class */
 @Mixin({ClientLevel.ClientLevelData.class})
 public class ClientLevelDataMixin {
     @Overwrite

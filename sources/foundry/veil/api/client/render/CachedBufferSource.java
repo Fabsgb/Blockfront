@@ -14,7 +14,7 @@ import net.minecraft.client.renderer.RenderType;
 import org.jetbrains.annotations.NotNull;
 import org.lwjgl.system.NativeResource;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/CachedBufferSource.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/CachedBufferSource.class */
 public class CachedBufferSource implements MultiBufferSource, NativeResource {
     private final Object2ObjectMap<RenderType, ByteBufferBuilder> buffers = new Object2ObjectArrayMap();
     private final Object2ObjectMap<RenderType, BufferBuilder> startedBuilders = new Object2ObjectArrayMap();

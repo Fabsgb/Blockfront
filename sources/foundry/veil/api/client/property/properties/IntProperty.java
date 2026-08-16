@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import net.minecraft.client.renderer.ShaderInstance;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/property/properties/IntProperty.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/property/properties/IntProperty.class */
 public class IntProperty extends Property<Integer> {
     @Override // foundry.veil.api.client.property.Property
     public /* bridge */ /* synthetic */ void modify(Integer num, PropertyModifier.PropertyModifierMode propertyModifierMode, Optional optional) {

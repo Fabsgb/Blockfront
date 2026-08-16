@@ -10,7 +10,7 @@ import java.lang.invoke.MethodType;
 import java.lang.runtime.ObjectMethods;
 import org.lwjgl.opengl.GL20C;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/program/ShaderBlendMode.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/program/ShaderBlendMode.class */
 public final class ShaderBlendMode extends Record {
     private final BlendEquation colorEquation;
     private final BlendEquation alphaEquation;
@@ -95,7 +95,7 @@ public final class ShaderBlendMode extends Record {
         return (this.colorEquation == BlendEquation.ADD && this.alphaEquation == BlendEquation.ADD) ? false : true;
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/program/ShaderBlendMode$BlendEquation.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/program/ShaderBlendMode$BlendEquation.class */
     public enum BlendEquation {
         ADD(32774),
         SUBTRACT(32778),

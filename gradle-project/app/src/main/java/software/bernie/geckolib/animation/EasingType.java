@@ -3,14 +3,16 @@ package software.bernie.geckolib.animation;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonPrimitive;
 import it.unimi.dsi.fastutil.doubles.Double2DoubleFunction;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import net.minecraft.util.Mth;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animation.keyframe.AnimationPoint;
 import software.bernie.geckolib.loading.math.MathValue;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/animation/EasingType.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/animation/EasingType.class */
 @FunctionalInterface
 public interface EasingType {
     public static final Map<String, EasingType> EASING_TYPES = new ConcurrentHashMap(64);
@@ -110,11 +112,9 @@ public interface EasingType {
     public static final EasingType EASE_IN_OUT_BOUNCE = register("easeinoutbounce", value -> {
         return easeInOut(bounce(value));
     });
-    public static final EasingType CATMULLROM = register("catmullrom", value -> {
-        return easeInOut(EasingType::catmullRom);
-    });
+    public static final EasingType CATMULLROM = register("catmullrom", new CatmullRomEasing());
 
-    Double2DoubleFunction buildTransformer(Double d);
+    Double2DoubleFunction buildTransformer(@Nullable Double d);
 
     static double lerpWithOverride(AnimationPoint animationPoint, EasingType override) {
         EasingType easingType = override;
@@ -126,13 +126,13 @@ public interface EasingType {
 
     default double apply(AnimationPoint animationPoint) {
         Double easingVariable = null;
-        if (animationPoint.keyFrame() != null && animationPoint.keyFrame().easingArgs().size() > 0) {
-            easingVariable = Double.valueOf(((MathValue) animationPoint.keyFrame().easingArgs().get(0)).get());
+        if (animationPoint.keyFrame() != null && !animationPoint.keyFrame().easingArgs().isEmpty()) {
+            easingVariable = Double.valueOf(((MathValue) animationPoint.keyFrame().easingArgs().getFirst()).get());
         }
         return apply(animationPoint, easingVariable, animationPoint.currentTick() / animationPoint.transitionLength());
     }
 
-    default double apply(AnimationPoint animationPoint, Double easingValue, double lerpValue) {
+    default double apply(AnimationPoint animationPoint, @Nullable Double easingValue, double lerpValue) {
         if (animationPoint.currentTick() >= animationPoint.transitionLength()) {
             return (float) animationPoint.animationEndValue();
         }
@@ -163,7 +163,7 @@ public interface EasingType {
     }
 
     static double catmullRom(double n) {
-        return 0.5d * ((2.0d * (n + 1.0d)) + (((n + 2.0d) - n) * 1.0d) + (((((2.0d * n) - (5.0d * (n + 1.0d))) + (4.0d * (n + 2.0d))) - (n + 3.0d)) * 1.0d) + (((((3.0d * (n + 1.0d)) - n) - (3.0d * (n + 2.0d))) + n + 3.0d) * 1.0d));
+        return 0.5d * ((2.0d * (n + 1.0d)) + 2.0d + ((((2.0d * n) - (5.0d * (n + 1.0d))) + (4.0d * (n + 2.0d))) - (n + 3.0d)) + (((3.0d * (n + 1.0d)) - n) - (3.0d * (n + 2.0d))) + n + 3.0d);
     }
 
     static Double2DoubleFunction easeIn(Double2DoubleFunction function) {
@@ -286,5 +286,29 @@ public interface EasingType {
             }
             return ((double) leftBorderIndex) * stepLength;
         };
+    }
+
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/animation/EasingType$CatmullRomEasing.class */
+    public static class CatmullRomEasing implements EasingType {
+        public static double getPointOnSpline(double delta, double p0, double p1, double p2, double p3) {
+            return 0.5d * ((2.0d * p1) + ((p2 - p0) * delta) + (((((2.0d * p0) - (5.0d * p1)) + (4.0d * p2)) - p3) * delta * delta) + (((((3.0d * p1) - p0) - (3.0d * p2)) + p3) * delta * delta * delta));
+        }
+
+        @Override // software.bernie.geckolib.animation.EasingType
+        public Double2DoubleFunction buildTransformer(Double value) {
+            return EasingType.easeInOut(EasingType::catmullRom);
+        }
+
+        @Override // software.bernie.geckolib.animation.EasingType
+        public double apply(AnimationPoint animationPoint, Double easingValue, double lerpValue) {
+            if (animationPoint.currentTick() >= animationPoint.transitionLength()) {
+                return animationPoint.animationEndValue();
+            }
+            List<T> listEasingArgs = animationPoint.keyFrame().easingArgs();
+            if (listEasingArgs.size() < 2) {
+                return Mth.lerp(((Double) buildTransformer(easingValue).apply(Double.valueOf(lerpValue))).doubleValue(), animationPoint.animationStartValue(), animationPoint.animationEndValue());
+            }
+            return getPointOnSpline(lerpValue, ((MathValue) listEasingArgs.get(0)).get(), animationPoint.animationStartValue(), animationPoint.animationEndValue(), ((MathValue) listEasingArgs.get(1)).get());
+        }
     }
 }

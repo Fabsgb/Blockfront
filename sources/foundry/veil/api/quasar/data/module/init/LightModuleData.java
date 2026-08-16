@@ -16,7 +16,7 @@ import gg.moonflower.molangcompiler.api.MolangExpression;
 import imgui.ImGui;
 import imgui.type.ImString;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/data/module/init/LightModuleData.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/data/module/init/LightModuleData.class */
 public final class LightModuleData implements ParticleModuleData, EditorAttributeProvider {
     public static final MapCodec<LightModuleData> CODEC = RecordCodecBuilder.mapCodec(instance -> {
         return instance.group(ColorGradient.CODEC.fieldOf("gradient").forGetter((v0) -> {

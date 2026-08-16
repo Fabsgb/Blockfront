@@ -8,16 +8,18 @@ import java.util.Map;
 import net.minecraft.core.Direction;
 import net.minecraft.util.StringRepresentable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/flare/data/model/ShellElementFace.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/flare/data/model/ShellElementFace.class */
 public final class ShellElementFace extends Record {
-    private final ShellFaceUV uv;
+
+    /* JADX INFO: renamed from: uv */
+    private final ShellFaceUV f9144uv;
     public static final Codec<ShellElementFace> CODEC = ShellFaceUV.CODEC.xmap(ShellElementFace::new, (v0) -> {
-        return v0.uv();
+        return v0.m8342uv();
     });
     public static final Codec<Map<Direction, ShellElementFace>> FULL_CODEC = Codec.simpleMap(Direction.CODEC, CODEC, StringRepresentable.keys(Direction.values())).codec();
 
     public ShellElementFace(ShellFaceUV uv) {
-        this.uv = uv;
+        this.f9144uv = uv;
     }
 
     @Override // java.lang.Record
@@ -35,7 +37,8 @@ public final class ShellElementFace extends Record {
         return (boolean) ObjectMethods.bootstrap(MethodHandles.lookup(), "equals", MethodType.methodType(Boolean.TYPE, ShellElementFace.class, Object.class), ShellElementFace.class, "uv", "FIELD:Lfoundry/veil/api/flare/data/model/ShellElementFace;->uv:Lfoundry/veil/api/flare/data/model/ShellFaceUV;").dynamicInvoker().invoke(this, o) /* invoke-custom */;
     }
 
-    public ShellFaceUV uv() {
-        return this.uv;
+    /* JADX INFO: renamed from: uv */
+    public ShellFaceUV m8342uv() {
+        return this.f9144uv;
     }
 }

@@ -1,61 +1,93 @@
 package foundry.veil.impl.client.render.pipeline;
 
+import foundry.veil.Veil;
 import foundry.veil.api.client.registry.VeilShaderBufferRegistry;
 import foundry.veil.api.client.render.VeilRenderSystem;
 import foundry.veil.api.client.render.VeilShaderBufferLayout;
 import foundry.veil.api.client.render.shader.block.ShaderBlock;
+import foundry.veil.api.client.render.shader.program.ShaderProgram;
+import foundry.veil.impl.client.render.LayoutSerializer;
 import foundry.veil.impl.client.render.shader.block.LayoutShaderBlockImpl;
+import foundry.veil.impl.client.render.shader.program.ShaderProgramImpl;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 import org.lwjgl.system.NativeResource;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/pipeline/VeilShaderBufferCache.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/pipeline/VeilShaderBufferCache.class */
 @ApiStatus.Internal
 public class VeilShaderBufferCache implements NativeResource {
     private LayoutShaderBlockImpl<?>[] values;
     private VeilShaderBufferLayout<?>[] layouts;
 
-    /* JADX WARN: Code restructure failed: missing block: B:48:0x019d, code lost:
-    
-        if (r10 == false) goto L65;
-     */
-    /* JADX WARN: Code restructure failed: missing block: B:49:0x01a0, code lost:
-    
-        r0 = r5.values[r7];
-     */
-    /* JADX WARN: Code restructure failed: missing block: B:50:0x01a8, code lost:
-    
-        if (r0 != null) goto L52;
-     */
-    /* JADX WARN: Code restructure failed: missing block: B:52:0x01ae, code lost:
-    
-        r0 = r0.getReferencedShaders();
-     */
-    /* JADX WARN: Code restructure failed: missing block: B:53:0x01bc, code lost:
-    
-        if (r0.size() == 1) goto L66;
-     */
-    /* JADX WARN: Code restructure failed: missing block: B:54:0x01bf, code lost:
-    
-        r0 = (java.lang.String) r0.stream().map((v0) -> { // java.util.function.Function.apply(java.lang.Object):java.lang.Object
-            return v0.toString();
-        }).collect(java.util.stream.Collectors.joining(", "));
-        foundry.veil.Veil.LOGGER.error("Shader Block {} uses the 'packed' memory layout and only supports a single shader using the block. Either use a different format or only use the block in one shader. Affected shaders: {}", r0, r0);
-     */
-    /* JADX WARN: Code restructure failed: missing block: B:55:0x01ed, code lost:
-    
-        r7 = r7 + 1;
-     */
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
-    */
-    public void onShaderCompile(java.util.Map<net.minecraft.resources.ResourceLocation, foundry.veil.api.client.render.shader.program.ShaderProgram> r6) {
-        /*
-            Method dump skipped, instruction units count: 500
-            To view this dump change 'Code comments level' option to 'DEBUG'
-        */
-        throw new UnsupportedOperationException("Method not decompiled: foundry.veil.impl.client.render.pipeline.VeilShaderBufferCache.onShaderCompile(java.util.Map):void");
+    public void onShaderCompile(Map<ResourceLocation, ShaderProgram> updatedPrograms) {
+        LayoutShaderBlockImpl<?> block;
+        int storageBlock;
+        if (this.layouts == null) {
+            this.layouts = (VeilShaderBufferLayout[]) VeilShaderBufferRegistry.REGISTRY.stream().toArray(x$0 -> {
+                return new VeilShaderBufferLayout[x$0];
+            });
+            this.values = new LayoutShaderBlockImpl[this.layouts.length];
+        }
+        for (ShaderProgram shader : updatedPrograms.values()) {
+            if (shader instanceof ShaderProgramImpl) {
+                ShaderProgramImpl impl = (ShaderProgramImpl) shader;
+                impl.clearShaderBlocks();
+            }
+        }
+        for (int i = 0; i < this.values.length; i++) {
+            LayoutShaderBlockImpl<?> block2 = this.values[i];
+            if (block2 != null) {
+                Set<ResourceLocation> shaders = block2.getReferencedShaders();
+                if (shaders.removeAll(updatedPrograms.keySet()) && shaders.isEmpty()) {
+                    block2.free();
+                    this.values[i] = null;
+                }
+            }
+            VeilShaderBufferLayout<?> layout = this.layouts[i];
+            boolean packed = layout.memoryLayout() == ShaderBlock.MemoryLayout.PACKED;
+            String name = layout.name();
+            for (ShaderProgram shader2 : updatedPrograms.values()) {
+                switch (layout.binding()) {
+                    case UNIFORM:
+                        storageBlock = shader2.getUniformBlock(name);
+                        break;
+                    case SHADER_STORAGE:
+                        storageBlock = shader2.getStorageBlock(name);
+                        break;
+                    default:
+                        throw new MatchException((String) null, (Throwable) null);
+                }
+                int index = storageBlock;
+                if (index != -1) {
+                    if (this.values[i] == null) {
+                        LayoutShaderBlockImpl<?> block3 = LayoutSerializer.create(layout, shader2, name, index);
+                        block3.getReferencedShaders().add(shader2.getName());
+                        this.values[i] = block3;
+                        if (packed && (shader2 instanceof ShaderProgramImpl)) {
+                            ShaderProgramImpl impl2 = (ShaderProgramImpl) shader2;
+                            impl2.addShaderBlock(name, block3);
+                        }
+                    } else {
+                        this.values[i].getReferencedShaders().add(shader2.getName());
+                    }
+                    if (!packed && (block = this.values[i]) != null) {
+                        Set<ResourceLocation> shaders2 = block.getReferencedShaders();
+                        if (shaders2.size() != 1) {
+                            String error = (String) shaders2.stream().map((v0) -> {
+                                return v0.toString();
+                            }).collect(Collectors.joining(", "));
+                            Veil.LOGGER.error("Shader Block {} uses the 'packed' memory layout and only supports a single shader using the block. Either use a different format or only use the block in one shader. Affected shaders: {}", name, error);
+                        }
+                    }
+                }
+            }
+            if (!packed) {
+            }
+        }
     }
 
     public void bind() {

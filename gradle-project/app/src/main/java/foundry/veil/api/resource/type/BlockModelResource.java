@@ -7,6 +7,7 @@ import foundry.veil.api.resource.VeilResourceInfo;
 import foundry.veil.api.resource.VeilResourceManager;
 import foundry.veil.impl.resource.action.ModelInspectAction;
 import foundry.veil.impl.resource.action.TextEditAction;
+import imgui.extension.texteditor.TextEditorLanguage;
 import java.io.IOException;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
@@ -23,7 +24,7 @@ import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.util.profiling.ProfilerFiller;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/resource/type/BlockModelResource.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/resource/type/BlockModelResource.class */
 @ApiStatus.Internal
 public final class BlockModelResource extends Record implements VeilTextResource<BlockModelResource> {
     private final VeilResourceInfo resourceInfo;
@@ -83,5 +84,10 @@ public final class BlockModelResource extends Record implements VeilTextResource
     @Override // foundry.veil.api.resource.VeilResource
     public int getIconCode() {
         return 62339;
+    }
+
+    @Override // foundry.veil.api.resource.type.VeilTextResource
+    public TextEditorLanguage languageDefinition() {
+        return TextEditorLanguage.Json();
     }
 }

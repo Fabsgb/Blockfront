@@ -6,7 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.Optional;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:com/boehmod/blockfront/common/update/UpdateInstaller.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:com/boehmod/blockfront/common/update/UpdateInstaller.class */
 public final class UpdateInstaller {
     private static final long EXIT_WAIT_MILLIS = 120000;
     private static final int DELETE_RETRIES = 60;

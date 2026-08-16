@@ -16,18 +16,16 @@ import net.minecraft.util.FastColor;
 import net.minecraft.util.GsonHelper;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/resource/GeoGlowingTextureMeta.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/resource/GeoGlowingTextureMeta.class */
 public class GeoGlowingTextureMeta {
     public static final MetadataSectionSerializer<GeoGlowingTextureMeta> DESERIALIZER = new MetadataSectionSerializer<GeoGlowingTextureMeta>() { // from class: software.bernie.geckolib.resource.GeoGlowingTextureMeta.1
-        C14771() {
-        }
-
         public String getMetadataSectionName() {
             return "glowsections";
         }
 
-        /* JADX INFO: renamed from: fromJson */
-        public GeoGlowingTextureMeta m9326fromJson(JsonObject json) throws JsonParseException {
+        /* JADX INFO: Thrown type has an unknown type hierarchy: com.google.gson.JsonParseException */
+        /* JADX INFO: renamed from: fromJson, reason: merged with bridge method [inline-methods] */
+        public GeoGlowingTextureMeta m9720fromJson(JsonObject json) throws JsonParseException {
             List<Pixel> pixels = fromSections(GsonHelper.getAsJsonArray(json, "sections", (JsonArray) null));
             if (pixels.isEmpty()) {
                 throw new JsonParseException("Empty glowlayer sections file. Must have at least one glow section!");
@@ -35,6 +33,7 @@ public class GeoGlowingTextureMeta {
             return new GeoGlowingTextureMeta(pixels);
         }
 
+        /* JADX INFO: Thrown type has an unknown type hierarchy: com.google.gson.JsonParseException */
         private List<Pixel> fromSections(@Nullable JsonArray sectionsArray) throws JsonParseException {
             if (sectionsArray == null) {
                 return List.of();
@@ -66,55 +65,6 @@ public class GeoGlowingTextureMeta {
     };
     private final List<Pixel> pixels;
 
-    /* JADX INFO: renamed from: software.bernie.geckolib.resource.GeoGlowingTextureMeta$1 */
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/resource/GeoGlowingTextureMeta$1.class */
-    class C14771 implements MetadataSectionSerializer<GeoGlowingTextureMeta> {
-        C14771() {
-        }
-
-        public String getMetadataSectionName() {
-            return "glowsections";
-        }
-
-        /* JADX INFO: renamed from: fromJson */
-        public GeoGlowingTextureMeta m9326fromJson(JsonObject json) throws JsonParseException {
-            List<Pixel> pixels = fromSections(GsonHelper.getAsJsonArray(json, "sections", (JsonArray) null));
-            if (pixels.isEmpty()) {
-                throw new JsonParseException("Empty glowlayer sections file. Must have at least one glow section!");
-            }
-            return new GeoGlowingTextureMeta(pixels);
-        }
-
-        private List<Pixel> fromSections(@Nullable JsonArray sectionsArray) throws JsonParseException {
-            if (sectionsArray == null) {
-                return List.of();
-            }
-            ObjectArrayList objectArrayList = new ObjectArrayList();
-            Iterator it = sectionsArray.iterator();
-            while (it.hasNext()) {
-                JsonObject jsonObject = (JsonElement) it.next();
-                if (!(jsonObject instanceof JsonObject)) {
-                    throw new JsonParseException("Invalid glowsections json format, expected a JsonObject, found: " + String.valueOf(jsonObject.getClass()));
-                }
-                JsonObject obj = jsonObject;
-                int x1 = GsonHelper.getAsInt(obj, "x1", GsonHelper.getAsInt(obj, "x", 0));
-                int y1 = GsonHelper.getAsInt(obj, "y1", GsonHelper.getAsInt(obj, "y", 0));
-                int x2 = GsonHelper.getAsInt(obj, "x2", GsonHelper.getAsInt(obj, "w", 0) + x1);
-                int y2 = GsonHelper.getAsInt(obj, "y2", GsonHelper.getAsInt(obj, "h", 0) + y1);
-                int alpha = GsonHelper.getAsInt(obj, "alpha", GsonHelper.getAsInt(obj, "a", 0));
-                if (x1 + y1 + x2 + y2 == 0) {
-                    throw new IllegalArgumentException("Invalid glowsections section object, section must be at least one pixel in size");
-                }
-                for (int x = x1; x <= x2; x++) {
-                    for (int y = y1; y <= y2; y++) {
-                        objectArrayList.add(new Pixel(x, y, alpha));
-                    }
-                }
-            }
-            return objectArrayList;
-        }
-    }
-
     public GeoGlowingTextureMeta(List<Pixel> pixels) {
         this.pixels = pixels;
     }
@@ -137,28 +87,28 @@ public class GeoGlowingTextureMeta {
 
     public void createImageMask(NativeImage originalImage, NativeImage newImage) {
         for (Pixel pixel : this.pixels) {
-            int color = originalImage.getPixelRGBA(pixel.f8819x, pixel.f8820y);
+            int color = originalImage.getPixelRGBA(pixel.f9205x, pixel.f9206y);
             if (pixel.alpha > 0) {
                 color = FastColor.ABGR32.color(pixel.alpha, FastColor.ABGR32.blue(color), FastColor.ABGR32.green(color), FastColor.ABGR32.red(color));
             }
-            newImage.setPixelRGBA(pixel.f8819x, pixel.f8820y, color);
-            originalImage.setPixelRGBA(pixel.f8819x, pixel.f8820y, 0);
+            newImage.setPixelRGBA(pixel.f9205x, pixel.f9206y, color);
+            originalImage.setPixelRGBA(pixel.f9205x, pixel.f9206y, 0);
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/resource/GeoGlowingTextureMeta$Pixel.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/resource/GeoGlowingTextureMeta$Pixel.class */
     private static final class Pixel extends Record {
 
         /* JADX INFO: renamed from: x */
-        private final int f8819x;
+        private final int f9205x;
 
         /* JADX INFO: renamed from: y */
-        private final int f8820y;
+        private final int f9206y;
         private final int alpha;
 
         private Pixel(int x, int y, int alpha) {
-            this.f8819x = x;
-            this.f8820y = y;
+            this.f9205x = x;
+            this.f9206y = y;
             this.alpha = alpha;
         }
 
@@ -178,13 +128,13 @@ public class GeoGlowingTextureMeta {
         }
 
         /* JADX INFO: renamed from: x */
-        public int m8013x() {
-            return this.f8819x;
+        public int m8364x() {
+            return this.f9205x;
         }
 
         /* JADX INFO: renamed from: y */
-        public int m8014y() {
-            return this.f8820y;
+        public int m8365y() {
+            return this.f9206y;
         }
 
         public int alpha() {

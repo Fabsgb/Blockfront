@@ -9,7 +9,7 @@ import java.lang.invoke.MethodType;
 import java.lang.runtime.ObjectMethods;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/patreon/PacketPatreonLinkResponse.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/patreon/PacketPatreonLinkResponse.class */
 public final class PacketPatreonLinkResponse extends Record implements IPacket {
 
     @NotNull
@@ -20,7 +20,7 @@ public final class PacketPatreonLinkResponse extends Record implements IPacket {
 
     /* JADX INFO: renamed from: ID */
     @NotNull
-    public static final PacketIdentifier f80ID = new PacketIdentifier("PacketPatreonLinkResponse");
+    public static final PacketIdentifier f94ID = new PacketIdentifier("PacketPatreonLinkResponse");
 
     public PacketPatreonLinkResponse(@NotNull String oauthUrl, @NotNull String authCode) {
         this.oauthUrl = oauthUrl;
@@ -65,6 +65,6 @@ public final class PacketPatreonLinkResponse extends Record implements IPacket {
     @Override // com.boehmod.bflib.cloud.packet.IPacket
     @NotNull
     public PacketIdentifier getPacketIdentifier() {
-        return f80ID;
+        return f94ID;
     }
 }

@@ -3,7 +3,7 @@ package io.github.ocelot.glslprocessor.lib.anarres.cpp;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/lib/anarres/cpp/Token.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/lib/anarres/cpp/Token.class */
 @ApiStatus.Internal
 public final class Token {
     private final int type;
@@ -20,8 +20,12 @@ public final class Token {
     public static final int DIV_EQ = 263;
     public static final int ELLIPSIS = 264;
     public static final int EOF = 265;
-    public static final int EQ = 266;
-    public static final int GE = 267;
+
+    /* JADX INFO: renamed from: EQ */
+    public static final int f9190EQ = 266;
+
+    /* JADX INFO: renamed from: GE */
+    public static final int f9191GE = 267;
     public static final int HASH = 268;
     public static final int HEADER = 269;
     public static final int IDENTIFIER = 270;
@@ -29,7 +33,9 @@ public final class Token {
     public static final int NUMBER = 272;
     public static final int LAND = 273;
     public static final int LAND_EQ = 274;
-    public static final int LE = 275;
+
+    /* JADX INFO: renamed from: LE */
+    public static final int f9192LE = 275;
     public static final int LITERAL = 276;
     public static final int LOR = 277;
     public static final int LOR_EQ = 278;
@@ -37,8 +43,12 @@ public final class Token {
     public static final int LSH_EQ = 280;
     public static final int MOD_EQ = 281;
     public static final int MULT_EQ = 282;
-    public static final int NE = 283;
-    public static final int NL = 284;
+
+    /* JADX INFO: renamed from: NE */
+    public static final int f9193NE = 283;
+
+    /* JADX INFO: renamed from: NL */
+    public static final int f9194NL = 284;
     public static final int OR_EQ = 285;
     public static final int PASTE = 286;
     public static final int PLUS_EQ = 287;

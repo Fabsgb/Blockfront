@@ -33,7 +33,7 @@ import org.joml.Quaterniond;
 import org.joml.Quaternionf;
 import org.joml.Vector3d;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/resource/editor/EffectInspector.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/resource/editor/EffectInspector.class */
 public class EffectInspector implements ResourceFileEditor<FlareResource>, EffectHost {
     private static final Component TITLE = Component.translatable("inspector.veil.effect.title");
     private static final PoseStack POSE_STACK = new PoseStack();
@@ -116,7 +116,7 @@ public class EffectInspector implements ResourceFileEditor<FlareResource>, Effec
                 if (ImGui.isWindowHovered()) {
                     applyCameraChanges();
                 }
-                ImGui.image(texture, desiredWidth / 2.0f, desiredHeight / 2.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.1f);
+                ImGui.imageWithBg(texture, desiredWidth / 2.0f, desiredHeight / 2.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 0.1f, 1.0f, 1.0f, 1.0f, 1.0f);
             }
             ImGui.endChild();
         }
@@ -162,7 +162,15 @@ public class EffectInspector implements ResourceFileEditor<FlareResource>, Effec
                 if (reader != null) {
                     reader.close();
                 }
-            } finally {
+            } catch (Throwable th) {
+                if (reader != null) {
+                    try {
+                        reader.close();
+                    } catch (Throwable th2) {
+                        th.addSuppressed(th2);
+                    }
+                }
+                throw th;
             }
         } catch (Exception e) {
             Veil.LOGGER.error("Failed to load template", e);

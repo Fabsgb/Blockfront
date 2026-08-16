@@ -1,6 +1,6 @@
 package foundry.veil.api.client.render.texture;
 
-import com.boehmod.blockfront.InterfaceC0638xq;
+import com.boehmod.blockfront.InterfaceC1274xN;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import foundry.veil.api.client.color.Color;
@@ -19,7 +19,7 @@ import org.lwjgl.opengl.GL14C;
 import org.lwjgl.opengl.GL33C;
 import org.lwjgl.system.MemoryStack;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/texture/TextureFilter.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/texture/TextureFilter.class */
 public final class TextureFilter extends Record {
     private final boolean blur;
     private final boolean mipmap;
@@ -86,7 +86,7 @@ public final class TextureFilter extends Record {
     public static final TextureFilter REPEAT = new TextureFilter(false, false, 1.0f, null, Wrap.REPEAT, Wrap.REPEAT, Wrap.REPEAT, -16777216, EdgeType.FLOAT, false);
     public static final TextureFilter CLAMP = new TextureFilter(false, false, 1.0f, null, Wrap.CLAMP_TO_EDGE, Wrap.CLAMP_TO_EDGE, Wrap.CLAMP_TO_EDGE, -16777216, EdgeType.FLOAT, false);
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/texture/TextureFilter$EdgeType.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/texture/TextureFilter$EdgeType.class */
     public enum EdgeType {
         FLOAT,
         INT,
@@ -165,7 +165,10 @@ public final class TextureFilter extends Record {
     }
 
     public int minFilter() {
-        return this.blur ? this.mipmap ? 9987 : 9729 : this.mipmap ? 9986 : 9728;
+        if (this.blur) {
+            return this.mipmap ? 9987 : 9729;
+        }
+        return this.mipmap ? 9986 : 9728;
     }
 
     public int magFilter() {
@@ -180,13 +183,13 @@ public final class TextureFilter extends Record {
         }
         if (this.compareFunction != null) {
             GL14C.glTexParameteri(target, 34892, 34894);
-            GL14C.glTexParameteri(target, 34893, this.compareFunction.id);
+            GL14C.glTexParameteri(target, 34893, this.compareFunction.f9140id);
         } else {
             GL14C.glTexParameteri(target, 34892, 0);
         }
-        GL14C.glTexParameteri(target, 10242, this.wrapX.id);
-        GL14C.glTexParameteri(target, 10243, this.wrapY.id);
-        GL14C.glTexParameteri(target, 32882, this.wrapZ.id);
+        GL14C.glTexParameteri(target, 10242, this.wrapX.f9141id);
+        GL14C.glTexParameteri(target, 10243, this.wrapY.f9141id);
+        GL14C.glTexParameteri(target, 32882, this.wrapZ.f9141id);
         MemoryStack stack = MemoryStack.stackPush();
         try {
             switch (this.borderType) {
@@ -226,13 +229,13 @@ public final class TextureFilter extends Record {
         }
         if (this.compareFunction != null) {
             ARBDirectStateAccess.glTextureParameteri(texture, 34892, 34894);
-            ARBDirectStateAccess.glTextureParameteri(texture, 34893, this.compareFunction.id);
+            ARBDirectStateAccess.glTextureParameteri(texture, 34893, this.compareFunction.f9140id);
         } else {
             ARBDirectStateAccess.glTextureParameteri(texture, 34892, 0);
         }
-        ARBDirectStateAccess.glTextureParameteri(texture, 10242, this.wrapX.id);
-        ARBDirectStateAccess.glTextureParameteri(texture, 10243, this.wrapY.id);
-        ARBDirectStateAccess.glTextureParameteri(texture, 32882, this.wrapZ.id);
+        ARBDirectStateAccess.glTextureParameteri(texture, 10242, this.wrapX.f9141id);
+        ARBDirectStateAccess.glTextureParameteri(texture, 10243, this.wrapY.f9141id);
+        ARBDirectStateAccess.glTextureParameteri(texture, 32882, this.wrapZ.f9141id);
         MemoryStack stack = MemoryStack.stackPush();
         try {
             switch (this.borderType) {
@@ -264,9 +267,9 @@ public final class TextureFilter extends Record {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/texture/TextureFilter$CompareFunction.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/texture/TextureFilter$CompareFunction.class */
     public enum CompareFunction {
-        NEVER(InterfaceC0638xq.tQ),
+        NEVER(InterfaceC1274xN.f6852vU),
         ALWAYS(519),
         LESS(513),
         LEQUAL(515),
@@ -276,18 +279,20 @@ public final class TextureFilter extends Record {
         GREATER(516);
 
         public static final Codec<CompareFunction> CODEC = EnumCodec.builder("Compare Function").values(CompareFunction.class).build();
-        private final int id;
+
+        /* JADX INFO: renamed from: id */
+        private final int f9140id;
 
         CompareFunction(int id) {
-            this.id = id;
+            this.f9140id = id;
         }
 
         public int getId() {
-            return this.id;
+            return this.f9140id;
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/texture/TextureFilter$Wrap.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/texture/TextureFilter$Wrap.class */
     public enum Wrap {
         CLAMP_TO_EDGE(33071),
         CLAMP_TO_BORDER(33069),
@@ -297,23 +302,25 @@ public final class TextureFilter extends Record {
 
         public static final Codec<Wrap> CODEC = EnumCodec.builder("Texture Wrap").values(Wrap.class).build();
         public static final Int2ObjectMap<Wrap> BY_GL_ID;
-        private final int id;
+
+        /* JADX INFO: renamed from: id */
+        private final int f9141id;
 
         static {
             Int2ObjectArrayMap int2ObjectArrayMap = new Int2ObjectArrayMap();
             for (Wrap filter : values()) {
-                int2ObjectArrayMap.put(filter.id, filter);
+                int2ObjectArrayMap.put(filter.f9141id, filter);
             }
             BY_GL_ID = Int2ObjectMaps.unmodifiable(int2ObjectArrayMap);
         }
 
         Wrap(int id) {
-            this.id = id;
+            this.f9141id = id;
         }
 
         public int getId() {
             if (this != MIRROR_CLAMP_TO_EDGE || VeilRenderSystem.textureMirrorClampToEdgeSupported()) {
-                return this.id;
+                return this.f9141id;
             }
             return 33071;
         }

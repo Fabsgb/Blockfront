@@ -27,7 +27,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/editor/ResourceManagerInspector.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/editor/ResourceManagerInspector.class */
 @ApiStatus.Internal
 public class ResourceManagerInspector extends SingleWindowInspector {
     public static final float ITEM_VERTICAL_PADDING = 3.0f;
@@ -43,7 +43,7 @@ public class ResourceManagerInspector extends SingleWindowInspector {
         ImGui.setNextItemWidth(ImGui.getContentRegionAvailX() - 100.0f);
         ImGui.inputTextWithHint("##search", SEARCH.getString(), this.searchText);
         ImGui.sameLine();
-        ImGui.pushFont(ImGuiMC.getFont(VeilImGuiUtil.ICON_FONT, false, false));
+        ImGui.pushFont(ImGuiMC.getFont(VeilImGuiUtil.ICON_FONT, false, false), 0.0f);
         ImGui.beginDisabled();
         ImGui.setNextItemWidth(44.0f);
         if (ImGui.button("\ued59")) {

@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/post/uniform/UniformValue.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/post/uniform/UniformValue.class */
 public interface UniformValue {
     public static final Codec<UniformValue> CODEC = Type.CODEC.dispatch((v0) -> {
         return v0.type();
@@ -20,7 +20,7 @@ public interface UniformValue {
 
     Type type();
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/post/uniform/UniformValue$Type.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/post/uniform/UniformValue$Type.class */
     public enum Type {
         FLOAT(FloatUniform.CODEC),
         INT(IntUniform.CODEC),

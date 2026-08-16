@@ -2,7 +2,7 @@ package com.boehmod.bflib.cloud.common.item.pattern;
 
 import io.github.ocelot.glslprocessor.lib.anarres.cpp.Token;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/item/pattern/SkinPatterns.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/item/pattern/SkinPatterns.class */
 public class SkinPatterns {
     public static final SkinPattern SPLITTER = new SkinPattern("splitter", Token.ARROW, Token.ARROW);
     public static final SkinPattern SNOW_STRIPE = new SkinPattern("snow_stripe", 320, 320);

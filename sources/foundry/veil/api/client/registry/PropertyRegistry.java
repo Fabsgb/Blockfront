@@ -30,7 +30,7 @@ import org.joml.Vector2f;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/registry/PropertyRegistry.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/registry/PropertyRegistry.class */
 public final class PropertyRegistry {
     public static final ResourceKey<Registry<PropertyType<?, ?>>> REGISTRY_KEY = ResourceKey.createRegistryKey(Veil.veilPath("property"));
     private static final RegistrationProvider<PropertyType<?, ?>> PROVIDER = RegistrationProvider.get(REGISTRY_KEY, Veil.MODID);
@@ -67,7 +67,7 @@ public final class PropertyRegistry {
         });
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/registry/PropertyRegistry$PropertyType.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/registry/PropertyRegistry$PropertyType.class */
     public static final class PropertyType<T, M extends Property<T>> extends Record {
         private final MapCodec<M> codec;
         private final GlslTypeSpecifier.BuiltinType glType;

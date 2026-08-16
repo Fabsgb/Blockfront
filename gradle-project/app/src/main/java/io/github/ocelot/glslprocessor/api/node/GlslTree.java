@@ -1,5 +1,7 @@
 package io.github.ocelot.glslprocessor.api.node;
 
+import io.github.ocelot.glslprocessor.api.grammar.GlslSpecifiedType;
+import io.github.ocelot.glslprocessor.api.grammar.GlslTypeQualifier;
 import io.github.ocelot.glslprocessor.api.grammar.GlslVersionStatement;
 import io.github.ocelot.glslprocessor.api.node.branch.GlslIfNode;
 import io.github.ocelot.glslprocessor.api.node.function.GlslFunctionNode;
@@ -16,13 +18,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Stream;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/node/GlslTree.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/node/GlslTree.class */
 public final class GlslTree {
     private final GlslVersionStatement versionStatement;
     private final GlslNodeList body;
@@ -99,21 +102,44 @@ public final class GlslTree {
     public void markOutputs() {
         final List<GlslNewFieldNode> outputs = new ArrayList<>();
         visit(new GlslTreeVisitor() { // from class: io.github.ocelot.glslprocessor.api.node.GlslTree.1
-            /* JADX WARN: Code restructure failed: missing block: B:49:0x0048, code lost:
-            
-                continue;
-             */
             @Override // io.github.ocelot.glslprocessor.api.visitor.GlslTreeVisitor
-            /*
-                Code decompiled incorrectly, please refer to instructions dump.
-                To view partially-correct code enable 'Show inconsistent code' option in preferences
-            */
-            public void visitNewField(io.github.ocelot.glslprocessor.api.node.variable.GlslNewFieldNode r4) {
-                /*
-                    Method dump skipped, instruction units count: 230
-                    To view this dump change 'Code comments level' option to 'DEBUG'
-                */
-                throw new UnsupportedOperationException("Method not decompiled: io.github.ocelot.glslprocessor.api.node.GlslTree.AnonymousClass1.visitNewField(io.github.ocelot.glslprocessor.api.node.variable.GlslNewFieldNode):void");
+            public void visitNewField(GlslNewFieldNode node) {
+                GlslNode expression;
+                GlslSpecifiedType type = node.getType();
+                boolean valid = false;
+                Iterator<GlslTypeQualifier> it = type.getQualifiers().iterator();
+                while (it.hasNext()) {
+                    if (it.next() == GlslTypeQualifier.StorageType.OUT) {
+                        valid = true;
+                        break;
+                    }
+                }
+                if (!valid) {
+                    return;
+                }
+                for (GlslTypeQualifier qualifier : type.getQualifiers()) {
+                    if (qualifier instanceof GlslTypeQualifier.Layout) {
+                        GlslTypeQualifier.Layout layout = (GlslTypeQualifier.Layout) qualifier;
+                        for (GlslTypeQualifier.LayoutId layoutId : layout.layoutIds()) {
+                            if ("location".equals(layoutId.identifier()) && (expression = layoutId.expression()) != null) {
+                                try {
+                                    int location = Integer.parseInt(expression.toSourceString());
+                                    if (location == 0) {
+                                        outputs.clear();
+                                        return;
+                                    } else {
+                                        valid = false;
+                                        break;
+                                    }
+                                } catch (NumberFormatException e) {
+                                }
+                            }
+                        }
+                    }
+                }
+                if (valid) {
+                    outputs.add(node);
+                }
             }
         });
         for (GlslNewFieldNode output : outputs) {
@@ -205,7 +231,7 @@ public final class GlslTree {
         return null;
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/node/GlslTree$GlslBlock.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/node/GlslTree$GlslBlock.class */
     public static final class GlslBlock extends Record {
         private final GlslNodeList body;
         private final int index;

@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.TreeMap;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/resource/tree/VeilResourceFolder.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/resource/tree/VeilResourceFolder.class */
 public class VeilResourceFolder {
     private final String name;
     private final Map<String, VeilResourceFolder> subFolders = new TreeMap();

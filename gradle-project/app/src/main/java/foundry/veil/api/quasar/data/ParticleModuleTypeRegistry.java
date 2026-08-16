@@ -40,7 +40,7 @@ import org.jetbrains.annotations.ApiStatus;
 import org.joml.Vector3d;
 import org.joml.Vector3f;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/data/ParticleModuleTypeRegistry.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/data/ParticleModuleTypeRegistry.class */
 public class ParticleModuleTypeRegistry {
     public static final ResourceKey<Registry<ModuleType<?>>> REGISTRY_KEY = ResourceKey.createRegistryKey(Veil.veilPath("quasar/module_type"));
     private static final RegistrationProvider<ModuleType<?>> PROVIDER = RegistrationProvider.get(REGISTRY_KEY, Veil.MODID);
@@ -92,7 +92,7 @@ public class ParticleModuleTypeRegistry {
     @ApiStatus.ScheduledForRemoval(inVersion = "5.0.0")
     @Deprecated
     public static final ModuleType<InitSizeParticleModuleData> INIT_SIZE = registerDeprecatedModule("init_size", InitSizeParticleModuleData.CODEC, () -> {
-        return new InitSizeParticleModuleData(MolangExpression.of(1.0f));
+        return new InitSizeParticleModuleData(MolangExpression.m8349of(1.0f));
     }, "Use \"random_size\" instead", "5.0.0");
 
     @ApiStatus.ScheduledForRemoval(inVersion = "5.0.0")
@@ -101,7 +101,7 @@ public class ParticleModuleTypeRegistry {
         return new InitRandomRotationModuleData(new Vector3f(-180.0f, -180.0f, -180.0f), new Vector3f(180.0f, 180.0f, 180.0f));
     }, "Use \"random_initial_rotation\" instead", "5.0.0");
     public static final ModuleType<LightModuleData> LIGHT = registerModule("light", LightModuleData.CODEC, () -> {
-        return new LightModuleData(new ColorGradient(1.0f, 1.0f, 1.0f, 1.0f), MolangExpression.of(1.0f), MolangExpression.of(1.0f));
+        return new LightModuleData(new ColorGradient(1.0f, 1.0f, 1.0f, 1.0f), MolangExpression.m8349of(1.0f), MolangExpression.m8349of(1.0f));
     });
     public static final ModuleType<LightmapParticleModuleData> LIGHTMAP = registerModule("lightmap", LightmapParticleModuleData.CODEC, () -> {
         return new LightmapParticleModuleData(15728880);
@@ -116,7 +116,7 @@ public class ParticleModuleTypeRegistry {
         return new ColorParticleModuleData(new ColorGradient(1.0f, 1.0f, 1.0f, 1.0f), MolangExpression.ZERO);
     });
     public static final ModuleType<TickSizeParticleModuleData> TICK_SIZE = registerModule("size", TickSizeParticleModuleData.CODEC, () -> {
-        return new TickSizeParticleModuleData(MolangExpression.of(1.0f));
+        return new TickSizeParticleModuleData(MolangExpression.m8349of(1.0f));
     });
     public static final ModuleType<TickSubEmitterModuleData> TICK_SUB_EMITTER = registerModule("tick_sub_emitter", TickSubEmitterModuleData.CODEC, () -> {
         return new TickSubEmitterModuleData(ResourceLocation.withDefaultNamespace(""), 5);

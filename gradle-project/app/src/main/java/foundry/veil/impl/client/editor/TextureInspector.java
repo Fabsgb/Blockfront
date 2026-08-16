@@ -45,7 +45,7 @@ import org.lwjgl.opengl.GL20C;
 import org.lwjgl.opengl.GL45C;
 import org.lwjgl.system.NativeResource;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/editor/TextureInspector.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/editor/TextureInspector.class */
 @ApiStatus.Internal
 public class TextureInspector extends SingleWindowInspector {
     public static final Component TITLE = Component.translatable("inspector.veil.texture.title");
@@ -67,7 +67,7 @@ public class TextureInspector extends SingleWindowInspector {
     private int selectedTarget = 0;
     private CompletableFuture<?> downloadFuture = null;
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/editor/TextureInspector$TextureStorage.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/editor/TextureInspector$TextureStorage.class */
     private interface TextureStorage extends NativeResource {
     }
 
@@ -314,7 +314,7 @@ public class TextureInspector extends SingleWindowInspector {
             });
             float size = ImGui.getContentRegionAvailX();
             cubemapStorage.render((int) size, (int) (size / 2.0f));
-            ImGui.image(cubemapStorage.renderedTextureId(), size, size / 2.0f, flipX ? 1.0f : 0.0f, flipY ? 1.0f : 0.0f, flipX ? 0.0f : 1.0f, flipY ? 0.0f : 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
+            ImGui.imageWithBg(cubemapStorage.renderedTextureId(), size, size / 2.0f, flipX ? 1.0f : 0.0f, flipY ? 1.0f : 0.0f, flipX ? 0.0f : 1.0f, flipY ? 0.0f : 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
             return;
         }
         if (target != 35866) {
@@ -326,7 +326,7 @@ public class TextureInspector extends SingleWindowInspector {
                 int width = GL11C.glGetTexLevelParameteri(3553, 0, 4096);
                 int height = GL11C.glGetTexLevelParameteri(3553, 0, 4097);
                 float size2 = ImGui.getContentRegionAvailX();
-                ImGui.image(selectedId, size2, (size2 * height) / width, flipX ? 1.0f : 0.0f, flipY ? 1.0f : 0.0f, flipX ? 0.0f : 1.0f, flipY ? 0.0f : 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
+                ImGui.imageWithBg(selectedId, size2, (size2 * height) / width, flipX ? 1.0f : 0.0f, flipY ? 1.0f : 0.0f, flipX ? 0.0f : 1.0f, flipY ? 0.0f : 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
                 return;
             }
             return;
@@ -345,11 +345,11 @@ public class TextureInspector extends SingleWindowInspector {
         float size3 = ImGui.getContentRegionAvailX();
         arrayStorage.render(selectedId, width2, height2, depth);
         for (int i = 0; i < depth; i++) {
-            ImGui.image(arrayStorage.renderedTextureId(i), size3, (size3 * height2) / width2, flipX ? 1.0f : 0.0f, flipY ? 1.0f : 0.0f, flipX ? 0.0f : 1.0f, flipY ? 0.0f : 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
+            ImGui.imageWithBg(arrayStorage.renderedTextureId(i), size3, (size3 * height2) / width2, flipX ? 1.0f : 0.0f, flipY ? 1.0f : 0.0f, flipX ? 0.0f : 1.0f, flipY ? 0.0f : 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f);
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/editor/TextureInspector$OpenTexture.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/editor/TextureInspector$OpenTexture.class */
     private static final class OpenTexture extends Record {
         private final ImBoolean open;
         private final ImBoolean visible;
@@ -399,7 +399,7 @@ public class TextureInspector extends SingleWindowInspector {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/editor/TextureInspector$CubemapStorage.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/editor/TextureInspector$CubemapStorage.class */
     private static final class CubemapStorage implements TextureStorage {
         private AdvancedFbo fbo;
 
@@ -435,7 +435,7 @@ public class TextureInspector extends SingleWindowInspector {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/editor/TextureInspector$ArrayStorage.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/editor/TextureInspector$ArrayStorage.class */
     private static final class ArrayStorage implements TextureStorage {
         private AdvancedFbo fbo;
         private int[] textures;

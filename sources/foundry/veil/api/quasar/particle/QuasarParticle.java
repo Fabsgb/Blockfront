@@ -13,7 +13,6 @@ import foundry.veil.api.quasar.emitters.module.UpdateParticleModule;
 import gg.moonflower.molangcompiler.api.MolangEnvironment;
 import gg.moonflower.molangcompiler.api.MolangExpression;
 import gg.moonflower.molangcompiler.api.MolangRuntime;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Supplier;
@@ -31,7 +30,7 @@ import org.jetbrains.annotations.ApiStatus;
 import org.joml.Vector3d;
 import org.joml.Vector3f;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/particle/QuasarParticle.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/particle/QuasarParticle.class */
 public class QuasarParticle {
     private static final double MAXIMUM_COLLISION_VELOCITY_SQUARED = Mth.square(100.0d);
     private final ClientLevel level;
@@ -68,38 +67,38 @@ public class QuasarParticle {
         this.age = 0;
         this.renderData = new RenderData(this, data);
         this.environment = Suppliers.memoize(() -> {
-            MolangRuntime.Builder query = MolangRuntime.runtime().setQuery("x", MolangExpression.m8000of((Supplier<Float>) () -> {
+            MolangRuntime.Builder query = MolangRuntime.runtime().setQuery("x", MolangExpression.m8351of((Supplier<Float>) () -> {
                 return Float.valueOf((float) this.renderData.getRenderPosition().x());
-            })).setQuery("y", MolangExpression.m8000of((Supplier<Float>) () -> {
+            })).setQuery("y", MolangExpression.m8351of((Supplier<Float>) () -> {
                 return Float.valueOf((float) this.renderData.getRenderPosition().y());
-            })).setQuery("z", MolangExpression.m8000of((Supplier<Float>) () -> {
+            })).setQuery("z", MolangExpression.m8351of((Supplier<Float>) () -> {
                 return Float.valueOf((float) this.renderData.getRenderPosition().z());
-            })).setQuery("velX", MolangExpression.m8000of((Supplier<Float>) () -> {
+            })).setQuery("velX", MolangExpression.m8351of((Supplier<Float>) () -> {
                 return Float.valueOf((float) this.velocity.x());
-            })).setQuery("velY", MolangExpression.m8000of((Supplier<Float>) () -> {
+            })).setQuery("velY", MolangExpression.m8351of((Supplier<Float>) () -> {
                 return Float.valueOf((float) this.velocity.y());
-            })).setQuery("velZ", MolangExpression.m8000of((Supplier<Float>) () -> {
+            })).setQuery("velZ", MolangExpression.m8351of((Supplier<Float>) () -> {
                 return Float.valueOf((float) this.velocity.z());
-            })).setQuery("speedSq", MolangExpression.m8000of((Supplier<Float>) () -> {
+            })).setQuery("speedSq", MolangExpression.m8351of((Supplier<Float>) () -> {
                 return Float.valueOf((float) this.velocity.lengthSquared());
-            })).setQuery("speed", MolangExpression.m8000of((Supplier<Float>) () -> {
+            })).setQuery("speed", MolangExpression.m8351of((Supplier<Float>) () -> {
                 return Float.valueOf((float) this.velocity.length());
-            })).setQuery("xRot", MolangExpression.m8000of((Supplier<Float>) () -> {
+            })).setQuery("xRot", MolangExpression.m8351of((Supplier<Float>) () -> {
                 return Float.valueOf((float) Math.toDegrees(this.renderData.getRenderRotation().x()));
-            })).setQuery("yRot", MolangExpression.m8000of((Supplier<Float>) () -> {
+            })).setQuery("yRot", MolangExpression.m8351of((Supplier<Float>) () -> {
                 return Float.valueOf((float) Math.toDegrees(this.renderData.getRenderRotation().y()));
-            })).setQuery("zRot", MolangExpression.m8000of((Supplier<Float>) () -> {
+            })).setQuery("zRot", MolangExpression.m8351of((Supplier<Float>) () -> {
                 return Float.valueOf((float) Math.toDegrees(this.renderData.getRenderRotation().z()));
             }));
             RenderData renderData = this.renderData;
             Objects.requireNonNull(renderData);
-            MolangRuntime.Builder query2 = query.setQuery("scale", MolangExpression.m8000of((Supplier<Float>) renderData::getRenderRadius));
+            MolangRuntime.Builder query2 = query.setQuery("scale", MolangExpression.m8351of((Supplier<Float>) renderData::getRenderRadius));
             RenderData renderData2 = this.renderData;
             Objects.requireNonNull(renderData2);
-            MolangRuntime.Builder query3 = query2.setQuery("age", MolangExpression.m8000of((Supplier<Float>) renderData2::getRenderAge));
+            MolangRuntime.Builder query3 = query2.setQuery("age", MolangExpression.m8351of((Supplier<Float>) renderData2::getRenderAge));
             RenderData renderData3 = this.renderData;
             Objects.requireNonNull(renderData3);
-            return (MolangRuntime) query3.setQuery("agePercent", MolangExpression.m8000of((Supplier<Float>) renderData3::getAgePercent)).setQuery("lifetime", this.lifetime).create();
+            return (MolangRuntime) query3.setQuery("agePercent", MolangExpression.m8351of((Supplier<Float>) renderData3::getAgePercent)).setQuery("lifetime", this.lifetime).create();
         });
     }
 
@@ -125,14 +124,9 @@ public class QuasarParticle {
             return;
         }
         List<Entity> entities = this.level.getEntities((Entity) null, box);
-        Iterator<Entity> it = entities.iterator();
-        while (true) {
-            if (!it.hasNext()) {
-                break;
-            }
-            Entity next = it.next();
-            if (next instanceof LivingEntity) {
-                LivingEntity livingEntity = (LivingEntity) next;
+        for (Entity entity : entities) {
+            if (entity instanceof LivingEntity) {
+                LivingEntity livingEntity = (LivingEntity) entity;
                 if (livingEntity.isAlive()) {
                     this.stoppedByCollision = true;
                     break;

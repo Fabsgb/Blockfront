@@ -1,5 +1,6 @@
 package com.boehmod.bflib.cloud.packet.primitives;
 
+import com.boehmod.bflib.cloud.packet.ILifecyclePacket;
 import com.boehmod.bflib.cloud.packet.IPacket;
 import com.boehmod.bflib.cloud.packet.PacketIdentifier;
 import io.netty.buffer.ByteBuf;
@@ -9,15 +10,16 @@ import java.lang.invoke.MethodType;
 import java.lang.runtime.ObjectMethods;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/primitives/ClientLoginPacket.class */
-public final class ClientLoginPacket extends Record implements IPacket {
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/primitives/ClientLoginPacket.class */
+public final class ClientLoginPacket extends Record implements ILifecyclePacket {
 
     @NotNull
     private final String token;
     private final int port;
 
+    /* JADX INFO: renamed from: ID */
     @NotNull
-    public static final PacketIdentifier ID = new PacketIdentifier("ClientLoginPacket");
+    public static final PacketIdentifier f116ID = new PacketIdentifier("ClientLoginPacket");
 
     public ClientLoginPacket(@NotNull String token, int port) {
         this.token = token;
@@ -61,6 +63,6 @@ public final class ClientLoginPacket extends Record implements IPacket {
     @Override // com.boehmod.bflib.cloud.packet.IPacket
     @NotNull
     public PacketIdentifier getPacketIdentifier() {
-        return ID;
+        return f116ID;
     }
 }

@@ -24,7 +24,7 @@ import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 import org.lwjgl.opengl.GLCapabilities;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/shader/processor/SodiumShaderProcessor.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/shader/processor/SodiumShaderProcessor.class */
 @ApiStatus.Internal
 public class SodiumShaderProcessor {
     private static final ThreadLocal<ShaderProcessorList> PROCESSOR = new ThreadLocal<>();
@@ -82,7 +82,7 @@ public class SodiumShaderProcessor {
         return SHADER_NAME.get();
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/shader/processor/SodiumShaderProcessor$Context.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/shader/processor/SodiumShaderProcessor$Context.class */
     private static final class Context extends Record implements ShaderPreProcessor.SodiumContext {
         private final Map<String, Object> customProgramData;
         private final ShaderProcessorList processor;

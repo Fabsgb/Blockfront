@@ -12,6 +12,10 @@
     {
       "weapon": "grenade_smoke",
       "count": 1
+    },
+    {
+      "weapon": "grenade_frag",
+      "count": 1
     }
   ],
   "exp": 0

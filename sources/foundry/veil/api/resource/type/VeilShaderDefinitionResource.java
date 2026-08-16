@@ -5,6 +5,7 @@ import foundry.veil.api.resource.VeilResourceAction;
 import foundry.veil.api.resource.VeilResourceInfo;
 import foundry.veil.api.resource.VeilResourceManager;
 import foundry.veil.impl.resource.action.TextEditAction;
+import imgui.extension.texteditor.TextEditorLanguage;
 import java.io.IOException;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
@@ -12,7 +13,7 @@ import java.lang.runtime.ObjectMethods;
 import java.util.List;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/resource/type/VeilShaderDefinitionResource.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/resource/type/VeilShaderDefinitionResource.class */
 @ApiStatus.Internal
 public final class VeilShaderDefinitionResource extends Record implements VeilShaderResource<VeilShaderDefinitionResource> {
     private final VeilResourceInfo resourceInfo;
@@ -65,5 +66,10 @@ public final class VeilShaderDefinitionResource extends Record implements VeilSh
     @Override // foundry.veil.api.resource.type.VeilShaderResource, foundry.veil.api.resource.VeilResource
     public int getIconCode() {
         return 60687;
+    }
+
+    @Override // foundry.veil.api.resource.type.VeilShaderResource, foundry.veil.api.resource.type.VeilTextResource
+    public TextEditorLanguage languageDefinition() {
+        return TextEditorLanguage.Json();
     }
 }

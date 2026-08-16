@@ -4,7 +4,7 @@ import com.boehmod.bflib.cloud.packet.IPacket;
 import io.netty.buffer.ByteBuf;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/MatchSettings.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/MatchSettings.class */
 public class MatchSettings {
     public static final int DEFAULT_MAX_SPECTATORS = 4;
     private boolean teamSizeLimit = true;

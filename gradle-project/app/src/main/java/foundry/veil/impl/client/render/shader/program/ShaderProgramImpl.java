@@ -85,7 +85,7 @@ import org.lwjgl.opengl.GL20C;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.NativeResource;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/shader/program/ShaderProgramImpl.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/shader/program/ShaderProgramImpl.class */
 @ApiStatus.Internal
 public class ShaderProgramImpl implements ShaderProgram {
     public static final VeilShaderSource DUMMY_FRAGMENT_SHADER = new VeilShaderSource(null, "out vec4 fragColor;void main(){fragColor=vec4(1.0);}");
@@ -452,7 +452,7 @@ public class ShaderProgramImpl implements ShaderProgram {
         this.shaderBlocks.clear();
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/shader/program/ShaderProgramImpl$CompiledProgram.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/shader/program/ShaderProgramImpl$CompiledProgram.class */
     public static final class CompiledProgram extends Record implements NativeResource {
         private final int program;
         private final Int2ObjectMap<CompiledShader> shaders;
@@ -526,7 +526,7 @@ public class ShaderProgramImpl implements ShaderProgram {
             if (old != null) {
                 old.free();
             }
-            GL20C.glAttachShader(this.program, shader.id());
+            GL20C.glAttachShader(this.program, shader.m8339id());
         }
 
         @Nullable
@@ -612,7 +612,7 @@ public class ShaderProgramImpl implements ShaderProgram {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/shader/program/ShaderProgramImpl$ShaderTexture.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/shader/program/ShaderProgramImpl$ShaderTexture.class */
     public static final class ShaderTexture extends Record implements NativeResource {
         private final ShaderTextureSource textureSource;
 
@@ -674,7 +674,7 @@ public class ShaderProgramImpl implements ShaderProgram {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/shader/program/ShaderProgramImpl$DummyShaderResource.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/shader/program/ShaderProgramImpl$DummyShaderResource.class */
     private static class DummyShaderResource extends Resource {
         private static final byte[] DUMMY_SHADER = "{\n    \"vertex\": \"dummy\",\n    \"fragment\": \"dummy\"\n}\n".getBytes(StandardCharsets.UTF_8);
 
@@ -700,7 +700,7 @@ public class ShaderProgramImpl implements ShaderProgram {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/shader/program/ShaderProgramImpl$Wrapper.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/shader/program/ShaderProgramImpl$Wrapper.class */
     public static class Wrapper extends ShaderInstance {
         private static final Resource RESOURCE = new DummyShaderResource();
         private static final VertexFormat DUMMY_FORMAT = VertexFormat.builder().build();
@@ -735,7 +735,7 @@ public class ShaderProgramImpl implements ShaderProgram {
 
         @Nullable
         /* JADX INFO: renamed from: getUniform, reason: merged with bridge method [inline-methods] */
-        public UniformWrapper m2017getUniform(@NotNull String name) {
+        public UniformWrapper m9575getUniform(@NotNull String name) {
             if (this.program != null && !this.program.hasUniform(name)) {
                 return null;
             }
@@ -787,7 +787,7 @@ public class ShaderProgramImpl implements ShaderProgram {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/shader/program/ShaderProgramImpl$UniformWrapper.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/shader/program/ShaderProgramImpl$UniformWrapper.class */
     public static class UniformWrapper extends Uniform {
         private static final Matrix2f MAT2X2 = new Matrix2f();
         private static final Matrix3f MAT3X3 = new Matrix3f();
@@ -925,7 +925,7 @@ public class ShaderProgramImpl implements ShaderProgram {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/shader/program/ShaderProgramImpl$ShaderWrapper.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/shader/program/ShaderProgramImpl$ShaderWrapper.class */
     public static class ShaderWrapper extends Program {
         private final Program.Type type;
         private final ShaderProgram program;
@@ -939,7 +939,7 @@ public class ShaderProgramImpl implements ShaderProgram {
         private static String getName(Program.Type type, ShaderProgram program) {
             ProgramDefinition definition = program.getDefinition();
             if (definition != null) {
-                switch (AnonymousClass1.$SwitchMap$com$mojang$blaze3d$shaders$Program$Type[type.ordinal()]) {
+                switch (C14611.$SwitchMap$com$mojang$blaze3d$shaders$Program$Type[type.ordinal()]) {
                     case 1:
                         ResourceLocation vertex = definition.vertex();
                         if (vertex != null) {
@@ -969,17 +969,17 @@ public class ShaderProgramImpl implements ShaderProgram {
         }
 
         public int getId() {
-            switch (AnonymousClass1.$SwitchMap$com$mojang$blaze3d$shaders$Program$Type[this.type.ordinal()]) {
+            switch (C14611.$SwitchMap$com$mojang$blaze3d$shaders$Program$Type[this.type.ordinal()]) {
                 case 1:
                     CompiledShader vertex = this.program.getVertexShader();
                     if (vertex != null) {
-                        return vertex.id();
+                        return vertex.m8339id();
                     }
                     return 0;
                 case 2:
                     CompiledShader fragment = this.program.getFragmentShader();
                     if (fragment != null) {
-                        return fragment.id();
+                        return fragment.m8339id();
                     }
                     return 0;
                 default:
@@ -988,9 +988,9 @@ public class ShaderProgramImpl implements ShaderProgram {
         }
     }
 
-    /* JADX INFO: renamed from: foundry.veil.impl.client.render.shader.program.ShaderProgramImpl$1, reason: invalid class name */
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/shader/program/ShaderProgramImpl$1.class */
-    static /* synthetic */ class AnonymousClass1 {
+    /* JADX INFO: renamed from: foundry.veil.impl.client.render.shader.program.ShaderProgramImpl$1 */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/shader/program/ShaderProgramImpl$1.class */
+    static /* synthetic */ class C14611 {
         static final /* synthetic */ int[] $SwitchMap$com$mojang$blaze3d$shaders$Program$Type = new int[Program.Type.values().length];
 
         static {

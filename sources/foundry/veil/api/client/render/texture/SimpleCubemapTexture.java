@@ -22,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
 import org.lwjgl.opengl.GL12C;
 import org.slf4j.Logger;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/texture/SimpleCubemapTexture.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/texture/SimpleCubemapTexture.class */
 public class SimpleCubemapTexture extends CubemapTexture implements VeilPreloadedTexture {
     private static final Logger LOGGER = LogUtils.getLogger();
     protected final ResourceLocation location;
@@ -146,7 +146,7 @@ public class SimpleCubemapTexture extends CubemapTexture implements VeilPreloade
         return TextureImage.load(resourceManager, this.location);
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/texture/SimpleCubemapTexture$TextureImage.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/texture/SimpleCubemapTexture$TextureImage.class */
     protected static class TextureImage implements Closeable {
 
         @Nullable
@@ -186,7 +186,15 @@ public class SimpleCubemapTexture extends CubemapTexture implements VeilPreloade
                         SimpleCubemapTexture.LOGGER.warn("Failed reading metadata of: {}", location, runtimeexception);
                     }
                     return new TextureImage(texturemetadatasection, nativeimage);
-                } finally {
+                } catch (Throwable th) {
+                    if (inputstream != null) {
+                        try {
+                            inputstream.close();
+                        } catch (Throwable th2) {
+                            th.addSuppressed(th2);
+                        }
+                    }
+                    throw th;
                 }
             } catch (IOException ioexception) {
                 return new TextureImage(ioexception);

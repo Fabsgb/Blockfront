@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/api/MolangRuntime.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/api/MolangRuntime.class */
 public class MolangRuntime implements MolangEnvironment {
     private float thisValue = 0.0f;
     private final Map<String, MolangObject> objects = new HashMap();
@@ -165,7 +165,7 @@ public class MolangRuntime implements MolangEnvironment {
         return new Builder(copy);
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/api/MolangRuntime$Builder.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/api/MolangRuntime$Builder.class */
     public static class Builder implements MolangEnvironmentBuilder<MolangRuntime> {
         private final MolangVariableStorage query;
         private final MolangVariableStorage global;
@@ -284,13 +284,11 @@ public class MolangRuntime implements MolangEnvironment {
 
         @Override // gg.moonflower.molangcompiler.api.MolangEnvironmentBuilder
         public MolangEnvironmentBuilder<MolangRuntime> copy(MolangEnvironment environment) {
-            String name;
-            MolangObject copy;
             try {
                 Iterator<String> it = environment.getObjects().iterator();
                 while (it.hasNext()) {
-                    name = it.next().toLowerCase(Locale.ROOT);
-                    copy = environment.get(name).getCopy();
+                    String name = it.next().toLowerCase(Locale.ROOT);
+                    MolangObject copy = environment.get(name).getCopy();
                     switch (name) {
                         case "query":
                             for (String field : copy.getKeys()) {
@@ -345,7 +343,7 @@ public class MolangRuntime implements MolangEnvironment {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/api/MolangRuntime$EditBuilder.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/api/MolangRuntime$EditBuilder.class */
     private static final class EditBuilder extends Record implements MolangEnvironmentBuilder<MolangRuntime> {
         private final MolangRuntime runtime;
         private final MolangVariableStorage query;

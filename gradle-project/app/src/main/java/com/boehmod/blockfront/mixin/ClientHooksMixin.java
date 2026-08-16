@@ -1,6 +1,6 @@
 package com.boehmod.blockfront.mixin;
 
-import com.boehmod.blockfront.lN;
+import com.boehmod.blockfront.C0712mj;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LevelRenderer;
@@ -16,14 +16,14 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:com/boehmod/blockfront/mixin/ClientHooksMixin.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:com/boehmod/blockfront/mixin/ClientHooksMixin.class */
 @Debug(export = true)
 @Mixin({ClientHooks.class})
 public class ClientHooksMixin {
     @Inject(method = {"isBlockEntityRendererVisible"}, at = {@At("HEAD")}, cancellable = true)
     private static void bf$preIsBlockEntityRendererVisible(BlockEntityRenderDispatcher blockEntityRenderDispatcher, BlockEntity blockEntity, Frustum frustum, CallbackInfoReturnable<Boolean> callbackInfoReturnable) {
         BlockEntityRenderer renderer;
-        if ((blockEntity instanceof lN) && !((lN) blockEntity).am()) {
+        if ((blockEntity instanceof C0712mj) && !((C0712mj) blockEntity).mo3235aw()) {
             callbackInfoReturnable.setReturnValue(false);
             return;
         }

@@ -1,7 +1,6 @@
 package foundry.veil.impl.client.render.shader.injection;
 
 import foundry.veil.Veil;
-import foundry.veil.impl.client.render.shader.injection.InjectionBodyParser;
 import foundry.veil.impl.client.render.shader.injection.util.ShaderInjection;
 import foundry.veil.impl.client.render.shader.injection.util.ShaderInjectionDefinition;
 import foundry.veil.impl.client.render.shader.injection.util.ShaderInjectionFunction;
@@ -19,7 +18,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceProvider;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/shader/injection/ShaderInjectionAdapter.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/shader/injection/ShaderInjectionAdapter.class */
 @ApiStatus.Internal
 public final class ShaderInjectionAdapter {
     private static final String DEFAULT_FUNCTION = "main";
@@ -42,11 +41,11 @@ public final class ShaderInjectionAdapter {
     private static ShaderInjection buildModification(ShaderInjectionDefinition def, String code) {
         InjectionBodyParser.Result parsed = InjectionBodyParser.parse(expandDefines(code));
         if (parsed.body().isEmpty() && parsed.globals().isEmpty()) {
-            Veil.LOGGER.warn("Shader injection '{}' target '{}' has no head() or tail() marker — skipping", def.id(), def.target());
+            Veil.LOGGER.warn("Shader injection '{}' target '{}' has no head() or tail() marker — skipping", def.m8348id(), def.target());
             return new SimpleShaderInjection(parsed.version(), def.priority(), new ShaderInjectionFunction[0], null);
         }
         if (def.debug()) {
-            if (DEBUG_LOGGED.add(def.id() != null ? def.id().toString() : String.valueOf(def.target()))) {
+            if (DEBUG_LOGGED.add(def.m8348id() != null ? def.m8348id().toString() : String.valueOf(def.target()))) {
                 StringBuilder sb = new StringBuilder("\n═══ Injection: ").append(def.target()).append(" ═══\n");
                 sb.append("  Version: ").append(parsed.version() >= 0 ? Integer.valueOf(parsed.version()) : "auto").append('\n');
                 sb.append("  Body:    ").append(parsed.body().replace("\n", "\n           ")).append('\n');

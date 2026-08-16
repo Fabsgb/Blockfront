@@ -6,6 +6,7 @@ import foundry.veil.api.resource.VeilResourceManager;
 import foundry.veil.impl.flare.FlareManager;
 import foundry.veil.impl.resource.action.TemplateInspectAction;
 import foundry.veil.impl.resource.action.TextEditAction;
+import imgui.extension.texteditor.TextEditorLanguage;
 import java.io.IOException;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
@@ -16,7 +17,7 @@ import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.profiling.InactiveProfiler;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/resource/type/FlareResource.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/resource/type/FlareResource.class */
 public final class FlareResource extends Record implements VeilTextResource<FlareResource> {
     private final VeilResourceInfo resourceInfo;
 
@@ -65,5 +66,10 @@ public final class FlareResource extends Record implements VeilTextResource<Flar
     @Override // foundry.veil.api.resource.VeilResource
     public int getIconCode() {
         return 59932;
+    }
+
+    @Override // foundry.veil.api.resource.type.VeilTextResource
+    public TextEditorLanguage languageDefinition() {
+        return TextEditorLanguage.Json();
     }
 }

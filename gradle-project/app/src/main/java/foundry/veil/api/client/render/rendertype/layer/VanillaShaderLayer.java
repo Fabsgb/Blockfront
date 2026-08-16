@@ -10,7 +10,7 @@ import net.minecraft.ResourceLocationException;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderStateShard;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/rendertype/layer/VanillaShaderLayer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/rendertype/layer/VanillaShaderLayer.class */
 public final class VanillaShaderLayer extends Record implements RenderTypeLayer {
     private final LayerTemplateValue<String> shaderName;
     public static final MapCodec<VanillaShaderLayer> CODEC = LayerTemplateValue.STRING_CODEC.fieldOf("name").xmap(VanillaShaderLayer::new, (v0) -> {

@@ -3,7 +3,7 @@ package com.boehmod.bflib.cloud.common;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/ReportType.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/ReportType.class */
 public enum ReportType {
     CHAT_ABUSE("Chat", "Chat spam, harassment, offensive language and abuse", "chat"),
     VOICE_CHAT_ABUSE("Voice", "VC spam, harassment, offensive language and abuse", "voice"),
@@ -23,7 +23,7 @@ public enum ReportType {
     @NotNull
     private final String tag;
 
-    ReportType(@NotNull String title, @NotNull String description, @NotNull String tag) {
+    ReportType(@NotNull String title, String description, String tag) {
         this.title = title;
         this.description = description;
         this.tag = tag;

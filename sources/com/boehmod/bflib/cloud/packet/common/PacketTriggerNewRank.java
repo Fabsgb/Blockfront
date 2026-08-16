@@ -8,12 +8,12 @@ import java.lang.invoke.MethodType;
 import java.lang.runtime.ObjectMethods;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/PacketTriggerNewRank.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/PacketTriggerNewRank.class */
 public final class PacketTriggerNewRank extends Record implements IPacket {
 
     /* JADX INFO: renamed from: ID */
     @NotNull
-    public static final PacketIdentifier f37ID = new PacketIdentifier("PacketTriggerNewRank");
+    public static final PacketIdentifier f39ID = new PacketIdentifier("PacketTriggerNewRank");
 
     public PacketTriggerNewRank() {
     }
@@ -44,6 +44,6 @@ public final class PacketTriggerNewRank extends Record implements IPacket {
     @Override // com.boehmod.bflib.cloud.packet.IPacket
     @NotNull
     public PacketIdentifier getPacketIdentifier() {
-        return f37ID;
+        return f39ID;
     }
 }

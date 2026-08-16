@@ -1,6 +1,5 @@
 package de.jcm.discordgamesdk;
 
-import de.jcm.discordgamesdk.Core;
 import de.jcm.discordgamesdk.activity.ActivityType;
 import de.jcm.discordgamesdk.impl.Command;
 import de.jcm.discordgamesdk.impl.DataProxies;
@@ -11,7 +10,7 @@ import de.jcm.discordgamesdk.user.RelationshipType;
 import java.util.List;
 import java.util.function.Predicate;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/RelationshipManager.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/RelationshipManager.class */
 public class RelationshipManager {
     public static final Predicate<Relationship> NO_FILTER = r -> {
         return true;

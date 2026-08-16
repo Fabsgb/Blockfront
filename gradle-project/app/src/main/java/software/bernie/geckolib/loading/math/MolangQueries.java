@@ -38,7 +38,7 @@ import software.bernie.geckolib.constant.DataTickets;
 import software.bernie.geckolib.loading.math.value.Variable;
 import software.bernie.geckolib.util.ClientUtil;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/loading/math/MolangQueries.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/loading/math/MolangQueries.class */
 public final class MolangQueries {
     public static final String ACTOR_COUNT = "query.actor_count";
     public static final String ANIM_TIME = "query.anim_time";
@@ -53,6 +53,7 @@ public final class MolangQueries {
     public static final String CARDINAL_FACING = "query.cardinal_facing";
     public static final String CARDINAL_FACING_2D = "query.cardinal_facing_2d";
     public static final String CARDINAL_PLAYER_FACING = "query.cardinal_player_facing";
+    public static final String CONTROLLER_SPEED = "query.controller_speed";
     public static final String DAY = "query.day";
     public static final String DEATH_TICKS = "query.death_ticks";
     public static final String DISTANCE_FROM_CAMERA = "query.distance_from_camera";
@@ -158,19 +159,21 @@ public final class MolangQueries {
         ACTOR = null;
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/loading/math/MolangQueries$Actor.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/loading/math/MolangQueries$Actor.class */
     public static final class Actor<T> extends Record {
         private final AnimationState<? extends GeoAnimatable> animationState;
         private final T animatable;
         private final double animTime;
-        private final Minecraft mc;
+
+        /* JADX INFO: renamed from: mc */
+        private final Minecraft f9199mc;
         private final Level level;
 
         public Actor(AnimationState<? extends GeoAnimatable> animationState, T animatable, double animTime, Minecraft mc, Level level) {
             this.animationState = animationState;
             this.animatable = animatable;
             this.animTime = animTime;
-            this.mc = mc;
+            this.f9199mc = mc;
             this.level = level;
         }
 
@@ -201,8 +204,9 @@ public final class MolangQueries {
             return this.animTime;
         }
 
-        public Minecraft mc() {
-            return this.mc;
+        /* JADX INFO: renamed from: mc */
+        public Minecraft m8363mc() {
+            return this.f9199mc;
         }
 
         public Level level() {
@@ -223,38 +227,41 @@ public final class MolangQueries {
     private static void setDefaultQueryValues() {
         getVariableFor("PI").set(3.141592653589793d);
         getVariableFor("E").set(2.718281828459045d);
-        setActorVariable(CARDINAL_PLAYER_FACING, actor -> {
-            return actor.mc.player.getDirection().ordinal();
+        setActorVariable(CONTROLLER_SPEED, actor -> {
+            return actor.animationState.getController().getAnimationSpeed();
         });
-        setActorVariable(DAY, actor2 -> {
-            return actor2.level.getGameTime() / 24000.0d;
+        setActorVariable(CARDINAL_PLAYER_FACING, actor2 -> {
+            return actor2.f9199mc.player.getDirection().ordinal();
         });
-        setActorVariable(FRAME_ALPHA, actor3 -> {
-            return actor3.animationState().getPartialTick();
+        setActorVariable(DAY, actor3 -> {
+            return actor3.level.getGameTime() / 24000.0d;
         });
-        setActorVariable(HAS_CAPE, actor4 -> {
-            return actor4.mc.player.getSkin().capeTexture() != null ? 1.0d : 0.0d;
+        setActorVariable(FRAME_ALPHA, actor4 -> {
+            return actor4.animationState().getPartialTick();
         });
-        setActorVariable(IS_FIRST_PERSON, actor5 -> {
-            return actor5.mc.options.getCameraType() == CameraType.FIRST_PERSON ? 1.0d : 0.0d;
+        setActorVariable(HAS_CAPE, actor5 -> {
+            return actor5.f9199mc.player.getSkin().capeTexture() != null ? 1.0d : 0.0d;
         });
-        setActorVariable(LIFE_TIME, actor6 -> {
-            return actor6.animTime / 20.0d;
+        setActorVariable(IS_FIRST_PERSON, actor6 -> {
+            return actor6.f9199mc.options.getCameraType() == CameraType.FIRST_PERSON ? 1.0d : 0.0d;
         });
-        setActorVariable(MOON_BRIGHTNESS, actor7 -> {
-            return actor7.level.getMoonBrightness();
+        setActorVariable(LIFE_TIME, actor7 -> {
+            return actor7.animTime / 20.0d;
         });
-        setActorVariable(MOON_PHASE, actor8 -> {
-            return actor8.level.getMoonPhase();
+        setActorVariable(MOON_BRIGHTNESS, actor8 -> {
+            return actor8.level.getMoonBrightness();
         });
-        setActorVariable(PLAYER_LEVEL, actor9 -> {
-            return actor9.mc.player.experienceLevel;
+        setActorVariable(MOON_PHASE, actor9 -> {
+            return actor9.level.getMoonPhase();
         });
-        setActorVariable(TIME_OF_DAY, actor10 -> {
-            return actor10.level.getDayTime() / 24000.0f;
+        setActorVariable(PLAYER_LEVEL, actor10 -> {
+            return actor10.f9199mc.player.experienceLevel;
         });
-        setActorVariable(TIME_STAMP, actor11 -> {
-            return actor11.mc.level.getGameTime();
+        setActorVariable(TIME_OF_DAY, actor11 -> {
+            return actor11.level.getDayTime() / 24000.0f;
+        });
+        setActorVariable(TIME_STAMP, actor12 -> {
+            return actor12.f9199mc.level.getGameTime();
         });
         setDefaultBlockEntityQueryValues();
         setDefaultEntityQueryValues();
@@ -298,7 +305,7 @@ public final class MolangQueries {
             return directionId;
         });
         setActorVariable(DISTANCE_FROM_CAMERA, actor5 -> {
-            return actor5.mc.gameRenderer.getMainCamera().getPosition().distanceTo(((Entity) actor5.animatable).position());
+            return actor5.f9199mc.gameRenderer.getMainCamera().getPosition().distanceTo(((Entity) actor5.animatable).position());
         });
         setActorVariable(GET_ACTOR_INFO_ID, actor6 -> {
             return ((Entity) actor6.animatable).getId();
@@ -314,7 +321,13 @@ public final class MolangQueries {
             Object patt0$temp = actor9.animatable;
             if (patt0$temp instanceof OwnableEntity) {
                 OwnableEntity ownable = (OwnableEntity) patt0$temp;
-                i = ownable.getOwnerUUID() != null ? 1 : 0;
+                if (ownable.getOwnerUUID() != null) {
+                    i = 1;
+                } else {
+                    i = 0;
+                }
+            } else {
+                i = 0;
             }
             return i;
         });
@@ -337,7 +350,13 @@ public final class MolangQueries {
             Object patt0$temp = actor13.animatable;
             if (patt0$temp instanceof NeutralMob) {
                 NeutralMob neutralMob = (NeutralMob) patt0$temp;
-                i = neutralMob.isAngry() ? 1 : 0;
+                if (neutralMob.isAngry()) {
+                    i = 1;
+                } else {
+                    i = 0;
+                }
+            } else {
+                i = 0;
             }
             return i;
         });
@@ -367,7 +386,13 @@ public final class MolangQueries {
             Object patt0$temp = actor21.animatable;
             if (patt0$temp instanceof Leashable) {
                 Leashable leashable = (Leashable) patt0$temp;
-                i = leashable.isLeashed() ? 1 : 0;
+                if (leashable.isLeashed()) {
+                    i = 1;
+                } else {
+                    i = 0;
+                }
+            } else {
+                i = 0;
             }
             return i;
         });
@@ -385,7 +410,13 @@ public final class MolangQueries {
             Object patt0$temp = actor25.animatable;
             if (patt0$temp instanceof PowerableMob) {
                 PowerableMob powerable = (PowerableMob) patt0$temp;
-                i = powerable.isPowered() ? 1 : 0;
+                if (powerable.isPowered()) {
+                    i = 1;
+                } else {
+                    i = 0;
+                }
+            } else {
+                i = 0;
             }
             return i;
         });
@@ -397,7 +428,13 @@ public final class MolangQueries {
             Object patt0$temp = actor27.animatable;
             if (patt0$temp instanceof Saddleable) {
                 Saddleable saddleable = (Saddleable) patt0$temp;
-                i = saddleable.isSaddled() ? 1 : 0;
+                if (saddleable.isSaddled()) {
+                    i = 1;
+                } else {
+                    i = 0;
+                }
+            } else {
+                i = 0;
             }
             return i;
         });

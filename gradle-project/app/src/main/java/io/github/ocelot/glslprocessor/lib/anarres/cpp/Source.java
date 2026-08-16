@@ -4,7 +4,7 @@ import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/lib/anarres/cpp/Source.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/lib/anarres/cpp/Source.class */
 @ApiStatus.Internal
 public abstract class Source {
     private Source parent = null;
@@ -77,8 +77,8 @@ public abstract class Source {
                     break;
                 case Token.EOF /* 265 */:
                     warning(tok.getLine(), tok.getColumn(), "No newline before end of file");
-                    return new Token(Token.NL, tok.getLine(), tok.getColumn(), "\n");
-                case Token.NL /* 284 */:
+                    return new Token(Token.f9194NL, tok.getLine(), tok.getColumn(), "\n");
+                case Token.f9194NL /* 284 */:
                     return tok;
                 default:
                     if (white) {

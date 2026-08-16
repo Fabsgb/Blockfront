@@ -3,12 +3,18 @@
   "impactDebrisSound": "bf:item.gun.bullet.impact.flesh.head",
   "overlayEffectType": "blood",
   "hardMaterial": true,
-  "displayImpactEffects": true,
+  "displayBlockBreakParticles": true,
   "displayBulletHole": true,
   "impactParticles": [
-    { "count": 6, "particleType": "bf:blood_splat_particle" }
+    {
+      "count": 6,
+      "particleType": "bf:blood_splat_particle"
+    }
   ],
   "directionalImpactParticles": [
-    { "count": 1, "particleType": "bf:blood_impact_smoke" }
+    {
+      "count": 1,
+      "particleType": "bf:blood_impact_smoke"
+    }
   ]
 }

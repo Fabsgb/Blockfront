@@ -11,7 +11,7 @@ import java.lang.runtime.ObjectMethods;
 import java.util.OptionalInt;
 import net.minecraft.network.chat.Component;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/resource/action/TemplateInspectAction.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/resource/action/TemplateInspectAction.class */
 public final class TemplateInspectAction<T extends FlareResource> extends Record implements VeilResourceAction<T> {
     private static final Component NAME = Component.translatable("resource.veil.action.effect_edit");
     private static final Component DESC = Component.translatable("resource.veil.action.effect_edit.desc");

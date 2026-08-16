@@ -12,7 +12,7 @@ import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.client.renderer.texture.AbstractTexture;
 import net.minecraft.resources.ResourceLocation;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/property/properties/Sampler2DProperty.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/property/properties/Sampler2DProperty.class */
 public class Sampler2DProperty extends Property<AbstractTexture> {
     private final ResourceLocation source;
     public static final MapCodec<Sampler2DProperty> CODEC = ResourceLocation.CODEC.fieldOf("value").xmap(Sampler2DProperty::new, property -> {

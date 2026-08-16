@@ -10,7 +10,7 @@ import java.lang.runtime.ObjectMethods;
 import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/inventory/PacketInventoryItemStickerAdd.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/inventory/PacketInventoryItemStickerAdd.class */
 public final class PacketInventoryItemStickerAdd extends Record implements IPacket {
 
     @NotNull
@@ -20,8 +20,9 @@ public final class PacketInventoryItemStickerAdd extends Record implements IPack
     private final UUID sticker;
     private final int index;
 
+    /* JADX INFO: renamed from: ID */
     @NotNull
-    public static final PacketIdentifier ID = new PacketIdentifier("PacketInventoryItemStickerAdd");
+    public static final PacketIdentifier f61ID = new PacketIdentifier("PacketInventoryItemStickerAdd");
 
     public PacketInventoryItemStickerAdd(@NotNull UUID stack, @NotNull UUID sticker, int index) {
         this.stack = stack;
@@ -72,6 +73,6 @@ public final class PacketInventoryItemStickerAdd extends Record implements IPack
     @Override // com.boehmod.bflib.cloud.packet.IPacket
     @NotNull
     public PacketIdentifier getPacketIdentifier() {
-        return ID;
+        return f61ID;
     }
 }

@@ -11,7 +11,6 @@ import foundry.veil.forge.ext.ShaderChunkRendererExtension;
 import foundry.veil.impl.ThreadTaskScheduler;
 import foundry.veil.impl.client.render.shader.processor.SodiumShaderProcessor;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedDeque;
@@ -37,7 +36,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/forge/mixin/compat/sodium/ShaderChunkRendererMixin.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/forge/mixin/compat/sodium/ShaderChunkRendererMixin.class */
 @Mixin({ShaderChunkRenderer.class})
 public abstract class ShaderChunkRendererMixin implements ShaderChunkRendererExtension {
 
@@ -132,12 +131,7 @@ public abstract class ShaderChunkRendererMixin implements ShaderChunkRendererExt
         Queue<Pair<ChunkShaderOptions, ShaderConstants>> keys = new ConcurrentLinkedDeque<>();
         for (ChunkShaderOptions key : this.programs.keySet()) {
             boolean unique = true;
-            Iterator<Pair<ChunkShaderOptions, ShaderConstants>> it = keys.iterator();
-            while (true) {
-                if (!it.hasNext()) {
-                    break;
-                }
-                Pair<ChunkShaderOptions, ShaderConstants> pair = it.next();
+            for (Pair<ChunkShaderOptions, ShaderConstants> pair : keys) {
                 ChunkShaderOptions options = (ChunkShaderOptions) pair.getFirst();
                 if (options.fog() == key.fog() && options.pass() == key.pass() && options.vertexType() == key.vertexType()) {
                     unique = false;

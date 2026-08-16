@@ -9,7 +9,7 @@ import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/lib/anarres/cpp/TokenType.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/lib/anarres/cpp/TokenType.class */
 @ApiStatus.Internal
 final class TokenType extends Record {
     private final String name;
@@ -45,8 +45,8 @@ final class TokenType extends Record {
         addTokenType(Token.DIV_EQ, "DIV_EQ", "/=");
         addTokenType(Token.ELLIPSIS, "ELLIPSIS", "...");
         addTokenType(Token.EOF, "EOF");
-        addTokenType(Token.EQ, "EQ", "==");
-        addTokenType(Token.GE, "GE", ">=");
+        addTokenType(Token.f9190EQ, "EQ", "==");
+        addTokenType(Token.f9191GE, "GE", ">=");
         addTokenType(Token.HASH, "HASH", "#");
         addTokenType(Token.HEADER, "HEADER");
         addTokenType(Token.IDENTIFIER, "IDENTIFIER");
@@ -54,7 +54,7 @@ final class TokenType extends Record {
         addTokenType(Token.NUMBER, "NUMBER");
         addTokenType(Token.LAND, "LAND", "&&");
         addTokenType(Token.LAND_EQ, "LAND_EQ", "&&=");
-        addTokenType(Token.LE, "LE", "<=");
+        addTokenType(Token.f9192LE, "LE", "<=");
         addTokenType(Token.LITERAL, "LITERAL");
         addTokenType(Token.LOR, "LOR", "||");
         addTokenType(Token.LOR_EQ, "LOR_EQ", "||=");
@@ -62,8 +62,8 @@ final class TokenType extends Record {
         addTokenType(Token.LSH_EQ, "LSH_EQ", "<<=");
         addTokenType(Token.MOD_EQ, "MOD_EQ", "%=");
         addTokenType(Token.MULT_EQ, "MULT_EQ", "*=");
-        addTokenType(Token.NE, "NE", "!=");
-        addTokenType(Token.NL, "NL");
+        addTokenType(Token.f9193NE, "NE", "!=");
+        addTokenType(Token.f9194NL, "NL");
         addTokenType(Token.OR_EQ, "OR_EQ", "|=");
         addTokenType(Token.PASTE, "PASTE", "##");
         addTokenType(Token.PLUS_EQ, "PLUS_EQ", "+=");

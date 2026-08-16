@@ -7,7 +7,7 @@ import gg.moonflower.molangcompiler.api.bridge.MolangVariableProvider;
 import gg.moonflower.molangcompiler.api.object.MolangObject;
 import java.util.function.Supplier;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/api/MolangEnvironmentBuilder.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/molang-compiler-3.1.1.19.jar:gg/moonflower/molangcompiler/api/MolangEnvironmentBuilder.class */
 public interface MolangEnvironmentBuilder<V extends MolangEnvironment> {
     MolangEnvironmentBuilder<V> loadLibrary(String str, MolangObject molangObject);
 
@@ -38,7 +38,7 @@ public interface MolangEnvironmentBuilder<V extends MolangEnvironment> {
     V create();
 
     default MolangEnvironmentBuilder<V> setQuery(String name, float value) {
-        return setQuery(name, MolangExpression.of(value));
+        return setQuery(name, MolangExpression.m8349of(value));
     }
 
     default MolangEnvironmentBuilder<V> setQuery(String name, Supplier<Float> value) {
@@ -50,7 +50,7 @@ public interface MolangEnvironmentBuilder<V extends MolangEnvironment> {
     }
 
     default MolangEnvironmentBuilder<V> setGlobal(String name, float value) {
-        return setGlobal(name, MolangExpression.of(value));
+        return setGlobal(name, MolangExpression.m8349of(value));
     }
 
     default MolangEnvironmentBuilder<V> setGlobal(String name, Supplier<Float> value) {
@@ -62,11 +62,11 @@ public interface MolangEnvironmentBuilder<V extends MolangEnvironment> {
     }
 
     default MolangEnvironmentBuilder<V> setVariable(String name, MolangVariable value) {
-        return setVariable(name, MolangExpression.of(value));
+        return setVariable(name, MolangExpression.m8353of(value));
     }
 
     default MolangEnvironmentBuilder<V> setVariable(String name, float value) {
-        return setVariable(name, MolangExpression.of(value));
+        return setVariable(name, MolangExpression.m8349of(value));
     }
 
     default MolangEnvironmentBuilder<V> setVariable(String name, Supplier<Float> value) {

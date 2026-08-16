@@ -1,6 +1,7 @@
 package foundry.veil.impl.client.editor;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import foundry.imgui.api.ImGuiMC;
 import foundry.veil.api.client.editor.SingleWindowInspector;
 import foundry.veil.api.client.imgui.VeilImGuiUtil;
 import foundry.veil.api.client.render.VeilRenderSystem;
@@ -20,7 +21,7 @@ import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL43C;
 import org.lwjgl.opengl.GLCapabilities;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/editor/DeviceInfoViewer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/editor/DeviceInfoViewer.class */
 @ApiStatus.Internal
 public class DeviceInfoViewer extends SingleWindowInspector {
     public static final Component TITLE = Component.translatable("inspector.veil.device_info.title");
@@ -28,7 +29,9 @@ public class DeviceInfoViewer extends SingleWindowInspector {
     private static final Component YES = CommonComponents.GUI_YES.copy().withStyle(style -> {
         return style.withColor(-16711936);
     });
-    private static final Component NO = CommonComponents.GUI_NO.copy().withStyle(style -> {
+
+    /* JADX INFO: renamed from: NO */
+    private static final Component f9152NO = CommonComponents.GUI_NO.copy().withStyle(style -> {
         return style.withColor(-65536);
     });
     private static final Component GL_FEATURE_FLAG = Component.translatable("inspector.veil.device_info.opengl.feature_flag");
@@ -67,15 +70,15 @@ public class DeviceInfoViewer extends SingleWindowInspector {
                 });
             }).toArray();
             if (valueComponents.length == 0) {
-                VeilImGuiUtil.component(Component.translatable(key, new Object[]{UNSUPPORTED}).withStyle(style -> {
-                    return style.withColor(VeilImGuiUtil.getColor(1));
+                ImGuiMC.component(Component.translatable(key, new Object[]{UNSUPPORTED}).withStyle(style -> {
+                    return style.withColor(ImGuiMC.getColor(1));
                 }));
             } else {
-                VeilImGuiUtil.component(Component.translatable(key, valueComponents));
+                ImGuiMC.component(Component.translatable(key, valueComponents));
             }
         } else {
-            VeilImGuiUtil.component(Component.translatable(key, new Object[]{UNSUPPORTED}).withStyle(style2 -> {
-                return style2.withColor(VeilImGuiUtil.getColor(1));
+            ImGuiMC.component(Component.translatable(key, new Object[]{UNSUPPORTED}).withStyle(style2 -> {
+                return style2.withColor(ImGuiMC.getColor(1));
             }));
         }
         if (tooltip != null) {
@@ -86,8 +89,8 @@ public class DeviceInfoViewer extends SingleWindowInspector {
 
     private static void flagText(String key, boolean supported, @Nullable String tooltip) {
         Object[] objArr = new Object[1];
-        objArr[0] = supported ? YES : NO;
-        VeilImGuiUtil.component(Component.translatable(key, objArr));
+        objArr[0] = supported ? YES : f9152NO;
+        ImGuiMC.component(Component.translatable(key, objArr));
         if (tooltip != null) {
             ImGui.sameLine();
             VeilImGuiUtil.tooltip(tooltip);
@@ -96,7 +99,7 @@ public class DeviceInfoViewer extends SingleWindowInspector {
 
     private static void title(Component component) {
         ImGui.pushStyleColor(0, -1);
-        VeilImGuiUtil.component(component);
+        ImGuiMC.component(component);
         ImGui.popStyleColor();
     }
 

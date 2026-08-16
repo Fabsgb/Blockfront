@@ -3,7 +3,7 @@ loaderVersion = "[4,)"
 license = "All Rights Reserved"
 [[mods]]
 modId = "bf"
-version = "0.9.0.14b"
+version = "0.9.0.26b"
 displayName = "BlockFront"
 displayURL = "https://www.blockfrontmc.com/"
 logoFile = "bf.png"
@@ -12,7 +12,7 @@ description = '''BlockFront is a Minecraft total conversion, consisting of an FP
 [[dependencies.bf]]
 modId = "neoforge"
 type = "required"
-versionRange = "[21.1.233,22.0)"
+versionRange = "[21.1.248,22.0)"
 ordering = "NONE"
 side = "BOTH"
 [[dependencies.bf]]

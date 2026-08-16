@@ -9,7 +9,7 @@ import java.lang.invoke.MethodType;
 import java.lang.runtime.ObjectMethods;
 import net.minecraft.client.renderer.RenderStateShard;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/rendertype/layer/DepthTestLayer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/rendertype/layer/DepthTestLayer.class */
 public final class DepthTestLayer extends Record implements RenderTypeLayer {
     private final LayerTemplateValue<DepthState> mode;
     public static final MapCodec<DepthTestLayer> CODEC = LayerTemplateValue.enumCodec(DepthState.class).fieldOf("mode").xmap(DepthTestLayer::new, (v0) -> {
@@ -49,7 +49,7 @@ public final class DepthTestLayer extends Record implements RenderTypeLayer {
         return RenderTypeLayerRegistry.DEPTH_TEST.get();
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/rendertype/layer/DepthTestLayer$DepthState.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/rendertype/layer/DepthTestLayer$DepthState.class */
     public enum DepthState {
         NEVER(VeilRenderType.NEVER_DEPTH_TEST),
         LESS(VeilRenderType.LESS_DEPTH_TEST),

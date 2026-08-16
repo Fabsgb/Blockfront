@@ -11,7 +11,7 @@ import net.minecraft.util.profiling.ProfilerFiller;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/ShaderModificationManager.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/ShaderModificationManager.class */
 @ApiStatus.ScheduledForRemoval(inVersion = "5.0.0")
 @Deprecated(forRemoval = true)
 public class ShaderModificationManager extends SimplePreparableReloadListener<Preparations> {
@@ -21,7 +21,7 @@ public class ShaderModificationManager extends SimplePreparableReloadListener<Pr
     /* JADX INFO: Access modifiers changed from: protected */
     @NotNull
     /* JADX INFO: renamed from: prepare, reason: merged with bridge method [inline-methods] */
-    public Preparations m1827prepare(@NotNull ResourceManager resourceManager, @NotNull ProfilerFiller profilerFiller) {
+    public Preparations m9384prepare(@NotNull ResourceManager resourceManager, @NotNull ProfilerFiller profilerFiller) {
         return new Preparations();
     }
 
@@ -29,7 +29,7 @@ public class ShaderModificationManager extends SimplePreparableReloadListener<Pr
     public void apply(@NotNull Preparations preparations, @NotNull ResourceManager resourceManager, @NotNull ProfilerFiller profilerFiller) {
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/ShaderModificationManager$Preparations.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/ShaderModificationManager$Preparations.class */
     @ApiStatus.ScheduledForRemoval(inVersion = "5.0.0")
     @ApiStatus.Internal
     @Deprecated(forRemoval = true)

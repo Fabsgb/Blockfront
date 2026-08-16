@@ -1,18 +1,18 @@
 package io.github.ocelot.glslprocessor.api.grammar;
 
 import com.boehmod.bflib.cloud.common.ProgressionValues;
-import com.boehmod.blockfront.AbstractC0422pq;
-import com.boehmod.blockfront.C0407pb;
-import com.boehmod.blockfront.pQ;
-import com.boehmod.blockfront.rY;
-import com.boehmod.blockfront.sR;
+import com.boehmod.blockfront.AbstractC0927qm;
+import com.boehmod.blockfront.C0885px;
+import com.boehmod.blockfront.C0994s;
+import com.boehmod.blockfront.C1043sv;
+import com.boehmod.blockfront.C1089to;
 import io.github.ocelot.glslprocessor.api.node.GlslNode;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/grammar/GlslTypeSpecifier.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/grammar/GlslTypeSpecifier.class */
 public interface GlslTypeSpecifier extends GlslType {
     String getName();
 
@@ -59,7 +59,7 @@ public interface GlslTypeSpecifier extends GlslType {
         return new GlslSpecifiedType(this);
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/grammar/GlslTypeSpecifier$Name.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/grammar/GlslTypeSpecifier$Name.class */
     public static final class Name implements GlslTypeSpecifier {
         private String name;
 
@@ -99,7 +99,7 @@ public interface GlslTypeSpecifier extends GlslType {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/grammar/GlslTypeSpecifier$Array.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/grammar/GlslTypeSpecifier$Array.class */
     public static final class Array implements GlslTypeSpecifier {
         private GlslTypeSpecifier specifier;
 
@@ -174,7 +174,7 @@ public interface GlslTypeSpecifier extends GlslType {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/grammar/GlslTypeSpecifier$BuiltinType.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/api/grammar/GlslTypeSpecifier$BuiltinType.class */
     public enum BuiltinType implements GlslTypeSpecifier {
         VOID("void"),
         FLOAT("float"),
@@ -303,7 +303,7 @@ public interface GlslTypeSpecifier extends GlslType {
         }
 
         public String getConstant(double value) {
-            switch (AnonymousClass1.$SwitchMap$io$github$ocelot$glslprocessor$api$grammar$GlslTypeSpecifier$BuiltinType[ordinal()]) {
+            switch (C14761.f9172x94a8c387[ordinal()]) {
                 case 1:
                 case 2:
                 case 3:
@@ -311,15 +311,15 @@ public interface GlslTypeSpecifier extends GlslType {
                     return Float.toString((float) value);
                 case 5:
                 case 6:
-                case 7:
+                case C0994s.f5462C /* 7 */:
                 case 8:
                     return Double.toString(value);
-                case C0407pb.nv /* 9 */:
+                case 9:
                 case 10:
-                case AbstractC0422pq.nO /* 11 */:
+                case 11:
                 case 12:
                     return Integer.toString((int) value);
-                case C0407pb.nu /* 13 */:
+                case C0885px.f4841pt /* 13 */:
                 case 14:
                 case 15:
                 case 16:
@@ -330,11 +330,11 @@ public interface GlslTypeSpecifier extends GlslType {
         }
 
         public boolean isPrimitive() {
-            switch (AnonymousClass1.$SwitchMap$io$github$ocelot$glslprocessor$api$grammar$GlslTypeSpecifier$BuiltinType[ordinal()]) {
+            switch (C14761.f9172x94a8c387[ordinal()]) {
                 case 1:
                 case 5:
-                case C0407pb.nv /* 9 */:
-                case C0407pb.nu /* 13 */:
+                case 9:
+                case C0885px.f4841pt /* 13 */:
                 case 17:
                 case 18:
                     return true;
@@ -342,10 +342,10 @@ public interface GlslTypeSpecifier extends GlslType {
                 case 3:
                 case 4:
                 case 6:
-                case 7:
+                case C0994s.f5462C /* 7 */:
                 case 8:
                 case 10:
-                case AbstractC0422pq.nO /* 11 */:
+                case 11:
                 case 12:
                 case 14:
                 case 15:
@@ -368,11 +368,11 @@ public interface GlslTypeSpecifier extends GlslType {
         }
 
         public boolean isDouble() {
-            switch (this) {
-                case DOUBLE:
-                case DVEC2:
-                case DVEC3:
-                case DVEC4:
+            switch (C14761.f9172x94a8c387[ordinal()]) {
+                case 5:
+                case 6:
+                case C0994s.f5462C /* 7 */:
+                case 8:
                     return true;
                 default:
                     return false;
@@ -380,11 +380,11 @@ public interface GlslTypeSpecifier extends GlslType {
         }
 
         public boolean isInteger() {
-            switch (AnonymousClass1.$SwitchMap$io$github$ocelot$glslprocessor$api$grammar$GlslTypeSpecifier$BuiltinType[ordinal()]) {
-                case C0407pb.nv /* 9 */:
-                case 10:
-                case AbstractC0422pq.nO /* 11 */:
-                case 12:
+            switch (this) {
+                case INT:
+                case IVEC2:
+                case IVEC3:
+                case IVEC4:
                     return true;
                 default:
                     return false;
@@ -392,8 +392,8 @@ public interface GlslTypeSpecifier extends GlslType {
         }
 
         public boolean isUnsignedInteger() {
-            switch (AnonymousClass1.$SwitchMap$io$github$ocelot$glslprocessor$api$grammar$GlslTypeSpecifier$BuiltinType[ordinal()]) {
-                case C0407pb.nu /* 13 */:
+            switch (C14761.f9172x94a8c387[ordinal()]) {
+                case C0885px.f4841pt /* 13 */:
                 case 14:
                 case 15:
                 case 16:
@@ -417,15 +417,15 @@ public interface GlslTypeSpecifier extends GlslType {
         }
 
         public boolean isVector() {
-            switch (AnonymousClass1.$SwitchMap$io$github$ocelot$glslprocessor$api$grammar$GlslTypeSpecifier$BuiltinType[ordinal()]) {
+            switch (C14761.f9172x94a8c387[ordinal()]) {
                 case 2:
                 case 3:
                 case 4:
                 case 6:
-                case 7:
+                case C0994s.f5462C /* 7 */:
                 case 8:
                 case 10:
-                case AbstractC0422pq.nO /* 11 */:
+                case 11:
                 case 12:
                 case 14:
                 case 15:
@@ -435,8 +435,8 @@ public interface GlslTypeSpecifier extends GlslType {
                 case 21:
                     return true;
                 case 5:
-                case C0407pb.nv /* 9 */:
-                case C0407pb.nu /* 13 */:
+                case 9:
+                case C0885px.f4841pt /* 13 */:
                 case 17:
                 case 18:
                 default:
@@ -445,29 +445,29 @@ public interface GlslTypeSpecifier extends GlslType {
         }
 
         public boolean isMatrix() {
-            switch (AnonymousClass1.$SwitchMap$io$github$ocelot$glslprocessor$api$grammar$GlslTypeSpecifier$BuiltinType[ordinal()]) {
+            switch (C14761.f9172x94a8c387[ordinal()]) {
                 case 22:
-                case C0407pb.nw /* 23 */:
+                case C0885px.f4843pv /* 23 */:
                 case 24:
                 case ProgressionValues.EXP_PER_INFECTED_ROUNDS_WON /* 25 */:
                 case 26:
                 case 27:
-                case pQ.nU /* 28 */:
+                case AbstractC0927qm.f5121pT /* 28 */:
                 case 29:
                 case 30:
                 case 31:
                 case 32:
                 case 33:
                 case 34:
-                case rY.qj /* 35 */:
+                case C1043sv.f5687sk /* 35 */:
                 case 36:
-                case sR.rf /* 37 */:
+                case C1089to.f5854tg /* 37 */:
                 case 38:
                 case 39:
                 case 40:
                 case 41:
                 case 42:
-                case sR.rh /* 43 */:
+                case C1089to.f5856ti /* 43 */:
                 case 44:
                 case 45:
                     return true;
@@ -477,11 +477,11 @@ public interface GlslTypeSpecifier extends GlslType {
         }
 
         public int getComponents() {
-            switch (AnonymousClass1.$SwitchMap$io$github$ocelot$glslprocessor$api$grammar$GlslTypeSpecifier$BuiltinType[ordinal()]) {
+            switch (C14761.f9172x94a8c387[ordinal()]) {
                 case 1:
                 case 5:
-                case C0407pb.nv /* 9 */:
-                case C0407pb.nu /* 13 */:
+                case 9:
+                case C0885px.f4841pt /* 13 */:
                 case 17:
                 case 18:
                     return 1;
@@ -492,8 +492,8 @@ public interface GlslTypeSpecifier extends GlslType {
                 case 19:
                     return 2;
                 case 3:
-                case 7:
-                case AbstractC0422pq.nO /* 11 */:
+                case C0994s.f5462C /* 7 */:
+                case 11:
                 case 15:
                 case 20:
                     return 3;
@@ -503,13 +503,13 @@ public interface GlslTypeSpecifier extends GlslType {
                 case 16:
                 case 21:
                 case 22:
-                case C0407pb.nw /* 23 */:
+                case C0885px.f4843pv /* 23 */:
                 case 24:
                 case ProgressionValues.EXP_PER_INFECTED_ROUNDS_WON /* 25 */:
                     return 4;
                 case 26:
                 case 27:
-                case pQ.nU /* 28 */:
+                case AbstractC0927qm.f5121pT /* 28 */:
                 case 29:
                     return 9;
                 case 30:
@@ -518,9 +518,9 @@ public interface GlslTypeSpecifier extends GlslType {
                 case 33:
                     return 16;
                 case 34:
-                case rY.qj /* 35 */:
+                case C1043sv.f5687sk /* 35 */:
                 case 36:
-                case sR.rf /* 37 */:
+                case C1089to.f5854tg /* 37 */:
                     return 6;
                 case 38:
                 case 39:
@@ -528,7 +528,7 @@ public interface GlslTypeSpecifier extends GlslType {
                 case 41:
                     return 8;
                 case 42:
-                case sR.rh /* 43 */:
+                case C1089to.f5856ti /* 43 */:
                 case 44:
                 case 45:
                     return 12;

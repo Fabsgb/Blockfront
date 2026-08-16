@@ -19,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 import org.lwjgl.system.NativeResource;
 import org.slf4j.Logger;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/texture/SimpleArrayTexture.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/texture/SimpleArrayTexture.class */
 public class SimpleArrayTexture extends ArrayTexture implements VeilPreloadedTexture {
     private static final Logger LOGGER = LogUtils.getLogger();
     protected final ResourceLocation[] locations;
@@ -80,14 +80,10 @@ public class SimpleArrayTexture extends ArrayTexture implements VeilPreloadedTex
         try {
             init(6408, 0, images[0].getWidth(), images[0].getHeight(), images.length);
             upload(images);
+        } finally {
             for (NativeImage image : images) {
                 image.close();
             }
-        } catch (Throwable th) {
-            for (NativeImage image2 : images) {
-                image2.close();
-            }
-            throw th;
         }
     }
 
@@ -106,7 +102,7 @@ public class SimpleArrayTexture extends ArrayTexture implements VeilPreloadedTex
         return TextureImage.load(resourceManager, this.locations);
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/texture/SimpleArrayTexture$TextureImage.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/texture/SimpleArrayTexture$TextureImage.class */
     public static class TextureImage implements NativeResource {
         private final NativeImage image;
         private final TextureMetadataSection metadata;
@@ -155,7 +151,15 @@ public class SimpleArrayTexture extends ArrayTexture implements VeilPreloadedTex
                             SimpleArrayTexture.LOGGER.warn("Failed reading metadata of: {}", location, e);
                         }
                         images[i] = new TextureImage(image, metadata);
-                    } finally {
+                    } catch (Throwable th) {
+                        if (inputstream != null) {
+                            try {
+                                inputstream.close();
+                            } catch (Throwable th2) {
+                                th.addSuppressed(th2);
+                            }
+                        }
+                        throw th;
                     }
                 } catch (IOException e2) {
                     if (image != null) {

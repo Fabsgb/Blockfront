@@ -1,5 +1,6 @@
 package foundry.veil.impl.client.editor;
 
+import foundry.imgui.api.ImGuiMC;
 import foundry.veil.api.client.color.Colorc;
 import foundry.veil.api.client.editor.EditorAttributeProvider;
 import foundry.veil.api.client.editor.SingleWindowInspector;
@@ -23,7 +24,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/editor/LightInspector.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/editor/LightInspector.class */
 public class LightInspector extends SingleWindowInspector {
     public static final Component TITLE = Component.translatable("inspector.veil.light.title");
     private static final Component ADD = Component.translatable("inspector.veil.light.button.add");
@@ -32,7 +33,6 @@ public class LightInspector extends SingleWindowInspector {
     private static final Component REMOVE_ALL_DESC = Component.translatable("inspector.veil.light.button.remove_all.desc");
     private static final Component SET_POSITION = Component.translatable("inspector.veil.light.button.set_position");
     private static final Component ATTRIBUTES = Component.translatable("inspector.veil.light.attributes");
-    private static final Component ENABLE_AO = Component.translatable("inspector.veil.light.toggle.ao");
     private ResourceKey<LightTypeRegistry.LightType<?>> selectedTab;
     private final List<ResourceKey<LightTypeRegistry.LightType<?>>> lightTypes = new ArrayList();
     private final ImBoolean enableAmbientOcclusion = new ImBoolean();
@@ -74,7 +74,8 @@ public class LightInspector extends SingleWindowInspector {
         ImGui.sameLine();
         ImGui.beginDisabled(lightType == null);
         if (ImGui.button(REMOVE.getString()) && lightType != null) {
-            for (LightRenderHandle<?> handle : List.copyOf(lightRenderer.getLights(lightType))) {
+            List<? extends LightRenderHandle<?>> lights = List.copyOf(lightRenderer.getLights(lightType));
+            for (LightRenderHandle<?> handle : lights) {
                 handle.free();
             }
         }
@@ -148,7 +149,7 @@ public class LightInspector extends SingleWindowInspector {
             lightData.setTo(Minecraft.getInstance().gameRenderer.getMainCamera());
         }
         ImGui.newLine();
-        VeilImGuiUtil.component(ATTRIBUTES);
+        ImGuiMC.component(ATTRIBUTES);
         if (lightData instanceof EditorAttributeProvider) {
             EditorAttributeProvider editorAttributeProvider = (EditorAttributeProvider) lightData;
             editorAttributeProvider.renderImGuiAttributes();

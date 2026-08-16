@@ -17,13 +17,13 @@ import software.bernie.geckolib.animatable.GeoReplacedEntity;
 import software.bernie.geckolib.util.ClientUtil;
 import software.bernie.geckolib.util.RenderUtil;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/network/packet/EntityAnimTriggerPacket.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/network/packet/EntityAnimTriggerPacket.class */
 public final class EntityAnimTriggerPacket extends Record implements MultiloaderPacket {
     private final int entityId;
     private final boolean isReplacedEntity;
     private final String controllerName;
     private final String animName;
-    public static final CustomPacketPayload.Type<EntityAnimTriggerPacket> TYPE = new CustomPacketPayload.Type<>(GeckoLibConstants.m8005id("entity_anim_trigger"));
+    public static final CustomPacketPayload.Type<EntityAnimTriggerPacket> TYPE = new CustomPacketPayload.Type<>(GeckoLibConstants.m8356id("entity_anim_trigger"));
     public static final StreamCodec<FriendlyByteBuf, EntityAnimTriggerPacket> CODEC = StreamCodec.composite(ByteBufCodecs.VAR_INT, (v0) -> {
         return v0.entityId();
     }, ByteBufCodecs.BOOL, (v0) -> {

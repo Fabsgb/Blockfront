@@ -14,7 +14,7 @@ import java.util.List;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/flare/data/FloatCurve.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/flare/data/FloatCurve.class */
 public class FloatCurve {
     public static final FloatCurve ZERO = new FloatCurve(new KeyFrame[0]);
     public static final Codec<FloatCurve> CODEC = KeyFrame.CODEC.listOf().xmap(list -> {
@@ -57,7 +57,7 @@ public class FloatCurve {
         return new Builder();
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/flare/data/FloatCurve$Builder.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/flare/data/FloatCurve$Builder.class */
     public static class Builder {
         private final List<KeyFrame> keys = new ArrayList();
         private final FloatSet times = new FloatOpenHashSet();
@@ -77,7 +77,7 @@ public class FloatCurve {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/flare/data/FloatCurve$KeyFrame.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/flare/data/FloatCurve$KeyFrame.class */
     public static final class KeyFrame extends Record implements Comparable<KeyFrame> {
         private final float time;
         private final float value;

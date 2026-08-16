@@ -32,7 +32,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/registry/RenderTypeLayerRegistry.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/registry/RenderTypeLayerRegistry.class */
 public final class RenderTypeLayerRegistry {
     public static final ResourceKey<Registry<LayerType<?>>> REGISTRY_KEY = ResourceKey.createRegistryKey(Veil.veilPath("render_type_layer"));
     private static final RegistrationProvider<LayerType<?>> VANILLA_PROVIDER = RegistrationProvider.get(REGISTRY_KEY, Veil.MODID);
@@ -76,7 +76,7 @@ public final class RenderTypeLayerRegistry {
         });
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/registry/RenderTypeLayerRegistry$LayerType.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/registry/RenderTypeLayerRegistry$LayerType.class */
     public static final class LayerType<T extends RenderTypeLayer> extends Record {
         private final MapCodec<T> codec;
 

@@ -419,6 +419,11 @@
       "bf:ambient/loop/exterior/wind"
     ]
   },
+  "ambient.loop.wind.cold": {
+    "sounds": [
+      "bf:ambient/loop/exterior/wind_cold"
+    ]
+  },
   "ambient.loop.wind.scary": {
     "sounds": [
       "bf:ambient/loop/exterior/wind_scary"
@@ -1079,9 +1084,7 @@
   "ambient.war.artillery.distant": {
     "sounds": [
       "bf:ambient/war/artillery/distant0",
-      "bf:ambient/war/artillery/distant1",
-      "bf:ambient/war/artillery/distant2",
-      "bf:ambient/war/artillery/distant3"
+      "bf:ambient/war/artillery/distant1"
     ]
   },
   "ambient.war.artillery.far": {
@@ -1463,7 +1466,30 @@
       "bf:entity/rocket/ricochet0",
       "bf:entity/rocket/ricochet1",
       "bf:entity/rocket/ricochet2",
-      "bf:entity/rocket/ricochet3"
+      "bf:entity/rocket/ricochet3",
+      "bf:entity/rocket/ricochet4",
+      "bf:entity/rocket/ricochet5",
+      "bf:entity/rocket/ricochet6",
+      "bf:entity/rocket/ricochet7",
+      "bf:entity/rocket/ricochet8",
+      "bf:entity/rocket/ricochet9",
+      "bf:entity/rocket/ricochet10",
+      "bf:entity/rocket/ricochet11",
+      "bf:entity/rocket/ricochet12",
+      "bf:entity/rocket/ricochet13",
+      "bf:entity/rocket/ricochet14",
+      "bf:entity/rocket/ricochet15",
+      "bf:entity/rocket/ricochet16",
+      "bf:entity/rocket/ricochet17",
+      "bf:entity/rocket/ricochet18",
+      "bf:entity/rocket/ricochet19",
+      "bf:entity/rocket/ricochet20",
+      "bf:entity/rocket/ricochet21",
+      "bf:entity/rocket/ricochet22",
+      "bf:entity/rocket/ricochet23",
+      "bf:entity/rocket/ricochet24",
+      "bf:entity/rocket/ricochet25",
+      "bf:entity/rocket/ricochet26"
     ]
   },
   "entity.rocket.flyby": {
@@ -2640,12 +2666,33 @@
       "bf:item/gun/bullet/impact_glass_debris5"
     ]
   },
+  "item.gun.bullet.impact.glass.debris.late": {
+    "sounds": [
+      "bf:item/gun/bullet/impact_glass_debris_late0",
+      "bf:item/gun/bullet/impact_glass_debris_late1",
+      "bf:item/gun/bullet/impact_glass_debris_late2",
+      "bf:item/gun/bullet/impact_glass_debris_late3",
+      "bf:item/gun/bullet/impact_glass_debris_late4",
+      "bf:item/gun/bullet/impact_glass_debris_late5",
+      "bf:item/gun/bullet/impact_glass_debris_late6",
+      "bf:item/gun/bullet/impact_glass_debris_late7",
+      "bf:item/gun/bullet/impact_glass_debris_late8"
+    ]
+  },
   "item.gun.bullet.impact.water": {
     "sounds": [
       "bf:item/gun/bullet/impact_water0",
       "bf:item/gun/bullet/impact_water1",
       "bf:item/gun/bullet/impact_water2",
       "bf:item/gun/bullet/impact_water3"
+    ]
+  },
+  "item.gun.bullet.impact.barrel": {
+    "sounds": [
+      "bf:item/gun/bullet/impact_barrel0",
+      "bf:item/gun/bullet/impact_barrel1",
+      "bf:item/gun/bullet/impact_barrel2",
+      "bf:item/gun/bullet/impact_barrel3"
     ]
   },
   "item.gun.bullet.impact.metal": {
@@ -2669,7 +2716,11 @@
       "bf:item/gun/bullet/impact_stone0",
       "bf:item/gun/bullet/impact_stone1",
       "bf:item/gun/bullet/impact_stone2",
-      "bf:item/gun/bullet/impact_stone3"
+      "bf:item/gun/bullet/impact_stone3",
+      "bf:item/gun/bullet/impact_stone4",
+      "bf:item/gun/bullet/impact_stone5",
+      "bf:item/gun/bullet/impact_stone6",
+      "bf:item/gun/bullet/impact_stone7"
     ]
   },
   "item.gun.bullet.impact.stone.debris": {
@@ -4972,11 +5023,6 @@
       "bf:match/event/airstrike/fire2",
       "bf:match/event/airstrike/fire3",
       "bf:match/event/airstrike/fire4"
-    ]
-  },
-  "match.event.airstrike.corebass": {
-    "sounds": [
-      "bf:match/event/airstrike/corebass"
     ]
   },
   "match.ammopoint.refill": {

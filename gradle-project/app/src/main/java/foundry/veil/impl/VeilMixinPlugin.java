@@ -13,7 +13,7 @@ import java.util.Set;
 import org.jetbrains.annotations.ApiStatus;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/VeilMixinPlugin.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/VeilMixinPlugin.class */
 @ApiStatus.Internal
 public abstract class VeilMixinPlugin implements IMixinConfigPlugin {
     private static final String PACKAGE_NAME = Veil.platform().getPlatformType().getMixinPackageName();
@@ -50,7 +50,10 @@ public abstract class VeilMixinPlugin implements IMixinConfigPlugin {
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         for (String compat : COMPAT) {
             if (mixinClassName.startsWith(compat)) {
-                return Veil.SODIUM ? !mixinClassName.startsWith(compat + ".vanilla") : !mixinClassName.startsWith(compat + ".sodium");
+                if (Veil.SODIUM) {
+                    return !mixinClassName.startsWith(compat + ".vanilla");
+                }
+                return !mixinClassName.startsWith(compat + ".sodium");
             }
         }
         if (Veil.IRIS && mixinClassName.startsWith("foundry.veil.mixin.dynamicbuffer")) {

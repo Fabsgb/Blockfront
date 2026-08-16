@@ -1,8 +1,8 @@
 package foundry.veil.impl.client.render.shader.uniform;
 
-import com.boehmod.blockfront.AbstractC0877pq;
-import com.boehmod.blockfront.C0357g;
-import com.boehmod.blockfront.C0862pb;
+import com.boehmod.blockfront.C0358g;
+import com.boehmod.blockfront.C0885px;
+import com.boehmod.blockfront.C0994s;
 import foundry.veil.api.client.necromancer.Skeleton;
 import foundry.veil.api.client.render.VeilRenderSystem;
 import foundry.veil.api.client.render.shader.program.ShaderUniformCache;
@@ -55,7 +55,7 @@ import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.MemoryUtil;
 import org.lwjgl.system.NativeResource;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/shader/uniform/ShaderUniformImpl.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/shader/uniform/ShaderUniformImpl.class */
 @ApiStatus.Internal
 public class ShaderUniformImpl implements ShaderUniform, NativeResource {
     private final IntSupplier program;
@@ -127,19 +127,19 @@ public class ShaderUniformImpl implements ShaderUniform, NativeResource {
 
     @Override // foundry.veil.api.client.render.shader.uniform.ShaderUniform
     public float getFloat() {
-        switch (this.type) {
-            case FLOAT:
+        switch (C14621.f9162x90d74ae8[this.type.ordinal()]) {
+            case 1:
                 return GL20C.glGetUniformf(this.program.getAsInt(), this.location);
-            case SAMPLER:
-            case INT:
+            case 2:
+            case 3:
                 return GL20C.glGetUniformi(this.program.getAsInt(), this.location);
-            case UNSIGNED_INT:
+            case 4:
                 return GL30C.glGetUniformui(this.program.getAsInt(), this.location);
-            case DOUBLE:
+            case 5:
                 return (float) ARBGPUShaderFP64.glGetUniformd(this.program.getAsInt(), this.location);
-            case LONG:
+            case 6:
                 return ARBGPUShaderInt64.glGetnUniformi64vARB(this.program.getAsInt(), this.location);
-            case UNSIGNED_LONG:
+            case C0994s.f5462C /* 7 */:
                 return ARBGPUShaderInt64.glGetnUniformui64vARB(this.program.getAsInt(), this.location);
             default:
                 return 0.0f;
@@ -151,42 +151,42 @@ public class ShaderUniformImpl implements ShaderUniform, NativeResource {
         Objects.checkFromIndexSize(offset, length, dst.length);
         MemoryStack stack = MemoryStack.stackPush();
         try {
-            switch (this.type) {
-                case FLOAT:
+            switch (C14621.f9162x90d74ae8[this.type.ordinal()]) {
+                case 1:
                     FloatBuffer buffer = stack.mallocFloat(Math.min(this.length, length));
                     GL20C.glGetUniformfv(this.program.getAsInt(), this.location, buffer);
                     buffer.get(dst);
                     break;
-                case SAMPLER:
-                case INT:
+                case 2:
+                case 3:
                     IntBuffer buffer2 = stack.mallocInt(Math.min(this.length, length));
                     GL20C.glGetUniformiv(this.program.getAsInt(), this.location, buffer2);
                     for (int i = 0; i < buffer2.capacity(); i++) {
                         dst[i + offset] = buffer2.get(i);
                     }
                     break;
-                case UNSIGNED_INT:
+                case 4:
                     IntBuffer buffer3 = stack.mallocInt(Math.min(this.length, length));
                     GL30C.glGetUniformuiv(this.program.getAsInt(), this.location, buffer3);
                     for (int i2 = 0; i2 < buffer3.capacity(); i2++) {
                         dst[i2 + offset] = buffer3.get(i2);
                     }
                     break;
-                case DOUBLE:
+                case 5:
                     DoubleBuffer buffer4 = stack.mallocDouble(Math.min(this.length, length));
                     ARBGPUShaderFP64.glGetUniformdv(this.program.getAsInt(), this.location, buffer4);
                     for (int i3 = 0; i3 < buffer4.capacity(); i3++) {
                         dst[i3 + offset] = (float) buffer4.get(i3);
                     }
                     break;
-                case LONG:
+                case 6:
                     LongBuffer buffer5 = stack.mallocLong(Math.min(this.length, length));
                     ARBGPUShaderInt64.glGetnUniformi64vARB(this.program.getAsInt(), this.location, buffer5);
                     for (int i4 = 0; i4 < buffer5.capacity(); i4++) {
                         dst[i4 + offset] = (int) buffer5.get(i4);
                     }
                     break;
-                case UNSIGNED_LONG:
+                case C0994s.f5462C /* 7 */:
                     LongBuffer buffer6 = stack.mallocLong(Math.min(this.length, length));
                     ARBGPUShaderInt64.glGetnUniformui64vARB(this.program.getAsInt(), this.location, buffer6);
                     for (int i5 = 0; i5 < buffer6.capacity(); i5++) {
@@ -216,19 +216,19 @@ public class ShaderUniformImpl implements ShaderUniform, NativeResource {
 
     @Override // foundry.veil.api.client.render.shader.uniform.ShaderUniform
     public int getInt() {
-        switch (this.type) {
-            case FLOAT:
+        switch (C14621.f9162x90d74ae8[this.type.ordinal()]) {
+            case 1:
                 return (int) GL20C.glGetUniformf(this.program.getAsInt(), this.location);
-            case SAMPLER:
-            case INT:
+            case 2:
+            case 3:
                 return GL20C.glGetUniformi(this.program.getAsInt(), this.location);
-            case UNSIGNED_INT:
+            case 4:
                 return GL30C.glGetUniformui(this.program.getAsInt(), this.location);
-            case DOUBLE:
+            case 5:
                 return (int) ARBGPUShaderFP64.glGetUniformd(this.program.getAsInt(), this.location);
-            case LONG:
+            case 6:
                 return (int) ARBGPUShaderInt64.glGetnUniformi64vARB(this.program.getAsInt(), this.location);
-            case UNSIGNED_LONG:
+            case C0994s.f5462C /* 7 */:
                 return (int) ARBGPUShaderInt64.glGetnUniformui64vARB(this.program.getAsInt(), this.location);
             default:
                 return 0;
@@ -240,40 +240,40 @@ public class ShaderUniformImpl implements ShaderUniform, NativeResource {
         Objects.checkFromIndexSize(offset, length, dst.length);
         MemoryStack stack = MemoryStack.stackPush();
         try {
-            switch (this.type) {
-                case FLOAT:
+            switch (C14621.f9162x90d74ae8[this.type.ordinal()]) {
+                case 1:
                     FloatBuffer buffer = stack.mallocFloat(Math.min(this.length, length));
                     GL20C.glGetUniformfv(this.program.getAsInt(), this.location, buffer);
                     for (int i = 0; i < buffer.capacity(); i++) {
                         dst[i + offset] = (int) buffer.get(i);
                     }
                     break;
-                case SAMPLER:
-                case INT:
+                case 2:
+                case 3:
                     IntBuffer buffer2 = stack.mallocInt(Math.min(this.length, length));
                     GL20C.glGetUniformiv(this.program.getAsInt(), this.location, buffer2);
                     buffer2.get(dst);
                     break;
-                case UNSIGNED_INT:
+                case 4:
                     IntBuffer buffer3 = stack.mallocInt(Math.min(this.length, length));
                     GL30C.glGetUniformuiv(this.program.getAsInt(), this.location, buffer3);
                     buffer3.get(dst);
                     break;
-                case DOUBLE:
+                case 5:
                     DoubleBuffer buffer4 = stack.mallocDouble(Math.min(this.length, length));
                     ARBGPUShaderFP64.glGetUniformdv(this.program.getAsInt(), this.location, buffer4);
                     for (int i2 = 0; i2 < buffer4.capacity(); i2++) {
                         dst[i2 + offset] = (int) buffer4.get(i2);
                     }
                     break;
-                case LONG:
+                case 6:
                     LongBuffer buffer5 = stack.mallocLong(Math.min(this.length, length));
                     ARBGPUShaderInt64.glGetnUniformi64vARB(this.program.getAsInt(), this.location, buffer5);
                     for (int i3 = 0; i3 < buffer5.capacity(); i3++) {
                         dst[i3 + offset] = (int) buffer5.get(i3);
                     }
                     break;
-                case UNSIGNED_LONG:
+                case C0994s.f5462C /* 7 */:
                     LongBuffer buffer6 = stack.mallocLong(Math.min(this.length, length));
                     ARBGPUShaderInt64.glGetnUniformui64vARB(this.program.getAsInt(), this.location, buffer6);
                     for (int i4 = 0; i4 < buffer6.capacity(); i4++) {
@@ -303,19 +303,19 @@ public class ShaderUniformImpl implements ShaderUniform, NativeResource {
 
     @Override // foundry.veil.api.client.render.shader.uniform.ShaderUniform
     public double getDouble() {
-        switch (this.type) {
-            case FLOAT:
+        switch (C14621.f9162x90d74ae8[this.type.ordinal()]) {
+            case 1:
                 return GL20C.glGetUniformf(this.program.getAsInt(), this.location);
-            case SAMPLER:
-            case INT:
+            case 2:
+            case 3:
                 return GL20C.glGetUniformi(this.program.getAsInt(), this.location);
-            case UNSIGNED_INT:
+            case 4:
                 return GL30C.glGetUniformui(this.program.getAsInt(), this.location);
-            case DOUBLE:
+            case 5:
                 return ARBGPUShaderFP64.glGetUniformd(this.program.getAsInt(), this.location);
-            case LONG:
+            case 6:
                 return ARBGPUShaderInt64.glGetnUniformi64vARB(this.program.getAsInt(), this.location);
-            case UNSIGNED_LONG:
+            case C0994s.f5462C /* 7 */:
                 return ARBGPUShaderInt64.glGetnUniformui64vARB(this.program.getAsInt(), this.location);
             default:
                 return 0.0d;
@@ -327,42 +327,42 @@ public class ShaderUniformImpl implements ShaderUniform, NativeResource {
         Objects.checkFromIndexSize(offset, length, dst.length);
         MemoryStack stack = MemoryStack.stackPush();
         try {
-            switch (this.type) {
-                case FLOAT:
+            switch (C14621.f9162x90d74ae8[this.type.ordinal()]) {
+                case 1:
                     FloatBuffer buffer = stack.mallocFloat(Math.min(this.length, length));
                     GL20C.glGetUniformfv(this.program.getAsInt(), this.location, buffer);
                     for (int i = 0; i < buffer.capacity(); i++) {
                         dst[i + offset] = buffer.get(i);
                     }
                     break;
-                case SAMPLER:
-                case INT:
+                case 2:
+                case 3:
                     IntBuffer buffer2 = stack.mallocInt(Math.min(this.length, length));
                     GL20C.glGetUniformiv(this.program.getAsInt(), this.location, buffer2);
                     for (int i2 = 0; i2 < buffer2.capacity(); i2++) {
                         dst[i2 + offset] = buffer2.get(i2);
                     }
                     break;
-                case UNSIGNED_INT:
+                case 4:
                     IntBuffer buffer3 = stack.mallocInt(Math.min(this.length, length));
                     GL30C.glGetUniformuiv(this.program.getAsInt(), this.location, buffer3);
                     for (int i3 = 0; i3 < buffer3.capacity(); i3++) {
                         dst[i3 + offset] = buffer3.get(i3);
                     }
                     break;
-                case DOUBLE:
+                case 5:
                     DoubleBuffer buffer4 = stack.mallocDouble(Math.min(this.length, length));
                     ARBGPUShaderFP64.glGetUniformdv(this.program.getAsInt(), this.location, buffer4);
                     buffer4.get(dst);
                     break;
-                case LONG:
+                case 6:
                     LongBuffer buffer5 = stack.mallocLong(Math.min(this.length, length));
                     ARBGPUShaderInt64.glGetnUniformi64vARB(this.program.getAsInt(), this.location, buffer5);
                     for (int i4 = 0; i4 < buffer5.capacity(); i4++) {
                         dst[i4 + offset] = buffer5.get(i4);
                     }
                     break;
-                case UNSIGNED_LONG:
+                case C0994s.f5462C /* 7 */:
                     LongBuffer buffer6 = stack.mallocLong(Math.min(this.length, length));
                     ARBGPUShaderInt64.glGetnUniformui64vARB(this.program.getAsInt(), this.location, buffer6);
                     for (int i5 = 0; i5 < buffer6.capacity(); i5++) {
@@ -392,19 +392,19 @@ public class ShaderUniformImpl implements ShaderUniform, NativeResource {
 
     @Override // foundry.veil.api.client.render.shader.uniform.ShaderUniform
     public long getLong() {
-        switch (this.type) {
-            case FLOAT:
+        switch (C14621.f9162x90d74ae8[this.type.ordinal()]) {
+            case 1:
                 return (long) GL20C.glGetUniformf(this.program.getAsInt(), this.location);
-            case SAMPLER:
-            case INT:
+            case 2:
+            case 3:
                 return GL20C.glGetUniformi(this.program.getAsInt(), this.location);
-            case UNSIGNED_INT:
+            case 4:
                 return GL30C.glGetUniformui(this.program.getAsInt(), this.location);
-            case DOUBLE:
+            case 5:
                 return (long) ARBGPUShaderFP64.glGetUniformd(this.program.getAsInt(), this.location);
-            case LONG:
+            case 6:
                 return ARBGPUShaderInt64.glGetnUniformi64vARB(this.program.getAsInt(), this.location);
-            case UNSIGNED_LONG:
+            case C0994s.f5462C /* 7 */:
                 return ARBGPUShaderInt64.glGetnUniformui64vARB(this.program.getAsInt(), this.location);
             default:
                 return 0L;
@@ -416,42 +416,42 @@ public class ShaderUniformImpl implements ShaderUniform, NativeResource {
         Objects.checkFromIndexSize(offset, length, dst.length);
         MemoryStack stack = MemoryStack.stackPush();
         try {
-            switch (this.type) {
-                case FLOAT:
+            switch (C14621.f9162x90d74ae8[this.type.ordinal()]) {
+                case 1:
                     FloatBuffer buffer = stack.mallocFloat(Math.min(this.length, length));
                     GL20C.glGetUniformfv(this.program.getAsInt(), this.location, buffer);
                     for (int i = 0; i < buffer.capacity(); i++) {
                         dst[i + offset] = (long) buffer.get(i);
                     }
                     break;
-                case SAMPLER:
-                case INT:
+                case 2:
+                case 3:
                     IntBuffer buffer2 = stack.mallocInt(Math.min(this.length, length));
                     GL20C.glGetUniformiv(this.program.getAsInt(), this.location, buffer2);
                     for (int i2 = 0; i2 < buffer2.capacity(); i2++) {
                         dst[i2 + offset] = buffer2.get(i2);
                     }
                     break;
-                case UNSIGNED_INT:
+                case 4:
                     IntBuffer buffer3 = stack.mallocInt(Math.min(this.length, length));
                     GL30C.glGetUniformuiv(this.program.getAsInt(), this.location, buffer3);
                     for (int i3 = 0; i3 < buffer3.capacity(); i3++) {
                         dst[i3 + offset] = buffer3.get(i3);
                     }
                     break;
-                case DOUBLE:
+                case 5:
                     DoubleBuffer buffer4 = stack.mallocDouble(Math.min(this.length, length));
                     ARBGPUShaderFP64.glGetUniformdv(this.program.getAsInt(), this.location, buffer4);
                     for (int i4 = 0; i4 < buffer4.capacity(); i4++) {
                         dst[i4 + offset] = (long) buffer4.get(i4);
                     }
                     break;
-                case LONG:
+                case 6:
                     LongBuffer buffer5 = stack.mallocLong(Math.min(this.length, length));
                     ARBGPUShaderInt64.glGetnUniformi64vARB(this.program.getAsInt(), this.location, buffer5);
                     buffer5.get(dst);
                     break;
-                case UNSIGNED_LONG:
+                case C0994s.f5462C /* 7 */:
                     LongBuffer buffer6 = stack.mallocLong(Math.min(this.length, length));
                     ARBGPUShaderInt64.glGetnUniformui64vARB(this.program.getAsInt(), this.location, buffer6);
                     buffer6.get(dst);
@@ -481,29 +481,29 @@ public class ShaderUniformImpl implements ShaderUniform, NativeResource {
     public void getVector(CharSequence name, Vector2f... values) {
         MemoryStack stack = MemoryStack.stackPush();
         try {
-            switch (C14361.f8776x90d74ae8[this.type.ordinal()]) {
-                case 8:
+            switch (this.type) {
+                case FLOAT_VEC2:
                     FloatBuffer buffer = stack.mallocFloat(2 * Math.min(this.length, values.length));
                     GL20C.glGetUniformfv(this.program.getAsInt(), this.location, buffer);
                     for (int i = 0; i < values.length; i++) {
                         values[i].set(i * 2, buffer);
                     }
                     break;
-                case C0862pb.f4509nv /* 9 */:
+                case INT_VEC2:
                     IntBuffer buffer2 = stack.mallocInt(2 * Math.min(this.length, values.length));
                     GL20C.glGetUniformiv(this.program.getAsInt(), this.location, buffer2);
                     for (int i2 = 0; i2 < values.length; i2++) {
                         values[i2].set(buffer2.get(i2 * 2), buffer2.get((i2 * 2) + 1));
                     }
                     break;
-                case 10:
+                case UNSIGNED_INT_VEC2:
                     IntBuffer buffer3 = stack.mallocInt(2 * Math.min(this.length, values.length));
                     GL30C.glGetUniformuiv(this.program.getAsInt(), this.location, buffer3);
                     for (int i3 = 0; i3 < values.length; i3++) {
                         values[i3].set(buffer3.get(i3 * 2), buffer3.get((i3 * 2) + 1));
                     }
                     break;
-                case AbstractC0877pq.f4599nO /* 11 */:
+                case DOUBLE_VEC2:
                     DoubleBuffer buffer4 = stack.mallocDouble(2 * Math.min(this.length, values.length));
                     ARBGPUShaderFP64.glGetUniformdv(this.program.getAsInt(), this.location, buffer4);
                     for (int i4 = 0; i4 < values.length; i4++) {
@@ -535,7 +535,7 @@ public class ShaderUniformImpl implements ShaderUniform, NativeResource {
     public void getVector(CharSequence name, Vector3f... values) {
         MemoryStack stack = MemoryStack.stackPush();
         try {
-            switch (C14361.f8776x90d74ae8[this.type.ordinal()]) {
+            switch (C14621.f9162x90d74ae8[this.type.ordinal()]) {
                 case 12:
                     FloatBuffer buffer = stack.mallocFloat(3 * Math.min(this.length, values.length));
                     GL20C.glGetUniformfv(this.program.getAsInt(), this.location, buffer);
@@ -543,7 +543,7 @@ public class ShaderUniformImpl implements ShaderUniform, NativeResource {
                         values[i].set(i * 3, buffer);
                     }
                     break;
-                case C0862pb.f4508nu /* 13 */:
+                case C0885px.f4841pt /* 13 */:
                     IntBuffer buffer2 = stack.mallocInt(3 * Math.min(this.length, values.length));
                     GL20C.glGetUniformiv(this.program.getAsInt(), this.location, buffer2);
                     for (int i2 = 0; i2 < values.length; i2++) {
@@ -643,29 +643,29 @@ public class ShaderUniformImpl implements ShaderUniform, NativeResource {
     public void getVectori(CharSequence name, Vector2i... values) {
         MemoryStack stack = MemoryStack.stackPush();
         try {
-            switch (C14361.f8776x90d74ae8[this.type.ordinal()]) {
-                case 8:
+            switch (this.type) {
+                case FLOAT_VEC2:
                     FloatBuffer buffer = stack.mallocFloat(2 * Math.min(this.length, values.length));
                     GL20C.glGetUniformfv(this.program.getAsInt(), this.location, buffer);
                     for (int i = 0; i < values.length; i++) {
                         values[i].set((int) buffer.get(i * 2), (int) buffer.get((i * 2) + 1));
                     }
                     break;
-                case C0862pb.f4509nv /* 9 */:
+                case INT_VEC2:
                     IntBuffer buffer2 = stack.mallocInt(2 * Math.min(this.length, values.length));
                     GL20C.glGetUniformiv(this.program.getAsInt(), this.location, buffer2);
                     for (int i2 = 0; i2 < values.length; i2++) {
                         values[i2].set(i2 * 2, buffer2);
                     }
                     break;
-                case 10:
+                case UNSIGNED_INT_VEC2:
                     IntBuffer buffer3 = stack.mallocInt(2 * Math.min(this.length, values.length));
                     GL30C.glGetUniformuiv(this.program.getAsInt(), this.location, buffer3);
                     for (int i3 = 0; i3 < values.length; i3++) {
                         values[i3].set(i3 * 2, buffer3);
                     }
                     break;
-                case AbstractC0877pq.f4599nO /* 11 */:
+                case DOUBLE_VEC2:
                     DoubleBuffer buffer4 = stack.mallocDouble(2 * Math.min(this.length, values.length));
                     ARBGPUShaderFP64.glGetUniformdv(this.program.getAsInt(), this.location, buffer4);
                     for (int i4 = 0; i4 < values.length; i4++) {
@@ -697,7 +697,7 @@ public class ShaderUniformImpl implements ShaderUniform, NativeResource {
     public void getVectori(CharSequence name, Vector3i... values) {
         MemoryStack stack = MemoryStack.stackPush();
         try {
-            switch (C14361.f8776x90d74ae8[this.type.ordinal()]) {
+            switch (C14621.f9162x90d74ae8[this.type.ordinal()]) {
                 case 12:
                     FloatBuffer buffer = stack.mallocFloat(3 * Math.min(this.length, values.length));
                     GL20C.glGetUniformfv(this.program.getAsInt(), this.location, buffer);
@@ -705,7 +705,7 @@ public class ShaderUniformImpl implements ShaderUniform, NativeResource {
                         values[i].set((int) buffer.get(i * 3), (int) buffer.get((i * 3) + 1), (int) buffer.get((i * 3) + 2));
                     }
                     break;
-                case C0862pb.f4508nu /* 13 */:
+                case C0885px.f4841pt /* 13 */:
                     IntBuffer buffer2 = stack.mallocInt(3 * Math.min(this.length, values.length));
                     GL20C.glGetUniformiv(this.program.getAsInt(), this.location, buffer2);
                     for (int i2 = 0; i2 < values.length; i2++) {
@@ -1499,7 +1499,7 @@ public class ShaderUniformImpl implements ShaderUniform, NativeResource {
         if (this.type != ShaderUniform.Type.DOUBLE_MATRIX4x4) {
             return;
         }
-        if (this.value.getLong(0) == Double.doubleToLongBits(value.m00()) && this.value.getLong(8) == Double.doubleToLongBits(value.m01()) && this.value.getLong(16) == Double.doubleToLongBits(value.m02()) && this.value.getLong(24) == Double.doubleToLongBits(value.m03()) && this.value.getLong(32) == Double.doubleToLongBits(value.m10()) && this.value.getLong(40) == Double.doubleToLongBits(value.m11()) && this.value.getLong(48) == Double.doubleToLongBits(value.m12()) && this.value.getLong(56) == Double.doubleToLongBits(value.m13()) && this.value.getLong(64) == Double.doubleToLongBits(value.m20()) && this.value.getLong(72) == Double.doubleToLongBits(value.m21()) && this.value.getLong(80) == Double.doubleToLongBits(value.m22()) && this.value.getLong(88) == Double.doubleToLongBits(value.m23()) && this.value.getLong(96) == Double.doubleToLongBits(value.m30()) && this.value.getLong(104) == Double.doubleToLongBits(value.m31()) && this.value.getLong(Skeleton.UNIFORM_STRIDE) == Double.doubleToLongBits(value.m32()) && this.value.getLong(C0357g.f2439g) == Double.doubleToLongBits(value.m33())) {
+        if (this.value.getLong(0) == Double.doubleToLongBits(value.m00()) && this.value.getLong(8) == Double.doubleToLongBits(value.m01()) && this.value.getLong(16) == Double.doubleToLongBits(value.m02()) && this.value.getLong(24) == Double.doubleToLongBits(value.m03()) && this.value.getLong(32) == Double.doubleToLongBits(value.m10()) && this.value.getLong(40) == Double.doubleToLongBits(value.m11()) && this.value.getLong(48) == Double.doubleToLongBits(value.m12()) && this.value.getLong(56) == Double.doubleToLongBits(value.m13()) && this.value.getLong(64) == Double.doubleToLongBits(value.m20()) && this.value.getLong(72) == Double.doubleToLongBits(value.m21()) && this.value.getLong(80) == Double.doubleToLongBits(value.m22()) && this.value.getLong(88) == Double.doubleToLongBits(value.m23()) && this.value.getLong(96) == Double.doubleToLongBits(value.m30()) && this.value.getLong(104) == Double.doubleToLongBits(value.m31()) && this.value.getLong(Skeleton.UNIFORM_STRIDE) == Double.doubleToLongBits(value.m32()) && this.value.getLong(C0358g.f2490g) == Double.doubleToLongBits(value.m33())) {
             return;
         }
         value.get(this.value);

@@ -10,9 +10,11 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.DirectionalBlock;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
@@ -25,22 +27,32 @@ import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.cache.object.GeoBone;
 import software.bernie.geckolib.cache.texture.AnimatableTexture;
 import software.bernie.geckolib.constant.DataTickets;
+import software.bernie.geckolib.model.DefaultedBlockGeoModel;
 import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
 import software.bernie.geckolib.renderer.layer.GeoRenderLayersContainer;
 import software.bernie.geckolib.util.RenderUtil;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/renderer/GeoBlockRenderer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/renderer/GeoBlockRenderer.class */
 public class GeoBlockRenderer<T extends BlockEntity & GeoAnimatable> implements GeoRenderer<T>, BlockEntityRenderer<T> {
+    protected final GeoRenderLayersContainer<T> renderLayers;
     protected final GeoModel<T> model;
     protected T animatable;
-    protected final GeoRenderLayersContainer<T> renderLayers = new GeoRenderLayersContainer<>(this);
-    protected float scaleWidth = 1.0f;
-    protected float scaleHeight = 1.0f;
-    protected Matrix4f blockRenderTranslations = new Matrix4f();
-    protected Matrix4f modelRenderTranslations = new Matrix4f();
+    protected float scaleWidth;
+    protected float scaleHeight;
+    protected Matrix4f blockRenderTranslations;
+    protected Matrix4f modelRenderTranslations;
+
+    public GeoBlockRenderer(BlockEntityType<? extends T> blockEntityType) {
+        this(new DefaultedBlockGeoModel(BuiltInRegistries.BLOCK_ENTITY_TYPE.getKey(blockEntityType)));
+    }
 
     public GeoBlockRenderer(GeoModel<T> model) {
+        this.renderLayers = new GeoRenderLayersContainer<>(this);
+        this.scaleWidth = 1.0f;
+        this.scaleHeight = 1.0f;
+        this.blockRenderTranslations = new Matrix4f();
+        this.modelRenderTranslations = new Matrix4f();
         this.model = model;
     }
 
@@ -50,8 +62,8 @@ public class GeoBlockRenderer<T extends BlockEntity & GeoAnimatable> implements 
     }
 
     @Override // software.bernie.geckolib.renderer.GeoRenderer
-    /* JADX INFO: renamed from: getAnimatable */
-    public T mo9316getAnimatable() {
+    /* JADX INFO: renamed from: getAnimatable, reason: merged with bridge method [inline-methods] */
+    public T mo9710getAnimatable() {
         return this.animatable;
     }
 
@@ -123,6 +135,11 @@ public class GeoBlockRenderer<T extends BlockEntity & GeoAnimatable> implements 
 
     @Override // software.bernie.geckolib.renderer.GeoRenderer
     public void renderRecursively(PoseStack poseStack, T animatable, GeoBone bone, RenderType renderType, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
+        poseStack.pushPose();
+        RenderUtil.translateMatrixToBone(poseStack, bone);
+        RenderUtil.translateToPivotPoint(poseStack, bone);
+        RenderUtil.rotateMatrixAroundBone(poseStack, bone);
+        RenderUtil.scaleMatrixForBone(poseStack, bone);
         if (bone.isTrackingMatrices()) {
             Matrix4f poseState = new Matrix4f(poseStack.last().pose());
             Matrix4f localMatrix = RenderUtil.invertAndMultiplyMatrices(poseState, this.blockRenderTranslations);
@@ -132,12 +149,19 @@ public class GeoBlockRenderer<T extends BlockEntity & GeoAnimatable> implements 
             bone.setLocalSpaceMatrix(localMatrix);
             bone.setWorldSpaceMatrix(worldState.translate(new Vector3f(pos.getX(), pos.getY(), pos.getZ())));
         }
-        super.renderRecursively(poseStack, animatable, bone, renderType, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
+        RenderUtil.translateAwayFromPivotPoint(poseStack, bone);
+        VertexConsumer buffer2 = checkAndRefreshBuffer(isReRender, buffer, bufferSource, renderType);
+        renderCubesOfBone(poseStack, bone, buffer2, packedLight, packedOverlay, colour);
+        if (!isReRender) {
+            applyRenderLayersForBone(poseStack, mo9710getAnimatable(), bone, renderType, bufferSource, buffer2, partialTick, packedLight, packedOverlay);
+        }
+        renderChildBones(poseStack, animatable, bone, renderType, bufferSource, buffer2, isReRender, partialTick, packedLight, packedOverlay, colour);
+        poseStack.popPose();
     }
 
     /* JADX INFO: renamed from: software.bernie.geckolib.renderer.GeoBlockRenderer$1 */
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/renderer/GeoBlockRenderer$1.class */
-    static /* synthetic */ class C14741 {
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/renderer/GeoBlockRenderer$1.class */
+    static /* synthetic */ class C15011 {
         static final /* synthetic */ int[] $SwitchMap$net$minecraft$core$Direction = new int[Direction.values().length];
 
         static {
@@ -169,7 +193,7 @@ public class GeoBlockRenderer<T extends BlockEntity & GeoAnimatable> implements 
     }
 
     protected void rotateBlock(Direction facing, PoseStack poseStack) {
-        switch (C14741.$SwitchMap$net$minecraft$core$Direction[facing.ordinal()]) {
+        switch (C15011.$SwitchMap$net$minecraft$core$Direction[facing.ordinal()]) {
             case 1:
                 poseStack.mulPose(Axis.YP.rotationDegrees(180.0f));
                 break;

@@ -8,12 +8,12 @@ import java.util.List;
 import java.util.regex.Pattern;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/profanity/Profanity.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/profanity/Profanity.class */
 public class Profanity {
 
     /* JADX INFO: renamed from: id */
     @SerializedName("id")
-    private String f18id;
+    private String f19id;
 
     @SerializedName("match")
     private String match;
@@ -38,17 +38,17 @@ public class Profanity {
     }
 
     public Profanity(@NotNull ByteBuf byteBuffer) {
-        this.f18id = IPacket.readString(byteBuffer);
+        this.f19id = IPacket.readString(byteBuffer);
         this.match = IPacket.readString(byteBuffer);
         this.severity = byteBuffer.readInt();
         this.allowPartial = Boolean.valueOf(IPacket.readBoolean(byteBuffer));
-        int tagsSize = byteBuffer.readInt();
-        this.tags = new ObjectArrayList(tagsSize);
+        int tagsSize = IPacket.readSize(byteBuffer);
+        this.tags = new ObjectArrayList(IPacket.presize(tagsSize));
         for (int i = 0; i < tagsSize; i++) {
             this.tags.add(IPacket.readString(byteBuffer));
         }
-        int exceptionsSize = byteBuffer.readInt();
-        this.exceptions = new ObjectArrayList(exceptionsSize);
+        int exceptionsSize = IPacket.readSize(byteBuffer);
+        this.exceptions = new ObjectArrayList(IPacket.presize(exceptionsSize));
         for (int i2 = 0; i2 < exceptionsSize; i2++) {
             this.exceptions.add(IPacket.readString(byteBuffer));
         }
@@ -56,7 +56,7 @@ public class Profanity {
     }
 
     public void write(@NotNull ByteBuf byteBuffer) {
-        IPacket.writeString(byteBuffer, this.f18id);
+        IPacket.writeString(byteBuffer, this.f19id);
         IPacket.writeString(byteBuffer, this.match);
         byteBuffer.writeInt(this.severity);
         IPacket.writeBoolean(byteBuffer, getAllowPartial().booleanValue());
@@ -85,11 +85,11 @@ public class Profanity {
 
     @NotNull
     public String getId() {
-        return this.f18id;
+        return this.f19id;
     }
 
     public void setId(@NotNull String id) {
-        this.f18id = id;
+        this.f19id = id;
     }
 
     @NotNull

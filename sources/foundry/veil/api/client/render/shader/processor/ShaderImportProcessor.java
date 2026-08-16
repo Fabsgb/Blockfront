@@ -1,6 +1,5 @@
 package foundry.veil.api.client.render.shader.processor;
 
-import foundry.veil.api.client.render.shader.processor.ShaderPreProcessor;
 import io.github.ocelot.glslprocessor.api.GlslSyntaxException;
 import io.github.ocelot.glslprocessor.api.node.GlslTree;
 import io.github.ocelot.glslprocessor.lib.anarres.cpp.LexerException;
@@ -11,7 +10,7 @@ import java.util.List;
 import net.minecraft.ResourceLocationException;
 import net.minecraft.resources.ResourceLocation;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/processor/ShaderImportProcessor.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/processor/ShaderImportProcessor.class */
 public class ShaderImportProcessor implements ShaderPreProcessor {
     private static final String INCLUDE_KEY = "#include ";
 

@@ -21,7 +21,7 @@ import net.minecraft.util.profiling.ProfilerFiller;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/CodecReloadListener.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/CodecReloadListener.class */
 public abstract class CodecReloadListener<T> extends SimplePreparableReloadListener<Map<ResourceLocation, T>> {
     protected final Codec<T> codec;
     protected final FileToIdConverter converter;
@@ -41,9 +41,7 @@ public abstract class CodecReloadListener<T> extends SimplePreparableReloadListe
     @Override // 
     @NotNull
     /* JADX INFO: renamed from: prepare, reason: merged with bridge method [inline-methods] */
-    public Map<ResourceLocation, T> mo1735prepare(@NotNull ResourceManager resourceManager, @NotNull ProfilerFiller profilerFiller) {
-        Reader reader;
-        DataResult<T> result;
+    public Map<ResourceLocation, T> mo9291prepare(@NotNull ResourceManager resourceManager, @NotNull ProfilerFiller profilerFiller) {
         HashMap map = new HashMap();
         RegistryOps registryOpsCreate = this.registries != null ? RegistryOps.create(JsonOps.INSTANCE, this.registries) : JsonOps.INSTANCE;
         Map<ResourceLocation, Resource> resources = this.converter.listMatchingResources(resourceManager);
@@ -51,23 +49,31 @@ public abstract class CodecReloadListener<T> extends SimplePreparableReloadListe
             ResourceLocation location = entry.getKey();
             ResourceLocation id = this.converter.fileToId(location);
             try {
-                reader = entry.getValue().openAsReader();
+                Reader reader = entry.getValue().openAsReader();
                 try {
                     JsonElement element = JsonParser.parseReader(reader);
-                    result = this.codec.parse(registryOpsCreate, element);
-                } finally {
+                    DataResult<T> result = this.codec.parse(registryOpsCreate, element);
+                    if (result.error().isPresent()) {
+                        throw new JsonSyntaxException(((DataResult.Error) result.error().get()).message());
+                    }
+                    if (map.put(id, result.result().orElseThrow()) != null) {
+                        throw new IllegalStateException("Duplicate data file ignored with ID " + String.valueOf(id));
+                    }
+                    if (reader != null) {
+                        reader.close();
+                    }
+                } catch (Throwable th) {
+                    if (reader != null) {
+                        try {
+                            reader.close();
+                        } catch (Throwable th2) {
+                            th.addSuppressed(th2);
+                        }
+                    }
+                    throw th;
                 }
             } catch (Exception e) {
                 Veil.LOGGER.error("Couldn't parse data file {} from {}", new Object[]{id, location, e});
-            }
-            if (result.error().isPresent()) {
-                throw new JsonSyntaxException(((DataResult.Error) result.error().get()).message());
-            }
-            if (map.put(id, result.result().orElseThrow()) != null) {
-                throw new IllegalStateException("Duplicate data file ignored with ID " + String.valueOf(id));
-            }
-            if (reader != null) {
-                reader.close();
             }
         }
         return map;

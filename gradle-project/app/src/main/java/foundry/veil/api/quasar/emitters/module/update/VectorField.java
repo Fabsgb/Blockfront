@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 import org.joml.Vector3d;
 import org.joml.Vector3dc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/emitters/module/update/VectorField.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/emitters/module/update/VectorField.class */
 public final class VectorField implements EditorAttributeProvider {
     public static Codec<VectorField> CODEC = RecordCodecBuilder.create(instance -> {
         return instance.group(FastNoiseLite.CODEC.fieldOf("noise").forGetter((v0) -> {

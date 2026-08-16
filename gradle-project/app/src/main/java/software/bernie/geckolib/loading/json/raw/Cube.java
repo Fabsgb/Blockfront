@@ -11,7 +11,7 @@ import net.minecraft.util.GsonHelper;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.util.JsonUtil;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/loading/json/raw/Cube.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/loading/json/raw/Cube.class */
 public final class Cube extends Record {
 
     @Nullable
@@ -23,7 +23,9 @@ public final class Cube extends Record {
     private final double[] pivot;
     private final double[] rotation;
     private final double[] size;
-    private final UVUnion uv;
+
+    /* JADX INFO: renamed from: uv */
+    private final UVUnion f9196uv;
 
     public Cube(@Nullable Double inflate, @Nullable Boolean mirror, double[] origin, double[] pivot, double[] rotation, double[] size, UVUnion uv) {
         this.inflate = inflate;
@@ -32,7 +34,7 @@ public final class Cube extends Record {
         this.pivot = pivot;
         this.rotation = rotation;
         this.size = size;
-        this.uv = uv;
+        this.f9196uv = uv;
     }
 
     @Override // java.lang.Record
@@ -76,8 +78,9 @@ public final class Cube extends Record {
         return this.size;
     }
 
-    public UVUnion uv() {
-        return this.uv;
+    /* JADX INFO: renamed from: uv */
+    public UVUnion m8360uv() {
+        return this.f9196uv;
     }
 
     public static JsonDeserializer<Cube> deserializer() throws JsonParseException {

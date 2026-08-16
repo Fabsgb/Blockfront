@@ -3,9 +3,12 @@
   "impactDebrisSound": "bf:item.gun.bullet.impact.metal.debris",
   "explosionDebrisSound": "bf:ambient.explosion.debris.metal",
   "hardMaterial": true,
-  "displayImpactEffects": true,
+  "displayBlockBreakParticles": false,
   "displayBulletHole": true,
   "impactParticles": [
-    { "count": 12, "particleType": "bf:bullet_spark_particle" }
+    {
+      "count": 12,
+      "particleType": "bf:bullet_spark_particle"
+    }
   ]
 }

@@ -41,7 +41,7 @@ import org.joml.Vector4dc;
 import org.joml.Vector4fc;
 import org.joml.Vector4ic;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/VeilShaderBufferLayout.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/VeilShaderBufferLayout.class */
 public final class VeilShaderBufferLayout<T> extends Record {
     private final String name;
     private final Map<String, FieldSerializer<T>> fields;
@@ -49,7 +49,7 @@ public final class VeilShaderBufferLayout<T> extends Record {
     private final ShaderBlock.MemoryLayout memoryLayout;
     private final GlslStructSpecifier structSpecifier;
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/VeilShaderBufferLayout$FieldSerializer.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/VeilShaderBufferLayout$FieldSerializer.class */
     @FunctionalInterface
     public interface FieldSerializer<T> {
         void write(T t, int i, ByteBuffer byteBuffer);
@@ -98,6 +98,7 @@ public final class VeilShaderBufferLayout<T> extends Record {
         return this.structSpecifier;
     }
 
+    /* JADX INFO: Thrown type has an unknown type hierarchy: java.lang.MatchException */
     public GlslNode createNode(boolean shaderStorageSupported, @Nullable String interfaceName) throws MatchException {
         GlslTypeQualifier.StorageType storageType;
         GlslNode node;
@@ -129,7 +130,7 @@ public final class VeilShaderBufferLayout<T> extends Record {
         return new Builder<>();
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/VeilShaderBufferLayout$Builder.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/VeilShaderBufferLayout$Builder.class */
     public static class Builder<T> {
         private static final Random RANDOM = new Random();
         private final String name = "VeilBuffer" + Math.abs(RANDOM.nextInt());
@@ -138,19 +139,19 @@ public final class VeilShaderBufferLayout<T> extends Record {
         private ShaderBlock.BufferBinding binding = ShaderBlock.BufferBinding.UNIFORM;
         private ShaderBlock.MemoryLayout memoryLayout = ShaderBlock.MemoryLayout.SHARED;
 
-        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/VeilShaderBufferLayout$Builder$DoubleSerializer.class */
+        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/VeilShaderBufferLayout$Builder$DoubleSerializer.class */
         @FunctionalInterface
         public interface DoubleSerializer<T> {
             double serialize(T t);
         }
 
-        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/VeilShaderBufferLayout$Builder$FloatSerializer.class */
+        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/VeilShaderBufferLayout$Builder$FloatSerializer.class */
         @FunctionalInterface
         public interface FloatSerializer<T> {
             float serialize(T t);
         }
 
-        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/VeilShaderBufferLayout$Builder$IntSerializer.class */
+        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/VeilShaderBufferLayout$Builder$IntSerializer.class */
         @FunctionalInterface
         public interface IntSerializer<T> {
             int serialize(T t);

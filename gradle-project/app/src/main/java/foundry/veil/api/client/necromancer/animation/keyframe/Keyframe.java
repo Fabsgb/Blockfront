@@ -6,36 +6,56 @@ import java.lang.runtime.ObjectMethods;
 import org.joml.Quaternionfc;
 import org.joml.Vector3fc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/necromancer/animation/keyframe/Keyframe.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/necromancer/animation/keyframe/Keyframe.class */
 public final class Keyframe extends Record {
     private final float time;
     private final Interpolation interpolation;
     private final KeyframeTransform transform;
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/necromancer/animation/keyframe/Keyframe$KeyframeTransform.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/necromancer/animation/keyframe/Keyframe$KeyframeTransform.class */
     static final class KeyframeTransform extends Record {
-        private final float px;
-        private final float py;
-        private final float pz;
-        private final float sx;
-        private final float sy;
-        private final float sz;
-        private final float qx;
-        private final float qy;
-        private final float qz;
-        private final float qw;
+
+        /* JADX INFO: renamed from: px */
+        private final float f9109px;
+
+        /* JADX INFO: renamed from: py */
+        private final float f9110py;
+
+        /* JADX INFO: renamed from: pz */
+        private final float f9111pz;
+
+        /* JADX INFO: renamed from: sx */
+        private final float f9112sx;
+
+        /* JADX INFO: renamed from: sy */
+        private final float f9113sy;
+
+        /* JADX INFO: renamed from: sz */
+        private final float f9114sz;
+
+        /* JADX INFO: renamed from: qx */
+        private final float f9115qx;
+
+        /* JADX INFO: renamed from: qy */
+        private final float f9116qy;
+
+        /* JADX INFO: renamed from: qz */
+        private final float f9117qz;
+
+        /* JADX INFO: renamed from: qw */
+        private final float f9118qw;
 
         KeyframeTransform(float px, float py, float pz, float sx, float sy, float sz, float qx, float qy, float qz, float qw) {
-            this.px = px;
-            this.py = py;
-            this.pz = pz;
-            this.sx = sx;
-            this.sy = sy;
-            this.sz = sz;
-            this.qx = qx;
-            this.qy = qy;
-            this.qz = qz;
-            this.qw = qw;
+            this.f9109px = px;
+            this.f9110py = py;
+            this.f9111pz = pz;
+            this.f9112sx = sx;
+            this.f9113sy = sy;
+            this.f9114sz = sz;
+            this.f9115qx = qx;
+            this.f9116qy = qy;
+            this.f9117qz = qz;
+            this.f9118qw = qw;
         }
 
         @Override // java.lang.Record
@@ -53,44 +73,54 @@ public final class Keyframe extends Record {
             return (boolean) ObjectMethods.bootstrap(MethodHandles.lookup(), "equals", MethodType.methodType(Boolean.TYPE, KeyframeTransform.class, Object.class), KeyframeTransform.class, "px;py;pz;sx;sy;sz;qx;qy;qz;qw", "FIELD:Lfoundry/veil/api/client/necromancer/animation/keyframe/Keyframe$KeyframeTransform;->px:F", "FIELD:Lfoundry/veil/api/client/necromancer/animation/keyframe/Keyframe$KeyframeTransform;->py:F", "FIELD:Lfoundry/veil/api/client/necromancer/animation/keyframe/Keyframe$KeyframeTransform;->pz:F", "FIELD:Lfoundry/veil/api/client/necromancer/animation/keyframe/Keyframe$KeyframeTransform;->sx:F", "FIELD:Lfoundry/veil/api/client/necromancer/animation/keyframe/Keyframe$KeyframeTransform;->sy:F", "FIELD:Lfoundry/veil/api/client/necromancer/animation/keyframe/Keyframe$KeyframeTransform;->sz:F", "FIELD:Lfoundry/veil/api/client/necromancer/animation/keyframe/Keyframe$KeyframeTransform;->qx:F", "FIELD:Lfoundry/veil/api/client/necromancer/animation/keyframe/Keyframe$KeyframeTransform;->qy:F", "FIELD:Lfoundry/veil/api/client/necromancer/animation/keyframe/Keyframe$KeyframeTransform;->qz:F", "FIELD:Lfoundry/veil/api/client/necromancer/animation/keyframe/Keyframe$KeyframeTransform;->qw:F").dynamicInvoker().invoke(this, o) /* invoke-custom */;
         }
 
-        public float px() {
-            return this.px;
+        /* JADX INFO: renamed from: px */
+        public float m8329px() {
+            return this.f9109px;
         }
 
-        public float py() {
-            return this.py;
+        /* JADX INFO: renamed from: py */
+        public float m8330py() {
+            return this.f9110py;
         }
 
-        public float pz() {
-            return this.pz;
+        /* JADX INFO: renamed from: pz */
+        public float m8331pz() {
+            return this.f9111pz;
         }
 
-        public float sx() {
-            return this.sx;
+        /* JADX INFO: renamed from: sx */
+        public float m8332sx() {
+            return this.f9112sx;
         }
 
-        public float sy() {
-            return this.sy;
+        /* JADX INFO: renamed from: sy */
+        public float m8333sy() {
+            return this.f9113sy;
         }
 
-        public float sz() {
-            return this.sz;
+        /* JADX INFO: renamed from: sz */
+        public float m8334sz() {
+            return this.f9114sz;
         }
 
-        public float qx() {
-            return this.qx;
+        /* JADX INFO: renamed from: qx */
+        public float m8335qx() {
+            return this.f9115qx;
         }
 
-        public float qy() {
-            return this.qy;
+        /* JADX INFO: renamed from: qy */
+        public float m8336qy() {
+            return this.f9116qy;
         }
 
-        public float qz() {
-            return this.qz;
+        /* JADX INFO: renamed from: qz */
+        public float m8337qz() {
+            return this.f9117qz;
         }
 
-        public float qw() {
-            return this.qw;
+        /* JADX INFO: renamed from: qw */
+        public float m8338qw() {
+            return this.f9118qw;
         }
 
         public KeyframeTransform(float px, float py, float pz, float sx, float sy, float sz, Quaternionfc quaternion) {

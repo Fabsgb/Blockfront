@@ -2,7 +2,7 @@ package com.boehmod.bflib.cloud.common.player;
 
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/player/PunishmentType.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/player/PunishmentType.class */
 public enum PunishmentType {
     MUTE("Muted", "bf.message.punishment.type.mute", false),
     WARNING("Warned", "bf.message.punishment.type.warn", true),
@@ -18,7 +18,7 @@ public enum PunishmentType {
     private final String translatableName;
     private final boolean isOverlapping;
 
-    PunishmentType(@NotNull String name, @NotNull String translatableName, boolean overlapping) {
+    PunishmentType(String name, String translatableName, boolean overlapping) {
         this.displayName = name;
         this.translatableName = translatableName;
         this.isOverlapping = overlapping;

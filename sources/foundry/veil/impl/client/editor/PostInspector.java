@@ -1,5 +1,6 @@
 package foundry.veil.impl.client.editor;
 
+import foundry.imgui.api.ImGuiMC;
 import foundry.veil.Veil;
 import foundry.veil.api.client.editor.SingleWindowInspector;
 import foundry.veil.api.client.imgui.VeilImGuiUtil;
@@ -16,7 +17,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/editor/PostInspector.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/editor/PostInspector.class */
 @ApiStatus.Internal
 public class PostInspector extends SingleWindowInspector {
     public static final Component TITLE = Component.translatable("inspector.veil.post.title");
@@ -41,7 +42,7 @@ public class PostInspector extends SingleWindowInspector {
         float availableWidth = ImGui.getContentRegionAvailX();
         ImGui.setNextItemWidth(availableWidth / 2.0f);
         ImGui.beginGroup();
-        VeilImGuiUtil.component(INACTIVE);
+        ImGuiMC.component(INACTIVE);
         if (ImGui.beginListBox("##available_pipelines", availableWidth / 2.0f, 0.0f)) {
             for (ResourceLocation entry : postProcessingManager.getPipelines()) {
                 if (!postProcessingManager.isActive(entry) && !isInternal(entry)) {
@@ -66,7 +67,7 @@ public class PostInspector extends SingleWindowInspector {
         ImGui.sameLine();
         ImGui.setNextItemWidth(availableWidth / 2.0f);
         ImGui.beginGroup();
-        VeilImGuiUtil.component(ACTIVE);
+        ImGuiMC.component(ACTIVE);
         if (ImGui.beginListBox("##shaders", availableWidth / 2.0f, 0.0f)) {
             List<PostProcessingManager.ProfileEntry> pipelines = postProcessingManager.getActivePipelines();
             ResourceLocation[] names = new ResourceLocation[pipelines.size()];

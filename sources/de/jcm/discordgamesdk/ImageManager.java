@@ -1,6 +1,5 @@
 package de.jcm.discordgamesdk;
 
-import de.jcm.discordgamesdk.Core;
 import de.jcm.discordgamesdk.image.ImageDimensions;
 import de.jcm.discordgamesdk.image.ImageHandle;
 import de.jcm.discordgamesdk.impl.Command;
@@ -13,7 +12,7 @@ import java.util.Map;
 import java.util.function.BiConsumer;
 import javax.imageio.ImageIO;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/ImageManager.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/ImageManager.class */
 public class ImageManager {
     private final Core.CorePrivate core;
     private final Map<ImageHandle, BufferedImage> imageCache = new HashMap();

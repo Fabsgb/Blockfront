@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Contract;
 import org.joml.Matrix3f;
 import org.joml.Matrix3fc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/property/properties/Mat3Property.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/property/properties/Mat3Property.class */
 public class Mat3Property extends InvertibleProperty<Matrix3f> {
     @Override // foundry.veil.api.client.property.InvertibleProperty
     public /* bridge */ /* synthetic */ void modifyPreInvert(Matrix3f matrix3f, PropertyModifier.PropertyModifierMode propertyModifierMode, Optional optional) {

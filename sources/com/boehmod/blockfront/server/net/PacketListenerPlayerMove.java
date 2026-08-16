@@ -1,34 +1,42 @@
 package com.boehmod.blockfront.server.net;
 
-import com.boehmod.blockfront.AbstractC0563ju;
-import com.boehmod.blockfront.C0029a;
-import com.boehmod.blockfront.C1274xO;
-import com.boehmod.blockfront.C1276xQ;
-import com.boehmod.blockfront.C1300xw;
+import com.boehmod.blockfront.AbstractC0531jN;
+import com.boehmod.blockfront.C0030a;
+import com.boehmod.blockfront.C1280xT;
+import com.boehmod.blockfront.C1326ym;
+import com.boehmod.blockfront.C1328yo;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import net.minecraft.network.protocol.game.ServerboundMovePlayerPacket;
 import net.minecraft.world.entity.player.Player;
+import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:com/boehmod/blockfront/server/net/PacketListenerPlayerMove.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:com/boehmod/blockfront/server/net/PacketListenerPlayerMove.class */
 public class PacketListenerPlayerMove extends SimpleChannelInboundHandler<ServerboundMovePlayerPacket> {
     /* JADX INFO: Access modifiers changed from: protected */
     public void channelRead0(ChannelHandlerContext channelHandlerContext, ServerboundMovePlayerPacket serverboundMovePlayerPacket) {
-        Player serverPlayerFromConnection;
-        if (serverboundMovePlayerPacket == null || (serverPlayerFromConnection = PacketListenerUtils.getServerPlayerFromConnection(channelHandlerContext.channel())) == null) {
+        markPlayerMovement(channelHandlerContext, serverboundMovePlayerPacket);
+        channelHandlerContext.fireChannelRead(serverboundMovePlayerPacket);
+    }
+
+    private void markPlayerMovement(@NotNull ChannelHandlerContext channelHandlerContext, @NotNull ServerboundMovePlayerPacket serverboundMovePlayerPacket) {
+        Player serverPlayerFromConnection = PacketListenerUtils.getServerPlayerFromConnection(channelHandlerContext.channel());
+        if (serverPlayerFromConnection == null) {
             return;
         }
-        AbstractC0563ju<?, ?, ?> abstractC0563juM168a = C0029a.m164a().m168a();
-        if (abstractC0563juM168a instanceof C1300xw) {
-            C1274xO c1274xO = (C1274xO) ((C1276xQ) ((C1300xw) abstractC0563juM168a).m7950a()).m1133a(serverPlayerFromConnection);
+        AbstractC0531jN<?, ?, ?> abstractC0531jNM179a = C0030a.m175a().m179a();
+        if (abstractC0531jNM179a instanceof C1280xT) {
+            C1326ym c1326ym = (C1326ym) ((C1328yo) ((C1280xT) abstractC0531jNM179a).m7277a()).m1150a(serverPlayerFromConnection);
             double x = serverPlayerFromConnection.getX();
+            double y = serverPlayerFromConnection.getY();
             double z = serverPlayerFromConnection.getZ();
-            double x2 = serverboundMovePlayerPacket.getX(0.0d);
-            double z2 = serverboundMovePlayerPacket.getZ(0.0d);
-            if (serverboundMovePlayerPacket.hasRotation() && x2 != x && z2 != z && x2 != 0.0d && z2 != 0.0d) {
-                c1274xO.m7783a().m7760dL();
+            float yRot = serverPlayerFromConnection.getYRot();
+            float xRot = serverPlayerFromConnection.getXRot();
+            boolean z2 = serverboundMovePlayerPacket.hasPosition() && !(serverboundMovePlayerPacket.getX(x) == x && serverboundMovePlayerPacket.getY(y) == y && serverboundMovePlayerPacket.getZ(z) == z);
+            boolean z3 = serverboundMovePlayerPacket.hasRotation() && !(serverboundMovePlayerPacket.getYRot(yRot) == yRot && serverboundMovePlayerPacket.getXRot(xRot) == xRot);
+            if (z2 || z3) {
+                c1326ym.m8299a().m8276dV();
             }
-            channelHandlerContext.fireChannelRead(serverboundMovePlayerPacket);
         }
     }
 }

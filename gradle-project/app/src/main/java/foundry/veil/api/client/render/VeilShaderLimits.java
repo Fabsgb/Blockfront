@@ -6,7 +6,7 @@ import java.lang.runtime.ObjectMethods;
 import org.lwjgl.opengl.GL11C;
 import org.lwjgl.opengl.GLCapabilities;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/VeilShaderLimits.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/VeilShaderLimits.class */
 public final class VeilShaderLimits extends Record {
     private final int maxUniformComponents;
     private final int maxUniformBlocks;

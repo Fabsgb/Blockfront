@@ -2,17 +2,17 @@ package de.jcm.discordgamesdk.image;
 
 import java.util.Objects;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/image/ImageHandle.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/image/ImageHandle.class */
 public class ImageHandle {
     private ImageType type;
 
     /* JADX INFO: renamed from: id */
-    private long f8716id;
+    private long f9102id;
     private int size;
 
     public ImageHandle(ImageType type, long id, int size) {
         this.type = (ImageType) Objects.requireNonNull(type);
-        this.f8716id = id;
+        this.f9102id = id;
         if (size < 16) {
             throw new IllegalArgumentException("size is smaller than 16: " + size);
         }
@@ -38,11 +38,11 @@ public class ImageHandle {
     }
 
     public long getId() {
-        return this.f8716id;
+        return this.f9102id;
     }
 
     public void setId(long id) {
-        this.f8716id = id;
+        this.f9102id = id;
     }
 
     public int getSize() {
@@ -58,7 +58,7 @@ public class ImageHandle {
 
     public String toString() {
         ImageType imageType = this.type;
-        long j = this.f8716id;
+        long j = this.f9102id;
         int i = this.size;
         return "ImageHandle{type=" + imageType + ", id=" + j + ", size=" + imageType + "}";
     }
@@ -71,10 +71,10 @@ public class ImageHandle {
             return false;
         }
         ImageHandle that = (ImageHandle) o;
-        return this.f8716id == that.f8716id && this.size == that.size && this.type == that.type;
+        return this.f9102id == that.f9102id && this.size == that.size && this.type == that.type;
     }
 
     public int hashCode() {
-        return Objects.hash(this.type, Long.valueOf(this.f8716id), Integer.valueOf(this.size));
+        return Objects.hash(this.type, Long.valueOf(this.f9102id), Integer.valueOf(this.size));
     }
 }

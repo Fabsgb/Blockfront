@@ -10,7 +10,7 @@ import net.caffeinemc.mods.sodium.client.render.chunk.TaskQueueType;
 import net.caffeinemc.mods.sodium.client.render.chunk.lists.ChunkRenderList;
 import net.caffeinemc.mods.sodium.client.render.chunk.lists.SectionCollector;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/forge/mixinhelper/PerspectiveChunkCollector.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/forge/mixinhelper/PerspectiveChunkCollector.class */
 public class PerspectiveChunkCollector extends SectionCollector {
     private final TaskQueueType importantRebuildQueueType;
     private final TaskQueueType importantSortQueueType;

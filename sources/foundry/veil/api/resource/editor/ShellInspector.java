@@ -10,6 +10,7 @@ import com.mojang.serialization.JsonOps;
 import foundry.veil.Veil;
 import foundry.veil.api.client.imgui.VeilImGuiUtil;
 import foundry.veil.api.client.render.rendertype.VeilRenderType;
+import foundry.veil.api.client.render.vertex.VertexArray;
 import foundry.veil.api.flare.data.model.FlareShell;
 import foundry.veil.api.flare.model.BakedShell;
 import foundry.veil.api.resource.VeilEditorEnvironment;
@@ -30,7 +31,7 @@ import org.joml.Quaterniond;
 import org.joml.Quaternionf;
 import org.joml.Vector3d;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/resource/editor/ShellInspector.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/resource/editor/ShellInspector.class */
 public class ShellInspector implements ResourceFileEditor<ShellResource> {
     private static final Component TITLE = Component.translatable("inspector.veil.shell.title");
     public static final ResourceLocation RENDER_TYPE = Veil.veilPath("debug/shell");
@@ -84,6 +85,7 @@ public class ShellInspector implements ResourceFileEditor<ShellResource> {
                 RenderSystem.setProjectionMatrix(projMat, VertexSorting.ORTHOGRAPHIC_Z);
                 this.shell.getVertexArray().bind();
                 this.shell.getVertexArray().drawWithRenderType(renderType);
+                VertexArray.unbind();
                 stack.popMatrix();
                 RenderSystem.restoreProjectionMatrix();
                 RenderSystem.applyModelViewMatrix();
@@ -92,7 +94,7 @@ public class ShellInspector implements ResourceFileEditor<ShellResource> {
                 if (ImGui.isWindowHovered()) {
                     applyCameraChanges();
                 }
-                ImGui.image(texture, desiredWidth / 2.0f, desiredHeight / 2.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.1f);
+                ImGui.imageWithBg(texture, desiredWidth / 2.0f, desiredHeight / 2.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.1f);
             }
             ImGui.endChild();
         }
@@ -137,7 +139,15 @@ public class ShellInspector implements ResourceFileEditor<ShellResource> {
                 if (reader != null) {
                     reader.close();
                 }
-            } finally {
+            } catch (Throwable th) {
+                if (reader != null) {
+                    try {
+                        reader.close();
+                    } catch (Throwable th2) {
+                        th.addSuppressed(th2);
+                    }
+                }
+                throw th;
             }
         } catch (Exception e) {
             Veil.LOGGER.error("Failed to load shell", e);

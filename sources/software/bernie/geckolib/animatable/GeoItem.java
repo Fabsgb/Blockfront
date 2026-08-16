@@ -18,7 +18,7 @@ import software.bernie.geckolib.cache.AnimatableIdCache;
 import software.bernie.geckolib.constant.DataTickets;
 import software.bernie.geckolib.util.RenderUtil;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/animatable/GeoItem.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/animatable/GeoItem.class */
 public interface GeoItem extends SingletonGeoAnimatable {
     static void registerSyncedAnimatable(GeoAnimatable animatable) {
         SingletonGeoAnimatable.registerSyncedAnimatable(animatable);
@@ -66,43 +66,16 @@ public interface GeoItem extends SingletonGeoAnimatable {
         return super.animatableCacheOverride();
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/animatable/GeoItem$ContextBasedAnimatableInstanceCache.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/animatable/GeoItem$ContextBasedAnimatableInstanceCache.class */
     public static class ContextBasedAnimatableInstanceCache extends SingletonAnimatableInstanceCache {
         public ContextBasedAnimatableInstanceCache(GeoAnimatable animatable) {
             super(animatable);
-        }
-
-        /* JADX INFO: renamed from: software.bernie.geckolib.animatable.GeoItem$ContextBasedAnimatableInstanceCache$1 */
-        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/animatable/GeoItem$ContextBasedAnimatableInstanceCache$1.class */
-        class C14631 extends ContextAwareAnimatableManager<GeoItem, ItemDisplayContext> {
-            C14631(ContextBasedAnimatableInstanceCache this$0, GeoAnimatable animatable) {
-                super(animatable);
-            }
-
-            @Override // software.bernie.geckolib.animation.ContextAwareAnimatableManager
-            protected Map<ItemDisplayContext, AnimatableManager<GeoItem>> buildContextOptions(GeoAnimatable animatable) {
-                Map<ItemDisplayContext, AnimatableManager<GeoItem>> map = new EnumMap<>(ItemDisplayContext.class);
-                for (ItemDisplayContext context : ItemDisplayContext.values()) {
-                    map.put(context, new AnimatableManager<>(animatable));
-                }
-                return map;
-            }
-
-            @Override // software.bernie.geckolib.animation.ContextAwareAnimatableManager
-            public ItemDisplayContext getCurrentContext() {
-                ItemDisplayContext context = (ItemDisplayContext) getData(DataTickets.ITEM_RENDER_PERSPECTIVE);
-                return context == null ? ItemDisplayContext.NONE : context;
-            }
         }
 
         @Override // software.bernie.geckolib.animatable.instance.SingletonAnimatableInstanceCache, software.bernie.geckolib.animatable.instance.AnimatableInstanceCache
         public AnimatableManager<?> getManagerForId(long uniqueId) {
             if (!this.managers.containsKey(uniqueId)) {
                 this.managers.put(uniqueId, new ContextAwareAnimatableManager<GeoItem, ItemDisplayContext>(this, this.animatable) { // from class: software.bernie.geckolib.animatable.GeoItem.ContextBasedAnimatableInstanceCache.1
-                    C14631(ContextBasedAnimatableInstanceCache this, GeoAnimatable animatable) {
-                        super(animatable);
-                    }
-
                     @Override // software.bernie.geckolib.animation.ContextAwareAnimatableManager
                     protected Map<ItemDisplayContext, AnimatableManager<GeoItem>> buildContextOptions(GeoAnimatable animatable) {
                         Map<ItemDisplayContext, AnimatableManager<GeoItem>> map = new EnumMap<>(ItemDisplayContext.class);
@@ -112,6 +85,7 @@ public interface GeoItem extends SingletonGeoAnimatable {
                         return map;
                     }
 
+                    /* JADX WARN: Can't rename method to resolve collision */
                     @Override // software.bernie.geckolib.animation.ContextAwareAnimatableManager
                     public ItemDisplayContext getCurrentContext() {
                         ItemDisplayContext context = (ItemDisplayContext) getData(DataTickets.ITEM_RENDER_PERSPECTIVE);

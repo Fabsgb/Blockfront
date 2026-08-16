@@ -13,7 +13,7 @@ import software.bernie.geckolib.loading.json.raw.Model;
 import software.bernie.geckolib.loading.json.typeadapter.KeyFramesAdapter;
 import software.bernie.geckolib.loading.object.BakedAnimations;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/loading/FileLoader.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/loading/FileLoader.class */
 public final class FileLoader {
     public static BakedAnimations loadAnimationsFile(ResourceLocation location, ResourceManager manager) {
         if (location.getPath().endsWith(".geo.json")) {
@@ -48,7 +48,15 @@ public final class FileLoader {
                     inputStream.close();
                 }
                 return string;
-            } finally {
+            } catch (Throwable th) {
+                if (inputStream != null) {
+                    try {
+                        inputStream.close();
+                    } catch (Throwable th2) {
+                        th.addSuppressed(th2);
+                    }
+                }
+                throw th;
             }
         } catch (Exception e) {
             GeckoLibConstants.LOGGER.error("Couldn't load " + String.valueOf(location), e);

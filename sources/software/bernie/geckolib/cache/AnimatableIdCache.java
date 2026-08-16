@@ -6,7 +6,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.datafix.DataFixTypes;
 import net.minecraft.world.level.saveddata.SavedData;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/cache/AnimatableIdCache.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/cache/AnimatableIdCache.class */
 public final class AnimatableIdCache extends SavedData {
     private static final SavedData.Factory<AnimatableIdCache> FACTORY = new SavedData.Factory<>(AnimatableIdCache::new, AnimatableIdCache::new, (DataFixTypes) null);
     private static final String DATA_KEY = "geckolib_id_cache";

@@ -32,12 +32,12 @@ import software.bernie.geckolib.loading.json.raw.UVFaces;
 import software.bernie.geckolib.loading.json.raw.UVUnion;
 import software.bernie.geckolib.loading.object.BakedAnimations;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/loading/json/typeadapter/KeyFramesAdapter.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/loading/json/typeadapter/KeyFramesAdapter.class */
 public class KeyFramesAdapter implements JsonDeserializer<Animation.Keyframes> {
     public static final Gson GEO_GSON = new GsonBuilder().setLenient().registerTypeAdapter(Bone.class, Bone.deserializer()).registerTypeAdapter(Cube.class, Cube.deserializer()).registerTypeAdapter(FaceUV.class, FaceUV.deserializer()).registerTypeAdapter(LocatorClass.class, LocatorClass.deserializer()).registerTypeAdapter(LocatorValue.class, LocatorValue.deserializer()).registerTypeAdapter(MinecraftGeometry.class, MinecraftGeometry.deserializer()).registerTypeAdapter(Model.class, Model.deserializer()).registerTypeAdapter(ModelProperties.class, ModelProperties.deserializer()).registerTypeAdapter(PolyMesh.class, PolyMesh.deserializer()).registerTypeAdapter(PolysUnion.class, PolysUnion.deserializer()).registerTypeAdapter(TextureMesh.class, TextureMesh.deserializer()).registerTypeAdapter(UVFaces.class, UVFaces.deserializer()).registerTypeAdapter(UVUnion.class, UVUnion.deserializer()).registerTypeAdapter(Animation.Keyframes.class, new KeyFramesAdapter()).registerTypeAdapter(BakedAnimations.class, new BakedAnimationsAdapter()).create();
 
     /* JADX INFO: renamed from: deserialize, reason: merged with bridge method [inline-methods] */
-    public Animation.Keyframes m9300deserialize(JsonElement json, Type type, JsonDeserializationContext context) throws JsonParseException {
+    public Animation.Keyframes m9688deserialize(JsonElement json, Type type, JsonDeserializationContext context) throws JsonParseException {
         JsonObject obj = json.getAsJsonObject();
         SoundKeyframeData[] sounds = buildSoundFrameData(obj);
         ParticleKeyframeData[] particles = buildParticleFrameData(obj);

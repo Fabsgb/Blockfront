@@ -3,10 +3,11 @@ package software.bernie.geckolib.animation;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import java.util.Map;
 import java.util.Objects;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoAnimatable;
 import software.bernie.geckolib.constant.dataticket.DataTicket;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/animation/AnimationState.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/animation/AnimationState.class */
 public class AnimationState<T extends GeoAnimatable> {
     private final T animatable;
     private final float limbSwing;
@@ -62,6 +63,7 @@ public class AnimationState<T extends GeoAnimatable> {
         return this.extraData;
     }
 
+    @Nullable
     public <D> D getData(DataTicket<D> dataTicket) {
         return dataTicket.getData(this.extraData);
     }

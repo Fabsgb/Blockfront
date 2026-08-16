@@ -1,6 +1,6 @@
 package foundry.veil.impl.client.render.pipeline;
 
-import com.boehmod.blockfront.InterfaceC0638xq;
+import com.boehmod.blockfront.InterfaceC1274xN;
 import foundry.veil.Veil;
 import foundry.veil.api.client.render.VeilRenderSystem;
 import foundry.veil.api.client.render.framebuffer.AdvancedFbo;
@@ -15,7 +15,7 @@ import net.minecraft.util.profiling.ProfilerFiller;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/pipeline/VeilBloomRenderer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/pipeline/VeilBloomRenderer.class */
 @ApiStatus.Internal
 public final class VeilBloomRenderer {
     private static final ResourceLocation BLOOM_PIPELINE = Veil.veilPath("core/bloom");
@@ -95,7 +95,7 @@ public final class VeilBloomRenderer {
         profiler.push("bloom");
         FramebufferStack.push(null);
         VeilRenderSystem.renderer().getPostProcessingManager().runPipeline(pipeline);
-        bloom.clear(InterfaceC0638xq.tV);
+        bloom.clear(InterfaceC1274xN.f6857vZ);
         FramebufferStack.pop(null);
         profiler.pop();
     }

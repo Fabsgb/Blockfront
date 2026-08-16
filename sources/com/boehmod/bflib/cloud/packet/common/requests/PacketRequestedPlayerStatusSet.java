@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/requests/PacketRequestedPlayerStatusSet.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/requests/PacketRequestedPlayerStatusSet.class */
 public final class PacketRequestedPlayerStatusSet extends Record implements IPacket {
 
     @NotNull
@@ -24,7 +24,7 @@ public final class PacketRequestedPlayerStatusSet extends Record implements IPac
 
     /* JADX INFO: renamed from: ID */
     @NotNull
-    public static final PacketIdentifier f94ID = new PacketIdentifier("PacketRequestedPlayerStatusSet");
+    public static final PacketIdentifier f108ID = new PacketIdentifier("PacketRequestedPlayerStatusSet");
 
     public PacketRequestedPlayerStatusSet(@NotNull PlayerDataContext context, @NotNull Map<UUID, PublicPlayerStatus> statusSet) {
         this.context = context;
@@ -69,6 +69,6 @@ public final class PacketRequestedPlayerStatusSet extends Record implements IPac
     @Override // com.boehmod.bflib.cloud.packet.IPacket
     @NotNull
     public PacketIdentifier getPacketIdentifier() {
-        return f94ID;
+        return f108ID;
     }
 }

@@ -11,7 +11,7 @@ import java.util.UUID;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/PacketPlayerRandomDrop.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/common/PacketPlayerRandomDrop.class */
 public final class PacketPlayerRandomDrop extends Record implements IPacket {
 
     @NotNull
@@ -20,8 +20,9 @@ public final class PacketPlayerRandomDrop extends Record implements IPacket {
     @Nullable
     private final UUID matchUUID;
 
+    /* JADX INFO: renamed from: ID */
     @NotNull
-    public static final PacketIdentifier ID = new PacketIdentifier("PacketPlayerDataRandomDrop");
+    public static final PacketIdentifier f33ID = new PacketIdentifier("PacketPlayerDataRandomDrop");
 
     public PacketPlayerRandomDrop(@NotNull UUID uuid, @Nullable UUID matchUUID) {
         this.uuid = uuid;
@@ -66,6 +67,6 @@ public final class PacketPlayerRandomDrop extends Record implements IPacket {
     @Override // com.boehmod.bflib.cloud.packet.IPacket
     @NotNull
     public PacketIdentifier getPacketIdentifier() {
-        return ID;
+        return f33ID;
     }
 }

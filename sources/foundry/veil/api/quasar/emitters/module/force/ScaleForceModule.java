@@ -5,7 +5,7 @@ import foundry.veil.api.quasar.particle.QuasarParticle;
 import org.joml.Vector3d;
 import org.joml.Vector3dc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/emitters/module/force/ScaleForceModule.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/emitters/module/force/ScaleForceModule.class */
 public class ScaleForceModule implements ForceParticleModule {
     private final Vector3d scale;
     private float strength = 1.0f;

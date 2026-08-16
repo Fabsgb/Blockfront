@@ -10,7 +10,7 @@ import java.util.List;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/shader/injection/ShaderInjectionValidator.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/shader/injection/ShaderInjectionValidator.class */
 @ApiStatus.Internal
 public final class ShaderInjectionValidator {
     public static ValidationResult validate(ShaderInjectionDefinition injection) {
@@ -41,15 +41,15 @@ public final class ShaderInjectionValidator {
             return;
         }
         if (injection.targets().isEmpty()) {
-            diagnostics.add(new Diagnostic(resourcePath, injection.id(), null, "targets", "Missing targets", Severity.ERROR));
+            diagnostics.add(new Diagnostic(resourcePath, injection.m8348id(), null, "targets", "Missing targets", Severity.ERROR));
         }
         boolean hasReplace = injection.replace() != null;
         boolean hasRedirects = !injection.redirects().isEmpty();
         if (hasReplace && hasRedirects) {
-            diagnostics.add(new Diagnostic(resourcePath, injection.id(), injection.target(), "replace", "Replace cannot be combined with redirect", Severity.ERROR));
+            diagnostics.add(new Diagnostic(resourcePath, injection.m8348id(), injection.target(), "replace", "Replace cannot be combined with redirect", Severity.ERROR));
         }
         if (!hasReplace && !hasRedirects) {
-            diagnostics.add(new Diagnostic(resourcePath, injection.id(), injection.target(), "redirect", "No redirect or replace specified", Severity.ERROR));
+            diagnostics.add(new Diagnostic(resourcePath, injection.m8348id(), injection.target(), "redirect", "No redirect or replace specified", Severity.ERROR));
         }
     }
 }

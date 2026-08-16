@@ -16,7 +16,7 @@ import net.minecraft.util.FastColor;
 import net.minecraft.util.GsonHelper;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/resource/GeoGlowingTextureMeta.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/resource/GeoGlowingTextureMeta.class */
 public class GeoGlowingTextureMeta {
     public static final MetadataSectionSerializer<GeoGlowingTextureMeta> DESERIALIZER = new MetadataSectionSerializer<GeoGlowingTextureMeta>() { // from class: software.bernie.geckolib.resource.GeoGlowingTextureMeta.1
         public String getMetadataSectionName() {
@@ -25,7 +25,7 @@ public class GeoGlowingTextureMeta {
 
         /* JADX INFO: Thrown type has an unknown type hierarchy: com.google.gson.JsonParseException */
         /* JADX INFO: renamed from: fromJson, reason: merged with bridge method [inline-methods] */
-        public GeoGlowingTextureMeta m2152fromJson(JsonObject json) throws JsonParseException {
+        public GeoGlowingTextureMeta m9720fromJson(JsonObject json) throws JsonParseException {
             List<Pixel> pixels = fromSections(GsonHelper.getAsJsonArray(json, "sections", (JsonArray) null));
             if (pixels.isEmpty()) {
                 throw new JsonParseException("Empty glowlayer sections file. Must have at least one glow section!");
@@ -87,24 +87,28 @@ public class GeoGlowingTextureMeta {
 
     public void createImageMask(NativeImage originalImage, NativeImage newImage) {
         for (Pixel pixel : this.pixels) {
-            int color = originalImage.getPixelRGBA(pixel.x, pixel.y);
+            int color = originalImage.getPixelRGBA(pixel.f9205x, pixel.f9206y);
             if (pixel.alpha > 0) {
                 color = FastColor.ABGR32.color(pixel.alpha, FastColor.ABGR32.blue(color), FastColor.ABGR32.green(color), FastColor.ABGR32.red(color));
             }
-            newImage.setPixelRGBA(pixel.x, pixel.y, color);
-            originalImage.setPixelRGBA(pixel.x, pixel.y, 0);
+            newImage.setPixelRGBA(pixel.f9205x, pixel.f9206y, color);
+            originalImage.setPixelRGBA(pixel.f9205x, pixel.f9206y, 0);
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/resource/GeoGlowingTextureMeta$Pixel.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/resource/GeoGlowingTextureMeta$Pixel.class */
     private static final class Pixel extends Record {
-        private final int x;
-        private final int y;
+
+        /* JADX INFO: renamed from: x */
+        private final int f9205x;
+
+        /* JADX INFO: renamed from: y */
+        private final int f9206y;
         private final int alpha;
 
         private Pixel(int x, int y, int alpha) {
-            this.x = x;
-            this.y = y;
+            this.f9205x = x;
+            this.f9206y = y;
             this.alpha = alpha;
         }
 
@@ -123,12 +127,14 @@ public class GeoGlowingTextureMeta {
             return (boolean) ObjectMethods.bootstrap(MethodHandles.lookup(), "equals", MethodType.methodType(Boolean.TYPE, Pixel.class, Object.class), Pixel.class, "x;y;alpha", "FIELD:Lsoftware/bernie/geckolib/resource/GeoGlowingTextureMeta$Pixel;->x:I", "FIELD:Lsoftware/bernie/geckolib/resource/GeoGlowingTextureMeta$Pixel;->y:I", "FIELD:Lsoftware/bernie/geckolib/resource/GeoGlowingTextureMeta$Pixel;->alpha:I").dynamicInvoker().invoke(this, o) /* invoke-custom */;
         }
 
-        public int x() {
-            return this.x;
+        /* JADX INFO: renamed from: x */
+        public int m8364x() {
+            return this.f9205x;
         }
 
-        public int y() {
-            return this.y;
+        /* JADX INFO: renamed from: y */
+        public int m8365y() {
+            return this.f9206y;
         }
 
         public int alpha() {

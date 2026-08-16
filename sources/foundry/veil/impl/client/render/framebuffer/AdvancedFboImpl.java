@@ -1,6 +1,6 @@
 package foundry.veil.impl.client.render.framebuffer;
 
-import com.boehmod.blockfront.InterfaceC1294xq;
+import com.boehmod.blockfront.InterfaceC1274xN;
 import com.google.common.base.Suppliers;
 import com.mojang.blaze3d.pipeline.RenderTarget;
 import com.mojang.blaze3d.pipeline.TextureTarget;
@@ -21,7 +21,7 @@ import org.jetbrains.annotations.Nullable;
 import org.lwjgl.opengl.ARBDirectStateAccess;
 import org.lwjgl.opengl.GL30C;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/framebuffer/AdvancedFboImpl.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/framebuffer/AdvancedFboImpl.class */
 @ApiStatus.Internal
 public abstract class AdvancedFboImpl implements AdvancedFbo {
     protected static final Map<Integer, String> ERRORS = Map.of(36054, "GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT", 36055, "GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT", 36059, "GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER", 36060, "GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER", 36061, "GL_FRAMEBUFFER_UNSUPPORTED", 36182, "GL_FRAMEBUFFER_INCOMPLETE_MULTISAMPLE", 33305, "GL_FRAMEBUFFER_UNDEFINED", 1285, "GL_OUT_OF_MEMORY");
@@ -32,7 +32,7 @@ public abstract class AdvancedFboImpl implements AdvancedFbo {
     });
 
     /* JADX INFO: renamed from: id */
-    protected int f8772id = -1;
+    protected int f9158id = -1;
     protected final int width;
     protected final int height;
     protected final AdvancedFboAttachment[] colorAttachments;
@@ -52,9 +52,9 @@ public abstract class AdvancedFboImpl implements AdvancedFbo {
         this.hasStencil = depthAttachment != null && (depthAttachment.getFormat() == 34041 || depthAttachment.getFormat() == 35056 || depthAttachment.getFormat() == 36013);
         this.debugLabel = debugLabel;
         int mask = 0;
-        mask = hasColorAttachment(0) ? 0 | InterfaceC1294xq.f8660tV : mask;
+        mask = hasColorAttachment(0) ? 0 | InterfaceC1274xN.f6857vZ : mask;
         mask = hasDepthAttachment() ? mask | 256 : mask;
-        this.clearMask = hasStencilAttachment() ? mask | InterfaceC1294xq.f8656tR : mask;
+        this.clearMask = hasStencilAttachment() ? mask | 1024 : mask;
         this.drawBuffers = IntStream.range(0, this.colorAttachments.length).map(i -> {
             return 36064 + i;
         }).toArray();
@@ -65,7 +65,7 @@ public abstract class AdvancedFboImpl implements AdvancedFbo {
 
     @Override // foundry.veil.api.client.render.framebuffer.AdvancedFbo
     public void bind(boolean setViewport) {
-        GlStateManager._glBindFramebuffer(36160, this.f8772id);
+        GlStateManager._glBindFramebuffer(36160, this.f9158id);
         if (setViewport) {
             RenderSystem.viewport(0, 0, this.width, this.height);
         }
@@ -73,18 +73,18 @@ public abstract class AdvancedFboImpl implements AdvancedFbo {
 
     @Override // foundry.veil.api.client.render.framebuffer.AdvancedFbo
     public void bindDraw(boolean setViewport) {
-        GlStateManager._glBindFramebuffer(36009, this.f8772id);
+        GlStateManager._glBindFramebuffer(36009, this.f9158id);
         if (setViewport) {
             RenderSystem.viewport(0, 0, this.width, this.height);
         }
     }
 
     public void free() {
-        if (this.f8772id == -1) {
+        if (this.f9158id == -1) {
             return;
         }
-        GL30C.glDeleteFramebuffers(this.f8772id);
-        this.f8772id = -1;
+        GL30C.glDeleteFramebuffers(this.f9158id);
+        this.f9158id = -1;
         for (AdvancedFboAttachment attachment : this.colorAttachments) {
             attachment.free();
         }
@@ -95,7 +95,7 @@ public abstract class AdvancedFboImpl implements AdvancedFbo {
 
     @Override // foundry.veil.api.client.render.framebuffer.AdvancedFbo
     public int getId() {
-        return this.f8772id;
+        return this.f9158id;
     }
 
     @Override // foundry.veil.api.client.render.framebuffer.AdvancedFbo
@@ -156,8 +156,8 @@ public abstract class AdvancedFboImpl implements AdvancedFbo {
     }
 
     @Override // foundry.veil.api.client.render.framebuffer.AdvancedFbo
-    /* JADX INFO: renamed from: toRenderTarget */
-    public Wrapper mo9156toRenderTarget() {
+    /* JADX INFO: renamed from: toRenderTarget, reason: merged with bridge method [inline-methods] */
+    public Wrapper mo9539toRenderTarget() {
         return this.wrapper.get();
     }
 
@@ -171,7 +171,7 @@ public abstract class AdvancedFboImpl implements AdvancedFbo {
         return new AdvancedFbo.Builder(parent.width, parent.height).addAttachments(parent);
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/framebuffer/AdvancedFboImpl$Wrapper.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/framebuffer/AdvancedFboImpl$Wrapper.class */
     public static class Wrapper extends TextureTarget {
         private final float[] clearChannels;
         private final AdvancedFboImpl fbo;
@@ -184,7 +184,7 @@ public abstract class AdvancedFboImpl implements AdvancedFbo {
             this.height = this.fbo.getHeight();
             this.viewWidth = this.width;
             this.viewHeight = this.height;
-            this.frameBufferId = this.fbo.f8772id;
+            this.frameBufferId = this.fbo.f9158id;
             this.colorTextureId = this.fbo.isColorTextureAttachment(0) ? this.fbo.getColorTextureAttachment(0).getId() : 0;
             this.depthBufferId = this.fbo.isDepthTextureAttachment() ? this.fbo.getDepthTextureAttachment().getId() : 0;
         }

@@ -14,7 +14,6 @@ import org.apache.logging.log4j.Level;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.GeckoLibConstants;
 import software.bernie.geckolib.animatable.GeoAnimatable;
-import software.bernie.geckolib.animation.AnimationProcessor;
 import software.bernie.geckolib.animation.keyframe.AnimationPoint;
 import software.bernie.geckolib.animation.keyframe.BoneAnimation;
 import software.bernie.geckolib.animation.keyframe.BoneAnimationQueue;
@@ -36,7 +35,7 @@ import software.bernie.geckolib.loading.math.MolangQueries;
 import software.bernie.geckolib.loading.math.value.Constant;
 import software.bernie.geckolib.model.GeoModel;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/animation/AnimationController.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/animation/AnimationController.class */
 public class AnimationController<T extends GeoAnimatable> {
     protected final T animatable;
     protected final String name;
@@ -66,31 +65,31 @@ public class AnimationController<T extends GeoAnimatable> {
     private final Set<KeyFrameData> executedKeyFrames;
     protected GeoModel<T> lastModel;
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/animation/AnimationController$AnimationStateHandler.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/animation/AnimationController$AnimationStateHandler.class */
     @FunctionalInterface
     public interface AnimationStateHandler<A extends GeoAnimatable> {
         PlayState handle(AnimationState<A> animationState);
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/animation/AnimationController$CustomKeyframeHandler.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/animation/AnimationController$CustomKeyframeHandler.class */
     @FunctionalInterface
     public interface CustomKeyframeHandler<A extends GeoAnimatable> {
         void handle(CustomInstructionKeyframeEvent<A> customInstructionKeyframeEvent);
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/animation/AnimationController$ParticleKeyframeHandler.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/animation/AnimationController$ParticleKeyframeHandler.class */
     @FunctionalInterface
     public interface ParticleKeyframeHandler<A extends GeoAnimatable> {
         void handle(ParticleKeyframeEvent<A> particleKeyframeEvent);
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/animation/AnimationController$SoundKeyframeHandler.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/animation/AnimationController$SoundKeyframeHandler.class */
     @FunctionalInterface
     public interface SoundKeyframeHandler<A extends GeoAnimatable> {
         void handle(SoundKeyframeEvent<A> soundKeyframeEvent);
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/animation/AnimationController$State.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/animation/AnimationController$State.class */
     public enum State {
         RUNNING,
         TRANSITIONING,
@@ -205,6 +204,10 @@ public class AnimationController<T extends GeoAnimatable> {
         return this.animationState;
     }
 
+    public AnimationStateHandler<T> getStateHandler() {
+        return this.stateHandler;
+    }
+
     public Map<String, BoneAnimationQueue> getBoneAnimationQueues() {
         return this.boneAnimationQueues;
     }
@@ -286,19 +289,20 @@ public class AnimationController<T extends GeoAnimatable> {
         return true;
     }
 
-    protected PlayState handleAnimationState(AnimationState<T> state) {
+    /* JADX WARN: Multi-variable type inference failed */
+    protected PlayState handleAnimationState(AnimationState<T> animationState) {
         if (this.triggeredAnimation != null) {
             if (this.currentRawAnimation != this.triggeredAnimation) {
                 this.currentAnimation = null;
             }
             setAnimation(this.triggeredAnimation);
-            if (!hasAnimationFinished() && (!this.handlingTriggeredAnimations || this.stateHandler.handle(state) == PlayState.CONTINUE)) {
+            if (!hasAnimationFinished() && (!this.handlingTriggeredAnimations || getStateHandler().handle(animationState) == PlayState.CONTINUE)) {
                 return PlayState.CONTINUE;
             }
             this.triggeredAnimation = null;
             this.needsAnimationReload = true;
         }
-        return this.stateHandler.handle(state);
+        return getStateHandler().handle(animationState);
     }
 
     public void process(GeoModel<T> model, AnimationState<T> state, Map<String, GeoBone> bones, Map<String, BoneSnapshot> snapshots, double seekTime, boolean crashWhenCantFindBone) {
@@ -427,14 +431,7 @@ public class AnimationController<T extends GeoAnimatable> {
             }
         }
         double adjustedTick2 = adjustedTick + this.transitionLength;
-        SoundKeyframeData[] soundKeyframeDataArrSounds = this.currentAnimation.animation().keyFrames().sounds();
-        int length = soundKeyframeDataArrSounds.length;
-        int i = 0;
-        while (true) {
-            if (i >= length) {
-                break;
-            }
-            SoundKeyframeData keyframeData = soundKeyframeDataArrSounds[i];
+        for (SoundKeyframeData keyframeData : this.currentAnimation.animation().keyFrames().sounds()) {
             if (adjustedTick2 >= keyframeData.getStartTick() && this.executedKeyFrames.add(keyframeData)) {
                 if (this.soundKeyframeHandler == null) {
                     GeckoLibConstants.LOGGER.log(Level.WARN, "Sound Keyframe found for " + this.animatable.getClass().getSimpleName() + " -> " + getName() + ", but no keyframe handler registered");
@@ -442,16 +439,8 @@ public class AnimationController<T extends GeoAnimatable> {
                 }
                 this.soundKeyframeHandler.handle(new SoundKeyframeEvent<>(this.animatable, adjustedTick2, this, keyframeData));
             }
-            i++;
         }
-        ParticleKeyframeData[] particleKeyframeDataArrParticles = this.currentAnimation.animation().keyFrames().particles();
-        int length2 = particleKeyframeDataArrParticles.length;
-        int i2 = 0;
-        while (true) {
-            if (i2 >= length2) {
-                break;
-            }
-            ParticleKeyframeData keyframeData2 = particleKeyframeDataArrParticles[i2];
+        for (ParticleKeyframeData keyframeData2 : this.currentAnimation.animation().keyFrames().particles()) {
             if (adjustedTick2 >= keyframeData2.getStartTick() && this.executedKeyFrames.add(keyframeData2)) {
                 if (this.particleKeyframeHandler == null) {
                     GeckoLibConstants.LOGGER.log(Level.WARN, "Particle Keyframe found for " + this.animatable.getClass().getSimpleName() + " -> " + getName() + ", but no keyframe handler registered");
@@ -459,16 +448,8 @@ public class AnimationController<T extends GeoAnimatable> {
                 }
                 this.particleKeyframeHandler.handle(new ParticleKeyframeEvent<>(this.animatable, adjustedTick2, this, keyframeData2));
             }
-            i2++;
         }
-        CustomInstructionKeyframeData[] customInstructionKeyframeDataArrCustomInstructions = this.currentAnimation.animation().keyFrames().customInstructions();
-        int length3 = customInstructionKeyframeDataArrCustomInstructions.length;
-        int i3 = 0;
-        while (true) {
-            if (i3 >= length3) {
-                break;
-            }
-            CustomInstructionKeyframeData keyframeData3 = customInstructionKeyframeDataArrCustomInstructions[i3];
+        for (CustomInstructionKeyframeData keyframeData3 : this.currentAnimation.animation().keyFrames().customInstructions()) {
             if (adjustedTick2 >= keyframeData3.getStartTick() && this.executedKeyFrames.add(keyframeData3)) {
                 if (this.customKeyframeHandler == null) {
                     GeckoLibConstants.LOGGER.log(Level.WARN, "Custom Instruction Keyframe found for " + this.animatable.getClass().getSimpleName() + " -> " + getName() + ", but no keyframe handler registered");
@@ -476,7 +457,6 @@ public class AnimationController<T extends GeoAnimatable> {
                 }
                 this.customKeyframeHandler.handle(new CustomInstructionKeyframeEvent<>(this.animatable, adjustedTick2, this, keyframeData3));
             }
-            i3++;
         }
         if (this.transitionLength == 0.0d && this.shouldResetTick && this.animationState == State.TRANSITIONING) {
             this.currentAnimation = this.animationQueue.poll();
@@ -493,18 +473,10 @@ public class AnimationController<T extends GeoAnimatable> {
     private void saveSnapshotsForAnimation(AnimationProcessor.QueuedAnimation animation, Map<String, BoneSnapshot> snapshots) {
         for (BoneSnapshot snapshot : snapshots.values()) {
             if (animation.animation().boneAnimations() != null) {
-                BoneAnimation[] boneAnimationArrBoneAnimations = animation.animation().boneAnimations();
-                int length = boneAnimationArrBoneAnimations.length;
-                int i = 0;
-                while (true) {
-                    if (i < length) {
-                        BoneAnimation boneAnimation = boneAnimationArrBoneAnimations[i];
-                        if (!boneAnimation.boneName().equals(snapshot.getBone().getName())) {
-                            i++;
-                        } else {
-                            this.boneSnapshots.put(boneAnimation.boneName(), BoneSnapshot.copy(snapshot));
-                            break;
-                        }
+                for (BoneAnimation boneAnimation : animation.animation().boneAnimations()) {
+                    if (boneAnimation.boneName().equals(snapshot.getBone().getName())) {
+                        this.boneSnapshots.put(boneAnimation.boneName(), BoneSnapshot.copy(snapshot));
+                        break;
                     }
                 }
             }
@@ -552,7 +524,7 @@ public class AnimationController<T extends GeoAnimatable> {
                 return new KeyframeLocation<>(frame, ageInTicks - (totalFrameTime - frame.length()));
             }
         }
-        return new KeyframeLocation<>(frames.get(frames.size() - 1), ageInTicks);
+        return new KeyframeLocation<>((Keyframe) frames.getLast(), ageInTicks);
     }
 
     private void resetEventKeyFrames() {

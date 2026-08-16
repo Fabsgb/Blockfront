@@ -10,7 +10,7 @@ import org.joml.Matrix4fc;
 import org.joml.Vector3f;
 import org.joml.Vector3fc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/util/DebugFrustumRenderer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/util/DebugFrustumRenderer.class */
 public class DebugFrustumRenderer {
     private static final Vector3f[] POSITIONS = new Vector3f[8];
     private static final Matrix4f MODELVIEW = new Matrix4f();

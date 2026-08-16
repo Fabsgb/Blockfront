@@ -9,7 +9,7 @@ import java.lang.runtime.ObjectMethods;
 import java.util.List;
 import net.minecraft.core.Holder;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/data/EmitterSettings.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/data/EmitterSettings.class */
 public final class EmitterSettings extends Record {
     private final List<Holder<EmitterShapeSettings>> emitterShapeSettingsHolders;
     private final Holder<ParticleSettings> particleSettingsHolder;

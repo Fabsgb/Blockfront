@@ -8,6 +8,10 @@
     },
     {
       "weapon": "melee_standard"
+    },
+    {
+      "weapon": "grenade_smoke",
+      "count": 2
     }
   ],
   "exp": 2500

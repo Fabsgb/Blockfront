@@ -7,6 +7,7 @@ import foundry.veil.api.client.render.profiler.RenderProfilerCounter;
 import foundry.veil.impl.client.render.profiler.VeilRenderProfilerImpl;
 import imgui.ImGui;
 import imgui.extension.implot.ImPlot;
+import imgui.extension.implot.ImPlotSpec;
 import imgui.type.ImBoolean;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
@@ -18,9 +19,10 @@ import java.util.Set;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/editor/PipelineStatisticsViewer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/editor/PipelineStatisticsViewer.class */
 @ApiStatus.Internal
 public class PipelineStatisticsViewer implements Inspector {
+    private static final ImPlotSpec PLOT_SPEC = new ImPlotSpec();
     public static final Component TITLE = Component.translatable("inspector.veil.pipeline_statistics.title");
     public static final int HISTORY_LENGTH = 200;
     private final ImBoolean open = new ImBoolean();
@@ -92,12 +94,12 @@ public class PipelineStatisticsViewer implements Inspector {
                             ImPlot.setupAxis(3, 4);
                             ImPlot.setupAxesLimits(0.0d, 200.0d, 0.0d, Math.max(max * 1.1d, 10.0d), 1);
                             ImPlot.setupAxisFormat(3, "%3.0f");
-                            ImPlot.pushStyleColor(0, VeilImGuiUtil.colorOf(statistic.name()));
-                            ImPlot.pushStyleVar(17, 0.0f, 0.0f);
-                            ImPlot.pushStyleVar(18, 0.0f, 0.0f);
-                            ImPlot.plotLine(statistic.name(), values);
+                            int colors = VeilImGuiUtil.colorOf(statistic.name());
+                            PLOT_SPEC.setLineColor((colors & 255) / 255.0f, ((colors >> 8) & 255) / 255.0f, ((colors >> 16) & 255) / 255.0f, ((colors >> 24) & 255) / 255.0f);
+                            ImPlot.pushStyleVar(10, 0.0f, 0.0f);
+                            ImPlot.pushStyleVar(11, 0.0f, 0.0f);
+                            ImPlot.plotLine(statistic.name(), values, -1.0d, -1.0d, PLOT_SPEC);
                             ImPlot.popStyleVar();
-                            ImPlot.popStyleColor();
                             ImPlot.endPlot();
                         }
                     }

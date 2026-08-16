@@ -5,7 +5,7 @@ import imgui.ImGui;
 import imgui.type.ImBoolean;
 import net.minecraft.network.chat.Component;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/editor/SingleWindowInspector.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/editor/SingleWindowInspector.class */
 public abstract class SingleWindowInspector implements Inspector {
     protected final ImBoolean open = new ImBoolean();
 

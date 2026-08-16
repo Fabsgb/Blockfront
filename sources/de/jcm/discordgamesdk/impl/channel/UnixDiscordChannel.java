@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/impl/channel/UnixDiscordChannel.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/impl/channel/UnixDiscordChannel.class */
 public class UnixDiscordChannel implements DiscordChannel {
     private final SocketChannel channel;
     private String path;

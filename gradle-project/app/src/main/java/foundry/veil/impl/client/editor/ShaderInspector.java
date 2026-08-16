@@ -1,6 +1,7 @@
 package foundry.veil.impl.client.editor;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import foundry.imgui.api.ImGuiMC;
 import foundry.veil.Veil;
 import foundry.veil.api.client.editor.SingleWindowInspector;
 import foundry.veil.api.client.imgui.VeilImGuiUtil;
@@ -64,7 +65,7 @@ import org.lwjgl.opengl.GL40C;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.NativeResource;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/editor/ShaderInspector.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/editor/ShaderInspector.class */
 @ApiStatus.Internal
 public class ShaderInspector extends SingleWindowInspector implements ResourceManagerReloadListener {
     public static final Component TITLE = Component.translatable("inspector.veil.shader.title");
@@ -147,7 +148,7 @@ public class ShaderInspector extends SingleWindowInspector implements ResourceMa
     protected void renderComponents() {
         this.removedDefinitions.clear();
         ImGui.beginChild("##shader_programs", (ImGui.getContentRegionAvailX() * 2.0f) / 3.0f, 0.0f);
-        VeilImGuiUtil.component(SHADER_PROGRAMS);
+        ImGuiMC.component(SHADER_PROGRAMS);
         TabSource[] sources = TabSource.values();
         if (ImGui.beginTabBar("##controls")) {
             if (ImGui.tabItemButton(REFRESH.getString())) {
@@ -212,7 +213,7 @@ public class ShaderInspector extends SingleWindowInspector implements ResourceMa
         ImGui.sameLine();
         if (ImGui.beginChild("##panel", 0.0f, ImGui.getContentRegionAvailY())) {
             if (ImGui.beginChild("##open_source", 0.0f, ImGui.getContentRegionAvailY() / 2.0f)) {
-                VeilImGuiUtil.component(OPEN_SOURCE);
+                ImGuiMC.component(OPEN_SOURCE);
                 openShaderButton(35632);
                 openShaderButton(35633);
                 openShaderButton(37305);
@@ -227,7 +228,7 @@ public class ShaderInspector extends SingleWindowInspector implements ResourceMa
             }
             ImGui.endChild();
             if (ImGui.beginChild("##shader_definitions", 0.0f, ImGui.getContentRegionAvailY())) {
-                VeilImGuiUtil.component(SHADER_DEFINITIONS);
+                ImGuiMC.component(SHADER_DEFINITIONS);
                 ImGui.setNextItemWidth(ImGui.getContentRegionAvailX());
                 if (ImGui.inputTextWithHint("##add_definition", SHADER_DEFINITIONS_HINT.getString(), this.addDefinitionText, 64)) {
                     String[] parts = this.addDefinitionText.get().split("=", 2);
@@ -810,7 +811,7 @@ public class ShaderInspector extends SingleWindowInspector implements ResourceMa
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/editor/ShaderInspector$SelectedProgram.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/editor/ShaderInspector$SelectedProgram.class */
     private static final class SelectedProgram extends Record implements NativeResource {
         private final ResourceLocation name;
         private final int programId;
@@ -888,7 +889,7 @@ public class ShaderInspector extends SingleWindowInspector implements ResourceMa
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/editor/ShaderInspector$TabSource.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/editor/ShaderInspector$TabSource.class */
     private enum TabSource {
         VANILLA(Component.translatable("inspector.veil.shader.source.vanilla")) { // from class: foundry.veil.impl.client.editor.ShaderInspector.TabSource.1
             @Override // foundry.veil.impl.client.editor.ShaderInspector.TabSource

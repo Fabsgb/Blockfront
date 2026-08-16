@@ -26,7 +26,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.lwjgl.system.NativeResource;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/framebuffer/FramebufferManager.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/framebuffer/FramebufferManager.class */
 public class FramebufferManager extends CodecReloadListener<FramebufferDefinition> implements NativeResource {
     private static final ResourceLocation MAIN = ResourceLocation.withDefaultNamespace("main");
     public static final Codec<ResourceLocation> FRAMEBUFFER_CODEC = Codec.STRING.comapFlatMap(name -> {
@@ -156,6 +156,7 @@ public class FramebufferManager extends CodecReloadListener<FramebufferDefinitio
         return this.framebuffersView;
     }
 
+    /* JADX INFO: Access modifiers changed from: protected */
     public void apply(@NotNull Map<ResourceLocation, FramebufferDefinition> data, @NotNull ResourceManager resourceManager, @NotNull ProfilerFiller profilerFiller) {
         this.framebufferDefinitions.clear();
         this.framebufferDefinitions.putAll(data);

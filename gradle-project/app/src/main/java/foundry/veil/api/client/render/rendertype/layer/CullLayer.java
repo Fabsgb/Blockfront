@@ -10,7 +10,7 @@ import java.lang.runtime.ObjectMethods;
 import net.minecraft.ResourceLocationException;
 import net.minecraft.client.renderer.RenderStateShard;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/rendertype/layer/CullLayer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/rendertype/layer/CullLayer.class */
 public final class CullLayer extends Record implements RenderTypeLayer {
     private final LayerTemplateValue<CullFace> face;
     public static final MapCodec<CullLayer> CODEC = LayerTemplateValue.enumCodec(CullFace.class).optionalFieldOf("face", LayerTemplateValue.raw(CullFace.BACK)).xmap(CullLayer::new, (v0) -> {
@@ -57,7 +57,7 @@ public final class CullLayer extends Record implements RenderTypeLayer {
         return RenderTypeLayerRegistry.CULL.get();
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/rendertype/layer/CullLayer$CullFace.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/rendertype/layer/CullLayer$CullFace.class */
     public enum CullFace {
         FRONT(VeilRenderType.CULL_FRONT),
         BACK(VeilRenderType.CULL_BACK),

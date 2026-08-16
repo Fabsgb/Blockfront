@@ -20,13 +20,14 @@ import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3fc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/light/InstancedPointLightRenderer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/light/InstancedPointLightRenderer.class */
 @ApiStatus.Internal
 public class InstancedPointLightRenderer extends InstancedLightRenderer<PointLightData> implements DDALightRenderer<PointLightData> {
     private static final ResourceLocation RENDER_TYPE = Veil.veilPath("light/point");
+    private static final ResourceLocation INSCATTERING_RENDER_TYPE = Veil.veilPath("light/inscattering/point");
 
     public InstancedPointLightRenderer() {
-        super(32);
+        super(36);
     }
 
     @Override // foundry.veil.api.client.render.light.renderer.InstancedLightRenderer
@@ -40,14 +41,19 @@ public class InstancedPointLightRenderer extends InstancedLightRenderer<PointLig
     protected void setupBufferState(VertexArrayBuilder builder) {
         builder.setVertexAttribute(1, 2, 3, VertexArrayBuilder.DataType.FLOAT, false, 0);
         builder.setVertexAttribute(2, 2, 3, VertexArrayBuilder.DataType.FLOAT, false, 12);
-        builder.setVertexAttribute(3, 2, 1, VertexArrayBuilder.DataType.FLOAT, false, 24);
-        builder.setVertexAttribute(4, 2, 1, VertexArrayBuilder.DataType.FLOAT, false, 28);
+        builder.setVertexAttribute(3, 2, 3, VertexArrayBuilder.DataType.FLOAT, false, 24);
     }
 
     @Override // foundry.veil.api.client.render.light.renderer.InstancedLightRenderer
     @Nullable
     protected RenderType getRenderType(List<? extends LightRenderHandle<PointLightData>> lights) {
         return VeilRenderType.get(RENDER_TYPE, new Object[0]);
+    }
+
+    @Override // foundry.veil.api.client.render.light.renderer.InstancedLightRenderer
+    @Nullable
+    protected RenderType getInscatteringRenderType(List<? extends LightRenderHandle<PointLightData>> lights) {
+        return VeilRenderType.get(INSCATTERING_RENDER_TYPE, new Object[0]);
     }
 
     @Override // foundry.veil.api.client.render.light.renderer.DDALightRenderer

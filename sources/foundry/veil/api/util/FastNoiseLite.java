@@ -3,7 +3,7 @@ package foundry.veil.api.util;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/util/FastNoiseLite.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/util/FastNoiseLite.class */
 public class FastNoiseLite {
     private int mSeed = 1337;
     private float mFrequency = 0.01f;
@@ -86,7 +86,7 @@ public class FastNoiseLite {
     private static final float[] RandVecs3D = {-0.7292737f, -0.66184396f, 0.17355819f, 0.0f, 0.7902921f, -0.5480887f, -0.2739291f, 0.0f, 0.7217579f, 0.62262124f, -0.3023381f, 0.0f, 0.5656831f, -0.8208298f, -0.079000026f, 0.0f, 0.76004905f, -0.55559796f, -0.33709997f, 0.0f, 0.37139457f, 0.50112647f, 0.78162545f, 0.0f, -0.12770624f, -0.4254439f, -0.8959289f, 0.0f, -0.2881561f, -0.5815839f, 0.7607406f, 0.0f, 0.5849561f, -0.6628202f, -0.4674352f, 0.0f, 0.33071712f, 0.039165374f, 0.94291687f, 0.0f, 0.8712122f, -0.41133744f, -0.26793817f, 0.0f, 0.580981f, 0.7021916f, 0.41156778f, 0.0f, 0.5037569f, 0.6330057f, -0.5878204f, 0.0f, 0.44937122f, 0.6013902f, 0.6606023f, 0.0f, -0.6878404f, 0.090188906f, -0.7202372f, 0.0f, -0.59589565f, -0.64693505f, 0.47579765f, 0.0f, -0.5127052f, 0.1946922f, -0.83619875f, 0.0f, -0.99115074f, -0.054102764f, -0.12121531f, 0.0f, -0.21497211f, 0.9720882f, -0.09397608f, 0.0f, -0.7518651f, -0.54280573f, 0.37424695f, 0.0f, 0.5237069f, 0.8516377f, -0.021078179f, 0.0f, 0.6333505f, 0.19261672f, -0.74951047f, 0.0f, -0.06788242f, 0.39983058f, 0.9140719f, 0.0f, -0.55386287f, -0.47298968f, -0.6852129f, 0.0f, -0.72614557f, -0.5911991f, 0.35099334f, 0.0f, -0.9229275f, -0.17828088f, 0.34120494f, 0.0f, -0.6968815f, 0.65112746f, 0.30064803f, 0.0f, 0.96080446f, -0.20983632f, -0.18117249f, 0.0f, 0.068171464f, -0.9743405f, 0.21450691f, 0.0f, -0.3577285f, -0.6697087f, -0.65078455f, 0.0f, -0.18686211f, 0.7648617f, -0.61649746f, 0.0f, -0.65416974f, 0.3967915f, 0.64390874f, 0.0f, 0.699334f, -0.6164538f, 0.36182392f, 0.0f, -0.15466657f, 0.6291284f, 0.7617583f, 0.0f, -0.6841613f, -0.2580482f, -0.68215424f, 0.0f, 0.5383981f, 0.4258655f, 0.727163f, 0.0f, -0.5026988f, -0.7939833f, -0.3418837f, 0.0f, 0.32029718f, 0.28344154f, 0.9039196f, 0.0f, 0.86832273f, -3.7626564E-4f, -0.49599952f, 0.0f, 0.79112005f, -0.085110456f, 0.60571057f, 0.0f, -0.04011016f, -0.43972486f, 0.8972364f, 0.0f, 0.914512f, 0.35793462f, -0.18854876f, 0.0f, -0.96120393f, -0.27564842f, 0.010246669f, 0.0f, 0.65103614f, -0.28777993f, -0.70237786f, 0.0f, -0.20417863f, 0.73652375f, 0.6448596f, 0.0f, -0.7718264f, 0.37906268f, 0.5104856f, 0.0f, -0.30600828f, -0.7692988f, 0.56083715f, 0.0f, 0.45400733f, -0.5024843f, 0.73578995f, 0.0f, 0.48167956f, 0.6021208f, -0.636738f, 0.0f, 0.69619805f, -0.32221973f, 0.6414692f, 0.0f, -0.65321606f, -0.6781149f, 0.33685157f, 0.0f, 0.50893015f, -0.61546624f, -0.60182345f, 0.0f, -0.16359198f, -0.9133605f, -0.37284088f, 0.0f, 0.5240802f, -0.8437664f, 0.11575059f, 0.0f, 0.5902587f, 0.4983818f, -0.63498837f, 0.0f, 0.5863228f, 0.49476475f, 0.6414308f, 0.0f, 0.6779335f, 0.23413453f, 0.6968409f, 0.0f, 0.7177054f, -0.68589795f, 0.12017863f, 0.0f, -0.532882f, -0.5205125f, 0.6671608f, 0.0f, -0.8654874f, -0.07007271f, -0.4960054f, 0.0f, -0.286181f, 0.79520893f, 0.53454953f, 0.0f, -0.048495296f, 0.98108363f, -0.18741156f, 0.0f, -0.63585216f, 0.60583484f, 0.47818002f, 0.0f, 0.62547946f, -0.28616196f, 0.72586966f, 0.0f, -0.258526f, 0.50619495f, -0.8227582f, 0.0f, 0.021363068f, 0.50640166f, -0.862033f, 0.0f, 0.20011178f, 0.85992634f, 0.46955505f, 0.0f, 0.47435614f, 0.6014985f, -0.6427953f, 0.0f, 0.6622994f, -0.52024746f, -0.539168f, 0.0f, 0.08084973f, -0.65327203f, 0.7527941f, 0.0f, -0.6893687f, 0.059286036f, 0.7219805f, 0.0f, -0.11218871f, -0.96731853f, 0.22739525f, 0.0f, 0.7344116f, 0.59796685f, -0.3210533f, 0.0f, 0.5789393f, -0.24888498f, 0.776457f, 0.0f, 0.69881827f, 0.35571697f, -0.6205791f, 0.0f, -0.86368454f, -0.27487713f, -0.4224826f, 0.0f, -0.4247028f, -0.46408808f, 0.77733505f, 0.0f, 0.5257723f, -0.84270173f, 0.11583299f, 0.0f, 0.93438303f, 0.31630248f, -0.16395439f, 0.0f, -0.10168364f, -0.8057303f, -0.58348876f, 0.0f, -0.6529239f, 0.50602126f, -0.5635893f, 0.0f, -0.24652861f, -0.9668206f, -0.06694497f, 0.0f, -0.9776897f, -0.20992506f, -0.0073688254f, 0.0f, 0.7736893f, 0.57342446f, 0.2694238f, 0.0f, -0.6095088f, 0.4995679f, 0.6155737f, 0.0f, 0.5794535f, 0.7434547f, 0.33392924f, 0.0f, -0.8226211f, 0.081425816f, 0.56272936f, 0.0f, -0.51038545f, 0.47036678f, 0.719904f, 0.0f, -0.5764972f, -0.072316565f, -0.81389266f, 0.0f, 0.7250629f, 0.39499715f, -0.56414634f, 0.0f, -0.1525424f, 0.48608407f, -0.8604958f, 0.0f, -0.55509764f, -0.49578208f, 0.6678823f, 0.0f, -0.18836144f, 0.91458696f, 0.35784173f, 0.0f, 0.76255566f, -0.54144084f, -0.35404897f, 0.0f, -0.5870232f, -0.3226498f, -0.7424964f, 0.0f, 0.30511242f, 0.2262544f, -0.9250488f, 0.0f, 0.63795763f, 0.57724243f, -0.50970703f, 0.0f, -0.5966776f, 0.14548524f, -0.7891831f, 0.0f, -0.65833056f, 0.65554875f, -0.36994147f, 0.0f, 0.74348927f, 0.23510846f, 0.6260573f, 0.0f, 0.5562114f, 0.82643604f, -0.08736329f, 0.0f, -0.302894f, -0.8251527f, 0.47684193f, 0.0f, 0.11293438f, -0.9858884f, -0.123571075f, 0.0f, 0.5937653f, -0.5896814f, 0.5474657f, 0.0f, 0.6757964f, -0.58357584f, -0.45026484f, 0.0f, 0.7242303f, -0.11527198f, 0.67985505f, 0.0f, -0.9511914f, 0.0753624f, -0.29925808f, 0.0f, 0.2539471f, -0.18863393f, 0.9486454f, 0.0f, 0.5714336f, -0.16794509f, -0.8032796f, 0.0f, -0.06778235f, 0.39782694f, 0.9149532f, 0.0f, 0.6074973f, 0.73306f, -0.30589226f, 0.0f, -0.54354787f, 0.16758224f, 0.8224791f, 0.0f, -0.5876678f, -0.3380045f, -0.7351187f, 0.0f, -0.79675627f, 0.040978227f, -0.60290986f, 0.0f, -0.19963509f, 0.8706295f, 0.4496111f, 0.0f, -0.027876602f, -0.91062325f, -0.4122962f, 0.0f, -0.7797626f, -0.6257635f, 0.019757755f, 0.0f, -0.5211233f, 0.74016446f, -0.42495546f, 0.0f, 0.8575425f, 0.4053273f, -0.31675017f, 0.0f, 0.10452233f, 0.8390196f, -0.53396744f, 0.0f, 0.3501823f, 0.9242524f, -0.15208502f, 0.0f, 0.19878499f, 0.076476134f, 0.9770547f, 0.0f, 0.78459966f, 0.6066257f, -0.12809642f, 0.0f, 0.09006737f, -0.97509897f, -0.20265691f, 0.0f, -0.82743436f, -0.54229957f, 0.14582036f, 0.0f, -0.34857976f, -0.41580227f, 0.8400004f, 0.0f, -0.2471779f, -0.730482f, -0.6366311f, 0.0f, -0.3700155f, 0.8577948f, 0.35675845f, 0.0f, 0.59133947f, -0.54831195f, -0.59133035f, 0.0f, 0.120487355f, -0.7626472f, -0.6354935f, 0.0f, 0.6169593f, 0.03079648f, 0.7863923f, 0.0f, 0.12581569f, -0.664083f, -0.73699677f, 0.0f, -0.6477565f, -0.17401473f, -0.74170774f, 0.0f, 0.6217889f, -0.7804431f, -0.06547655f, 0.0f, 0.6589943f, -0.6096988f, 0.44044736f, 0.0f, -0.26898375f, -0.6732403f, -0.68876356f, 0.0f, -0.38497752f, 0.56765425f, 0.7277094f, 0.0f, 0.57544446f, 0.81104714f, -0.10519635f, 0.0f, 0.91415936f, 0.3832948f, 0.13190056f, 0.0f, -0.10792532f, 0.9245494f, 0.36545935f, 0.0f, 0.3779771f, 0.30431488f, 0.87437165f, 0.0f, -0.21428852f, -0.8259286f, 0.5214617f, 0.0f, 0.58025444f, 0.41480985f, -0.7008834f, 0.0f, -0.19826609f, 0.85671616f, -0.47615966f, 0.0f, -0.033815537f, 0.37731808f, -0.9254661f, 0.0f, -0.68679225f, -0.6656598f, 0.29191336f, 0.0f, 0.7731743f, -0.28757936f, -0.565243f, 0.0f, -0.09655942f, 0.91937083f, -0.3813575f, 0.0f, 0.27157024f, -0.957791f, -0.09426606f, 0.0f, 0.24510157f, -0.6917999f, -0.6792188f, 0.0f, 0.97770077f, -0.17538553f, 0.115503654f, 0.0f, -0.522474f, 0.8521607f, 0.029036159f, 0.0f, -0.77348804f, -0.52612925f, 0.35341796f, 0.0f, -0.71344924f, -0.26954725f, 0.6467878f, 0.0f, 0.16440372f, 0.5105846f, -0.84396374f, 0.0f, 0.6494636f, 0.055856112f, 0.7583384f, 0.0f, -0.4711971f, 0.50172806f, -0.7254256f, 0.0f, -0.63357645f, -0.23816863f, -0.7361091f, 0.0f, -0.9021533f, -0.2709478f, -0.33571818f, 0.0f, -0.3793711f, 0.8722581f, 0.3086152f, 0.0f, -0.68555987f, -0.32501432f, 0.6514394f, 0.0f, 0.29009423f, -0.7799058f, -0.5546101f, 0.0f, -0.20983194f, 0.8503707f, 0.48253515f, 0.0f, -0.45926037f, 0.6598504f, -0.5947077f, 0.0f, 0.87159455f, 0.09616365f, -0.48070312f, 0.0f, -0.6776666f, 0.71185046f, -0.1844907f, 0.0f, 0.7044378f, 0.3124276f, 0.637304f, 0.0f, -0.7052319f, -0.24010932f, -0.6670798f, 0.0f, 0.081921004f, -0.72073364f, -0.68835455f, 0.0f, -0.6993681f, -0.5875763f, -0.4069869f, 0.0f, -0.12814544f, 0.6419896f, 0.75592864f, 0.0f, -0.6337388f, -0.67854714f, -0.3714147f, 0.0f, 0.5565052f, -0.21688876f, -0.8020357f, 0.0f, -0.57915545f, 0.7244372f, -0.3738579f, 0.0f, 0.11757791f, -0.7096451f, 0.69467926f, 0.0f, -0.613462f, 0.13236311f, 0.7785528f, 0.0f, 0.69846356f, -0.029805163f, -0.7150247f, 0.0f, 0.83180827f, -0.3930172f, 0.39195976f, 0.0f, 0.14695764f, 0.055416517f, -0.98758924f, 0.0f, 0.70886856f, -0.2690504f, 0.65201014f, 0.0f, 0.27260533f, 0.67369765f, -0.68688995f, 0.0f, -0.65912956f, 0.30354586f, -0.68804663f, 0.0f, 0.48151314f, -0.752827f, 0.4487723f, 0.0f, 0.943001f, 0.16756473f, -0.28752613f, 0.0f, 0.43480295f, 0.7695305f, -0.46772778f, 0.0f, 0.39319962f, 0.5944736f, 0.70142365f, 0.0f, 0.72543365f, -0.60392565f, 0.33018148f, 0.0f, 0.75902355f, -0.6506083f, 0.024333132f, 0.0f, -0.8552769f, -0.3430043f, 0.38839358f, 0.0f, -0.6139747f, 0.6981725f, 0.36822575f, 0.0f, -0.74659055f, -0.575201f, 0.33428493f, 0.0f, 0.5730066f, 0.8105555f, -0.12109168f, 0.0f, -0.92258775f, -0.3475211f, -0.16751404f, 0.0f, -0.71058166f, -0.47196922f, -0.5218417f, 0.0f, -0.0856461f, 0.35830015f, 0.9296697f, 0.0f, -0.8279698f, -0.2043157f, 0.5222271f, 0.0f, 0.42794403f, 0.278166f, 0.8599346f, 0.0f, 0.539908f, -0.78571206f, -0.3019204f, 0.0f, 0.5678404f, -0.5495414f, -0.61283076f, 0.0f, -0.9896071f, 0.13656391f, -0.045034185f, 0.0f, -0.6154343f, -0.64408755f, 0.45430374f, 0.0f, 0.10742044f, -0.79463404f, 0.59750944f, 0.0f, -0.359545f, -0.888553f, 0.28495783f, 0.0f, -0.21804053f, 0.1529889f, 0.9638738f, 0.0f, -0.7277432f, -0.61640507f, -0.30072346f, 0.0f, 0.7249729f, -0.0066971947f, 0.68874484f, 0.0f, -0.5553659f, -0.5336586f, 0.6377908f, 0.0f, 0.5137558f, 0.79762083f, -0.316f, 0.0f, -0.3794025f, 0.92456084f, -0.035227515f, 0.0f, 0.82292485f, 0.27453658f, -0.49741766f, 0.0f, -0.5404114f, 0.60911417f, 0.5804614f, 0.0f, 0.8036582f, -0.27030295f, 0.5301602f, 0.0f, 0.60443187f, 0.68329686f, 0.40959433f, 0.0f, 0.06389989f, 0.96582085f, -0.2512108f, 0.0f, 0.10871133f, 0.74024713f, -0.6634878f, 0.0f, -0.7134277f, -0.6926784f, 0.10591285f, 0.0f, 0.64588976f, -0.57245487f, -0.50509584f, 0.0f, -0.6553931f, 0.73814714f, 0.15999562f, 0.0f, 0.39109614f, 0.91888714f, -0.05186756f, 0.0f, -0.48790225f, -0.5904377f, 0.64291114f, 0.0f, 0.601479f, 0.77074414f, -0.21018201f, 0.0f, -0.5677173f, 0.7511361f, 0.33688518f, 0.0f, 0.7858574f, 0.22667466f, 0.5753667f, 0.0f, -0.45203456f, -0.6042227f, -0.65618575f, 0.0f, 0.0022721163f, 0.4132844f, -0.9105992f, 0.0f, -0.58157516f, -0.5162926f, 0.6286591f, 0.0f, -0.03703705f, 0.8273786f, 0.5604221f, 0.0f, -0.51196927f, 0.79535437f, -0.324498f, 0.0f, -0.26824173f, -0.957229f, -0.10843876f, 0.0f, -0.23224828f, -0.9679131f, -0.09594243f, 0.0f, 0.3554329f, -0.8881506f, 0.29130062f, 0.0f, 0.73465204f, -0.4371373f, 0.5188423f, 0.0f, 0.998512f, 0.046590112f, -0.028339446f, 0.0f, -0.37276876f, -0.9082481f, 0.19007573f, 0.0f, 0.9173738f, -0.3483642f, 0.19252984f, 0.0f, 0.2714911f, 0.41475296f, -0.86848867f, 0.0f, 0.5131763f, -0.71163344f, 0.4798207f, 0.0f, -0.87373537f, 0.18886992f, -0.44823506f, 0.0f, 0.84600437f, -0.3725218f, 0.38145f, 0.0f, 0.89787275f, -0.17802091f, -0.40265754f, 0.0f, 0.21780656f, -0.9698323f, -0.10947895f, 0.0f, -0.15180314f, -0.7788918f, -0.6085091f, 0.0f, -0.2600385f, -0.4755398f, -0.840382f, 0.0f, 0.5723135f, -0.7474341f, -0.33734185f, 0.0f, -0.7174141f, 0.16990171f, -0.67561114f, 0.0f, -0.6841808f, 0.021457076f, -0.72899675f, 0.0f, -0.2007448f, 0.06555606f, -0.9774477f, 0.0f, -0.11488037f, -0.8044887f, 0.5827524f, 0.0f, -0.787035f, 0.03447489f, 0.6159443f, 0.0f, -0.20155965f, 0.68598723f, 0.69913894f, 0.0f, 
     -0.085810825f, -0.10920836f, -0.99030805f, 0.0f, 0.5532693f, 0.73252505f, -0.39661077f, 0.0f, -0.18424894f, -0.9777375f, -0.100407675f, 0.0f, 0.07754738f, -0.9111506f, 0.40471104f, 0.0f, 0.13998385f, 0.7601631f, -0.63447344f, 0.0f, 0.44844192f, -0.84528923f, 0.29049253f, 0.0f};
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/util/FastNoiseLite$CellularDistanceFunction.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/util/FastNoiseLite$CellularDistanceFunction.class */
     public enum CellularDistanceFunction {
         Euclidean,
         EuclideanSq,
@@ -94,7 +94,7 @@ public class FastNoiseLite {
         Hybrid
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/util/FastNoiseLite$CellularReturnType.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/util/FastNoiseLite$CellularReturnType.class */
     public enum CellularReturnType {
         CellValue,
         Distance,
@@ -105,14 +105,14 @@ public class FastNoiseLite {
         Distance2Div
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/util/FastNoiseLite$DomainWarpType.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/util/FastNoiseLite$DomainWarpType.class */
     public enum DomainWarpType {
         OpenSimplex2,
         OpenSimplex2Reduced,
         BasicGrid
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/util/FastNoiseLite$FractalType.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/util/FastNoiseLite$FractalType.class */
     public enum FractalType {
         None,
         FBm,
@@ -122,7 +122,7 @@ public class FastNoiseLite {
         DomainWarpIndependent
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/util/FastNoiseLite$NoiseType.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/util/FastNoiseLite$NoiseType.class */
     public enum NoiseType {
         OpenSimplex2,
         OpenSimplex2S,
@@ -132,14 +132,14 @@ public class FastNoiseLite {
         Value
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/util/FastNoiseLite$RotationType3D.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/util/FastNoiseLite$RotationType3D.class */
     public enum RotationType3D {
         None,
         ImproveXYPlanes,
         ImproveXZPlanes
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/util/FastNoiseLite$TransformType3D.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/util/FastNoiseLite$TransformType3D.class */
     private enum TransformType3D {
         None,
         ImproveXYPlanes,
@@ -356,10 +356,10 @@ public class FastNoiseLite {
                 break;
             case 2:
                 float xz = x2 + z2;
-                float s22 = xz * (-0.21132487f);
+                float s3 = xz * (-0.21132487f);
                 float y3 = y2 * 0.57735026f;
-                x2 += s22 - y3;
-                z2 += s22 - y3;
+                x2 += s3 - y3;
+                z2 += s3 - y3;
                 y2 = y3 + (xz * 0.57735026f);
                 break;
             case 3:
@@ -729,13 +729,13 @@ public class FastNoiseLite {
                 n1 = b * b * b * b * GradCoord(seed, i2, j2 + PrimeY, x1, y1);
             }
         } else {
-            float x12 = x0 - 0.7886751f;
-            float y12 = y0 + 0.21132487f;
-            float b2 = (0.5f - (x12 * x12)) - (y12 * y12);
+            float x3 = x0 - 0.7886751f;
+            float y3 = y0 + 0.21132487f;
+            float b2 = (0.5f - (x3 * x3)) - (y3 * y3);
             if (b2 <= 0.0f) {
                 n1 = 0.0f;
             } else {
-                n1 = b2 * b2 * b2 * b2 * GradCoord(seed, i2 + PrimeX, j2, x12, y12);
+                n1 = b2 * b2 * b2 * b2 * GradCoord(seed, i2 + PrimeX, j2, x3, y3);
             }
         }
         return (n0 + n1 + n2) * 99.83685f;
@@ -833,57 +833,57 @@ public class FastNoiseLite {
                     value2 += a2 * a2 * a2 * a2 * GradCoord(seed, i2 + 1002250642, j2 + PrimeY, x2, y2);
                 }
             } else {
-                float x22 = x0 + 0.21132487f;
-                float y22 = y0 - 0.7886751f;
-                float a22 = (0.6666667f - (x22 * x22)) - (y22 * y22);
-                if (a22 > 0.0f) {
-                    value2 += a22 * a22 * a22 * a22 * GradCoord(seed, i2, j2 + PrimeY, x22, y22);
+                float x3 = x0 + 0.21132487f;
+                float y3 = y0 - 0.7886751f;
+                float a3 = (0.6666667f - (x3 * x3)) - (y3 * y3);
+                if (a3 > 0.0f) {
+                    value2 += a3 * a3 * a3 * a3 * GradCoord(seed, i2, j2 + PrimeY, x3, y3);
                 }
             }
             if (yi - xmyi > 1.0f) {
-                float x3 = x0 - 0.3660254f;
-                float y3 = y0 - 1.3660254f;
-                float a3 = (0.6666667f - (x3 * x3)) - (y3 * y3);
-                if (a3 > 0.0f) {
-                    value2 += a3 * a3 * a3 * a3 * GradCoord(seed, i2 + PrimeX, j2 - 2021106534, x3, y3);
+                float x4 = x0 - 0.3660254f;
+                float y4 = y0 - 1.3660254f;
+                float a4 = (0.6666667f - (x4 * x4)) - (y4 * y4);
+                if (a4 > 0.0f) {
+                    value2 += a4 * a4 * a4 * a4 * GradCoord(seed, i2 + PrimeX, j2 - 2021106534, x4, y4);
                 }
             } else {
-                float x32 = x0 - 0.7886751f;
-                float y32 = y0 + 0.21132487f;
-                float a32 = (0.6666667f - (x32 * x32)) - (y32 * y32);
-                if (a32 > 0.0f) {
-                    value2 += a32 * a32 * a32 * a32 * GradCoord(seed, i2 + PrimeX, j2, x32, y32);
+                float x5 = x0 - 0.7886751f;
+                float y5 = y0 + 0.21132487f;
+                float a5 = (0.6666667f - (x5 * x5)) - (y5 * y5);
+                if (a5 > 0.0f) {
+                    value2 += a5 * a5 * a5 * a5 * GradCoord(seed, i2 + PrimeX, j2, x5, y5);
                 }
             }
         } else {
             if (xi + xmyi < 0.0f) {
-                float x23 = x0 + 0.7886751f;
-                float y23 = y0 - 0.21132487f;
-                float a23 = (0.6666667f - (x23 * x23)) - (y23 * y23);
-                if (a23 > 0.0f) {
-                    value2 += a23 * a23 * a23 * a23 * GradCoord(seed, i2 - PrimeX, j2, x23, y23);
+                float x6 = x0 + 0.7886751f;
+                float y6 = y0 - 0.21132487f;
+                float a6 = (0.6666667f - (x6 * x6)) - (y6 * y6);
+                if (a6 > 0.0f) {
+                    value2 += a6 * a6 * a6 * a6 * GradCoord(seed, i2 - PrimeX, j2, x6, y6);
                 }
             } else {
-                float x24 = x0 - 0.7886751f;
-                float y24 = y0 + 0.21132487f;
-                float a24 = (0.6666667f - (x24 * x24)) - (y24 * y24);
-                if (a24 > 0.0f) {
-                    value2 += a24 * a24 * a24 * a24 * GradCoord(seed, i2 + PrimeX, j2, x24, y24);
+                float x7 = x0 - 0.7886751f;
+                float y7 = y0 + 0.21132487f;
+                float a7 = (0.6666667f - (x7 * x7)) - (y7 * y7);
+                if (a7 > 0.0f) {
+                    value2 += a7 * a7 * a7 * a7 * GradCoord(seed, i2 + PrimeX, j2, x7, y7);
                 }
             }
             if (yi < xmyi) {
-                float x25 = x0 - 0.21132487f;
-                float y25 = y0 - (-0.7886751f);
-                float a25 = (0.6666667f - (x25 * x25)) - (y25 * y25);
-                if (a25 > 0.0f) {
-                    value2 += a25 * a25 * a25 * a25 * GradCoord(seed, i2, j2 - PrimeY, x25, y25);
+                float x8 = x0 - 0.21132487f;
+                float y8 = y0 - (-0.7886751f);
+                float a8 = (0.6666667f - (x8 * x8)) - (y8 * y8);
+                if (a8 > 0.0f) {
+                    value2 += a8 * a8 * a8 * a8 * GradCoord(seed, i2, j2 - PrimeY, x8, y8);
                 }
             } else {
-                float x26 = x0 + 0.21132487f;
-                float y26 = y0 - 0.7886751f;
-                float a26 = (0.6666667f - (x26 * x26)) - (y26 * y26);
-                if (a26 > 0.0f) {
-                    value2 += a26 * a26 * a26 * a26 * GradCoord(seed, i2, j2 + PrimeY, x26, y26);
+                float x9 = x0 + 0.21132487f;
+                float y9 = y0 - 0.7886751f;
+                float a9 = (0.6666667f - (x9 * x9)) - (y9 * y9);
+                if (a9 > 0.0f) {
+                    value2 += a9 * a9 * a9 * a9 * GradCoord(seed, i2, j2 + PrimeY, x9, y9);
                 }
             }
         }
@@ -1216,12 +1216,12 @@ public class FastNoiseLite {
         float yd1 = yd0 - 1.0f;
         float xs = InterpQuintic(xd0);
         float ys = InterpQuintic(yd0);
-        int x02 = x0 * PrimeX;
-        int y02 = y0 * PrimeY;
-        int x1 = x02 + PrimeX;
-        int y1 = y02 + PrimeY;
-        float xf0 = Lerp(GradCoord(seed, x02, y02, xd0, yd0), GradCoord(seed, x1, y02, xd1, yd0), xs);
-        float xf1 = Lerp(GradCoord(seed, x02, y1, xd0, yd1), GradCoord(seed, x1, y1, xd1, yd1), xs);
+        int x1 = x0 * PrimeX;
+        int y1 = y0 * PrimeY;
+        int x2 = x1 + PrimeX;
+        int y2 = y1 + PrimeY;
+        float xf0 = Lerp(GradCoord(seed, x1, y1, xd0, yd0), GradCoord(seed, x2, y1, xd1, yd0), xs);
+        float xf1 = Lerp(GradCoord(seed, x1, y2, xd0, yd1), GradCoord(seed, x2, y2, xd1, yd1), xs);
         return Lerp(xf0, xf1, ys) * 1.4247692f;
     }
 
@@ -1238,16 +1238,16 @@ public class FastNoiseLite {
         float xs = InterpQuintic(xd0);
         float ys = InterpQuintic(yd0);
         float zs = InterpQuintic(zd0);
-        int x02 = x0 * PrimeX;
-        int y02 = y0 * PrimeY;
-        int z02 = z0 * PrimeZ;
-        int x1 = x02 + PrimeX;
-        int y1 = y02 + PrimeY;
-        int z1 = z02 + PrimeZ;
-        float xf00 = Lerp(GradCoord(seed, x02, y02, z02, xd0, yd0, zd0), GradCoord(seed, x1, y02, z02, xd1, yd0, zd0), xs);
-        float xf10 = Lerp(GradCoord(seed, x02, y1, z02, xd0, yd1, zd0), GradCoord(seed, x1, y1, z02, xd1, yd1, zd0), xs);
-        float xf01 = Lerp(GradCoord(seed, x02, y02, z1, xd0, yd0, zd1), GradCoord(seed, x1, y02, z1, xd1, yd0, zd1), xs);
-        float xf11 = Lerp(GradCoord(seed, x02, y1, z1, xd0, yd1, zd1), GradCoord(seed, x1, y1, z1, xd1, yd1, zd1), xs);
+        int x1 = x0 * PrimeX;
+        int y1 = y0 * PrimeY;
+        int z1 = z0 * PrimeZ;
+        int x2 = x1 + PrimeX;
+        int y2 = y1 + PrimeY;
+        int z2 = z1 + PrimeZ;
+        float xf00 = Lerp(GradCoord(seed, x1, y1, z1, xd0, yd0, zd0), GradCoord(seed, x2, y1, z1, xd1, yd0, zd0), xs);
+        float xf10 = Lerp(GradCoord(seed, x1, y2, z1, xd0, yd1, zd0), GradCoord(seed, x2, y2, z1, xd1, yd1, zd0), xs);
+        float xf01 = Lerp(GradCoord(seed, x1, y1, z2, xd0, yd0, zd1), GradCoord(seed, x2, y1, z2, xd1, yd0, zd1), xs);
+        float xf11 = Lerp(GradCoord(seed, x1, y2, z2, xd0, yd1, zd1), GradCoord(seed, x2, y2, z2, xd1, yd1, zd1), xs);
         float yf0 = Lerp(xf00, xf10, ys);
         float yf1 = Lerp(xf01, xf11, ys);
         return Lerp(yf0, yf1, zs) * 0.9649214f;
@@ -1258,15 +1258,15 @@ public class FastNoiseLite {
         int y1 = FastFloor(y);
         float xs = x - x1;
         float ys = y - y1;
-        int x12 = x1 * PrimeX;
-        int y12 = y1 * PrimeY;
-        int x0 = x12 - PrimeX;
-        int y0 = y12 - PrimeY;
-        int x2 = x12 + PrimeX;
-        int y2 = y12 + PrimeY;
-        int x3 = x12 + 1002250642;
-        int y3 = y12 - 2021106534;
-        return CubicLerp(CubicLerp(ValCoord(seed, x0, y0), ValCoord(seed, x12, y0), ValCoord(seed, x2, y0), ValCoord(seed, x3, y0), xs), CubicLerp(ValCoord(seed, x0, y12), ValCoord(seed, x12, y12), ValCoord(seed, x2, y12), ValCoord(seed, x3, y12), xs), CubicLerp(ValCoord(seed, x0, y2), ValCoord(seed, x12, y2), ValCoord(seed, x2, y2), ValCoord(seed, x3, y2), xs), CubicLerp(ValCoord(seed, x0, y3), ValCoord(seed, x12, y3), ValCoord(seed, x2, y3), ValCoord(seed, x3, y3), xs), ys) * 0.44444445f;
+        int x2 = x1 * PrimeX;
+        int y2 = y1 * PrimeY;
+        int x0 = x2 - PrimeX;
+        int y0 = y2 - PrimeY;
+        int x3 = x2 + PrimeX;
+        int y3 = y2 + PrimeY;
+        int x4 = x2 + 1002250642;
+        int y4 = y2 - 2021106534;
+        return CubicLerp(CubicLerp(ValCoord(seed, x0, y0), ValCoord(seed, x2, y0), ValCoord(seed, x3, y0), ValCoord(seed, x4, y0), xs), CubicLerp(ValCoord(seed, x0, y2), ValCoord(seed, x2, y2), ValCoord(seed, x3, y2), ValCoord(seed, x4, y2), xs), CubicLerp(ValCoord(seed, x0, y3), ValCoord(seed, x2, y3), ValCoord(seed, x3, y3), ValCoord(seed, x4, y3), xs), CubicLerp(ValCoord(seed, x0, y4), ValCoord(seed, x2, y4), ValCoord(seed, x3, y4), ValCoord(seed, x4, y4), xs), ys) * 0.44444445f;
     }
 
     private float SingleValueCubic(int seed, float x, float y, float z) {
@@ -1276,19 +1276,19 @@ public class FastNoiseLite {
         float xs = x - x1;
         float ys = y - y1;
         float zs = z - z1;
-        int x12 = x1 * PrimeX;
-        int y12 = y1 * PrimeY;
-        int z12 = z1 * PrimeZ;
-        int x0 = x12 - PrimeX;
-        int y0 = y12 - PrimeY;
-        int z0 = z12 - PrimeZ;
-        int x2 = x12 + PrimeX;
-        int y2 = y12 + PrimeY;
-        int z2 = z12 + PrimeZ;
-        int x3 = x12 + 1002250642;
-        int y3 = y12 - 2021106534;
-        int z3 = z12 - 854139810;
-        return CubicLerp(CubicLerp(CubicLerp(ValCoord(seed, x0, y0, z0), ValCoord(seed, x12, y0, z0), ValCoord(seed, x2, y0, z0), ValCoord(seed, x3, y0, z0), xs), CubicLerp(ValCoord(seed, x0, y12, z0), ValCoord(seed, x12, y12, z0), ValCoord(seed, x2, y12, z0), ValCoord(seed, x3, y12, z0), xs), CubicLerp(ValCoord(seed, x0, y2, z0), ValCoord(seed, x12, y2, z0), ValCoord(seed, x2, y2, z0), ValCoord(seed, x3, y2, z0), xs), CubicLerp(ValCoord(seed, x0, y3, z0), ValCoord(seed, x12, y3, z0), ValCoord(seed, x2, y3, z0), ValCoord(seed, x3, y3, z0), xs), ys), CubicLerp(CubicLerp(ValCoord(seed, x0, y0, z12), ValCoord(seed, x12, y0, z12), ValCoord(seed, x2, y0, z12), ValCoord(seed, x3, y0, z12), xs), CubicLerp(ValCoord(seed, x0, y12, z12), ValCoord(seed, x12, y12, z12), ValCoord(seed, x2, y12, z12), ValCoord(seed, x3, y12, z12), xs), CubicLerp(ValCoord(seed, x0, y2, z12), ValCoord(seed, x12, y2, z12), ValCoord(seed, x2, y2, z12), ValCoord(seed, x3, y2, z12), xs), CubicLerp(ValCoord(seed, x0, y3, z12), ValCoord(seed, x12, y3, z12), ValCoord(seed, x2, y3, z12), ValCoord(seed, x3, y3, z12), xs), ys), CubicLerp(CubicLerp(ValCoord(seed, x0, y0, z2), ValCoord(seed, x12, y0, z2), ValCoord(seed, x2, y0, z2), ValCoord(seed, x3, y0, z2), xs), CubicLerp(ValCoord(seed, x0, y12, z2), ValCoord(seed, x12, y12, z2), ValCoord(seed, x2, y12, z2), ValCoord(seed, x3, y12, z2), xs), CubicLerp(ValCoord(seed, x0, y2, z2), ValCoord(seed, x12, y2, z2), ValCoord(seed, x2, y2, z2), ValCoord(seed, x3, y2, z2), xs), CubicLerp(ValCoord(seed, x0, y3, z2), ValCoord(seed, x12, y3, z2), ValCoord(seed, x2, y3, z2), ValCoord(seed, x3, y3, z2), xs), ys), CubicLerp(CubicLerp(ValCoord(seed, x0, y0, z3), ValCoord(seed, x12, y0, z3), ValCoord(seed, x2, y0, z3), ValCoord(seed, x3, y0, z3), xs), CubicLerp(ValCoord(seed, x0, y12, z3), ValCoord(seed, x12, y12, z3), ValCoord(seed, x2, y12, z3), ValCoord(seed, x3, y12, z3), xs), CubicLerp(ValCoord(seed, x0, y2, z3), ValCoord(seed, x12, y2, z3), ValCoord(seed, x2, y2, z3), ValCoord(seed, x3, y2, z3), xs), CubicLerp(ValCoord(seed, x0, y3, z3), ValCoord(seed, x12, y3, z3), ValCoord(seed, x2, y3, z3), ValCoord(seed, x3, y3, z3), xs), ys), zs) * 0.2962963f;
+        int x2 = x1 * PrimeX;
+        int y2 = y1 * PrimeY;
+        int z2 = z1 * PrimeZ;
+        int x0 = x2 - PrimeX;
+        int y0 = y2 - PrimeY;
+        int z0 = z2 - PrimeZ;
+        int x3 = x2 + PrimeX;
+        int y3 = y2 + PrimeY;
+        int z3 = z2 + PrimeZ;
+        int x4 = x2 + 1002250642;
+        int y4 = y2 - 2021106534;
+        int z4 = z2 - 854139810;
+        return CubicLerp(CubicLerp(CubicLerp(ValCoord(seed, x0, y0, z0), ValCoord(seed, x2, y0, z0), ValCoord(seed, x3, y0, z0), ValCoord(seed, x4, y0, z0), xs), CubicLerp(ValCoord(seed, x0, y2, z0), ValCoord(seed, x2, y2, z0), ValCoord(seed, x3, y2, z0), ValCoord(seed, x4, y2, z0), xs), CubicLerp(ValCoord(seed, x0, y3, z0), ValCoord(seed, x2, y3, z0), ValCoord(seed, x3, y3, z0), ValCoord(seed, x4, y3, z0), xs), CubicLerp(ValCoord(seed, x0, y4, z0), ValCoord(seed, x2, y4, z0), ValCoord(seed, x3, y4, z0), ValCoord(seed, x4, y4, z0), xs), ys), CubicLerp(CubicLerp(ValCoord(seed, x0, y0, z2), ValCoord(seed, x2, y0, z2), ValCoord(seed, x3, y0, z2), ValCoord(seed, x4, y0, z2), xs), CubicLerp(ValCoord(seed, x0, y2, z2), ValCoord(seed, x2, y2, z2), ValCoord(seed, x3, y2, z2), ValCoord(seed, x4, y2, z2), xs), CubicLerp(ValCoord(seed, x0, y3, z2), ValCoord(seed, x2, y3, z2), ValCoord(seed, x3, y3, z2), ValCoord(seed, x4, y3, z2), xs), CubicLerp(ValCoord(seed, x0, y4, z2), ValCoord(seed, x2, y4, z2), ValCoord(seed, x3, y4, z2), ValCoord(seed, x4, y4, z2), xs), ys), CubicLerp(CubicLerp(ValCoord(seed, x0, y0, z3), ValCoord(seed, x2, y0, z3), ValCoord(seed, x3, y0, z3), ValCoord(seed, x4, y0, z3), xs), CubicLerp(ValCoord(seed, x0, y2, z3), ValCoord(seed, x2, y2, z3), ValCoord(seed, x3, y2, z3), ValCoord(seed, x4, y2, z3), xs), CubicLerp(ValCoord(seed, x0, y3, z3), ValCoord(seed, x2, y3, z3), ValCoord(seed, x3, y3, z3), ValCoord(seed, x4, y3, z3), xs), CubicLerp(ValCoord(seed, x0, y4, z3), ValCoord(seed, x2, y4, z3), ValCoord(seed, x3, y4, z3), ValCoord(seed, x4, y4, z3), xs), ys), CubicLerp(CubicLerp(ValCoord(seed, x0, y0, z4), ValCoord(seed, x2, y0, z4), ValCoord(seed, x3, y0, z4), ValCoord(seed, x4, y0, z4), xs), CubicLerp(ValCoord(seed, x0, y2, z4), ValCoord(seed, x2, y2, z4), ValCoord(seed, x3, y2, z4), ValCoord(seed, x4, y2, z4), xs), CubicLerp(ValCoord(seed, x0, y3, z4), ValCoord(seed, x2, y3, z4), ValCoord(seed, x3, y3, z4), ValCoord(seed, x4, y3, z4), xs), CubicLerp(ValCoord(seed, x0, y4, z4), ValCoord(seed, x2, y4, z4), ValCoord(seed, x3, y4, z4), ValCoord(seed, x4, y4, z4), xs), ys), zs) * 0.2962963f;
     }
 
     private float SingleValue(int seed, float x, float y) {
@@ -1296,12 +1296,12 @@ public class FastNoiseLite {
         int y0 = FastFloor(y);
         float xs = InterpHermite(x - x0);
         float ys = InterpHermite(y - y0);
-        int x02 = x0 * PrimeX;
-        int y02 = y0 * PrimeY;
-        int x1 = x02 + PrimeX;
-        int y1 = y02 + PrimeY;
-        float xf0 = Lerp(ValCoord(seed, x02, y02), ValCoord(seed, x1, y02), xs);
-        float xf1 = Lerp(ValCoord(seed, x02, y1), ValCoord(seed, x1, y1), xs);
+        int x1 = x0 * PrimeX;
+        int y1 = y0 * PrimeY;
+        int x2 = x1 + PrimeX;
+        int y2 = y1 + PrimeY;
+        float xf0 = Lerp(ValCoord(seed, x1, y1), ValCoord(seed, x2, y1), xs);
+        float xf1 = Lerp(ValCoord(seed, x1, y2), ValCoord(seed, x2, y2), xs);
         return Lerp(xf0, xf1, ys);
     }
 
@@ -1312,16 +1312,16 @@ public class FastNoiseLite {
         float xs = InterpHermite(x - x0);
         float ys = InterpHermite(y - y0);
         float zs = InterpHermite(z - z0);
-        int x02 = x0 * PrimeX;
-        int y02 = y0 * PrimeY;
-        int z02 = z0 * PrimeZ;
-        int x1 = x02 + PrimeX;
-        int y1 = y02 + PrimeY;
-        int z1 = z02 + PrimeZ;
-        float xf00 = Lerp(ValCoord(seed, x02, y02, z02), ValCoord(seed, x1, y02, z02), xs);
-        float xf10 = Lerp(ValCoord(seed, x02, y1, z02), ValCoord(seed, x1, y1, z02), xs);
-        float xf01 = Lerp(ValCoord(seed, x02, y02, z1), ValCoord(seed, x1, y02, z1), xs);
-        float xf11 = Lerp(ValCoord(seed, x02, y1, z1), ValCoord(seed, x1, y1, z1), xs);
+        int x1 = x0 * PrimeX;
+        int y1 = y0 * PrimeY;
+        int z1 = z0 * PrimeZ;
+        int x2 = x1 + PrimeX;
+        int y2 = y1 + PrimeY;
+        int z2 = z1 + PrimeZ;
+        float xf00 = Lerp(ValCoord(seed, x1, y1, z1), ValCoord(seed, x2, y1, z1), xs);
+        float xf10 = Lerp(ValCoord(seed, x1, y2, z1), ValCoord(seed, x2, y2, z1), xs);
+        float xf01 = Lerp(ValCoord(seed, x1, y1, z2), ValCoord(seed, x2, y1, z2), xs);
+        float xf11 = Lerp(ValCoord(seed, x1, y2, z2), ValCoord(seed, x2, y2, z2), xs);
         float yf0 = Lerp(xf00, xf10, ys);
         float yf1 = Lerp(xf01, xf11, ys);
         return Lerp(yf0, yf1, zs);
@@ -1359,8 +1359,8 @@ public class FastNoiseLite {
         int seed = this.mSeed;
         float amp = this.mDomainWarpAmp * this.mFractalBounding;
         float freq = this.mFrequency;
-        float xs = coord.f8760x;
-        float ys = coord.f8761y;
+        float xs = coord.f9146x;
+        float ys = coord.f9147y;
         switch (this.mDomainWarpType) {
             case OpenSimplex2:
             case OpenSimplex2Reduced:
@@ -1376,9 +1376,9 @@ public class FastNoiseLite {
         int seed = this.mSeed;
         float amp = this.mDomainWarpAmp * this.mFractalBounding;
         float freq = this.mFrequency;
-        float xs = coord.f8762x;
-        float ys = coord.f8763y;
-        float zs = coord.f8764z;
+        float xs = coord.f9148x;
+        float ys = coord.f9149y;
+        float zs = coord.f9150z;
         switch (this.mWarpTransformType3D.ordinal()) {
             case 1:
                 float xy = xs + ys;
@@ -1390,10 +1390,10 @@ public class FastNoiseLite {
                 break;
             case 2:
                 float xz = xs + zs;
-                float s22 = xz * (-0.21132487f);
+                float s3 = xz * (-0.21132487f);
                 float ys2 = ys * 0.57735026f;
-                xs += s22 - ys2;
-                zs += s22 - ys2;
+                xs += s3 - ys2;
+                zs += s3 - ys2;
                 ys = ys2 + (xz * 0.57735026f);
                 break;
             case 3:
@@ -1411,8 +1411,8 @@ public class FastNoiseLite {
         float amp = this.mDomainWarpAmp * this.mFractalBounding;
         float freq = this.mFrequency;
         for (int i = 0; i < this.mOctaves; i++) {
-            float xs = coord.f8760x;
-            float ys = coord.f8761y;
+            float xs = coord.f9146x;
+            float ys = coord.f9147y;
             switch (this.mDomainWarpType) {
                 case OpenSimplex2:
                 case OpenSimplex2Reduced:
@@ -1433,9 +1433,9 @@ public class FastNoiseLite {
         float amp = this.mDomainWarpAmp * this.mFractalBounding;
         float freq = this.mFrequency;
         for (int i = 0; i < this.mOctaves; i++) {
-            float xs = coord.f8762x;
-            float ys = coord.f8763y;
-            float zs = coord.f8764z;
+            float xs = coord.f9148x;
+            float ys = coord.f9149y;
+            float zs = coord.f9150z;
             switch (this.mWarpTransformType3D.ordinal()) {
                 case 1:
                     float xy = xs + ys;
@@ -1447,10 +1447,10 @@ public class FastNoiseLite {
                     break;
                 case 2:
                     float xz = xs + zs;
-                    float s22 = xz * (-0.21132487f);
+                    float s3 = xz * (-0.21132487f);
                     float ys2 = ys * 0.57735026f;
-                    xs += s22 - ys2;
-                    zs += s22 - ys2;
+                    xs += s3 - ys2;
+                    zs += s3 - ys2;
                     ys = ys2 + (xz * 0.57735026f);
                     break;
                 case 3:
@@ -1468,8 +1468,8 @@ public class FastNoiseLite {
     }
 
     private void DomainWarpFractalIndependent(Vector2 coord) {
-        float xs = coord.f8760x;
-        float ys = coord.f8761y;
+        float xs = coord.f9146x;
+        float ys = coord.f9147y;
         switch (this.mDomainWarpType) {
             case OpenSimplex2:
             case OpenSimplex2Reduced:
@@ -1490,9 +1490,9 @@ public class FastNoiseLite {
     }
 
     private void DomainWarpFractalIndependent(Vector3 coord) {
-        float xs = coord.f8762x;
-        float ys = coord.f8763y;
-        float zs = coord.f8764z;
+        float xs = coord.f9148x;
+        float ys = coord.f9149y;
+        float zs = coord.f9150z;
         switch (this.mWarpTransformType3D.ordinal()) {
             case 1:
                 float xy = xs + ys;
@@ -1504,10 +1504,10 @@ public class FastNoiseLite {
                 break;
             case 2:
                 float xz = xs + zs;
-                float s22 = xz * (-0.21132487f);
+                float s3 = xz * (-0.21132487f);
                 float ys2 = ys * 0.57735026f;
-                xs += s22 - ys2;
-                zs += s22 - ys2;
+                xs += s3 - ys2;
+                zs += s3 - ys2;
                 ys = ys2 + (xz * 0.57735026f);
                 break;
             case 3:
@@ -1535,20 +1535,20 @@ public class FastNoiseLite {
         int y0 = FastFloor(yf);
         float xs = InterpHermite(xf - x0);
         float ys = InterpHermite(yf - y0);
-        int x02 = x0 * PrimeX;
-        int y02 = y0 * PrimeY;
-        int x1 = x02 + PrimeX;
-        int y1 = y02 + PrimeY;
-        int hash0 = Hash(seed, x02, y02) & 510;
-        int hash1 = Hash(seed, x1, y02) & 510;
+        int x1 = x0 * PrimeX;
+        int y1 = y0 * PrimeY;
+        int x2 = x1 + PrimeX;
+        int y2 = y1 + PrimeY;
+        int hash0 = Hash(seed, x1, y1) & 510;
+        int hash1 = Hash(seed, x2, y1) & 510;
         float lx0x = Lerp(RandVecs2D[hash0], RandVecs2D[hash1], xs);
         float ly0x = Lerp(RandVecs2D[hash0 | 1], RandVecs2D[hash1 | 1], xs);
-        int hash02 = Hash(seed, x02, y1) & 510;
-        int hash12 = Hash(seed, x1, y1) & 510;
-        float lx1x = Lerp(RandVecs2D[hash02], RandVecs2D[hash12], xs);
-        float ly1x = Lerp(RandVecs2D[hash02 | 1], RandVecs2D[hash12 | 1], xs);
-        coord.f8760x += Lerp(lx0x, lx1x, ys) * warpAmp;
-        coord.f8761y += Lerp(ly0x, ly1x, ys) * warpAmp;
+        int hash2 = Hash(seed, x1, y2) & 510;
+        int hash3 = Hash(seed, x2, y2) & 510;
+        float lx1x = Lerp(RandVecs2D[hash2], RandVecs2D[hash3], xs);
+        float ly1x = Lerp(RandVecs2D[hash2 | 1], RandVecs2D[hash3 | 1], xs);
+        coord.f9146x += Lerp(lx0x, lx1x, ys) * warpAmp;
+        coord.f9147y += Lerp(ly0x, ly1x, ys) * warpAmp;
     }
 
     private void SingleDomainWarpBasicGrid(int seed, float warpAmp, float frequency, float x, float y, float z, Vector3 coord) {
@@ -1561,38 +1561,38 @@ public class FastNoiseLite {
         float xs = InterpHermite(xf - x0);
         float ys = InterpHermite(yf - y0);
         float zs = InterpHermite(zf - z0);
-        int x02 = x0 * PrimeX;
-        int y02 = y0 * PrimeY;
-        int z02 = z0 * PrimeZ;
-        int x1 = x02 + PrimeX;
-        int y1 = y02 + PrimeY;
-        int z1 = z02 + PrimeZ;
-        int hash0 = Hash(seed, x02, y02, z02) & 1020;
-        int hash1 = Hash(seed, x1, y02, z02) & 1020;
+        int x1 = x0 * PrimeX;
+        int y1 = y0 * PrimeY;
+        int z1 = z0 * PrimeZ;
+        int x2 = x1 + PrimeX;
+        int y2 = y1 + PrimeY;
+        int z2 = z1 + PrimeZ;
+        int hash0 = Hash(seed, x1, y1, z1) & 1020;
+        int hash1 = Hash(seed, x2, y1, z1) & 1020;
         float lx0x = Lerp(RandVecs3D[hash0], RandVecs3D[hash1], xs);
         float ly0x = Lerp(RandVecs3D[hash0 | 1], RandVecs3D[hash1 | 1], xs);
         float lz0x = Lerp(RandVecs3D[hash0 | 2], RandVecs3D[hash1 | 2], xs);
-        int hash02 = Hash(seed, x02, y1, z02) & 1020;
-        int hash12 = Hash(seed, x1, y1, z02) & 1020;
-        float lx1x = Lerp(RandVecs3D[hash02], RandVecs3D[hash12], xs);
-        float ly1x = Lerp(RandVecs3D[hash02 | 1], RandVecs3D[hash12 | 1], xs);
-        float lz1x = Lerp(RandVecs3D[hash02 | 2], RandVecs3D[hash12 | 2], xs);
+        int hash2 = Hash(seed, x1, y2, z1) & 1020;
+        int hash3 = Hash(seed, x2, y2, z1) & 1020;
+        float lx1x = Lerp(RandVecs3D[hash2], RandVecs3D[hash3], xs);
+        float ly1x = Lerp(RandVecs3D[hash2 | 1], RandVecs3D[hash3 | 1], xs);
+        float lz1x = Lerp(RandVecs3D[hash2 | 2], RandVecs3D[hash3 | 2], xs);
         float lx0y = Lerp(lx0x, lx1x, ys);
         float ly0y = Lerp(ly0x, ly1x, ys);
         float lz0y = Lerp(lz0x, lz1x, ys);
-        int hash03 = Hash(seed, x02, y02, z1) & 1020;
-        int hash13 = Hash(seed, x1, y02, z1) & 1020;
-        float lx0x2 = Lerp(RandVecs3D[hash03], RandVecs3D[hash13], xs);
-        float ly0x2 = Lerp(RandVecs3D[hash03 | 1], RandVecs3D[hash13 | 1], xs);
-        float lz0x2 = Lerp(RandVecs3D[hash03 | 2], RandVecs3D[hash13 | 2], xs);
-        int hash04 = Hash(seed, x02, y1, z1) & 1020;
-        int hash14 = Hash(seed, x1, y1, z1) & 1020;
-        float lx1x2 = Lerp(RandVecs3D[hash04], RandVecs3D[hash14], xs);
-        float ly1x2 = Lerp(RandVecs3D[hash04 | 1], RandVecs3D[hash14 | 1], xs);
-        float lz1x2 = Lerp(RandVecs3D[hash04 | 2], RandVecs3D[hash14 | 2], xs);
-        coord.f8762x += Lerp(lx0y, Lerp(lx0x2, lx1x2, ys), zs) * warpAmp;
-        coord.f8763y += Lerp(ly0y, Lerp(ly0x2, ly1x2, ys), zs) * warpAmp;
-        coord.f8764z += Lerp(lz0y, Lerp(lz0x2, lz1x2, ys), zs) * warpAmp;
+        int hash4 = Hash(seed, x1, y1, z2) & 1020;
+        int hash5 = Hash(seed, x2, y1, z2) & 1020;
+        float lx0x2 = Lerp(RandVecs3D[hash4], RandVecs3D[hash5], xs);
+        float ly0x2 = Lerp(RandVecs3D[hash4 | 1], RandVecs3D[hash5 | 1], xs);
+        float lz0x2 = Lerp(RandVecs3D[hash4 | 2], RandVecs3D[hash5 | 2], xs);
+        int hash6 = Hash(seed, x1, y2, z2) & 1020;
+        int hash7 = Hash(seed, x2, y2, z2) & 1020;
+        float lx1x2 = Lerp(RandVecs3D[hash6], RandVecs3D[hash7], xs);
+        float ly1x2 = Lerp(RandVecs3D[hash6 | 1], RandVecs3D[hash7 | 1], xs);
+        float lz1x2 = Lerp(RandVecs3D[hash6 | 2], RandVecs3D[hash7 | 2], xs);
+        coord.f9148x += Lerp(lx0y, Lerp(lx0x2, lx1x2, ys), zs) * warpAmp;
+        coord.f9149y += Lerp(ly0y, Lerp(ly0x2, ly1x2, ys), zs) * warpAmp;
+        coord.f9150z += Lerp(lz0y, Lerp(lz0x2, lz1x2, ys), zs) * warpAmp;
     }
 
     private void SingleDomainWarpSimplexGradient(int seed, float warpAmp, float frequency, float x, float y, Vector2 coord, boolean outGradOnly) {
@@ -1641,8 +1641,8 @@ public class FastNoiseLite {
         }
         float c = (3.1547005f * t) + (-0.6666666f) + a;
         if (c > 0.0f) {
-            float x22 = x0 - 0.57735026f;
-            float y22 = y0 - 0.57735026f;
+            float x3 = x0 - 0.57735026f;
+            float y3 = y0 - 0.57735026f;
             float cccc = c * c * c * c;
             if (outGradOnly) {
                 int hash3 = Hash(seed, i2 + PrimeX, j2 + PrimeY) & 510;
@@ -1650,13 +1650,13 @@ public class FastNoiseLite {
                 yo3 = RandVecs2D[hash3 | 1];
             } else {
                 int hash4 = Hash(seed, i2 + PrimeX, j2 + PrimeY);
-                int index12 = hash4 & 254;
-                int index22 = (hash4 >> 7) & 510;
-                float xg2 = Gradients2D[index12];
-                float yg2 = Gradients2D[index12 | 1];
-                float value2 = (x22 * xg2) + (y22 * yg2);
-                float xgo2 = RandVecs2D[index22];
-                float ygo2 = RandVecs2D[index22 | 1];
+                int index3 = hash4 & 254;
+                int index4 = (hash4 >> 7) & 510;
+                float xg2 = Gradients2D[index3];
+                float yg2 = Gradients2D[index3 | 1];
+                float value2 = (x3 * xg2) + (y3 * yg2);
+                float xgo2 = RandVecs2D[index4];
+                float ygo2 = RandVecs2D[index4 | 1];
                 xo3 = value2 * xgo2;
                 yo3 = value2 * ygo2;
             }
@@ -1675,13 +1675,13 @@ public class FastNoiseLite {
                     yo2 = RandVecs2D[hash5 | 1];
                 } else {
                     int hash6 = Hash(seed, i2, j2 + PrimeY);
-                    int index13 = hash6 & 254;
-                    int index23 = (hash6 >> 7) & 510;
-                    float xg3 = Gradients2D[index13];
-                    float yg3 = Gradients2D[index13 | 1];
+                    int index5 = hash6 & 254;
+                    int index6 = (hash6 >> 7) & 510;
+                    float xg3 = Gradients2D[index5];
+                    float yg3 = Gradients2D[index5 | 1];
                     float value3 = (x1 * xg3) + (y1 * yg3);
-                    float xgo3 = RandVecs2D[index23];
-                    float ygo3 = RandVecs2D[index23 | 1];
+                    float xgo3 = RandVecs2D[index6];
+                    float ygo3 = RandVecs2D[index6 | 1];
                     xo2 = value3 * xgo3;
                     yo2 = value3 * ygo3;
                 }
@@ -1689,9 +1689,9 @@ public class FastNoiseLite {
                 vy += bbbb * yo2;
             }
         } else {
-            float x12 = x0 - 0.7886751f;
-            float y12 = y0 + 0.21132487f;
-            float b2 = (0.5f - (x12 * x12)) - (y12 * y12);
+            float x4 = x0 - 0.7886751f;
+            float y4 = y0 + 0.21132487f;
+            float b2 = (0.5f - (x4 * x4)) - (y4 * y4);
             if (b2 > 0.0f) {
                 float bbbb2 = b2 * b2 * b2 * b2;
                 if (outGradOnly) {
@@ -1700,13 +1700,13 @@ public class FastNoiseLite {
                     yo = RandVecs2D[hash7 | 1];
                 } else {
                     int hash8 = Hash(seed, i2 + PrimeX, j2);
-                    int index14 = hash8 & 254;
-                    int index24 = (hash8 >> 7) & 510;
-                    float xg4 = Gradients2D[index14];
-                    float yg4 = Gradients2D[index14 | 1];
-                    float value4 = (x12 * xg4) + (y12 * yg4);
-                    float xgo4 = RandVecs2D[index24];
-                    float ygo4 = RandVecs2D[index24 | 1];
+                    int index7 = hash8 & 254;
+                    int index8 = (hash8 >> 7) & 510;
+                    float xg4 = Gradients2D[index7];
+                    float yg4 = Gradients2D[index7 | 1];
+                    float value4 = (x4 * xg4) + (y4 * yg4);
+                    float xgo4 = RandVecs2D[index8];
+                    float ygo4 = RandVecs2D[index8 | 1];
                     xo = value4 * xgo4;
                     yo = value4 * ygo4;
                 }
@@ -1714,8 +1714,8 @@ public class FastNoiseLite {
                 vy += bbbb2 * yo;
             }
         }
-        coord.f8760x += vx * warpAmp;
-        coord.f8761y += vy * warpAmp;
+        coord.f9146x += vx * warpAmp;
+        coord.f9147y += vy * warpAmp;
     }
 
     private void SingleDomainWarpOpenSimplex2Gradient(int seed, float warpAmp, float frequency, float x, float y, float z, Vector3 coord, boolean outGradOnly) {
@@ -1806,15 +1806,15 @@ public class FastNoiseLite {
                     zo = RandVecs3D[hash3 | 2];
                 } else {
                     int hash4 = Hash(seed, i1, j1, k1);
-                    int index12 = hash4 & 252;
-                    int index22 = (hash4 >> 6) & 1020;
-                    float xg2 = Gradients3D[index12];
-                    float yg2 = Gradients3D[index12 | 1];
-                    float zg2 = Gradients3D[index12 | 2];
+                    int index3 = hash4 & 252;
+                    int index4 = (hash4 >> 6) & 1020;
+                    float xg2 = Gradients3D[index3];
+                    float yg2 = Gradients3D[index3 | 1];
+                    float zg2 = Gradients3D[index3 | 2];
                     float value2 = (x1 * xg2) + (y1 * yg2) + (z1 * zg2);
-                    float xgo2 = RandVecs3D[index22];
-                    float ygo2 = RandVecs3D[index22 | 1];
-                    float zgo2 = RandVecs3D[index22 | 2];
+                    float xgo2 = RandVecs3D[index4];
+                    float ygo2 = RandVecs3D[index4 | 1];
+                    float zgo2 = RandVecs3D[index4 | 2];
                     xo = value2 * xgo2;
                     yo = value2 * ygo2;
                     zo = value2 * zgo2;
@@ -1840,45 +1840,45 @@ public class FastNoiseLite {
                 seed += 1293373;
                 l++;
             } else {
-                coord.f8762x += vx * warpAmp;
-                coord.f8763y += vy * warpAmp;
-                coord.f8764z += vz * warpAmp;
+                coord.f9148x += vx * warpAmp;
+                coord.f9149y += vy * warpAmp;
+                coord.f9150z += vz * warpAmp;
                 return;
             }
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/util/FastNoiseLite$Vector2.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/util/FastNoiseLite$Vector2.class */
     public static class Vector2 {
 
         /* JADX INFO: renamed from: x */
-        public float f8760x;
+        public float f9146x;
 
         /* JADX INFO: renamed from: y */
-        public float f8761y;
+        public float f9147y;
 
         public Vector2(float x, float y) {
-            this.f8760x = x;
-            this.f8761y = y;
+            this.f9146x = x;
+            this.f9147y = y;
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/util/FastNoiseLite$Vector3.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/util/FastNoiseLite$Vector3.class */
     public static class Vector3 {
 
         /* JADX INFO: renamed from: x */
-        public float f8762x;
+        public float f9148x;
 
         /* JADX INFO: renamed from: y */
-        public float f8763y;
+        public float f9149y;
 
         /* JADX INFO: renamed from: z */
-        public float f8764z;
+        public float f9150z;
 
         public Vector3(float x, float y, float z) {
-            this.f8762x = x;
-            this.f8763y = y;
-            this.f8764z = z;
+            this.f9148x = x;
+            this.f9149y = y;
+            this.f9150z = z;
         }
     }
 }

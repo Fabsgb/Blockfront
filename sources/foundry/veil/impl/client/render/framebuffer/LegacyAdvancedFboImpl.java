@@ -1,6 +1,6 @@
 package foundry.veil.impl.client.render.framebuffer;
 
-import com.boehmod.blockfront.InterfaceC1294xq;
+import com.boehmod.blockfront.InterfaceC1274xN;
 import com.mojang.blaze3d.pipeline.RenderTarget;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -17,7 +17,7 @@ import org.lwjgl.opengl.GL20C;
 import org.lwjgl.opengl.GL30C;
 import org.lwjgl.system.MemoryStack;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/framebuffer/LegacyAdvancedFboImpl.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/framebuffer/LegacyAdvancedFboImpl.class */
 @ApiStatus.Internal
 public class LegacyAdvancedFboImpl extends AdvancedFboImpl {
     public LegacyAdvancedFboImpl(int width, int height, AdvancedFboAttachment[] colorAttachments, @Nullable AdvancedFboAttachment depthAttachment, @Nullable String debugLabel) {
@@ -34,10 +34,10 @@ public class LegacyAdvancedFboImpl extends AdvancedFboImpl {
         }
         RenderSystem.bindTexture(0);
         int oldFbo = GL30C.glGetInteger(36006);
-        this.f8772id = GL30C.glGenFramebuffers();
+        this.f9158id = GL30C.glGenFramebuffers();
         bind(false);
         if (this.debugLabel != null) {
-            VeilDebug.get().objectLabel(36160, this.f8772id, "Advanced Fbo " + this.debugLabel);
+            VeilDebug.get().objectLabel(36160, this.f9158id, "Advanced Fbo " + this.debugLabel);
         }
         for (int i = 0; i < this.colorAttachments.length; i++) {
             this.colorAttachments[i].attach(this, i);
@@ -62,10 +62,10 @@ public class LegacyAdvancedFboImpl extends AdvancedFboImpl {
         MemoryStack stack = MemoryStack.stackPush();
         try {
             int oldFbo = GL30C.glGetInteger(36006);
-            if (oldFbo != this.f8772id) {
+            if (oldFbo != this.f9158id) {
                 bind(false);
             }
-            boolean hasColor = (clearMask & InterfaceC1294xq.f8660tV) != 0;
+            boolean hasColor = (clearMask & InterfaceC1274xN.f6857vZ) != 0;
             boolean hasDepth = (clearMask & 256) != 0;
             FloatBuffer oldColor = null;
             FloatBuffer oldDepth = null;
@@ -88,7 +88,7 @@ public class LegacyAdvancedFboImpl extends AdvancedFboImpl {
             if (hasDepth) {
                 GL30C.glClearDepth(oldDepth.get(0));
             }
-            if (oldFbo != this.f8772id) {
+            if (oldFbo != this.f9158id) {
                 GlStateManager._glBindFramebuffer(36160, oldFbo);
             }
             if (stack != null) {
@@ -111,11 +111,11 @@ public class LegacyAdvancedFboImpl extends AdvancedFboImpl {
 
     private void setDrawBuffers(int[] buffers) {
         int oldFbo = GL30C.glGetInteger(36006);
-        if (oldFbo != this.f8772id) {
+        if (oldFbo != this.f9158id) {
             bind(false);
         }
         GL20C.glDrawBuffers(buffers);
-        if (oldFbo != this.f8772id) {
+        if (oldFbo != this.f9158id) {
             GlStateManager._glBindFramebuffer(36160, oldFbo);
         }
     }
@@ -176,11 +176,11 @@ public class LegacyAdvancedFboImpl extends AdvancedFboImpl {
     @Override // foundry.veil.api.client.render.framebuffer.AdvancedFbo
     public void setColorAttachmentTexture(int attachment, int textureId, int layer) {
         int old = GL30C.glGetInteger(36006);
-        if (old != this.f8772id) {
+        if (old != this.f9158id) {
             bind(false);
         }
         super.setColorAttachmentTexture(attachment, textureId, layer);
-        if (old != this.f8772id) {
+        if (old != this.f9158id) {
             GlStateManager._glBindFramebuffer(36160, old);
         }
     }
@@ -188,11 +188,11 @@ public class LegacyAdvancedFboImpl extends AdvancedFboImpl {
     @Override // foundry.veil.api.client.render.framebuffer.AdvancedFbo
     public void setDepthAttachmentTexture(int textureId, int layer) {
         int old = GL30C.glGetInteger(36006);
-        if (old != this.f8772id) {
+        if (old != this.f9158id) {
             bind(false);
         }
         super.setDepthAttachmentTexture(textureId, layer);
-        if (old != this.f8772id) {
+        if (old != this.f9158id) {
             GlStateManager._glBindFramebuffer(36160, old);
         }
     }

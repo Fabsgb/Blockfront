@@ -9,11 +9,12 @@ import java.util.Objects;
 import net.minecraft.client.renderer.texture.AbstractTexture;
 import net.minecraft.server.packs.resources.ResourceManager;
 import org.apache.commons.lang3.Validate;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.lwjgl.opengl.ARBDirectStateAccess;
 import org.lwjgl.opengl.GL30C;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/framebuffer/AdvancedFboTextureAttachment.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/framebuffer/AdvancedFboTextureAttachment.class */
 public class AdvancedFboTextureAttachment extends AbstractTexture implements AdvancedFboAttachment {
     private final int attachmentType;
     private final int format;
@@ -111,7 +112,7 @@ public class AdvancedFboTextureAttachment extends AbstractTexture implements Adv
 
     @Override // foundry.veil.api.client.render.framebuffer.AdvancedFboAttachment
     /* JADX INFO: renamed from: clone, reason: merged with bridge method [inline-methods] */
-    public AdvancedFboTextureAttachment mo1772clone() {
+    public AdvancedFboTextureAttachment mo9329clone() {
         return new AdvancedFboTextureAttachment(this.attachmentType, this.internalFormat, this.format, this.width, this.height, this.mipmapLevels, this.filter, this.name);
     }
 
@@ -182,6 +183,6 @@ public class AdvancedFboTextureAttachment extends AbstractTexture implements Adv
         releaseId();
     }
 
-    public void load(ResourceManager manager) {
+    public void load(@NotNull ResourceManager manager) {
     }
 }

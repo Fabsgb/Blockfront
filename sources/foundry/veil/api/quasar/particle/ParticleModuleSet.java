@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/particle/ParticleModuleSet.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/particle/ParticleModuleSet.class */
 public final class ParticleModuleSet {
     private final ParticleModule[] modules;
     private final InitParticleModule[] initModules;
@@ -71,40 +71,16 @@ public final class ParticleModuleSet {
         return this.renderModules;
     }
 
-    /* JADX INFO: renamed from: foundry.veil.api.quasar.particle.ParticleModuleSet$1 */
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/particle/ParticleModuleSet$1.class */
-    class C14121 implements Iterator<RenderParticleModule> {
-        private int cursor;
-
-        C14121() {
-        }
-
-        @Override // java.util.Iterator
-        public boolean hasNext() {
-            return this.cursor < ParticleModuleSet.this.enabledRenderModulesSize;
-        }
-
-        @Override // java.util.Iterator
-        public RenderParticleModule next() {
-            RenderParticleModule[] renderParticleModuleArr = ParticleModuleSet.this.enabledRenderModules;
-            int i = this.cursor;
-            this.cursor = i + 1;
-            return renderParticleModuleArr[i];
-        }
-    }
-
     public Iterator<RenderParticleModule> getEnabledRenderModules() {
         return new Iterator<RenderParticleModule>() { // from class: foundry.veil.api.quasar.particle.ParticleModuleSet.1
             private int cursor;
-
-            C14121() {
-            }
 
             @Override // java.util.Iterator
             public boolean hasNext() {
                 return this.cursor < ParticleModuleSet.this.enabledRenderModulesSize;
             }
 
+            /* JADX WARN: Can't rename method to resolve collision */
             @Override // java.util.Iterator
             public RenderParticleModule next() {
                 RenderParticleModule[] renderParticleModuleArr = ParticleModuleSet.this.enabledRenderModules;
@@ -127,7 +103,7 @@ public final class ParticleModuleSet {
         return new Builder();
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/particle/ParticleModuleSet$Builder.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/particle/ParticleModuleSet$Builder.class */
     public static class Builder {
         private final Set<ParticleModule> modules = new HashSet();
         private final Set<InitParticleModule> initModules = new HashSet();
@@ -166,20 +142,20 @@ public final class ParticleModuleSet {
             ParticleModule[] modules = (ParticleModule[]) this.modules.toArray(x$0 -> {
                 return new ParticleModule[x$0];
             });
-            InitParticleModule[] initModules = (InitParticleModule[]) this.initModules.toArray(x$02 -> {
-                return new InitParticleModule[x$02];
+            InitParticleModule[] initModules = (InitParticleModule[]) this.initModules.toArray(x$1 -> {
+                return new InitParticleModule[x$1];
             });
-            UpdateParticleModule[] updateModules = (UpdateParticleModule[]) this.updateModules.toArray(x$03 -> {
-                return new UpdateParticleModule[x$03];
+            UpdateParticleModule[] updateModules = (UpdateParticleModule[]) this.updateModules.toArray(x$2 -> {
+                return new UpdateParticleModule[x$2];
             });
-            ForceParticleModule[] forceModules = (ForceParticleModule[]) this.forceModules.toArray(x$04 -> {
-                return new ForceParticleModule[x$04];
+            ForceParticleModule[] forceModules = (ForceParticleModule[]) this.forceModules.toArray(x$3 -> {
+                return new ForceParticleModule[x$3];
             });
-            CollisionParticleModule[] collisionModules = (CollisionParticleModule[]) this.collisionModules.toArray(x$05 -> {
-                return new CollisionParticleModule[x$05];
+            CollisionParticleModule[] collisionModules = (CollisionParticleModule[]) this.collisionModules.toArray(x$4 -> {
+                return new CollisionParticleModule[x$4];
             });
-            RenderParticleModule[] renderModules = (RenderParticleModule[]) this.renderModules.toArray(x$06 -> {
-                return new RenderParticleModule[x$06];
+            RenderParticleModule[] renderModules = (RenderParticleModule[]) this.renderModules.toArray(x$5 -> {
+                return new RenderParticleModule[x$5];
             });
             return new ParticleModuleSet(modules, initModules, updateModules, forceModules, collisionModules, renderModules);
         }

@@ -33,11 +33,13 @@ import org.joml.Quaternionfc;
 import org.joml.Vector3dc;
 import org.joml.Vector3f;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/VeilLevelPerspectiveRenderer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/VeilLevelPerspectiveRenderer.class */
 public final class VeilLevelPerspectiveRenderer {
     private static final LevelPerspectiveCamera CAMERA = new LevelPerspectiveCamera();
     private static final Matrix4f TRANSFORM = new Matrix4f();
-    private static final AtomicInteger ID = new AtomicInteger();
+
+    /* JADX INFO: renamed from: ID */
+    private static final AtomicInteger f9127ID = new AtomicInteger();
     private static final CameraMatrices BACKUP_CAMERA_MATRICES = new CameraMatrices();
     private static final Matrix4f BACKUP_PROJECTION = new Matrix4f();
     private static final Vector3f BACKUP_LIGHT0_POSITION = new Vector3f();
@@ -89,7 +91,7 @@ public final class VeilLevelPerspectiveRenderer {
         if (SodiumCompat.isLoaded()) {
             backupRenderLists = SodiumCompat.INSTANCE.getSortedRenderLists();
             backupTaskLists = SodiumCompat.INSTANCE.getTaskLists();
-            ID.getAndIncrement();
+            f9127ID.getAndIncrement();
         } else {
             backupRenderLists = null;
             backupTaskLists = null;
@@ -118,7 +120,7 @@ public final class VeilLevelPerspectiveRenderer {
             levelRendererAccessor.doEntityOutline();
             if (drawLights) {
                 ProfilerFiller profiler = Minecraft.getInstance().getProfiler();
-                if (VeilRenderSystem.drawLights(profiler, VeilRenderSystem.getCullingFrustum())) {
+                if (VeilRenderSystem.drawLights(profiler, VeilRenderSystem.getCullingFrustum(), true)) {
                     VeilRenderSystem.compositeLights(profiler);
                 } else {
                     AdvancedFbo.unbind();
@@ -164,6 +166,6 @@ public final class VeilLevelPerspectiveRenderer {
 
     @ApiStatus.Internal
     public static int getID() {
-        return ID.get();
+        return f9127ID.get();
     }
 }

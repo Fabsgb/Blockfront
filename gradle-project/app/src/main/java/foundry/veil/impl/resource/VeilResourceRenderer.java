@@ -1,5 +1,6 @@
 package foundry.veil.impl.resource;
 
+import foundry.imgui.api.ImGuiMC;
 import foundry.veil.api.client.imgui.VeilImGuiUtil;
 import foundry.veil.api.client.render.VeilRenderSystem;
 import foundry.veil.api.resource.VeilResource;
@@ -13,7 +14,7 @@ import net.minecraft.Util;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/resource/VeilResourceRenderer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/resource/VeilResourceRenderer.class */
 @ApiStatus.Internal
 public class VeilResourceRenderer {
     private static final Component COPY_PATH = Component.translatable("resource.veil.action.copy_path");
@@ -44,7 +45,7 @@ public class VeilResourceRenderer {
             VeilImGuiUtil.icon(60305);
             ImGui.sameLine();
             ImGui.popStyleVar();
-            VeilImGuiUtil.component(COPY_PATH);
+            ImGuiMC.component(COPY_PATH);
             ImGui.beginDisabled(info.isStatic());
             if (ImGui.selectable("##open_folder")) {
                 Path file = info.modResourcePath() != null ? info.modResourcePath() : info.filePath();
@@ -58,7 +59,7 @@ public class VeilResourceRenderer {
             VeilImGuiUtil.icon(60591);
             ImGui.sameLine();
             ImGui.popStyleVar();
-            VeilImGuiUtil.component(OPEN_FOLDER);
+            ImGuiMC.component(OPEN_FOLDER);
             ImGui.endDisabled();
             for (int i = 0; i < actions.size(); i++) {
                 VeilResourceAction action = (VeilResourceAction) actions.get(i);
@@ -73,7 +74,7 @@ public class VeilResourceRenderer {
                     ImGui.sameLine();
                 });
                 ImGui.popStyleVar();
-                VeilImGuiUtil.component(action.getName());
+                ImGuiMC.component(action.getName());
             }
             ImGui.popStyleVar();
             ImGui.endPopup();

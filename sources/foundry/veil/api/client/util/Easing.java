@@ -3,7 +3,7 @@ package foundry.veil.api.client.util;
 import foundry.veil.api.util.EnumCodec;
 import net.minecraft.util.Mth;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/util/Easing.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/util/Easing.class */
 public enum Easing {
     LINEAR { // from class: foundry.veil.api.client.util.Easing.1
         @Override // foundry.veil.api.client.util.Easing

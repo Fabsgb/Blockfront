@@ -14,7 +14,7 @@ import java.lang.invoke.MethodType;
 import java.lang.runtime.ObjectMethods;
 import java.util.List;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/data/module/render/TrailParticleModuleData.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/data/module/render/TrailParticleModuleData.class */
 public final class TrailParticleModuleData extends Record implements ParticleModuleData, EditorAttributeProvider {
     private final List<TrailSettings> settings;
     public static final MapCodec<TrailParticleModuleData> CODEC = TrailSettings.CODEC.listOf().fieldOf("settings").xmap(TrailParticleModuleData::new, (v0) -> {

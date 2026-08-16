@@ -23,10 +23,10 @@ import net.minecraft.util.Mth;
 import software.bernie.geckolib.GeckoLibConstants;
 import software.bernie.geckolib.util.RenderUtil;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/cache/texture/AnimatableTexture.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/cache/texture/AnimatableTexture.class */
 public class AnimatableTexture extends SimpleTexture {
-    private AnimationContents animationContents;
-    private boolean isAnimated;
+    protected AnimationContents animationContents;
+    protected boolean isAnimated;
 
     public AnimatableTexture(ResourceLocation location) {
         super(location);
@@ -98,10 +98,10 @@ public class AnimatableTexture extends SimpleTexture {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/cache/texture/AnimatableTexture$AnimationContents.class */
-    private class AnimationContents {
-        private final FrameSize frameSize;
-        private final Texture animatedTexture;
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/cache/texture/AnimatableTexture$AnimationContents.class */
+    protected class AnimationContents {
+        protected final FrameSize frameSize;
+        protected final Texture animatedTexture;
 
         private AnimationContents(NativeImage image, AnimationMetadataSection animMeta) {
             this.frameSize = animMeta.calculateFrameSize(image.getWidth(), image.getHeight());
@@ -143,6 +143,7 @@ public class AnimatableTexture extends SimpleTexture {
                 }
                 if (!intOpenHashSet.isEmpty()) {
                     GeckoLibConstants.LOGGER.warn("Unused frames in sprite {}: {}", AnimatableTexture.this.location, Arrays.toString(intOpenHashSet.toArray()));
+                    return null;
                 }
             }
             if (objectArrayList.size() <= 1) {
@@ -151,12 +152,12 @@ public class AnimatableTexture extends SimpleTexture {
             return new Texture(image, (Frame[]) objectArrayList.toArray(new Frame[0]), columns, animMeta.isInterpolatedFrames());
         }
 
-        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/cache/texture/AnimatableTexture$AnimationContents$Frame.class */
-        private static final class Frame extends Record {
+        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/cache/texture/AnimatableTexture$AnimationContents$Frame.class */
+        protected static final class Frame extends Record {
             private final int index;
             private final int time;
 
-            private Frame(int index, int time) {
+            protected Frame(int index, int time) {
                 this.index = index;
                 this.time = time;
             }
@@ -185,16 +186,19 @@ public class AnimatableTexture extends SimpleTexture {
             }
         }
 
-        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/cache/texture/AnimatableTexture$AnimationContents$Texture.class */
-        private class Texture implements AutoCloseable {
-            private final NativeImage baseImage;
-            private final Frame[] frames;
-            private final int framePanelSize;
-            private final boolean interpolating;
-            private final NativeImage interpolatedFrame;
-            private final int totalFrameTime;
-            private int currentFrame;
-            private int currentSubframe;
+        /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/cache/texture/AnimatableTexture$AnimationContents$Texture.class */
+        protected class Texture implements AutoCloseable {
+            protected final NativeImage baseImage;
+            protected final Frame[] frames;
+            protected final int framePanelSize;
+            protected final boolean interpolating;
+            protected final NativeImage interpolatedFrame;
+            protected final int totalFrameTime;
+            protected int glowMaskTextureId = -1;
+            protected NativeImage glowmaskImage = null;
+            protected NativeImage glowmaskInterpolatedFrame = null;
+            protected int currentFrame;
+            protected int currentSubframe;
 
             private Texture(NativeImage baseImage, Frame[] frames, int framePanelSize, boolean interpolating) {
                 this.baseImage = baseImage;
@@ -217,6 +221,13 @@ public class AnimatableTexture extends SimpleTexture {
                 return frameIndex / this.framePanelSize;
             }
 
+            public void setGlowMaskTexture(AutoGlowingTexture texture, NativeImage baseImage, NativeImage glowMask) {
+                this.glowMaskTextureId = texture.getId();
+                this.glowmaskImage = glowMask;
+                this.glowmaskInterpolatedFrame = this.interpolating ? new NativeImage(AnimationContents.this.frameSize.width(), AnimationContents.this.frameSize.height(), false) : null;
+                this.baseImage.copyFrom(baseImage);
+            }
+
             public void setCurrentFrame(int ticks) {
                 int ticks2 = ticks % this.totalFrameTime;
                 if (ticks2 == this.currentSubframe) {
@@ -225,18 +236,9 @@ public class AnimatableTexture extends SimpleTexture {
                 int lastSubframe = this.currentSubframe;
                 int lastFrame = this.currentFrame;
                 int time = 0;
-                Frame[] frameArr = this.frames;
-                int length = frameArr.length;
-                int i = 0;
-                while (true) {
-                    if (i >= length) {
-                        break;
-                    }
-                    Frame frame = frameArr[i];
+                for (Frame frame : this.frames) {
                     time += frame.time;
-                    if (ticks2 >= time) {
-                        i++;
-                    } else {
+                    if (ticks2 < time) {
                         this.currentFrame = frame.index;
                         this.currentSubframe = ticks2 % frame.time;
                         break;
@@ -246,34 +248,43 @@ public class AnimatableTexture extends SimpleTexture {
                     AnimatableTexture.onRenderThread(() -> {
                         TextureUtil.prepareImage(AnimatableTexture.this.getId(), 0, AnimationContents.this.frameSize.width(), AnimationContents.this.frameSize.height());
                         this.baseImage.upload(0, 0, 0, getFrameX(this.currentFrame) * AnimationContents.this.frameSize.width(), getFrameY(this.currentFrame) * AnimationContents.this.frameSize.height(), AnimationContents.this.frameSize.width(), AnimationContents.this.frameSize.height(), false, false);
+                        if (this.glowmaskImage != null) {
+                            TextureUtil.prepareImage(this.glowMaskTextureId, 0, AnimationContents.this.frameSize.width(), AnimationContents.this.frameSize.height());
+                            this.glowmaskImage.upload(0, 0, 0, getFrameX(this.currentFrame) * AnimationContents.this.frameSize.width(), getFrameY(this.currentFrame) * AnimationContents.this.frameSize.height(), AnimationContents.this.frameSize.width(), AnimationContents.this.frameSize.height(), false, false);
+                        }
                     });
                 } else if (this.currentSubframe != lastSubframe && this.interpolating) {
-                    AnimatableTexture.onRenderThread(this::generateInterpolatedFrame);
+                    AnimatableTexture.onRenderThread(() -> {
+                        generateInterpolatedFrame(AnimatableTexture.this.getId(), this.baseImage, this.interpolatedFrame);
+                        if (this.glowmaskImage != null) {
+                            generateInterpolatedFrame(this.glowMaskTextureId, this.glowmaskImage, this.glowmaskInterpolatedFrame);
+                        }
+                    });
                 }
             }
 
-            private void generateInterpolatedFrame() {
+            private void generateInterpolatedFrame(int textureId, NativeImage image, NativeImage interpolatedFrame) {
                 Frame frame = this.frames[this.currentFrame];
                 double frameProgress = 1.0d - (((double) this.currentSubframe) / ((double) frame.time));
                 int nextFrameIndex = this.frames[(this.currentFrame + 1) % this.frames.length].index;
                 if (frame.index != nextFrameIndex) {
-                    for (int y = 0; y < this.interpolatedFrame.getHeight(); y++) {
-                        for (int x = 0; x < this.interpolatedFrame.getWidth(); x++) {
-                            int prevFramePixel = getPixel(frame.index, x, y);
-                            int nextFramePixel = getPixel(nextFrameIndex, x, y);
+                    for (int y = 0; y < interpolatedFrame.getHeight(); y++) {
+                        for (int x = 0; x < interpolatedFrame.getWidth(); x++) {
+                            int prevFramePixel = getPixel(image, frame.index, x, y);
+                            int nextFramePixel = getPixel(image, nextFrameIndex, x, y);
                             int blendedRed = interpolate(frameProgress, (prevFramePixel >> 16) & 255, (nextFramePixel >> 16) & 255);
                             int blendedGreen = interpolate(frameProgress, (prevFramePixel >> 8) & 255, (nextFramePixel >> 8) & 255);
                             int blendedBlue = interpolate(frameProgress, prevFramePixel & 255, nextFramePixel & 255);
-                            this.interpolatedFrame.setPixelRGBA(x, y, (prevFramePixel & (-16777216)) | (blendedRed << 16) | (blendedGreen << 8) | blendedBlue);
+                            interpolatedFrame.setPixelRGBA(x, y, (prevFramePixel & (-16777216)) | (blendedRed << 16) | (blendedGreen << 8) | blendedBlue);
                         }
                     }
-                    TextureUtil.prepareImage(AnimatableTexture.this.getId(), 0, AnimationContents.this.frameSize.width(), AnimationContents.this.frameSize.height());
-                    this.interpolatedFrame.upload(0, 0, 0, 0, 0, AnimationContents.this.frameSize.width(), AnimationContents.this.frameSize.height(), false, false);
+                    TextureUtil.prepareImage(textureId, 0, AnimationContents.this.frameSize.width(), AnimationContents.this.frameSize.height());
+                    interpolatedFrame.upload(0, 0, 0, 0, 0, AnimationContents.this.frameSize.width(), AnimationContents.this.frameSize.height(), false, false);
                 }
             }
 
-            private int getPixel(int frameIndex, int x, int y) {
-                return this.baseImage.getPixelRGBA(x + (getFrameX(frameIndex) * AnimationContents.this.frameSize.width()), y + (getFrameY(frameIndex) * AnimationContents.this.frameSize.height()));
+            private int getPixel(NativeImage image, int frameIndex, int x, int y) {
+                return image.getPixelRGBA(x + (getFrameX(frameIndex) * AnimationContents.this.frameSize.width()), y + (getFrameY(frameIndex) * AnimationContents.this.frameSize.height()));
             }
 
             private int interpolate(double frameProgress, double prevColor, double nextColor) {
@@ -285,6 +296,12 @@ public class AnimatableTexture extends SimpleTexture {
                 this.baseImage.close();
                 if (this.interpolatedFrame != null) {
                     this.interpolatedFrame.close();
+                }
+                if (this.glowmaskImage != null) {
+                    this.glowmaskImage.close();
+                }
+                if (this.glowmaskInterpolatedFrame != null) {
+                    this.glowmaskInterpolatedFrame.close();
                 }
             }
         }

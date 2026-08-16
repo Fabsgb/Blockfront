@@ -1,6 +1,6 @@
 package foundry.veil.api.client.render.profiler;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/profiler/RenderProfilerCounter.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/profiler/RenderProfilerCounter.class */
 public enum RenderProfilerCounter {
     VERTICES_SUBMITTED(33518),
     PRIMITIVES_SUBMITTED(33519),
@@ -16,15 +16,15 @@ public enum RenderProfilerCounter {
 
 
     /* JADX INFO: renamed from: id */
-    private final int f8749id;
+    private final int f9135id;
     public static final RenderProfilerCounter[] ALL = values();
     public static final RenderProfilerCounter[] STANDARD_GEOMETRY = {VERTICES_SUBMITTED, PRIMITIVES_SUBMITTED, VERTEX_SHADER_INVOCATIONS, FRAGMENT_SHADER_INVOCATIONS, CLIPPING_INPUT_PRIMITIVES, CLIPPING_OUTPUT_PRIMITIVES};
 
     RenderProfilerCounter(int id) {
-        this.f8749id = id;
+        this.f9135id = id;
     }
 
     public int getId() {
-        return this.f8749id;
+        return this.f9135id;
     }
 }

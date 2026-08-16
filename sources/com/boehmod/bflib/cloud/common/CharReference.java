@@ -1,6 +1,6 @@
 package com.boehmod.bflib.cloud.common;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/CharReference.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/CharReference.class */
 public class CharReference {
     public static final char CHAR_GRAPHIC_WARNING = 57346;
     public static final char CHAR_GRAPHIC_QUESTION = 57347;

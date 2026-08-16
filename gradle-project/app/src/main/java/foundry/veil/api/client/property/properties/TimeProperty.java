@@ -12,7 +12,7 @@ import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.util.Mth;
 import org.joml.Vector4f;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/property/properties/TimeProperty.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/property/properties/TimeProperty.class */
 @ImmutableProperty
 public class TimeProperty extends Property<Vector4f> {
     public static final TimeProperty INSTANCE = new TimeProperty();

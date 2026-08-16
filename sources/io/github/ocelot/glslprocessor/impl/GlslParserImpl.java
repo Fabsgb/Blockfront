@@ -41,35 +41,89 @@ import io.github.ocelot.glslprocessor.api.node.variable.GlslNewFieldNode;
 import io.github.ocelot.glslprocessor.api.node.variable.GlslStructDeclarationNode;
 import io.github.ocelot.glslprocessor.api.node.variable.GlslVariableDeclarationNode;
 import io.github.ocelot.glslprocessor.api.node.variable.GlslVariableNode;
-import io.github.ocelot.glslprocessor.impl.GlslLexer;
+import io.github.ocelot.glslprocessor.lib.anarres.cpp.Feature;
+import io.github.ocelot.glslprocessor.lib.anarres.cpp.LexerException;
+import io.github.ocelot.glslprocessor.lib.anarres.cpp.Macro;
+import io.github.ocelot.glslprocessor.lib.anarres.cpp.Preprocessor;
+import io.github.ocelot.glslprocessor.lib.anarres.cpp.StringLexerSource;
+import io.github.ocelot.glslprocessor.lib.anarres.cpp.Token;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.function.Function;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/impl/GlslParserImpl.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/impl/GlslParserImpl.class */
 @ApiStatus.Internal
 public class GlslParserImpl {
     public static final Pattern VERSION_PATTERN = Pattern.compile("#version\\s+(\\d+)\\s*(\\w+)?");
     public static final Pattern STRIP_PATTERN = Pattern.compile("#version\\s+\\d+\\s*(\\w+)?|#line\\s+\\d+\\s*(\\d+)?|#extension\\s+\\w+\\s*:\\s*\\w+|#include\\s+\\S+|#veil:.*");
     public static final Pattern UNSTRIP_PATTERN = Pattern.compile("// #veil:stripped ");
 
-    /* JADX WARN: Removed duplicated region for block: B:8:0x0034  */
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
-    */
-    public static java.lang.String preprocess(java.lang.String r6, java.util.Map<java.lang.String, java.lang.String> r7) throws io.github.ocelot.glslprocessor.lib.anarres.cpp.LexerException {
-        /*
-            Method dump skipped, instruction units count: 449
-            To view this dump change 'Code comments level' option to 'DEBUG'
-        */
-        throw new UnsupportedOperationException("Method not decompiled: io.github.ocelot.glslprocessor.impl.GlslParserImpl.preprocess(java.lang.String, java.util.Map):java.lang.String");
+    public static String preprocess(String input, Map<String, String> macros) throws LexerException {
+        String strippedSource;
+        boolean result;
+        Matcher versionMatcher = VERSION_PATTERN.matcher(input);
+        int version = 110;
+        boolean core = true;
+        if (versionMatcher.find()) {
+            try {
+                version = Integer.parseInt(versionMatcher.group(1));
+                String profile = versionMatcher.group(2);
+                core = profile == null || profile.equals("core");
+            } catch (NumberFormatException e) {
+                throw new LexerException("Invalid Version: " + versionMatcher.group(0) + ". " + e.getMessage());
+            }
+        }
+        Matcher matcher = STRIP_PATTERN.matcher(input);
+        if (matcher.find()) {
+            StringBuilder sb = new StringBuilder();
+            do {
+                matcher.appendReplacement(sb, "// #veil:stripped " + matcher.group(0));
+                result = matcher.find();
+            } while (result);
+            matcher.appendTail(sb);
+            strippedSource = sb.toString();
+        } else {
+            strippedSource = input;
+        }
+        try {
+            Preprocessor preprocessor = new Preprocessor();
+            preprocessor.addFeature(Feature.KEEPCOMMENTS);
+            for (Map.Entry<String, String> entry : macros.entrySet()) {
+                preprocessor.addMacro(entry.getKey(), entry.getValue());
+            }
+            preprocessor.addMacro("GL_core_profile");
+            if (!core) {
+                preprocessor.addMacro("GL_compatibility_profile");
+            }
+            preprocessor.addMacro("__VERSION__", Integer.toString(version));
+            preprocessor.addInput(new StringLexerSource(strippedSource, true));
+            StringBuilder processedSource = new StringBuilder();
+            while (true) {
+                Token tok = preprocessor.token();
+                if (tok.getType() == 265) {
+                    break;
+                }
+                processedSource.append(tok.getText());
+            }
+            for (Map.Entry<String, Macro> entry2 : preprocessor.getMacros().entrySet()) {
+                String value = entry2.getValue().getText();
+                if (!value.isBlank()) {
+                    macros.put(entry2.getKey(), value);
+                }
+            }
+            return UNSTRIP_PATTERN.matcher(processedSource.toString()).replaceAll("");
+        } catch (IOException e2) {
+            throw new AssertionError("Can't Happen", e2);
+        }
     }
 
     public static GlslTree parse(String input) throws GlslSyntaxException {
@@ -249,10 +303,7 @@ public class GlslParserImpl {
         int cursor = reader.getCursor();
         int parameterCursor = reader.getCursor();
         List<GlslNode> parameters = new ArrayList<>();
-        while (true) {
-            if (!reader.canRead()) {
-                break;
-            }
+        while (reader.canRead()) {
             GlslNode parameter = parseAssignmentExpression(reader);
             if (parameter == null) {
                 reader.setCursor(parameterCursor);
@@ -330,10 +381,7 @@ public class GlslParserImpl {
     public static GlslNode parseSimpleExpression(GlslTokenReader reader, Function<GlslTokenReader, GlslNode> parser, GlslLexer.TokenType operator, Function<List<GlslNode>, GlslNode> join) {
         int cursor = reader.getCursor();
         List<GlslNode> expressions = new ArrayList<>();
-        while (true) {
-            if (!reader.canRead()) {
-                break;
-            }
+        while (reader.canRead()) {
             GlslNode expression = parser.apply(reader);
             if (expression == null) {
                 reader.setCursor(cursor);
@@ -601,10 +649,7 @@ public class GlslParserImpl {
     public static List<GlslNode> parseExpression(GlslTokenReader reader) {
         int cursor = reader.getCursor();
         List<GlslNode> expressions = new ArrayList<>();
-        while (true) {
-            if (!reader.canRead()) {
-                break;
-            }
+        while (reader.canRead()) {
             GlslNode expression = parseAssignmentExpression(reader);
             if (expression == null) {
                 reader.setCursor(cursor);
@@ -713,10 +758,7 @@ public class GlslParserImpl {
     public static List<String> parseIdentifierList(GlslTokenReader reader) {
         List<String> identifiers = new ArrayList<>();
         int cursor = reader.getCursor();
-        while (true) {
-            if (!reader.canRead()) {
-                break;
-            }
+        while (reader.canRead()) {
             if (!reader.tryConsume(GlslLexer.TokenType.IDENTIFIER)) {
                 reader.setCursor(cursor);
                 break;
@@ -769,10 +811,7 @@ public class GlslParserImpl {
     public static List<GlslParameterDeclaration> parseParameterList(GlslTokenReader reader) {
         List<GlslParameterDeclaration> parameters = new ArrayList<>();
         int cursor = reader.getCursor();
-        while (true) {
-            if (!reader.canRead()) {
-                break;
-            }
+        while (reader.canRead()) {
             GlslParameterDeclaration parameterDeclaration = parseParameterDeclaration(reader);
             if (parameterDeclaration == null) {
                 reader.setCursor(cursor);
@@ -850,10 +889,7 @@ public class GlslParserImpl {
         int cursor = reader.getCursor();
         List<GlslNode> initDeclaratorList = new ArrayList<>();
         GlslSpecifiedType fullySpecifiedType = null;
-        while (true) {
-            if (!reader.canRead()) {
-                break;
-            }
+        while (reader.canRead()) {
             GlslNode singleDeclaration = parseSingleDeclaration(fullySpecifiedType, reader);
             if (singleDeclaration == null) {
                 reader.setCursor(cursor);
@@ -1177,10 +1213,7 @@ public class GlslParserImpl {
     public static List<GlslStructField> parseStructDeclaratorList(GlslSpecifiedType type, GlslTokenReader reader) {
         int cursor = reader.getCursor();
         List<GlslStructField> fields = new ArrayList<>();
-        while (true) {
-            if (!reader.canRead()) {
-                break;
-            }
+        while (reader.canRead()) {
             GlslStructField field = parseStructDeclarator(type, reader);
             if (field == null) {
                 reader.setCursor(cursor);
@@ -1229,10 +1262,7 @@ public class GlslParserImpl {
     public static List<GlslNode> parseInitializerList(GlslTokenReader reader) {
         int cursor = reader.getCursor();
         List<GlslNode> initializers = new ArrayList<>();
-        while (true) {
-            if (!reader.canRead()) {
-                break;
-            }
+        while (reader.canRead()) {
             List<GlslNode> statements = parseStatement(reader);
             if (statements == null) {
                 reader.setCursor(cursor);

@@ -16,7 +16,7 @@ import software.bernie.geckolib.animatable.GeoAnimatable;
 import software.bernie.geckolib.animation.state.BoneSnapshot;
 import software.bernie.geckolib.constant.dataticket.DataTicket;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/animation/AnimatableManager.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/animation/AnimatableManager.class */
 public class AnimatableManager<T extends GeoAnimatable> {
     private final Map<String, AnimationController<T>> animationControllers;
     private Map<DataTicket<?>, Object> extraData;
@@ -121,7 +121,7 @@ public class AnimatableManager<T extends GeoAnimatable> {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/animation/AnimatableManager$ControllerRegistrar.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/animation/AnimatableManager$ControllerRegistrar.class */
     public static final class ControllerRegistrar extends Record {
         private final List<AnimationController<? extends GeoAnimatable>> controllers;
 

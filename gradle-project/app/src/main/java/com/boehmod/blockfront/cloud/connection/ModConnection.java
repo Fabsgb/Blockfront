@@ -9,16 +9,19 @@ import com.boehmod.bflib.cloud.encryption.AESDecryptionHandler;
 import com.boehmod.bflib.cloud.encryption.AESEncryptionHandler;
 import com.boehmod.bflib.cloud.encryption.EncryptionUtils;
 import com.boehmod.bflib.cloud.packet.IPacket;
-import com.boehmod.bflib.cloud.packet.PacketRegistry;
+import com.boehmod.bflib.cloud.packet.PacketCodec;
+import com.boehmod.bflib.cloud.packet.PacketIdentifier;
 import com.boehmod.bflib.cloud.packet.primitives.ClientHeartBeatPacket;
 import com.boehmod.bflib.cloud.packet.primitives.ClientLoginPacket;
 import com.boehmod.bflib.cloud.packet.primitives.ClientLogoutPacket;
+import com.boehmod.bflib.cloud.packet.primitives.CloudConnectionStatusPacket;
+import com.boehmod.bflib.cloud.packet.primitives.CloudDisconnectedPacket;
 import com.boehmod.bflib.cloud.packet.primitives.EncryptionKeyExchangePacket;
 import com.boehmod.bflib.cloud.packet.primitives.EncryptionReadyPacket;
-import com.boehmod.blockfront.AbstractC0264ju;
-import com.boehmod.blockfront.C0263jt;
-import com.boehmod.blockfront.iR;
-import com.boehmod.blockfront.iS;
+import com.boehmod.blockfront.AbstractC0531jN;
+import com.boehmod.blockfront.C0530jM;
+import com.boehmod.blockfront.C0555jl;
+import com.boehmod.blockfront.InterfaceC0554jk;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
@@ -27,72 +30,67 @@ import io.netty.channel.ChannelPipeline;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
 import java.security.KeyPair;
-import java.util.Queue;
 import java.util.UUID;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import javax.crypto.SecretKey;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:com/boehmod/blockfront/cloud/connection/ModConnection.class */
-public class ModConnection extends Connection<iS> {
-
-    @NotNull
-    private final ExecutorService connectionExecutor;
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:com/boehmod/blockfront/cloud/connection/ModConnection.class */
+public class ModConnection extends Connection<C0555jl> {
     public static final int CONNECT_TIME_MAX_TICKS = 600;
+    public static final int CONNECT_JITTER_MAX_TICKS = 300;
     public static final int LOGIN_TIME_MAX_TICKS = 100;
 
     @NotNull
     private static final AtomicBoolean ATTEMPTING_CONNECTION = new AtomicBoolean(false);
-    public static final int MAX_IDLE_TICKS = 600;
+    public static final int MAX_IDLE_SECONDS = 30;
     public static final int HEARTBEAT_INTERVAL_TICKS = 300;
 
     @NotNull
-    private final iR clientConnection;
+    private final InterfaceC0554jk clientConnection;
 
     @NotNull
-    private final AbstractC0264ju<?, ?, ?> modManager;
-
-    @NotNull
-    private final EventLoopGroup eventLoopGroup;
+    private final AbstractC0531jN<?, ?, ?> modManager;
 
     @Nullable
-    private Channel channel;
-
-    @NotNull
-    private final Queue<IPacket> incomingPackets;
-    private volatile boolean running;
-    private int connectionHeartBeat;
-    private int connectionTick;
-    private int loginSendTimer;
-
-    @Nullable
-    private iS playerCloudData;
+    private volatile Channel channel;
 
     @Nullable
     private KeyPair clientKeyPair;
 
-    public ModConnection(@NotNull iR iRVar, @NotNull AbstractC0264ju<?, ?, ?> abstractC0264ju) {
-        super(600);
-        this.connectionExecutor = Executors.newSingleThreadExecutor(runnable -> {
-            Thread thread = new Thread(runnable, "Cloud-Connection-Worker");
-            thread.setDaemon(true);
-            return thread;
-        });
-        this.incomingPackets = new ConcurrentLinkedQueue();
-        this.running = false;
-        this.connectionHeartBeat = 0;
-        this.connectionTick = 600;
-        this.loginSendTimer = 100;
-        this.playerCloudData = null;
-        this.clientConnection = iRVar;
-        this.modManager = abstractC0264ju;
-        this.eventLoopGroup = new NioEventLoopGroup(2);
+    @NotNull
+    private final ExecutorService connectionExecutor = Executors.newSingleThreadExecutor(runnable -> {
+        Thread thread = new Thread(runnable, "Cloud-Connection-Worker");
+        thread.setDaemon(true);
+        return thread;
+    });
+    private volatile boolean running = false;
+    private volatile boolean encryptionActive = false;
+
+    @NotNull
+    private final IntSet refusedPacketTypes = new IntOpenHashSet();
+    private int connectionHeartBeat = 0;
+    private int connectionTick = CONNECT_TIME_MAX_TICKS;
+    private int connectionTickTarget = CONNECT_TIME_MAX_TICKS;
+    private int loginSendTimer = 100;
+
+    @Nullable
+    private C0555jl playerCloudData = null;
+
+    @NotNull
+    private final EventLoopGroup eventLoopGroup = new NioEventLoopGroup(1);
+
+    public ModConnection(@NotNull InterfaceC0554jk interfaceC0554jk, @NotNull AbstractC0531jN<?, ?, ?> abstractC0531jN) {
+        this.clientConnection = interfaceC0554jk;
+        this.modManager = abstractC0531jN;
     }
 
     public int getLoginSendTimer() {
@@ -102,40 +100,39 @@ public class ModConnection extends Connection<iS> {
     public void attemptConnection() {
         if (getStatus().isClosed()) {
             try {
-                String strMo410a = this.clientConnection.mo410a();
-                int iC = this.clientConnection.c();
-                C0263jt.log("[Connection Handler] Connecting to '%s:%d'", strMo410a, Integer.valueOf(iC));
+                String strMo1731a = this.clientConnection.mo1731a();
+                int iMo1733c = this.clientConnection.mo1733c();
+                this.encryptionActive = false;
+                C0530jM.log("[Connection Handler] Connecting to '%s:%d'", strMo1731a, Integer.valueOf(iMo1733c));
                 Bootstrap bootstrap = new Bootstrap();
                 bootstrap.group(this.eventLoopGroup).channel(NioSocketChannel.class).option(ChannelOption.TCP_NODELAY, true).option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 30000).handler(new ModConnectionChannelInitializer(this));
-                bootstrap.connect(strMo410a, iC).addListener(channelFuture -> {
+                bootstrap.connect(strMo1731a, iMo1733c).addListener(channelFuture -> {
+                    AtomicBoolean atomicBoolean;
                     try {
-                        try {
-                            if (channelFuture.isSuccess()) {
-                                C0263jt.log("[Connection Handler] Connection established", new Object[0]);
-                                this.channel = channelFuture.channel();
-                                this.running = true;
-                                sendCredentials();
-                                C0263jt.log("[Cloud] Established connection to the cloud.", new Object[0]);
-                            } else {
-                                setStatus(ConnectionStatus.CLOSED, ConnectionStatusContext.CLIENT);
-                                C0263jt.log("[Connection Handler] Failed to connect to the cloud: %s", channelFuture.cause().getMessage());
-                                if (!channelFuture.isCancelled()) {
-                                    channelFuture.cancel(true);
-                                }
-                            }
-                            ATTEMPTING_CONNECTION.set(false);
-                        } catch (Exception e) {
-                            C0263jt.a("[Connection Handler] Error in connection callback", e, new Object[0]);
+                        if (channelFuture.isSuccess()) {
+                            C0530jM.log("[Connection Handler] Connection established", new Object[0]);
+                            this.channel = channelFuture.channel();
+                            this.running = true;
+                            sendCredentials();
+                            C0530jM.log("[Cloud] Established connection to the cloud.", new Object[0]);
+                        } else {
                             setStatus(ConnectionStatus.CLOSED, ConnectionStatusContext.CLIENT);
-                            ATTEMPTING_CONNECTION.set(false);
+                            C0530jM.log("[Connection Handler] Failed to connect to the cloud: %s", channelFuture.cause().getMessage());
+                            if (!channelFuture.isCancelled()) {
+                                channelFuture.cancel(true);
+                            }
                         }
-                    } catch (Throwable th) {
+                        atomicBoolean = ATTEMPTING_CONNECTION;
+                    } catch (Exception e) {
+                        C0530jM.m2338a("[Connection Handler] Error in connection callback", e, new Object[0]);
+                        setStatus(ConnectionStatus.CLOSED, ConnectionStatusContext.CLIENT);
+                        atomicBoolean = ATTEMPTING_CONNECTION;
+                    } finally {
                         ATTEMPTING_CONNECTION.set(false);
-                        throw th;
                     }
                 });
             } catch (Exception e) {
-                C0263jt.a("[Connection Handler] An error occurred while attempting to connect to the cloud.", e, new Object[0]);
+                C0530jM.m2338a("[Connection Handler] An error occurred while attempting to connect to the cloud.", e, new Object[0]);
                 setStatus(ConnectionStatus.CLOSED, ConnectionStatusContext.CLIENT);
                 ATTEMPTING_CONNECTION.set(false);
             }
@@ -148,49 +145,56 @@ public class ModConnection extends Connection<iS> {
                 if (this.channel.isActive()) {
                     try {
                         this.clientKeyPair = EncryptionUtils.generateECDHKeyPair();
-                        C0263jt.log("[Connection Handler] Generated ECDH key pair for encryption", new Object[0]);
+                        C0530jM.log("[Connection Handler] Generated ECDH key pair for encryption", new Object[0]);
                         EncryptedConnectionCredentials encryptedConnectionCredentials = new EncryptedConnectionCredentials(this.clientConnection.getType(), getUUID(), getUsername(), getVersion(), getVersionHash(), getHardwareId(), this.clientKeyPair.getPublic());
-                        C0263jt.log("[Connection Handler] Sending credentials - UUID: %s, Username: %s, Channel: %s", getUUID(), getUsername(), this.clientConnection.getType());
+                        C0530jM.log("[Connection Handler] Sending credentials - UUID: %s, Username: %s, Channel: %s", getUUID(), getUsername(), this.clientConnection.getType());
                         ByteBuf byteBufBuffer = this.channel.alloc().buffer();
                         encryptedConnectionCredentials.writeCredentials(byteBufBuffer);
                         this.channel.writeAndFlush(byteBufBuffer);
                     } catch (Exception e) {
-                        C0263jt.a("[Connection Handler] Failed to generate encryption keys - cannot connect without encryption", e, new Object[0]);
+                        C0530jM.m2338a("[Connection Handler] Failed to generate encryption keys - cannot connect without encryption", e, new Object[0]);
                         disconnect("Failed to generate encryption keys", false);
                     }
                 }
             } catch (Exception e2) {
-                C0263jt.a("[Connection Handler] Error sending credentials", e2, new Object[0]);
+                C0530jM.m2338a("[Connection Handler] Error sending credentials", e2, new Object[0]);
                 disconnect("Error sending credentials: " + e2.getMessage(), false);
             }
         }
     }
 
-    protected void addIncomingPacket(@NotNull IPacket iPacket) {
-        this.incomingPackets.add(iPacket);
+    @Override // com.boehmod.bflib.cloud.connection.Connection
+    protected void onPacketQueueOverflow() {
+        disconnect("Packet queue overflow", false);
+    }
+
+    @Override // com.boehmod.bflib.cloud.connection.Connection
+    protected void onPacketProcessError(@NotNull IPacket iPacket, @NotNull Exception exc) {
+        C0530jM.m2338a("[Connection Handler] Error processing packet", exc, new Object[0]);
     }
 
     public void handleEncryptionKeyExchange(@NotNull EncryptionKeyExchangePacket encryptionKeyExchangePacket) {
         if (this.clientKeyPair == null) {
-            C0263jt.log("[Connection Handler] Received encryption key but client key pair is null", new Object[0]);
+            C0530jM.log("[Connection Handler] Received encryption key but client key pair is null", new Object[0]);
             return;
         }
         try {
             SecretKey secretKeyDeriveSharedSecret = EncryptionUtils.deriveSharedSecret(this.clientKeyPair.getPrivate(), encryptionKeyExchangePacket.serverPublicKey());
             if (this.channel != null && this.channel.pipeline() != null) {
                 ChannelPipeline channelPipelinePipeline = this.channel.pipeline();
-                AESDecryptionHandler aESDecryptionHandler = new AESDecryptionHandler(secretKeyDeriveSharedSecret);
+                AESDecryptionHandler aESDecryptionHandler = new AESDecryptionHandler(secretKeyDeriveSharedSecret, false);
                 AESEncryptionHandler aESEncryptionHandler = new AESEncryptionHandler(secretKeyDeriveSharedSecret, false);
-                channelPipelinePipeline.addAfter("frameEncoder", EncryptionUtils.PIPELINE_ENCRYPTION, aESEncryptionHandler);
-                channelPipelinePipeline.addAfter("frameDecoder", EncryptionUtils.PIPELINE_DECRYPTION, aESDecryptionHandler);
+                channelPipelinePipeline.addAfter(PacketCodec.PIPELINE_FRAME_ENCODER, EncryptionUtils.PIPELINE_ENCRYPTION, aESEncryptionHandler);
+                channelPipelinePipeline.addAfter(PacketCodec.PIPELINE_FRAME_DECODER, EncryptionUtils.PIPELINE_DECRYPTION, aESDecryptionHandler);
                 aESDecryptionHandler.activateDecryption();
                 aESEncryptionHandler.activateEncryption();
-                C0263jt.log("[Connection Handler] Encryption activated successfully", new Object[0]);
+                this.encryptionActive = true;
+                C0530jM.log("[Connection Handler] Encryption activated successfully", new Object[0]);
                 sendPacket(new EncryptionReadyPacket());
-                C0263jt.log("[Connection Handler] Sent encryption ready confirmation to server", new Object[0]);
+                C0530jM.log("[Connection Handler] Sent encryption ready confirmation to server", new Object[0]);
             }
         } catch (Exception e) {
-            C0263jt.a("[Connection Handler] Failed to establish encryption", e, new Object[0]);
+            C0530jM.m2338a("[Connection Handler] Failed to establish encryption", e, new Object[0]);
             disconnect("Failed to establish encryption: " + e.getMessage(), false);
         }
     }
@@ -198,42 +202,51 @@ public class ModConnection extends Connection<iS> {
     private void sendLogin() {
         if (this.running && this.channel != null && this.channel.isActive()) {
             try {
-                sendPacket(new ClientLoginPacket(this.clientConnection.mo411b(), this.clientConnection.b()));
-                C0263jt.log("[Connection Handler] Login packet sent", new Object[0]);
+                sendPacket(new ClientLoginPacket(this.clientConnection.mo1732b(), this.clientConnection.mo1730b()));
+                C0530jM.log("[Connection Handler] Login packet sent", new Object[0]);
             } catch (Exception e) {
-                C0263jt.a("[Connection Handler] Error sending login packet", e, new Object[0]);
+                C0530jM.m2338a("[Connection Handler] Error sending login packet", e, new Object[0]);
                 disconnect("Error sending login packet: " + e.getMessage(), false);
             }
         }
     }
 
     public int getReconnectTickCount() {
-        return 600 - this.connectionTick;
+        return this.connectionTickTarget - this.connectionTick;
+    }
+
+    public int getReconnectTickTarget() {
+        return this.connectionTickTarget;
     }
 
     @Override // com.boehmod.bflib.cloud.connection.Connection
     public void sendPacket(@NotNull IPacket iPacket) {
         if (this.running && this.channel != null && this.channel.isActive()) {
             try {
-                this.channel.writeAndFlush(iPacket);
+                writeAndFlush(this.channel, iPacket);
             } catch (Exception e) {
-                C0263jt.a("[Connection Handler] Failed to send packet", e, new Object[0]);
+                C0530jM.m2338a("[Connection Handler] Failed to send packet", e, new Object[0]);
                 disconnect("Failed to send packet: " + e.getMessage(), false);
             }
         }
     }
 
     @Override // com.boehmod.bflib.cloud.connection.Connection
+    protected void onSendFailure(@NotNull IPacket iPacket, @NotNull Throwable th) {
+        C0530jM.m2338a("[Connection Handler] Failed to send packet " + iPacket.getClass().getSimpleName(), th, new Object[0]);
+    }
+
+    @Override // com.boehmod.bflib.cloud.connection.Connection
     public <T extends IPacket> void onIllegalPacket(@NotNull T t, @NotNull ConnectionType connectionType, @NotNull ConnectionType connectionType2) {
-        C0263jt.log("[Connection Handler] Illegal packet: %s (Expected: %s, Actual: %s)", t.getClass().getSimpleName(), connectionType2, connectionType);
+        C0530jM.log("[Connection Handler] Illegal packet: %s (Expected: %s, Actual: %s)", t.getClass().getSimpleName(), connectionType2, connectionType);
     }
 
     @Override // com.boehmod.bflib.cloud.connection.Connection
     public void onConnectionStatusChanged(@NotNull ConnectionStatus connectionStatus, @NotNull ConnectionStatusContext connectionStatusContext) {
         if (connectionStatusContext == ConnectionStatusContext.CLOUD) {
-            C0263jt.log("[Connection Handler] Received status change from cloud to '%s'.", connectionStatus.name());
+            C0530jM.log("[Connection Handler] Received status change from cloud to '%s'.", connectionStatus.name());
         } else {
-            C0263jt.log("[Connection Handler] Performed local status change to '%s'.", connectionStatus.name());
+            C0530jM.log("[Connection Handler] Performed local status change to '%s'.", connectionStatus.name());
         }
         if (connectionStatus != ConnectionStatus.CONNECTED_VERIFIED) {
             this.loginSendTimer = 100;
@@ -241,14 +254,14 @@ public class ModConnection extends Connection<iS> {
     }
 
     @Override // com.boehmod.bflib.cloud.connection.Connection
-    public iS getPlayerCloudData() {
+    public C0555jl getPlayerCloudData() {
         if (getType() != ConnectionType.PLAYER) {
             throw new IllegalStateException("Cannot get player data for non-player connection.");
         }
         if (this.playerCloudData != null) {
             return this.playerCloudData;
         }
-        this.playerCloudData = this.modManager.m531a().a(getUUID());
+        this.playerCloudData = this.modManager.m2351a().m1149a(getUUID());
         return this.playerCloudData;
     }
 
@@ -257,44 +270,31 @@ public class ModConnection extends Connection<iS> {
         ConnectionStatus status = getStatus();
         super.setStatus(connectionStatus, connectionStatusContext);
         if (status != connectionStatus) {
-            this.modManager.a(status, connectionStatus, connectionStatusContext);
+            this.modManager.mo2376a(status, connectionStatus, connectionStatusContext);
         }
     }
 
     @Override // com.boehmod.bflib.cloud.connection.Connection
     protected void onUpdate() {
-        IPacket iPacketPoll;
-        int i = 0;
-        while (i < 10 && (iPacketPoll = this.incomingPackets.poll()) != null) {
-            try {
-                if (shouldHandlePacket(iPacketPoll)) {
-                    PacketRegistry.processPacket(iPacketPoll, getType(), this);
-                }
-                i++;
-            } catch (Exception e) {
-                C0263jt.a("[Connection Handler] Error processing packet", e, new Object[0]);
-            }
-        }
         if (getStatus().isClosed()) {
-            int i2 = this.connectionTick;
-            this.connectionTick = i2 + 1;
-            if (i2 > 600) {
+            int i = this.connectionTick;
+            this.connectionTick = i + 1;
+            if (i > this.connectionTickTarget) {
                 this.connectionTick = 0;
+                this.connectionTickTarget = CONNECT_TIME_MAX_TICKS + ThreadLocalRandom.current().nextInt(300);
                 if (ATTEMPTING_CONNECTION.compareAndSet(false, true)) {
                     this.connectionExecutor.submit(() -> {
+                        AtomicBoolean atomicBoolean;
                         try {
-                            try {
-                                if (this.clientConnection.mo412a()) {
-                                    attemptConnection();
-                                }
-                                ATTEMPTING_CONNECTION.set(false);
-                            } catch (Exception e2) {
-                                C0263jt.a("[Connection Handler] Error in connection check thread", e2, new Object[0]);
-                                ATTEMPTING_CONNECTION.set(false);
+                            if (this.clientConnection.mo1736a()) {
+                                attemptConnection();
                             }
-                        } catch (Throwable th) {
+                            atomicBoolean = ATTEMPTING_CONNECTION;
+                        } catch (Exception e) {
+                            C0530jM.m2338a("[Connection Handler] Error in connection check thread", e, new Object[0]);
+                            atomicBoolean = ATTEMPTING_CONNECTION;
+                        } finally {
                             ATTEMPTING_CONNECTION.set(false);
-                            throw th;
                         }
                     });
                     return;
@@ -304,31 +304,46 @@ public class ModConnection extends Connection<iS> {
             return;
         }
         if (getStatus() == ConnectionStatus.CONNECTED_NOT_VERIFIED) {
-            int i3 = this.loginSendTimer;
-            this.loginSendTimer = i3 - 1;
-            if (i3 <= 0) {
+            int i2 = this.loginSendTimer;
+            this.loginSendTimer = i2 - 1;
+            if (i2 <= 0) {
                 this.loginSendTimer = 100;
-                C0263jt.log("[Connection Handler] Sending login attempt to cloud...", new Object[0]);
-                sendLogin();
+                if (this.encryptionActive) {
+                    C0530jM.log("[Connection Handler] Sending login attempt to cloud...", new Object[0]);
+                    sendLogin();
+                } else {
+                    C0530jM.log("[Connection Handler] Withholding login, encryption is not active.", new Object[0]);
+                }
             }
         } else {
             this.loginSendTimer = 100;
         }
-        int i4 = this.connectionHeartBeat;
-        this.connectionHeartBeat = i4 + 1;
-        if (i4 >= 300) {
+        int i3 = this.connectionHeartBeat;
+        this.connectionHeartBeat = i3 + 1;
+        if (i3 >= 300) {
             sendPacket(new ClientHeartBeatPacket());
             this.connectionHeartBeat = 0;
         }
     }
 
     public void bumpReconnectTick() {
-        this.connectionTick = 600;
+        this.connectionTick = this.connectionTickTarget;
     }
 
     @Override // com.boehmod.bflib.cloud.connection.Connection
     protected boolean shouldHandlePacket(@NotNull IPacket iPacket) {
-        return true;
+        if ((iPacket instanceof CloudConnectionStatusPacket) || (iPacket instanceof CloudDisconnectedPacket)) {
+            return true;
+        }
+        ConnectionStatus status = getStatus();
+        if (status == ConnectionStatus.CONNECTED_NOT_ENCRYPTED) {
+            return iPacket instanceof EncryptionKeyExchangePacket;
+        }
+        PacketIdentifier packetIdentifier = iPacket.getPacketIdentifier();
+        if (!status.isVerified() && this.refusedPacketTypes.add(packetIdentifier.hash())) {
+            C0530jM.log("[Connection Handler] Refused '%s' received while %s", packetIdentifier.identifier(), status);
+        }
+        return status.isVerified();
     }
 
     @Override // com.boehmod.bflib.cloud.connection.Connection
@@ -340,7 +355,7 @@ public class ModConnection extends Connection<iS> {
             try {
                 this.channel.writeAndFlush(new ClientLogoutPacket()).awaitUninterruptibly(1L, TimeUnit.SECONDS);
             } catch (Exception e) {
-                C0263jt.a("[Connection Handler] Error sending logout packet", e, new Object[0]);
+                C0530jM.m2338a("[Connection Handler] Error sending logout packet", e, new Object[0]);
             }
         }
         if (this.channel != null) {
@@ -349,8 +364,8 @@ public class ModConnection extends Connection<iS> {
         }
         this.running = false;
         setStatus(ConnectionStatus.CLOSED, ConnectionStatusContext.CLIENT);
-        C0263jt.log("[Connection Handler] Disconnected: %s", str);
-        C0263jt.log("[Cloud] Lost connection to the cloud.", new Object[0]);
+        C0530jM.log("[Connection Handler] Disconnected: %s", str);
+        C0530jM.log("[Cloud] Lost connection to the cloud.", new Object[0]);
         this.loginSendTimer = 100;
     }
 
@@ -371,7 +386,7 @@ public class ModConnection extends Connection<iS> {
     @Override // com.boehmod.bflib.cloud.connection.Connection
     @NotNull
     public UUID getUUID() {
-        return this.clientConnection.mo409a();
+        return this.clientConnection.mo1729a();
     }
 
     @Override // com.boehmod.bflib.cloud.connection.Connection

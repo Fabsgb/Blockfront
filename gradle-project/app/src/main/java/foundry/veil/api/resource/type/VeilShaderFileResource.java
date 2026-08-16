@@ -18,7 +18,7 @@ import java.util.Set;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/resource/type/VeilShaderFileResource.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/resource/type/VeilShaderFileResource.class */
 @ApiStatus.Internal
 public final class VeilShaderFileResource extends Record implements VeilShaderResource<VeilShaderFileResource> {
     private final VeilResourceInfo resourceInfo;

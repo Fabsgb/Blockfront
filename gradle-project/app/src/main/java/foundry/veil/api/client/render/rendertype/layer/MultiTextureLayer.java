@@ -9,7 +9,7 @@ import java.lang.runtime.ObjectMethods;
 import java.util.Arrays;
 import net.minecraft.client.renderer.RenderStateShard;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/rendertype/layer/MultiTextureLayer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/rendertype/layer/MultiTextureLayer.class */
 public final class MultiTextureLayer extends Record implements RenderTypeLayer {
     private final TextureLayer[] textures;
     public static final MapCodec<MultiTextureLayer> CODEC = TextureLayer.CODEC.codec().listOf(2, 12).fieldOf("textures").xmap(textures -> {

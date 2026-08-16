@@ -26,10 +26,10 @@ import net.minecraft.client.Minecraft;
 import org.apache.commons.io.IOUtils;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/resource/editor/ResourceFileEditor.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/resource/editor/ResourceFileEditor.class */
 public interface ResourceFileEditor<T extends VeilResource<?>> extends Closeable {
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/resource/editor/ResourceFileEditor$Factory.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/resource/editor/ResourceFileEditor$Factory.class */
     @FunctionalInterface
     public interface Factory<T extends VeilResource<?>> {
         @Nullable
@@ -96,9 +96,25 @@ public interface ResourceFileEditor<T extends VeilResource<?>> extends Closeable
                             }
                             throw th;
                         }
-                    } finally {
+                    } catch (Throwable th3) {
+                        if (is != null) {
+                            try {
+                                is.close();
+                            } catch (Throwable th4) {
+                                th3.addSuppressed(th4);
+                            }
+                        }
+                        throw th3;
                     }
-                } finally {
+                } catch (Throwable th5) {
+                    if (os != null) {
+                        try {
+                            os.close();
+                        } catch (Throwable th6) {
+                            th5.addSuppressed(th6);
+                        }
+                    }
+                    throw th5;
                 }
             } catch (Exception e) {
                 Veil.LOGGER.error("Failed to write resource: {}", info.location(), e);

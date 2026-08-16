@@ -22,7 +22,7 @@ import org.lwjgl.opengl.GL42C;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.MemoryUtil;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/program/ShaderUniformCache.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/program/ShaderUniformCache.class */
 public class ShaderUniformCache {
     private static final IntSet SAMPLERS = IntSet.of(new int[]{35677, 35678, 35679, 35680, 35681, 35682, 36288, 36289, 36291, 36292, 37128, 37131, 36293, 36290, 35683, 35684, 36297, 36298, 36299, 36300, 36302, 36303, 37129, 37132, 36304, 36301, 36305, 36306, 36307, 36308, 36310, 36311, 37130, 37133, 36312, 36309, 36940, 36941, 36942, 36943, 36944, 36945, 36946, 36947, 36949, 36950, 36951, 36952, 36953, 36954, 36955, 36956, 36957, 36958, 36960, 36961, 36962, 36963, 36964, 36965, 36966, 36967, 36968, 36969, 36971, 36972});
     private static final Int2ObjectMap<String> NAMES;
@@ -160,15 +160,13 @@ public class ShaderUniformCache {
     }
 
     private void updateUniforms() {
-        MemoryStack stack;
-        IntBuffer fieldIndices;
         this.requested = true;
         int program = this.shader.getAsInt();
         if (VeilRenderSystem.programInterfaceQuerySupported()) {
             int uniformCount = ARBProgramInterfaceQuery.glGetProgramInterfacei(program, 37601, 37621);
             int uniformBlockCount = ARBProgramInterfaceQuery.glGetProgramInterfacei(program, 37602, 37621);
             int storageBlockCount = ARBProgramInterfaceQuery.glGetProgramInterfacei(program, 37606, 37621);
-            stack = MemoryStack.stackPush();
+            MemoryStack stack = MemoryStack.stackPush();
             try {
                 IntBuffer uniformProperties = stack.ints(new int[]{37629, 37627, 37625, 37646, 37626});
                 IntBuffer uniformBlockProperties = stack.ints(37625, 37635, 37636);
@@ -208,7 +206,7 @@ public class ShaderUniformCache {
                     int size = values.get(1);
                     int fieldCount = values.get(2);
                     List<Uniform> fields = new ArrayList<>(fieldCount);
-                    fieldIndices = MemoryUtil.memAllocInt(fieldCount);
+                    IntBuffer fieldIndices = MemoryUtil.memAllocInt(fieldCount);
                     ARBProgramInterfaceQuery.glGetProgramResourceiv(program, 37602, i2, activeVariables, (IntBuffer) null, fieldIndices);
                     for (int j2 = 0; j2 < fieldCount; j2++) {
                         try {
@@ -228,7 +226,9 @@ public class ShaderUniformCache {
                                     fields.add(new Uniform(name2, -1, offset, type2, 1));
                                 }
                             }
-                        } finally {
+                        } catch (Throwable th) {
+                            MemoryUtil.memFree(fieldIndices);
+                            throw th;
                         }
                     }
                     this.uniformBlocks.put(blockName, new UniformBlock(blockName, i2, size, (Uniform[]) fields.toArray(x$0 -> {
@@ -242,12 +242,12 @@ public class ShaderUniformCache {
                     int size2 = values.get(1);
                     int fieldCount2 = values.get(2);
                     List<Uniform> fields2 = new ArrayList<>(fieldCount2);
-                    fieldIndices = MemoryUtil.memAllocInt(fieldCount2);
-                    ARBProgramInterfaceQuery.glGetProgramResourceiv(program, 37606, i3, activeVariables, (IntBuffer) null, fieldIndices);
+                    IntBuffer fieldIndices2 = MemoryUtil.memAllocInt(fieldCount2);
+                    ARBProgramInterfaceQuery.glGetProgramResourceiv(program, 37606, i3, activeVariables, (IntBuffer) null, fieldIndices2);
                     for (int j3 = 0; j3 < fieldCount2; j3++) {
                         try {
-                            ARBProgramInterfaceQuery.glGetProgramResourceiv(program, 37605, fieldIndices.get(j3), uniformBufferFieldProperties, (IntBuffer) null, values);
-                            String name3 = ARBProgramInterfaceQuery.glGetProgramResourceName(program, 37605, fieldIndices.get(j3), values.get(0));
+                            ARBProgramInterfaceQuery.glGetProgramResourceiv(program, 37605, fieldIndices2.get(j3), uniformBufferFieldProperties, (IntBuffer) null, values);
+                            String name3 = ARBProgramInterfaceQuery.glGetProgramResourceName(program, 37605, fieldIndices2.get(j3), values.get(0));
                             int arrayLength2 = values.get(1);
                             int offset2 = values.get(3);
                             int type3 = values.get(4);
@@ -260,17 +260,19 @@ public class ShaderUniformCache {
                             } else {
                                 fields2.add(new Uniform(name3, -1, offset2, type3, 1));
                             }
-                        } finally {
+                        } catch (Throwable th2) {
+                            MemoryUtil.memFree(fieldIndices2);
+                            throw th2;
                         }
                     }
-                    MemoryUtil.memFree(fieldIndices);
+                    MemoryUtil.memFree(fieldIndices2);
                     Uniform last = (Uniform) fields2.getLast();
                     boolean array = last.name.endsWith("[0]");
                     if (array) {
                         fields2.set(fields2.size() - 1, new Uniform(last.name.substring(0, last.name.length() - 3), last.location, last.offset, last.type, 1));
                     }
-                    this.storageBlocks.put(blockName2, new StorageBlock(blockName2, i3, size2, values.get(2), (Uniform[]) fields2.toArray(x$02 -> {
-                        return new Uniform[x$02];
+                    this.storageBlocks.put(blockName2, new StorageBlock(blockName2, i3, size2, values.get(2), (Uniform[]) fields2.toArray(x$1 -> {
+                        return new Uniform[x$1];
                     })));
                 }
                 if (stack != null) {
@@ -278,17 +280,25 @@ public class ShaderUniformCache {
                     return;
                 }
                 return;
-            } finally {
+            } catch (Throwable th3) {
+                if (stack != null) {
+                    try {
+                        stack.close();
+                    } catch (Throwable th4) {
+                        th3.addSuppressed(th4);
+                    }
+                }
+                throw th3;
             }
         }
         int uniformCount2 = GL42C.glGetProgrami(program, 35718);
         int maxUniformLength = GL42C.glGetProgrami(program, 35719);
         int uniformBlockCount2 = GL42C.glGetProgrami(program, 35382);
         int maxUniformBlockLength = GL42C.glGetProgrami(program, 35381);
-        stack = MemoryStack.stackPush();
+        MemoryStack stack2 = MemoryStack.stackPush();
         try {
-            IntBuffer size3 = stack.mallocInt(1);
-            IntBuffer type4 = stack.mallocInt(1);
+            IntBuffer size3 = stack2.mallocInt(1);
+            IntBuffer type4 = stack2.mallocInt(1);
             for (int i4 = 0; i4 < uniformCount2; i4++) {
                 String baseName2 = GL42C.glGetActiveUniform(program, i4, maxUniformLength, size3, type4);
                 if (!baseName2.contains(".")) {
@@ -317,25 +327,33 @@ public class ShaderUniformCache {
                 String blockName3 = GL42C.glGetActiveUniformBlockName(program, i5, maxUniformBlockLength);
                 int bufferSize = GL42C.glGetActiveUniformBlocki(program, i5, 35392);
                 Uniform[] fields3 = new Uniform[GL42C.glGetActiveUniformBlocki(program, i5, 35394)];
-                IntBuffer fieldIndices2 = MemoryUtil.memAllocInt(fields3.length);
-                GL42C.glGetActiveUniformBlockiv(program, i5, 35395, fieldIndices2);
+                IntBuffer fieldIndices3 = MemoryUtil.memAllocInt(fields3.length);
+                GL42C.glGetActiveUniformBlockiv(program, i5, 35395, fieldIndices3);
                 for (int j5 = 0; j5 < fields3.length; j5++) {
                     try {
-                        int index = fieldIndices2.get(j5);
+                        int index = fieldIndices3.get(j5);
                         String name5 = GL42C.glGetActiveUniform(program, index, maxUniformLength, size3, type4);
                         fields3[j5] = new Uniform(name5, GL42C.glGetUniformLocation(program, name5), GL42C.glGetActiveUniformsi(program, index, 35387), type4.get(0), 1);
-                    } catch (Throwable th) {
-                        MemoryUtil.memFree(fieldIndices2);
-                        throw th;
+                    } catch (Throwable th5) {
+                        MemoryUtil.memFree(fieldIndices3);
+                        throw th5;
                     }
                 }
                 this.uniformBlocks.put(blockName3, new UniformBlock(blockName3, i5, bufferSize, fields3));
-                MemoryUtil.memFree(fieldIndices2);
+                MemoryUtil.memFree(fieldIndices3);
             }
-            if (stack != null) {
-                stack.close();
+            if (stack2 != null) {
+                stack2.close();
             }
-        } finally {
+        } catch (Throwable th6) {
+            if (stack2 != null) {
+                try {
+                    stack2.close();
+                } catch (Throwable th7) {
+                    th6.addSuppressed(th7);
+                }
+            }
+            throw th6;
         }
     }
 
@@ -427,7 +445,7 @@ public class ShaderUniformCache {
         return (String) NAMES.getOrDefault(type, "0x%04X".formatted(Integer.valueOf(type)));
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/program/ShaderUniformCache$Uniform.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/program/ShaderUniformCache$Uniform.class */
     public static final class Uniform extends Record {
         private final String name;
         private final int location;
@@ -479,7 +497,7 @@ public class ShaderUniformCache {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/program/ShaderUniformCache$UniformBlock.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/program/ShaderUniformCache$UniformBlock.class */
     public static final class UniformBlock extends Record {
         private final String name;
         private final int index;
@@ -525,7 +543,7 @@ public class ShaderUniformCache {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/program/ShaderUniformCache$StorageBlock.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/program/ShaderUniformCache$StorageBlock.class */
     public static final class StorageBlock extends Record {
         private final String name;
         private final int index;

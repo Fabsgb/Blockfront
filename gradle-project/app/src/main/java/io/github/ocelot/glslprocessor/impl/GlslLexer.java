@@ -1,16 +1,16 @@
 package io.github.ocelot.glslprocessor.impl;
 
 import com.boehmod.bflib.cloud.common.ProgressionValues;
-import com.boehmod.blockfront.AbstractC0422pq;
-import com.boehmod.blockfront.C0093dj;
-import com.boehmod.blockfront.C0097dn;
-import com.boehmod.blockfront.C0122em;
-import com.boehmod.blockfront.C0163g;
-import com.boehmod.blockfront.C0407pb;
-import com.boehmod.blockfront.dE;
-import com.boehmod.blockfront.pQ;
-import com.boehmod.blockfront.rY;
-import com.boehmod.blockfront.sR;
+import com.boehmod.blockfront.AbstractC0927qm;
+import com.boehmod.blockfront.C0215dP;
+import com.boehmod.blockfront.C0244ds;
+import com.boehmod.blockfront.C0248dw;
+import com.boehmod.blockfront.C0304ez;
+import com.boehmod.blockfront.C0358g;
+import com.boehmod.blockfront.C0885px;
+import com.boehmod.blockfront.C0994s;
+import com.boehmod.blockfront.C1043sv;
+import com.boehmod.blockfront.C1089to;
 import foundry.veil.api.client.necromancer.Skeleton;
 import io.github.ocelot.glslprocessor.api.GlslSyntaxException;
 import io.github.ocelot.glslprocessor.api.grammar.GlslTypeQualifier;
@@ -31,7 +31,7 @@ import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.VisibleForTesting;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/impl/GlslLexer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/impl/GlslLexer.class */
 @ApiStatus.Internal
 public class GlslLexer {
     private static final Pattern MULTI_COMMENT_PATTERN = Pattern.compile("/\\*[^*]*\\*+(?:[^/*][^*]*\\*+)*/");
@@ -153,7 +153,7 @@ public class GlslLexer {
         return c == '_' || (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/impl/GlslLexer$Token.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/impl/GlslLexer$Token.class */
     public static final class Token extends Record {
         private final TokenType type;
         private final String value;
@@ -187,7 +187,7 @@ public class GlslLexer {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/impl/GlslLexer$TokenType.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:META-INF/jarjar/glsl-processor-0.2.3.jar:io/github/ocelot/glslprocessor/impl/GlslLexer$TokenType.class */
     public enum TokenType {
         DIRECTIVE(new String[0]),
         GLSL_MACRO("__LINE__", "__FILE__", "__VERSION__"),
@@ -427,7 +427,7 @@ public class GlslLexer {
                 this.chars = (char[][]) Arrays.stream(words).map((v0) -> {
                     return v0.toCharArray();
                 }).toArray(x$0 -> {
-                    return new char[x$0];
+                    return new char[x$0][];
                 });
                 return;
             }
@@ -444,7 +444,7 @@ public class GlslLexer {
 
         @Nullable
         public GlslTypeSpecifier.BuiltinType asBuiltinType() {
-            switch (AnonymousClass1.$SwitchMap$io$github$ocelot$glslprocessor$impl$GlslLexer$TokenType[ordinal()]) {
+            switch (C14851.f9180x667fa44a[ordinal()]) {
                 case 1:
                     return GlslTypeSpecifier.BuiltinType.VOID;
                 case 2:
@@ -457,19 +457,19 @@ public class GlslLexer {
                     return GlslTypeSpecifier.BuiltinType.UINT;
                 case 6:
                     return GlslTypeSpecifier.BuiltinType.BOOL;
-                case 7:
+                case C0994s.f5462C /* 7 */:
                     return GlslTypeSpecifier.BuiltinType.VEC2;
                 case 8:
                     return GlslTypeSpecifier.BuiltinType.VEC3;
-                case C0407pb.nv /* 9 */:
+                case 9:
                     return GlslTypeSpecifier.BuiltinType.VEC4;
                 case 10:
                     return GlslTypeSpecifier.BuiltinType.DVEC2;
-                case AbstractC0422pq.nO /* 11 */:
+                case 11:
                     return GlslTypeSpecifier.BuiltinType.DVEC3;
                 case 12:
                     return GlslTypeSpecifier.BuiltinType.DVEC4;
-                case C0407pb.nu /* 13 */:
+                case C0885px.f4841pt /* 13 */:
                     return GlslTypeSpecifier.BuiltinType.BVEC2;
                 case 14:
                     return GlslTypeSpecifier.BuiltinType.BVEC3;
@@ -489,7 +489,7 @@ public class GlslLexer {
                     return GlslTypeSpecifier.BuiltinType.UVEC4;
                 case 22:
                     return GlslTypeSpecifier.BuiltinType.MAT2;
-                case C0407pb.nw /* 23 */:
+                case C0885px.f4843pv /* 23 */:
                     return GlslTypeSpecifier.BuiltinType.MAT3;
                 case 24:
                     return GlslTypeSpecifier.BuiltinType.MAT4;
@@ -499,7 +499,7 @@ public class GlslLexer {
                     return GlslTypeSpecifier.BuiltinType.MAT2X3;
                 case 27:
                     return GlslTypeSpecifier.BuiltinType.MAT2X4;
-                case pQ.nU /* 28 */:
+                case AbstractC0927qm.f5121pT /* 28 */:
                     return GlslTypeSpecifier.BuiltinType.MAT3X2;
                 case 29:
                     return GlslTypeSpecifier.BuiltinType.MAT3X3;
@@ -513,11 +513,11 @@ public class GlslLexer {
                     return GlslTypeSpecifier.BuiltinType.MAT4X4;
                 case 34:
                     return GlslTypeSpecifier.BuiltinType.DMAT2;
-                case rY.qj /* 35 */:
+                case C1043sv.f5687sk /* 35 */:
                     return GlslTypeSpecifier.BuiltinType.DMAT3;
                 case 36:
                     return GlslTypeSpecifier.BuiltinType.DMAT4;
-                case sR.rf /* 37 */:
+                case C1089to.f5854tg /* 37 */:
                     return GlslTypeSpecifier.BuiltinType.DMAT2X2;
                 case 38:
                     return GlslTypeSpecifier.BuiltinType.DMAT2X3;
@@ -529,7 +529,7 @@ public class GlslLexer {
                     return GlslTypeSpecifier.BuiltinType.DMAT3X3;
                 case 42:
                     return GlslTypeSpecifier.BuiltinType.DMAT3X4;
-                case sR.rh /* 43 */:
+                case C1089to.f5856ti /* 43 */:
                     return GlslTypeSpecifier.BuiltinType.DMAT4X2;
                 case 44:
                     return GlslTypeSpecifier.BuiltinType.DMAT4X3;
@@ -555,7 +555,7 @@ public class GlslLexer {
                     return GlslTypeSpecifier.BuiltinType.SAMPLERCUBEARRAY;
                 case 55:
                     return GlslTypeSpecifier.BuiltinType.SAMPLERCUBEARRAYSHADOW;
-                case C0093dj.ge /* 56 */:
+                case C0244ds.f1990he /* 56 */:
                     return GlslTypeSpecifier.BuiltinType.ISAMPLER2D;
                 case 57:
                     return GlslTypeSpecifier.BuiltinType.ISAMPLER3D;
@@ -583,7 +583,7 @@ public class GlslLexer {
                     return GlslTypeSpecifier.BuiltinType.SAMPLER1DARRAY;
                 case 69:
                     return GlslTypeSpecifier.BuiltinType.SAMPLER1DARRAYSHADOW;
-                case C0122em.hO /* 70 */:
+                case C0304ez.f2369je /* 70 */:
                     return GlslTypeSpecifier.BuiltinType.ISAMPLER1D;
                 case 71:
                     return GlslTypeSpecifier.BuiltinType.ISAMPLER1DARRAY;
@@ -663,7 +663,7 @@ public class GlslLexer {
                     return GlslTypeSpecifier.BuiltinType.IMAGE2DARRAY;
                 case 109:
                     return GlslTypeSpecifier.BuiltinType.IIMAGE2DARRAY;
-                case C0093dj.gd /* 110 */:
+                case C0244ds.f1979hd /* 110 */:
                     return GlslTypeSpecifier.BuiltinType.UIMAGE2DARRAY;
                 case 111:
                     return GlslTypeSpecifier.BuiltinType.IMAGECUBEARRAY;
@@ -671,7 +671,7 @@ public class GlslLexer {
                     return GlslTypeSpecifier.BuiltinType.IIMAGECUBEARRAY;
                 case 113:
                     return GlslTypeSpecifier.BuiltinType.UIMAGECUBEARRAY;
-                case C0097dn.gs /* 114 */:
+                case C0248dw.f2042hx /* 114 */:
                     return GlslTypeSpecifier.BuiltinType.IMAGE2DMS;
                 case 115:
                     return GlslTypeSpecifier.BuiltinType.IIMAGE2DMS;
@@ -690,8 +690,8 @@ public class GlslLexer {
 
         @Nullable
         public GlslTypeQualifier.StorageType asStorageQualifier() {
-            switch (AnonymousClass1.$SwitchMap$io$github$ocelot$glslprocessor$impl$GlslLexer$TokenType[ordinal()]) {
-                case C0163g.g /* 120 */:
+            switch (C14851.f9180x667fa44a[ordinal()]) {
+                case C0358g.f2490g /* 120 */:
                     return GlslTypeQualifier.StorageType.CONST;
                 case 121:
                     return GlslTypeQualifier.StorageType.IN;
@@ -717,7 +717,7 @@ public class GlslLexer {
                     return GlslTypeQualifier.StorageType.VOLATILE;
                 case 132:
                     return GlslTypeQualifier.StorageType.RESTRICT;
-                case dE.gN /* 133 */:
+                case C0215dP.f1669hX /* 133 */:
                     return GlslTypeQualifier.StorageType.READONLY;
                 case 134:
                     return GlslTypeQualifier.StorageType.WRITEONLY;

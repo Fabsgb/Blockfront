@@ -12,7 +12,7 @@ import org.jetbrains.annotations.ApiStatus;
 import org.lwjgl.opengl.ARBVertexAttrib64Bit;
 import org.lwjgl.opengl.GL33C;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/vertex/LegacyVertexAttribBindingBuilder.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/vertex/LegacyVertexAttribBindingBuilder.class */
 @ApiStatus.Internal
 public class LegacyVertexAttribBindingBuilder implements VertexArrayBuilder {
     private final VertexArray vertexArray;
@@ -20,7 +20,7 @@ public class LegacyVertexAttribBindingBuilder implements VertexArrayBuilder {
     private final VertexBufferRegion[] vertexBuffers = new VertexBufferRegion[VeilRenderSystem.maxVertexAttributes()];
     private final VertexAttribute[] vertexAttributes = new VertexAttribute[VeilRenderSystem.maxVertexAttributes()];
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/vertex/LegacyVertexAttribBindingBuilder$VertexAttribute.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/vertex/LegacyVertexAttribBindingBuilder$VertexAttribute.class */
     private interface VertexAttribute {
         int bufferIndex();
 
@@ -131,7 +131,7 @@ public class LegacyVertexAttribBindingBuilder implements VertexArrayBuilder {
         return this;
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/vertex/LegacyVertexAttribBindingBuilder$FloatAttribute.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/vertex/LegacyVertexAttribBindingBuilder$FloatAttribute.class */
     private static final class FloatAttribute extends Record implements VertexAttribute {
         private final int bufferIndex;
         private final int size;
@@ -190,7 +190,7 @@ public class LegacyVertexAttribBindingBuilder implements VertexArrayBuilder {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/vertex/LegacyVertexAttribBindingBuilder$IntAttribute.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/vertex/LegacyVertexAttribBindingBuilder$IntAttribute.class */
     private static final class IntAttribute extends Record implements VertexAttribute {
         private final int bufferIndex;
         private final int size;
@@ -243,7 +243,7 @@ public class LegacyVertexAttribBindingBuilder implements VertexArrayBuilder {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/vertex/LegacyVertexAttribBindingBuilder$LongAttribute.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/vertex/LegacyVertexAttribBindingBuilder$LongAttribute.class */
     private static final class LongAttribute extends Record implements VertexAttribute {
         private final int bufferIndex;
         private final int size;
@@ -296,7 +296,7 @@ public class LegacyVertexAttribBindingBuilder implements VertexArrayBuilder {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/vertex/LegacyVertexAttribBindingBuilder$VertexBufferRegion.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/vertex/LegacyVertexAttribBindingBuilder$VertexBufferRegion.class */
     private static final class VertexBufferRegion extends Record {
         private final int buffer;
         private final int offset;

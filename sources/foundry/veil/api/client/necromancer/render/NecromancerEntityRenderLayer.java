@@ -5,7 +5,7 @@ import foundry.veil.api.client.necromancer.SkeletonParent;
 import foundry.veil.api.client.render.MatrixStack;
 import net.minecraft.world.entity.Entity;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/necromancer/render/NecromancerEntityRenderLayer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/necromancer/render/NecromancerEntityRenderLayer.class */
 public abstract class NecromancerEntityRenderLayer<T extends Entity & SkeletonParent<T, M>, M extends Skeleton> {
     protected final NecromancerEntityRenderer<T, M> renderer;
 

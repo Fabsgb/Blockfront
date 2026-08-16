@@ -24,7 +24,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/forge/platform/NeoForgeRegistrationFactory.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/forge/platform/NeoForgeRegistrationFactory.class */
 @ApiStatus.Internal
 public class NeoForgeRegistrationFactory implements RegistrationProvider.Factory {
     @Override // foundry.veil.platform.registry.RegistrationProvider.Factory
@@ -46,7 +46,7 @@ public class NeoForgeRegistrationFactory implements RegistrationProvider.Factory
         return new Provider(modId, register);
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/forge/platform/NeoForgeRegistrationFactory$Provider.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/forge/platform/NeoForgeRegistrationFactory$Provider.class */
     private static class Provider<T> implements RegistrationProvider<T> {
         private final String modId;
         private final DeferredRegister<T> registry;
@@ -89,7 +89,7 @@ public class NeoForgeRegistrationFactory implements RegistrationProvider.Factory
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/forge/platform/NeoForgeRegistrationFactory$NeoForgeRegistryObject.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/forge/platform/NeoForgeRegistrationFactory$NeoForgeRegistryObject.class */
     private static final class NeoForgeRegistryObject<T, I extends T> extends Record implements RegistryObject<I> {
         private final DeferredHolder<I, I> holder;
 

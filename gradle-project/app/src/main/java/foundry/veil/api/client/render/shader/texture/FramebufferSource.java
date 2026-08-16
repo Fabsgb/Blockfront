@@ -4,7 +4,6 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import foundry.veil.api.client.render.framebuffer.AdvancedFbo;
-import foundry.veil.api.client.render.shader.texture.ShaderTextureSource;
 import foundry.veil.api.client.render.texture.TextureFilter;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
@@ -13,7 +12,7 @@ import java.util.Optional;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/texture/FramebufferSource.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/texture/FramebufferSource.class */
 public final class FramebufferSource extends Record implements ShaderTextureSource {
     private final ResourceLocation name;
     private final int sampler;

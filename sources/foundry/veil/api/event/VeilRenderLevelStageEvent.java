@@ -13,12 +13,12 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.culling.Frustum;
 import org.joml.Matrix4fc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/event/VeilRenderLevelStageEvent.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/event/VeilRenderLevelStageEvent.class */
 @FunctionalInterface
 public interface VeilRenderLevelStageEvent {
     void onRenderLevelStage(Stage stage, LevelRenderer levelRenderer, MultiBufferSource.BufferSource bufferSource, MatrixStack matrixStack, Matrix4fc matrix4fc, Matrix4fc matrix4fc2, int i, DeltaTracker deltaTracker, Camera camera, Frustum frustum);
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/event/VeilRenderLevelStageEvent$Stage.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/event/VeilRenderLevelStageEvent$Stage.class */
     public enum Stage {
         AFTER_SKY,
         AFTER_SOLID_BLOCKS,

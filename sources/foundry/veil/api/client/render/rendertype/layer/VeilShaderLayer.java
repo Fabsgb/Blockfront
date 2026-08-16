@@ -9,7 +9,7 @@ import java.lang.invoke.MethodType;
 import java.lang.runtime.ObjectMethods;
 import net.minecraft.resources.ResourceLocation;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/rendertype/layer/VeilShaderLayer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/rendertype/layer/VeilShaderLayer.class */
 public final class VeilShaderLayer extends Record implements RenderTypeLayer {
     private final LayerTemplateValue<ResourceLocation> shaderId;
     public static final MapCodec<VeilShaderLayer> CODEC = LayerTemplateValue.LOCATION_CODEC.fieldOf("name").xmap(VeilShaderLayer::new, (v0) -> {

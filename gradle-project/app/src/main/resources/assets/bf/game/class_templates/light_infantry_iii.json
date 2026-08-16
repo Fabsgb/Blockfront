@@ -8,6 +8,10 @@
     },
     {
       "weapon": "melee_standard"
+    },
+    {
+      "weapon": "grenade_frag",
+      "count": 2
     }
   ],
   "exp": 5000

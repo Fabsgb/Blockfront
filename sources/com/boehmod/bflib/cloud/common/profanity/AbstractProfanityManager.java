@@ -17,7 +17,7 @@ import java.util.stream.Stream;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/profanity/AbstractProfanityManager.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/profanity/AbstractProfanityManager.class */
 public abstract class AbstractProfanityManager {
     private static final Char2CharOpenHashMap NORMALIZATION_MAP = new Char2CharOpenHashMap();
     private static final int MAX_REPEATED_CHARACTERS = 9;
@@ -73,7 +73,13 @@ public abstract class AbstractProfanityManager {
                 this.isActive = true;
                 log("The profanity filter has been enabled. ('%s' file found)", profanitiesFile.getAbsolutePath());
                 fileReader.close();
-            } finally {
+            } catch (Throwable th) {
+                try {
+                    fileReader.close();
+                } catch (Throwable th2) {
+                    th.addSuppressed(th2);
+                }
+                throw th;
             }
         } catch (IOException e) {
             this.isActive = false;

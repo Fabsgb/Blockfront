@@ -14,17 +14,18 @@ import com.boehmod.bflib.cloud.common.item.types.CloudItemPrestigeCard;
 import com.boehmod.bflib.cloud.common.item.types.CloudItemSticker;
 import com.boehmod.bflib.cloud.common.item.types.CloudItemTrophy;
 import com.boehmod.bflib.cloud.common.player.BoosterType;
-import com.boehmod.blockfront.C0002a;
-import com.boehmod.blockfront.C0529tp;
-import com.boehmod.blockfront.InterfaceC0638xq;
-import com.boehmod.blockfront.dW;
-import com.boehmod.blockfront.rB;
+import com.boehmod.blockfront.C0030a;
+import com.boehmod.blockfront.C0286eh;
+import com.boehmod.blockfront.C0966rY;
+import com.boehmod.blockfront.C1062tN;
+import com.boehmod.blockfront.InterfaceC1274xN;
+import com.boehmod.blockfront.cloud.connection.ModConnection;
 import foundry.veil.impl.client.render.shader.injection.util.ShaderInjectionDefinition;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectRBTreeMap;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/item/CloudItems.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/item/CloudItems.class */
 public class CloudItems {
     public static final String MOD_ID = "bf";
     static final Int2ObjectMap<CloudItem<?>> CLOUD_ITEMS = new Int2ObjectRBTreeMap();
@@ -47,7 +48,7 @@ public class CloudItems {
     public static final CloudItemGun ITEM_GUN_FN_MODEL_1910_CHROMA = new CloudItemGun(307, "FN 1910", new CloudResourceLocation("bf", "gun_fn_model_1910")).setSkin(3.07E-5f).setSuffix("Chroma").setRarity(CloudItemRarity.COAL).setCollection("Alpha").setPatternSkin(SkinPatterns.CHROMA);
     public static final CloudItemGun ITEM_GUN_FN_MODEL_1910_COPPER_DUST = new CloudItemGun(308, "FN 1910", new CloudResourceLocation("bf", "gun_fn_model_1910")).setSkin(3.08E-5f).setSuffix("Copper Dust").setRarity(CloudItemRarity.GOLD).setCollection("Alpha").setPatternSkin(SkinPatterns.COPPER_DUST);
     public static final CloudItemGun ITEM_GUN_FN_MODEL_1910_CASE_HARDENED = new CloudItemGun(309, "FN 1910", new CloudResourceLocation("bf", "gun_fn_model_1910")).setSkin(3.09E-5f).setSuffix("Case Hardened").setRarity(CloudItemRarity.GOLD).setCollection("Alpha").setPatternSkin(SkinPatterns.CASE_HARDENED);
-    public static final CloudItemGun ITEM_GUN_FN_MODEL_1910_CACHEE = new CloudItemGun(dW.f115hl, "FN 1910", new CloudResourceLocation("bf", "gun_fn_model_1910")).setSkin(3.1E-5f).setSuffix("Cachee").setRarity(CloudItemRarity.LAPIS).setCollection("Alpha").setPatternSkin(SkinPatterns.CACHEE);
+    public static final CloudItemGun ITEM_GUN_FN_MODEL_1910_CACHEE = new CloudItemGun(C0286eh.f2251iv, "FN 1910", new CloudResourceLocation("bf", "gun_fn_model_1910")).setSkin(3.1E-5f).setSuffix("Cachee").setRarity(CloudItemRarity.LAPIS).setCollection("Alpha").setPatternSkin(SkinPatterns.CACHEE);
     public static final CloudItemGun ITEM_GUN_FN_MODEL_1910_PLATANEN = new CloudItemGun(311, "FN 1910", new CloudResourceLocation("bf", "gun_fn_model_1910")).setSkin(3.11E-5f).setSuffix("Platanen").setRarity(CloudItemRarity.LAPIS).setCollection("Alpha").setPatternSkin(SkinPatterns.PLATANEN);
     public static final CloudItemGun ITEM_GUN_FN_MODEL_1910_MIMETICO = new CloudItemGun(312, "FN 1910", new CloudResourceLocation("bf", "gun_fn_model_1910")).setSkin(3.12E-5f).setSuffix("Mimetico").setRarity(CloudItemRarity.LAPIS).setCollection("Alpha").setPatternSkin(SkinPatterns.MIMETICO);
     public static final CloudItemGun ITEM_GUN_FN_MODEL_1910_GASCAN = new CloudItemGun(313, "FN 1910", new CloudResourceLocation("bf", "gun_fn_model_1910")).setSkin(3.13E-5f).setSuffix("Gascan").setRarity(CloudItemRarity.IRON).setCollection("Alpha").setPatternSkin(SkinPatterns.GASCAN);
@@ -76,7 +77,7 @@ public class CloudItems {
     public static final CloudItemGun ITEM_GUN_M1_GARAND_HEAT_TREATED = new CloudItemGun(419, "M1 Garand", new CloudResourceLocation("bf", "gun_m1_garand")).setSkin(4.19E-5f).setSuffix("Heat Treated").setRarity(CloudItemRarity.DIAMOND).setCollection("Alpha").setPatternSkin(SkinPatterns.HEAT_TREATED);
     public static final CloudItemGun ITEM_GUN_M1_GARAND_TTSMKK = new CloudItemGun(420, "M1 Garand", new CloudResourceLocation("bf", "gun_m1_garand")).setSkin(4.2E-5f).setSuffix("TTSMKK").setRarity(CloudItemRarity.IRON).setCollection("Alpha").setPatternSkin(SkinPatterns.TTSMKK);
     public static final CloudItemGun ITEM_GUN_M1_GARAND_FROGSKIN = new CloudItemGun(421, "M1 Garand", new CloudResourceLocation("bf", "gun_m1_garand")).setSkin(4.21E-5f).setSuffix("Frogskin").setRarity(CloudItemRarity.IRON).setCollection("Alpha").setPatternSkin(SkinPatterns.FROGSKIN);
-    public static final CloudItemGun ITEM_GUN_M1928A1_THOMPSON = new CloudItemGun(rB.pJ, "M1928a1 Thompson", new CloudResourceLocation("bf", "gun_m1928a1_thompson")).setDefault();
+    public static final CloudItemGun ITEM_GUN_M1928A1_THOMPSON = new CloudItemGun(C0966rY.f5366rI, "M1928a1 Thompson", new CloudResourceLocation("bf", "gun_m1928a1_thompson")).setDefault();
     public static final CloudItemGun ITEM_GUN_M1928A1_THOMPSON_BLACK = new CloudItemGun(501, "M1928a1 Thompson", new CloudResourceLocation("bf", "gun_m1928a1_thompson")).setSkin(5.01E-5f).setSuffix("Black").setRarity(CloudItemRarity.COAL).setCollection("Alpha");
     public static final CloudItemGun ITEM_GUN_M1928A1_THOMPSON_GREEN = new CloudItemGun(502, "M1928a1 Thompson", new CloudResourceLocation("bf", "gun_m1928a1_thompson")).setSkin(5.02E-5f).setSuffix("Green").setRarity(CloudItemRarity.COAL).setCollection("Alpha");
     public static final CloudItemGun ITEM_GUN_M1928A1_THOMPSON_WHITE = new CloudItemGun(503, "M1928a1 Thompson", new CloudResourceLocation("bf", "gun_m1928a1_thompson")).setSkin(5.03E-5f).setSuffix("White").setRarity(CloudItemRarity.IRON).setCollection("Alpha");
@@ -88,7 +89,7 @@ public class CloudItems {
     public static final CloudItemGun ITEM_GUN_M1928A1_THOMPSON_RUST = new CloudItemGun(509, "M1928a1 Thompson", new CloudResourceLocation("bf", "gun_m1928a1_thompson")).setSkin(5.09E-5f).setSuffix("Rust").setRarity(CloudItemRarity.COAL).setCollection("Alpha").setPatternSkin(SkinPatterns.RUST);
     public static final CloudItemGun ITEM_GUN_M1928A1_THOMPSON_CHROMA = new CloudItemGun(510, "M1928a1 Thompson", new CloudResourceLocation("bf", "gun_m1928a1_thompson")).setSkin(5.1E-5f).setSuffix("Chroma").setRarity(CloudItemRarity.COAL).setCollection("Alpha").setPatternSkin(SkinPatterns.CHROMA);
     public static final CloudItemGun ITEM_GUN_M1928A1_THOMPSON_COPPER_DUST = new CloudItemGun(511, "M1928a1 Thompson", new CloudResourceLocation("bf", "gun_m1928a1_thompson")).setSkin(5.11E-5f).setSuffix("Copper Dust").setRarity(CloudItemRarity.GOLD).setCollection("Alpha").setPatternSkin(SkinPatterns.COPPER_DUST);
-    public static final CloudItemGun ITEM_GUN_M1928A1_THOMPSON_CASE_HARDENED = new CloudItemGun(InterfaceC0638xq.tQ, "M1928a1 Thompson", new CloudResourceLocation("bf", "gun_m1928a1_thompson")).setSkin(5.12E-5f).setSuffix("Case Hardened").setRarity(CloudItemRarity.GOLD).setCollection("Alpha").setPatternSkin(SkinPatterns.CASE_HARDENED);
+    public static final CloudItemGun ITEM_GUN_M1928A1_THOMPSON_CASE_HARDENED = new CloudItemGun(InterfaceC1274xN.f6852vU, "M1928a1 Thompson", new CloudResourceLocation("bf", "gun_m1928a1_thompson")).setSkin(5.12E-5f).setSuffix("Case Hardened").setRarity(CloudItemRarity.GOLD).setCollection("Alpha").setPatternSkin(SkinPatterns.CASE_HARDENED);
     public static final CloudItemGun ITEM_GUN_M1928A1_THOMPSON_CACHEE = new CloudItemGun(513, "M1928a1 Thompson", new CloudResourceLocation("bf", "gun_m1928a1_thompson")).setSkin(5.13E-5f).setSuffix("Cachee").setRarity(CloudItemRarity.LAPIS).setCollection("Alpha").setPatternSkin(SkinPatterns.CACHEE);
     public static final CloudItemGun ITEM_GUN_M1928A1_THOMPSON_PLATANEN = new CloudItemGun(514, "M1928a1 Thompson", new CloudResourceLocation("bf", "gun_m1928a1_thompson")).setSkin(5.14E-5f).setSuffix("Platanen").setRarity(CloudItemRarity.LAPIS).setCollection("Alpha").setPatternSkin(SkinPatterns.PLATANEN);
     public static final CloudItemGun ITEM_GUN_M1928A1_THOMPSON_MIMETICO = new CloudItemGun(515, "M1928a1 Thompson", new CloudResourceLocation("bf", "gun_m1928a1_thompson")).setSkin(5.15E-5f).setSuffix("Mimetico").setRarity(CloudItemRarity.LAPIS).setCollection("Alpha").setPatternSkin(SkinPatterns.MIMETICO);
@@ -96,7 +97,7 @@ public class CloudItems {
     public static final CloudItemGun ITEM_GUN_M1928A1_THOMPSON_HEAT_TREATED = new CloudItemGun(517, "M1928a1 Thompson", new CloudResourceLocation("bf", "gun_m1928a1_thompson")).setSkin(5.17E-5f).setSuffix("Heat Treated").setRarity(CloudItemRarity.DIAMOND).setCollection("Alpha").setPatternSkin(SkinPatterns.HEAT_TREATED);
     public static final CloudItemGun ITEM_GUN_M1928A1_THOMPSON_TTSMKK = new CloudItemGun(518, "M1928a1 Thompson", new CloudResourceLocation("bf", "gun_m1928a1_thompson")).setSkin(5.18E-5f).setSuffix("TTSMKK").setRarity(CloudItemRarity.IRON).setCollection("Alpha").setPatternSkin(SkinPatterns.TTSMKK);
     public static final CloudItemGun ITEM_GUN_M1928A1_THOMPSON_FROGSKIN = new CloudItemGun(519, "M1928a1 Thompson", new CloudResourceLocation("bf", "gun_m1928a1_thompson")).setSkin(5.19E-5f).setSuffix("Frogskin").setRarity(CloudItemRarity.IRON).setCollection("Alpha").setPatternSkin(SkinPatterns.FROGSKIN);
-    public static final CloudItemGun ITEM_GUN_BAR = new CloudItemGun(600, "BAR", new CloudResourceLocation("bf", "gun_bar")).setDefault();
+    public static final CloudItemGun ITEM_GUN_BAR = new CloudItemGun(ModConnection.CONNECT_TIME_MAX_TICKS, "BAR", new CloudResourceLocation("bf", "gun_bar")).setDefault();
     public static final CloudItemGun ITEM_GUN_BAR_BLACK = new CloudItemGun(601, "BAR", new CloudResourceLocation("bf", "gun_bar")).setSuffix("Black").setSkin(6.01E-5f).setRarity(CloudItemRarity.COAL).setCollection("Alpha");
     public static final CloudItemGun ITEM_GUN_BAR_GREEN = new CloudItemGun(602, "BAR", new CloudResourceLocation("bf", "gun_bar")).setSuffix("Green").setSkin(6.02E-5f).setRarity(CloudItemRarity.COAL).setCollection("Alpha");
     public static final CloudItemGun ITEM_GUN_BAR_WHITE = new CloudItemGun(603, "BAR", new CloudResourceLocation("bf", "gun_bar")).setSuffix("White").setSkin(6.03E-5f).setRarity(CloudItemRarity.IRON).setCollection("Alpha");
@@ -381,7 +382,7 @@ public class CloudItems {
     public static final CloudItemGun ITEM_GUN_BLYSK_KRUK = new CloudItemGun(2202, "Blyskawica", new CloudResourceLocation("bf", "gun_blyskawica")).setSkin(2.202E-4f).setSuffix("Kruk").setRarity(CloudItemRarity.LAPIS).setCollection("Alpha");
     public static final CloudItemGun ITEM_GUN_BLYSK_SWIECI = new CloudItemGun(2203, "Blyskawica", new CloudResourceLocation("bf", "gun_blyskawica")).setSkin(2.203E-4f).setSuffix("Swieci").setRarity(CloudItemRarity.LAPIS).setCollection("Alpha");
     public static final CloudItemGun ITEM_GUN_DP28 = new CloudItemGun(2300, "DP-28", new CloudResourceLocation("bf", "gun_dp28")).setDefault();
-    public static final CloudItemGun ITEM_GUN_KBK_WZ_29 = new CloudItemGun(C0529tp.rx, "Kbk wz. 29", new CloudResourceLocation("bf", "gun_kbk_wz_29")).setDefault();
+    public static final CloudItemGun ITEM_GUN_KBK_WZ_29 = new CloudItemGun(C1062tN.f5737tA, "Kbk wz. 29", new CloudResourceLocation("bf", "gun_kbk_wz_29")).setDefault();
     public static final CloudItemGun ITEM_GUN_KBK_WZ_29_CENNY = new CloudItemGun(2401, "Kbk wz. 29", new CloudResourceLocation("bf", "gun_kbk_wz_29")).setSkin(2.401E-4f).setSuffix("Cenny").setRarity(CloudItemRarity.GOLD).setCollection("Alpha");
     public static final CloudItemGun ITEM_GUN_KBK_WZ_29_KRUK = new CloudItemGun(2402, "Kbk wz. 29", new CloudResourceLocation("bf", "gun_kbk_wz_29")).setSkin(2.402E-4f).setSuffix("Kruk").setRarity(CloudItemRarity.LAPIS).setCollection("Alpha");
     public static final CloudItemGun ITEM_GUN_KBK_WZ_29_SWIECI = new CloudItemGun(2403, "Kbk wz. 29", new CloudResourceLocation("bf", "gun_kbk_wz_29")).setSkin(2.403E-4f).setSuffix("Swieci").setRarity(CloudItemRarity.LAPIS).setCollection("Alpha");
@@ -663,7 +664,7 @@ public class CloudItems {
 
     @Deprecated
     public static final CloudItemBooster BOOSTER_EMD_5 = (CloudItemBooster) ((CloudItemBooster) ((CloudItemBooster) ((CloudItemBooster) new CloudItemBooster(7007, "x5 Emrld.", new CloudResourceLocation("bf", "booster_item_emeralds_x5"), BoosterType.EMERALDS, 30, 5).setSuffix("30m Boost")).setRarity(CloudItemRarity.DIAMOND)).setCollection("Booster")).setDeprecated();
-    public static final CloudItemCape ITEM_CAPE_BLOCKFRONT = new CloudItemCape(7100, "Cape", new CloudResourceLocation("bf", "cape_item")).setSuffix(C0002a.a).setRarity(CloudItemRarity.GOLD);
+    public static final CloudItemCape ITEM_CAPE_BLOCKFRONT = new CloudItemCape(7100, "Cape", new CloudResourceLocation("bf", "cape_item")).setSuffix(C0030a.f263a).setRarity(CloudItemRarity.GOLD);
     public static final CloudItemCape ITEM_CAPE_BOEHMOD = new CloudItemCape(7101, "Cape", new CloudResourceLocation("bf", "cape_item")).setSuffix("BoehMod").setRarity(CloudItemRarity.GOLD);
     public static final CloudItemCallingCard ITEM_CARD_DEFAULT = new CloudItemCallingCard(7200, "Card", new CloudResourceLocation("bf", "misc_item_card")).setDefault();
     public static final CloudItemCallingCard ITEM_CARD_NATION_GB = new CloudItemCallingCard(7201, "Card", new CloudResourceLocation("bf", "misc_item_card")).setSuffix("GB").setDefault();

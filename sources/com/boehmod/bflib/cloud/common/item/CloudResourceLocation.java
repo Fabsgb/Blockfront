@@ -6,7 +6,7 @@ import io.netty.buffer.ByteBuf;
 import java.util.Objects;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/item/CloudResourceLocation.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/common/item/CloudResourceLocation.class */
 public final class CloudResourceLocation extends Record implements Comparable<CloudResourceLocation> {
     private final String namespace;
     private final String path;
@@ -65,6 +65,7 @@ public final class CloudResourceLocation extends Record implements Comparable<Cl
         return Objects.hash(this.namespace, this.path);
     }
 
+    /* JADX INFO: Thrown type has an unknown type hierarchy: java.lang.MatchException */
     @Override // java.lang.Record
     public boolean equals(Object o) throws MatchException {
         boolean b;

@@ -12,8 +12,6 @@ import net.minecraft.util.Mth;
 import org.apache.logging.log4j.Level;
 import software.bernie.geckolib.GeckoLibConstants;
 import software.bernie.geckolib.animatable.GeoAnimatable;
-import software.bernie.geckolib.animation.Animation;
-import software.bernie.geckolib.animation.RawAnimation;
 import software.bernie.geckolib.animation.keyframe.AnimationPoint;
 import software.bernie.geckolib.animation.keyframe.BoneAnimationQueue;
 import software.bernie.geckolib.animation.state.BoneSnapshot;
@@ -22,7 +20,7 @@ import software.bernie.geckolib.cache.object.GeoBone;
 import software.bernie.geckolib.loading.math.MolangQueries;
 import software.bernie.geckolib.model.GeoModel;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/animation/AnimationProcessor.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/animation/AnimationProcessor.class */
 public class AnimationProcessor<T extends GeoAnimatable> {
     private final GeoModel<T> model;
     private final Map<String, GeoBone> bones = new Object2ObjectOpenHashMap();
@@ -117,10 +115,30 @@ public class AnimationProcessor<T extends GeoAnimatable> {
                 if (saveSnapshot.isRotAnimInProgress()) {
                     saveSnapshot.stopRotAnim(animTime);
                 }
-                double percentageReset = Math.min((animTime - saveSnapshot.getLastResetRotationTick()) / resetTickLength, 1.0d);
-                bone2.setRotX((float) Mth.lerp(percentageReset, saveSnapshot.getRotX(), initialSnapshot2.getRotX()));
-                bone2.setRotY((float) Mth.lerp(percentageReset, saveSnapshot.getRotY(), initialSnapshot2.getRotY()));
-                bone2.setRotZ((float) Mth.lerp(percentageReset, saveSnapshot.getRotZ(), initialSnapshot2.getRotZ()));
+                double percentageReset = resetTickLength == 0.0d ? 1.0d : Math.min((animTime - saveSnapshot.getLastResetRotationTick()) / resetTickLength, 1.0d);
+                float initialRotX = initialSnapshot2.getRotX();
+                float initialRotY = initialSnapshot2.getRotY();
+                float initialRotZ = initialSnapshot2.getRotZ();
+                float lastXRot = saveSnapshot.getRotX();
+                float lastYRot = saveSnapshot.getRotY();
+                float lastZRot = saveSnapshot.getRotZ();
+                if (percentageReset == 0.0d) {
+                    if (lastXRot != initialRotX && isSuspectedCompletedRotation(lastXRot)) {
+                        lastXRot = initialRotX;
+                        percentageReset = 1.0d;
+                    }
+                    if (lastYRot != initialRotY && isSuspectedCompletedRotation(lastYRot)) {
+                        lastYRot = initialRotY;
+                        percentageReset = 1.0d;
+                    }
+                    if (lastZRot != initialRotZ && isSuspectedCompletedRotation(lastZRot)) {
+                        lastZRot = initialRotZ;
+                        percentageReset = 1.0d;
+                    }
+                }
+                bone2.setRotX((float) Mth.lerp(percentageReset, lastXRot, initialRotX));
+                bone2.setRotY((float) Mth.lerp(percentageReset, lastYRot, initialRotY));
+                bone2.setRotZ((float) Mth.lerp(percentageReset, lastZRot, initialRotZ));
                 if (percentageReset >= 1.0d) {
                     saveSnapshot.updateRotation(bone2.getRotX(), bone2.getRotY(), bone2.getRotZ());
                 }
@@ -131,7 +149,7 @@ public class AnimationProcessor<T extends GeoAnimatable> {
                 if (saveSnapshot2.isPosAnimInProgress()) {
                     saveSnapshot2.stopPosAnim(animTime);
                 }
-                double percentageReset2 = Math.min((animTime - saveSnapshot2.getLastResetPositionTick()) / resetTickLength, 1.0d);
+                double percentageReset2 = resetTickLength == 0.0d ? 1.0d : Math.min((animTime - saveSnapshot2.getLastResetPositionTick()) / resetTickLength, 1.0d);
                 bone2.setPosX((float) Mth.lerp(percentageReset2, saveSnapshot2.getOffsetX(), initialSnapshot3.getOffsetX()));
                 bone2.setPosY((float) Mth.lerp(percentageReset2, saveSnapshot2.getOffsetY(), initialSnapshot3.getOffsetY()));
                 bone2.setPosZ((float) Mth.lerp(percentageReset2, saveSnapshot2.getOffsetZ(), initialSnapshot3.getOffsetZ()));
@@ -145,7 +163,7 @@ public class AnimationProcessor<T extends GeoAnimatable> {
                 if (saveSnapshot3.isScaleAnimInProgress()) {
                     saveSnapshot3.stopScaleAnim(animTime);
                 }
-                double percentageReset3 = Math.min((animTime - saveSnapshot3.getLastResetScaleTick()) / resetTickLength, 1.0d);
+                double percentageReset3 = resetTickLength == 0.0d ? 1.0d : Math.min((animTime - saveSnapshot3.getLastResetScaleTick()) / resetTickLength, 1.0d);
                 bone2.setScaleX((float) Mth.lerp(percentageReset3, saveSnapshot3.getScaleX(), initialSnapshot4.getScaleX()));
                 bone2.setScaleY((float) Mth.lerp(percentageReset3, saveSnapshot3.getScaleY(), initialSnapshot4.getScaleY()));
                 bone2.setScaleZ((float) Mth.lerp(percentageReset3, saveSnapshot3.getScaleZ(), initialSnapshot4.getScaleZ()));
@@ -156,6 +174,12 @@ public class AnimationProcessor<T extends GeoAnimatable> {
         }
         resetBoneTransformationMarkers();
         animatableManager.finishFirstTick();
+    }
+
+    private boolean isSuspectedCompletedRotation(float lastRotation) {
+        float rotations = Mth.abs(lastRotation / 6.2831855f);
+        float partialRotation = 1.0f - (rotations - ((int) rotations));
+        return partialRotation == 1.0f || ((double) partialRotation) < 0.026d * ((double) rotations);
     }
 
     private void resetBoneTransformationMarkers() {
@@ -201,7 +225,7 @@ public class AnimationProcessor<T extends GeoAnimatable> {
         this.model.applyMolangQueries(animationState, animTime);
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/animation/AnimationProcessor$QueuedAnimation.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/animation/AnimationProcessor$QueuedAnimation.class */
     public static final class QueuedAnimation extends Record {
         private final Animation animation;
         private final Animation.LoopType loopType;

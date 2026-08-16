@@ -4,16 +4,18 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import software.bernie.geckolib.animatable.GeoAnimatable;
 import software.bernie.geckolib.animation.AnimationController;
 import software.bernie.geckolib.animation.AnimationState;
 import software.bernie.geckolib.animation.PlayState;
 import software.bernie.geckolib.animation.RawAnimation;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/constant/DefaultAnimations.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/constant/DefaultAnimations.class */
 public final class DefaultAnimations {
     public static final RawAnimation ITEM_ON_USE = RawAnimation.begin().thenPlay("item.use");
     public static final RawAnimation IDLE = RawAnimation.begin().thenLoop("misc.idle");
+    public static final RawAnimation IDLE_FLYING = RawAnimation.begin().thenLoop("misc.idle.flying");
     public static final RawAnimation LIVING = RawAnimation.begin().thenLoop("misc.living");
     public static final RawAnimation SPAWN = RawAnimation.begin().thenPlay("misc.spawn");
     public static final RawAnimation DIE = RawAnimation.begin().thenPlay("misc.die");
@@ -29,9 +31,11 @@ public final class DefaultAnimations {
     public static final RawAnimation CRAWL = RawAnimation.begin().thenLoop("move.crawl");
     public static final RawAnimation JUMP = RawAnimation.begin().thenPlay("move.jump");
     public static final RawAnimation SNEAK = RawAnimation.begin().thenLoop("move.sneak");
+    public static final RawAnimation DIVE = RawAnimation.begin().thenPlayAndHold("move.dive");
     public static final RawAnimation ATTACK_CAST = RawAnimation.begin().thenPlay("attack.cast");
     public static final RawAnimation ATTACK_SWING = RawAnimation.begin().thenPlay("attack.swing");
     public static final RawAnimation ATTACK_THROW = RawAnimation.begin().thenPlay("attack.throw");
+    public static final RawAnimation ATTACK_PUNCH = RawAnimation.begin().thenPlay("attack.punch");
     public static final RawAnimation ATTACK_BITE = RawAnimation.begin().thenPlay("attack.bite");
     public static final RawAnimation ATTACK_SLAM = RawAnimation.begin().thenPlay("attack.slam");
     public static final RawAnimation ATTACK_STOMP = RawAnimation.begin().thenPlay("attack.stomp");
@@ -42,6 +46,12 @@ public final class DefaultAnimations {
     public static final RawAnimation ATTACK_CHARGE = RawAnimation.begin().thenPlay("attack.charge");
     public static final RawAnimation ATTACK_CHARGE_END = RawAnimation.begin().thenPlay("attack.charge_end");
     public static final RawAnimation ATTACK_POWERUP = RawAnimation.begin().thenPlay("attack.powerup");
+
+    public static <T extends GeoAnimatable> AnimationController<T> triggerOnlyController(T animatable) {
+        return new AnimationController<>(animatable, "Actions", 0, state -> {
+            return PlayState.STOP;
+        });
+    }
 
     public static <T extends GeoAnimatable> AnimationController<T> basicPredicateController(T animatable, RawAnimation optionA, RawAnimation optionB, BiFunction<T, AnimationState<T>, Boolean> predicate) {
         return new AnimationController<>(animatable, "Generic", 10, state -> {
@@ -129,6 +139,15 @@ public final class DefaultAnimations {
     public static <T extends GeoAnimatable> AnimationController<T> genericFlyIdleController(T animatable) {
         return new AnimationController<>(animatable, "Fly/Idle", 0, state -> {
             return state.setAndContinue(state.isMoving() ? FLY : IDLE);
+        });
+    }
+
+    public static <T extends Mob & GeoAnimatable> AnimationController<T> genericWalkFlyIdleController(T entity) {
+        return new AnimationController<>(entity, "Walk/Fly/Idle", 0, state -> {
+            if (entity.onGround() || (!entity.isNoAi() && entity.getBlockPosBelowThatAffectsMyMovement().getY() + 1 == entity.getY())) {
+                return state.setAndContinue(state.isMoving() ? WALK : IDLE);
+            }
+            return state.setAndContinue(state.isMoving() ? FLY : IDLE_FLYING);
         });
     }
 

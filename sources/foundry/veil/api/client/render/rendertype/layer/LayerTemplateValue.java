@@ -12,7 +12,7 @@ import java.util.function.Function;
 import net.minecraft.ResourceLocationException;
 import net.minecraft.resources.ResourceLocation;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/rendertype/layer/LayerTemplateValue.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/rendertype/layer/LayerTemplateValue.class */
 public interface LayerTemplateValue<T> {
     public static final Codec<LayerTemplateValue<String>> STRING_CODEC = Codec.STRING.xmap(name -> {
         if (name.contains("%")) {
@@ -72,7 +72,7 @@ public interface LayerTemplateValue<T> {
         return new RawValue(r5.name().toLowerCase(Locale.ROOT), r5);
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/rendertype/layer/LayerTemplateValue$RawValue.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/rendertype/layer/LayerTemplateValue$RawValue.class */
     public static final class RawValue<T> extends Record implements LayerTemplateValue<T> {
         private final String rawValue;
         private final T value;
@@ -112,7 +112,7 @@ public interface LayerTemplateValue<T> {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/rendertype/layer/LayerTemplateValue$FormattedValue.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/rendertype/layer/LayerTemplateValue$FormattedValue.class */
     public static final class FormattedValue<T> extends Record implements LayerTemplateValue<T> {
         private final String rawValue;
         private final Function<String, T> decoder;

@@ -11,13 +11,13 @@ import net.minecraft.core.Direction;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3fc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/flare/data/model/ShellElement.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/flare/data/model/ShellElement.class */
 public final class ShellElement {
     public static final Codec<ShellElement> CODEC = RecordCodecBuilder.create(instance -> {
         return instance.group(CodecUtil.VECTOR3FC_CODEC.fieldOf("from").forGetter((v0) -> {
             return v0.from();
         }), CodecUtil.VECTOR3FC_CODEC.fieldOf("to").forGetter((v0) -> {
-            return v0.m7990to();
+            return v0.m8341to();
         }), ShellElementRotation.CODEC.optionalFieldOf("rotation").forGetter(element -> {
             return Optional.ofNullable(element.rotation);
         }), ShellElementFace.FULL_CODEC.fieldOf("faces").forGetter((v0) -> {
@@ -30,7 +30,7 @@ public final class ShellElement {
     private final Vector3fc from;
 
     /* JADX INFO: renamed from: to */
-    private final Vector3fc f8757to;
+    private final Vector3fc f9143to;
 
     @Nullable
     private final ShellElementRotation rotation;
@@ -38,7 +38,7 @@ public final class ShellElement {
 
     public ShellElement(Vector3fc from, Vector3fc to, @Nullable ShellElementRotation rotation, Map<Direction, ShellElementFace> faces) {
         this.from = from;
-        this.f8757to = to;
+        this.f9143to = to;
         this.rotation = rotation;
         this.faces = Map.copyOf(faces);
     }
@@ -48,8 +48,8 @@ public final class ShellElement {
     }
 
     /* JADX INFO: renamed from: to */
-    public Vector3fc m7990to() {
-        return this.f8757to;
+    public Vector3fc m8341to() {
+        return this.f9143to;
     }
 
     @Nullable

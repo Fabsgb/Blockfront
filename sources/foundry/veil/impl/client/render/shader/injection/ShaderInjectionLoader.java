@@ -20,7 +20,7 @@ import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
 import org.jetbrains.annotations.ApiStatus;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/shader/injection/ShaderInjectionLoader.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/shader/injection/ShaderInjectionLoader.class */
 @ApiStatus.Internal
 public final class ShaderInjectionLoader {
     public static final FileToIdConverter INJECTION_LISTER = new FileToIdConverter("pinwheel/shader_injection", ".json");
@@ -80,7 +80,7 @@ public final class ShaderInjectionLoader {
         return new LoadedPatches(byTarget);
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/shader/injection/ShaderInjectionLoader$LoadedPatches.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/shader/injection/ShaderInjectionLoader$LoadedPatches.class */
     public static final class LoadedPatches extends Record {
         private final Map<ResourceLocation, List<LoadedPatch>> byTarget;
 
@@ -108,7 +108,7 @@ public final class ShaderInjectionLoader {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/shader/injection/ShaderInjectionLoader$LoadedPatch.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/shader/injection/ShaderInjectionLoader$LoadedPatch.class */
     public static final class LoadedPatch extends Record {
         private final ResourceLocation resourceLocation;
         private final ShaderInjectionDefinition definition;

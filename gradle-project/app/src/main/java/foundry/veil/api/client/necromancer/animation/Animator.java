@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/necromancer/animation/Animator.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/necromancer/animation/Animator.class */
 public abstract class Animator<P extends SkeletonParent<?, ?>, S extends Skeleton> {
     protected final P parent;
     protected final S skeleton;
@@ -68,7 +68,7 @@ public abstract class Animator<P extends SkeletonParent<?, ?>, S extends Skeleto
     public void animatePostConstraints() {
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/necromancer/animation/Animator$ConstraintEntry.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/necromancer/animation/Animator$ConstraintEntry.class */
     static final class ConstraintEntry extends Record {
         private final Constraint constraint;
         private final int priority;
@@ -102,7 +102,7 @@ public abstract class Animator<P extends SkeletonParent<?, ?>, S extends Skeleto
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/necromancer/animation/Animator$AnimationEntry.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/necromancer/animation/Animator$AnimationEntry.class */
     public static class AnimationEntry<P extends SkeletonParent<?, ?>, S extends Skeleton> {
         protected final Animation<P, S> animation;
         protected final int priority;
@@ -138,7 +138,7 @@ public abstract class Animator<P extends SkeletonParent<?, ?>, S extends Skeleto
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/necromancer/animation/Animator$TimedAnimationEntry.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/necromancer/animation/Animator$TimedAnimationEntry.class */
     public static class TimedAnimationEntry<P extends SkeletonParent<?, ?>, T extends Skeleton> extends AnimationEntry<P, T> {
         int lengthInTicks;
         boolean rewinding;

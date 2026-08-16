@@ -13,7 +13,7 @@ import org.joml.Vector3fc;
 import org.joml.Vector4f;
 import org.joml.Vector4fc;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/necromancer/Bone.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/necromancer/Bone.class */
 public class Bone {
 
     @Nullable
@@ -136,8 +136,8 @@ public class Bone {
     }
 
     /* JADX INFO: renamed from: foundry.veil.api.client.necromancer.Bone$1 */
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/necromancer/Bone$1.class */
-    static /* synthetic */ class C13091 {
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/necromancer/Bone$1.class */
+    static /* synthetic */ class C13351 {
         static final /* synthetic */ int[] $SwitchMap$net$minecraft$core$Direction$Axis = new int[Direction.Axis.values().length];
 
         static {
@@ -157,7 +157,7 @@ public class Bone {
     }
 
     public Bone rotate(float angle, Direction.Axis axis) {
-        switch (C13091.$SwitchMap$net$minecraft$core$Direction$Axis[axis.ordinal()]) {
+        switch (C13351.$SwitchMap$net$minecraft$core$Direction$Axis[axis.ordinal()]) {
             case 1:
                 this.rotation.rotateX(angle);
                 break;
@@ -172,7 +172,7 @@ public class Bone {
     }
 
     public Bone rotateDeg(float angle, Direction.Axis axis) {
-        switch (C13091.$SwitchMap$net$minecraft$core$Direction$Axis[axis.ordinal()]) {
+        switch (C13351.$SwitchMap$net$minecraft$core$Direction$Axis[axis.ordinal()]) {
             case 1:
                 this.rotation.rotateX(angle * 0.017453292f);
                 break;

@@ -10,7 +10,7 @@ import foundry.veil.api.quasar.emitters.module.force.ScaleForceModule;
 import foundry.veil.api.quasar.particle.ParticleModuleSet;
 import imgui.ImGui;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/data/module/force/DragForceData.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/data/module/force/DragForceData.class */
 public final class DragForceData implements ParticleModuleData, EditorAttributeProvider {
     public static final MapCodec<DragForceData> CODEC = Codec.DOUBLE.fieldOf("strength").xmap((v1) -> {
         return new DragForceData(v1);

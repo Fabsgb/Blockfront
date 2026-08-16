@@ -13,14 +13,14 @@ import gg.moonflower.molangcompiler.api.object.MolangObject;
 import java.util.Collection;
 import java.util.Objects;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/molang/MolangExpressionCodec.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/molang/MolangExpressionCodec.class */
 public final class MolangExpressionCodec {
     public static final Codec<MolangExpression> CODEC = new Impl();
 
     private MolangExpressionCodec() {
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/molang/MolangExpressionCodec$Impl.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/molang/MolangExpressionCodec$Impl.class */
     private static class Impl implements Codec<MolangExpression> {
         private static final MolangEnvironment ENCODE_ENVIRONMENT = new EncodeEnvironment();
 
@@ -42,11 +42,11 @@ public final class MolangExpressionCodec {
         public <T> DataResult<Pair<MolangExpression, T>> decode(DynamicOps<T> ops, T input) {
             DataResult<Number> numberValue = ops.getNumberValue(input);
             if (numberValue.result().isPresent()) {
-                return DataResult.success(Pair.of(MolangExpression.of(((Number) numberValue.result().get()).floatValue()), input));
+                return DataResult.success(Pair.of(MolangExpression.m8349of(((Number) numberValue.result().get()).floatValue()), input));
             }
             DataResult<Boolean> booleanValue = ops.getBooleanValue(input);
             if (booleanValue.result().isPresent()) {
-                return DataResult.success(Pair.of(MolangExpression.of(((Boolean) booleanValue.result().get()).booleanValue()), input));
+                return DataResult.success(Pair.of(MolangExpression.m8350of(((Boolean) booleanValue.result().get()).booleanValue()), input));
             }
             DataResult<String> stringValue = ops.getStringValue(input);
             if (stringValue.result().isPresent()) {
@@ -63,7 +63,7 @@ public final class MolangExpressionCodec {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/molang/MolangExpressionCodec$EncodeEnvironment.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/molang/MolangExpressionCodec$EncodeEnvironment.class */
     private static class EncodeEnvironment implements MolangEnvironment {
         private EncodeEnvironment() {
         }

@@ -22,7 +22,7 @@ import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/flare/modifier/PropertyModifier.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/flare/modifier/PropertyModifier.class */
 public abstract class PropertyModifier<T> {
     private final PropertyModifierRegistry.PropertyModifierType<T, ?> type;
     private final String name;
@@ -99,6 +99,7 @@ public abstract class PropertyModifier<T> {
         return (PropertyModifierMode) expression.getSecond();
     }
 
+    /* JADX INFO: Access modifiers changed from: private */
     public static MapCodec<? extends Pair<Optional<List<MolangExpression>>, PropertyModifierMode>> pairCodecFromMode(PropertyModifierMode mode, int size) {
         if (mode == PropertyModifierMode.MOLANG) {
             return Codec.mapPair(MolangExpressionCodec.CODEC.listOf(size, size).optionalFieldOf("molang"), MapCodec.unit(mode));
@@ -157,7 +158,7 @@ public abstract class PropertyModifier<T> {
         });
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/flare/modifier/PropertyModifier$PropertyModifierMode.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/flare/modifier/PropertyModifier$PropertyModifierMode.class */
     public enum PropertyModifierMode implements StringRepresentable {
         REPLACE("replace"),
         ADD("add"),

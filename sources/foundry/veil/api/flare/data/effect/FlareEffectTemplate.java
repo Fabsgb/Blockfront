@@ -15,7 +15,7 @@ import java.util.Map;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/flare/data/effect/FlareEffectTemplate.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/flare/data/effect/FlareEffectTemplate.class */
 public final class FlareEffectTemplate extends Record {
     private final FlareEffectLayer[] effectLayers;
     private final FlareEffectLayer[] activeEffectLayers;

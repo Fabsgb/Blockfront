@@ -1,6 +1,6 @@
 package foundry.veil.api.client.render.post;
 
-import com.boehmod.blockfront.InterfaceC1294xq;
+import com.boehmod.blockfront.InterfaceC1274xN;
 import com.google.common.collect.Iterables;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
@@ -18,7 +18,6 @@ import foundry.veil.api.client.render.ext.VeilDebug;
 import foundry.veil.api.client.render.framebuffer.AdvancedFbo;
 import foundry.veil.api.client.render.framebuffer.FramebufferStack;
 import foundry.veil.api.client.render.framebuffer.VeilFramebuffers;
-import foundry.veil.api.client.render.post.PostPipeline;
 import foundry.veil.api.client.render.post.stage.CompositePostPipeline;
 import foundry.veil.api.client.render.profiler.RenderProfilerCounter;
 import foundry.veil.api.client.render.profiler.VeilRenderProfiler;
@@ -51,7 +50,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.lwjgl.system.NativeResource;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/post/PostProcessingManager.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/post/PostProcessingManager.class */
 public class PostProcessingManager extends CodecReloadListener<CompositePostPipeline> implements NativeResource {
     private static final Comparator<ProfileEntry> PIPELINE_SORTER = Comparator.comparingInt((v0) -> {
         return v0.getPriority();
@@ -186,7 +185,7 @@ public class PostProcessingManager extends CodecReloadListener<CompositePostPipe
                         pipeline.apply(this.context);
                         clearPipeline();
                         if (postFramebuffer != null) {
-                            postFramebuffer.resolveToRenderTarget(Minecraft.getInstance().getMainRenderTarget(), InterfaceC1294xq.f8660tV, 9728);
+                            postFramebuffer.resolveToRenderTarget(Minecraft.getInstance().getMainRenderTarget(), InterfaceC1274xN.f6857vZ, 9728);
                         }
                     } catch (Exception e) {
                         Veil.LOGGER.error("Error running pipeline {}", id, e);
@@ -228,12 +227,12 @@ public class PostProcessingManager extends CodecReloadListener<CompositePostPipe
         this.context.end();
         AdvancedFbo postFramebuffer = resolvePost ? renderer.getFramebufferManager().getFramebuffer(VeilFramebuffers.POST) : null;
         if (postFramebuffer != null) {
-            postFramebuffer.resolveToRenderTarget(Minecraft.getInstance().getMainRenderTarget(), InterfaceC1294xq.f8660tV, 9728);
+            postFramebuffer.resolveToRenderTarget(Minecraft.getInstance().getMainRenderTarget(), InterfaceC1274xN.f6857vZ, 9728);
         }
     }
 
     public static void resolvePost(@Nullable AdvancedFbo framebuffer) {
-        resolvePost(framebuffer, InterfaceC1294xq.f8660tV);
+        resolvePost(framebuffer, InterfaceC1274xN.f6857vZ);
     }
 
     public static void resolvePost(@Nullable AdvancedFbo framebuffer, int mask) {
@@ -268,10 +267,11 @@ public class PostProcessingManager extends CodecReloadListener<CompositePostPipe
         }
     }
 
+    /* JADX INFO: Access modifiers changed from: protected */
     @Override // foundry.veil.api.CodecReloadListener
     @NotNull
     /* JADX INFO: renamed from: prepare */
-    public Map<ResourceLocation, CompositePostPipeline> mo8909prepare(@NotNull ResourceManager resourceManager, @NotNull ProfilerFiller profilerFiller) {
+    public Map<ResourceLocation, CompositePostPipeline> mo9291prepare(@NotNull ResourceManager resourceManager, @NotNull ProfilerFiller profilerFiller) {
         Map<ResourceLocation, CompositePostPipeline> data = new HashMap<>();
         Map<ResourceLocation, List<Resource>> resources = this.converter.listMatchingResourceStacks(resourceManager);
         for (Map.Entry<ResourceLocation, List<Resource>> entry : resources.entrySet()) {
@@ -300,16 +300,10 @@ public class PostProcessingManager extends CodecReloadListener<CompositePostPipe
                         pipelines.sort(Comparator.comparingInt((v0) -> {
                             return v0.getPriority();
                         }));
-                        int i = 0;
-                        while (true) {
-                            if (i >= pipelines.size()) {
-                                break;
-                            }
+                        for (int i = 0; i < pipelines.size(); i++) {
                             CompositePostPipeline pipeline = pipelines.get(i);
                             dynamicBuffers |= pipeline.getDynamicBuffersMask();
-                            if (!pipeline.isReplace()) {
-                                i++;
-                            } else {
+                            if (pipeline.isReplace()) {
                                 pipelines = pipelines.subList(0, i + 1);
                                 break;
                             }
@@ -324,6 +318,7 @@ public class PostProcessingManager extends CodecReloadListener<CompositePostPipe
         return data;
     }
 
+    /* JADX INFO: Access modifiers changed from: protected */
     public void apply(@NotNull Map<ResourceLocation, CompositePostPipeline> data, @NotNull ResourceManager resourceManager, @NotNull ProfilerFiller profilerFiller) {
         free();
         this.pipelines.putAll(data);
@@ -354,7 +349,7 @@ public class PostProcessingManager extends CodecReloadListener<CompositePostPipe
         return this.activePipelinesView;
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/post/PostProcessingManager$ProfileEntry.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/post/PostProcessingManager$ProfileEntry.class */
     public static class ProfileEntry {
         private final ResourceLocation pipeline;
         private int priority;

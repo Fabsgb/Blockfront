@@ -1,12 +1,11 @@
 package de.jcm.discordgamesdk;
 
-import de.jcm.discordgamesdk.Core;
 import de.jcm.discordgamesdk.impl.Command;
 import de.jcm.discordgamesdk.user.DiscordUser;
 import de.jcm.discordgamesdk.user.PremiumType;
 import java.util.function.BiConsumer;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/UserManager.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/UserManager.class */
 public class UserManager {
     private final Core.CorePrivate core;
     public static final int USER_FLAG_PARTNER = 2;

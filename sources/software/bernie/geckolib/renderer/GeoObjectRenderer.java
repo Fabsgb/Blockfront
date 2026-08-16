@@ -22,7 +22,7 @@ import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
 import software.bernie.geckolib.renderer.layer.GeoRenderLayersContainer;
 import software.bernie.geckolib.util.RenderUtil;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/renderer/GeoObjectRenderer.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/renderer/GeoObjectRenderer.class */
 public class GeoObjectRenderer<T extends GeoAnimatable> implements GeoRenderer<T> {
     protected final GeoModel<T> model;
     protected T animatable;
@@ -43,7 +43,7 @@ public class GeoObjectRenderer<T extends GeoAnimatable> implements GeoRenderer<T
 
     @Override // software.bernie.geckolib.renderer.GeoRenderer
     /* JADX INFO: renamed from: getAnimatable */
-    public T mo9316getAnimatable() {
+    public T mo9710getAnimatable() {
         return this.animatable;
     }
 

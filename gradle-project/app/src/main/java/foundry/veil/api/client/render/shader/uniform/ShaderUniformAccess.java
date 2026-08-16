@@ -24,7 +24,7 @@ import org.joml.Vector4dc;
 import org.joml.Vector4fc;
 import org.joml.Vector4ic;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/shader/uniform/ShaderUniformAccess.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/shader/uniform/ShaderUniformAccess.class */
 public interface ShaderUniformAccess {
     public static final ShaderUniformAccess EMPTY = EmptyShaderUniformAccess.INSTANCE;
 
@@ -120,7 +120,8 @@ public interface ShaderUniformAccess {
 
     void setMatrix4x3(Matrix4x3dc matrix4x3dc, boolean z);
 
-    static ShaderUniformAccess of(ShaderUniformAccess... accesses) {
+    /* JADX INFO: renamed from: of */
+    static ShaderUniformAccess m8340of(ShaderUniformAccess... accesses) {
         if (accesses.length == 0) {
             return EMPTY;
         }

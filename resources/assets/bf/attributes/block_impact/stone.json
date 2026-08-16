@@ -3,9 +3,12 @@
   "impactDebrisSound": "bf:item.gun.bullet.impact.stone.debris",
   "explosionDebrisSound": "bf:ambient.explosion.debris.rock",
   "hardMaterial": true,
-  "displayImpactEffects": true,
+  "displayBlockBreakParticles": true,
   "displayBulletHole": true,
   "directionalImpactParticles": [
-    { "count": 1, "particleType": "bf:bullet_impact_smoke" }
+    {
+      "count": 1,
+      "particleType": "bf:bullet_impact_smoke"
+    }
   ]
 }

@@ -1,5 +1,6 @@
 {
   "impactSound": "bf:item.gun.bullet.impact.glass",
   "impactDebrisSound": "bf:item.gun.bullet.impact.glass.debris",
+  "impactDebrisLateSound": "bf:item.gun.bullet.impact.glass.debris.late",
   "explosionDebrisSound": "bf:ambient.explosion.debris.glass"
 }

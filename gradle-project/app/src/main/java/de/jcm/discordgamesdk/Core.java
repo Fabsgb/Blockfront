@@ -29,7 +29,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/Core.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/Core.class */
 public class Core implements AutoCloseable {
     public static final Consumer<Result> DEFAULT_CALLBACK = result -> {
         if (result != Result.OK) {
@@ -97,7 +97,7 @@ public class Core implements AutoCloseable {
         this.suppressExceptions = (this.createParams.flags & 2) != 0;
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/Core$CorePrivate.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/Core$CorePrivate.class */
     public class CorePrivate {
         public DiscordUser currentUser;
         private static final DiscordEventAdapter NULL_ADAPTER = new DiscordEventAdapter() { // from class: de.jcm.discordgamesdk.Core.CorePrivate.1
@@ -196,7 +196,7 @@ public class Core implements AutoCloseable {
         this.corePrivate.log(LogLevel.VERBOSE, "Sent string \"" + message + "\" at state " + this.state);
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/Core$Res.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/discord-game-sdk4j-08b2bf45a6db310fd54ef0b72bb86ca73a770895.jar:de/jcm/discordgamesdk/Core$Res.class */
     private static class Res {
         public ConnectionState result;
         public String data;

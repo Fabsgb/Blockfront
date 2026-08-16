@@ -1,23 +1,37 @@
 package foundry.veil.api.client.render.light.renderer;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.BufferBuilder;
+import com.mojang.blaze3d.vertex.ByteBufferBuilder;
 import com.mojang.blaze3d.vertex.MeshData;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.blaze3d.vertex.VertexSorting;
+import foundry.veil.Veil;
 import foundry.veil.api.client.render.CullFrustum;
+import foundry.veil.api.client.render.MatrixStack;
+import foundry.veil.api.client.render.VeilRenderBridge;
+import foundry.veil.api.client.render.VeilRenderSystem;
 import foundry.veil.api.client.render.light.InstancedLightData;
+import foundry.veil.api.client.render.light.LightGuideProvider;
 import foundry.veil.api.client.render.light.data.LightData;
 import foundry.veil.api.client.render.vertex.VertexArray;
 import foundry.veil.api.client.render.vertex.VertexArrayBuilder;
+import foundry.veil.impl.client.editor.LightInspector;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
+import net.minecraft.client.Camera;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderType;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Matrix4fStack;
 import org.lwjgl.opengl.GL15C;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.MemoryUtil;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/light/renderer/InstancedLightRenderer.class */
-public abstract class InstancedLightRenderer<T extends LightData & InstancedLightData> implements LightTypeRenderer<T> {
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/light/renderer/InstancedLightRenderer.class */
+public abstract class InstancedLightRenderer<T extends LightData & InstancedLightData> implements InscatteringLightRenderer<T> {
     private static final int MAX_UPLOADS = 400;
     protected final int lightSize;
     protected int maxLights = 0;
@@ -34,6 +48,9 @@ public abstract class InstancedLightRenderer<T extends LightData & InstancedLigh
 
     @Nullable
     protected abstract RenderType getRenderType(List<? extends LightRenderHandle<T>> list);
+
+    @Nullable
+    protected abstract RenderType getInscatteringRenderType(List<? extends LightRenderHandle<T>> list);
 
     public InstancedLightRenderer(int lightSize) {
         this.lightSize = lightSize;
@@ -151,12 +168,7 @@ public abstract class InstancedLightRenderer<T extends LightData & InstancedLigh
         }
     }
 
-    @Override // foundry.veil.api.client.render.light.renderer.LightTypeRenderer
-    public void renderLights(LightRenderer lightRenderer) {
-        RenderType renderType;
-        if (this.visibleLights.isEmpty() || (renderType = getRenderType(this.visibleLights)) == null) {
-            return;
-        }
+    private void updateInstancedData() {
         RenderSystem.glBindBuffer(34962, this.instancedVbo);
         boolean resized = false;
         if (this.visibleLights.size() > this.maxLights) {
@@ -176,6 +188,60 @@ public abstract class InstancedLightRenderer<T extends LightData & InstancedLigh
             updateDirtyLights();
         }
         this.vertexArray.bind();
+    }
+
+    @Override // foundry.veil.api.client.render.light.renderer.LightTypeRenderer
+    public void renderLights(LightRenderer lightRenderer) {
+        RenderType renderType;
+        if (this.visibleLights.isEmpty() || (renderType = getRenderType(this.visibleLights)) == null) {
+            return;
+        }
+        RenderSystem.glBindBuffer(34962, this.instancedVbo);
+        updateInstancedData();
+        this.vertexArray.bind();
+        this.vertexArray.drawInstancedWithRenderType(renderType, this.visibleLights.size());
+        if (Veil.IMGUIMC) {
+            RenderSystem.setProjectionMatrix(VeilRenderSystem.renderer().getCameraMatrices().getProjectionMatrix(), VertexSorting.DISTANCE_TO_ORIGIN);
+            Matrix4fStack stack = RenderSystem.getModelViewStack();
+            stack.pushMatrix();
+            stack.set(VeilRenderSystem.renderer().getCameraMatrices().getViewMatrix());
+            RenderSystem.applyModelViewMatrix();
+            Camera camera = Minecraft.getInstance().gameRenderer.getMainCamera();
+            MatrixStack matrixStack = VeilRenderBridge.create(new PoseStack());
+            matrixStack.matrixPush();
+            matrixStack.translate(-camera.getPosition().x, -camera.getPosition().y, -camera.getPosition().z);
+            for (InstancedLightRenderer<T>.LightHandle handle : this.lights) {
+                if (VeilRenderSystem.renderer().getEditorManager().isVisible(i -> {
+                    return i instanceof LightInspector;
+                }) && (handle.getLightData() instanceof LightGuideProvider)) {
+                    RenderType debugRenderType = RenderType.debugLineStrip(1.0d);
+                    ByteBufferBuilder bytebufferbuilder = new ByteBufferBuilder(debugRenderType.bufferSize());
+                    VertexConsumer bufferBuilder = new BufferBuilder(bytebufferbuilder, debugRenderType.mode(), debugRenderType.format());
+                    ((LightGuideProvider) handle.getLightData()).renderLightGuide(matrixStack, bufferBuilder);
+                    MeshData meshData = bufferBuilder.build();
+                    if (meshData != null) {
+                        if (renderType.sortOnUpload()) {
+                            ByteBufferBuilder sortBufferBuilder = new ByteBufferBuilder(renderType.bufferSize());
+                            meshData.sortQuads(sortBufferBuilder, RenderSystem.getVertexSorting());
+                        }
+                        debugRenderType.draw(meshData);
+                    }
+                }
+            }
+            matrixStack.matrixPop();
+            stack.popMatrix();
+            RenderSystem.applyModelViewMatrix();
+        }
+    }
+
+    @Override // foundry.veil.api.client.render.light.renderer.InscatteringLightRenderer
+    public void renderLightInscattering(LightRenderer lightRenderer) {
+        RenderType renderType;
+        if (this.visibleLights.isEmpty() || (renderType = getInscatteringRenderType(this.visibleLights)) == null) {
+            return;
+        }
+        RenderSystem.glBindBuffer(34962, this.instancedVbo);
+        this.vertexArray.bind();
         this.vertexArray.drawInstancedWithRenderType(renderType, this.visibleLights.size());
     }
 
@@ -194,7 +260,7 @@ public abstract class InstancedLightRenderer<T extends LightData & InstancedLigh
         this.freed = true;
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/light/renderer/InstancedLightRenderer$LightHandle.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/light/renderer/InstancedLightRenderer$LightHandle.class */
     private class LightHandle implements LightRenderHandle<T> {
         private final T data;
         private long uploadedRevision;

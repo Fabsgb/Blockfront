@@ -13,7 +13,7 @@ import java.util.Optional;
 import net.minecraft.Util;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/loading/math/Operator.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/loading/math/Operator.class */
 public final class Operator extends Record implements Comparable<Operator> {
     private final String symbol;
     private final int precedence;
@@ -42,16 +42,22 @@ public final class Operator extends Record implements Comparable<Operator> {
     public static final Operator AND = register("&&", 5, (a, b) -> {
         return (a == 0.0d || b == 0.0d) ? 0.0d : 1.0d;
     });
-    public static final Operator OR = register("||", 5, (a, b) -> {
+
+    /* JADX INFO: renamed from: OR */
+    public static final Operator f9200OR = register("||", 5, (a, b) -> {
         return (a == 0.0d && b == 0.0d) ? 0.0d : 1.0d;
     });
-    public static final Operator LT = register("<", 5, (a, b) -> {
+
+    /* JADX INFO: renamed from: LT */
+    public static final Operator f9201LT = register("<", 5, (a, b) -> {
         return a < b ? 1.0d : 0.0d;
     });
     public static final Operator LTE = register("<=", 5, (a, b) -> {
         return a <= b ? 1.0d : 0.0d;
     });
-    public static final Operator GT = register(">", 5, (a, b) -> {
+
+    /* JADX INFO: renamed from: GT */
+    public static final Operator f9202GT = register(">", 5, (a, b) -> {
         return a > b ? 1.0d : 0.0d;
     });
     public static final Operator GTE = register(">=", 5, (a, b) -> {
@@ -67,7 +73,7 @@ public final class Operator extends Record implements Comparable<Operator> {
         return 0.0d;
     });
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/loading/math/Operator$Operation.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/loading/math/Operator$Operation.class */
     @FunctionalInterface
     public interface Operation {
         double compute(double d, double d2);

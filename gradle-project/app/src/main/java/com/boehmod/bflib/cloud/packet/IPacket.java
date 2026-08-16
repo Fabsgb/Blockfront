@@ -9,13 +9,13 @@ import com.boehmod.bflib.cloud.common.player.status.PublicPlayerStatus;
 import com.boehmod.bflib.cloud.common.profanity.Profanity;
 import com.boehmod.bflib.exceptions.InvalidEnumReadException;
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufUtil;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
 import it.unimi.dsi.fastutil.ints.IntListIterator;
 import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import it.unimi.dsi.fastutil.objects.ObjectList;
 import it.unimi.dsi.fastutil.objects.ObjectListIterator;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
@@ -23,6 +23,7 @@ import it.unimi.dsi.fastutil.objects.ObjectSet;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
+import java.util.Collection;
 import java.util.EnumSet;
 import java.util.Iterator;
 import java.util.List;
@@ -32,9 +33,22 @@ import java.util.UUID;
 import javax.annotation.Nullable;
 import org.jetbrains.annotations.NotNull;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/IPacket.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/com.boehmod.blockfront.BlockFrontLibrary-6.0.2.jar:com/boehmod/bflib/cloud/packet/IPacket.class */
 public interface IPacket {
-    public static final int MAX_BYTE_ARRAY_SIZE = 10485760;
+    public static final int MAX_BYTE_ARRAY_SIZE = 1048576;
+    public static final int MAX_PRESIZE = 1024;
+    public static final ClassValue<Enum<?>[]> ENUM_CONSTANTS = new ClassValue<Enum<?>[]>() { // from class: com.boehmod.bflib.cloud.packet.IPacket.1
+        @Override // java.lang.ClassValue
+        protected /* bridge */ /* synthetic */ Enum<?>[] computeValue(@NotNull Class cls) {
+            return computeValue((Class<?>) cls);
+        }
+
+        /* JADX WARN: Can't rename method to resolve collision */
+        @Override // java.lang.ClassValue
+        protected Enum<?>[] computeValue(@NotNull Class<?> type) {
+            return (Enum[]) type.getEnumConstants();
+        }
+    };
 
     void writePacketToBuffer(@NotNull ByteBuf byteBuf) throws IOException;
 
@@ -43,22 +57,13 @@ public interface IPacket {
 
     @NotNull
     static Map<UUID, PublicPlayerStatus> readStatusMap(@NotNull ByteBuf byteBuffer) throws IOException {
-        int size = readSize(byteBuffer);
-        Object2ObjectOpenHashMap object2ObjectOpenHashMap = new Object2ObjectOpenHashMap(size);
-        for (int i = 0; i < size; i++) {
-            UUID playerUUID = readUUID(byteBuffer);
-            PublicPlayerStatus status = new PublicPlayerStatus(byteBuffer);
-            object2ObjectOpenHashMap.put(playerUUID, status);
-        }
-        return object2ObjectOpenHashMap;
+        return readMap(byteBuffer, IPacket::readUUID, PublicPlayerStatus::new);
     }
 
     static void writeStatusMap(@NotNull ByteBuf byteBuffer, @NotNull Map<UUID, PublicPlayerStatus> statusMap) throws IOException {
-        byteBuffer.writeInt(statusMap.size());
-        for (Map.Entry<UUID, PublicPlayerStatus> entry : statusMap.entrySet()) {
-            writeUUID(byteBuffer, entry.getKey());
-            entry.getValue().encode(byteBuffer);
-        }
+        writeMap(byteBuffer, statusMap, IPacket::writeUUID, (buffer, status) -> {
+            status.encode(buffer);
+        });
     }
 
     static void writeBoolean(@NotNull ByteBuf byteBuffer, boolean value) {
@@ -87,9 +92,73 @@ public interface IPacket {
         return size;
     }
 
+    static int presize(int size) {
+        return Math.min(Math.max(size, 0), 1024);
+    }
+
+    @NotNull
+    static <T> ObjectList<T> readList(@NotNull ByteBuf byteBuffer, @NotNull ByteBufReader<T> reader) throws IOException {
+        int size = readSize(byteBuffer);
+        ObjectArrayList objectArrayList = new ObjectArrayList(presize(size));
+        for (int i = 0; i < size; i++) {
+            objectArrayList.add(reader.read(byteBuffer));
+        }
+        return objectArrayList;
+    }
+
+    @NotNull
+    static <T> ObjectList<T> readListSkippingNulls(@NotNull ByteBuf byteBuffer, @NotNull ByteBufReader<T> reader) throws IOException {
+        int size = readSize(byteBuffer);
+        ObjectArrayList objectArrayList = new ObjectArrayList(presize(size));
+        for (int i = 0; i < size; i++) {
+            T element = reader.read(byteBuffer);
+            if (element != null) {
+                objectArrayList.add(element);
+            }
+        }
+        return objectArrayList;
+    }
+
+    @NotNull
+    static <T> ObjectSet<T> readSet(@NotNull ByteBuf byteBuffer, @NotNull ByteBufReader<T> reader) throws IOException {
+        int size = readSize(byteBuffer);
+        ObjectOpenHashSet objectOpenHashSet = new ObjectOpenHashSet(presize(size));
+        for (int i = 0; i < size; i++) {
+            objectOpenHashSet.add(reader.read(byteBuffer));
+        }
+        return objectOpenHashSet;
+    }
+
+    @NotNull
+    static <K, V> Map<K, V> readMap(@NotNull ByteBuf byteBuffer, @NotNull ByteBufReader<K> keyReader, @NotNull ByteBufReader<V> valueReader) throws IOException {
+        int size = readSize(byteBuffer);
+        Object2ObjectOpenHashMap object2ObjectOpenHashMap = new Object2ObjectOpenHashMap(presize(size));
+        for (int i = 0; i < size; i++) {
+            K key = keyReader.read(byteBuffer);
+            V value = valueReader.read(byteBuffer);
+            object2ObjectOpenHashMap.put(key, value);
+        }
+        return object2ObjectOpenHashMap;
+    }
+
+    static <T> void writeCollection(@NotNull ByteBuf byteBuffer, @NotNull Collection<T> collection, @NotNull ByteBufWriter<T> writer) throws IOException {
+        byteBuffer.writeInt(collection.size());
+        for (T element : collection) {
+            writer.write(byteBuffer, element);
+        }
+    }
+
+    static <K, V> void writeMap(@NotNull ByteBuf byteBuffer, @NotNull Map<K, V> map, @NotNull ByteBufWriter<K> keyWriter, @NotNull ByteBufWriter<V> valueWriter) throws IOException {
+        byteBuffer.writeInt(map.size());
+        for (Map.Entry<K, V> entry : map.entrySet()) {
+            keyWriter.write(byteBuffer, entry.getKey());
+            valueWriter.write(byteBuffer, entry.getValue());
+        }
+    }
+
     static byte[] readByteArray(@NotNull ByteBuf byteBuffer) {
         int length = byteBuffer.readInt();
-        if (length < 0 || length > 10485760 || length > byteBuffer.readableBytes()) {
+        if (length < 0 || length > 1048576 || length > byteBuffer.readableBytes()) {
             throw new IllegalArgumentException("Invalid byte array length: " + length);
         }
         byte[] data = new byte[length];
@@ -105,7 +174,7 @@ public interface IPacket {
     @NotNull
     static ObjectList<String> readStringList(@NotNull ByteBuf byteBuffer) {
         int size = readSize(byteBuffer);
-        ObjectArrayList objectArrayList = new ObjectArrayList(size);
+        ObjectArrayList objectArrayList = new ObjectArrayList(presize(size));
         for (int i = 0; i < size; i++) {
             objectArrayList.add(readString(byteBuffer));
         }
@@ -124,7 +193,7 @@ public interface IPacket {
     @NotNull
     static Map<String, Boolean> readFeatureFlags(@NotNull ByteBuf byteBuffer) {
         int size = readSize(byteBuffer);
-        Object2BooleanOpenHashMap object2BooleanOpenHashMap = new Object2BooleanOpenHashMap(size);
+        Object2BooleanOpenHashMap object2BooleanOpenHashMap = new Object2BooleanOpenHashMap(presize(size));
         for (int i = 0; i < size; i++) {
             String key = readString(byteBuffer);
             boolean value = byteBuffer.readByte() == 1;
@@ -144,7 +213,7 @@ public interface IPacket {
     @NotNull
     static ObjectList<Profanity> readProfanityList(@NotNull ByteBuf byteBuffer) {
         int size = readSize(byteBuffer);
-        ObjectArrayList objectArrayList = new ObjectArrayList(size);
+        ObjectArrayList objectArrayList = new ObjectArrayList(presize(size));
         for (int i = 0; i < size; i++) {
             objectArrayList.add(new Profanity(byteBuffer));
         }
@@ -198,7 +267,7 @@ public interface IPacket {
     @NotNull
     static IntList readIntList(@NotNull ByteBuf byteBuffer) {
         int size = readSize(byteBuffer);
-        IntArrayList intArrayList = new IntArrayList(size);
+        IntArrayList intArrayList = new IntArrayList(presize(size));
         for (int i = 0; i < size; i++) {
             intArrayList.add(byteBuffer.readInt());
         }
@@ -215,13 +284,13 @@ public interface IPacket {
     }
 
     @NotNull
-    static <T extends Enum<T>> T readEnum(@NotNull ByteBuf byteBuffer, @NotNull Class<T> enumClass) throws IOException {
-        byte ordinal = byteBuffer.readByte();
-        T[] values = enumClass.getEnumConstants();
-        if (ordinal < 0 || ordinal >= values.length) {
-            throw new InvalidEnumReadException("Invalid ordinal value for enum type " + enumClass.getName() + ": " + ordinal + " (valid range: 0 - " + (values.length - 1) + ")");
+    static <T extends Enum<T>> T readEnum(@NotNull ByteBuf byteBuf, @NotNull Class<T> cls) throws IOException {
+        byte b = byteBuf.readByte();
+        Enum[] enumArr = ENUM_CONSTANTS.get(cls);
+        if (b < 0 || b >= enumArr.length) {
+            throw new InvalidEnumReadException("Invalid ordinal value for enum type " + cls.getName() + ": " + b + " (valid range: 0 - " + (enumArr.length - 1) + ")");
         }
-        return values[ordinal];
+        return (T) enumArr[b];
     }
 
     static void writeEnum(@NotNull ByteBuf byteBuffer, @NotNull Enum<?> enumValue) throws IOException {
@@ -240,68 +309,51 @@ public interface IPacket {
 
     @NotNull
     static ObjectSet<UUID> readUUIDSet(@NotNull ByteBuf byteBuffer) throws IOException {
-        int size = readSize(byteBuffer);
-        ObjectOpenHashSet objectOpenHashSet = new ObjectOpenHashSet(size);
-        for (int i = 0; i < size; i++) {
-            objectOpenHashSet.add(readUUID(byteBuffer));
-        }
-        return objectOpenHashSet;
+        return readSet(byteBuffer, IPacket::readUUID);
     }
 
     static void writeUUIDSet(@NotNull ByteBuf byteBuffer, @NotNull ObjectSet<UUID> uuids) throws IOException {
-        byteBuffer.writeInt(uuids.size());
-        ObjectIterator it = uuids.iterator();
-        while (it.hasNext()) {
-            UUID uuid = (UUID) it.next();
-            writeUUID(byteBuffer, uuid);
-        }
+        writeCollection(byteBuffer, uuids, IPacket::writeUUID);
     }
 
     static void writeString(@NotNull ByteBuf byteBuffer, @NotNull String str) {
-        byte[] bytes = str.getBytes(StandardCharsets.UTF_8);
-        byteBuffer.writeInt(bytes.length);
-        byteBuffer.writeBytes(bytes);
+        int lengthIndex = byteBuffer.writerIndex();
+        byteBuffer.writeInt(0);
+        int written = ByteBufUtil.writeUtf8(byteBuffer, str);
+        byteBuffer.setInt(lengthIndex, written);
     }
 
     @NotNull
     static String readString(@NotNull ByteBuf byteBuffer) {
-        return new String(readByteArray(byteBuffer), StandardCharsets.UTF_8);
+        int length = byteBuffer.readInt();
+        if (length < 0 || length > 1048576 || length > byteBuffer.readableBytes()) {
+            throw new IllegalArgumentException("Invalid string length: " + length);
+        }
+        String str = byteBuffer.toString(byteBuffer.readerIndex(), length, StandardCharsets.UTF_8);
+        byteBuffer.skipBytes(length);
+        return str;
     }
 
     static void writeCloudItemStackList(@NotNull ByteBuf byteBuffer, @NotNull List<CloudItemStack> cloudItemStacks) throws IOException {
-        byteBuffer.writeInt(cloudItemStacks.size());
-        for (CloudItemStack cloudItemStack : cloudItemStacks) {
-            cloudItemStack.write(byteBuffer);
-        }
+        writeCollection(byteBuffer, cloudItemStacks, (buffer, cloudItemStack) -> {
+            cloudItemStack.write(buffer);
+        });
     }
 
     @NotNull
     static ObjectList<CloudItemStack> readCloudItemStackList(@NotNull ByteBuf byteBuffer) throws IOException {
-        int size = readSize(byteBuffer);
-        ObjectArrayList objectArrayList = new ObjectArrayList(size);
-        for (int i = 0; i < size; i++) {
-            objectArrayList.add(new CloudItemStack(byteBuffer));
-        }
-        return objectArrayList;
+        return readList(byteBuffer, CloudItemStack::new);
     }
 
     static void writeMatchDataList(@NotNull ByteBuf byteBuffer, @NotNull ObjectList<MatchData> matchDataList) throws IOException {
-        byteBuffer.writeInt(matchDataList.size());
-        ObjectListIterator it = matchDataList.iterator();
-        while (it.hasNext()) {
-            MatchData matchData = (MatchData) it.next();
-            matchData.write(byteBuffer);
-        }
+        writeCollection(byteBuffer, matchDataList, (buffer, matchData) -> {
+            matchData.write(buffer);
+        });
     }
 
     @NotNull
     static ObjectList<MatchData> readMatchDataList(@NotNull ByteBuf byteBuffer) throws IOException {
-        int size = readSize(byteBuffer);
-        ObjectArrayList objectArrayList = new ObjectArrayList(size);
-        for (int i = 0; i < size; i++) {
-            objectArrayList.add(MatchData.readInstanceFromStream(byteBuffer));
-        }
-        return objectArrayList;
+        return readList(byteBuffer, MatchData::readInstanceFromStream);
     }
 
     @NotNull
@@ -324,22 +376,16 @@ public interface IPacket {
 
     @NotNull
     static <T extends Enum<T>> ObjectList<Map.Entry<UUID, EnumSet<T>>> readEnumSetMap(@NotNull ByteBuf byteBuffer, @NotNull Class<T> enumClass) throws IOException {
-        int size = readSize(byteBuffer);
-        ObjectArrayList objectArrayList = new ObjectArrayList(size);
-        for (int i = 0; i < size; i++) {
-            UUID uuid = readUUID(byteBuffer);
-            EnumSet<T> enumSet = readEnumSet(byteBuffer, enumClass);
-            objectArrayList.add(Map.entry(uuid, enumSet));
-        }
-        return objectArrayList;
+        return readList(byteBuffer, buffer -> {
+            return Map.entry(readUUID(buffer), readEnumSet(buffer, enumClass));
+        });
     }
 
     static <T extends Enum<T>> void writeEnumSetMap(@NotNull ByteBuf byteBuffer, @NotNull List<Map.Entry<UUID, EnumSet<T>>> enumSetMap) throws IOException {
-        byteBuffer.writeInt(enumSetMap.size());
-        for (Map.Entry<UUID, EnumSet<T>> entry : enumSetMap) {
-            writeUUID(byteBuffer, entry.getKey());
-            writeEnumSet(byteBuffer, entry.getValue());
-        }
+        writeCollection(byteBuffer, enumSetMap, (buffer, entry) -> {
+            writeUUID(buffer, (UUID) entry.getKey());
+            writeEnumSet(buffer, (EnumSet) entry.getValue());
+        });
     }
 
     @Nullable
@@ -353,21 +399,12 @@ public interface IPacket {
 
     @NotNull
     static ObjectList<Challenge> readChallengeList(@NotNull ByteBuf byteBuffer) throws IOException {
-        int size = readSize(byteBuffer);
-        ObjectArrayList objectArrayList = new ObjectArrayList(size);
-        for (int i = 0; i < size; i++) {
-            Challenge challenge = readChallenge(byteBuffer);
-            if (challenge != null) {
-                objectArrayList.add(challenge);
-            }
-        }
-        return objectArrayList;
+        return readListSkippingNulls(byteBuffer, IPacket::readChallenge);
     }
 
     static void writeChallengeList(@NotNull ByteBuf byteBuffer, @NotNull List<Challenge> challenges) throws IOException {
-        byteBuffer.writeInt(challenges.size());
-        for (Challenge challenge : challenges) {
-            writeChallenge(challenge, byteBuffer);
-        }
+        writeCollection(byteBuffer, challenges, (buffer, challenge) -> {
+            writeChallenge(challenge, buffer);
+        });
     }
 }

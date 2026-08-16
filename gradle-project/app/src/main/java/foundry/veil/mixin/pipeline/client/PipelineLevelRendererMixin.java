@@ -3,7 +3,11 @@ package foundry.veil.mixin.pipeline.client;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.blaze3d.pipeline.RenderTarget;
 import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.platform.Window;
+import com.mojang.blaze3d.shaders.Uniform;
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.VertexBuffer;
+import com.mojang.blaze3d.vertex.VertexFormat;
 import foundry.veil.api.client.render.CullFrustum;
 import foundry.veil.api.client.render.VeilLevelPerspectiveRenderer;
 import foundry.veil.api.client.render.VeilRenderBridge;
@@ -35,6 +39,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Matrix4f;
+import org.joml.Matrix4fc;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -44,7 +49,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/mixin/pipeline/client/PipelineLevelRendererMixin.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/mixin/pipeline/client/PipelineLevelRendererMixin.class */
 @Mixin(value = {LevelRenderer.class}, priority = 800)
 public abstract class PipelineLevelRendererMixin implements LevelRendererExtension {
 
@@ -114,7 +119,7 @@ public abstract class PipelineLevelRendererMixin implements LevelRendererExtensi
     @Inject(method = {"renderLevel"}, at = {@At("TAIL")})
     public void blit(CallbackInfo ci, @Local ProfilerFiller profiler) {
         if (!VeilLevelPerspectiveRenderer.isRenderingPerspective()) {
-            if (VeilRenderSystem.drawLights(profiler, VeilRenderSystem.getCullingFrustum())) {
+            if (VeilRenderSystem.drawLights(profiler, VeilRenderSystem.getCullingFrustum(), true)) {
                 VeilRenderSystem.compositeLights(profiler);
             } else {
                 AdvancedFbo.unbind();
@@ -170,21 +175,155 @@ public abstract class PipelineLevelRendererMixin implements LevelRendererExtensi
         return VeilRenderBridge.create(this.capturedFrustum != null ? this.capturedFrustum : this.cullingFrustum);
     }
 
-    /* JADX WARN: Removed duplicated region for block: B:30:0x00dc  */
-    /* JADX WARN: Removed duplicated region for block: B:31:0x00e9  */
-    /* JADX WARN: Removed duplicated region for block: B:81:0x0101 A[SYNTHETIC] */
-    /* JADX WARN: Removed duplicated region for block: B:85:0x00b8 A[SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:30:0x00dc  */
+    /* JADX WARN: Code duplicated, block: B:31:0x00e9  */
+    /* JADX WARN: Code duplicated, block: B:36:0x0106  */
+    /* JADX WARN: Code duplicated, block: B:38:0x0114  */
+    /* JADX WARN: Code duplicated, block: B:42:0x013a  */
+    /* JADX WARN: Code duplicated, block: B:81:0x0101 A[SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:85:0x00b8 A[SYNTHETIC] */
     @Override // foundry.veil.ext.LevelRendererBlockLayerExtension
-    /*
-        Code decompiled incorrectly, please refer to instructions dump.
-        To view partially-correct code enable 'Show inconsistent code' option in preferences
-    */
-    public void veil$drawBlockLayer(net.minecraft.client.renderer.RenderType r13, double r14, double r16, double r18, org.joml.Matrix4fc r20, org.joml.Matrix4fc r21) {
-        /*
-            Method dump skipped, instruction units count: 738
-            To view this dump change 'Code comments level' option to 'DEBUG'
-        */
-        throw new UnsupportedOperationException("Method not decompiled: foundry.veil.mixin.pipeline.client.PipelineLevelRendererMixin.veil$drawBlockLayer(net.minecraft.client.renderer.RenderType, double, double, double, org.joml.Matrix4fc, org.joml.Matrix4fc):void");
+    public void veil$drawBlockLayer(RenderType renderType, double x, double y, double z, Matrix4fc frustum, Matrix4fc projection) {
+        SectionRenderDispatcher.RenderSection renderSection;
+        SectionRenderDispatcher.RenderSection section;
+        RenderSystem.assertOnRenderThread();
+        while (renderType instanceof VeilRenderType.RenderTypeWrapper) {
+            VeilRenderType.RenderTypeWrapper wrapper = (VeilRenderType.RenderTypeWrapper) renderType;
+            renderType = wrapper.get();
+        }
+        if (renderType == null) {
+            return;
+        }
+        if (renderType instanceof VeilRenderType.LayeredRenderType) {
+            VeilRenderType.LayeredRenderType layeredRenderType = (VeilRenderType.LayeredRenderType) renderType;
+            ProfilerFiller profiler = this.minecraft.getProfiler();
+            this.veil$tempFrustum.set(frustum);
+            this.veil$tempProjection.set(projection);
+            Window window = this.minecraft.getWindow();
+            RenderType[] layers = layeredRenderType.getLayers();
+            boolean rendered = false;
+            profiler.push("render_" + VeilRenderType.getName(renderType));
+            boolean forward = !renderType.sortOnUpload();
+            ObjectListIterator<SectionRenderDispatcher.RenderSection> objectlistiterator = this.visibleSections.listIterator(forward ? 0 : this.visibleSections.size());
+            ShaderInstance shaderInstance = null;
+            Uniform chunkOffset = null;
+            ObjectArrayList objectArrayList = new ObjectArrayList(this.visibleSections.size());
+            ObjectArrayList objectArrayList2 = new ObjectArrayList(this.visibleSections.size());
+            while (true) {
+                if (forward) {
+                    if (!objectlistiterator.hasNext()) {
+                        break;
+                    }
+                    if (forward) {
+                        renderSection = (SectionRenderDispatcher.RenderSection) objectlistiterator.next();
+                    } else {
+                        renderSection = (SectionRenderDispatcher.RenderSection) objectlistiterator.previous();
+                    }
+                    section = renderSection;
+                    if (section.getCompiled().isEmpty(renderType)) {
+                        if (!rendered) {
+                            renderType.setupRenderState();
+                            shaderInstance = RenderSystem.getShader();
+                            if (shaderInstance != null) {
+                                shaderInstance.setDefaultUniforms(VertexFormat.Mode.QUADS, this.veil$tempFrustum, this.veil$tempProjection, window);
+                                shaderInstance.apply();
+                                chunkOffset = shaderInstance.CHUNK_OFFSET;
+                            }
+                            rendered = true;
+                        }
+                        if (chunkOffset != null) {
+                            BlockPos origin = section.getOrigin();
+                            chunkOffset.set((float) (((double) origin.getX()) - x), (float) (((double) origin.getY()) - y), (float) (((double) origin.getZ()) - z));
+                            chunkOffset.upload();
+                        }
+                        VertexBuffer vertexbuffer = section.getBuffer(renderType);
+                        vertexbuffer.bind();
+                        vertexbuffer.draw();
+                        objectArrayList.add(section);
+                        objectArrayList2.add(vertexbuffer);
+                    }
+                } else {
+                    if (!objectlistiterator.hasPrevious()) {
+                        break;
+                    }
+                    if (forward) {
+                        renderSection = (SectionRenderDispatcher.RenderSection) objectlistiterator.next();
+                    } else {
+                        renderSection = (SectionRenderDispatcher.RenderSection) objectlistiterator.previous();
+                    }
+                    section = renderSection;
+                    if (section.getCompiled().isEmpty(renderType)) {
+                        if (!rendered) {
+                            renderType.setupRenderState();
+                            shaderInstance = RenderSystem.getShader();
+                            if (shaderInstance != null) {
+                                shaderInstance.setDefaultUniforms(VertexFormat.Mode.QUADS, this.veil$tempFrustum, this.veil$tempProjection, window);
+                                shaderInstance.apply();
+                                chunkOffset = shaderInstance.CHUNK_OFFSET;
+                            }
+                            rendered = true;
+                        }
+                        if (chunkOffset != null) {
+                            BlockPos origin2 = section.getOrigin();
+                            chunkOffset.set((float) (((double) origin2.getX()) - x), (float) (((double) origin2.getY()) - y), (float) (((double) origin2.getZ()) - z));
+                            chunkOffset.upload();
+                        }
+                        VertexBuffer vertexbuffer2 = section.getBuffer(renderType);
+                        vertexbuffer2.bind();
+                        vertexbuffer2.draw();
+                        objectArrayList.add(section);
+                        objectArrayList2.add(vertexbuffer2);
+                    }
+                }
+            }
+            if (!rendered) {
+                profiler.pop();
+                return;
+            }
+            if (chunkOffset != null) {
+                chunkOffset.set(0.0f, 0.0f, 0.0f);
+            }
+            if (shaderInstance != null) {
+                shaderInstance.clear();
+            }
+            renderType.clearRenderState();
+            profiler.pop();
+            if (!objectArrayList.isEmpty()) {
+                String name = "render_" + VeilRenderType.getName(layers[0]);
+                for (RenderType layer : layers) {
+                    layer.setupRenderState();
+                    profiler.push(name);
+                    ShaderInstance shaderInstance2 = RenderSystem.getShader();
+                    if (shaderInstance2 != null) {
+                        shaderInstance2.setDefaultUniforms(VertexFormat.Mode.QUADS, this.veil$tempFrustum, this.veil$tempProjection, window);
+                        shaderInstance2.apply();
+                        chunkOffset = shaderInstance2.CHUNK_OFFSET;
+                    }
+                    for (int j = 0; j < objectArrayList.size(); j++) {
+                        SectionRenderDispatcher.RenderSection section2 = (SectionRenderDispatcher.RenderSection) objectArrayList.get(j);
+                        VertexBuffer vertexbuffer3 = (VertexBuffer) objectArrayList2.get(j);
+                        if (chunkOffset != null) {
+                            BlockPos origin3 = section2.getOrigin();
+                            chunkOffset.set((float) (((double) origin3.getX()) - x), (float) (((double) origin3.getY()) - y), (float) (((double) origin3.getZ()) - z));
+                            chunkOffset.upload();
+                        }
+                        vertexbuffer3.bind();
+                        vertexbuffer3.draw();
+                    }
+                    if (chunkOffset != null) {
+                        chunkOffset.set(0.0f, 0.0f, 0.0f);
+                    }
+                    if (shaderInstance2 != null) {
+                        shaderInstance2.clear();
+                    }
+                    profiler.pop();
+                    layer.clearRenderState();
+                }
+            }
+            VertexBuffer.unbind();
+            return;
+        }
+        renderSectionLayer(renderType, x, y, z, this.veil$tempFrustum.set(frustum), this.veil$tempProjection.set(projection));
     }
 
     @Inject(method = {"renderSectionLayer"}, at = {@At("TAIL")})

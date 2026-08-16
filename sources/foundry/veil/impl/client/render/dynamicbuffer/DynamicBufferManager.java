@@ -1,6 +1,6 @@
 package foundry.veil.impl.client.render.dynamicbuffer;
 
-import com.boehmod.blockfront.InterfaceC1294xq;
+import com.boehmod.blockfront.InterfaceC1274xN;
 import com.mojang.blaze3d.pipeline.RenderTarget;
 import com.mojang.blaze3d.platform.GlStateManager;
 import foundry.veil.Veil;
@@ -41,7 +41,7 @@ import org.lwjgl.opengl.GL12C;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.NativeResource;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/dynamicbuffer/DynamicBufferManager.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/dynamicbuffer/DynamicBufferManager.class */
 @ApiStatus.Internal
 public class DynamicBufferManager implements NativeResource {
     public static final ResourceLocation MAIN_WRAPPER = Veil.veilPath("dynamic_main");
@@ -251,7 +251,7 @@ public class DynamicBufferManager implements NativeResource {
                 if (framebuffer.isDepthTextureAttachment()) {
                     fbo.setDepthAttachmentTexture(framebuffer.getDepthTextureAttachment().getId());
                 }
-                fbo.clear(InterfaceC1294xq.f8660tV, this.clearBuffers);
+                fbo.clear(InterfaceC1274xN.f6857vZ, this.clearBuffers);
                 return fbo;
             }
             this.dynamicFramebuffers.remove(this.dynamicFboPointer);
@@ -285,7 +285,7 @@ public class DynamicBufferManager implements NativeResource {
 
     public void endFrame() {
         for (AdvancedFbo framebuffer : this.framebuffers.values()) {
-            framebuffer.clear(0.0f, 0.0f, 0.0f, 0.0f, InterfaceC1294xq.f8660tV, this.clearBuffers);
+            framebuffer.clear(0.0f, 0.0f, 0.0f, 0.0f, InterfaceC1274xN.f6857vZ, this.clearBuffers);
         }
         ListIterator<AdvancedFbo> iterator = this.dynamicFramebuffers.listIterator(this.dynamicFboPointer);
         while (iterator.hasNext()) {
@@ -324,7 +324,7 @@ public class DynamicBufferManager implements NativeResource {
         }
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/impl/client/render/dynamicbuffer/DynamicBufferManager$DynamicBuffer.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/impl/client/render/dynamicbuffer/DynamicBufferManager$DynamicBuffer.class */
     private static final class DynamicBuffer extends Record {
         private final DynamicBufferType type;
         private final int textureId;

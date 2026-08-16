@@ -15,7 +15,7 @@ import org.joml.Vector4i;
 import org.lwjgl.opengl.GL30C;
 import org.lwjgl.system.MemoryStack;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/framebuffer/FramebufferStack.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/framebuffer/FramebufferStack.class */
 public class FramebufferStack {
     private static final List<State> STATE_STACK = new ArrayList(1);
     private static ResourceLocation lastPop;
@@ -81,7 +81,7 @@ public class FramebufferStack {
         return STATE_STACK.isEmpty();
     }
 
-    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/framebuffer/FramebufferStack$State.class */
+    /* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/framebuffer/FramebufferStack$State.class */
     private static final class State extends Record {
         private final Vector4i viewport;
         private final int framebuffer;

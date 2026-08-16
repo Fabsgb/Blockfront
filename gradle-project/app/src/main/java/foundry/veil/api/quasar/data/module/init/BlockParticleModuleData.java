@@ -11,7 +11,7 @@ import imgui.ImGui;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.block.state.BlockState;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/quasar/data/module/init/BlockParticleModuleData.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/quasar/data/module/init/BlockParticleModuleData.class */
 public final class BlockParticleModuleData implements ParticleModuleData, EditorAttributeProvider {
     public static final MapCodec<BlockParticleModuleData> CODEC = Codec.BOOL.optionalFieldOf("dynamic", true).xmap((v1) -> {
         return new BlockParticleModuleData(v1);

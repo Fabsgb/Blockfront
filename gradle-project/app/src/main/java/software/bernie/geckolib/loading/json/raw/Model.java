@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.loading.json.FormatVersion;
 import software.bernie.geckolib.util.JsonUtil;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.7.3.jar:software/bernie/geckolib/loading/json/raw/Model.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/geckolib-neoforge-1.21.1-4.9.2.jar:software/bernie/geckolib/loading/json/raw/Model.class */
 public final class Model extends Record {
 
     @Nullable

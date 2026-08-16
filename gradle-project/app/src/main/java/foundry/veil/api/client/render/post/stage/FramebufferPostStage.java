@@ -7,20 +7,22 @@ import foundry.veil.api.client.render.shader.uniform.ShaderUniform;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 
-/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.14b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.3.0.jar:foundry/veil/api/client/render/post/stage/FramebufferPostStage.class */
+/* JADX INFO: loaded from: BlockFront-1.21.1-0.9.0.26b-RELEASE.jar:META-INF/jarjar/veil-neoforge-1.21.1-4.4.1.jar:foundry/veil/api/client/render/post/stage/FramebufferPostStage.class */
 public abstract class FramebufferPostStage implements PostPipeline {
-    private final ResourceLocation in;
+
+    /* JADX INFO: renamed from: in */
+    private final ResourceLocation f9134in;
     private final ResourceLocation out;
     private final boolean clear;
 
     public FramebufferPostStage(@Nullable ResourceLocation in, ResourceLocation out, boolean clear) {
-        this.in = in;
+        this.f9134in = in;
         this.out = out;
         this.clear = clear;
     }
 
     protected void setupFramebuffer(PostPipeline.Context context, ShaderProgram shader) {
-        AdvancedFbo in = this.in != null ? context.getFramebuffer(this.in) : null;
+        AdvancedFbo in = this.f9134in != null ? context.getFramebuffer(this.f9134in) : null;
         AdvancedFbo out = context.getFramebufferOrDraw(this.out);
         if (in != null) {
             shader.setFramebufferSamplers(in);
@@ -45,7 +47,7 @@ public abstract class FramebufferPostStage implements PostPipeline {
 
     @Nullable
     public ResourceLocation getIn() {
-        return this.in;
+        return this.f9134in;
     }
 
     public ResourceLocation getOut() {
